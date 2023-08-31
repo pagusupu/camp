@@ -67,7 +67,7 @@
       bind=SUPER:SHIFT,BACKSPACE,exec,grim -g "$(slurp -d)" "$HOME/Pictures/screenshots/$('%H.%M.%S').png"
       bind=SUPER,L,exec,swaylock
       bind=SUPER,TAB,exec,tofi-drun --drun-launch true --terminal alacritty
-      bind=SUPER:SHIFT,TAB,exec,/etc/nixos/things/scripts/powermenu.sh
+      bind=SUPER:SHIFT,TAB,exec,~/Nix/things/scripts/powermenu.sh
       bindm=SUPER,mouse:272,movewindow
       bindm=SUPER,mouse:273,resizewindow
       bind=SUPER,Q,killactive,
