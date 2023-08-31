@@ -62,8 +62,6 @@
           mako
         ];
         sessionVariables = {
-	  FLAKE = "~/nix";
-	 # NIX_PATH = "~/Nix";
           NIXOS_OZONE_WL = "1";
           MOZ_ENABLE_WAYLAND = "1";
         };
