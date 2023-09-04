@@ -1,15 +1,17 @@
-{ inputs, pkgs, ... }:
 {
-  imports =
-    [ 
-      ./hardware.nix
-      ./user.nix
-      ../../things/misc/default.nix
-    ];
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./hardware.nix
+    ./user.nix
+    ../../things/misc/default.nix
+  ];
   time = {
     timeZone = "NZ";
     hardwareClockInLocalTime = true;
-  }; 
+  };
   i18n.defaultLocale = "en_NZ.UTF-8";
   programs = {
     zsh.enable = true;
@@ -39,23 +41,16 @@
       noto-fonts
       noto-fonts-emoji
       line-awesome
-      fira-code
-      (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru"];})
+      (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru" "Fira Code"];})
     ];
     fontconfig = {
       defaultFonts = {
         serif = ["Lato"];
-	sansSerif = ["Nunito" "Kosugi Maru"];
-	monospace = ["FiraCode"];
+        sansSerif = ["Nunito" "Kosugi Maru"];
+        monospace = ["FiraCode"];
       };
     };
   };
-  environment = {
-  systemPackages = with pkgs; [
-    alejandra
-    ];
-  shells = [pkgs.zsh];
-  };
- system.stateVersion = "23.11"; 
+  environment.shells = [pkgs.zsh];
+  system.stateVersion = "23.11";
 }
-
