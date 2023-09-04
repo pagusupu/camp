@@ -4,32 +4,32 @@
   inputs,
   ...
 }: {
-    users = {
-      extraUsers.pagu = {
-        isNormalUser = true;
-        extraGroups = ["wheel"];
-        shell = pkgs.zsh;
-      };
+  users = {
+    extraUsers.pagu = {
+      isNormalUser = true;
+      extraGroups = ["wheel"];
+      shell = pkgs.zsh;
     };
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      extraSpecialArgs = {inherit inputs;};
-      users.pagu = {config, ...}: {
-        imports = [
-          ../../things/home
-          ../../things/misc/user.nix
-        ];
-        local.programs = {
-          alacritty.enable = true;
-          hyprland.config = true;     
-          zsh.enable = true;
-          tofi.enable = true;
-          waybar.enable = true;
-          htop.enable = true;
-          neofetch.enable = true;
-          swaylock.enable = true;
-        };
+  };
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {inherit inputs;};
+    users.pagu = {config, ...}: {
+      imports = [
+        ../../things/home
+        ../../things/misc/user.nix
+      ];
+      local.programs = {
+        alacritty.enable = true;
+        hyprland.config = true;
+        zsh.enable = true;
+        tofi.enable = true;
+        waybar.enable = true;
+        htop.enable = true;
+        neofetch.enable = true;
+        swaylock.enable = true;
+      };
       home = {
         username = "pagu";
         homeDirectory = "/home/pagu";
@@ -41,14 +41,14 @@
           prismlauncher-qt5
           #misc
           htop
-          ranger 
+          ranger
           p7zip
-	  vim
+          vim
           #apps
-	  mpv
+          mpv
           imv
           firefox-wayland
-	  webcord
+          webcord
           feishin
           #environment
           xdg-utils
@@ -70,8 +70,8 @@
       programs = {
         git = {
           enable = true;
-	  userName = "pagusupu";
-	  userEmail = "me@pagu.cafe";
+          userName = "pagusupu";
+          userEmail = "me@pagu.cafe";
         };
         vscode = {
           enable = true;
@@ -85,7 +85,7 @@
           userSettings = {
             "terminal.external.linuxExec" = "alacritty";
             "alejandra.program" = "alejandra";
-	    "[nix]" = {
+            "[nix]" = {
               "editor.defaultFormatter" = "kamadorueda.alejandra";
               "editor.formatOnPaste" = true;
               "editor.formatOnSave" = true;
@@ -96,10 +96,10 @@
             "git.confirmSync" = false;
             "window.menuBarVisibility" = "toggle";
             "workbench.iconTheme" = "vscode-icons";
+            "editor.minimap.enabled" = false;
           };
         };
       };
     };
   };
 }
-
