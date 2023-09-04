@@ -99,6 +99,7 @@
             "workbench.iconTheme" = "vscode-icons";
             "editor.minimap.enabled" = false;
             "workbench.startupEditor" = "none";
+            "workbench.statusBar.visible" = false;
           };
         };
       };
