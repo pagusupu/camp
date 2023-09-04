@@ -81,6 +81,7 @@
             kamadorueda.alejandra
             oderwat.indent-rainbow
             vscode-icons-team.vscode-icons
+            nonylene.dark-molokai-theme
           ];
           userSettings = {
             "terminal.external.linuxExec" = "alacritty";
@@ -97,6 +98,7 @@
             "window.menuBarVisibility" = "toggle";
             "workbench.iconTheme" = "vscode-icons";
             "editor.minimap.enabled" = false;
+            "workbench.startupEditor": "none"
           };
         };
       };
