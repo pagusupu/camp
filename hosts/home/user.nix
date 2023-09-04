@@ -48,7 +48,7 @@
 	  mpv
           imv
           firefox-wayland
-	  armcord
+	  webcord
           feishin
           #environment
           xdg-utils

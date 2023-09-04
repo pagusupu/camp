@@ -17,8 +17,8 @@
     in ''
       exec-once=swaybg -o ${d1} -m fill -i ${b1} -o ${d2} -m fill -i ${b2}
       exec-once=waybar
-      exec-once=armcord
-      windowrule=move ${d2},title:^(armcord)(.*)$
+      exec-once=webcord
+      windowrule=move ${d2},title:^(webcord)(.*)$
       monitor=${d1},1920x1080@165,1920x0,1
       monitor=${d2},1920x1080@75,0x0,1
       workspace=1, monitor:${d1}, default:true
@@ -30,6 +30,7 @@
       input {
         follow_mouse=2
         accel_profile=flat
+	sensitivity=-0.1
       }
       general {
         gaps_in=5
@@ -58,7 +59,7 @@
         vfr=true
         disable_hyprland_logo=true
         disable_splash_rendering=true
-        disable_autoreload=true
+        disable_autoreload=false
         animate_manual_resizes=true
         animate_mouse_windowdragging=true
       }
