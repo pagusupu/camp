@@ -29,7 +29,6 @@
           htop.enable = true;
           neofetch.enable = true;
           swaylock.enable = true;
-	  neovim.enable = true;
         };
       home = {
         username = "pagu";
@@ -44,6 +43,7 @@
           htop
           ranger 
           p7zip
+	  vim
           #apps
 	  mpv
           imv
@@ -67,10 +67,20 @@
         };
         stateVersion = "23.05";
       };
-      programs.git = {
-        enable = true;
-	userName = "pagusupu";
-	userEmail = "me@pagu.cafe";
+      programs = {
+        git = {
+          enable = true;
+	  userName = "pagusupu";
+	  userEmail = "me@pagu.cafe";
+        };
+        vscode = {
+          enable = true;
+          package = pkgs.vscodium;
+          mutableExtensionsDir = false;
+          extensions = with pkgs.vscode-extensions; [
+            kamadorueda.alejandra
+          ];
+        };
       };
     };
   };
