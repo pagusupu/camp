@@ -98,7 +98,7 @@
             "window.menuBarVisibility" = "toggle";
             "workbench.iconTheme" = "vscode-icons";
             "editor.minimap.enabled" = false;
-            "workbench.startupEditor": "none"
+            "workbench.startupEditor" = "none";
           };
         };
       };
