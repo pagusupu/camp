@@ -4,23 +4,19 @@
       # removed
       ranger = {
         noDisplay = true;
-	name = "ranger";
+        name = "ranger";
       };
       Alacritty = {
         noDisplay = true;
-	name = "alacritty";
+        name = "alacritty";
       };
       htop = {
         noDisplay = true;
-	name = "htop";
+        name = "htop";
       };
       nixos-manual = {
         noDisplay = true;
-	name = "NixOS Manual";
-      };
-      nvim = {
-        noDisplay = true;
-	name = "Neovim Wrapper";
+        name = "NixOS Manual";
       };
       # changed
       mpv = {
@@ -32,7 +28,7 @@
         name = "Honkers";
         exec = "honkers-railway-launcher";
         terminal = false;
-      };   
+      };
     };
   };
-}                
+}
