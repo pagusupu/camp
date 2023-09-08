@@ -41,7 +41,6 @@
           #games
           protontricks
           protonup-ng
-          xivlauncher
           prismlauncher-qt5
           #misc
           htop
