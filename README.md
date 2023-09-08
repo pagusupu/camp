@@ -1,7 +1,7 @@
 <img align="right" src="https://i.imgur.com/kMkHEkY.png" alt="Desktop" width="40%">
 
 <div align="left">
-  <img align="left" src="https://i.imgur.com/RZ94Olr.png" alt="Nix Logo" width="80" height="80">
+  <img align="left" src="https://i.imgur.com/RZ94Olr.png" alt="Nix Logo" width="160" height="160">
 
-  <h3 align="left">NixOS Configuration</h3>
+  <h6 align="left">NixOS Configuration</h6>
   <p align="left">Unstable w/ Flakes</p>
