@@ -16,7 +16,6 @@
       dotDir = ".config/zsh";
       enableCompletion = true;
       enableAutosuggestions = true;
-     #syntaxHighlighting = true;
       history = {
         save = 1000;
         size = 1000;
@@ -26,7 +25,6 @@
         PROMPT=${config.local.programs.zsh.prompt}
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
-        # ctrl backwards / delete
         bindkey '^H' backward-kill-word
         bindkey '5~' kill-word
         # disable weird underline
@@ -34,14 +32,10 @@
         ZSH_HIGHLIGHT_STYLES[path]=none
         ZSH_HIGHLIGHT_STYLES[path_prefix]=none
       '';
-      #profileExtra = ''
-       # if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
-        #  Hyprland
-       # fi
-    #  '';
       shellAliases = {
         ls = "ls --color";
         switch = "sudo nixos-rebuild switch --flake ~/Nix/# && rm ~/.cache/tofi-drun";
+        update = "sudo nix flake update ~/Nix && switch";
       };
     };
   };
