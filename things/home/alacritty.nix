@@ -35,8 +35,8 @@
           primary = {
             background = "#" + mcolours.primary.bg;
             foreground = "#" + mcolours.primary.fg;
-            dim_foreground = "#767676";
-            bright_foreground = "#bfbfbf";
+            dim_foreground = "#" + mcolours.normal.black;
+            bright_foreground = "#" + mcolours.bright.black;
           };
           normal = {
             black = "#" + mcolours.normal.black;

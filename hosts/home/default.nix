@@ -6,7 +6,9 @@
   imports = [
     ./hardware.nix
     ./user.nix
-    ../../things/misc/default.nix
+    ../../things/misc/nix.nix
+    ../../things/misc/console.nix
+    ../../things/misc/greetd.nix
   ];
   time = {
     timeZone = "NZ";

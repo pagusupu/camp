@@ -18,7 +18,11 @@
     users.pagu = {config, ...}: {
       imports = [
         ../../things/home
-        ../../things/misc/user.nix
+        ../../things/misc/colours.nix
+        ../../things/misc/theme.nix
+        ../../things/misc/cursor.nix
+        ../../things/misc/desktop.nix
+        ../../things/misc/honkers.nix
       ];
       local.programs = {
         alacritty.enable = true;

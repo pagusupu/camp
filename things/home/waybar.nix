@@ -2,8 +2,10 @@
   pkgs,
   config,
   lib,
+  mcolours,
   ...
 }: {
+  imports = [../misc/colours.nix];
   options.local.programs.waybar = {
     enable = lib.mkEnableOption "";
   };
@@ -98,7 +100,7 @@
             font-size: 16px;
           }
           window#waybar {
-            background: #191919;
+            background: #${mcolours.primary.bg};
             border-radius: 10px;
           }
           #workspaces {
@@ -109,32 +111,32 @@
             padding-bottom: 0px;
             padding-left: 2px;
             padding-right: 2px;
-            color: #a0a0a0;
-            background-color: #393939;
+            color: #${mcolours.primary.fg};
+            background-color: #${mcolours.bright.black};
             border-radius: 6px;
             margin: 2px;
           }
           #workspaces button.active {
-            background-color: #ac8aac;
-            color: #191919;
+            background-color: #${mcolours.primary.main};
+            color: #${mcolours.primary.bg};
             border-radius: 6px;
           }
           #workspaces button:hover {
-            background-color: #ac8aac;
-            color: #191919;
+            background-color: #${mcolours.primary.main};
+            color: #${mcolours.primary.bg};
             box-shadow: inherit;
             text-shadow: inherit;
             border-radius: 6px;
           }
           #clock {
-            color: #a0a0a0;
+            color: #${mcolours.primary.fg};
             padding-top: 0px;
             padding-bottom: 0px;
             padding-right: 0px;
             padding-left: 0px;
           }
           .modules-right {
-            color: #a0a0a0;
+            color: #${mcolours.primary.fg};
             padding-left: 0px;
             padding-right: 2px;
             padding-top: 0px;
@@ -148,16 +150,16 @@
           }
           #custom-icon {
             padding-left: 4px;
-            color: #a0a0a0;
+            color: #${mcolours.primary.fg};
           }
           tooltip {
-            background: #191919;
-            color: #a0a0a0;
-            border: 1px solid #a0a0a0;
+            background: #${mcolours.primary.bg};
+            color: #${mcolours.primary.fg};
+            border: 1px solid #${mcolours.primary.fg};
             border-radius: 6px;
           }
           tooltip label {
-            color: #a0a0a0;
+            color: #${mcolours.primary.fg};
           }
         '';
       };

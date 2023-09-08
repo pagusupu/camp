@@ -28,34 +28,4 @@
       white = "f0f0f0";
     };
   };
-  /*
-  _module.args.mcolours = {
-    primary = {
-      bg = "2e3440";
-      fg = "d8dee9";
-      main = "bf616a";
-    };
-    normal = {
-        black = "3b4252";
-        red = "bf616a";
-  green = "a3be8c";
-  yellow = "ebcb8b";
-  blue = "81a1c1";
-  magenta = "b48ead";
-  cyan = "88c0d0";
-  white = "e5e9f0";
-};
-bright = {
-  black = "4c566a";
-  red = "bf616a";
-  green = "a3be8c";
-  yellow = "ebcb8b";
-  blue = "81a1c1";
-  magenta = "b48ead";
-  cyan = "8fbcbb";
-  white = "eceff4";
-};
-
-  };
-  */
 }
