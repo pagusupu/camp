@@ -65,7 +65,7 @@
           }
           bind=SUPER,RETURN,exec,alacritty
           bind=SUPER,BACKSPACE,exec,grim -g "$(slurp -d)" - | wl-copy -t image/png
-          bind=SUPER:SHIFT,BACKSPACE,exec,grim -g "$(slurp -d)" "$HOME/Pictures/screenshots/$('%H.%M.%S').png"
+          bind=SUPER:SHIFT,BACKSPACE,exec,grim -g "$(slurp -d)" "$HOME/Pictures/screenshots"/"$(date '+%H-%M-%S')".png
           bind=SUPER,L,exec,swaylock
           bind=SUPER,TAB,exec,tofi-drun --drun-launch true --terminal alacritty
           bind=SUPER:SHIFT,TAB,exec,~/Nix/things/scripts/powermenu.sh
