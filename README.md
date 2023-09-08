@@ -3,5 +3,5 @@
 <div align="left">
   <img align="left" src="https://i.imgur.com/RZ94Olr.png" alt="Nix Logo" width="160" height="160">
 
-  <h6 align="left">NixOS Configuration</h6>
+  <h1 align="left">NixOS Configuration</h1>
   <p align="left">Unstable w/ Flakes</p>
