@@ -14,16 +14,15 @@
       packages = [pkgs.mako];
       file.".config/mako/config".text = ''
         layer=overlay
-        max-icon-size=64
         default-timeout=5000
         ignore-timeout=1
         max-visible=2
         font=nunito 14
         anchor=bottom-right
-        background-color=#191919
-        text-color=#a0a0a0
+        background-color=#${mcolours.primary.bg}
+        text-color=#${mcolours.primary.fg}
         border-size=2
-        border-color=#ac8a8c
+        border-color=#${mcolours.normal.red}
         border-radius=7
         margin=14
       '';
