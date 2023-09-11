@@ -13,6 +13,14 @@ Hyprland w/ Waybar & Alacritty
 Themed w/ Mountain (Fuji)
 <br>
 
+# To-Do
+
+- [ ] Move server to NixOS
+- [ ] Clean shit up
+
+~~I'm a beginner feel free to rip apart all the mistakes I've made~~
+<br>
+
 # Desktop
 
 <img src="https://i.imgur.com/kMkHEkY.png" alt="Desktop">
