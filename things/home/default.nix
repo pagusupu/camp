@@ -9,5 +9,6 @@
     ./neofetch.nix
     ./swaylock.nix
     ./mako.nix
+    ./codium.nix
   ];
 }
