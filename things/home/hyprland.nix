@@ -12,8 +12,8 @@
     home.file.".config/hypr/hyprland.conf".text = let
       d1 = "DP-3";
       d2 = "HDMI-A-1";
-      b1 = "~/.config/bg/bg1.png";
-      b2 = "~/.config/bg/bg2.png";
+      b1 = "../images/bg1.png";
+      b2 = "../images/bg2.png";
     in ''
       exec-once=swaybg -o ${d1} -m fill -i ${b1} -o ${d2} -m fill -i ${b2}
       exec-once=waybar
