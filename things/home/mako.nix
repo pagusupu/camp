@@ -17,14 +17,14 @@
         default-timeout=5000
         ignore-timeout=1
         max-visible=2
-        font=nunito 14
         anchor=bottom-right
-        background-color=#${mcolours.primary.bg}
-        text-color=#${mcolours.primary.fg}
-        border-size=2
-        border-color=#${mcolours.normal.red}
-        border-radius=7
         margin=14
+        font=nunito 14
+        text-color=#${mcolours.primary.fg}
+        background-color=#${mcolours.primary.bg}
+        border-color=#${mcolours.normal.red}
+        border-size=2
+        border-radius=7
       '';
     };
   };
