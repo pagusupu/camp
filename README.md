@@ -1,6 +1,6 @@
 <div align = center>
 
-<img src="https://i.imgur.com/RZ94Olr.png" width="296" height="256" alt="Logo">
+<img src="https://github.com/pagusupu/nixos/blob/main/things/images/nixos-logo.png" width="296" height="256" alt="Logo">
 
 <br>
 
@@ -23,7 +23,7 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 
 # Desktop
 
-<img src="https://i.imgur.com/kMkHEkY.png" alt="Desktop">
+<img src="https://github.com/pagusupu/nixos/blob/main/things/images/desktop.png" alt="Desktop">
 
 <!----------------------------------------------------------------------------->
 
