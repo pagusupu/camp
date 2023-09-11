@@ -41,7 +41,6 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-emoji
       line-awesome
       (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru" "Fira Code"];})
     ];

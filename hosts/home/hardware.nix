@@ -38,10 +38,6 @@
   security.tpm2.enable = true;
   networking = {
     hostName = "home";
-    extraHosts = ''
-      0.0.0.0 sg-public-data-api.hoyoverse.com # | star rail
-      0.0.0.0 log-upload-os.hoyoverse.com      # |
-    '';
   };
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9dd5237a-fab2-474d-9f0d-84f326ccefc9";
