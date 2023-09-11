@@ -8,9 +8,9 @@
 
 Unstable w/ Flakes & Home-Manager
 
-Hyprland w/ Waybar & Alacritty
+**[Hyprland]** w/ **[Waybar]** & **[Alacritty]**
 
-Themed w/ Mountain (Fuji)
+Themed w/ **[Mountain]** (**[Fuji]**)
 <br>
 
 # To-Do
@@ -24,3 +24,11 @@ Themed w/ Mountain (Fuji)
 # Desktop
 
 <img src="https://i.imgur.com/kMkHEkY.png" alt="Desktop">
+
+<!----------------------------------------------------------------------------->
+
+[Hyprland]: https://github.com/hyprwm/Hyprland
+[Waybar]: https://github.com/Alexays/Waybar
+[Alacritty]: https://github.com/alacritty/alacritty
+[Mountain]: https://github.com/mountain-theme/Mountain
+[Fuji]: https://github.com/mountain-theme/Mountain/blob/master/docs/fuji.org
