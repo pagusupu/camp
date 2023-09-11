@@ -5,9 +5,7 @@
   mcolours,
   ...
 }: {
-  imports = [
-    ../misc/colours.nix
-  ];
+  imports = [../misc/colours.nix];
   options.local.programs.swaylock = {
     enable = lib.mkEnableOption "";
   };

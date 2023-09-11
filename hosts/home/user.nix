@@ -32,6 +32,7 @@
         htop.enable = true;
         neofetch.enable = true;
         swaylock.enable = true;
+        mako.enable = true;
       };
       home = {
         username = "pagu";
@@ -61,7 +62,6 @@
           swayidle
           swaylock-effects
           swaybg
-          mako
         ];
         sessionVariables = {
           NIXOS_OZONE_WL = "1";
