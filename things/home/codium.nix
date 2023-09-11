@@ -1,5 +1,10 @@
 {pkgs, ...}: {
   programs = {
+    git = {
+      enable = true;
+      userName = "pagusupu";
+      userEmail = "me@pagu.cafe";
+    };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
