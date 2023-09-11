@@ -24,11 +24,6 @@
         exec = "mpv --player-operation-mode=pseudo-gui -- %U";
         terminal = false;
       };
-      honkers-railway-launcher = {
-        name = "Honkers";
-        exec = "honkers-railway-launcher";
-        terminal = false;
-      };
     };
   };
 }

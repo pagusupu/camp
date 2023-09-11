@@ -22,7 +22,6 @@
         ../../things/misc/theme.nix
         ../../things/misc/cursor.nix
         ../../things/misc/desktop.nix
-        ../../things/misc/honkers.nix
       ];
       local.programs = {
         alacritty.enable = true;
@@ -51,7 +50,7 @@
           mpv
           imv
           firefox-wayland
-          webcord
+          discord
           feishin
           #environment
           xdg-utils

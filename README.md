@@ -3,7 +3,7 @@
   <h2 align="left">NixOS Configuration</h2>
   <p align="left">・Unstable w/ Flakes & Home-Manager</p>
   <p align="left">・Hyprland w/ Waybar & Alacritty</p>
-  <p align="left">・Themed w/ Mountain & Numix</p>
+  <p align="left">・Themed w/ Mountain (Fuji)</p>
 </div>
 <br/>
 
