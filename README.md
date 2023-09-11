@@ -18,7 +18,7 @@ Themed w/ Mountain (Fuji)
 - [ ] Move server to NixOS
 - [ ] Clean shit up
 
-~~I'm a beginner feel free to rip apart all the mistakes I've made~~
+~~I'm a beginner feel free to rip this apart~~
 <br>
 
 # Desktop
