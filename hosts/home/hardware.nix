@@ -34,9 +34,7 @@
       driSupport32Bit = true;
     };
   };
-  networking = {
-    hostName = "home";
-  };
+  networking = {hostName = "home";};
   powerManagement.cpuFreqGovernor = "schedutil";
   security.tpm2.enable = true;
   fileSystems."/" = {
