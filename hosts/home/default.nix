@@ -36,6 +36,7 @@
   security = {
     pam.services.swaylock = {};
     rtkit.enable = true;
+    tpm2.enable = true;
     sudo.wheelNeedsPassword = false;
   };
   fonts = {

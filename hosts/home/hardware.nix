@@ -36,7 +36,6 @@
   };
   networking = {hostName = "home";};
   powerManagement.cpuFreqGovernor = "schedutil";
-  security.tpm2.enable = true;
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9dd5237a-fab2-474d-9f0d-84f326ccefc9";
     fsType = "btrfs";
