@@ -39,7 +39,7 @@
         corner_radius 5
         gaps {
           inner 5
-          outer 5
+          outer 3
         }
         floating_maximum_size 1600 x 800
         floating_minimum_size 160 x 120

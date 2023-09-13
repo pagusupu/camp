@@ -21,9 +21,9 @@
             layer = "top";
             position = "top";
             output = ["DP-3" "HDMI-A-1"];
-            modules-left = ["clock"];
+            modules-left = ["image#nix" "custom/version" "custom/user"];
             modules-center = ["sway/workspaces"];
-            modules-right = ["wireplumber" "bluetooth" "network" "custom/powermenu"];
+            modules-right = ["wireplumber" "bluetooth" "network" "clock" "custom/powermenu"];
             "sway/workspaces" = {
               format = "{icon}";
               format-icons = {
@@ -48,8 +48,8 @@
               };
             };
             "clock" = {
-              format = " {:%I:%M %p}";
-              format-alt = "{:%I:%M %p, %A %B %d, %Y}";
+              format = "{:%I:%M %p} ";
+              tooltip-format = "{:%A %B %d, %Y}";
             };
             "network" = {
               format = "";
@@ -83,8 +83,16 @@
               tooltip-format-enumerated-connected-battery = "{device_alias} - {device_battery_percentage}%: {device_address}";
               tooltip-format = "Searching...";
             };
-            "custom/icon" = {
-              format = "";
+            "image#nix" = {
+              path = "/home/pagu/Nix/things/images/nixos-logo-alt.png";
+              size = 20;
+              interval = 30;
+            };
+            "custom/version" = {
+              format = "23.11 (unstable)";
+            };
+            "custom/user" = {
+              format = " pagu";
             };
             height = 32;
             spacing = 4;
@@ -134,13 +142,15 @@
           }
           .modules-left {
             margin: 4px;
+            padding-right: 2px;
           }
-          #clock {
+          #custom-version,
+          #custom-user {
+            padding-right: 4px;
+            padding-left: 4px;
             color: #${mcolours.primary.bg};
             background-color: #${mcolours.primary.main};
             border-radius: 6px;
-            padding-right: 4px;
-            padding-left: 4px;
             margin: 1px;
           }
           .modules-right {
@@ -154,7 +164,8 @@
           #network,
           #wireplumber,
           #network,
-          #bluetooth {
+          #bluetooth,
+          #clock {
             padding-right: 4px;
             padding-left: 4px;
             color: #${mcolours.primary.bg};
