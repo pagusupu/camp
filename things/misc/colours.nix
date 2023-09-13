@@ -14,10 +14,10 @@
       magenta = "ac8aac";
       cyan = "8aacab";
       orange = "c6a679";
-      white = "e7e7e7";
+      white = "bfbfbf";
     };
     bright = {
-      black = "4c4c4c";
+      black = "393939";
       red = "c49ea0";
       green = "9ec49f";
       yellow = "c4c19e";
@@ -25,7 +25,7 @@
       magenta = "c49ec4";
       cyan = "9ec3c4";
       orange = "ceb188";
-      white = "f0f0f0";
+      white = "cacaca";
     };
   };
 }

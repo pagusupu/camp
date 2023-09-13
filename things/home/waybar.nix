@@ -22,9 +22,9 @@
             position = "top";
             output = ["DP-3" "HDMI-A-1"];
             modules-left = ["custom/icon" "clock"];
-            modules-center = ["hyprland/workspaces"];
+            modules-center = ["sway/workspaces"];
             modules-right = ["wireplumber" "bluetooth" "network" "custom/powermenu"];
-            "hyprland/workspaces" = {
+            "sway/workspaces" = {
               format = "{icon}";
               format-icons = {
                 "1" = "一";
@@ -37,7 +37,14 @@
                 "8" = "八";
               };
               persistent_workspaces = {
-                "*" = 4;
+                "1" = ["DP-3"];
+                "2" = ["DP-3"];
+                "3" = ["DP-3"];
+                "4" = ["DP-3"];
+                "5" = ["HDMI-A-1"];
+                "6" = ["HDMI-A-1"];
+                "7" = ["HDMI-A-1"];
+                "8" = ["HDMI-A-1"];
               };
             };
             "clock" = {
@@ -83,7 +90,7 @@
               format = "<span font_size='16pt'></span>";
             };
             height = 35;
-            spacing = 4;
+            spacing = 0;
             margin-top = 10;
             margin-bottom = 0;
             margin-left = 10;
@@ -116,7 +123,7 @@
             border-radius: 6px;
             margin: 2px;
           }
-          #workspaces button.active {
+          #workspaces button.focused {
             background-color: #${mcolours.primary.main};
             color: #${mcolours.primary.bg};
             border-radius: 6px;
