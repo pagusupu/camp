@@ -57,6 +57,7 @@
         bindsym $mod+Return exec $term
         bindsym $mod+Tab exec $menu
         bindsym $mod+Shift+Tab exec ~/Nix/things/scripts/powermenu.sh
+        bindsym $mod+l exec swaylock
         bindsym $mod+Backspace exec grim -g "$(slurp -d)" - | wl-copy -t image/png
         bindsym $mod+Shift+Backspace exec grim -g "$(slurp -d)" "$HOME/Pictures/screenshots"/"$(date '+%H-%M-%S')".png
         bindsym $mod+r reload
