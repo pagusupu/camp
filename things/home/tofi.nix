@@ -19,7 +19,7 @@
         height = 500
         corner-radius = 7
         outline-width = 1
-        outline-color = #${mcolours.normal.red}
+        outline-color = #${mcolours.primary.main}
         border-width = 0
         padding-top = 10
         padding-bottom = 0
@@ -30,7 +30,7 @@
         background-color = #${mcolours.primary.bg}
         text-color = #${mcolours.primary.fg}
         selection-color = #${mcolours.primary.bg}
-        selection-background = #${mcolours.normal.red}
+        selection-background = #${mcolours.primary.main}
         selection-background-padding = 8
         selection-background-corner-radius = 7
         result-spacing = 20

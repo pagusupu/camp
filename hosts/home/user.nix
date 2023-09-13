@@ -33,6 +33,7 @@
         neofetch.enable = true;
         swaylock.enable = true;
         mako.enable = true;
+        swayfx.enable = true;
       };
       home = {
         username = "pagu";

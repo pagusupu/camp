@@ -18,7 +18,7 @@
         ignore-timeout=1
         max-visible=2
         anchor=bottom-right
-        margin=14
+        margin=16
         font=nunito 14
         text-color=#${mcolours.primary.fg}
         background-color=#${mcolours.primary.bg}

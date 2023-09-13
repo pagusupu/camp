@@ -34,7 +34,7 @@
       '';
       shellAliases = {
         ls = "ls --color";
-        switch = "sudo nixos-rebuild switch --flake .#home && rm ~/.cache/tofi-drun";
+        switch = "sudo nixos-rebuild switch --flake ~/Nix/#home && rm ~/.cache/tofi-drun";
         update = "sudo nix flake update ~/Nix && switch";
       };
     };
