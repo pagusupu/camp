@@ -10,5 +10,6 @@
     ./swaylock.nix
     ./mako.nix
     ./codium.nix
+    ./swayfx.nix
   ];
 }
