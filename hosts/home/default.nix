@@ -18,10 +18,6 @@
   programs = {
     zsh.enable = true;
     steam.enable = true;
-    hyprland = {
-      enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    };
   };
   services = {
     dbus.enable = true;
@@ -42,6 +38,8 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
       font-awesome
       (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru" "Fira Code"];})
     ];

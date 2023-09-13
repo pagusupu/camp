@@ -31,6 +31,7 @@
         "editor.minimap.enabled" = false;
         "workbench.startupEditor" = "none";
         "workbench.colorTheme" = "Dark Modern";
+        "explorer.confirmDelete" = false;
       };
     };
   };
