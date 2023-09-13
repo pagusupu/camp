@@ -63,6 +63,7 @@
         bindsym $mod+r reload
         bindsym $mod+m exec swaymsg exit
         bindsym $mod+q kill
+        xwayland force
       '';
     };
   };

@@ -21,7 +21,7 @@
             layer = "top";
             position = "top";
             output = ["DP-3" "HDMI-A-1"];
-            modules-left = ["custom/icon" "clock"];
+            modules-left = ["clock"];
             modules-center = ["sway/workspaces"];
             modules-right = ["wireplumber" "bluetooth" "network" "custom/powermenu"];
             "sway/workspaces" = {
@@ -48,53 +48,50 @@
               };
             };
             "clock" = {
-              format = "{:%I:%M %p}";
+              format = " {:%I:%M %p}";
               format-alt = "{:%I:%M %p, %A %B %d, %Y}";
             };
             "network" = {
-              format = "<span font_size='16pt'></span>";
-              format-ethernet = "<span font_size='16pt'></span>";
-              format-wifi = "<span font_size='16pt'></span>";
+              format = "";
+              format-ethernet = "{ifname} ";
+              format-wifi = "{essid} ";
+              format-disconnected = "No Connection";
+              tooltip-format-ethernet = "{bandwidthUpBits}
+{bandwidthDownBits}";
+              tooltip-format-wifi = "{signalStrength}
+{bandwidthUpBits}
+{bandwidthDownBits}";
               interval = 1;
-              tooltip-format = "Connected, No Internet";
-              tooltip-format-disconnected = "No Connection";
-              tooltip-format-ethernet = "{ifname}
-{bandwidthUpBits}
-{bandwidthDownBits}";
-              tooltip-format-wifi = "{essid}
-{signalStrength}
-{bandwidthUpBits}
-{bandwidthDownBits}";
             };
             "wireplumber" = {
-              format = "<span font_size='16pt'></span>";
-              format-muted = "<span font_size='16pt'></span>";
-              tooltip-format = "{node_name} {volume}%";
+              format = "{volume}% ";
+              format-muted = "";
+              tooltip-format = "{node_name}";
               on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
               on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
               on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
             };
             "custom/powermenu" = {
-              format = "<span font_size='16pt'></span>";
+              format = "";
               on-click = "sleep 0.1 && ~/Nix/things/scripts/powermenu.sh";
               tooltip = false;
             };
             "bluetooth" = {
-              format = "<span font_size='16pt'></span>";
+              format = "{status} ";
               tooltip-format-connected = "{device_enumerate}";
               tooltip-format-enumerate-connected = "{device_alias}: {device_address}";
               tooltip-format-enumerated-connected-battery = "{device_alias} - {device_battery_percentage}%: {device_address}";
-              tooltip-format = "{controller_alias}: {status}";
+              tooltip-format = "Searching...";
             };
             "custom/icon" = {
-              format = "<span font_size='16pt'></span>";
+              format = "";
             };
-            height = 35;
-            spacing = 0;
-            margin-top = 10;
+            height = 32;
+            spacing = 4;
+            margin-top = 0;
             margin-bottom = 0;
-            margin-left = 10;
-            margin-right = 10;
+            margin-left = 0;
+            margin-right = 0;
           };
         };
         style = ''
@@ -103,15 +100,15 @@
             min-height: 0;
             margin: 0;
             padding: 0;
-            font-family: "Nunito", "Line Awesome Free", "Kosugi Maru";
-            font-size: 16px;
+            font-family: "Nunito", "Font Awesome 6 Free", "Kosugi Maru";
+            font-size: 15px;
           }
           window#waybar {
             background: #${mcolours.primary.bg};
-            border-radius: 10px;
+            border-radius: 0px;
           }
           #workspaces {
-            margin: 4px;
+            margin: 2px;
           }
           #workspaces button {
             padding-top: 0px;
@@ -135,12 +132,16 @@
             text-shadow: inherit;
             border-radius: 6px;
           }
+          .modules-left {
+            margin: 4px;
+          }
           #clock {
-            color: #${mcolours.primary.fg};
-            padding-top: 0px;
-            padding-bottom: 0px;
-            padding-right: 0px;
-            padding-left: 0px;
+            color: #${mcolours.primary.bg};
+            background-color: #${mcolours.primary.main};
+            border-radius: 6px;
+            padding-right: 4px;
+            padding-left: 4px;
+            margin: 1px;
           }
           .modules-right {
             color: #${mcolours.primary.fg};
@@ -148,12 +149,26 @@
             padding-right: 2px;
             padding-top: 0px;
             padding-bottom: 0px;
+            margin: 4px;
+          }
+          #network,
+          #wireplumber,
+          #network,
+          #bluetooth {
+            padding-right: 4px;
+            padding-left: 4px;
+            color: #${mcolours.primary.bg};
+            background-color: #${mcolours.primary.main};
+            border-radius: 6px;
+            margin: 1px;
           }
           #custom-powermenu {
+            padding-left: 4px;
             padding-right: 4px;
-          }
-          #network {
-            padding-right: 2px;
+            color: #${mcolours.primary.bg};
+            background-color: #${mcolours.primary.main};
+            border-radius: 6px;
+            margin: 1px;
           }
           #custom-icon {
             padding-left: 4px;

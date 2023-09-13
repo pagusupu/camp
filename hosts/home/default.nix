@@ -42,7 +42,7 @@
   fonts = {
     packages = with pkgs; [
       noto-fonts
-      line-awesome
+      font-awesome
       (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru" "Fira Code"];})
     ];
     fontconfig = {
