@@ -81,7 +81,6 @@
               format = "{status} ";
               tooltip-format-connected = "{device_enumerate}";
               tooltip-format-enumerate-connected = "{device_alias}: {device_address}";
-              tooltip-format-enumerated-connected-battery = "{device_alias} - {device_battery_percentage}%: {device_address}";
               tooltip-format = "Searching...";
             };
             "image#nix" = {
@@ -99,10 +98,6 @@
             };
             height = 32;
             spacing = 4;
-            margin-top = 0;
-            margin-bottom = 0;
-            margin-left = 0;
-            margin-right = 0;
           };
         };
         style = ''
@@ -122,8 +117,6 @@
             margin: 2px;
           }
           #workspaces button {
-            padding-top: 0px;
-            padding-bottom: 0px;
             padding-left: 2px;
             padding-right: 2px;
             color: #${mcolours.primary.fg};
@@ -163,10 +156,7 @@
           }
           .modules-right {
             color: #${mcolours.primary.fg};
-            padding-left: 0px;
             padding-right: 2px;
-            padding-top: 0px;
-            padding-bottom: 0px;
             margin: 4px;
           }
           #network,
