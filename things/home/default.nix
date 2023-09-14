@@ -1,7 +1,6 @@
 {
   imports = [
     ./zsh.nix
-    ./hyprland.nix
     ./alacritty.nix
     ./tofi.nix
     ./waybar.nix

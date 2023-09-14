@@ -25,7 +25,6 @@
       ];
       local.programs = {
         alacritty.enable = true;
-        hyprland.config = true;
         zsh.enable = true;
         tofi.enable = true;
         waybar.enable = true;
