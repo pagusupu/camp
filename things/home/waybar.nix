@@ -64,8 +64,9 @@
               interval = 1;
             };
             "wireplumber" = {
-              format = "{volume}% ";
-              format-muted = "";
+              format = "{volume}% {icon}";
+              format-icons = ["" "" ""];
+              format-muted = "muted ";
               tooltip-format = "{node_name}";
               on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
               on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
