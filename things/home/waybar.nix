@@ -163,30 +163,19 @@
           #wireplumber,
           #network,
           #bluetooth,
-          #clock {
-            padding-right: 4px;
-            padding-left: 4px;
-            color: #${mcolours.primary.bg};
-            background-color: #${mcolours.primary.main};
-            border-radius: 6px;
-            margin: 1px;
-          }
+          #clock,
           #custom-powermenu {
-            padding-left: 4px;
             padding-right: 4px;
+            padding-left: 4px;
             color: #${mcolours.primary.bg};
             background-color: #${mcolours.primary.main};
             border-radius: 6px;
             margin: 1px;
-          }
-          #custom-icon {
-            padding-left: 4px;
-            color: #${mcolours.primary.fg};
           }
           tooltip {
             background: #${mcolours.primary.bg};
             color: #${mcolours.primary.fg};
-            border: 1px solid #${mcolours.primary.fg};
+            border: 1px solid #${mcolours.primary.main};
             border-radius: 6px;
           }
           tooltip label {

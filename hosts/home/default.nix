@@ -18,6 +18,7 @@
   programs = {
     zsh.enable = true;
     steam.enable = true;
+    dconf.enable = true;
   };
   services = {
     dbus.enable = true;

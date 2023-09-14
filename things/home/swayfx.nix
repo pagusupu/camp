@@ -22,6 +22,7 @@
         set $b1 "~/Nix/things/images/bg1.png"
         set $b2 "~/Nix/things/images/bg2.png"
         exec waybar
+        exec mako
         exec discord
         output $d1 {
           mode 1920x1080
