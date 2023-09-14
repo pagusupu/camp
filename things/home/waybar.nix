@@ -91,9 +91,11 @@
             };
             "custom/version" = {
               format = "23.11 (unstable)";
+              tooltip = false;
             };
             "custom/user" = {
               format = " pagu";
+              tooltip = false;
             };
             height = 32;
             spacing = 4;
