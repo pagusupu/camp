@@ -19,7 +19,7 @@
         font = "nunito";
         font-size = 30;
         indicator-radius = 100;
-        image = "../images/bg1.png";
+        image = "~/Nix/things/images/bg1.png";
 
         inside-color = "${mcolours.primary.bg}";
         inside-clear-color = "${mcolours.primary.bg}";

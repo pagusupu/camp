@@ -4,16 +4,16 @@ op=$( echo -e " Poweroff\n Reboot\n Suspend\n Lock\n Logout" | to
 
 case $op in 
         poweroff)
-		        systemctl poweroff
-		        ;&
+		systemctl poweroff
+		;&
         reboot)
-		        systemctl reboot
-		        ;&
+		systemctl reboot
+		;&
         suspend)
                 systemctl suspend
                 ;&
         lock)
-		        swaylock
+		swaylock
                 ;;
         logout)
                 swaymsg exit
