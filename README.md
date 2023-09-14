@@ -1,6 +1,6 @@
 <div align = center>
 
-<img src="https://github.com/pagusupu/nixos/blob/main/things/images/nixos-logo-alt.png" width="197" height="171" alt="Logo">
+<img src="https://github.com/pagusupu/nixos/blob/main/things/images/nixos-logo-alt.png" width="128" height="128" alt="Logo">
 
 <br>
 
