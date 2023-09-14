@@ -128,13 +128,18 @@
             border-radius: 6px;
             margin: 2px;
           }
-          #workspaces button.focused {
+          #workspaces button.current_output {
             background-color: #${mcolours.primary.main};
             color: #${mcolours.primary.bg};
             border-radius: 6px;
           }
+          #workspaces button.focused {
+            background-color: #${mcolours.bright.red};
+            color: #${mcolours.primary.bg};
+            border-radius: 6px;
+          }
           #workspaces button:hover {
-            background-color: #${mcolours.primary.main};
+            background-color: #${mcolours.bright.red};
             color: #${mcolours.primary.bg};
             box-shadow: inherit;
             text-shadow: inherit;
