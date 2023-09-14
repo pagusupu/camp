@@ -14,7 +14,7 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 # To-Do
 
 - [ ] Move server to NixOS
-- [ ] Clean shit up
+- [ ] Clean up properly
 
 ~~I'm a beginner feel free to rip this apart~~
 <br>
