@@ -18,7 +18,7 @@
         info "Kernel" kernel
         info "Shell" shell
         info "Packages" packages
-        info "WM" de
+        info "WM" wm
         info "WM Theme" wm_theme
         info "Theme" theme
         info "Terminal" term

@@ -8,7 +8,7 @@
 
 Unstable w/ Flakes & Home-Manager
 
-**[Hyprland]** w/ **[Waybar]** & **[Alacritty]**
+**[Swayfx]** w/ **[Waybar]** & **[Alacritty]**
 
 Themed w/ **[Mountain]** (**[Fuji]**)
 <br>
@@ -27,7 +27,7 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 
 <!----------------------------------------------------------------------------->
 
-[Hyprland]: https://github.com/hyprwm/Hyprland
+[Swayfx]: https://github.com/WillPower3309/swayfx
 [Waybar]: https://github.com/Alexays/Waybar
 [Alacritty]: https://github.com/alacritty/alacritty
 [Mountain]: https://github.com/mountain-theme/Mountain
