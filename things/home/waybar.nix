@@ -23,7 +23,7 @@
             output = ["DP-3" "HDMI-A-1"];
             modules-left = ["image#nix" "custom/version" "custom/user"];
             modules-center = ["sway/workspaces"];
-            modules-right = ["wireplumber" "bluetooth" "network" "clock" "custom/screenrec" "custom/dnd" "custom/powermenu"];
+            modules-right = ["wireplumber" "bluetooth" "network" "clock" "custom/dnd" "custom/powermenu"];
             "sway/workspaces" = {
               format = "{icon}";
               format-icons = {
@@ -104,14 +104,6 @@
               signal = 11;
               interval = 1;
             };
-            "custom/screenrec" = {
-              format = "{}";
-              exec = "~/Nix/things/scripts/screenrec-status.sh";
-              on-click = "~/Nix/things/scripts/screenrex-toggle.sh";
-              return-type = "json";
-              signal = 12;
-              interval = 1;
-            };
             height = 32;
             spacing = 4;
           };
@@ -181,17 +173,13 @@
           #bluetooth,
           #clock,
           #custom-powermenu,
-          #custom-dnd,
-          #custom-screenrec {
+          #custom-dnd {
             padding-right: 4px;
             padding-left: 4px;
             color: #${mcolours.primary.bg};
             background-color: #${mcolours.primary.main};
             border-radius: 6px;
             margin: 1px;
-          }
-          #custom-screenrec.recording {
-            colour: #${mcolours.bright.green};
           }
           tooltip {
             background: #${mcolours.primary.bg};

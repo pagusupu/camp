@@ -36,6 +36,7 @@
         ls = "ls --color";
         switch = "sudo nixos-rebuild switch --flake ~/Nix/#home && rm ~/.cache/tofi-drun";
         update = "sudo nix flake update ~/Nix && switch";
+        record = "wl-screenrec -o DP-3 -f 'screenrec.mp4";
       };
     };
   };
