@@ -23,7 +23,7 @@
             output = ["DP-3" "HDMI-A-1"];
             modules-left = ["image#nix" "custom/version" "custom/user"];
             modules-center = ["sway/workspaces"];
-            modules-right = ["custom/dnd" "wireplumber" "bluetooth" "network" "clock" "custom/powermenu"];
+            modules-right = ["wireplumber" "bluetooth" "network" "clock" "custom/dnd" "custom/powermenu"];
             "sway/workspaces" = {
               format = "{icon}";
               format-icons = {
