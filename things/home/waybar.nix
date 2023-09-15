@@ -23,7 +23,7 @@
             output = ["DP-3" "HDMI-A-1"];
             modules-left = ["image#nix" "custom/version" "custom/user"];
             modules-center = ["sway/workspaces"];
-            modules-right = ["wireplumber" "bluetooth" "network" "clock" "custom/powermenu"];
+            modules-right = ["custom/dnd" "wireplumber" "bluetooth" "network" "clock" "custom/powermenu"];
             "sway/workspaces" = {
               format = "{icon}";
               format-icons = {
@@ -96,6 +96,14 @@
               format = " pagu";
               tooltip = false;
             };
+            "custom/dnd" = {
+              format = "{}";
+              exec = "~/Nix/things/scripts/dnd-status.sh";
+              on-click = "~/Nix/things/scripts/dnd-toggle.sh";
+              return-type = "json";
+              signal = 11;
+              interval = 1;
+            };
             height = 32;
             spacing = 4;
           };
@@ -164,7 +172,8 @@
           #network,
           #bluetooth,
           #clock,
-          #custom-powermenu {
+          #custom-powermenu,
+          #custom-dnd {
             padding-right: 4px;
             padding-left: 4px;
             color: #${mcolours.primary.bg};

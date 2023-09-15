@@ -25,6 +25,8 @@
         border-color=#${mcolours.normal.red}
         border-size=2
         border-radius=7
+        [mode=do-not-disturb]
+        invisible=1
       '';
     };
   };
