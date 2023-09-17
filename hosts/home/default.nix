@@ -6,9 +6,9 @@
   imports = [
     ./hardware.nix
     ./user.nix
-    ../../things/misc/nix.nix
     ../../things/misc/console.nix
     ../../things/misc/greetd.nix
+    ../../things/misc/nix.nix
   ];
   time = {
     timeZone = "NZ";
@@ -16,13 +16,13 @@
   };
   i18n.defaultLocale = "en_NZ.UTF-8";
   programs = {
-    zsh.enable = true;
-    steam.enable = true;
     dconf.enable = true;
+    steam.enable = true;
+    zsh.enable = true;
   };
   services = {
-    dbus.enable = true;
     blueman.enable = true;
+    dbus.enable = true;
     greetd.enable = true;
     pipewire = {
       enable = true;
@@ -33,15 +33,15 @@
   security = {
     pam.services.swaylock = {};
     rtkit.enable = true;
-    tpm2.enable = true;
     sudo.wheelNeedsPassword = false;
+    tpm2.enable = true;
   };
   fonts = {
     packages = with pkgs; [
+      font-awesome
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      font-awesome
       (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru" "Fira Code"];})
     ];
     fontconfig = {

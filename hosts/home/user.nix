@@ -19,49 +19,46 @@
       imports = [
         ../../things/home
         ../../things/misc/colours.nix
-        ../../things/misc/theme.nix
         ../../things/misc/cursor.nix
         ../../things/misc/desktop.nix
+        ../../things/misc/theme.nix
       ];
       local.programs = {
         alacritty.enable = true;
-        zsh.enable = true;
+        htop.enable = true;
+        mako.enable = true;
+        swaylock.enable = true;
+        swayfx.enable = true;
         tofi.enable = true;
         waybar.enable = true;
-        htop.enable = true;
-        neofetch.enable = true;
-        swaylock.enable = true;
-        mako.enable = true;
-        swayfx.enable = true;
+        zsh.enable = true;
       };
       home = {
         username = "pagu";
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
           #games
-          protontricks
-          protonup-ng
           prismlauncher-qt5
-          #misc
+          r2modman
+          protontricks
+          #apps
+          discord
+          firefox-wayland
+          feishin
+          imv
+          mpv
+          #tui
           htop
           ranger
-          p7zip
           vim
-          #apps
-          mpv
-          imv
-          firefox-wayland
-          discord
-          feishin
           #environment
-          xdg-utils
-          wl-clipboard
-          wl-screenrec
           grim
           slurp
+          swaybg
           swayidle
           swaylock-effects
-          swaybg
+          wl-clipboard
+          xdg-utils
         ];
         sessionVariables = {
           NIXOS_OZONE_WL = "1";

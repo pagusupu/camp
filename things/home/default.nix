@@ -1,14 +1,13 @@
 {
   imports = [
-    ./zsh.nix
     ./alacritty.nix
+    ./codium.nix
+    ./htop.nix
+    ./mako.nix
+    ./swayfx.nix
+    ./swaylock.nix
     ./tofi.nix
     ./waybar.nix
-    ./htop.nix
-    ./neofetch.nix
-    ./swaylock.nix
-    ./mako.nix
-    ./codium.nix
-    ./swayfx.nix
+    ./zsh.nix
   ];
 }
