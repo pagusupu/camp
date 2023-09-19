@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r -t -c sway";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r -t --asterisks -c sway";
         user = "pagu";
       };
     };

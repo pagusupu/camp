@@ -38,6 +38,7 @@
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
           #games
+          osu-lazer-bin
           prismlauncher-qt5
           r2modman
           protontricks
