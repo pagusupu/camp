@@ -41,13 +41,12 @@
           osu-lazer-bin
           prismlauncher-qt5
           r2modman
-          protontricks
           #apps
-          discord
           firefox-wayland
           feishin
           imv
           mpv
+          webcord-vencord
           #tui
           htop
           ranger
