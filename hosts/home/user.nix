@@ -42,11 +42,11 @@
           prismlauncher-qt5
           r2modman
           #apps
+          discord
           firefox-wayland
           feishin
           imv
           mpv
-          webcord-vencord
           #tui
           htop
           ranger
