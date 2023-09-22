@@ -50,7 +50,6 @@
           #tui
           htop
           ranger
-          vim
           #environment
           grim
           slurp

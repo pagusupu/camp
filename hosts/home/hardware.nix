@@ -34,7 +34,7 @@
       driSupport32Bit = true;
     };
   };
-  networking = {hostName = "home";};
+  networking = {hostName = "desktop";};
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9dd5237a-fab2-474d-9f0d-84f326ccefc9";
