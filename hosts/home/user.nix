@@ -22,6 +22,7 @@
         ../../things/misc/cursor.nix
         ../../things/misc/desktop.nix
         ../../things/misc/theme.nix
+        #nixvimModule
       ];
       local.programs = {
         alacritty.enable = true;

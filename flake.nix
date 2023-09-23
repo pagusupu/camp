@@ -12,7 +12,6 @@
         modules = [
           ./hosts/home
           inputs.home-manager.nixosModules.home-manager
-          #inputs.nixvim.homeManagerModules.nixvim
         ];
       };
     };
