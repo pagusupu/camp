@@ -127,7 +127,7 @@
           #workspaces button {
             padding-left: 2px;
             padding-right: 2px;
-            color: #${mcolours.primary.fg};
+            color: #${mcolours.primary.main};
             background-color: #${mcolours.bright.black};
             border-radius: 6px;
             margin: 2px;
@@ -157,13 +157,12 @@
           #custom-user {
             padding-right: 4px;
             padding-left: 4px;
-            color: #${mcolours.primary.bg};
-            background-color: #${mcolours.primary.main};
+            color: #${mcolours.primary.main};
+            background-color: #${mcolours.bright.black};
             border-radius: 6px;
             margin: 1px;
           }
           .modules-right {
-            color: #${mcolours.primary.fg};
             padding-right: 2px;
             margin: 4px;
           }
@@ -176,8 +175,8 @@
           #custom-dnd {
             padding-right: 4px;
             padding-left: 4px;
-            color: #${mcolours.primary.bg};
-            background-color: #${mcolours.primary.main};
+            color: #${mcolours.primary.main};
+            background-color: #${mcolours.bright.black};
             border-radius: 6px;
             margin: 1px;
           }
