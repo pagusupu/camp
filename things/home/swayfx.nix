@@ -5,7 +5,6 @@
   mcolours,
   ...
 }: {
-  imports = [../misc/colours.nix];
   options.local.programs.swayfx = {
     enable = lib.mkEnableOption "";
   };

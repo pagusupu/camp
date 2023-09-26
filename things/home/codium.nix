@@ -32,6 +32,7 @@
         "workbench.startupEditor" = "none";
         "workbench.colorTheme" = "Dark Modern";
         "explorer.confirmDelete" = false;
+        "explorer.confirmDragAndDrop" = false;
       };
     };
   };

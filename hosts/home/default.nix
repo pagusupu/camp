@@ -6,9 +6,7 @@
   imports = [
     ./hardware.nix
     ./user.nix
-    ../../things/misc/console.nix
-    ../../things/misc/greetd.nix
-    ../../things/misc/nix.nix
+    ../../things/misc/system
   ];
   time = {
     timeZone = "NZ";
@@ -53,7 +51,7 @@
     };
   };
   environment = {
-    systemPackages = with pkgs; [alejandra];
+    systemPackages = with pkgs; [alejandra comma];
     shells = [pkgs.zsh];
   };
   system.stateVersion = "23.11";

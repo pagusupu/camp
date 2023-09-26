@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [../misc/colours.nix];
+  imports = [../misc/user/colours.nix];
   options.local.programs.mako = {
     enable = lib.mkEnableOption "";
   };

@@ -18,10 +18,7 @@
     users.pagu = {config, ...}: {
       imports = [
         ../../things/home
-        ../../things/misc/colours.nix
-        ../../things/misc/cursor.nix
-        ../../things/misc/desktop.nix
-        ../../things/misc/theme.nix
+        ../../things/misc/user
         #nixvim.homeManagerModules.nixvim
       ];
       local.programs = {
