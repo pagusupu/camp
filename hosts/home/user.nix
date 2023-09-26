@@ -19,7 +19,7 @@
       imports = [
         ../../things/home
         ../../things/misc/user
-        #nixvim.homeManagerModules.nixvim
+        inputs.nixvim.homeManagerModules.nixvim
       ];
       local.programs = {
         alacritty.enable = true;

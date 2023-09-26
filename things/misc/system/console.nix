@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [./colours.nix];
+  imports = [../user/colours.nix];
   console = {
     earlySetup = true;
     keyMap = "us";

@@ -13,7 +13,7 @@
     home = {
       packages = [pkgs.tofi];
       file.".config/tofi/config".text = ''
-        font = "firacode"
+        font = "nunito"
         font-size = 16
         width = 300
         height = 500
@@ -22,9 +22,7 @@
         outline-color = #${mcolours.primary.main}
         border-width = 0
         padding-top = 10
-        padding-bottom = 0
         padding-left = 15
-        padding-right = 0
         prompt-text = >>
         prompt-padding = 10
         background-color = #${mcolours.primary.bg}
@@ -38,7 +36,6 @@
         terminal = alactritty
         history = true
         fuzzy-match = true
-        ascii-input = false
       '';
     };
   };

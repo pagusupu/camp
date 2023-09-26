@@ -4,7 +4,7 @@
     ./codium.nix
     ./htop.nix
     ./mako.nix
-    #./nixvim.nix
+    ./nixvim.nix
     ./swayfx.nix
     ./swaylock.nix
     ./tofi.nix
