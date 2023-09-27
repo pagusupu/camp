@@ -31,12 +31,14 @@
         (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
         ZSH_HIGHLIGHT_STYLES[path]=none
         ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+        runix() {
+            nix run nixpkgs#$1 -- "''${@:2}"
+        }
       '';
       shellAliases = {
         ls = "ls --color";
         switch = "sudo nixos-rebuild switch --flake ~/Nix/#desktop && rm ~/.cache/tofi-drun";
         update = "sudo nix flake update ~/Nix && switch";
-        record = "wl-screenrec -o DP-3 -f 'screenrec.mp4";
       };
     };
   };
