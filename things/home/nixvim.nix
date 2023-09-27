@@ -6,8 +6,5 @@
       number = true;
       title = true;
     };
-    plugins = {
-      };
-    };
   };
 }
