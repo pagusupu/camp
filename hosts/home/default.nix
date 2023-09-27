@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./hardware.nix
-    ./user.nix
+    ./home.nix
     ../../things/misc/system
   ];
   time = {
