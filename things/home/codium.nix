@@ -24,24 +24,24 @@
           vscode-icons-team.vscode-icons
         ];
         userSettings = {
-          "terminal.external.linuxExec" = "alacritty";
-          "alejandra.program" = "alejandra";
           "[nix]" = {
             "editor.defaultFormatter" = "kamadorueda.alejandra";
             "editor.formatOnPaste" = true;
             "editor.formatOnSave" = true;
             "editor.formatOnType" = true;
           };
+          "alejandra.program" = "alejandra";
           "editor.fontFamily" = "'firacode', 'monospace', monospace";
-          "git.enableSmartCommit" = true;
-          "git.confirmSync" = false;
-          "window.menuBarVisibility" = "toggle";
-          "workbench.iconTheme" = "vscode-icons";
           "editor.minimap.enabled" = false;
-          "workbench.startupEditor" = "none";
-          "workbench.colorTheme" = "Dark Modern";
           "explorer.confirmDelete" = false;
           "explorer.confirmDragAndDrop" = false;
+          "git.enableSmartCommit" = true;
+          "git.confirmSync" = false;
+          "terminal.external.linuxExec" = "alacritty";
+          "window.menuBarVisibility" = "toggle";
+          "workbench.colorTheme" = "Dark Modern";
+          "workbench.iconTheme" = "vscode-icons";
+          "workbench.startupEditor" = "none";
         };
       };
     };
