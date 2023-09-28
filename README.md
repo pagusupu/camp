@@ -13,10 +13,11 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 
 # To-Do
 
+- [ ] Move to LeftWM
 - [ ] Move server to NixOS
+- [ ] Move laptop to NixOS
 - [ ] Clean up properly
 
-~~I'm a beginner feel free to rip this apart~~
 <br>
 
 # Desktop
