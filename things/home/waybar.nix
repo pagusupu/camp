@@ -128,7 +128,7 @@
             padding-left: 2px;
             padding-right: 2px;
             color: #${mcolours.primary.main};
-            background-color: #${mcolours.bright.black};
+            background-color: #${mcolours.normal.black};
             border-radius: 6px;
             margin: 2px;
           }
@@ -138,12 +138,12 @@
             border-radius: 6px;
           }
           #workspaces button.focused {
-            background-color: #${mcolours.bright.red};
+            background-color: #${mcolours.bright.green};
             color: #${mcolours.primary.bg};
             border-radius: 6px;
           }
           #workspaces button:hover {
-            background-color: #${mcolours.bright.red};
+            background-color: #${mcolours.bright.green};
             color: #${mcolours.primary.bg};
             box-shadow: inherit;
             text-shadow: inherit;
@@ -158,7 +158,7 @@
             padding-right: 4px;
             padding-left: 4px;
             color: #${mcolours.primary.main};
-            background-color: #${mcolours.bright.black};
+            background-color: #${mcolours.normal.black};
             border-radius: 6px;
             margin: 1px;
           }
@@ -176,7 +176,7 @@
             padding-right: 4px;
             padding-left: 4px;
             color: #${mcolours.primary.main};
-            background-color: #${mcolours.bright.black};
+            background-color: #${mcolours.normal.black};
             border-radius: 6px;
             margin: 1px;
           }

@@ -22,7 +22,7 @@
         font=nunito 14
         text-color=#${mcolours.primary.fg}
         background-color=#${mcolours.primary.bg}
-        border-color=#${mcolours.normal.red}
+        border-color=#${mcolours.primary.main}
         border-size=2
         border-radius=7
         [mode=do-not-disturb]

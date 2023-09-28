@@ -1,9 +1,9 @@
 {
   _module.args.mcolours = {
     primary = {
-      bg = "191919";
-      fg = "a0a0a0";
-      main = "ac8a8c";
+      bg = "0f0f0f";
+      fg = "f0f0f0";
+      main = "8aac8b";
     };
     normal = {
       black = "262626";
@@ -14,10 +14,10 @@
       magenta = "ac8aac";
       cyan = "8aacab";
       orange = "c6a679";
-      white = "bfbfbf";
+      white = "e7e7e7";
     };
     bright = {
-      black = "393939";
+      black = "4c4c4c";
       red = "c49ea0";
       green = "9ec49f";
       yellow = "c4c19e";
@@ -25,7 +25,7 @@
       magenta = "c49ec4";
       cyan = "9ec3c4";
       orange = "ceb188";
-      white = "cacaca";
+      white = "f0f0f0";
     };
   };
 }

@@ -7,7 +7,7 @@
   options.cute.programs.zsh = {
     enable = lib.mkEnableOption "";
     prompt = lib.mkOption {
-      default = "'%F{red}% %~ > %f'";
+      default = "'%F{green}% %~ > %f'";
       type = lib.types.str;
     };
   };

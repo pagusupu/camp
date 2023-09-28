@@ -21,6 +21,7 @@
         extensions = with pkgs.vscode-extensions; [
           kamadorueda.alejandra
           oderwat.indent-rainbow
+          shd101wyy.markdown-preview-enhanced
           vscode-icons-team.vscode-icons
         ];
         userSettings = {
