@@ -40,19 +40,19 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (google-fonts.override {fonts = ["Nunito" "Lato" "Kosugi Maru" "Fira Code"];})
+      (google-fonts.override {fonts = ["Fira Code" "Kosugi Maru" "Lato" "Nunito"];})
     ];
     fontconfig = {
       defaultFonts = {
         serif = ["Lato"];
-        sansSerif = ["Nunito" "Kosugi Maru"];
+        sansSerif = ["Kosugi Maru" "Nunito"];
         monospace = ["FiraCode"];
       };
     };
   };
   environment = {
     systemPackages = with pkgs; [alejandra];
-    shells = [pkgs.zsh];
+    shells = with pkgs; [zsh];
   };
   system.stateVersion = "23.11";
 }

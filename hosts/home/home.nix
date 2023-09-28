@@ -52,6 +52,7 @@
           #misc
           imv
           mpv
+          p7zip
           #environment
           grim
           slurp
