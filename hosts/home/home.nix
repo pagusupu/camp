@@ -22,8 +22,10 @@
       ];
       local.programs = {
         alacritty.enable = true;
+        codium.enable = true;
         htop.enable = true;
         mako.enable = true;
+        nixvim.enable = true;
         swaylock.enable = true;
         swayfx.enable = true;
         tofi.enable = true;
@@ -35,12 +37,20 @@
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
           #games
+          osu-lazer-bin
+          prismlauncher-qt5
+          protontricks
+          r2modman
+          #apps
+          discord
+          firefox-wayland
           feishin
-          imv
-          mpv
           #tui
           htop
           ranger
+          #misc
+          imv
+          mpv
           #environment
           grim
           slurp

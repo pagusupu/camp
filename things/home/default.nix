@@ -2,6 +2,7 @@
   imports = [
     ./alacritty.nix
     ./codium.nix
+    ./comma.nix
     ./htop.nix
     ./mako.nix
     ./nixvim.nix
