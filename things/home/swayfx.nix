@@ -18,8 +18,6 @@
         set $menu tofi-drun --drun-launch true --terminal alacritty
         set $d1 "DP-3"
         set $d2 "HDMI-A-1"
-        set $b1 "~/Nix/things/images/bg1.png"
-        set $b2 "~/Nix/things/images/bg2.png"
         exec waybar
         exec mako
         exec discord
@@ -27,13 +25,11 @@
           mode 1920x1080
           pos 1920,0
           adaptive_sync on
-          bg $b1 fill
         }
         output $d2 {
           mode 1920x1080
           pos 0,0
           adaptive_sync on
-          bg $b2 fill
         }
         default_border pixel 2
         corner_radius 5
