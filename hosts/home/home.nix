@@ -19,7 +19,6 @@
       imports = [
         ../../things/home
         ../../things/misc/user
-        #inputs.nix-index-database.hmModules.nix-index
       ];
       local.programs = {
         alacritty.enable = true;
