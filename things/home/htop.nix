@@ -3,10 +3,10 @@
   lib,
   ...
 }: {
-  options.local.programs.htop = {
+  options.cute.programs.htop = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.htop.enable {
+  config = lib.mkIf config.cute.programs.htop.enable {
     home.file.".config/htop/htoprc".text = ''
       htop_version=3.2.2
       config_reader_min_version=3

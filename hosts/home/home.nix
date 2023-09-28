@@ -20,7 +20,7 @@
         ../../things/home
         ../../things/misc/user
       ];
-      local.programs = {
+      cute.programs = {
         alacritty.enable = true;
         codium.enable = true;
         comma.enable = true;

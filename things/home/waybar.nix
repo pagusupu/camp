@@ -6,11 +6,11 @@
   ...
 }: {
   imports = [../misc/user/colours.nix];
-  options.local.programs.waybar = {
+  options.cute.programs.waybar = {
     enable = lib.mkEnableOption "";
   };
   config =
-    lib.mkIf config.local.programs.waybar.enable {
+    lib.mkIf config.cute.programs.waybar.enable {
       programs.waybar = {
         enable = true;
         package = pkgs.waybar.overrideAttrs (oldAttrs: {

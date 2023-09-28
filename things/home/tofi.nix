@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [../misc/user/colours.nix];
-  options.local.programs.tofi = {
+  options.cute.programs.tofi = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.tofi.enable {
+  config = lib.mkIf config.cute.programs.tofi.enable {
     home = {
       packages = [pkgs.tofi];
       file.".config/tofi/config".text = ''

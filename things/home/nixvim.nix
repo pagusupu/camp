@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [inputs.nixvim.homeManagerModules.nixvim];
-  options.local.programs.nixvim = {
+  options.cute.programs.nixvim = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.nixvim.enable {
+  config = lib.mkIf config.cute.programs.nixvim.enable {
     programs.nixvim = {
       enable = true;
       vimAlias = true;

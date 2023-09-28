@@ -5,10 +5,10 @@
   mcolours,
   ...
 }: {
-  options.local.programs.swayfx = {
+  options.cute.programs.swayfx = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.swayfx.enable {
+  config = lib.mkIf config.cute.programs.swayfx.enable {
     home = {
       packages = [pkgs.swayfx];
       file.".config/sway/config".text = ''

@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [../misc/user/colours.nix];
-  options.local.programs.mako = {
+  options.cute.programs.mako = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.mako.enable {
+  config = lib.mkIf config.cute.programs.mako.enable {
     home = {
       packages = [pkgs.mako];
       file.".config/mako/config".text = ''

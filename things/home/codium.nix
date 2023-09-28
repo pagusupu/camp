@@ -4,10 +4,10 @@
   config,
   ...
 }: {
-  options.local.programs.codium = {
+  options.cute.programs.codium = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.codium.enable {
+  config = lib.mkIf config.cute.programs.codium.enable {
     programs = {
       git = {
         enable = true;

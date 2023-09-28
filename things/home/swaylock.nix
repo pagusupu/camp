@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [../misc/user/colours.nix];
-  options.local.programs.swaylock = {
+  options.cute.programs.swaylock = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.swaylock.enable {
+  config = lib.mkIf config.cute.programs.swaylock.enable {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;

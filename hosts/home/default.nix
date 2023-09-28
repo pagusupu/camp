@@ -45,8 +45,8 @@
     fontconfig = {
       defaultFonts = {
         serif = ["Lato"];
-        sansSerif = ["Kosugi Maru" "Nunito"];
-        monospace = ["FiraCode"];
+        sansSerif = ["Nunito" "Kosugi Maru"];
+        monospace = ["Fira Code"];
       };
     };
   };

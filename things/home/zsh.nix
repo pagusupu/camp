@@ -4,14 +4,14 @@
   pkgs,
   ...
 }: {
-  options.local.programs.zsh = {
+  options.cute.programs.zsh = {
     enable = lib.mkEnableOption "";
     prompt = lib.mkOption {
       default = "'%F{red}% %~ > %f'";
       type = lib.types.str;
     };
   };
-  config = lib.mkIf config.local.programs.zsh.enable {
+  config = lib.mkIf config.cute.programs.zsh.enable {
     programs.zsh = {
       enable = true;
       dotDir = ".config/zsh";
@@ -23,7 +23,7 @@
         path = "$HOME/.cache/zsh_history";
       };
       initExtra = ''
-        PROMPT=${config.local.programs.zsh.prompt}
+        PROMPT=${config.cute.programs.zsh.prompt}
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         bindkey '^H' backward-kill-word

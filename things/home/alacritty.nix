@@ -5,10 +5,10 @@
   ...
 }: {
   imports = [../misc/user/colours.nix];
-  options.local.programs.alacritty = {
+  options.cute.programs.alacritty = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.local.programs.alacritty.enable {
+  config = lib.mkIf config.cute.programs.alacritty.enable {
     programs.alacritty = {
       enable = true;
       settings = {
