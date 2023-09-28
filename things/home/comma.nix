@@ -1,6 +1,8 @@
 {
   pkgs,
   inputs,
+  lib,
+  config,
   ...
 }: {
   imports = [inputs.nix-index-database.hmModules.nix-index];

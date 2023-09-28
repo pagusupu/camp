@@ -23,6 +23,7 @@
       local.programs = {
         alacritty.enable = true;
         codium.enable = true;
+        comma.enable = true;
         htop.enable = true;
         mako.enable = true;
         nixvim.enable = true;
