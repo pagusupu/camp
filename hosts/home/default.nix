@@ -51,7 +51,7 @@
     };
   };
   environment = {
-    systemPackages = with pkgs; [alejandra comma];
+    systemPackages = with pkgs; [alejandra];
     shells = [pkgs.zsh];
   };
   system.stateVersion = "23.11";

@@ -19,6 +19,7 @@
       imports = [
         ../../things/home
         ../../things/misc/user
+        #inputs.nix-index-database.hmModules.nix-index
       ];
       local.programs = {
         alacritty.enable = true;
@@ -35,12 +36,6 @@
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
           #games
-          osu-lazer-bin
-          prismlauncher-qt5
-          r2modman
-          #apps
-          discord
-          firefox-wayland
           feishin
           imv
           mpv
@@ -59,6 +54,7 @@
         sessionVariables = {
           NIXOS_OZONE_WL = "1";
           MOZ_ENABLE_WAYLAND = "1";
+          FLAKE = "/home/pagu/Nix";
         };
         stateVersion = "23.05";
       };
