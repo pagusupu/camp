@@ -18,6 +18,10 @@
         noDisplay = true;
         name = "NixOS Manual";
       };
+      nvim = {
+        noDisplay = true;
+        name = "Neovim Wrapper";
+      };
       # changed
       mpv = {
         name = "mpv";

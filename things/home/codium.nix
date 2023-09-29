@@ -9,11 +9,6 @@
   };
   config = lib.mkIf config.cute.programs.codium.enable {
     programs = {
-      git = {
-        enable = true;
-        userName = "pagusupu";
-        userEmail = "me@pagu.cafe";
-      };
       vscode = {
         enable = true;
         package = pkgs.vscodium;
@@ -21,7 +16,6 @@
         extensions = with pkgs.vscode-extensions; [
           kamadorueda.alejandra
           oderwat.indent-rainbow
-          shd101wyy.markdown-preview-enhanced
           vscode-icons-team.vscode-icons
         ];
         userSettings = {
