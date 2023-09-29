@@ -66,11 +66,11 @@
           MOZ_ENABLE_WAYLAND = "1";
           FLAKE = "/home/pagu/Nix";
         };
-	programs.git = {
-	  enable = true;
-	  userName = "pagusupu";
-	  userEmail = "me@pagu.cafe";
-	};
+        programs.git = {
+          enable = true;
+          userName = "pagusupu";
+          userEmail = "me@pagu.cafe";
+        };
         stateVersion = "23.05";
       };
     };
