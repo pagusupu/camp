@@ -69,6 +69,11 @@
         };
         stateVersion = "23.05";
       };
+      programs.git = {
+        enable = true;
+	userName = "pagusupu";
+	userEmail = "me@pagu.cafe";
+      };
     };
   };
 }
