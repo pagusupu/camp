@@ -12,7 +12,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          ./hosts/home
+          ./hosts/desktop
           inputs.home-manager.nixosModules.home-manager
           inputs.nh.nixosModules.default
         ];

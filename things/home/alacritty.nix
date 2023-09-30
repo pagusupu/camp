@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  imports = [../misc/user/colours.nix];
+  imports = [../misc/home/colours.nix];
   options.cute.programs.alacritty = {
     enable = lib.mkEnableOption "";
   };

@@ -1,15 +1,16 @@
 {
   imports = [
     ./alacritty.nix
+    ./bspwm.nix
     ./codium.nix
     ./comma.nix
     ./htop.nix
     ./mako.nix
     ./nixvim.nix
-    ./swayfx.nix
+    ./swayfx
     ./swaylock.nix
     ./tofi.nix
-    ./waybar.nix
+    ./waybar
     ./zsh.nix
   ];
 }

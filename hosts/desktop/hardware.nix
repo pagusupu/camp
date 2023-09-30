@@ -17,6 +17,7 @@
     kernelParams = [
       "video=HDMI-A-1:1920x1080@75"
       "video=DP-3:1920x1080@165"
+      "initcall_blacklist=acpi_cpufreq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
     ];

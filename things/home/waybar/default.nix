@@ -5,7 +5,7 @@
   mcolours,
   ...
 }: {
-  imports = [../misc/user/colours.nix];
+  imports = [../misc/home/colours.nix];
   options.cute.programs.waybar = {
     enable = lib.mkEnableOption "";
   };
@@ -21,7 +21,7 @@
             layer = "top";
             position = "top";
             output = ["DP-3" "HDMI-A-1"];
-            modules-left = ["image#nix" "custom/version" "custom/user"];
+            modules-left = ["custom/version" "custom/user"];
             modules-center = ["sway/workspaces"];
             modules-right = ["wireplumber" "bluetooth" "network" "clock" "custom/dnd" "custom/powermenu"];
             "sway/workspaces" = {
@@ -74,7 +74,7 @@
             };
             "custom/powermenu" = {
               format = "";
-              on-click = "sleep 0.1 && ~/Nix/things/scripts/powermenu.sh";
+              on-click = "sleep 0.1 && /home/pagu/Nix/things/home/waybar/scripts/powermenu.sh";
               tooltip = false;
             };
             "bluetooth" = {
@@ -82,11 +82,6 @@
               tooltip-format-connected = "{device_enumerate}";
               tooltip-format-enumerate-connected = "{device_alias}: {device_address}";
               tooltip-format = "Searching...";
-            };
-            "image#nix" = {
-              path = "/home/pagu/Nix/things/images/nixos-logo-alt.png";
-              size = 20;
-              interval = 30;
             };
             "custom/version" = {
               format = "23.11 (unstable)";
@@ -98,8 +93,8 @@
             };
             "custom/dnd" = {
               format = "{}";
-              exec = "~/Nix/things/scripts/dnd-status.sh";
-              on-click = "~/Nix/things/scripts/dnd-toggle.sh";
+              exec = "/home/pagu/Nix/things/home/waybar/scripts/dnd-status.sh";
+              on-click = "~/home/pagu/Nix/things/home/waybar/scripts/dnd-toggle.sh";
               return-type = "json";
               signal = 11;
               interval = 1;

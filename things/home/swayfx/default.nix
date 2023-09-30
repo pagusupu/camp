@@ -12,7 +12,8 @@
     home = {
       packages = [pkgs.swayfx];
       file.".config/sway/config".text = ''
-        include ~/Nix/things/home/swayfx/default
+        include ./float-compat
+        include ./workspace-move
         set $mod Mod4
         set $term alacritty
         set $menu tofi-drun --drun-launch true --terminal alacritty
@@ -53,9 +54,9 @@
         bindsym $mod+p sticky toggle
         bindsym $mod+Return exec $term
         bindsym $mod+Tab exec $menu
-        bindsym $mod+Shift+Tab exec ~/Nix/things/scripts/powermenu.sh
+        bindsym $mod+Shift+Tab exec ~/Nix/things/home/waybar/scripts/powermenu.sh
         bindsym $mod+l exec swaylock
-        bindsym $mod+n exec ~/Nix/things/scripts/dnd-toggle.sh
+        bindsym $mod+n exec ~/Nix/thingshome/waybar/scripts/dnd-toggle.sh
         bindsym $mod+Backspace exec grim -g "$(slurp -d)" - | wl-copy -t image/png
         bindsym $mod+Shift+Backspace exec grim -g "$(slurp -d)" "$HOME/Pictures/screenshots"/"$(date '+%H-%M-%S')".png
         bindsym $mod+r reload

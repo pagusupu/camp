@@ -5,7 +5,7 @@
   lib,
   ...
 }: {
-  imports = [../misc/user/colours.nix];
+  imports = [../misc/home/colours.nix];
   options.cute.programs.tofi = {
     enable = lib.mkEnableOption "";
   };

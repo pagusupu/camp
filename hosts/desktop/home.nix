@@ -18,10 +18,11 @@
     users.pagu = {config, ...}: {
       imports = [
         ../../things/home
-        ../../things/misc/user
+        ../../things/misc/home
       ];
       cute.programs = {
         alacritty.enable = true;
+        bspwm.enable = false;
         codium.enable = true;
         comma.enable = true;
         htop.enable = true;
