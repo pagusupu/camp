@@ -22,7 +22,7 @@
       ];
       cute.programs = {
         alacritty.enable = true;
-        bspwm.enable = false;
+        bspwm.enable = true;
         codium.enable = true;
         comma.enable = true;
         htop.enable = true;
