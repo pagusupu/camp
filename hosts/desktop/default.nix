@@ -27,6 +27,9 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+    xserver = {
+      enable = true;
+    };
   };
   security = {
     pam.services.swaylock = {};
