@@ -5,7 +5,7 @@
   mcolours,
   ...
 }: {
-  imports = [../misc/home/colours.nix];
+  #imports = [../../misc/home/colours.nix];
   options.cute.programs.waybar = {
     enable = lib.mkEnableOption "";
   };
@@ -94,7 +94,7 @@
             "custom/dnd" = {
               format = "{}";
               exec = "/home/pagu/Nix/things/home/waybar/scripts/dnd-status.sh";
-              on-click = "~/home/pagu/Nix/things/home/waybar/scripts/dnd-toggle.sh";
+              on-click = "/home/pagu/Nix/things/home/waybar/scripts/dnd-toggle.sh";
               return-type = "json";
               signal = 11;
               interval = 1;
