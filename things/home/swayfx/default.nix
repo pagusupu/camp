@@ -12,8 +12,8 @@
     home = {
       packages = [pkgs.swayfx];
       file.".config/sway/config".text = ''
-        include ./float-compat
-        include ./workspace-move
+        include /home/pagu/Nix/things/home/swayfx/float-compat
+        include /home/pagu/Nix/things/home/swayfx/workspace-move
         set $mod Mod4
         set $term alacritty
         set $menu tofi-drun --drun-launch true --terminal alacritty
