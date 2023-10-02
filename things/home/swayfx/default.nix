@@ -20,7 +20,7 @@
         set $d1 "DP-3"
         set $d2 "HDMI-A-1"
         exec waybar
-        exec bluetoothctl
+        #exec bluetoothctl
         exec mako
         exec discord
         output $d1 {

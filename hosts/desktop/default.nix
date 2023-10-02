@@ -21,7 +21,7 @@
   services = {
     blueman.enable = true;
     dbus.enable = true;
-    greetd.enable = true;
+    greetd.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -29,6 +29,39 @@
     };
     xserver = {
       enable = true;
+      autorun = true;
+      desktopManager.xterm.enable = false;
+      displayManager = {
+        defaultSession = "none+bspwm";
+        lightdm.greeters.mini = {
+          enable = true;
+          user = "pagu";
+        };
+      };
+      windowManager = {
+        bspwm = {
+          enable = true;
+          #configFile = "$HOME/.config/bspwm/bspwmrc";
+          #sxhkd.configFile = "$HOME/.config/sxhkd/sxhkdrc";
+        };
+      };
+      videoDrivers = ["amdgpu"];
+      xrandrHeads = [
+        {
+          output = "DP-3";
+          primary = true;
+          monitorConfig = ''
+            Option "PreferredMode" "1920x1080_164.76"
+          '';
+        }
+        {
+          output = "HDMI-A-1";
+          primary = false;
+          monitorConfig = ''
+            Option "PreferredMode" "1920x1080_74.91"
+          '';
+        }
+      ];
     };
   };
   security = {
