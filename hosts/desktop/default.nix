@@ -41,8 +41,8 @@
       windowManager = {
         bspwm = {
           enable = true;
-          #configFile = "$HOME/.config/bspwm/bspwmrc";
-          #sxhkd.configFile = "$HOME/.config/sxhkd/sxhkdrc";
+          configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/bspwmrc";
+          sxhkd.configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/sxhkdrc";
         };
       };
       videoDrivers = ["amdgpu"];
