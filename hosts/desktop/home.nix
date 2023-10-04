@@ -49,7 +49,8 @@
           feishin
           #tui
           htop
-          ranger
+          ueberzugpp
+          yazi
           #cli
           imv
           p7zip
@@ -63,9 +64,10 @@
           xdg-utils
         ];
         sessionVariables = {
-          NIXOS_OZONE_WL = "1";
-          MOZ_ENABLE_WAYLAND = "1";
+          EDITOR = "nvim";
           FLAKE = "/home/pagu/Nix";
+          MOZ_ENABLE_WAYLAND = "1";
+          NIXOS_OZONE_WL = "1";
         };
         stateVersion = "23.05";
       };

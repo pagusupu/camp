@@ -30,7 +30,8 @@
     xserver = {
       enable = true;
       autorun = true;
-      desktopManager.xterm.enable = false;
+      excludePackages = [pkgs.xterm];
+      videoDrivers = ["amdgpu"];
       displayManager = {
         defaultSession = "none+bspwm";
         lightdm.greeters.mini = {
@@ -45,7 +46,6 @@
           sxhkd.configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/sxhkdrc";
         };
       };
-      videoDrivers = ["amdgpu"];
       xrandrHeads = [
         {
           output = "DP-3";
@@ -73,10 +73,10 @@
   fonts = {
     packages = with pkgs; [
       font-awesome
-      noto-fonts
+      nerdfonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (google-fonts.override {fonts = ["Fira Code" "Kosugi Maru" "Lato" "Nunito"];})
+      (google-fonts.override {fonts = ["Fira Code" "Lato" "Nunito" "Kosugi Maru"];})
     ];
     fontconfig = {
       defaultFonts = {
@@ -87,8 +87,8 @@
     };
   };
   environment = {
-    systemPackages = with pkgs; [alejandra];
     shells = with pkgs; [zsh];
+    systemPackages = with pkgs; [alejandra];
   };
   system.stateVersion = "23.11";
 }

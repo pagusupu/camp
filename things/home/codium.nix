@@ -14,7 +14,7 @@
         package = pkgs.vscodium;
         mutableExtensionsDir = false;
         extensions = with pkgs.vscode-extensions; [
-          kamadorueda.alejandra
+          #kamadorueda.alejandra
           oderwat.indent-rainbow
           vscode-icons-team.vscode-icons
         ];

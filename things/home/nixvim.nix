@@ -17,6 +17,20 @@
         number = true;
         title = true;
       };
+      plugins = {
+        nvim-tree = {
+	  enable = true;
+	  autoClose = true;
+          autoReloadOnWrite = true;
+	  git = {
+	    enable = true;
+	  };
+	  modified = {
+	    enable = true;
+	    showOnDirs = true;
+	  };
+	};
+      };
     };
   };
 }
