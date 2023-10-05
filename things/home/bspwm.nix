@@ -12,7 +12,6 @@
   config = lib.mkIf config.cute.programs.bspwm.enable {
     xsession.windowManager.bspwm = {
       enable = true;
-      package = pkgs.bspwm;
       startupPrograms = ["sxhkd"];
       monitors = {
         DP-3 = ["1" "2" "3" "4"];

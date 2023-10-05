@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }: {
@@ -42,8 +41,8 @@
       windowManager = {
         bspwm = {
           enable = true;
-          configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/bspwmrc";
-          sxhkd.configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/sxhkdrc";
+          #configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/bspwmrc";
+          #sxhkd.configFile = "${pkgs.bspwm}/share/doc/bspwm/examples/sxhkdrc";
         };
       };
       xrandrHeads = [
@@ -51,16 +50,18 @@
           output = "DP-3";
           primary = true;
           monitorConfig = ''
-            Option "PreferredMode" "1920x1080_164.76"
+	    Modeline "1920x1080x165.0" 524.75 1920 2088 2296 2672    1080 1083 1088 1192    -hsync +vsync
+            Option "PreferredMode" "1920x1080x165.0"
           '';
         }
         {
-          output = "HDMI-A-1";
-          primary = false;
-          monitorConfig = ''
-            Option "PreferredMode" "1920x1080_74.91"
-          '';
-        }
+	  output = "HDMI-A-1";
+	  primary = false;
+	  monitorConfig = ''
+	    Modeline "1920x1080x75.0" 220.75 1920 2064 2264 2608    1080 1083 1088 1130    -hsync +vsync
+	    Option "PreferredMode" "1920x1080x75.0"
+	  '';
+	}
       ];
     };
   };
