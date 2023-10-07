@@ -35,7 +35,13 @@
       driSupport32Bit = true;
     };
   };
-  networking.hostName = "desktop";
+  networking = {
+    hostName = "desktop";
+    wireless = {
+      enable = true;
+      userControlled.enable = true;
+    };
+  };
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9dd5237a-fab2-474d-9f0d-84f326ccefc9";

@@ -23,8 +23,6 @@
       cute.programs = {
         alacritty.enable = true;
         bspwm.enable = true;
-        codium.enable = true;
-        comma.enable = true;
         htop.enable = true;
         mako.enable = true;
         nixvim.enable = true;

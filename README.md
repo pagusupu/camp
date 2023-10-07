@@ -1,7 +1,5 @@
 <div align = center>
 
-<img src="https://github.com/pagusupu/nixos/blob/main/things/images/nixos-logo-alt.png" width="192" height="192" alt="Logo">
-
 # NixOS Configuration 
 
 Unstable w/ Flakes & Home-Manager
@@ -19,10 +17,6 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 - [ ] Clean up properly
 
 <br>
-
-# Desktop
-
-<img src="https://github.com/pagusupu/nixos/blob/main/things/images/desktop.png" alt="Desktop">
 
 <!----------------------------------------------------------------------------->
 

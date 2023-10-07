@@ -2,8 +2,6 @@
   imports = [
     ./alacritty.nix
     ./bspwm.nix
-    ./codium.nix
-    ./comma.nix
     ./htop.nix
     ./mako.nix
     ./nixvim.nix

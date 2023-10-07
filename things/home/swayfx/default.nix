@@ -25,12 +25,12 @@
         exec discord
         output $d1 {
           mode 1920x1080
-          pos 1920,0
+          pos 0,0
           adaptive_sync on
         }
         output $d2 {
           mode 1920x1080
-          pos 0,0
+          pos 1920,0
           adaptive_sync on
         }
         default_border pixel 2

@@ -75,6 +75,7 @@
     packages = with pkgs; [
       font-awesome
       nerdfonts
+      noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       (google-fonts.override {fonts = ["Fira Code" "Lato" "Nunito" "Kosugi Maru"];})
