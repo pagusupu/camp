@@ -14,6 +14,7 @@
   i18n.defaultLocale = "en_NZ.UTF-8";
   programs = {
     dconf.enable = true;
+    git.enable = true;
     steam.enable = true;
     zsh.enable = true;
   };

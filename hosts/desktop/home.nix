@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   inputs,
   ...
 }: {
@@ -15,7 +14,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {inherit inputs;};
-    users.pagu = {config, ...}: {
+    users.pagu = {
       imports = [
         ../../things/home
         ../../things/misc/home
@@ -43,6 +42,7 @@
           r2modman
           #apps
           discord
+	  dorion
           firefox-wayland
           feishin
           #tui
@@ -70,7 +70,6 @@
         stateVersion = "23.05";
       };
       programs.git = {
-        enable = true;
         userName = "pagusupu";
         userEmail = "me@pagu.cafe";
       };
