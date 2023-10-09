@@ -1,6 +1,5 @@
 {
   mcolours,
-  pkgs,
   ...
 }: {
   imports = [../home/colours.nix];

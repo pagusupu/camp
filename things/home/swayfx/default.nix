@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  mcolours,
   ...
 }: {
   options.cute.programs.swayfx = {
