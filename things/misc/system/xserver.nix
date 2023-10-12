@@ -14,19 +14,19 @@
     };
     xrandrHeads = [
       {
-        output = "DP-3";
+        output = "DisplayPort-2";
         primary = true;
         monitorConfig = ''
-          Modeline "1920x1080x165.0" 524.75 1920 2088 2296 2672    1080 1083 1088 1192 -hsync +vsync
-          Option "PreferredMode" "1920x1080x165.0"
+          Modeline "1920x1080x164.96" 384.140 1920 1978 2010 2070    1080 1102 1110 1125 +hsync +vsync
+          Option "PreferredMode" "1920x1080x164.96"
         '';
       }
       {
-        output = "HDMI-A-1";
+        output = "HDMI-A-0";
         primary = false;
         monitorConfig = ''
-          Modeline "1920x1080x75.0" 220.75 1920 2064 2264 2608    1080 1083 1088 1130    -hsync +vsync
-          Option "PreferredMode" "1920x1080x75.0"
+          Modeline "1920x1080x74.99" 170.000 1920 1928 1960 2026    1080 1105 1113 1119  +hsync +vsync
+          Option "PreferredMode" "1920x1080x74.99"
         '';
       }
     ];

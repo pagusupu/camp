@@ -23,12 +23,7 @@
         alacritty.enable = true;
         bspwm.enable = true;
         htop.enable = true;
-        mako.enable = true;
         nixvim.enable = true;
-        swaylock.enable = true;
-        swayfx.enable = true;
-        tofi.enable = true;
-        waybar.enable = true;
         zsh.enable = true;
       };
       home = {
@@ -60,6 +55,11 @@
           swaylock-effects
           wl-clipboard
           xdg-utils
+          #X
+	  xclip
+	  rofi
+	  maim
+	  feh
         ];
         sessionVariables = {
           EDITOR = "nvim";

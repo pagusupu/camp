@@ -21,7 +21,6 @@
   services = {
     blueman.enable = true;
     dbus.enable = true;
-    greetd.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -29,10 +28,12 @@
     }; 
   };
   security = {
-    pam.services.swaylock = {};
     rtkit.enable = true;
-    sudo.wheelNeedsPassword = false;
     tpm2.enable = true;
+    sudo = {
+      execWheelOnly = true;
+      wheelNeedsPassword = false;
+    };
   };
   fonts = {
     packages = with pkgs; [
