@@ -6,6 +6,7 @@
     nh.url = "github:viperML/nh";
     nix-index-database.url = "github:Mic92/nix-index-database";
     nixvim.url = "github:nix-community/nixvim";
+    nur.url = "github:nix-community/NUR";
   };
   outputs = {nixpkgs, ...} @ inputs: {
     nixosConfigurations = {
@@ -16,6 +17,7 @@
           ./hosts/desktop
           inputs.home-manager.nixosModules.home-manager
           inputs.nh.nixosModules.default
+	  inputs.nur.nixosModules.nur
         ];
       };
     };

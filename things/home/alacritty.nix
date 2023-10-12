@@ -1,10 +1,8 @@
 {
-  mcolours,
   config,
   lib,
   ...
 }: {
-  imports = [../misc/home/colours.nix];
   options.cute.programs.alacritty = {
     enable = lib.mkEnableOption "";
   };
@@ -23,7 +21,7 @@
         font = {
           size = 12;
           normal = {
-            family = "firacode";
+            family = "FiraCode Nerd Font";
             style = "Regular";
           };
         };
@@ -33,30 +31,30 @@
         };
         colors = {
           primary = {
-            background = "#" + mcolours.primary.bg;
-            foreground = "#" + mcolours.primary.fg;
-            dim_foreground = "#" + mcolours.normal.black;
-            bright_foreground = "#" + mcolours.bright.black;
+            background = "#" + config.cute.colours.primary.bg;
+            foreground = "#" + config.cute.colours.primary.fg;
+            dim_foreground = "#" + config.cute.colours.normal.black;
+            bright_foreground = "#" + config.cute.colours.bright.black;
           };
           normal = {
-            black = "#" + mcolours.normal.black;
-            red = "#" + mcolours.normal.red;
-            green = "#" + mcolours.normal.green;
-            yellow = "#" + mcolours.normal.yellow;
-            blue = "#" + mcolours.normal.blue;
-            magenta = "#" + mcolours.normal.magenta;
-            cyan = "#" + mcolours.normal.cyan;
-            white = "#" + mcolours.normal.white;
+            black = "#" + config.cute.colours.normal.black;
+            red = "#" + config.cute.colours.normal.red;
+            green = "#" + config.cute.colours.normal.green;
+            yellow = "#" + config.cute.colours.normal.yellow;
+            blue = "#" + config.cute.colours.normal.blue;
+            magenta = "#" + config.cute.colours.normal.magenta;
+            cyan = "#" + config.cute.colours.normal.cyan;
+            white = "#" + config.cute.colours.normal.white;
           };
           bright = {
-            black = "#" + mcolours.bright.black;
-            red = "#" + mcolours.bright.red;
-            green = "#" + mcolours.bright.green;
-            yellow = "#" + mcolours.bright.yellow;
-            blue = "#" + mcolours.bright.blue;
-            magenta = "#" + mcolours.bright.magenta;
-            cyan = "#" + mcolours.bright.cyan;
-            white = "#" + mcolours.bright.white;
+            black = "#" + config.cute.colours.bright.black;
+            red = "#" + config.cute.colours.bright.red;
+            green = "#" + config.cute.colours.bright.green;
+            yellow = "#" + config.cute.colours.bright.yellow;
+            blue = "#" + config.cute.colours.bright.blue;
+            magenta = "#" + config.cute.colours.bright.magenta;
+            cyan = "#" + config.cute.colours.bright.cyan;
+            white = "#" + config.cute.colours.bright.white;
           };
         };
       };

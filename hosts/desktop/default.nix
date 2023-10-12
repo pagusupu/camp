@@ -37,18 +37,17 @@
   };
   fonts = {
     packages = with pkgs; [
-      font-awesome
       nerdfonts
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (google-fonts.override {fonts = ["Fira Code" "Lato" "Nunito" "Kosugi Maru"];})
+      (google-fonts.override {fonts = ["Lato" "Nunito" "Kosugi Maru"];})
     ];
     fontconfig = {
       defaultFonts = {
         serif = ["Lato"];
         sansSerif = ["Nunito" "Kosugi Maru"];
-        monospace = ["Fira Code"];
+        monospace = ["FiraCode Nerd Font"];
       };
     };
   };

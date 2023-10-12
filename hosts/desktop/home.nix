@@ -38,7 +38,6 @@
           r2modman
           #apps
           discord
-          firefox
           feishin
           #tui/cli
           htop

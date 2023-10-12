@@ -1,10 +1,8 @@
 {
   lib,
   config,
-  mcolours,
   ...
 }: {
-  imports = [../misc/home/colours.nix];
   options.cute.programs.bspwm = {
     enable = lib.mkEnableOption "";
   };
@@ -19,8 +17,8 @@
       settings = {
         window_gap = 8;
         border_width = 2;
-        normal_border_color = "#${mcolours.primary.bg}";
-        focused_border_color = "#${mcolours.primary.main}";
+        normal_border_color = "#${config.cute.colours.primary.bg}";
+        focused_border_color = "#${config.cute.colours.primary.main}";
         borderless_monocle = true;
         gapless_monocle = true;
         top_padding = 4;

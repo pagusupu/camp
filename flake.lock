@@ -396,6 +396,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1697094816,
+        "narHash": "sha256-TjGwZUyu7zpRJiOlxL2UhJG5ncuEx6hCqqu7i1mDWOw=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "1be6513b79951155d2e7ce27d76fc1d34341340c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": [
@@ -455,7 +470,8 @@
         "nh": "nh",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_5",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "nur": "nur"
       }
     },
     "rust-analyzer-src": {

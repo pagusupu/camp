@@ -1,5 +1,6 @@
-{
-  _module.args.mcolours = {
+{lib, ...}: {
+  options.cute.colours = lib.mkOption {};
+  config.cute.colours = {
     primary = {
       bg = "0f0f0f";
       fg = "f0f0f0";
