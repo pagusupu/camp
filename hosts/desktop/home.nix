@@ -24,6 +24,7 @@
         bspwm.enable = true;
         htop.enable = true;
         nixvim.enable = true;
+	rofi.enable = true;
         zsh.enable = true;
       };
       home = {
@@ -37,34 +38,21 @@
           r2modman
           #apps
           discord
-	  dorion
-          firefox-wayland
+          firefox
           feishin
-          #tui
+          #tui/cli
           htop
           ueberzugpp
           yazi
-          #cli
-          imv
           p7zip
           #environment
-          grim
-          slurp
-          swaybg
-          swayidle
-          swaylock-effects
-          wl-clipboard
-          xdg-utils
-          #X
 	  xclip
-	  rofi
 	  maim
 	  feh
         ];
         sessionVariables = {
           EDITOR = "nvim";
           FLAKE = "/home/pagu/Nix";
-          MOZ_ENABLE_WAYLAND = "1";
           NIXOS_OZONE_WL = "1";
         };
         stateVersion = "23.05";

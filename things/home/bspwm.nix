@@ -52,6 +52,7 @@
         enable = true;
         backend = "glx";
         fade = true;
+	fadeDelta = 1;
         vSync = true;
       };
     };
