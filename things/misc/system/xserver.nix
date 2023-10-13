@@ -3,6 +3,10 @@
     enable = true;
     autorun = true;
     excludePackages = [pkgs.xterm];
+    libinput.mouse = {
+      accelProfile = "flat";
+      accelSpeed = "-0.1";
+    };
     videoDrivers = ["amdgpu"];
     windowManager.bspwm.enable = true;
     displayManager = {
