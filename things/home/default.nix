@@ -6,7 +6,7 @@
     ./firefox.nix
     ./htop.nix
     ./nixvim.nix
-    ./rofi
+    ./rofi.nix
     ./zsh.nix
   ];
 }
