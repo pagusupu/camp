@@ -22,11 +22,11 @@
       cute.programs = {
         alacritty.enable = true;
         bspwm.enable = true;
-	eww.enable = true;
-	firefox.enable = true;
+        eww.enable = true;
+        firefox.enable = true;
         htop.enable = true;
         nixvim.enable = true;
-	rofi.enable = true;
+        rofi.enable = true;
         zsh.enable = true;
       };
       home = {
@@ -47,15 +47,10 @@
           yazi
           p7zip
           #environment
-	  xclip
-	  maim
-	  feh
+          xclip
+          maim
+          feh
         ];
-        sessionVariables = {
-          EDITOR = "nvim";
-          FLAKE = "/home/pagu/Nix";
-          NIXOS_OZONE_WL = "1";
-        };
         stateVersion = "23.05";
       };
       programs.git = {

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   services.xserver = {
-    enable = true;
     autorun = true;
     excludePackages = [pkgs.xterm];
     libinput.mouse = {

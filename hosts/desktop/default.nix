@@ -15,12 +15,14 @@
   programs = {
     dconf.enable = true;
     git.enable = true;
+    nano.enable = false;
     steam.enable = true;
     zsh.enable = true;
   };
   services = {
     blueman.enable = true;
     dbus.enable = true;
+    xserver.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -41,12 +43,12 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      (google-fonts.override {fonts = ["Lato" "Nunito" "Kosugi Maru"];})
+      (google-fonts.override {fonts = ["Lato" "Nunito"];})
     ];
     fontconfig = {
       defaultFonts = {
         serif = ["Lato"];
-        sansSerif = ["Nunito" "Kosugi Maru"];
+        sansSerif = ["Nunito"];
         monospace = ["FiraCode Nerd Font"];
       };
     };
