@@ -4,14 +4,15 @@
 
 Unstable w/ Flakes & Home-Manager
 
-**[BSPWM]** w/ **[Eww (soon)]** & **[Alacritty]**
+**[BSPWM]** w/ **[Eww]** & **[Alacritty]**
 
 Themed w/ **[Mountain]** (**[Fuji]**)
 <br>
 
 # To-Do
 
-- [*] Move to BSPWM
+- [x] Move to BSPWM
+- [ ] Setup Eww
 - [ ] Move laptop to NixOS
 - [ ] Move server to NixOS
 - [ ] Clean up properly
