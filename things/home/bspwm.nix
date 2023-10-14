@@ -9,7 +9,7 @@
   config = lib.mkIf config.cute.programs.bspwm.enable {
     xsession.windowManager.bspwm = {
       enable = true;
-      startupPrograms = ["sxhkd" "discord"];
+      startupPrograms = ["discord"];
       monitors = {
         DisplayPort-2 = ["1" "2" "3" "4"];
         HDMI-A-0 = ["5" "6" "7" "8"];
@@ -26,7 +26,13 @@
         left_padding = 4;
         right_padding = 4;
       };
+      rules = {
+	"discord" = {
+	  desktop = "^5";
+	};
+      };
       extraConfig = ''
+        pgrep -x sxhkd > /dev/null || sxhkd &
         feh --bg-fill --no-xinerama ~/Nix/things/images/bg.png
       '';
     };

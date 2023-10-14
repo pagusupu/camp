@@ -29,7 +29,7 @@ in {
       options = {
         number = true;
         shiftwidth = 2;
-        smartinent = true;
+        smartindent = true;
         termguicolors = true;
         title = true;
         ttyfast = true;
