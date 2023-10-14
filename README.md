@@ -11,9 +11,7 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 
 # To-Do
 
-- [x] Move to BSPWM
 - [ ] Setup Eww
-- [ ] Move laptop to NixOS
 - [ ] Move server to NixOS
 - [ ] Clean up properly
 
