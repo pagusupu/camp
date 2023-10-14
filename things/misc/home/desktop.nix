@@ -2,10 +2,6 @@
   xdg = {
     desktopEntries = {
       # removed
-      ranger = {
-        noDisplay = true;
-        name = "ranger";
-      };
       Alacritty = {
         noDisplay = true;
         name = "alacritty";
@@ -23,6 +19,16 @@
         name = "Neovim Wrapper";
       };
       # changed
+      discord = {
+        name = "Discord";
+        exec = "discord";
+        terminal = false;
+      };
+      firefox = {
+        name = "Firefox";
+        exec = "firefox";
+        terminal = false;
+      };
       mpv = {
         name = "mpv";
         exec = "mpv --player-operation-mode=pseudo-gui -- %U";

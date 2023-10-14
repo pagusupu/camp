@@ -22,14 +22,18 @@ in {
   config = lib.mkIf config.cute.programs.nixvim.enable {
     programs.nixvim = {
       enable = true;
+      defaultEditor = true;
       vimAlias = true;
+      extraPlugins = [mountain];
       colorscheme = "mountain";
       options = {
         number = true;
-        title = true;
-        smartindent = true;
         shiftwidth = 2;
+        smartinent = true;
         termguicolors = true;
+        title = true;
+        ttyfast = true;
+        undofile = true;
       };
       plugins = {
         treesitter.enable = true;
@@ -38,6 +42,7 @@ in {
         null-ls = {
           enable = true;
           sources = {
+            code_actions.statix.enable = true;
             diagnostics.deadnix.enable = true;
             formatting.alejandra.enable = true;
           };
@@ -48,9 +53,9 @@ in {
           autoReloadOnWrite = true;
           disableNetrw = true;
           hijackNetrw = true;
+          hijackCursor = true;
           openOnSetup = true;
           git.enable = true;
-          view.cursorline = false;
           filters.dotfiles = true;
           renderer = {
             icons.gitPlacement = "after";
@@ -62,14 +67,21 @@ in {
           };
         };
       };
-      extraPlugins = with pkgs.vimPlugins; [
-        mountain
-        nvim-web-devicons
+      keymaps = [
+        {
+          key = "t";
+          action = "<cmd>NvimTreeToggle<cr>";
+        }
+        {
+          key = "f";
+          action = "<cmd>%!alejandra -qq<cr>";
+        }
       ];
     };
     home.packages = with pkgs; [
       deadnix
       nil
+      statix
     ];
   };
 }
