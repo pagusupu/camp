@@ -1,85 +1,61 @@
+configuration {
+    drun {
+        display-name: ">";
+    }
+}
 * {
     font:   "Nunito";
     fg:    #f0f0f0;
     bg:    #0f0f0f;
-    bg-alt:     #191919;
+    bg2:   #262626;
+    background-color: transparent;
     accent-color:     #8aac8b;
-    urgent-color:     #ac8aac;
-    background-color:   transparent;
     text-color:         @fg;
     margin:     0;
     padding:    0;
     spacing:    0;
 }
-
 window {
     location:   center;
     width:      480;
+    height:     40;
     border: 2px;
     border-color: @accent-color;
     background-color:   @bg;
 }
-
-inputbar {
-    spacing:    8px; 
-    padding:    8px;
-    background-color:   @bg-alt;
+textbox { 
+   background-color:   @bg;
 }
-
-prompt, entry, element-icon, element-text {
-    vertical-align: 0.5;
+mainbox { 
+  orientation: horizontal;
 }
-
-prompt {
-    content: ">";
-    text-color: @accent-color;
-}
-
-textbox {
-    padding:            8px;
-    background-color:   @bg-alt;
-}
-
 listview {
-    padding:    4px 0;
-    lines:      8;
+  /* padding: 0px 0px 0px 30px; */
+    lines:      1;
     columns:    1;
-    fixed-height:   false;
+    layout: horizontal;
+    fixed-height:  false;
+    require-input: true;
+    cursor: pointer;
+    background-color: @accent-color;
 }
-
+inputbar {
+  spacing: 8px;
+  background-color: @bg;
+}
+entry {
+  padding: 8px 0px 0px 0px;
+}
+prompt {
+  padding: 8px 14px 4px 14px;
+  background-color: @bg2;
+  text-color: @accent-color;
+  width: 220;
+}
 element {
     padding:    8px;
-    spacing:    8px;
+    background-color: @accent-color;
 }
-
-element normal normal {
-    text-color: @fg;
-}
-
-element normal urgent {
-    text-color: @urgent-color;
-}
-
-element normal active {
-    text-color: @accent-color;
-}
-
-element selected {
-    text-color: @bg;
-}
-
-element selected normal, element selected active {
-    background-color:   @accent-color;
-}
-
-element selected urgent {
-    background-color:   @urgent-color;
-}
-
-element-icon {
-    size:   0.8em;
-}
-
 element-text {
-    text-color: inherit;
+    text-color: @bg;
 }

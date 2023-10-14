@@ -1,0 +1,36 @@
+* {                                                
+    background-color:           #2f343f;           
+    color:                  #D1D5DC;               
+    border-color:               #D1D5DC;           
+    font:                       "Nunito"; 
+}                                                  
+#window {                                          
+    /* background-color: @background;*/            
+    border:           1;                           
+    padding:          5;                            
+    children:         [ horibox ];                 
+}                                                  
+#scrollbar {                                       
+    display: none;                                 
+}                                                  
+#horibox {                                         
+    orientation: horizontal;                       
+    children:    [ prompt, entry, listview ];      
+}                                                  
+#entry {                                           
+    expand: false;                                 
+    width: 20em;                                       
+}                                                  
+#listview {                                        
+    expand: true;                                  
+    width:           130em;                        
+    margin-right:    0px;
+    lines: 1;                                          
+}                                                  
+#element {                                         
+    horizontal-align: 1;                           
+}                                                  
+#element selected {                                
+    color: #7191B1;                                
+    margin-right: 0px;                             
+}
