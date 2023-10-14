@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   services.xserver = {
     autorun = true;
+    xautolock.enable = false;
     excludePackages = [pkgs.xterm];
     libinput.mouse = {
       accelProfile = "flat";

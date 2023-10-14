@@ -43,11 +43,11 @@
         };
         listview = {
           lines = 1;
-          layout = mkLiteral "horizontal";
+          #layout = mkLiteral "horizontal";
           fixed-height = false;
           require-input = true;
           cursor = mkLiteral "pointer";
-          background-color = mkLiteral "@accent";
+          background-color = mkLiteral "@bg";
         };
         inputbar = {
           spacing = mkLiteral "8px";

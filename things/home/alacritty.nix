@@ -11,12 +11,10 @@
       enable = true;
       settings = {
         window = {
-          opacity = 1;
           padding = {
             x = 10;
             y = 10;
           };
-          dynamic_title = true;
         };
         font = {
           size = 12;

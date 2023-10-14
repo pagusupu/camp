@@ -8,7 +8,7 @@
   };
   config = lib.mkIf config.cute.programs.bspwm.enable {
     xsession.windowManager.bspwm = {
-      enable = true;
+      #enable = true;
       startupPrograms = ["discord"];
       monitors = {
         DisplayPort-2 = ["1" "2" "3" "4"];
@@ -19,17 +19,11 @@
         border_width = 2;
         normal_border_color = "#${config.cute.colours.primary.bg}";
         focused_border_color = "#${config.cute.colours.primary.main}";
-        borderless_monocle = true;
-        gapless_monocle = true;
-        top_padding = 4;
-        bottom_padding = 4;
-        left_padding = 4;
-        right_padding = 4;
       };
       rules = {
-	"discord" = {
-	  desktop = "^5";
-	};
+        "discord" = {
+          desktop = "^5";
+        };
       };
       extraConfig = ''
         pgrep -x sxhkd > /dev/null || sxhkd &
@@ -42,7 +36,6 @@
         keybindings = {
           "super + Return" = "alacritty";
           "super + Tab" = "rofi -show drun";
-
           "super + shift + BackSpace" = "maim -s ~/Pictures/screenshots/$(date +%s).png";
           "super + BackSpace" = "maim -s | xclip -selection clipboard -t image/png";
           "super + shift + {m,r}" = "bspc {quit,wm -r}"; # quit/restart bspwm
@@ -58,8 +51,7 @@
         enable = true;
         backend = "glx";
         fade = true;
-	fadeDelta = 1;
-        vSync = false;
+        fadeDelta = 1;
       };
     };
   };
