@@ -4,14 +4,14 @@
 
 Unstable w/ Flakes & Home-Manager
 
-**[Swayfx]** w/ **[Waybar]** & **[Alacritty]**
+**[BSPWM]** w/ **[Eww (soon)]** & **[Alacritty]**
 
 Themed w/ **[Mountain]** (**[Fuji]**)
 <br>
 
 # To-Do
 
-- [ ] Move to BSPWM
+- [*] Move to BSPWM
 - [ ] Move laptop to NixOS
 - [ ] Move server to NixOS
 - [ ] Clean up properly
@@ -20,8 +20,8 @@ Themed w/ **[Mountain]** (**[Fuji]**)
 
 <!----------------------------------------------------------------------------->
 
-[Swayfx]: https://github.com/WillPower3309/swayfx
-[Waybar]: https://github.com/Alexays/Waybar
+[BSPWM]: https://github.com/baskerville/bspwm
+[Eww]: https://github.com/elkowar/eww
 [Alacritty]: https://github.com/alacritty/alacritty
 [Mountain]: https://github.com/mountain-theme/Mountain
 [Fuji]: https://github.com/mountain-theme/Mountain/blob/master/docs/fuji.org
