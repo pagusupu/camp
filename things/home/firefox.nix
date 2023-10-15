@@ -30,31 +30,17 @@
           "svg.context-properties.content.enabled" = true;
         };
         userContent = ''
-	         @-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing) {
-                   .click-target-container *, .top-sites-list * {
-                   color: #fff !important ;
-                   text-shadow: 2px 2px 2px #222 !important ;
-                 }
-                 body::before {
-                   content: "" ;
-                   z-index: -1 ;
-                   position: fixed ;
-                   top: 0 ;
-                   left: 0 ;
-                   background: #${config.cute.colours.primary.bg};
-                 }
-               }
-                 :root {
-                   scrollbar-width: none !important;
-                 }
-                 @-moz-document url(about:privatebrowsing) {
-                   :root {
-                    scrollbar-width: none !important;
-                   }
+          :root {
+            scrollbar-width: none !important;
+          }
+          @-moz-document url(about:privatebrowsing) {
+            :root {
+              scrollbar-width: none !important;
+            }
           }
         '';
         userChrome = ''
-                 :root {
+          :root {
             --sfwindow: #${config.cute.colours.primary.bg};
             --sfsecondary: #${config.cute.colours.normal.black};
           }
