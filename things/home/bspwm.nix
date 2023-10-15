@@ -8,7 +8,7 @@
   };
   config = lib.mkIf config.cute.programs.bspwm.enable {
     xsession.windowManager.bspwm = {
-      #enable = true;
+      enable = true;
       startupPrograms = ["discord"];
       monitors = {
         DisplayPort-2 = ["1" "2" "3" "4"];

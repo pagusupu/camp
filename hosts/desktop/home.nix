@@ -22,6 +22,7 @@
       cute.programs = {
         alacritty.enable = true;
         bspwm.enable = true;
+	dunst.enable = true;
         eww.enable = true;
         firefox.enable = true;
         htop.enable = true;

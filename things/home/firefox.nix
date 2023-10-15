@@ -29,8 +29,21 @@
           "gfx.webrender.all" = true;
           "svg.context-properties.content.enabled" = true;
         };
-        #     simplefox
         userContent = ''
+	         @-moz-document url(about:home), url(about:newtab), url(about:privatebrowsing) {
+                   .click-target-container *, .top-sites-list * {
+                   color: #fff !important ;
+                   text-shadow: 2px 2px 2px #222 !important ;
+                 }
+                 body::before {
+                   content: "" ;
+                   z-index: -1 ;
+                   position: fixed ;
+                   top: 0 ;
+                   left: 0 ;
+                   background: #${config.cute.colours.primary.bg};
+                 }
+               }
                  :root {
                    scrollbar-width: none !important;
                  }

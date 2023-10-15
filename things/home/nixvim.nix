@@ -35,6 +35,16 @@ in {
         ttyfast = true;
         undofile = true;
       };
+      keymaps = [
+        {
+          key = "t";
+          action = "<cmd>NvimTreeToggle<cr>";
+        }
+        {
+          key = "f";
+          action = "<cmd>%!alejandra -qq<cr>";
+        }
+      ];
       plugins = {
         treesitter.enable = true;
         rainbow-delimiters.enable = true;
@@ -66,17 +76,7 @@ in {
             showOnDirs = true;
           };
         };
-      };
-      keymaps = [
-        {
-          key = "t";
-          action = "<cmd>NvimTreeToggle<cr>";
-        }
-        {
-          key = "f";
-          action = "<cmd>%!alejandra -qq<cr>";
-        }
-      ];
+      }; 
     };
     home.packages = with pkgs; [
       deadnix
