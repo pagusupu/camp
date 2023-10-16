@@ -1,0 +1,96 @@
+;;;;;;;;;;;;;
+;; windows ;;
+;;;;;;;;;;;;;
+
+;; bar window ;;
+(defwindow leftbar
+  :geometry (geometry :x "8px"
+	              :y "0px"
+		      :height "1064px"
+		      :width "40px"
+		      :anchor "center left")
+  :reserve (struts :distance "48px"
+	           :side "left")
+  :monitor 0
+  :stacking "bg"
+  :windowtype "dock"
+  :wm-ignore false
+  :hexpand "false"
+  :vexspand "false"
+(bar))
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; widget collections ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; bar widgets;;
+(defwidget bar []
+  (box :class "barwidgets"
+       :orientation "v"
+       :vexpand "false"
+       :hexpand "false"
+       ;:space-evenly "false"
+(workspaces_left)
+(time)))
+
+;; top widgets ;;
+;(defwidget top []
+ ; (box :class "topwidgets"
+    ;   :orientation "v"
+   ;    :space-evenly "false"
+  ;     :spacing 5
+ ;      :valign "start"
+;(workspaces_left)))
+
+;; bottom widgets ;;
+;(defwidget bottom []
+;  (box :class "bottomwidgets"
+;       :orientation "v"
+;       :space-evenly "false"
+;       :spacing 5
+;       :valign "end"
+;(time)))
+
+;;;;;;;;;;;;;;;;;;;;;
+;; rest of widgets ;;
+;;;;;;;;;;;;;;;;;;;;;
+
+;; clock widget ;;
+(defwidget time []
+  (box :orientation "v"
+       :class "time"
+       :valign "end"
+    (label :text hour :class "hour_class")
+    (label :text min  :class "min_class")
+    (label :text m    :class "m_class")
+))
+(defpoll hour :interval "1s"  "date '+%I'")
+(defpoll min  :interval "1s"  "date '+%M'")
+(defpoll m    :interval "30m" "date '+%p'")
+
+;; workspaces widget ;;
+(defwidget workspaces_left []
+  (box :orientation "v"
+       :valign "start"
+       :class "workspaces"
+       (box :orientation "v"
+            :spacing 5
+	    :space-evenly "false"
+	    :class "workspace_buttons"
+	    (eventbox :cursor "pointer"
+	      (button :onclick "bspc desktop -f 1"
+	        (label :text "1"
+		       :class "workspace_button1")))
+	    (eventbox :cursor "pointer"
+	      (button :onclick "bspc desktop -f 2"
+	        (label :text "2"
+		       :class "workspace_button2")))
+	    (eventbox :cursor "pointer"
+	      (button :onclick "bspc desktop -f 3"
+	        (label :text "3"
+		       :class "workspace_button3")))
+	    (eventbox :cursor "pointer"
+	      (button :onclick "bspc desktop -f 4"
+	        (label :text "4"
+		       :class "workspace_button4")))
+)))

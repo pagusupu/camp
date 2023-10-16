@@ -1,0 +1,33 @@
+*{ all: unset; }
+
+$bg: #0f0f0f;
+$fg: #f0f0f0;
+$black: #262626;
+$green: #8aac8b;
+
+.leftbar,
+.rightbar {
+  background-color: $bg;
+}
+
+.time {
+  font-family: "firacode nerd font";
+  font-size: 14;
+  margin: 4px;
+  padding: 4px;
+  background-color: $black;
+  color: $fg;
+}
+
+.workspaces {
+  font-family: "firacode nerd font";
+  font-size: 14;
+  margin: 4px;
+  padding: 4px;
+  background-color: $black;
+  color: $fg;
+}
+
+.workspace_button1 {
+  //color: $green;
+}

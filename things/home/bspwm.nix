@@ -45,7 +45,7 @@
           "super + shift + {m,r}" = "bspc {quit,wm -r}"; # quit/restart bspwm
           "super + r" = "pkill -USR1 -x sxhkd"; # reload sxhkd
           "super + {_,shift +}q" = "bspc node -{c,k}"; # close & kill
-          "super + @space" = "bspc query --nodes -n focused.tiled && state=floating || state=tiled; \ bspc node --state \~$state"; # toggle floating
+          "super + space" = "bspc query --nodes -n focused.tiled && state=floating || state=tiled; \ bspc node --state \~$state"; # toggle floating
           "super + f" = "bspc node --state \~fullscreen"; # toggle fullscreen
           "super + {_,shift +}{Left, Down, Up, Right}" = "bspc node -{f,s} {west,south,north,east}"; #move node focus or position
           "super + {_,shift +}{1-8}" = "bspc {desktop -f,node -d} '^{1-8}'"; # focus or move to workspace
@@ -56,7 +56,7 @@
 	package = pkgs.picom-next;
         backend = "glx";
         fade = true;
-        fadeDelta = 10;
+        fadeDelta = 2;
 	vSync = true;
       };
     };
