@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options.cute.programs.bspwm = {
@@ -19,6 +20,8 @@
         border_width = 2;
         normal_border_color = "#${config.cute.colours.primary.bg}";
         focused_border_color = "#${config.cute.colours.primary.main}";
+	automatic_scheme = "longest_side";
+	focus_follows_pointer = true;
       };
       rules = {
         "discord" = {
@@ -26,6 +29,7 @@
         };
       };
       extraConfig = ''
+        xsetroot -cursor_name left_ptr
         pgrep -x sxhkd > /dev/null || sxhkd &
         feh --bg-fill --no-xinerama ~/Nix/things/images/bg.png
       '';
@@ -49,9 +53,11 @@
       };
       picom = {
         enable = true;
+	package = pkgs.picom-next;
         backend = "glx";
         fade = true;
-        fadeDelta = 1;
+        fadeDelta = 10;
+	vSync = true;
       };
     };
   };
