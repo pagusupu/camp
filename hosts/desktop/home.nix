@@ -16,8 +16,8 @@
     extraSpecialArgs = {inherit inputs;};
     users.pagu = {
       imports = [
-        ../../things/home
-        ../../things/misc/home
+        ../../home
+	../../system/misc/colours.nix
       ];
       cute.programs = {
         alacritty.enable = true;
