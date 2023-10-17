@@ -1,2 +1,0 @@
-(include "./bar/leftbar.yuck")
-(include "./bar/rightbar.yuck")
