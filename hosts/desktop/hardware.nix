@@ -15,8 +15,6 @@
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     };
     kernelParams = [
-      "video=HDMI-A-1:1920x1080@75"
-      "video=DP-3:1920x1080@165"
       "initcall_blacklist=acpi_cpufreq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
@@ -24,6 +22,7 @@
     kernelModules = ["kvm-amd" "amd_pstate"];
     supportedFilesystems = ["btrfs" "ntfs"];
   };
+  powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
@@ -42,7 +41,6 @@
       userControlled.enable = true;
     };
   };
-  powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9dd5237a-fab2-474d-9f0d-84f326ccefc9";
     fsType = "btrfs";

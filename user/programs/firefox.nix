@@ -40,7 +40,7 @@
           }
         '';
         userChrome = ''
-	  * { border-radius: 0px; }
+	  --uc-border-radius: 0px;
           :root {
             --sfwindow: #${config.cute.colours.primary.bg};
             --sfsecondary: #${config.cute.colours.normal.black};

@@ -16,7 +16,7 @@
     extraSpecialArgs = {inherit inputs;};
     users.pagu = {
       imports = [
-        ../../home
+        ../../user
 	../../system/misc/colours.nix
       ];
       cute.programs = {
@@ -41,11 +41,9 @@
           #apps
           discord
           feishin
-          #tui/cli
-          htop
+          #tui
           ueberzugpp
           yazi
-          p7zip
           #environment
           xclip
           maim

@@ -31,7 +31,7 @@
       extraConfig = ''
         xsetroot -cursor_name left_ptr
         pgrep -x sxhkd > /dev/null || sxhkd &
-        feh --bg-fill --no-xinerama ~/Nix/home/images/bg.png
+        feh --bg-fill --no-xinerama ~/Nix/user/images/bg.png
       '';
     };
     services = {

@@ -38,6 +38,7 @@ in {
     platformTheme = "gtk";
   };
   home = {
+    packages = [pkgs.dconf];
     pointerCursor = {
       package = pkgs.numix-cursor-theme;
       name = "Numix-Cursor";

@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./hardware.nix
-    ./home.nix
+    ./user.nix
     ./xserver.nix
     ../../system
   ];
@@ -15,7 +15,6 @@
   };
   i18n.defaultLocale = "en_NZ.UTF-8";
   programs = {
-    dconf.enable = true;
     git.enable = true;
     nano.enable = false;
     steam.enable = true;
