@@ -41,7 +41,6 @@
   fonts = {
     packages = with pkgs; [
       nerdfonts
-      noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       (google-fonts.override {fonts = ["Lato" "Nunito"];})

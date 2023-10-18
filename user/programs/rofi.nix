@@ -13,6 +13,7 @@
       font = "firacode nerd font 12";
       extraConfig = {
         display-drun = ">";
+	display-dmenu = ">";
       };
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
