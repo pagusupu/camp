@@ -1,12 +1,13 @@
 {
   pkgs,
+  lib,
   ...
 }: {
   imports = [
     ./hardware.nix
     ./home.nix
     ./xserver.nix
-    ../../system/misc
+    ../../system
   ];
   time = {
     timeZone = "NZ";
@@ -57,6 +58,7 @@
   environment = {
     shells = with pkgs; [zsh];
     systemPackages = with pkgs; [alejandra];
+    defaultPackages = lib.mkForce [];
   };
   system.stateVersion = "23.11";
 }

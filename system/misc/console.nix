@@ -1,5 +1,4 @@
 {config, ...}: {
-  #imports = [../home/colours.nix];
   console = {
     earlySetup = true;
     keyMap = "us";
