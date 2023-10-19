@@ -19,7 +19,7 @@
         font = {
           size = 12;
           normal = {
-            family = "FiraCode Nerd Font";
+            family = "SF Mono";
             style = "Regular";
           };
         };

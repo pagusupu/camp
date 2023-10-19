@@ -41,15 +41,19 @@
       userControlled.enable = true;
     };
   };
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/9dd5237a-fab2-474d-9f0d-84f326ccefc9";
-    fsType = "btrfs";
+  fileSystems = {
+    "/boot" = {
+      device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
+    "/" = {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+    };
+    "/mnt/games" = {
+      device = "/dev/disk/by-label/games";
+      fsType = "btrfs";
+    };
   };
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F566-9676";
-    fsType = "vfat";
-  };
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/b505fb66-8b84-44ff-9d1f-789627d70fe7";}
-  ];
+  swapDevices = [{device = "/dev/disk/by-label/swap";}];
 }

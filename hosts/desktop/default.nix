@@ -37,22 +37,6 @@
       wheelNeedsPassword = false;
     };
   };
-  fonts = {
-    packages = with pkgs; [
-      nerdfonts
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      (google-fonts.override {fonts = ["Lato" "Nunito"];})
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = ["Lato"];
-        sansSerif = ["Nunito"];
-        monospace = ["FiraCode Nerd Font"];
-      };
-    };
-  };
   environment = {
     shells = with pkgs; [zsh];
     systemPackages = with pkgs; [alejandra];

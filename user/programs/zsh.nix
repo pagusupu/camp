@@ -37,7 +37,7 @@
       '';
       shellAliases = {
         ls = "ls --color";
-        switch = "sudo nixos-rebuild switch --flake ~/Nix/#desktop";
+        switch = "sudo nixos-rebuild switch --flake ~/Nix/#";
         update = "sudo nix flake update ~/Nix && switch";
       };
     };
