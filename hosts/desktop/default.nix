@@ -23,7 +23,6 @@
   services = {
     blueman.enable = true;
     dbus.enable = true;
-    xserver.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -41,6 +40,7 @@
   fonts = {
     packages = with pkgs; [
       nerdfonts
+      noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       (google-fonts.override {fonts = ["Lato" "Nunito"];})

@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   services.xserver = {
+    enable = true;
     autorun = true;
     xautolock.enable = false;
     excludePackages = [pkgs.xterm];

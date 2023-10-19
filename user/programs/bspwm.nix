@@ -32,10 +32,6 @@
         xsetroot -cursor_name left_ptr
         pgrep -x sxhkd > /dev/null || sxhkd &
         feh --bg-fill --no-xinerama ~/Nix/user/images/bg.png
-	polybar logo &
-	polybar clock &
-	polybar workspaces &
-	polybar powermenu &
       '';
     };
     services = {
