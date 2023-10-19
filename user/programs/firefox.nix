@@ -1,7 +1,7 @@
 {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.cute.programs.firefox = {
@@ -10,166 +10,571 @@
   config = lib.mkIf config.cute.programs.firefox.enable {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox-beta;
+      package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
+        extraPolicies = {
+          CaptivePortal = false;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DisableFirefoxAccounts = true;
+          DisableProfileImport = true;
+          DisableSetDesktopBackground = true;
+          DisableFeedbackCommands = true;
+          DisableFirefoxScreenshots = true;
+          DontCheckDefaultBrowser = true;
+          NoDefaultBookmarks = true;
+          PasswordManagerEnabled = false;
+          FirefoxHome = {
+            Pocket = false;
+            Snippets = false;
+            TopSite = false;
+            Highlights = false;
+            Locked = true;
+          };
+          UserMessaging = {
+            ExtensionRecommendations = false;
+            SkipOnboarding = true;
+          };
+          Cookies = {
+            Behavior = "accept";
+            ExpireAtSessionEnd = false;
+            Locked = false;
+          };
+        };
+        extraPrefs = ''
+          lockPref("gfx.webrender.all", true);
+          lockPref("browser.aboutConfig.showWarning", true);
+          lockPref("browser.tabs.firefox-view", true);
+          lockPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+          lockPref("privacy.firstparty.isolate", true);
+          lockPref("browser.EULA.override", true);
+          lockPref("browser.tabs.inTitlebar", 0);
+          lockPref("browser.tabs.tabmanager.enabled", false);
+        '';
+        nixExtensions = [
+          (pkgs.fetchFirefoxAddon {
+            name = "ublock";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-1.52.2.xpi";
+            hash = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
+          })
+          (pkgs.fetchFirefoxAddon {
+            name = "sponsorblock";
+            url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.4.23.xpi";
+            hash = "sha256-uSSrb7zS8QKsY6pzfe48kIYNDxr+p0PGsPu2l6oImDI=";
+          })
+	  (pkgs.fetchFirefoxAddon {
+	    name = "treestyletab";
+	    url = "https://addons.mozilla.org/firefox/downloads/file/4164980/tree_style_tab-3.9.17.xpi";
+	    hash = "sha256-Tc9w9WQ2RldJxMeHoLupD+Kjm/TAz5H6f3zSovioBvU=";
+	  })
+	  (pkgs.fetchFirefoxAddon {
+	    name = "returnyoutubedislike";
+	    url = "https://addons.mozilla.org/firefox/downloads/file/4180538/return_youtube_dislikes-3.0.0.11.xpi";
+	    hash = "sha256-bV09UBpBKplKS15mfPtduYWBrui/h4TDESGGekSJVQU=";
+	  })
+        ];
+      };
       profiles."pagu" = {
+        id = 0;
+        name = "pagu";
+	settings = {
+	  "browser.startup.homepage" = "http://server:8122";
+	  "browser.bookmarks.default.location" = "toolbar";
+	};
         search = {
           default = "DuckDuckGo";
-          force = true;
-          order = [
-            "DuckDuckGo"
-            "Google"
-          ];
+	  force = true;
+	  order = [
+	    "DuckDuckGo"
+	    "Google"
+	    "Nix Packages"
+	    "Nix Options"
+	  ];
+          engines = {
+            "Nix Packages" = {
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = ["@np"];
+            };
+            "Nix Options" = {
+              urls = [
+                {
+                  template = "https://search.nixos.org/options";
+                  params = [
+                    {
+                      name = "type";
+                      value = "options";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = ["@no"];
+            };
+	    "Bing".metaData.hidden = true;
+	    "Amazon.com".metaData.hidden = true;
+	    "Wikipedia (en)".metaData.hidden = true;
+          };
         };
-        settings = {
-          "browser.startup.homepage" = "http://server:8122";
-          "browser.aboutConfig.showWarning" = false;
-          "browser.bookmarks.defaultLocation" = "toolbar";
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "layers.acceleration.force-enabled" = true;
-          "gfx.webrender.all" = true;
-          "svg.context-properties.content.enabled" = true;
-        };
+        userChrome = ''
+          :root {
+            /*  Global Border Radius
+             *  applied to ALL UI elements
+             */ --uc-border-radius: 0px;
+            /*  The distance the Statuspanel floats
+             *  away from the window border
+             *  0 places directly in the corner
+             */ --uc-status-panel-spacing: 12px;
+            /*  Top margin for the Page Action Buttons
+             *  inside the URL Bar. This might need
+             *  customisation depending on yout setup!
+             */ --uc-page-action-margin: 7px;
+          }
+          /* remove window control buttons */
+          .titlebar-buttonbox-container { display: none !important; }
+          #pageActionButton { display: none !important; }
+
+          /*---+---+---+---+---+---+---+
+          | T | O | O | L | B | A | R |
+           +---+---+---+---+---+---+---*/
+
+          /*  Position of the Personal Toolbar
+           *  possible values:
+          *  0 – toolbar on top
+          *  4 – toolbar on bottom
+           */
+          :root {
+            --uc-toolbar-position: 0;
+          }
+
+          /*  Darken the Personal Toolbar by X amount
+           *  where X = 1 means pure black
+           *  and X = 0 means no darkening at all
+           */
+          @media (prefers-color-scheme: dark) { :root {
+            --uc-darken-toolbar: 0.2;
+          }} @media (prefers-color-scheme: light) { :root {
+            --uc-darken-toolbar: 0;
+          }}
+
+          /*---+---+---+---+---+---+---+
+          | U | R | L | — | B | A | R |
+           +---+---+---+---+---+---+---*/
+          :root {
+            /*  Width of the URL Bar for the Oneline layout
+             *  If enabled the max-width is applied on focus
+             *  otherwise the URL Bar will always be it's min-width
+             */ --uc-urlbar-min-width: 35vw;
+                --uc-urlbar-max-width: 35vw;
+            /*  Position of the URL Bar
+             *  possible values:
+            *  1 – tabs on the right
+            *  3 – tabs on the left
+             */ --uc-urlbar-position: 1;
+          }
+
+          /* Disable the Navigation Buttons */
+          /* #back-button,
+          #forward-button { display: none !important; } */
+
+          /* Disables the Tracking Protection Shield */
+          #tracking-protection-icon-container { display: none !important; }
+
+          /* Encryption and Permissions icons */
+            /* Only hides permission items */
+            #identity-permission-box { display: none !important; }
+            /* Hides encryption AND permission items */
+            /* #identity-box { display: none !important } */
+
+          /* Adjust margin of the urlbar buttons. */
+          .urlbar-page-action > image { margin-top: var(--uc-page-action-margin) !important; }
+
+          /* Hide Container Tab labels inside the URL bar */
+          #userContext-icons { display: none !important; }
+
+
+          /* Hide the »Go«-arrow in the URL Bar */
+          #urlbar-go-button { display: none !important; }
+
+          /* Hides the Extensions Menu Icon */
+          #unified-extensions-button { display: none !important; }
+
+          /*#alltabs-button { margin-top: 5px !important; }*/
+          #alltabs-button { display: none !important; }
+
+
+
+
+
+          /*---+---+---+---+---+---+---+
+          | T | A | B | — | B | A | R |
+           +---+---+---+---+---+---+---*/
+
+
+          :root {
+
+            /*  Allow tabs to have dynamic widths based on
+             *  the Tab Bars maximum width
+             */ --uc-active-tab-width:   clamp(100px, 30vw, 300px);
+                --uc-inactive-tab-width: clamp(100px, 20vw, 200px);
+
+
+            /*  Enable this to always show the Tab Close button
+             *  possible values:
+             *  show: -moz-inline-block
+             *  hide: none
+             */ --show-tab-close-button: none;
+
+            /*  Enable this to only show the Tab Close button on tab hover
+             *  possible values:
+             *  show: -moz-inline-block
+             *  hide: none
+             */ --show-tab-close-button-hover: -moz-inline-block;
+
+
+            /*  Left and Right "dip" of the container indicator
+             *  0px equals tab width
+             *  higer values make the indicator smaller
+             */ --container-tabs-indicator-margin: 10px;
+
+            /*  Amount of Glow to add to the container indicator
+             *  Setting it to 0 disables the Glow
+             */ --uc-identity-glow: 0 1px 10px 1px;
+
+          }
+
+
+          /* Hide the secondary Tab Label
+           * e.g. playing indicator (the text, not the icon) */
+          .tab-secondary-label { display: none !important; }
+
+          /*---+---+---+---+---+---+---+
+           | C | O | L | O | U | R | S |
+           +---+---+---+---+---+---+---*/
+
+
+          @media (prefers-color-scheme: dark) { :root {
+
+            /* These colours are (mainly) used by the
+               Container Tabs Plugin */
+            --uc-identity-colour-blue:      #7ED6DF;
+            --uc-identity-colour-turquoise: #55E6C1;
+            --uc-identity-colour-green:     #B8E994;
+            --uc-identity-colour-yellow:    #F7D794;
+            --uc-identity-colour-orange:    #F19066;
+            --uc-identity-colour-red:       #FC5C65;
+            --uc-identity-colour-pink:      #F78FB3;
+            --uc-identity-colour-purple:    #786FA6;
+
+            /*  Cascades main Colour Scheme */
+            --uc-base-colour:               #1E2021;
+            --uc-highlight-colour:          #191B1C;
+            --uc-inverted-colour:           #FAFAFC;
+            --uc-muted-colour:              #AAAAAC;
+            --uc-accent-colour:             var(--uc-identity-colour-purple);
+
+          }}
+
+
+          @media (prefers-color-scheme: light) { :root {
+
+            /* These colours are (mainly) used by the
+               Container Tabs Plugin */
+            --uc-identity-colour-blue:      #1D65F5;
+            --uc-identity-colour-turquoise: #209FB5;
+            --uc-identity-colour-green:     #40A02B;
+            --uc-identity-colour-yellow:    #E49320;
+            --uc-identity-colour-orange:    #FE640B;
+            --uc-identity-colour-red:       #FC5C65;
+            --uc-identity-colour-pink:      #EC83D0;
+            --uc-identity-colour-purple:    #822FEE;
+
+            /*  Cascades main Colour Scheme */
+            --uc-base-colour:               #FAFAFC;
+            --uc-highlight-colour:          #DADADC;
+            --uc-inverted-colour:           #1E2021;
+            --uc-muted-colour:              #191B1C;
+            --uc-accent-colour:             var(--uc-identity-colour-purple);
+
+          }}
+
+
+
+
+
+
+          /* Down here I'm just reassigning variables based on the colours set above.
+             Feel free to play around with these but there is no editing necessary below this line. c:
+             */
+
+          :root {
+
+            --lwt-frame: var(--uc-base-colour) !important;
+            --lwt-accent-color: var(--lwt-frame) !important;
+            --lwt-text-color: var(--uc-inverted-colour) !important;
+
+            --toolbar-field-color: var(--uc-inverted-colour) !important;
+
+            --toolbar-field-focus-color: var(--uc-inverted-colour) !important;
+            --toolbar-field-focus-background-color: var(--uc-highlight-colour) !important;
+            --toolbar-field-focus-border-color: transparent !important;
+
+            --toolbar-field-background-color: var(--lwt-frame) !important;
+            --lwt-toolbar-field-highlight: var(--uc-inverted-colour) !important;
+            --lwt-toolbar-field-highlight-text: var(--uc-highlight-colour) !important;
+            --urlbar-popup-url-color: var(--uc-accent-colour) !important;
+
+            --lwt-tab-text: var(--lwt-text-colour) !important;
+
+            --lwt-selected-tab-background-color: var(--uc-highlight-colour) !important;
+
+            --toolbar-bgcolor: var(--lwt-frame) !important;
+            --toolbar-color: var(--lwt-text-color) !important;
+            --toolbarseparator-color: var(--uc-accent-colour) !important;
+            --toolbarbutton-hover-background: var(--uc-highlight-colour) !important;
+            --toolbarbutton-active-background: var(--toolbarbutton-hover-background) !important;
+
+            --lwt-sidebar-background-color: var(--lwt-frame) !important;
+            --sidebar-background-color: var(--lwt-sidebar-background-color) !important;
+
+            --urlbar-box-bgcolor: var(--uc-highlight-colour) !important;
+            --urlbar-box-text-color: var(--uc-muted-colour) !important;
+            --urlbar-box-hover-bgcolor: var(--uc-highlight-colour) !important;
+            --urlbar-box-hover-text-color: var(--uc-inverted-colour) !important;
+            --urlbar-box-focus-bgcolor: var(--uc-highlight-colour) !important;
+
+          }
+          .identity-color-blue      { --identity-tab-color: var(--uc-identity-colour-blue)      !important; --identity-icon-color: var(--uc-identity-colour-blue)      !important;  }
+          .identity-color-turquoise { --identity-tab-color: var(--uc-identity-colour-turquoise) !important; --identity-icon-color: var(--uc-identity-colour-turquoise) !important; }
+          .identity-color-green     { --identity-tab-color: var(--uc-identity-colour-green)     !important; --identity-icon-color: var(--uc-identity-colour-green)     !important; }
+          .identity-color-yellow    { --identity-tab-color: var(--uc-identity-colour-yellow)    !important; --identity-icon-color: var(--uc-identity-colour-yellow)    !important; }
+          .identity-color-orange    { --identity-tab-color: var(--uc-identity-colour-orange)    !important; --identity-icon-color: var(--uc-identity-colour-orange)    !important; }
+          .identity-color-red       { --identity-tab-color: var(--uc-identity-colour-red)       !important; --identity-icon-color: var(--uc-identity-colour-red)       !important; }
+          .identity-color-pink      { --identity-tab-color: var(--uc-identity-colour-pink)      !important; --identity-icon-color: var(--uc-identity-colour-pink)      !important; }
+          .identity-color-purple    { --identity-tab-color: var(--uc-identity-colour-purple)    !important; --identity-icon-color: var(--uc-identity-colour-purple)    !important; }
+
+          :root {
+            --toolbarbutton-border-radius: var(--uc-border-radius) !important;
+            --tab-border-radius: var(--uc-border-radius) !important;
+            --arrowpanel-border-radius: var(--uc-border-radius) !important;
+          }
+          #main-window,
+          #toolbar-menubar,
+          #TabsToolbar,
+          #navigator-toolbox,${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg
+          #sidebar-box,
+          #nav-bar { box-shadow: none !important; }
+
+
+          #main-window,
+          #toolbar-menubar,
+          #TabsToolbar,
+          #PersonalToolbar,
+          #navigator-toolbox,
+          #sidebar-box,
+          #nav-bar { border: none !important; }
+
+
+          /* remove "padding" left and right from tabs */
+          .titlebar-spacer { display: none !important; }
+
+          /* fix Shield Icon padding */
+          #urlbar-input-container[pageproxystate="valid"]
+            > #tracking-protection-icon-container
+            > #tracking-protection-icon-box
+            > #tracking-protection-icon {
+              padding-bottom: 1px;
+          }
+          #PersonalToolbar {
+            padding: 6px !important;
+            box-shadow: inset 0 0 50vh rgba(0, 0, 0, var(--uc-darken-toolbar)) !important;;
+          }
+          #statuspanel #statuspanel-label {
+            border: none !important;
+            border-radius: var(--uc-border-radius) !important;
+          }
+
+          @media (min-width: 1000px) {
+            #navigator-toolbox { display: flex; flex-wrap: wrap; flex-direction: row; }
+            #nav-bar {
+              order: var(--uc-urlbar-position);
+              width: var(--uc-urlbar-min-width);
+            }
+            #nav-bar #urlbar-container { min-width: 0px !important; width: auto !important; }
+            #titlebar {
+              order: 2;
+              width: calc(100vw - var(--uc-urlbar-min-width) - 1px);
+            }
+            #PersonalToolbar {
+              order: var(--uc-toolbar-position);
+              width: 100%;
+            }
+            #navigator-toolbox:focus-within #nav-bar { width: var(--uc-urlbar-max-width); }
+            #navigator-toolbox:focus-within #titlebar { width: calc(100vw - var(--uc-urlbar-max-width) - 1px); }
+          }
+          #statuspanel #statuspanel-label { margin: 0 0 var(--uc-status-panel-spacing) var(--uc-status-panel-spacing) !important; }
+          #navigator-toolbox:not(:-moz-lwtheme) { background: var(--toolbar-field-background-color) !important; ) }
+
+          #nav-bar {
+            padding-block-start: 0px !important;
+            border:     none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+          }
+
+          #urlbar,
+          #urlbar * {
+            padding-block-start: var(--uc-urlbar-top-spacing) !important;
+            outline: none !important;
+            box-shadow: none !important;
+          }
+
+          #urlbar-background { border: transparent !important; }
+          #urlbar[focused='true']
+            > #urlbar-background,
+          #urlbar:not([open])
+            > #urlbar-background { background: var(--toolbar-field-background-color) !important; }
+          #urlbar[open]
+            > #urlbar-background { background: var(--toolbar-field-background-color) !important; }
+          .urlbarView-row:hover
+            > .urlbarView-row-inner,
+          .urlbarView-row[selected]
+            > .urlbarView-row-inner { background: var(--toolbar-field-focus-background-color) !important; }
+          .urlbar-icon, #urlbar-go-button { margin: auto; }
+          .urlbar-page-action { padding: 0 inherit !important; }
+          .urlbar-page-action .urlbar-icon { margin-top: 6px !important; }
+
+          /* remove gap after pinned tabs */
+          #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+            > #tabbrowser-arrowscrollbox
+            > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) { margin-inline-start: 0 !important; }
+
+          /* Hides the list-all-tabs button*/
+
+          /* remove tab shadow */
+          .tabbrowser-tab
+            >.tab-stack
+            > .tab-background { box-shadow: none !important;  }
+
+          /* multi tab selection */
+          #tabbrowser-tabs:not([noshadowfortests]) .tabbrowser-tab:is([multiselected])
+            > .tab-stack
+            > .tab-background:-moz-lwtheme { outline-color: var(--toolbarseparator-color) !important; }
+
+          /* tab close button options */
+          .tabbrowser-tab:not([pinned]) .tab-close-button { display: var(--show-tab-close-button) !important; }
+          .tabbrowser-tab:not([pinned]):hover .tab-close-button { display: var(--show-tab-close-button-hover) !important }
+
+          /* adaptive tab width */
+          .tabbrowser-tab[selected][fadein]:not([pinned]) { max-width: var(--uc-active-tab-width) !important; }
+          .tabbrowser-tab[fadein]:not([selected]):not([pinned]) { max-width: var(--uc-inactive-tab-width) !important; }
+
+          /* container tabs indicator */
+          .tabbrowser-tab[usercontextid]
+            > .tab-stack
+            > .tab-background
+            > .tab-context-line {
+              margin: -1px var(--container-tabs-indicator-margin) 0 var(--container-tabs-indicator-margin) !important;
+              height: 1px !important;
+              box-shadow: var(--uc-identity-glow) var(--identity-tab-color) !important;
+          }
+
+          /* show favicon when media is playing but tab is hovered */
+          .tab-icon-image:not([pinned]) { opacity: 1 !important; }
+
+          /* Makes the speaker icon to always appear if the tab is playing (not only on hover) */
+          .tab-icon-overlay:not([crashed]),
+          .tab-icon-overlay[pinned][crashed][selected] {
+            top: 5px !important;
+            z-index: 1 !important;
+            padding: 1.5px !important;
+            inset-inline-end: -8px !important;
+            width: 16px !important; height: 16px !important;
+            border-radius: 10px !important;
+          }
+
+          /* style and position speaker icon */
+          .tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+            stroke: transparent !important;
+            background: transparent !important;
+            opacity: 1 !important; fill-opacity: 0.8 !important;
+            color: currentColor !important;
+            stroke: var(--toolbar-bgcolor) !important;
+            background-color: var(--toolbar-bgcolor) !important;
+          }
+
+          /* change the colours of the speaker icon on active tab to match tab colours */
+          .tabbrowser-tab[selected] .tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+            stroke: var(--toolbar-bgcolor) !important;
+            background-color: var(--toolbar-bgcolor) !important;
+          }
+
+          .tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) { margin-inline-end: 9.5px !important; }
+          .tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]) {
+            top: 0 !important;
+            padding: 0 !important;
+            margin-inline-end: 5.5px !important;
+            inset-inline-end: 0 !important;
+          }
+
+          .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+          .tab-icon-overlay:not([crashed])[muted]:hover,
+          .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+            color: currentColor !important;
+            stroke: var(--toolbar-color) !important;
+            background-color: var(--toolbar-color) !important;
+            fill-opacity: 0.95 !important;
+          }
+
+          .tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+          .tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[muted]:hover,
+          .tabbrowser-tab[selected] .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+            color: currentColor !important;
+            stroke: var(--toolbar-color) !important;
+            background-color: var(--toolbar-color) !important;
+            fill-opacity: 0.95 !important;
+          }
+
+          /* speaker icon colour fix */
+          #TabsToolbar .tab-icon-overlay:not([crashed])[soundplaying],
+          #TabsToolbar .tab-icon-overlay:not([crashed])[muted],
+          #TabsToolbar .tab-icon-overlay:not([crashed])[activemedia-blocked] { color: var(--toolbar-color) !important; }
+
+          /* speaker icon colour fix on hover */
+          #TabsToolbar .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+          #TabsToolbar .tab-icon-overlay:not([crashed])[muted]:hover,
+          #TabsToolbar .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover { color: var(--toolbar-bgcolor) !important; }
+
+        '';
         userContent = ''
           :root {
             scrollbar-width: none !important;
           }
+
           @-moz-document url(about:privatebrowsing) {
             :root {
               scrollbar-width: none !important;
             }
-          }
-        '';
-        userChrome = ''
-	  --uc-border-radius: 0px;
-          :root {
-            --sfwindow: #${config.cute.colours.primary.bg};
-            --sfsecondary: #${config.cute.colours.normal.black};
-          }
-          .urlbarView {
-            display: none !important;
-          }
-          #tabbrowser-tabs:not([movingtab])
-                   > #tabbrowser-arrowscrollbox
-                   > .tabbrowser-tab
-                   > .tab-stack
-                   > .tab-background[multiselected='true'],
-                 #tabbrowser-tabs:not([movingtab])
-                   > #tabbrowser-arrowscrollbox
-                   > .tabbrowser-tab
-                   > .tab-stack
-                   > .tab-background[selected='true'] {
-                   background-image: none !important;
-                   background-color: var(--sfsecondary) !important;
-                 }
-                 #navigator-toolbox {
-            background-color: var(--sfwindow) !important;
-          }
-          :root
-            --toolbar-bgcolor: var(--sfwindow) !important;
-                   --tabs-border-color: var(--sfsecondary) !important;
-                   --lwt-sidebar-background-color: var(--sfwindow) !important;
-                   --lwt-toolbar-field-focus: var(--sfsecondary) !important;
-          }
-          #sidebar-box,
-                 .sidebar-placesTree {
-                   background-color: var(--sfwindow) !important;
-                 }
-          .tab-close-button {
-                   display: none;
-                 }
-                 .tabbrowser-tab:not([pinned]) .tab-icon-image {
-                   display: none !important;
-                 }
-                 #nav-bar:not([tabs-hidden='true']) {
-                   box-shadow: none;
-                 }
-                 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-                   > #tabbrowser-arrowscrollbox
-                   > .tabbrowser-tab[first-visible-unpinned-tab] {
-                   margin-inline-start: 0 !important;
-                 }
-                 :root {
-                   --toolbarbutton-border-radius: 0 !important;
-                   --tab-border-radius: 0 !important;
-                   --tab-block-margin: 0 !important;
-                 }
-                 .tab-background {
-                   border-right: 0px solid rgba(0, 0, 0, 0) !important;
-                   margin-left: -4px !important;
-                 }
-                 .tabbrowser-tab:is([visuallyselected='true'], [multiselected])
-                   > .tab-stack
-                   > .tab-background {
-                   box-shadow: none !important;
-                 }
-                 .tabbrowser-tab[last-visible-tab='true'] {
-                   padding-inline-end: 0 !important;
-                 }
-                 #tabs-newtab-button {
-                   padding-left: 0 !important;
-                 }
-          #urlbar-input-container {
-                   background-color: var(--sfsecondary) !important;
-                   border: 1px solid rgba(0, 0, 0, 0) !important;
-                 }
-                 #urlbar-container {
-                   margin-left: 0 !important;
-                 }
-                 #urlbar[focused='true'] > #urlbar-background {
-                   box-shadow: none !important;
-                 }
-                 #navigator-toolbox {
-                   border: none !important;
-                 }
-                 .bookmark-item .toolbarbutton-icon {
-                   display: none;
-                 }
-                 toolbarbutton.bookmark-item:not(.subviewbutton) {
-                   min-width: 1.6em;
-                 }
-          #tracking-protection-icon-container,
-                 #urlbar-zoom-button,
-                 #star-button-box,
-                 #pageActionButton,
-                 #pageActionSeparator,
-                 #tabs-newtab-button,
-                 #back-button,
-                 #PanelUI-button,
-                 #forward-button,
-                 .tab-secondary-label {
-                   display: none !important;
-                 }
-                 .urlbarView-url {
-                   color: #dedede !important;
-                 }
-          #context-navigation,
-                 #context-savepage,
-                 #context-pocket,
-                 #context-sendpagetodevice,
-                 #context-selectall,
-                 #context-viewsource,
-                 #context-inspect-a11y,
-                 #context-sendlinktodevice,
-                 #context-openlinkinusercontext-menu,
-                 #context-bookmarklink,
-                 #context-savelink,
-                 #context-savelinktopocket,
-                 #context-sendlinktodevice,
-                 #context-searchselect,
-                 #context-sendimage,
-                 #context-print-selection {
-                   display: none !important;
-                 }
-                 #context_bookmarkTab,
-                 #context_moveTabOptions,
-                 #context_sendTabToDevice,
-                 #context_reopenInContainer,
-                 #context_selectAllTabs,
-                 #context_closeTabOptions {
-                   display: none !important;
-                 }
-          #system-toolbar {
-            display: none !important;
           }
         '';
       };
