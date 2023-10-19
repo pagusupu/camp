@@ -1,11 +1,21 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    nixvim.url = "github:nix-community/nixvim";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = {nixpkgs, ...} @ inputs: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

@@ -1,24 +1,32 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   console = {
     earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
+    packages = with pkgs; [terminus_font];
     keyMap = "us";
-    colors = [
+    colors = let
+      cute = config.cute.colours;
+    in [
       "000000"
-      config.cute.colours.normal.red
-      config.cute.colours.normal.green
-      config.cute.colours.normal.yellow
-      config.cute.colours.normal.blue
-      config.cute.colours.normal.magenta
-      config.cute.colours.normal.cyan
-      config.cute.colours.normal.white
-      config.cute.colours.bright.red
-      config.cute.colours.bright.green
-      config.cute.colours.bright.yellow
-      config.cute.colours.bright.blue
-      config.cute.colours.bright.magenta
-      config.cute.colours.bright.cyan
-      config.cute.colours.bright.white
-      config.cute.colours.primary.fg
+      cute.normal.red
+      cute.normal.green
+      cute.normal.yellow
+      cute.normal.blue
+      cute.normal.magenta
+      cute.normal.cyan
+      cute.normal.white
+      cute.bright.red
+      cute.bright.green
+      cute.bright.yellow
+      cute.bright.blue
+      cute.bright.magenta
+      cute.bright.cyan
+      cute.bright.white
+      cute.primary.fg
     ];
   };
 }

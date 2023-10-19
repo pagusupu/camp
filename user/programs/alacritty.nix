@@ -27,32 +27,34 @@
           style = "Underline";
           unfocused_hollow = false;
         };
-        colors = {
+        colors = let 
+	  cute = config.cute.colours; 
+	in {
           primary = {
-            background = "#" + config.cute.colours.primary.bg;
-            foreground = "#" + config.cute.colours.primary.fg;
-            dim_foreground = "#" + config.cute.colours.normal.black;
-            bright_foreground = "#" + config.cute.colours.bright.black;
+            background = "#" + cute.primary.bg;
+            foreground = "#" + cute.primary.fg;
+            dim_foreground = "#" + cute.normal.black;
+            bright_foreground = "#" + cute.bright.black;
           };
           normal = {
-            black = "#" + config.cute.colours.normal.black;
-            red = "#" + config.cute.colours.normal.red;
-            green = "#" + config.cute.colours.normal.green;
-            yellow = "#" + config.cute.colours.normal.yellow;
-            blue = "#" + config.cute.colours.normal.blue;
-            magenta = "#" + config.cute.colours.normal.magenta;
-            cyan = "#" + config.cute.colours.normal.cyan;
-            white = "#" + config.cute.colours.normal.white;
+            black = "#" + cute.normal.black;
+            red = "#" + cute.normal.red;
+            green = "#" + cute.normal.green;
+            yellow = "#" + cute.normal.yellow;
+            blue = "#" + cute.normal.blue;
+            magenta = "#" + cute.normal.magenta;
+            cyan = "#" + cute.normal.cyan;
+            white = "#" + cute.normal.white;
           };
           bright = {
-            black = "#" + config.cute.colours.bright.black;
-            red = "#" + config.cute.colours.bright.red;
-            green = "#" + config.cute.colours.bright.green;
-            yellow = "#" + config.cute.colours.bright.yellow;
-            blue = "#" + config.cute.colours.bright.blue;
-            magenta = "#" + config.cute.colours.bright.magenta;
-            cyan = "#" + config.cute.colours.bright.cyan;
-            white = "#" + config.cute.colours.bright.white;
+            black = "#" + cute.bright.black;
+            red = "#" + cute.bright.red;
+            green = "#" + cute.bright.green;
+            yellow = "#" + cute.bright.yellow;
+            blue = "#" + cute.bright.blue;
+            magenta = "#" + cute.bright.magenta;
+            cyan = "#" + cute.bright.cyan;
+            white = "#" + cute.bright.white;
           };
         };
       };
