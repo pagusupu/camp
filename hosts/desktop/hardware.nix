@@ -2,12 +2,11 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
-      timeout = 1;
+      timeout = 2;
       grub = {
         enable = true;
         efiSupport = true;
 	device = "nodev";
-	timeoutStyle = "hidden";
 	useOSProber = true;
       };
       efi.canTouchEfiVariables = true;

@@ -23,7 +23,7 @@
           foreground = "#${config.cute.colours.primary.fg}";
           frame_color = "#${config.cute.colours.primary.main}";
 	  frame-width = 1;
-          font = "nunito 12";
+          font = "Nunito 12";
 	  notification_limit = 2;
         };
       };

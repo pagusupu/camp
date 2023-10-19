@@ -10,10 +10,9 @@
     programs.rofi = {
       enable = true;
       terminal = "alacritty";
-      font = "firacode nerd font 12";
+      font = "SF Mono 12";
       extraConfig = {
         display-drun = ">";
-	display-dmenu = ">";
       };
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
