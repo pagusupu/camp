@@ -39,7 +39,6 @@
   };
   environment = {
     shells = with pkgs; [zsh];
-    systemPackages = with pkgs; [];
     defaultPackages = lib.mkForce [];
   };
   system.stateVersion = "23.11";
