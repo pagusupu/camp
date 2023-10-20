@@ -36,6 +36,7 @@
     };
   };
   networking = {
+    dhcpcd.wait = "background";
     hostName = "desktop";
     wireless = {
       enable = true;
