@@ -25,10 +25,11 @@
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
-    enableRedistributableFirmware = true;
-    cpu.amd.updateMicrocode = true;
-    pulseaudio.enable = false;
     bluetooth.enable = true;
+    cpu.amd.updateMicrocode = true;
+    enableRedistributableFirmware = true;
+    pulseaudio.enable = false;
+    xone.enable = true;
     opengl = {
       enable = true;
       driSupport = true;
