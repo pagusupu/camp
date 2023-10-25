@@ -1,5 +1,12 @@
 {
   xdg = {
+    enable = true;
+    userDirs = {
+      enable = true;
+      documents = "\$HOME/Documents";
+      downloads = "\$HOME/Downloads";
+      pictures = "\$HOME/Pictures";
+    };
     desktopEntries = {
       # removed
       Alacritty = {

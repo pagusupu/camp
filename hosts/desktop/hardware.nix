@@ -46,17 +46,17 @@
   };
   fileSystems = {
     "/boot" = {
-      device = "/dev/disk/by-label/boot";
+      device = "/dev/disk/by-label/NixBoot";
       fsType = "vfat";
     };
     "/" = {
-      device = "/dev/disk/by-label/nixos";
+      device = "/dev/disk/by-label/Flake";
       fsType = "btrfs";
     };
     "/mnt/games" = {
-      device = "/dev/disk/by-label/games";
+      device = "/dev/disk/by-label/Games";
       fsType = "btrfs";
     };
   };
-  swapDevices = [{device = "/dev/disk/by-label/swap";}];
+  swapDevices = [{device = "/dev/disk/by-label/SwapFile";}];
 }

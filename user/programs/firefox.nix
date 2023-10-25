@@ -16,14 +16,14 @@
           DisableFirefoxStudies = true;
           DisablePocket = true;
           DisableTelemetry = true;
-          DisableFirefoxAccounts = true;
-          DisableProfileImport = true;
+          #DisableFirefoxAccounts = true;
+          #DisableProfileImport = true;
           DisableSetDesktopBackground = true;
           DisableFeedbackCommands = true;
           DisableFirefoxScreenshots = true;
           DontCheckDefaultBrowser = true;
           NoDefaultBookmarks = true;
-          PasswordManagerEnabled = false;
+          #PasswordManagerEnabled = false;
           FirefoxHome = {
             Pocket = false;
             Snippets = false;
@@ -49,7 +49,6 @@
           lockPref("privacy.firstparty.isolate", true);
           lockPref("browser.EULA.override", true);
           lockPref("browser.tabs.inTitlebar", 0);
-          lockPref("browser.tabs.tabmanager.enabled", false);
         '';
         nixExtensions = [
           (pkgs.fetchFirefoxAddon {

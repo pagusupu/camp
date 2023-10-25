@@ -37,6 +37,7 @@
           osu-lazer-bin
           prismlauncher-qt5
           protontricks
+	  protonup-ng
           r2modman
           #apps
           discord
