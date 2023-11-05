@@ -29,7 +29,7 @@
     variables = {EDITOR = "vim";};
     shellAliases = {
       ls = "ls --color";
-      switch = "cd ~/flake && git pull && sudo nixos-rebuild switch --flake ~/flake/#";
+      switch = "sudo nixos-rebuild switch --flake ~/flake/#";
       update = "sudo nix flake update ~/flake && switch";
     };
     systemPackages = with pkgs; [
