@@ -9,7 +9,11 @@
   config = lib.mkIf config.cute.misc.nix.enable {
     nix = {
       settings = {
-        experimental-features = ["nix-command" "flakes"];
+        experimental-features = [
+	  "flakes"
+	  "nix-command"
+	  "no-url-literals"
+	];
         auto-optimise-store = true;
         allowed-users = ["@wheel"];
       };
