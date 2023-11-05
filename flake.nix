@@ -15,7 +15,7 @@
   outputs = {
     nixpkgs,
     home-manager,
-	agenix,
+    agenix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -24,17 +24,17 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/desktop
-		  agenix.nixosModules.default
+          agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
         ];
       };
-	  server = nixpkgs.lib.nixosSystem {
-	    specialArgs = {inherit inputs;};
-		modules = [
-		  ./hosts/server
-		  agenix.nixosModules.default
-		];
-	  };
+      server = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/server
+          agenix.nixosModules.default
+        ];
+      };
     };
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };

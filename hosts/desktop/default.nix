@@ -9,13 +9,17 @@
     ./xserver.nix
     ../../system
   ];
+  cute.misc = {
+    console.enable = true;
+    font.enable = true;
+    nix.enable = true;
+  };
   time = {
     timeZone = "NZ";
     hardwareClockInLocalTime = true;
   };
   i18n.defaultLocale = "en_NZ.UTF-8";
   programs = {
-    #git.enable = true;
     nano.enable = false;
     steam.enable = true;
     zsh.enable = true;
@@ -40,6 +44,7 @@
   environment = {
     shells = with pkgs; [zsh];
     defaultPackages = lib.mkForce [];
+    systemPackages = with pkgs; [alejandra];
   };
   system.stateVersion = "23.11";
 }

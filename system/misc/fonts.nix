@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   sf-fonts = pkgs.stdenv.mkDerivation rec {
     pname = "sf-fonts";
     version = "1";
@@ -53,25 +58,30 @@
     '';
   };
 in {
-  fonts = {
-    fonts = with pkgs; [
-      nerdfonts
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      sf-fonts
-      (google-fonts.override {fonts = ["Lato" "Nunito"];})
-    ];
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      hinting.enable = true;
-      hinting.autohint = true;
-      subpixel.rgba = "rgb";
-      defaultFonts = {
-        sansSerif = ["Nunito"];
-        serif = ["Lato"];
-        monospace = ["SF Mono"];
+  options.cute.misc.fonts = {
+    enable = lib.mkEnableOption "font config";
+  };
+  config = lib.mkIf config.cute.misc.fonts.enable {
+    fonts = {
+      fonts = with pkgs; [
+        nerdfonts
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        sf-fonts
+        (google-fonts.override {fonts = ["Lato" "Nunito"];})
+      ];
+      fontconfig = {
+        enable = true;
+        antialias = true;
+        hinting.enable = true;
+        hinting.autohint = true;
+        subpixel.rgba = "rgb";
+        defaultFonts = {
+          sansSerif = ["Nunito"];
+          serif = ["Lato"];
+          monospace = ["SF Mono"];
+        };
       };
     };
   };
