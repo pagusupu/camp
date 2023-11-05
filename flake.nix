@@ -1,5 +1,6 @@
 {
   inputs = {
+    agenix.url = "github:ryantm/agenix";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
@@ -14,6 +15,7 @@
   outputs = {
     nixpkgs,
     home-manager,
+	agenix,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -22,9 +24,17 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/desktop
+		  agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
         ];
       };
+	  server = nixpkgs.lib.nixosSystem {
+	    specialArgs = {inherit inputs;};
+		modules = [
+		  ./hosts/server
+		  agenix.nixosModules.default
+		];
+	  };
     };
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };

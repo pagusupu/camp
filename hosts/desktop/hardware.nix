@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   boot = {
+    consoleLogLevel = 0;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
       timeout = 2;
@@ -8,10 +9,12 @@
         efiSupport = true;
 	device = "nodev";
 	useOSProber = true;
+	splashImage = null;
       };
       efi.canTouchEfiVariables = true;
     };
     initrd = {
+      verbose = false;
       kernelModules = ["amdgpu"];
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     };
@@ -19,6 +22,8 @@
       "initcall_blacklist=acpi_cpufreq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
+      "quiet"
+      "splash"
     ];
     kernelModules = ["kvm-amd" "amd_pstate"];
     supportedFilesystems = ["btrfs" "ntfs"];

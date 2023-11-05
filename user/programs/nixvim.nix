@@ -49,14 +49,14 @@ in {
         treesitter.enable = true;
         rainbow-delimiters.enable = true;
         lsp.enable = true;
-       # none-ls = {
-       #   enable = true;
-       #   sources = {
-       #     code_actions.statix.enable = true;
-       #     diagnostics.deadnix.enable = true;
-       #     formatting.alejandra.enable = true;
-       #   };
-       # };
+        none-ls = {
+          enable = true;
+          sources = {
+           # code_actions.statix.enable = true;
+           # diagnostics.deadnix.enable = true;
+           # formatting.alejandra.enable = true;
+          };
+        };
         nvim-tree = {
           enable = true;
           autoClose = true;

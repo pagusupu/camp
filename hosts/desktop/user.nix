@@ -41,7 +41,7 @@
           r2modman
           #apps
           discord
-          feishin
+          #feishin
           #tui
           ueberzugpp
           yazi
@@ -53,6 +53,7 @@
         stateVersion = "23.05";
       };
       programs.git = {
+	enable = true;
         userName = "pagusupu";
         userEmail = "me@pagu.cafe";
       };

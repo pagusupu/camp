@@ -31,7 +31,7 @@
       extraConfig = ''
         xsetroot -cursor_name left_ptr
         pgrep -x sxhkd > /dev/null || sxhkd &
-        feh --bg-fill --no-xinerama ~/Nix/user/images/bg.png
+        feh --bg-fill --no-xinerama ~/flake/user/images/bg.png
       '';
     };
     services = {
@@ -40,7 +40,7 @@
         keybindings = {
           "super + Return" = "alacritty";
           "super + Tab" = "rofi -show drun";
-          "super + shift + BackSpace" = "maim -s ~/Pictures/screenshots/$(date +%s).png";
+          "super + shift + BackSpace" = "maim -s ~/pictures/screenshots/$(date +%s).png";
           "super + BackSpace" = "maim -s | xclip -selection clipboard -t image/png";
           "super + shift + {m,r}" = "bspc {quit,wm -r}"; # quit/restart bspwm
           "super + r" = "pkill -USR1 -x sxhkd"; # reload sxhkd

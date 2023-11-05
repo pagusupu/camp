@@ -3,9 +3,15 @@
     enable = true;
     userDirs = {
       enable = true;
-      documents = "\$HOME/Documents";
-      downloads = "\$HOME/Downloads";
-      pictures = "\$HOME/Pictures";
+      createDirectories = true;
+      documents = "\$HOME/documents";
+      download = "\$HOME/downloads";
+      pictures = "\$HOME/pictures";
+      desktop = "\$HOME/.misc/desktop";
+      music = "\$HOME/.misc/music";
+      publicShare = "\$HOME/.misc/public";
+      templates = "\$HOME/.misc/templates";
+      videos = "\$HOME/.misc/videos";
     };
     desktopEntries = {
       # removed

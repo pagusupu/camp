@@ -15,7 +15,7 @@
   };
   i18n.defaultLocale = "en_NZ.UTF-8";
   programs = {
-    git.enable = true;
+    #git.enable = true;
     nano.enable = false;
     steam.enable = true;
     zsh.enable = true;
