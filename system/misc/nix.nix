@@ -12,7 +12,7 @@
         experimental-features = [
 	  "flakes"
 	  "nix-command"
-	  "no-url-literals"
+	  #"no-url-literals"
 	];
         auto-optimise-store = true;
         allowed-users = ["@wheel"];
