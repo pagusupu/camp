@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  ...
 }: {
   options.cute.misc.nix = {
     enable = lib.mkEnableOption "nix settings";

@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
@@ -32,6 +33,7 @@
       update = "sudo nix flake update ~/flake && switch";
     };
     systemPackages = with pkgs; [
+      inputs.agenix.packages.x86_64-linux.default
       alejandra
       git
       htop

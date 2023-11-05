@@ -11,7 +11,7 @@
   ];
   cute.misc = {
     console.enable = true;
-    font.enable = true;
+    fonts.enable = true;
     nix.enable = true;
   };
   time = {
