@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -13,6 +13,13 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
   networking = {
     dhcpcd.wait = "background";
@@ -25,6 +32,10 @@
     };
     "/" = {
       device = "/dev/disk/by-label/main";
+      fsType = "btrfs";
+    };
+    "/mnt/storage" = {
+      device = "/dev/md0";
       fsType = "btrfs";
     };
   };

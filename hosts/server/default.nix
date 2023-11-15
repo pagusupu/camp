@@ -12,8 +12,15 @@
   cute = {
     misc = {
       console.enable = true;
-      fonts.enable = false;
       nix.enable = true;
+    };
+    services = {
+      gitea.enable = true;
+      homeassistant.enable = true;
+      jellyfin.enable = true;
+      komga.enable = true;
+      nginx.enable = true;
+      vaultwarden.enable = true;
     };
   };
   time.timeZone = "NZ";
@@ -35,8 +42,10 @@
     systemPackages = with pkgs; [
       inputs.agenix.packages.x86_64-linux.default
       alejandra
+      flac
       git
       htop
+      hugo
       mdadm
       vim
       wget
