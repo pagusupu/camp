@@ -1,5 +1,6 @@
 {
   imports = [
+    ./deluge.nix
     ./gitea.nix
     ./homeassistant.nix
     ./jellyfin.nix

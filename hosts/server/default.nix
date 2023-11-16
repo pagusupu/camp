@@ -15,6 +15,7 @@
       nix.enable = true;
     };
     services = {
+      deluge.enable = true;
       gitea.enable = true;
       homeassistant.enable = true;
       jellyfin.enable = true;
