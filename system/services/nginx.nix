@@ -7,7 +7,7 @@
     enable = lib.mkEnableOption "";
   };
   config = lib.mkIf config.cute.services.nginx.enable {
-    networking.firewall.allowedTCPPorts = [80 443];
+    networking.firewall.allowedTCPPorts = [80 443 1313];
     security.acme = {
       acceptTerms = true;
       defaults.email = "amce@pagu.cafe";

@@ -45,9 +45,11 @@
       alejandra
       flac
       git
+      go
       htop
       hugo
       mdadm
+      ueberzugpp
       vim
       wget
       yazi
