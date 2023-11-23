@@ -34,25 +34,26 @@
     };
   };
   environment = {
+    sessionVariables = {FLAKE = "/home/pagu/flake/";};
     variables = {EDITOR = "vim";};
     shellAliases = {
-      ls = "ls --color";
-      switch = "sudo nixos-rebuild switch --flake ~/flake/#";
+      ls = "eza";
+      switch = "nh os switch";
       update = "sudo nix flake update ~/flake && switch";
     };
     systemPackages = with pkgs; [
       inputs.agenix.packages.x86_64-linux.default
       alejandra
       flac
+      eza
       git
       go
       htop
       hugo
       mdadm
-      ueberzugpp
+      ranger
       vim
       wget
-      yazi
     ];
   };
   system.stateVersion = "23.11";

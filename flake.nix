@@ -2,7 +2,9 @@
   inputs = {
     agenix.url = "github:ryantm/agenix";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    nh.url = "github:viperML/nh";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +18,7 @@
     nixpkgs,
     home-manager,
     agenix,
+    nh,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -24,8 +27,9 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/desktop
-          agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
+          nh.nixosModules.default
         ];
       };
       nixserver = nixpkgs.lib.nixosSystem {
@@ -33,6 +37,7 @@
         modules = [
           ./hosts/server
           agenix.nixosModules.default
+          nh.nixosModules.default
         ];
       };
     };
