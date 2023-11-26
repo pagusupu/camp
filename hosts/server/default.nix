@@ -21,7 +21,7 @@
       jellyfin.enable = true;
       komga.enable = true;
       nginx.enable = true;
-      nextcloud.enable = true;
+      nextcloud.enable = false;
       vaultwarden.enable = true;
     };
   };

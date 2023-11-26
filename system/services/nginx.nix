@@ -59,7 +59,7 @@
               extraConfig = "proxy_pass_header Authorization;";
             };
           };
-         ${config.services.nextcloud.hostName} = template // {http2 = true;};
+        "cloud.pagu.cafe" = template // {http2 = true;};
         };
       };
     };
