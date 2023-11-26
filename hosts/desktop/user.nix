@@ -1,13 +1,20 @@
 {
+  config,
   pkgs,
   inputs,
   ...
 }: {
+  age = {
+    identityPaths = ["/home/pagu/.ssh/agenix"];
+    secrets.deskPass.file = ../../secrets/deskPass.age;
+  };
   users = {
+    mutableUsers = true;
     extraUsers.pagu = {
       isNormalUser = true;
       extraGroups = ["wheel"];
       shell = pkgs.zsh;
+      hashedPasswordFile = config.age.secrets.deskPass.path;
     };
   };
   home-manager = {
@@ -22,7 +29,7 @@
       cute.programs = {
         alacritty.enable = true;
         bspwm.enable = true;
-	dunst.enable = true;
+	dunst.enable = false;
         firefox.enable = true;
         htop.enable = true;
         nixvim.enable = true;
@@ -41,8 +48,9 @@
           r2modman
           #apps
           discord
-          #feishin
+            #feishin - failed build
           #tui
+	  eza
           ueberzugpp
           yazi
           #environment
@@ -50,6 +58,9 @@
           maim
           feh
         ];
+	sessionVariables = {
+          FLAKE = "/home/pagu/flake";
+	};
         stateVersion = "23.05";
       };
       programs.git = {

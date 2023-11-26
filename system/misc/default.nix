@@ -4,5 +4,6 @@
     ./console.nix
     ./fonts.nix
     ./nix.nix
+    ./shell.nix
   ];
 }

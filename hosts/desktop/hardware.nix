@@ -47,6 +47,9 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
+      networks."Upstairs-5G" = {
+	pskRaw = "690ab0d9f04e21ca329db4f36c9dd4402547dbd94c57def80b210b3311925091";
+      };
     };
   };
   fileSystems = {
