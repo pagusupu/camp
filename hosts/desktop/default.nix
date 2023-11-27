@@ -7,14 +7,21 @@
   imports = [
     ./hardware.nix
     ./user.nix
-    ./xserver.nix
     ../../system
   ];
-  cute.misc = {
-    console.enable = true;
-    fonts.enable = true;
-    nix.enable = true;
-    shell.enable = true;
+  cute = {
+    misc = {
+      console.enable = true;
+      fonts.enable = true;
+      nix.enable = true;
+      shell.enable = true;
+    };
+    xserver = {
+      desktop.enable = true;
+      common = {
+	lightdm.enable = true;
+      };
+    };
   };
   time = {
     timeZone = "NZ";
@@ -47,6 +54,7 @@
   environment = {
     defaultPackages = lib.mkForce [];
     systemPackages = with pkgs; [alejandra inputs.agenix.packages.x86_64-linux.default];
+    sessionVariables = {FLAKE="/home/pagu/flake";};
   };
   system.stateVersion = "23.11";
 }

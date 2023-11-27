@@ -2,5 +2,6 @@
   imports = [
     ./misc
     ./services
+    ./xserver
   ];
 }

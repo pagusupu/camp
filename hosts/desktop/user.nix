@@ -34,7 +34,6 @@
         htop.enable = true;
         nixvim.enable = true;
         rofi.enable = true;
-        zsh.enable = true;
       };
       home = {
         username = "pagu";

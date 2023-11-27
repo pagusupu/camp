@@ -19,8 +19,9 @@
       enableGlobalCompInit = false;
       histSize = 10000;
       histFile = "$HOME/.cache/zsh_history";
+      promptInit = "PROMPT='%F{green}% %~ %f> '";
       shellInit = ''
-        PROMPT="'%~ '"
+        PROMPT="'%F{green}% %~ %f> '"
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         # ctrl backwards / delete

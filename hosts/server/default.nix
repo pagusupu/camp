@@ -13,6 +13,7 @@
     misc = {
       console.enable = true;
       nix.enable = true;
+      shell.enable = true;
     };
     services = {
       deluge.enable = true;
@@ -31,16 +32,11 @@
     enable = true;
     settings = {
       PermitRootLogin = "no";
-      # PassowrdAuthentication = true;
     };
   };
   environment = {
     sessionVariables = {FLAKE = "/home/pagu/flake/";};
     variables = {EDITOR = "vim";};
-    shellAliases = {
-      ls = "eza";
-      switch = "nh os switch";
-      update = "sudo nix flake update ~/flake && switch";
     };
     systemPackages = with pkgs; [
       inputs.agenix.packages.x86_64-linux.default
