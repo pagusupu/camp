@@ -7,6 +7,5 @@
     ./htop.nix
     ./nixvim.nix
     ./rofi.nix
-    ./zsh.nix
   ];
 }

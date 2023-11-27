@@ -19,7 +19,7 @@
         font = {
           size = 12;
           normal = {
-            family = "SF Mono";
+            family = "Liga SFMono Nerd Font";
             style = "Regular";
           };
         };

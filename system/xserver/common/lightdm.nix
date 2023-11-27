@@ -1,8 +1,12 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   options.cute.xserver.common.lightdm = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.cute.xserver.common.enable {
+  config = lib.mkIf config.cute.xserver.common.lightdm.enable {
     services.xserver.displayManager = {
       lightdm.greeters.mini = {
         enable = true;

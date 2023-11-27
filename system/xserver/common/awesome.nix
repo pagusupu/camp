@@ -8,7 +8,7 @@
     enable = lib.mkEnableOption "";
   };
   config = lib.mkIf config.cute.xserver.common.awesome.enable {
-    windowManager.awesome = {
+    services.xserver.windowManager.awesome = {
       enable = true;
       package = pkgs.callPackage ../../../pkgs/awesome.nix;
       noArgb = true;

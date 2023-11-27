@@ -10,7 +10,7 @@
     programs.rofi = {
       enable = true;
       terminal = "alacritty";
-      font = "SF Mono 12";
+      font = "Liga SFMono Nerd Font 12";
       extraConfig = {
         display-drun = ">";
       };

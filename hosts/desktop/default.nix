@@ -19,6 +19,7 @@
     xserver = {
       desktop.enable = true;
       common = {
+	awesome.enable = false;
 	lightdm.enable = true;
       };
     };

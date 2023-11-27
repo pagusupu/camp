@@ -1,6 +1,6 @@
 {
-  config,
   lib,
+  config,
   pkgs,
   ...
 }: {
@@ -10,73 +10,59 @@
   config = lib.mkIf config.cute.programs.firefox.enable {
     programs.firefox = {
       enable = true;
-      package = pkgs.wrapFirefox pkgs.firefox-esr-unwrapped {
-        extraPolicies = {
-          CaptivePortal = false;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-          DisableSetDesktopBackground = true;
-          DisableFeedbackCommands = true;
-          DisableFirefoxScreenshots = true;
-          DontCheckDefaultBrowser = true;
-          NoDefaultBookmarks = true;
-          PasswordManagerEnabled = false;
-          FirefoxHome = {
-            Pocket = false;
-            Snippets = false;
-            TopSite = false;
-            Highlights = false;
-            Locked = true;
+      policies = {
+        Preferences = {
+          "gfx.webrender.all" = true;
+          "browser.aboutConfig.showWarning" = true;
+          "browser.tabs.firefox-view" = true;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "privacy.firstparty.isolate" = true;
+          "browser.EULA.override" = true;
+          "browser.tabs.inTitlebar" = 0;
+        };
+        CaptivePortal = false;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DisableSetDesktopBackground = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxScreenshots = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        PasswordManagerEnabled = false;
+        FirefoxHome = {
+          Pocket = false;
+          Snippets = false;
+          TopSites = false;
+          Highlights = false;
+          Locked = true;
+        };
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
+        };
+        Cookies = {
+          Behavior = "accept";
+          Locked = false;
+        };
+        ExtensionSettings = {
+          "uBlock0@raymondhill.net" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4188488/ublock_origin-1.53.0.xpi";
           };
-          UserMessaging = {
-            ExtensionRecommendations = false;
-            SkipOnboarding = true;
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4180072/bitwarden_password_manager-2023.9.2.xpi";
           };
-          Cookies = {
-            Behavior = "accept";
-            ExpireAtSessionEnd = false;
-            Locked = false;
+          "sponsorBlocker@ajay.app" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.4.23.xpi";
           };
         };
-        extraPrefs = ''
-          lockPref("gfx.webrender.all", true);
-          lockPref("browser.aboutConfig.showWarning", true);
-          lockPref("browser.tabs.firefox-view", true);
-          lockPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-          lockPref("privacy.firstparty.isolate", true);
-          lockPref("browser.EULA.override", true);
-          lockPref("browser.tabs.inTitlebar", 0);
-        '';
-       # nixExtensions = [
-       #   (pkgs.fetchFirefoxAddon {
-       #     name = "ublock";
-       #     url = "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-1.52.2.xpi";
-        #    hash = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
-        #  })
-        #  (pkgs.fetchFirefoxAddon {
-        #    name = "sponsorblock";
-        #    url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.4.23.xpi";
-        #    hash = "sha256-uSSrb7zS8QKsY6pzfe48kIYNDxr+p0PGsPu2l6oImDI=";
-        #  })
-        #  (pkgs.fetchFirefoxAddon {
-        #    name = "treestyletab";
-        #    url = "https://addons.mozilla.org/firefox/downloads/file/4164980/tree_style_tab-3.9.17.xpi";
-        #    hash = "sha256-Tc9w9WQ2RldJxMeHoLupD+Kjm/TAz5H6f3zSovioBvU=";
-        #  })
-        #  (pkgs.fetchFirefoxAddon {
-        #    name = "bitwarden";
-        #    url = "https://addons.mozilla.org/firefox/downloads/file/4191732/bitwarden_password_manager-2023.10.2.xpi";
-        #    hash = "";
-        #  })
-        #];
       };
       profiles."pagu" = {
         id = 0;
         name = "pagu";
-        settings = {
-          "browser.bookmarks.default.location" = "toolbar";
-        };
         search = {
           default = "DuckDuckGo";
           force = true;
@@ -103,7 +89,6 @@
                   ];
                 }
               ];
-
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = ["@np"];
             };
@@ -123,7 +108,6 @@
                   ];
                 }
               ];
-
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               definedAliases = ["@no"];
             };

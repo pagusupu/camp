@@ -15,7 +15,7 @@
         noto-fonts-cjk
         noto-fonts-emoji
 	noto-fonts-extra
-        (pkgs.callPackage ../../../pkgs/sf.nix {})
+        (pkgs.callPackage ../../pkgs/sf.nix {})
         (google-fonts.override {fonts = ["Lato" "Nunito"];})
       ];
       fontconfig = {
@@ -27,7 +27,7 @@
         defaultFonts = {
           sansSerif = ["Nunito"];
           serif = ["Lato"];
-          monospace = ["SF Mono"];
+          monospace = ["Liga SFMono Nerd Font"];
         };
       };
     };
