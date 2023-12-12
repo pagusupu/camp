@@ -18,7 +18,7 @@
     services = {
       deluge.enable = true;
       gitea.enable = true;
-      homeassistant.enable = true;
+      homeassistant.enable = false;
       jellyfin.enable = true;
       komga.enable = true;
       nginx.enable = true;
@@ -28,29 +28,27 @@
   };
   time.timeZone = "NZ";
   i18n.defaultLocale = "en_NZ.UTF-8";
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-    };
-  };
+  services.openssh.enable = true;
   environment = {
     sessionVariables = {FLAKE = "/home/pagu/flake/";};
     variables = {EDITOR = "vim";};
-    };
     systemPackages = with pkgs; [
       inputs.agenix.packages.x86_64-linux.default
       alejandra
-      flac
+      bat
+      bottom
       eza
+      flac
       git
       go
       htop
       hugo
       mdadm
-      ranger
+      rm-improved
+      rnr
       vim
       wget
+      yazi
     ];
   };
   system.stateVersion = "23.11";

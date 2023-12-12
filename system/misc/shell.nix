@@ -19,9 +19,9 @@
       enableGlobalCompInit = false;
       histSize = 10000;
       histFile = "$HOME/.cache/zsh_history";
-      promptInit = "PROMPT='%F{green}% %~ %f> '";
+      promptInit = "PROMPT='%F{green}% %~ >%f '";
       shellInit = ''
-        PROMPT="'%F{green}% %~ %f> '"
+        PROMPT="'%F{green}% %~ >%f '"
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         # ctrl backwards / delete
@@ -37,7 +37,8 @@
         }
       '';
       shellAliases = {
-        ls = "eza";
+        cat = "bat";
+        ls = "eza"; 
         switch = "nh os switch";
         update = "sudo nix flake update ~/flake && switch";
       };

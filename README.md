@@ -7,7 +7,7 @@
 ## Mirrors 
 
 - **[GitHub]**
-- **[Gitea]**
+- **[Gitea]**  - (broken for a bit)
 
 <!------------------------------------>
 

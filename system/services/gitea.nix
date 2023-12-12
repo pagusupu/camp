@@ -24,7 +24,7 @@
         };
         session.COOKIE_SECURE = true;
       };
-      stateDir = "/mnt/storage/services/gitea";
+      stateDir = "/storage/services/gitea";
     };
   };
 }

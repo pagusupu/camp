@@ -1,16 +1,17 @@
-{config, ...}: {
+{config, pkgs, ...}: {
   age = {
-    identityPaths = ["/home/pagu/.ssh/agenix"];
-    secrets.userPass = {
-      file = ../../secrets/userPass.age;
+    identityPaths = ["/home/pagu/.ssh/id_ed25519"];
+    secrets.user = {
+      file = ../../secrets/user.age;
     };
   };
   users = {
-    #mutableUsers = false;
+ #   mutableUsers = false;
     extraUsers.pagu = {
       isNormalUser = true;
       extraGroups = ["wheel"];
-      hashedPasswordFile = config.age.secrets.userPass.path;
+      shell = pkgs.zsh;
+      hashedPasswordFile = config.age.secrets.user.path;
     };
   };
 }

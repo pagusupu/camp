@@ -1,10 +1,17 @@
 {
   inputs = {
-    agenix.url = "github:ryantm/agenix";
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     nh.url = "github:viperML/nh";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        darwin.follows = "";
+        home-manager.follows = "";
+      };
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

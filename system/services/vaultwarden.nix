@@ -15,7 +15,7 @@
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = 8222;
       };
-      backupDir = "/mnt/storage/services/vaultwarden";
+      backupDir = "/storage/services/vaultwarden";
     };
   };
 }

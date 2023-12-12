@@ -34,7 +34,7 @@
       device = "/dev/disk/by-label/main";
       fsType = "btrfs";
     };
-    "/mnt/storage" = {
+    "/storage" = {
       device = "/dev/md0";
       fsType = "btrfs";
     };

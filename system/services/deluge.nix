@@ -9,7 +9,7 @@
   config = lib.mkIf config.cute.services.deluge.enable {
     services.deluge = {
       enable = true;
-      dataDir = "/mnt/storage/services/deluge";
+      dataDir = "/storage/services/deluge";
       web = {
         enable = true;
         openFirewall = true;
