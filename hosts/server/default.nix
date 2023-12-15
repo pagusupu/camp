@@ -18,7 +18,7 @@
     services = {
       deluge.enable = true;
       gitea.enable = true;
-      homeassistant.enable = false;
+      homeassistant.enable = true;
       jellyfin.enable = true;
       komga.enable = true;
       nginx.enable = true;

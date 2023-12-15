@@ -38,7 +38,8 @@
       '';
       shellAliases = {
         cat = "bat";
-        ls = "eza"; 
+        ls = "eza";
+        rm = "rip"; 
         switch = "nh os switch";
         update = "sudo nix flake update ~/flake && switch";
       };

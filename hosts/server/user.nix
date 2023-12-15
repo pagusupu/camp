@@ -8,6 +8,7 @@
   users = {
  #   mutableUsers = false;
     extraUsers.pagu = {
+      uid = 1000;
       isNormalUser = true;
       extraGroups = ["wheel"];
       shell = pkgs.zsh;
