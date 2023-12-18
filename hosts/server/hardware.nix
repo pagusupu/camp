@@ -9,6 +9,7 @@
     };
     kernelModules = ["kvm-amd" "amdgpu"];
     supportedFilesystems = ["btrfs"];
+    swraid.enable = true;
   };
   hardware = {
     enableRedistributableFirmware = true;
@@ -16,14 +17,26 @@
     opengl = {
       enable = true;
       extraPackages = with pkgs; [
+        # video encode/decode for jellyfin
         vaapiVdpau
         libvdpau-va-gl
       ];
     };
   };
   networking = {
-    dhcpcd.wait = "background";
     hostName = "nixserver";
+    hostId = "a3b49b22";
+    firewall.enable = true;
+    enableIPv6 = false;
+    useDHCP = false;
+    defaultGateway = "192.168.178.1";
+    nameservers = ["192.168.178.1"];
+    interfaces.enp37s0.ipv4.addresses = [
+      {
+	address = "192.168.178.182";
+	prefixLength = 24;
+      }
+    ];
   };
   fileSystems = {
     "/boot" = {

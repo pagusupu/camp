@@ -14,11 +14,12 @@
       console.enable = true;
       nix.enable = true;
       shell.enable = true;
+      vim.enable = true;
     };
     services = {
       deluge.enable = true;
       gitea.enable = true;
-      homeassistant.enable = true;
+      homeassistant.enable = false;
       jellyfin.enable = true;
       komga.enable = true;
       nginx.enable = true;
@@ -35,20 +36,21 @@
     systemPackages = with pkgs; [
       inputs.agenix.packages.x86_64-linux.default
       alejandra
-      bat
-      bottom
-      eza
-      flac
       git
-      go
+      go # for hugo
       htop
       hugo
       mdadm
-      rm-improved
-      rnr
       vim
       wget
+#     file management tools
+      flac
+      rnr
       yazi
+#     alternatives
+      bat # cat
+      eza # ls
+      rm-improved # rm
     ];
   };
   system.stateVersion = "23.11";

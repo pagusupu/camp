@@ -15,11 +15,11 @@
     };
   };
 in {
-  imports = [inputs.nixvim.homeManagerModules.nixvim];
-  options.cute.programs.nixvim = {
+  imports = [inputs.nixvim.nixosModules.nixvim];
+  options.cute.misc.vim = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.cute.programs.nixvim.enable {
+  config = lib.mkIf config.cute.misc.vim.enable {
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
@@ -78,7 +78,7 @@ in {
         };
       }; 
     };
-    home.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       deadnix
       nil
       statix

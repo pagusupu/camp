@@ -6,8 +6,7 @@
     };
   };
   users = {
- #   mutableUsers = false;
-    extraUsers.pagu = {
+    users.pagu = {
       uid = 1000;
       isNormalUser = true;
       extraGroups = ["wheel"];

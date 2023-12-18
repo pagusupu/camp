@@ -15,6 +15,7 @@
       fonts.enable = true;
       nix.enable = true;
       shell.enable = true;
+      vim.enable = true;
     };
     xserver = {
       desktop.enable = true;
