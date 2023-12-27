@@ -24,7 +24,6 @@
         PROMPT="'%F{green}% %~ >%f '"
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
-        # ctrl backwards / delete
         bindkey '^H' backward-kill-word
         bindkey '5~' kill-word
         # disable weird underline
@@ -32,6 +31,7 @@
         ZSH_HIGHLIGHT_STYLES[path]=none
         ZSH_HIGHLIGHT_STYLES[path_prefix]=none
         zsh-newuser-install() { :; }
+        # nix run alias
         runix() {
           nix run nixpkgs#$1 -- "''${@:2}"
         }

@@ -16,10 +16,10 @@
   };
 in {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options.cute.misc.vim = {
+  options.cute.programs.nixvim = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.cute.misc.vim.enable {
+  config = lib.mkIf config.cute.programs.nixvim.enable {
     programs.nixvim = {
       enable = true;
       defaultEditor = true;

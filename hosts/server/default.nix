@@ -14,7 +14,10 @@
       console.enable = true;
       nix.enable = true;
       shell.enable = true;
-      vim.enable = true;
+    };
+    programs = {
+      htop.enable = true;
+      nixvim.enable = true;
     };
     services = {
       deluge.enable = true;
@@ -29,19 +32,21 @@
   };
   time.timeZone = "NZ";
   i18n.defaultLocale = "en_NZ.UTF-8";
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+    };
+  };
   environment = {
     sessionVariables = {FLAKE = "/home/pagu/flake/";};
-    variables = {EDITOR = "vim";};
     systemPackages = with pkgs; [
       inputs.agenix.packages.x86_64-linux.default
       alejandra
       git
-      go # for hugo
-      htop
+      go
       hugo
       mdadm
-      vim
       wget
 #     file management tools
       flac

@@ -5,7 +5,6 @@
     ./dunst.nix
     ./firefox.nix
     ./htop.nix
-    ./nixvim.nix
     ./rofi.nix
   ];
 }

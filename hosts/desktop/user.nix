@@ -31,8 +31,6 @@
         bspwm.enable = true;
 	dunst.enable = false;
         firefox.enable = true;
-        htop.enable = true;
-        nixvim.enable = true;
         rofi.enable = true;
       };
       home = {

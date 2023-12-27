@@ -5,7 +5,7 @@
   ...
 }: {
   options.cute.misc.console = {
-    enable = lib.mkEnableOption "console theme";
+    enable = lib.mkEnableOption "";
   };
   config = lib.mkIf config.cute.misc.console.enable {
     console = {
