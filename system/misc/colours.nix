@@ -1,7 +1,7 @@
 {lib, ...}: {
   options.cute.colours = lib.mkOption {};
   config.cute.colours = {
-    primary = {
+    primary = { # fuji https://github.com/mountain-theme/Mountain
       bg = "0f0f0f";
       fg = "f0f0f0";
       main = "8aac8b";

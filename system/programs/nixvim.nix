@@ -4,27 +4,19 @@
   lib,
   config,
   ...
-}: let
-  mountain = pkgs.vimUtils.buildVimPlugin {
-    name = "mountain";
-    src = pkgs.fetchFromGitHub {
-      owner = "lokesh-krishna";
-      repo = "mountain.nvim";
-      rev = "f618ec96f80f89b06cf87221a7d624cab7092f4c";
-      hash = "sha256-Ks+Z5pIEeNy3v+sjsAE8eD/Q/okxmJmkWtB2onOtPqY=";
-    };
-  };
-in {
+}: {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options.cute.programs.nixvim = {
-    enable = lib.mkEnableOption "";
-  };
+  options.cute.programs.nixvim.enable = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.nixvim.enable {
     programs.nixvim = {
       enable = true;
+      luaLoader.enable = true;
       defaultEditor = true;
       vimAlias = true;
-      extraPlugins = [mountain];
+      extraPlugins = with pkgs.vimPlugins; [
+        plenary-nvim
+        inputs.mountain.packages.${pkgs.system}.nvim
+      ];
       colorscheme = "mountain";
       options = {
         number = true;
@@ -48,13 +40,18 @@ in {
       plugins = {
         treesitter.enable = true;
         rainbow-delimiters.enable = true;
-        lsp.enable = true;
+        lsp = {
+          enable = true;
+          servers.nil_ls = {
+            enable = true;
+            settings.formatting.command = ["alejandra" "--quiet"];
+          };
+        };
         none-ls = {
           enable = true;
           sources = {
-           # code_actions.statix.enable = true;
-           # diagnostics.deadnix.enable = true;
-           # formatting.alejandra.enable = true;
+            formatting.alejandra.enable = true;
+            diagnostics.deadnix.enable = true;
           };
         };
         nvim-tree = {
@@ -76,12 +73,12 @@ in {
             showOnDirs = true;
           };
         };
-      }; 
+      };
     };
     environment.systemPackages = with pkgs; [
+      alejandra
       deadnix
       nil
-      statix
     ];
   };
 }

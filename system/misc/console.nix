@@ -4,9 +4,7 @@
   lib,
   ...
 }: {
-  options.cute.misc.console = {
-    enable = lib.mkEnableOption "";
-  };
+  options.cute.misc.console.enable = lib.mkEnableOption "";
   config = lib.mkIf config.cute.misc.console.enable {
     console = {
       earlySetup = true;

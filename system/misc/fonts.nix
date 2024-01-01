@@ -4,9 +4,7 @@
   config,
   ...
 }: {
-  options.cute.misc.fonts = {
-    enable = lib.mkEnableOption "";
-  };
+  options.cute.misc.fonts.enable = lib.mkEnableOption "";
   config = lib.mkIf config.cute.misc.fonts.enable {
     fonts = {
       fonts = with pkgs; [
@@ -14,7 +12,7 @@
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
-	noto-fonts-extra
+        noto-fonts-extra
         (pkgs.callPackage ../../pkgs/sf.nix {})
         (google-fonts.override {fonts = ["Lato" "Nunito"];})
       ];

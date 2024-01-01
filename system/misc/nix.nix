@@ -3,16 +3,14 @@
   config,
   ...
 }: {
-  options.cute.misc.nix = {
-    enable = lib.mkEnableOption "";
-  };
+  options.cute.misc.nix.enable = lib.mkEnableOption "";
   config = lib.mkIf config.cute.misc.nix.enable {
     nix = {
       settings = {
         experimental-features = [
-	  "flakes"
-	  "nix-command"
-	];
+          "flakes"
+          "nix-command"
+        ];
         auto-optimise-store = true;
         allowed-users = ["@wheel"];
       };

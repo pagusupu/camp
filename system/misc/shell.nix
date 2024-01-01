@@ -6,11 +6,13 @@
 }: {
   options.cute.misc.shell = {
     enable = lib.mkEnableOption "";
+    prompt = lib.mkOption {type = lib.types.lines;};
   };
   config = lib.mkIf config.cute.misc.shell.enable {
     environment = {
       shells = [pkgs.zsh];
       binsh = lib.getExe pkgs.dash;
+      sessionVariables.FLAKE = "/home/pagu/flake/";
     };
     programs.zsh = {
       enable = true;
@@ -19,7 +21,6 @@
       enableGlobalCompInit = false;
       histSize = 10000;
       histFile = "$HOME/.cache/zsh_history";
-      promptInit = "PROMPT='%F{green}% %~ >%f '";
       shellInit = ''
         PROMPT="'%F{green}% %~ >%f '"
         bindkey "^[[1;5C" forward-word
@@ -43,6 +44,7 @@
         switch = "nh os switch";
         update = "sudo nix flake update ~/flake && switch";
       };
+      promptInit = "PROMPT=${config.cute.misc.shell.prompt}";
     };
   };
 }
