@@ -36,7 +36,7 @@
           https = true;
           phpOptions = {
             "opcache.interned_strings_buffer" = "16";
-	    "output_buffering" = "off";
+            "output_buffering" = "off";
           };
         };
         postgresql = {

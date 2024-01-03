@@ -4,10 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.bspwm = {
-    enable = lib.mkEnableOption "";
-  };
-  config = lib.mkIf config.cute.programs.bspwm.enable {
+  options.cute.hm-programs.bspwm.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm-programs.bspwm.enable {
     xsession.windowManager.bspwm = {
       enable = true;
       startupPrograms = ["discord"];

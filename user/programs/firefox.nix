@@ -4,10 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.firefox = {
-    enable = lib.mkEnableOption "";
-  };
-  config = lib.mkIf config.cute.programs.firefox.enable {
+  options.cute.hm-programs.firefox.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.programs.hm-firefox.enable {
     programs.firefox = {
       enable = true;
       policies = {

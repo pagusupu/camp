@@ -20,8 +20,8 @@
             };
             server = {
               ROOT_URL = "https://${domain}";
-	      DOMAIN = "${domain}";
-              HTTP_PORT = 8333; 
+              DOMAIN = "${domain}";
+              HTTP_PORT = 8333;
               LANDING_PAGE = "/explore/repos";
             };
             session.COOKIE_SECURE = true;

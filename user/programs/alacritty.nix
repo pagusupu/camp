@@ -3,10 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.programs.alacritty = {
-    enable = lib.mkEnableOption "";
-  };
-  config = lib.mkIf config.cute.programs.alacritty.enable {
+  options.cute.hm-programs.alacritty.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm-programs.alacritty.enable {
     programs.alacritty = {
       enable = true;
       settings = {

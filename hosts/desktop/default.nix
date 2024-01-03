@@ -11,17 +11,24 @@
   ];
   cute = {
     misc = {
+      age.enable = true;
       console.enable = true;
       fonts.enable = true;
       nix.enable = true;
-      shell.enable = true;
-      vim.enable = true;
+      shell = {
+        enable = true;
+        prompt = "'%F{green}% %~ >%f '";
+      };
+    };
+    programs = {
+      htop.enable = true;
+      nixvim.enable = true;
     };
     xserver = {
       desktop.enable = true;
       common = {
-	awesome.enable = false;
-	lightdm.enable = true;
+        awesome.enable = false;
+        lightdm.enable = true;
       };
     };
   };
@@ -43,7 +50,7 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
-    }; 
+    };
   };
   security = {
     rtkit.enable = true;
@@ -56,7 +63,7 @@
   environment = {
     defaultPackages = lib.mkForce [];
     systemPackages = with pkgs; [alejandra inputs.agenix.packages.x86_64-linux.default];
-    sessionVariables = {FLAKE="/home/pagu/flake";};
+    sessionVariables = {FLAKE = "/home/pagu/flake";};
   };
   system.stateVersion = "23.11";
 }

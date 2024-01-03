@@ -26,8 +26,8 @@
       nextcloud.enable = true;
       vaultwarden.enable = true;
       nginx = {
-	enable = true;
-	domain = "pagu.cafe";
+        enable = true;
+        domain = "pagu.cafe";
       };
     };
   };
@@ -42,17 +42,17 @@
     hashedPasswordFile = config.age.secrets.user.path;
   };
   environment.systemPackages = with pkgs; [
-  # general
+    # general
     git
-    go # just for hugo 
+    go # just for hugo
     hugo
     mdadm
     wget
-  # file management
+    # file management
     flac
     rnr
     yazi
-  # command alts
+    # command alts
     bat # cat
     eza # ls
     rm-improved # rm
@@ -109,6 +109,6 @@
     };
   };
   swapDevices = [{device = "/dev/disk/by-label/swap";}];
-# no touchy
+  # no touchy
   system.stateVersion = "23.11";
 }

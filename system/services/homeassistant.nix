@@ -13,10 +13,10 @@
         # "esphome"
         # "met"
         # "radiob_browser"
-	"cups"
+        "cups"
         "fritz"
         "light"
-	"tuya"
+        "tuya"
         "webostv"
         "wiz"
       ];
@@ -29,6 +29,6 @@
         };
       };
     };
-    nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"]; #https://nixos.wiki/wiki/Home_Assistant#OpenSSL_1.1_is_marked_as_insecure.2C_refusing_to_evaluate
+    nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"]; # https://nixos.wiki/wiki/Home_Assistant#OpenSSL_1.1_is_marked_as_insecure.2C_refusing_to_evaluate
   };
 }

@@ -1,8 +1,5 @@
 {
   inputs = {
-    jelly.url = "github:nu-nu-ko/nixpkgs?ref=nixos-jellyfin-dirs";
-
-
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     agenix = {

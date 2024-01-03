@@ -3,10 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.programs.dunst = {
-    enable = lib.mkEnableOption "";
-  };
-  config = lib.mkIf config.cute.programs.dunst.enable {
+  options.cute.hm-programs.dunst.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm-programs.dunst.enable {
     services.dunst = {
       enable = true;
       settings = {
