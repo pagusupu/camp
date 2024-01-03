@@ -1,5 +1,8 @@
 {
   inputs = {
+    jelly.url = "github:nu-nu-ko/nixpkgs?ref=nixos-jellyfin-dirs";
+
+
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     agenix = {
@@ -22,6 +25,10 @@
       url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,6 +39,7 @@
     home-manager,
     agenix,
     nh,
+    nixos-mailserver,
     ...
   } @ inputs: let
     importAll = path:
@@ -60,6 +68,7 @@
             ./hosts/server.nix
             agenix.nixosModules.default
             nh.nixosModules.default
+	    nixos-mailserver.nixosModules.default
           ]
           ++ importAll ./libs
           ++ importAll ./system;

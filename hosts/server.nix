@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  inputs,
   config,
   ...
 }: {
@@ -21,9 +19,10 @@
     };
     services = {
       forgejo.enable = true;
-   #  homeassistant.enable = true; insecure component
+      homeassistant.enable = true;
       jellyfin.enable = true;
       komga.enable = true;
+      mailserver.enable = true;
       nextcloud.enable = true;
       vaultwarden.enable = true;
       nginx = {
