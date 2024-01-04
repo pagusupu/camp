@@ -208,22 +208,6 @@
         "type": "github"
       }
     },
-    "jelly": {
-      "locked": {
-        "lastModified": 1704248712,
-        "narHash": "sha256-QqKlHTAoL1/Kd6GNdHrveGY2OaGYMaYDIs/ssuo2Cno=",
-        "owner": "nu-nu-ko",
-        "repo": "nixpkgs",
-        "rev": "d943091b8ecf484ef1b2969a0a4926a5b6bad83c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nu-nu-ko",
-        "ref": "nixos-jellyfin-dirs",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "mountain": {
       "inputs": {
         "nixpkgs": [
@@ -419,7 +403,6 @@
         "agenix": "agenix",
         "alejandra": "alejandra",
         "home-manager": "home-manager",
-        "jelly": "jelly",
         "mountain": "mountain",
         "nh": "nh",
         "nixos-mailserver": "nixos-mailserver",
