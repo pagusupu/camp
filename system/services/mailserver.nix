@@ -17,11 +17,12 @@
         fqdn = "mail.${domain}";
         domains = ["${domain}"];
         loginAccounts = {
-          "host@${domain}" = {
+          "me@${domain}" = {
             hashedPasswordFile = config.age.secrets.mail.path;
-            aliases = ["me@${domain}" "signup@${domain}" "acme@${domain}"];
+            aliases = ["signup@${domain}" "acme@${domain}"];
           };
           "nextcloud@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
+	# "vaultwarden@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
         };
         certificateScheme = "acme-nginx";
       };
