@@ -19,7 +19,7 @@
         loginAccounts = {
           "me@${domain}" = {
             hashedPasswordFile = config.age.secrets.mail.path;
-            aliases = ["signup@${domain}" "acme@${domain}"];
+            aliases = ["signup@${domain}" "acme@${domain}" "admin@${domain}"];
           };
           "nextcloud@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
 	# "vaultwarden@${domain}".hashedPasswordFile = config.age.secrets.mail.path;

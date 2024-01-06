@@ -12,19 +12,15 @@
         forgejo = {
           enable = true;
           settings = {
-            ui = {
-              DEFAULT_THEME = "forgejo-dark";
-            };
-            service = {
-              DISABLE_REGSTRATION = true;
-            };
+            ui.DEFAULT_THEME = "forgejo-dark";
+            service.DISABLE_REGSTRATION = true;
+            session.COOKIE_SECURE = true;
             server = {
               ROOT_URL = "https://${domain}";
               DOMAIN = "${domain}";
               HTTP_PORT = 8333;
               LANDING_PAGE = "/explore/repos";
             };
-            session.COOKIE_SECURE = true;
           };
           stateDir = "/storage/services/forgejo";
         };

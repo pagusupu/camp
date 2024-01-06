@@ -24,12 +24,12 @@
     users.pagu = {
       imports = [
         ../../user
-	../../system/misc/colours.nix
+        ../../system/misc/colours.nix
       ];
       cute.hm-programs = {
         alacritty.enable = true;
         bspwm.enable = true;
-	dunst.enable = false;
+        dunst.enable = false;
         firefox.enable = true;
         rofi.enable = true;
       };
@@ -41,13 +41,13 @@
           osu-lazer-bin
           prismlauncher-qt5
           protontricks
-	  protonup-ng
+          protonup-ng
           r2modman
           #apps
           discord
-            #feishin - failed build
+          #feishin - failed build
           #tui
-	  eza
+          eza
           ueberzugpp
           yazi
           #environment
@@ -55,13 +55,13 @@
           maim
           feh
         ];
-	sessionVariables = {
+        sessionVariables = {
           FLAKE = "/home/pagu/flake";
-	};
+        };
         stateVersion = "23.05";
       };
       programs.git = {
-	enable = true;
+        enable = true;
         userName = "pagusupu";
         userEmail = "me@pagu.cafe";
       };

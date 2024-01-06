@@ -1,6 +1,6 @@
 {
   inputs = {
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    jelly.url = "github:nu-nu-ko/nixpkgs?ref=nixos-jellyfin-dirs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     agenix = {
       url = "github:ryantm/agenix";
@@ -9,6 +9,10 @@
         darwin.follows = "";
         home-manager.follows = "";
       };
+    };
+    conduit = {
+      url = "gitlab:famedly/conduit";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -65,7 +69,7 @@
             ./hosts/server.nix
             agenix.nixosModules.default
             nh.nixosModules.default
-	    nixos-mailserver.nixosModules.default
+            nixos-mailserver.nixosModules.default
           ]
           ++ importAll ./libs
           ++ importAll ./system;

@@ -2,8 +2,16 @@
   config,
   lib,
   pkgs,
+  modulesPath,
+  inputs,
   ...
 }: {
+  disabledModules = [
+    "${modulesPath}/services/misc/jellyfin.nix"
+  ];
+  imports = [
+    "${inputs.jelly}/nixos/modules/services/misc/jellyfin.nix"
+  ];
   options.cute.services.jellyfin.enable = lib.mkEnableOption "";
   config = let
     domain = "jelly.${config.cute.services.nginx.domain}";
