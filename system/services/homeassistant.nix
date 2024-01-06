@@ -5,6 +5,10 @@
 }: {
   options.cute.services.homeassistant.enable = lib.mkEnableOption "";
   config = lib.mkIf config.cute.services.homeassistant.enable {
+    age.secrets.home-assistant = {
+      file = ../../secrets/home-assistant.age;
+      owner = "hass";
+    };
     services.home-assistant = {
       enable = true;
       openFirewall = true;
@@ -16,6 +20,7 @@
         "cups"
         "fritz"
         "light"
+        "seventeentrack"
         "tuya"
         "webostv"
         "wiz"
@@ -26,6 +31,12 @@
           time_zone = "Pacific/Auckland";
           temperature_unit = "C";
           unit_system = "metric";
+        };
+        sensor = {
+          platform = "seventeentrack";
+          username = "me@pagu.cafe";
+          password = ""; # need to figure this out
+          show_delivered = true;
         };
       };
     };
