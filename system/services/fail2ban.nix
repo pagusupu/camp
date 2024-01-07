@@ -9,7 +9,7 @@
       enable = true;
       bantime-increment = {
         enable = true;
-        factor = "8";
+        factor = "16";
       };
     };
   };
