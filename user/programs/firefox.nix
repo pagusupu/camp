@@ -3,14 +3,14 @@
   config,
   ...
 }: {
-  options.cute.hm.programs.firefox.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.hm.programs.firefox.enable {
+  options.hm.programs.firefox.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.hm.programs.firefox.enable {
     programs.firefox = {
       enable = true;
       policies = {
         Preferences = {
           "gfx.webrender.all" = true;
-          "browser.aboutConfig.showWarning" = true;
+          "browser.aboutConfig.showWarning" = false;
           "browser.tabs.firefox-view" = true;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "privacy.firstparty.isolate" = true;

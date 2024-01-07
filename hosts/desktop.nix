@@ -51,7 +51,7 @@
         ../user
         ../system/misc/colours.nix
       ];
-      cute.hm.programs = {
+      hm.programs = {
         alacritty.enable = true;
         bspwm.enable = true;
         dunst.enable = true;

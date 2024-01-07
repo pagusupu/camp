@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.hm-programs.hyprland.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.hm-programs.hyprland.enable {
+  options.hm.programs.hyprland.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.hm.programs.hyprland.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
