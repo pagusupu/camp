@@ -3,8 +3,8 @@
   config,
   ...
 }: {
-  options.cute.programs.rofi.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.programs.rofi.enable {
+  options.cute.hm.programs.rofi.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.programs.rofi.enable {
     programs.rofi = {
       enable = true;
       terminal = "alacritty";

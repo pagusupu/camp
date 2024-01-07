@@ -7,7 +7,7 @@
     enable = true;
     theme = {
       package = inputs.mountain.packages.${pkgs.system}.gtk;
-      name = "mountain";
+      name = "phocus-mountain";
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;

@@ -1,6 +1,6 @@
 let
   server = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKj709k07PEtMHhT9Leb1pVkS2kduiyogmyXqNmLRgfp";
-  desktop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM96wFExSY7APK/zcIs957BxI7Nt2AsBQx8enoJldv9q";
+  desktop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk";
 in {
   "nextcloud.age".publicKeys = [server];
   "home-assistant.age".publicKeys = [server];

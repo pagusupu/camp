@@ -8,12 +8,12 @@
   config = lib.mkIf config.cute.misc.fonts.enable {
     fonts = {
       fonts = with pkgs; [
+        monaspace
         nerdfonts
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts-extra
-        (pkgs.callPackage ../../pkgs/sf.nix {})
         (google-fonts.override {fonts = ["Lato" "Nunito"];})
       ];
       fontconfig = {

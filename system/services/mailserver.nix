@@ -1,8 +1,10 @@
 {
   config,
   lib,
+  inputs,
   ...
 }: {
+  imports = [inputs.nixos-mailserver.nixosModules.default];
   options.cute.services.mailserver.enable = lib.mkEnableOption "";
   config = let
     domain = "${config.cute.services.nginx.domain}";

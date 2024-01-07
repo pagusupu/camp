@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.hm-programs.alacritty.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.hm-programs.alacritty.enable {
+  options.cute.hm.programs.alacritty.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.programs.alacritty.enable {
     programs.alacritty = {
       enable = true;
       settings = {
@@ -17,7 +17,7 @@
         font = {
           size = 12;
           normal = {
-            family = "Liga SFMono Nerd Font";
+            family = "Monaspace Neon";
             style = "Regular";
           };
         };

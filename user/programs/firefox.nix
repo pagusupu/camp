@@ -1,11 +1,10 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
-  options.cute.hm-programs.firefox.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.programs.hm-firefox.enable {
+  options.cute.hm.programs.firefox.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.programs.firefox.enable {
     programs.firefox = {
       enable = true;
       policies = {
@@ -44,6 +43,9 @@
           Locked = false;
         };
         ExtensionSettings = {
+          "*" = {
+            default_area = "menupanel";
+          };
           "uBlock0@raymondhill.net" = {
             installation_mode = "force_installed";
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4188488/ublock_origin-1.53.0.xpi";
@@ -56,6 +58,10 @@
             installation_mode = "force_installed";
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.4.23.xpi";
           };
+          "" = {
+            installation_mode = "force_installed";
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";
+          };
         };
       };
       profiles."pagu" = {
@@ -67,48 +73,8 @@
           order = [
             "DuckDuckGo"
             "Google"
-            "Nix Packages"
-            "Nix Options"
           ];
           engines = {
-            "Nix Packages" = {
-              urls = [
-                {
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    {
-                      name = "type";
-                      value = "packages";
-                    }
-                    {
-                      name = "query";
-                      value = "{searchTerms}";
-                    }
-                  ];
-                }
-              ];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@np"];
-            };
-            "Nix Options" = {
-              urls = [
-                {
-                  template = "https://search.nixos.org/options";
-                  params = [
-                    {
-                      name = "type";
-                      value = "options";
-                    }
-                    {
-                      name = "query";
-                      value = "{searchTerms}";
-                    }
-                  ];
-                }
-              ];
-              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@no"];
-            };
             "Bing".metaData.hidden = true;
             "Amazon.com".metaData.hidden = true;
             "Wikipedia (en)".metaData.hidden = true;

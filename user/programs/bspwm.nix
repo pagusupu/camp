@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.hm-programs.bspwm.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.hm-programs.bspwm.enable {
+  options.cute.hm.programs.bspwm.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.programs.bspwm.enable {
     xsession.windowManager.bspwm = {
       enable = true;
       startupPrograms = ["discord"];
@@ -18,8 +18,8 @@
         border_width = 2;
         normal_border_color = "#${config.cute.colours.primary.bg}";
         focused_border_color = "#${config.cute.colours.primary.main}";
-	automatic_scheme = "longest_side";
-	focus_follows_pointer = true;
+        automatic_scheme = "longest_side";
+        focus_follows_pointer = true;
       };
       rules = {
         "discord" = {
@@ -51,11 +51,11 @@
       };
       picom = {
         enable = true;
-	package = pkgs.picom-next;
+        package = pkgs.picom-next;
         backend = "glx";
         fade = true;
         fadeDelta = 2;
-	vSync = true;
+        vSync = true;
       };
     };
   };

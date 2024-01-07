@@ -32,5 +32,11 @@
         cute.primary.fg
       ];
     };
+    # quiet
+    boot = {
+      consoleLogLevel = 0;
+      initrd.verbose = false;
+      kernelParams = ["quiet" "splash"];
+    };
   };
 }

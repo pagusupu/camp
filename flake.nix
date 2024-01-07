@@ -40,7 +40,6 @@
     home-manager,
     agenix,
     nh,
-    nixos-mailserver,
     ...
   } @ inputs: let
     importAll = path:
@@ -53,13 +52,12 @@
         specialArgs = {inherit inputs;};
         modules =
           [
-            ./hosts/desktop
+            ./hosts/desktop.nix
             inputs.home-manager.nixosModules.home-manager
             agenix.nixosModules.default
             nh.nixosModules.default
           ]
           ++ importAll ./libs
-          ++ importAll ./user
           ++ importAll ./system;
       };
       nixserver = nixpkgs.lib.nixosSystem {
@@ -69,7 +67,6 @@
             ./hosts/server.nix
             agenix.nixosModules.default
             nh.nixosModules.default
-            nixos-mailserver.nixosModules.default
           ]
           ++ importAll ./libs
           ++ importAll ./system;
