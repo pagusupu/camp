@@ -2,6 +2,7 @@
   inputs = {
     jelly.url = "github:nu-nu-ko/nixpkgs?ref=nixos-jellyfin-dirs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/Hyprland";
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
@@ -43,7 +44,6 @@
     ...
   } @ inputs: let
     importAll = path:
-    # recursive import so no default.nix spam. from https://github.com/nu-nu-ko/crystal/blob/main/flake.nix
       builtins.filter (nixpkgs.lib.hasSuffix ".nix")
       (map toString (nixpkgs.lib.filesystem.listFilesRecursive path));
   in {

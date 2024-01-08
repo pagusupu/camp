@@ -8,7 +8,7 @@
   config = lib.mkIf config.cute.misc.fonts.enable {
     fonts = {
       fonts = with pkgs; [
-        monaspace
+       # monaspace
         nerdfonts
         noto-fonts
         noto-fonts-cjk
@@ -25,7 +25,7 @@
         defaultFonts = {
           sansSerif = ["Nunito"];
           serif = ["Lato"];
-          monospace = ["Liga SFMono Nerd Font"];
+          monospace = ["MonaspiceNe Nerd Font"];
         };
       };
     };

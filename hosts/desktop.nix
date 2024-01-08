@@ -19,10 +19,12 @@
       htop.enable = true;
       nixvim.enable = true;
     };
-    xserver = {
-      desktop.enable = true;
-      common = {
-        lightdm.enable = true;
+    wayland = {
+      programs = {
+        hyprland.enable = true;
+      };
+      misc = {
+        greetd.enable = true;
       };
     };
   };
@@ -48,44 +50,34 @@
     extraSpecialArgs = {inherit inputs;};
     users.pagu = {
       imports = [
-        ../user
         ../system/misc/colours.nix
+        ../user
       ];
       hm.programs = {
         alacritty.enable = true;
-        bspwm.enable = true;
-        dunst.enable = true;
         firefox.enable = true;
-        rofi.enable = true;
+        hyprland.config = true;
+        swaylock.enable = true;
+        wofi.enable = true;
       };
       home = {
         username = "pagu";
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
-          # games
           osu-lazer-bin
           prismlauncher-qt5
           r2modman
           xivlauncher
           protontricks
           protonup-ng
-          # misc apps
-          discord
-          # feishin - build failure
-          # tui/cli
-          bat
-          eza
-          rm-improved
+          discord 
           ueberzugpp
           yazi
-          # environment
-          xclip
-          maim
-          feh
+          wl-clipboard
         ];
-	sessionVariables = {
-	  EDITOR = "nvim";
-	};
+        sessionVariables = {
+          EDITOR = "nvim";
+        };
         stateVersion = "23.05";
       };
       programs.git = {
@@ -111,6 +103,7 @@
   security = {
     rtkit.enable = true;
     tpm2.enable = true;
+    pam.services.swaylock = {};
     sudo = {
       execWheelOnly = true;
       wheelNeedsPassword = false;
@@ -119,7 +112,6 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
-      timeout = 0;
       grub = {
         enable = true;
         efiSupport = true;
@@ -134,6 +126,8 @@
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
     };
     kernelParams = [
+      "video=DP-3:1920x1080@165"
+      "video=HDMI-A-1:1920x1080@75"
       "initcall_blacklist=acpi_cpu_freq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"

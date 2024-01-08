@@ -44,6 +44,8 @@
           enable = true;
           servers.nil_ls = {
             enable = true;
+	    autostart = true;
+	    cmd = ["nil"];
             settings.formatting.command = ["alejandra" "--quiet"];
           };
         };

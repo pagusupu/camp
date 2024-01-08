@@ -9,11 +9,6 @@
     prompt = lib.mkOption {type = lib.types.lines;};
   };
   config = lib.mkIf config.cute.misc.shell.enable {
-    environment = {
-      shells = [pkgs.zsh];
-      binsh = lib.getExe pkgs.dash;
-      sessionVariables.FLAKE = "/home/pagu/flake/";
-    };
     programs.zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -40,11 +35,21 @@
       shellAliases = {
         cat = "bat";
         ls = "eza";
-        rm = "rip"; 
+        rm = "rip";
         switch = "nh os switch";
         update = "sudo nix flake update ~/flake && switch";
       };
       promptInit = "PROMPT=${config.cute.misc.shell.prompt}";
+    };
+    environment = {
+      shells = [pkgs.zsh];
+      binsh = lib.getExe pkgs.dash;
+      sessionVariables.FLAKE = "/home/pagu/flake/";
+      systemPackages = with pkgs; [
+        bat
+        eza
+        rm-improved
+      ];
     };
   };
 }

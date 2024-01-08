@@ -1,9 +1,9 @@
 {
   imports = [
     ./alacritty.nix
-    ./bspwm.nix
-    ./dunst.nix
     ./firefox.nix
-    ./rofi.nix
+    ./hyprland.nix
+    ./swaylock.nix
+    ./wofi.nix
   ];
 }

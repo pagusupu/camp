@@ -52,7 +52,7 @@
   environment.systemPackages = with pkgs; [
     # general
     git
-    go # just for hugo
+    go
     hugo
     mdadm
     wget
@@ -60,10 +60,6 @@
     flac
     rnr
     yazi
-    # command alts
-    bat # cat
-    eza # ls
-    rm-improved # rm
   ];
   security.sudo.execWheelOnly = true;
   services.openssh = {
