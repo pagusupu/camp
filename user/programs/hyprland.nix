@@ -8,7 +8,7 @@
   config = let
     m1 = "DP-3";
     m2 = "HDMI-A-1";
-    # bg = "/home/pagu/flake/user/images/bg.png";
+    bg = "/home/pagu/flake/user/images/bg.jpg";
     mod = "SUPER";
   in
     lib.mkIf config.hm.programs.hyprland.config {
@@ -18,6 +18,10 @@
           exec-once = [
             "swaylock"
             "swayidle -w before-sleep 'swaylock'"
+	    "swaybg -i ${bg} -o ${m1} -m center"
+	    "swaybg -i ${bg} -o ${m2} -m center"
+	    "waybar"
+	    "vencorddesktop"
           ];
           monitor = [
             "${m1}, 1920x1080@165, 0x0, 1"
@@ -65,8 +69,10 @@
           };
           bind = [
             "${mod}, RETURN, exec, alacritty"
-            "${mod}, TAB, exec, wofi --show drun"
+            "${mod}, TAB, exec, tofi-drun"
 	    "${mod}, L, exec, swaylock"
+	    "${mod}, BACKSPACE, exec, hyprshot -m region --clipboard-only"
+	    "${mod}:SHIFT, BACKSPACE, exec, hyprshot -m region -o ~/pictures/screenshots"
 
             "${mod}, Q, killactive"
             "${mod}, M, exit"
@@ -101,6 +107,7 @@
       };
       home.packages = with pkgs; [
         swayidle
+	swaybg
       ];
     };
 }

@@ -58,6 +58,10 @@
             installation_mode = "force_installed";
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.4.23.xpi";
           };
+	  "treestyletab@piro.sakura.ne.jp" = {
+	    installation_mode = "force_installed";
+	    install_url = "https://addons.mozilla.org/firefox/downloads/file/4197314/tree_style_tab-3.9.19.xpi";
+	  };
           "" = {
             installation_mode = "force_installed";
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";

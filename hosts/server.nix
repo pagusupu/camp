@@ -10,7 +10,7 @@
       nix.enable = true;
       shell = {
         enable = true;
-        prompt = "'%F{magenta}% %~ >%f '";
+        prompt = "'%F{yellow}% %~ >%f '";
       };
     };
     programs = {

@@ -13,11 +13,11 @@
       luaLoader.enable = true;
       defaultEditor = true;
       vimAlias = true;
-      extraPlugins = with pkgs.vimPlugins; [
-        plenary-nvim
-        inputs.mountain.packages.${pkgs.system}.nvim
-      ];
-      colorscheme = "mountain";
+      colorschemes.rose-pine = {
+	enable = true;
+	disableItalics = true;
+      };
+      extraPlugins = with pkgs.vimPlugins; [plenary-nvim]; 
       options = {
         number = true;
         shiftwidth = 2;

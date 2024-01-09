@@ -8,13 +8,13 @@
   config = lib.mkIf config.cute.misc.fonts.enable {
     fonts = {
       fonts = with pkgs; [
-       # monaspace
+        lato
+	quicksand
         nerdfonts
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts-extra
-        (google-fonts.override {fonts = ["Lato" "Nunito"];})
       ];
       fontconfig = {
         enable = true;
@@ -23,8 +23,8 @@
         hinting.autohint = true;
         subpixel.rgba = "rgb";
         defaultFonts = {
-          sansSerif = ["Nunito"];
-          serif = ["Lato"];
+	  serif = ["Lato"];
+          sansSerif = ["Quicksand"];
           monospace = ["MonaspiceNe Nerd Font"];
         };
       };

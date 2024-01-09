@@ -12,7 +12,7 @@
       nix.enable = true;
       shell = {
         enable = true;
-        prompt = "'%F{green}% %~ >%f '";
+        prompt = "'%F{magenta}% %~ >%f '";
       };
     };
     programs = {
@@ -57,8 +57,9 @@
         alacritty.enable = true;
         firefox.enable = true;
         hyprland.config = true;
+        mako.enable = true;
         swaylock.enable = true;
-        wofi.enable = true;
+        waybar.enable = true; 
       };
       home = {
         username = "pagu";
@@ -70,13 +71,18 @@
           xivlauncher
           protontricks
           protonup-ng
-          discord 
+          vesktop
           ueberzugpp
           yazi
           wl-clipboard
+          imv
+          hyprshot
+          gnome.nautilus
+	  tofi
         ];
         sessionVariables = {
           EDITOR = "nvim";
+          MOZ_ENABLE_WAYLAND = 1;
         };
         stateVersion = "23.05";
       };
