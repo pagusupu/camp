@@ -13,50 +13,83 @@
           position = "left";
           output = ["DP-3"];
           width = 40;
+	  spacing = 6;
           margin-top = 10;
           margin-bottom = 10;
           margin-left = 10;
-	  modules-left = ["hyprland/workspaces"];
-	  modules-right = ["clock"];
-	  "hyprland/workspaces" = {
-	    format = "{icon}";
-	    format-icons = {
-	      "1" = "1";
-	      "2" = "2";
-	      "3" = "3";
-	      "4" = "4";
-	      "5" = "5";
-	      "6" = "6";
-	      "7" = "7";
-	      "8" = "8";
-	    };
-	    persistent-workspaces = {
-	      "1" = ["DP-3"];
-	      "2" = ["DP-3"];
-	      "3" = ["DP-3"];
-	      "4" = ["DP-3"];
-	      "5" = ["HDMI-A-1"];
-	      "6" = ["HDMI-A-1"];
-	      "7" = ["HDMI-A-1"];
-	      "8" = ["HDMI-A-1"];
-	    };
-	  };
+          modules-left = ["hyprland/workspaces"];
+          modules-right = ["pulseaudio/slider" "wireplumber" "clock"];
 	  "clock" = {
-	    format = "{: %I \n %M \n %p}";
+            format = "{: %I \n %M \n %p}";
+          };
+	  "pulseaudio/slider" = {
+	    min = 0;
+	    max = 200;
+	    orientation = "vertical";
 	  };
+	  "wireplumber" = {
+	    format = "{icon}";
+	    format-muted = "󰝟";
+	    format-icons = ["󰕿" "󰖀" "󰕾"];
+	    on-click = "wpctl set-mute 49 toggle";
+	    scroll-step = 0;
+	    tooltip = false;
+	  };
+          "hyprland/workspaces" = {
+            format = "{icon}";
+            format-icons = {
+              "1" = "1";
+              "2" = "2";
+              "3" = "3";
+              "4" = "4";
+            };
+            persistent-workspaces = {
+              "1" = ["DP-3"];
+              "2" = ["DP-3"];
+              "3" = ["DP-3"];
+              "4" = ["DP-3"];
+            };
+          }; 
         };
       };
       style = ''
         * {
           all: unset;
-	  font-family: "MonaspiceNe Nerd Font";
-	  font-size: 15px;
+          font-family: "MonaspiceNe Nerd Font";
+          font-size: 15px;
         }
+	.modules-right {
+	  padding-bottom: 6px;
+	}
+	.modules-left {
+	  padding-top: 6px;
+	}
         window#waybar {
-          background: #${config.cute.colours.primary.bg};
+          background: #${config.cute.colours.base};
         }
         #workspaces button.active {
-	  color: #${config.cute.colours.primary.main};
+          color: #${config.cute.colours.iris};
+        }
+	#wireplumber {
+	  font-size: 20px;
+	 /* background-color: #${config.cute.colours.overlay}; */
+	}
+        #pulseaudio-slider slider {
+	  min-height: 0px;
+	  min-width: 0px;
+	  opacity: 0;
+	  background-image: none;
+	  border: none;
+	  box-shadow: none;
+	}
+	#pulseaudio-slider trough {
+	  min-height: 100px;
+	  min-width: 20px;
+	  background-color: #${config.cute.colours.surface};
+	}
+	#pulseaudio-slider highlight {
+	  min-width: 20px;
+	  background-color: #${config.cute.colours.iris};
 	}
       '';
     };

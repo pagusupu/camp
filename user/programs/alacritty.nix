@@ -29,30 +29,30 @@
 	  cute = config.cute.colours; 
 	in {
           primary = {
-            background = "#" + cute.primary.bg;
-            foreground = "#" + cute.primary.fg;
-            dim_foreground = "#" + cute.normal.black;
-            bright_foreground = "#" + cute.bright.black;
+            background = "#" + cute.base;
+            foreground = "#" + cute.text;
+            dim_foreground = "#" + cute.subtle;
+            bright_foreground = "#" + cute.text;
           };
           normal = {
-            black = "#" + cute.normal.black;
-            red = "#" + cute.normal.red;
-            green = "#" + cute.normal.green;
-            yellow = "#" + cute.normal.yellow;
-            blue = "#" + cute.normal.blue;
-            magenta = "#" + cute.normal.magenta;
-            cyan = "#" + cute.normal.cyan;
-            white = "#" + cute.normal.white;
+            black = "#" + cute.muted;
+            red = "#" + cute.love;
+            green = "#" + cute.pine;
+            yellow = "#" + cute.gold;
+            blue = "#" + cute.foam;
+            magenta = "#" + cute.iris;
+            cyan = "#" + cute.rose;
+            white = "#" + cute.text;
           };
           bright = {
-            black = "#" + cute.bright.black;
-            red = "#" + cute.bright.red;
-            green = "#" + cute.bright.green;
-            yellow = "#" + cute.bright.yellow;
-            blue = "#" + cute.bright.blue;
-            magenta = "#" + cute.bright.magenta;
-            cyan = "#" + cute.bright.cyan;
-            white = "#" + cute.bright.white;
+            black = "#" + cute.muted;
+            red = "#" + cute.love;
+            green = "#" + cute.pine;
+            yellow = "#" + cute.gold;
+            blue = "#" + cute.foam;
+            magenta = "#" + cute.iris;
+            cyan = "#" + cute.rose;
+            white = "#" + cute.text;
           };
         };
       };

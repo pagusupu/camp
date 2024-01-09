@@ -36,8 +36,8 @@
             gaps_in = 5;
             gaps_out = 10;
             border_size = 2;
-            "col.active_border" = "${"0xFF" + config.cute.colours.primary.main}";
-            "col.inactive_border" = "${"0xFF" + config.cute.colours.primary.bg}";
+            "col.active_border" = "${"0xFF" + config.cute.colours.iris}";
+            "col.inactive_border" = "${"0xFF" + config.cute.colours.base}";
             no_cursor_warps = true;
             resize_on_border = true;
             hover_icon_on_border = false;

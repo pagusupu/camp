@@ -1,32 +1,23 @@
 {lib, ...}: {
   options.cute.colours = lib.mkOption {};
   config.cute.colours = {
-    primary = {
-      bg = "191724";
-      fg = "e0def4";
-      main = "c4a7e7";
-    };
-    normal = {
-      black = "26233a";
-      red = "eb6f92";
-      green = "31748f";
-      yellow = "f6c177";
-      blue = "9ccfd8";
-      magenta = "c4a7e7";
-      cyan = "ebbcba";
-      orange = "ebbcba";
-      white = "e0def4";
-    };
-    bright = {
-      black = "6e6a86";
-      red = "eb6f92";
-      green = "31748f";
-      yellow = "f6c177";
-      blue = "9ccfd8";
-      magenta = "c4a7e7";
-      cyan = "ebbcba";
-      orange = "ebbcba";
-      white = "e0def4";
+  # https://rosepinetheme.com/palette/ingredients/
+    base = "191724";
+    surface = "1f1d2e";
+    overlay = "26233a";
+    muted = "6e6a86";
+    subtle = "908caa";
+    text = "e0def4";
+    love = "eb6f92";
+    gold = "f6c177";
+    rose = "ebbcba";
+    pine = "31748f";
+    foam = "9ccfd8";
+    iris = "c4a7e7";
+    highlight = {
+      low = "21202e";
+      med = "403d52";
+      high = "524f67";
     };
   };
 }

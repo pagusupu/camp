@@ -10,7 +10,7 @@
       enable = true;
       package = pkgs.swaylock-effects;
       settings = {
-	color = "#${config.cute.colours.primary.bg}";
+	color = "#${config.cute.colours.base}";
         clock = true;
         indicator = true;
       };
