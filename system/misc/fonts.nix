@@ -9,7 +9,7 @@
     fonts = {
       fonts = with pkgs; [
         lato
-	quicksand
+        quicksand
         nerdfonts
         noto-fonts
         noto-fonts-cjk
@@ -23,7 +23,7 @@
         hinting.autohint = true;
         subpixel.rgba = "rgb";
         defaultFonts = {
-	  serif = ["Lato"];
+          serif = ["Lato"];
           sansSerif = ["Quicksand"];
           monospace = ["MonaspiceNe Nerd Font"];
         };

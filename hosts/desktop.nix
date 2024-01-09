@@ -59,6 +59,7 @@
         hyprland.config = true;
         mako.enable = true;
         swaylock.enable = true;
+	tofi.enable = true;
         waybar.enable = true; 
       };
       home = {
@@ -78,7 +79,6 @@
           imv
           hyprshot
           gnome.nautilus
-	  tofi
         ];
         sessionVariables = {
           EDITOR = "nvim";
