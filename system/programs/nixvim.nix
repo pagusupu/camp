@@ -14,10 +14,10 @@
       defaultEditor = true;
       vimAlias = true;
       colorschemes.rose-pine = {
-	enable = true;
-	disableItalics = true;
+        enable = true;
+        disableItalics = true;
       };
-      extraPlugins = with pkgs.vimPlugins; [plenary-nvim]; 
+      extraPlugins = with pkgs.vimPlugins; [plenary-nvim];
       options = {
         number = true;
         shiftwidth = 2;
@@ -44,8 +44,8 @@
           enable = true;
           servers.nil_ls = {
             enable = true;
-	    autostart = true;
-	    cmd = ["nil"];
+            autostart = true;
+            cmd = ["nil"];
             settings.formatting.command = ["alejandra" "--quiet"];
           };
         };
