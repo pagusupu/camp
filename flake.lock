@@ -288,11 +288,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1704649868,
-        "narHash": "sha256-PKVOCPV5i8prioWway5PjRMsICtrVONV3y5W69gQLWw=",
+        "lastModified": 1704740295,
+        "narHash": "sha256-R0C9qSsQWp5j+/9iD5D41MwT8hhxPawxgtcahrXnLhA=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "d7d333d162da2d3fc852b2c7a3faa2709440cefa",
+        "rev": "f92a86af5367778a752ac2a0e9b32afc2e10fe2f",
         "type": "github"
       },
       "original": {
@@ -341,42 +341,6 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprlang",
-        "type": "github"
-      }
-    },
-    "jelly": {
-      "locked": {
-        "lastModified": 1704412060,
-        "narHash": "sha256-UKw/1yR4wOOO2EsEVNEjobRnbM/caqKBUv4C568hwKY=",
-        "owner": "nu-nu-ko",
-        "repo": "nixpkgs",
-        "rev": "2253842d9ab1a7b96b1006e2f365a5252099342a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nu-nu-ko",
-        "ref": "nixos-jellyfin-dirs",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "mountain": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1704534522,
-        "narHash": "sha256-b6ajYnMmcL58eB1Gfy04A9s9s2sEYAGWRiPIBATwONQ=",
-        "owner": "nu-nu-ko",
-        "repo": "mountain-nix",
-        "rev": "9e2472af093a6f4ae97bccdbf42e8097f34429b9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nu-nu-ko",
-        "repo": "mountain-nix",
         "type": "github"
       }
     },
@@ -510,11 +474,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1704194953,
-        "narHash": "sha256-RtDKd8Mynhe5CFnVT8s0/0yqtWFMM9LmCzXv/YKxnq4=",
+        "lastModified": 1704538339,
+        "narHash": "sha256-1734d3mQuux9ySvwf6axRWZRBhtcZA9Q8eftD6EZg6U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "bd645e8668ec6612439a9ee7e71f7eac4099d4f6",
+        "rev": "46ae0210ce163b3cba6c7da08840c1d63de9c701",
         "type": "github"
       },
       "original": {
@@ -535,11 +499,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1704582174,
-        "narHash": "sha256-bRKKIJSnR0sh7i1W/6Wy4ONwjQ88Z+ReLkqAnfOMpo0=",
+        "lastModified": 1704755095,
+        "narHash": "sha256-PVpo40uyt37G6xk+2SJqihxMtr8V5KdZ6h37uWBSZRg=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "f85f26878f24e1274d90b621f950915c694f03b3",
+        "rev": "6645fea915ecf17cf465d544fd42f0f549c00c14",
         "type": "github"
       },
       "original": {
@@ -563,11 +527,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703939133,
-        "narHash": "sha256-Gxe+mfOT6bL7wLC/tuT2F+V+Sb44jNr8YsJ3cyIl4Mo=",
+        "lastModified": 1704668415,
+        "narHash": "sha256-BMzNHFod53iiU4lkR5WHwqQCFmaCLq85sUCskXneXlA=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "9d3d7e18c6bc4473d7520200d4ddab12f8402d38",
+        "rev": "44493e2b3c3ebcd39a9947e9ed9f2c2af164ec4c",
         "type": "github"
       },
       "original": {
@@ -582,8 +546,6 @@
         "conduit": "conduit",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "jelly": "jelly",
-        "mountain": "mountain",
         "nh": "nh",
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_3",

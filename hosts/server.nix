@@ -25,6 +25,7 @@
       jellyfin.enable = true;
       komga.enable = true;
       mailserver.enable = true;
+      navidrome.enable = true;
       nextcloud.enable = true;
       vaultwarden.enable = true;
       nginx = {

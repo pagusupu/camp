@@ -1,6 +1,5 @@
 {
   inputs = {
-    jelly.url = "github:nu-nu-ko/nixpkgs?ref=nixos-jellyfin-dirs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     agenix = {
@@ -17,10 +16,6 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    mountain = {
-      url = "github:nu-nu-ko/mountain-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nh = {
