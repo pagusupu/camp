@@ -36,7 +36,10 @@
   };
   time.timeZone = "NZ";
   i18n.defaultLocale = "en_NZ.UTF-8";
-  age.secrets.user.file = ../secrets/user.age;
+  age.secrets.user = {
+    file = ../secrets/user.age;
+    owner = "pagu";
+  };
   users.users.pagu = {
     uid = 1000;
     isNormalUser = true;

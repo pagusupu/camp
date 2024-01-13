@@ -26,6 +26,7 @@
             MPVPath = "${pkgs.mpv}";
             UILoginBackgroundUrl = "https://i.imgur.com/dnVRU2A.png";
             UIWelcomeMessage = ":3";
+	    EnableSharing = true;
             LastFM = {
               ApiKey = "9bb677319d28788826b28537483ab363";
               Secret = config.age.secrets.navi-fm.path;
