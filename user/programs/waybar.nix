@@ -13,29 +13,28 @@
           position = "left";
           output = ["DP-3"];
           width = 40;
-	  spacing = 6;
+	  #spacing = 6;
           margin-top = 10;
           margin-bottom = 10;
           margin-left = 10;
           modules-left = ["hyprland/workspaces"];
-          modules-right = ["pulseaudio/slider" "wireplumber" "clock"];
+          modules-right = ["pulseaudio/slider" "pulseaudio" "clock"];
 	  "clock" = {
             format = "{: %I \n %M \n %p}";
           };
 	  "pulseaudio/slider" = {
 	    min = 0;
-	    max = 200;
+	    max = 99;
 	    orientation = "vertical";
 	  };
-	  "wireplumber" = {
-	    format = "{icon}";
-	    format-muted = "󰝟";
-	    format-icons = ["󰕿" "󰖀" "󰕾"];
-	    on-click = "wpctl set-mute 49 toggle";
+	  "pulseaudio" = {
+	    format = "{volume}";
+	    format-muted = "--";
+	    on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 	    scroll-step = 0;
 	    tooltip = false;
 	  };
-          "hyprland/workspaces" = {
+	  "hyprland/workspaces" = {
             format = "{icon}";
             format-icons = {
               "1" = "1";
@@ -66,13 +65,15 @@
 	}
         window#waybar {
           background: #${config.cute.colours.base};
-        }
-        #workspaces button.active {
+	}
+	#workspaces button.active {
           color: #${config.cute.colours.iris};
         }
-	#wireplumber {
-	  font-size: 20px;
-	 /* background-color: #${config.cute.colours.overlay}; */
+	#pulseaudio,
+        #pulseaudio-slider {
+	  background-color: #${config.cute.colours.overlay};
+	  padding-top: 10px;
+	  padding-bottom: 10px;
 	}
         #pulseaudio-slider slider {
 	  min-height: 0px;

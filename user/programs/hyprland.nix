@@ -21,7 +21,7 @@
 	    "swaybg -i ${bg} -o ${m1} -m center"
 	    "swaybg -i ${bg} -o ${m2} -m center"
 	    "waybar"
-	    "vencorddesktop"
+	   # "vencorddesktop"
           ];
           monitor = [
             "${m1}, 1920x1080@165, 0x0, 1"
@@ -48,7 +48,7 @@
             force_split = 2;
           };
           decoration = {
-            drop_shadow = true;
+            drop_shadow = false;
           };
           animations = {
             enabled = true;
@@ -69,7 +69,7 @@
           };
           bind = [
             "${mod}, RETURN, exec, alacritty"
-            "${mod}, TAB, exec, tofi-drun"
+            "${mod}, TAB, exec, wofi --show drun"
 	    "${mod}, L, exec, swaylock"
 	    "${mod}, BACKSPACE, exec, hyprshot -m region --clipboard-only"
 	    "${mod}:SHIFT, BACKSPACE, exec, hyprshot -m region -o ~/pictures/screenshots"
@@ -108,6 +108,8 @@
       home.packages = with pkgs; [
         swayidle
 	swaybg
+	wl-clipboard
+	imv
       ];
     };
 }

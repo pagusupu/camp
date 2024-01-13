@@ -9,7 +9,6 @@
     fonts = {
       fonts = with pkgs; [
         lato
-        quicksand
         nerdfonts
         noto-fonts
         noto-fonts-cjk
@@ -24,7 +23,7 @@
         subpixel.rgba = "rgb";
         defaultFonts = {
           serif = ["Lato"];
-          sansSerif = ["Quicksand"];
+          sansSerif = ["Lato"];
           monospace = ["MonaspiceNe Nerd Font"];
         };
       };

@@ -6,6 +6,7 @@
     ./mako.nix
     ./swaylock.nix
     ./tofi.nix
+    ./vesktop.nix
     ./waybar.nix
   ];
 }

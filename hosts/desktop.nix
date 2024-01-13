@@ -59,8 +59,8 @@
         hyprland.config = true;
         mako.enable = true;
         swaylock.enable = true;
-	tofi.enable = true;
-        waybar.enable = true; 
+        tofi.enable = false;
+        waybar.enable = true;
       };
       home = {
         username = "pagu";
@@ -75,10 +75,11 @@
           vesktop
           ueberzugpp
           yazi
-          wl-clipboard
-          imv
           hyprshot
           gnome.nautilus
+          wofi
+	  nextcloud-client
+	  localsend
         ];
         sessionVariables = {
           EDITOR = "nvim";
@@ -104,6 +105,13 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
+      extraConfig.pipewire = {
+        "10-clock-rate" = {
+          "context.properties" = {
+            "default.clock.allowed-rates" = ["48000" "44100" "96000"];
+          };
+        };
+      };
     };
   };
   security = {
@@ -161,6 +169,14 @@
   networking = {
     dhcpcd.wait = "background";
     hostName = "desktop";
+    enableIPv6 = false;
+    nameservers = ["1.1.1.1" "1.0.0.1"];
+    firewall = {
+      enable = true;
+      # localsend
+      allowedTCPPorts = [53317];
+      allowedUDPPorts = [53317];
+    };
     wireless = {
       enable = true;
       userControlled.enable = true;

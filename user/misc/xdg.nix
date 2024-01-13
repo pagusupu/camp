@@ -30,17 +30,8 @@
       nvim = {
         noDisplay = true;
         name = "Neovim Wrapper";
-      };
-      picom = {
-	noDisplay = true;
-	name = "picom";
-      };
+      }; 
       # changed
-      discord = {
-        name = "Discord";
-        exec = "discord";
-        terminal = false;
-      };
       firefox = {
         name = "Firefox";
         exec = "firefox";
