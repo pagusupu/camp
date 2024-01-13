@@ -24,7 +24,7 @@
             aliases = ["signup@${domain}" "acme@${domain}" "admin@${domain}"];
           };
           "nextcloud@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
-	# "vaultwarden@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
+          # "vaultwarden@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
         };
         certificateScheme = "acme-nginx";
       };

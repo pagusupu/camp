@@ -54,15 +54,13 @@
     ];
   };
   environment.systemPackages = with pkgs; [
-    # general
+    flac
     git
     go
     hugo
     mdadm
-    wget
-    # file management
-    flac
     rnr
+    wget
     yazi
   ];
   security.sudo.execWheelOnly = true;

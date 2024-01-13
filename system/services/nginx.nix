@@ -11,7 +11,10 @@
     domain = "${config.cute.services.nginx.domain}";
   in
     lib.mkIf config.cute.services.nginx.enable {
-      networking.firewall.allowedTCPPorts = [80 443 1313 8080 8448];
+      networking.firewall = {
+        allowedTCPPorts = [80 443 1313 8080 8448];
+        allowedUDPPorts = [80 443 8448];
+      };
       security.acme = {
         acceptTerms = true;
         defaults.email = "amce@${domain}";
@@ -36,5 +39,6 @@
           root = "/storage/website/public";
         };
       };
+      users.users.nginx.extraGroups = ["acme"];
     };
 }

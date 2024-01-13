@@ -27,9 +27,8 @@
         matrix-conduit = {
           enable = true;
           package = inputs.conduit.packages.${pkgs.system}.default;
-          settings.global = {
-            inherit baseDomain;
-          };
+          settings.global = {inherit baseDomain;
+	  };
         };
         nginx = {
           virtualHosts = {
@@ -47,6 +46,11 @@
                   port = 443;
                   ssl = true;
                 }
+		{
+		  addr = "0.0.0.0";
+		  port = 8448;
+		  ssl = true;
+		}
                 {
                   addr = "[::]";
                   port = 8448;
@@ -66,6 +70,8 @@
               '';
             };
             "${baseDomain}" = {
+	      forceSSL = true;
+	      enableACME = true;
               locations."=./well-known/matrix/server" = {
                 alias = "${well_known_server}";
                 extraConfig = ''
