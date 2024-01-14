@@ -59,8 +59,8 @@
         hyprland.config = true;
         mako.enable = true;
         swaylock.enable = true;
-        tofi.enable = false;
         waybar.enable = true;
+        wofi.enable = true;
       };
       home = {
         username = "pagu";
@@ -77,9 +77,9 @@
           yazi
           hyprshot
           gnome.nautilus
-          wofi
-	  nextcloud-client
-	  localsend
+          nextcloud-client
+          localsend
+	  sublime-music
         ];
         sessionVariables = {
           EDITOR = "nvim";

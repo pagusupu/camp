@@ -25,34 +25,34 @@
           style = "Underline";
           unfocused_hollow = false;
         };
-        colors = let 
-	  cute = config.cute.colours; 
-	in {
+        colors = let
+          inherit (config.cute) colours;
+        in {
           primary = {
-            background = "#" + cute.base;
-            foreground = "#" + cute.text;
-            dim_foreground = "#" + cute.subtle;
-            bright_foreground = "#" + cute.text;
+            background = "#" + colours.base;
+            foreground = "#" + colours.text;
+            dim_foreground = "#" + colours.subtle;
+            bright_foreground = "#" + colours.text;
           };
           normal = {
-            black = "#" + cute.muted;
-            red = "#" + cute.love;
-            green = "#" + cute.pine;
-            yellow = "#" + cute.gold;
-            blue = "#" + cute.foam;
-            magenta = "#" + cute.iris;
-            cyan = "#" + cute.rose;
-            white = "#" + cute.text;
+            black = "#" + colours.muted;
+            red = "#" + colours.love;
+            green = "#" + colours.pine;
+            yellow = "#" + colours.gold;
+            blue = "#" + colours.foam;
+            magenta = "#" + colours.iris;
+            cyan = "#" + colours.rose;
+            white = "#" + colours.text;
           };
           bright = {
-            black = "#" + cute.muted;
-            red = "#" + cute.love;
-            green = "#" + cute.pine;
-            yellow = "#" + cute.gold;
-            blue = "#" + cute.foam;
-            magenta = "#" + cute.iris;
-            cyan = "#" + cute.rose;
-            white = "#" + cute.text;
+            black = "#" + colours.muted;
+            red = "#" + colours.love;
+            green = "#" + colours.pine;
+            yellow = "#" + colours.gold;
+            blue = "#" + colours.foam;
+            magenta = "#" + colours.iris;
+            cyan = "#" + colours.rose;
+            white = "#" + colours.text;
           };
         };
       };

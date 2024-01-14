@@ -1,14 +1,7 @@
 {
   home.file.".config/VencordDesktop/VencordDesktop/themes/rose-pine.theme.css".text = ''
-    /**
-    * @name Rosé Pine
-    * @author blueb
-    * @authorId 403390454273409028
-    * @version 3.0.9
-    * @description All natural pine, faux fur and a bit of soho vibes for the classy minimalist.
-    * @source https://github.com/rose-pine/discord
-    * @updateUrl https://github.com/rose-pine/discord/blob/rose-pine.theme.css
-    */
+    /* https://github.com/rose-pine/discord */
+
     .theme-dark {
         --background-primary: #26233a;
         --background-secondary: #1f1d2e;
