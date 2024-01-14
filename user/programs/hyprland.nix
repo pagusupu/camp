@@ -8,7 +8,7 @@
   config = let
     m1 = "DP-3";
     m2 = "HDMI-A-1";
-    bg = "/home/pagu/flake/user/images/bg.jpg";
+    bg = "~/flake/user/images/bg.jpg";
     mod = "SUPER";
   in
     lib.mkIf config.hm.programs.hyprland.config {
@@ -18,10 +18,10 @@
           exec-once = [
             "swaylock"
             "swayidle -w before-sleep 'swaylock'"
-	    "swaybg -i ${bg} -o ${m1} -m center"
-	    "swaybg -i ${bg} -o ${m2} -m center"
-	    "waybar"
-	   # "vencorddesktop"
+            "swaybg -i ${bg} -o ${m1} -m center"
+            "swaybg -i ${bg} -o ${m2} -m center"
+            "waybar"
+            # "vencorddesktop"
           ];
           monitor = [
             "${m1}, 1920x1080@165, 0x0, 1"
@@ -47,9 +47,7 @@
             smart_resizing = false;
             force_split = 2;
           };
-          decoration = {
-            drop_shadow = false;
-          };
+          decoration.drop_shadow = false;
           animations = {
             enabled = true;
             animation = [
@@ -70,9 +68,9 @@
           bind = [
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, wofi --show drun"
-	    "${mod}, L, exec, swaylock"
-	    "${mod}, BACKSPACE, exec, hyprshot -m region --clipboard-only"
-	    "${mod}:SHIFT, BACKSPACE, exec, hyprshot -m region -o ~/pictures/screenshots"
+            "${mod}, L, exec, swaylock"
+            "${mod}, BACKSPACE, exec, hyprshot -m region --clipboard-only"
+            "${mod}:SHIFT, BACKSPACE, exec, hyprshot -m region -o ~/pictures/screenshots"
 
             "${mod}, Q, killactive"
             "${mod}, M, exit"
@@ -107,9 +105,9 @@
       };
       home.packages = with pkgs; [
         swayidle
-	swaybg
-	wl-clipboard
-	imv
+        swaybg
+        wl-clipboard
+        imv
       ];
     };
 }

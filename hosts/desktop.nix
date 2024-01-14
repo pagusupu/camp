@@ -59,8 +59,8 @@
         hyprland.config = true;
         mako.enable = true;
         swaylock.enable = true;
-        tofi.enable = false;
         waybar.enable = true;
+        wofi.enable = true;
       };
       home = {
         username = "pagu";
@@ -77,9 +77,9 @@
           yazi
           hyprshot
           gnome.nautilus
-          wofi
-	  nextcloud-client
-	  localsend
+          nextcloud-client
+          localsend
+	  sublime-music
         ];
         sessionVariables = {
           EDITOR = "nvim";
@@ -169,7 +169,6 @@
   networking = {
     dhcpcd.wait = "background";
     hostName = "desktop";
-    enableIPv6 = false;
     nameservers = ["1.1.1.1" "1.0.0.1"];
     firewall = {
       enable = true;

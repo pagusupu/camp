@@ -12,16 +12,16 @@
       packages = with pkgs; [terminus_font];
       keyMap = "us";
       colors = let
-        cute = config.cute.colours;
+        inherit (config.cute) colours;
       in [
         "000000"
-	cute.love
-	cute.pine
-	cute.gold
-	cute.foam
-	cute.iris
-	cute.rose
-	cute.text
+	colours.love
+	colours.pine
+	colours.gold
+	colours.foam
+	colours.iris
+	colours.rose
+	colours.text
       ];
     };
     # quiet
