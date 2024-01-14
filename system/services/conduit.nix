@@ -27,8 +27,7 @@
         matrix-conduit = {
           enable = true;
           package = inputs.conduit.packages.${pkgs.system}.default;
-          settings.global = {inherit baseDomain;
-	  };
+          settings.global = {inherit baseDomain;};
         };
         nginx = {
           virtualHosts = {

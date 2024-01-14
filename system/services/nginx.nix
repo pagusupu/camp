@@ -12,7 +12,7 @@
   in
     lib.mkIf config.cute.services.nginx.enable {
       networking.firewall = {
-        allowedTCPPorts = [80 443 1313 8080 8448];
+        allowedTCPPorts = [80 443 1313 4533 8080 8448];
         allowedUDPPorts = [80 443 8448];
       };
       security.acme = {

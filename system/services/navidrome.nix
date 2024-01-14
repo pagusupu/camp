@@ -21,7 +21,7 @@
             MusicFolder = "/storage/services/navidrome/music";
             ArtistArtPriority = "artist.*, album/artist.*";
             AutoImportPlaylists = false;
-	    EnableSharing = true;
+            EnableSharing = true;
             EnableStarRating = false;
             EnableTranscodingConfig = true;
             FFmpegPath = "${pkgs.ffmpeg_5-headless}";
