@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.wayland.misc.greetd.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.wayland.misc.greetd.enable {
+  options.cute.wayland.greetd.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.wayland.greetd.enable {
     services.greetd = {
       enable = true;
       settings = rec {

@@ -7,8 +7,10 @@
   config = lib.mkIf config.hm.programs.firefox.enable {
     programs.firefox = {
       enable = true;
-      policies = {
-        Preferences = {
+      profiles."pagu" = {
+        id = 0;
+        name = "pagu";
+        settings = {
           "gfx.webrender.all" = true;
           "browser.aboutConfig.showWarning" = false;
           "browser.tabs.firefox-view" = true;
@@ -17,6 +19,21 @@
           "browser.EULA.override" = true;
           "browser.tabs.inTitlebar" = 0;
         };
+        search = {
+          default = "DuckDuckGo";
+          force = true;
+          order = [
+            "DuckDuckGo"
+            "Google"
+          ];
+          engines = {
+            "Bing".metaData.hidden = true;
+            "Amazon.com".metaData.hidden = true;
+            "Wikipedia (en)".metaData.hidden = true;
+          };
+        };
+      };
+      policies = {
         CaptivePortal = false;
         DisableFirefoxStudies = true;
         DisablePocket = true;
@@ -65,23 +82,6 @@
           "" = {
             installation_mode = "force_installed";
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";
-          };
-        };
-      };
-      profiles."pagu" = {
-        id = 0;
-        name = "pagu";
-        search = {
-          default = "DuckDuckGo";
-          force = true;
-          order = [
-            "DuckDuckGo"
-            "Google"
-          ];
-          engines = {
-            "Bing".metaData.hidden = true;
-            "Amazon.com".metaData.hidden = true;
-            "Wikipedia (en)".metaData.hidden = true;
           };
         };
       };

@@ -14,7 +14,6 @@
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts-extra
-	(google-fonts.override { fonts = ["Sora"];})
       ];
       fontconfig = {
         enable = true;
@@ -24,7 +23,7 @@
         subpixel.rgba = "rgb";
         defaultFonts = {
           serif = ["Lato"];
-          sansSerif = ["Sora"];
+          sansSerif = ["Lato"];
           monospace = ["MonaspiceNe Nerd Font"];
         };
       };
