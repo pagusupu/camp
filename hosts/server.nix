@@ -22,9 +22,9 @@
       fail2ban.enable = true;
       forgejo.enable = true;
       homeassistant.enable = true;
-      jellyfin.enable = true;
+      jellyfin.enable = false;
       komga.enable = true;
-      mailserver.enable = true;
+      mailserver.enable = false;
       navidrome.enable = true;
       nextcloud.enable = true;
       vaultwarden.enable = true;
