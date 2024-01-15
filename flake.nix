@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {

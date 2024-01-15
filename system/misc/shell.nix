@@ -38,7 +38,7 @@
         rm = "rip";
         switch = "nh os switch";
         update = "sudo nix flake update ~/flake && switch";
-	ssh-server = "ssh pagu@192.168.178.182";
+        ssh-server = "ssh pagu@192.168.178.182";
       };
       promptInit = "PROMPT=${config.cute.misc.shell.prompt}";
     };

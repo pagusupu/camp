@@ -7,8 +7,10 @@
   cute = {
     misc = {
       age.enable = true;
+      audio.enable = true;
       console.enable = true;
       fonts.enable = true;
+      gaming.enable = true;
       nix.enable = true;
       shell = {
         enable = true;
@@ -20,12 +22,8 @@
       nixvim.enable = true;
     };
     wayland = {
-      programs = {
-        hyprland.enable = true;
-      };
-      misc = {
-        greetd.enable = true;
-      };
+      greetd.enable = true;
+      hyprland.enable = true;
     };
   };
   i18n.defaultLocale = "en_NZ.UTF-8";
@@ -53,37 +51,36 @@
         ../system/misc/colours.nix
         ../user
       ];
-      hm.programs = {
-        alacritty.enable = true;
-        firefox.enable = true;
-        hyprland.config = true;
-        mako.enable = true;
-        swaylock.enable = true;
-        waybar.enable = true;
-        wofi.enable = true;
+      hm = {
+        misc = {
+	  gaming.enable = true;
+          theme.enable = true;
+          xdg.enable = true;
+        };
+        programs = {
+          alacritty.enable = true;
+          firefox.enable = true;
+          hyprland.config = true;
+          mako.enable = true;
+          swaylock.enable = true;
+          waybar.enable = true;
+          wofi.enable = true;
+        };
       };
       home = {
         username = "pagu";
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
-          osu-lazer-bin
-          prismlauncher-qt5
-          r2modman
-          xivlauncher
-          protontricks
-          protonup-ng
-          vesktop
-          ueberzugpp
-          yazi
-          hyprshot
-          gnome.nautilus
+	  localsend
           nextcloud-client
-          localsend
-	  sublime-music
+          sublime-music
+	  vesktop
+	  xfce.thunar
         ];
         sessionVariables = {
           EDITOR = "nvim";
           MOZ_ENABLE_WAYLAND = 1;
+          NIXOS_OZONE_WL = 1;
         };
         stateVersion = "23.05";
       };
@@ -94,28 +91,11 @@
       };
     };
   };
-  programs = {
-    steam.enable = true;
-  };
   services = {
-    blueman.enable = true;
     dbus.enable = true;
     sshd.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-      extraConfig.pipewire = {
-        "10-clock-rate" = {
-          "context.properties" = {
-            "default.clock.allowed-rates" = ["48000" "44100" "96000"];
-          };
-        };
-      };
-    };
   };
   security = {
-    rtkit.enable = true;
     tpm2.enable = true;
     pam.services.swaylock = {};
     sudo = {
@@ -151,10 +131,8 @@
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
-    bluetooth.enable = true;
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
-    pulseaudio.enable = false;
     xone.enable = true;
     opengl = {
       enable = true;

@@ -21,12 +21,16 @@
             "swaybg -i ${bg} -o ${m1} -m center"
             "swaybg -i ${bg} -o ${m2} -m center"
             "waybar"
-            # "vencorddesktop"
+	    "steam -console -silent"
+	    "${pkgs.localsend}/bin/localsend_app"
+	    "nextcloud --background"
           ];
-          monitor = [
-            "${m1}, 1920x1080@165, 0x0, 1"
-            "${m2}, 1920x1080@75, 1920x0, 1"
-          ];
+	  windowrulev2 = [
+	    "workspace 5, class:(VencordDesktop)"
+	    "workspace 5, class:(.sublime-music-wrapped)"
+	    "float, class:(thunar)"
+	    "float, class:(localsend_app)"
+	  ];
           input = {
             follow_mouse = 2;
             accel_profile = "flat";
@@ -36,11 +40,11 @@
             gaps_in = 5;
             gaps_out = 10;
             border_size = 2;
-            "col.active_border" = "${"0xFF" + config.cute.colours.iris}";
-            "col.inactive_border" = "${"0xFF" + config.cute.colours.base}";
             no_cursor_warps = true;
             resize_on_border = true;
             hover_icon_on_border = false;
+            "col.active_border" = "${"0xFF" + config.cute.colours.iris}";
+            "col.inactive_border" = "${"0xFF" + config.cute.colours.base}";
             layout = "dwindle";
           };
           dwindle = {
@@ -69,15 +73,13 @@
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, wofi --show drun"
             "${mod}, L, exec, swaylock"
-            "${mod}, BACKSPACE, exec, hyprshot -m region --clipboard-only"
-            "${mod}:SHIFT, BACKSPACE, exec, hyprshot -m region -o ~/pictures/screenshots"
-
+            "${mod}, BACKSPACE, exec, grimblast --notify --freeze copy area"
+            "${mod}:SHIFT, BACKSPACE, exec, grimblast --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             "${mod}, Q, killactive"
             "${mod}, M, exit"
             "${mod}, F, fullscreen"
             "${mod}, SPACE, togglefloating"
             "${mod}, P, pin"
-
             "${mod}, left, movefocus, l"
             "${mod}, right, movefocus, r"
             "${mod}, up, movefocus, u"
@@ -90,6 +92,10 @@
           bindm = [
             "${mod}, mouse:272, movewindow"
             "${mod}, mouse:273, resizewindow"
+          ];
+          monitor = [
+            "${m1}, 1920x1080@165, 0x0, 1"
+            "${m2}, 1920x1080@75, 1920x0, 1"
           ];
           workspace = [
             "1, monitor:${m1}, default:true"
@@ -104,9 +110,10 @@
         '';
       };
       home.packages = with pkgs; [
+        wl-clipboard
+        grimblast
         swayidle
         swaybg
-        wl-clipboard
         imv
       ];
     };
