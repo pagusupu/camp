@@ -59,7 +59,6 @@
             };
             "custom/nix" = {
               format = "󱄅";
-              on-click = "alacritty -e sudo nix flake update ~/flake && nh os switch";
               tooltip = false;
             };
             "custom/dnd" = let
