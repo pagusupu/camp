@@ -4,8 +4,9 @@
   pkgs,
   ...
 }: {
-  options.hm.programs.swaylock.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.hm.programs.swaylock.enable {
+  options.cute.hm.programs.swaylock.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.programs.swaylock.enable {
+    home-manager.users.pagu = {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;
@@ -45,5 +46,6 @@
         text-caps-lock-color = "#${colours.love}";
       };
     };
+  };
   };
 }

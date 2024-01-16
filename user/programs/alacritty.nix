@@ -3,56 +3,58 @@
   lib,
   ...
 }: {
-  options.hm.programs.alacritty.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.hm.programs.alacritty.enable {
-    programs.alacritty = {
-      enable = true;
-      settings = {
-        window = {
-          padding = {
-            x = 10;
-            y = 10;
+  options.cute.hm.programs.alacritty.enable = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.programs.alacritty.enable {
+    home-manager.users.pagu = {
+      programs.alacritty = {
+        enable = true;
+        settings = {
+          window = {
+            padding = {
+              x = 10;
+              y = 10;
+            };
           };
-        };
-        font = {
-          size = 12;
-          normal = {
-            family = "MonaspiceNe Nerd Font";
-            style = "Regular";
+          font = {
+            size = 12;
+            normal = {
+              family = "MonaspiceNe Nerd Font";
+              style = "Regular";
+            };
           };
-        };
-        cursor = {
-          style = "Underline";
-          unfocused_hollow = false;
-        };
-        colors = let
-          inherit (config.cute) colours;
-        in {
-          primary = {
-            background = "#" + colours.base;
-            foreground = "#" + colours.text;
-            dim_foreground = "#" + colours.subtle;
-            bright_foreground = "#" + colours.text;
+          cursor = {
+            style = "Underline";
+            unfocused_hollow = false;
           };
-          normal = {
-            black = "#" + colours.muted;
-            red = "#" + colours.love;
-            green = "#" + colours.pine;
-            yellow = "#" + colours.gold;
-            blue = "#" + colours.foam;
-            magenta = "#" + colours.iris;
-            cyan = "#" + colours.rose;
-            white = "#" + colours.text;
-          };
-          bright = {
-            black = "#" + colours.muted;
-            red = "#" + colours.love;
-            green = "#" + colours.pine;
-            yellow = "#" + colours.gold;
-            blue = "#" + colours.foam;
-            magenta = "#" + colours.iris;
-            cyan = "#" + colours.rose;
-            white = "#" + colours.text;
+          colors = let
+            inherit (config.cute) colours;
+          in {
+            primary = {
+              background = "#" + colours.base;
+              foreground = "#" + colours.text;
+              dim_foreground = "#" + colours.subtle;
+              bright_foreground = "#" + colours.text;
+            };
+            normal = {
+              black = "#" + colours.muted;
+              red = "#" + colours.love;
+              green = "#" + colours.pine;
+              yellow = "#" + colours.gold;
+              blue = "#" + colours.foam;
+              magenta = "#" + colours.iris;
+              cyan = "#" + colours.rose;
+              white = "#" + colours.text;
+            };
+            bright = {
+              black = "#" + colours.muted;
+              red = "#" + colours.love;
+              green = "#" + colours.pine;
+              yellow = "#" + colours.gold;
+              blue = "#" + colours.foam;
+              magenta = "#" + colours.iris;
+              cyan = "#" + colours.rose;
+              white = "#" + colours.text;
+            };
           };
         };
       };
