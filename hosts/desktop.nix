@@ -5,6 +5,14 @@
   ...
 }: {
   cute = {
+    programs = {
+      htop.enable = true;
+      nixvim.enable = true;
+    };
+    wayland = {
+      greetd.enable = true;
+      hyprland.enable = true;
+    };
     misc = {
       age.enable = true;
       audio.enable = true;
@@ -17,13 +25,23 @@
         prompt = "'%F{magenta}% %~ >%f '";
       };
     };
-    programs = {
-      htop.enable = true;
-      nixvim.enable = true;
-    };
-    wayland = {
-      greetd.enable = true;
-      hyprland.enable = true;
+    hm = {
+      misc = {
+        cascade.theme = true;
+        games.enable = true;
+        gtk.theme = true;
+       #vesktop.theme = true;
+        xdg.enable = true;
+      };
+      programs = {
+        alacritty.enable = true;
+        firefox.enable = true;
+        hyprland.config = true;
+        mako.enable = true;
+        swaylock.enable = true;
+        waybar.enable = true;
+        wofi.enable = true;
+      };
     };
   };
   i18n.defaultLocale = "en_NZ.UTF-8";
@@ -47,36 +65,15 @@
     useUserPackages = true;
     extraSpecialArgs = {inherit inputs;};
     users.pagu = {
-      imports = [
-        ../system/misc/colours.nix
-        ../user
-      ];
-      hm = {
-        misc = {
-	  cascade.enable = true;
-	  gaming.enable = true;
-          theme.enable = true;
-          xdg.enable = true;
-        };
-        programs = {
-          alacritty.enable = true;
-          firefox.enable = true;
-          hyprland.config = true;
-          mako.enable = true;
-          swaylock.enable = true;
-          waybar.enable = true;
-          wofi.enable = true;
-        };
-      };
+      imports = [../system/misc/colours.nix]; 
       home = {
         username = "pagu";
         homeDirectory = "/home/pagu";
         packages = with pkgs; [
-	  localsend
-          nextcloud-client
+          localsend
           sublime-music
-	  vesktop
-	  xfce.thunar
+          vesktop
+          xfce.thunar
         ];
         sessionVariables = {
           EDITOR = "nvim";

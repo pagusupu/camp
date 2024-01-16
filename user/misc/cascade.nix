@@ -3,9 +3,10 @@
   lib,
   ...
 }: {
-  options.hm.misc.cascade.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.hm.misc.cascade.enable {
-    programs.firefox.profiles."pagu".userChrome = ''
+  options.cute.hm.misc.cascade.theme = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.hm.misc.cascade.theme {
+    home-manager.users.pagu = {
+      programs.firefox.profiles."pagu".userChrome = ''
 /*==============================================================================================*
 
 +-----+-----+-----+-----+-----+-----+-----+
@@ -544,6 +545,7 @@ Repository:     https://github.com/andreasgrafen/cascade
 .tabbrowser-tab[selected] .tab-content {
   background-color: var(--uc-highlight-colour) !important;
 }
-'';
-};
+      '';
+    };
+  };
 }

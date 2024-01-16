@@ -1,4 +1,10 @@
 {
+  config,
+  lib,
+  ...
+}: {
+  #options.hm.misc.vesktop.theme = lib.mkEnableOption "";
+  #config = lib.mkIf config.hm.misc.vesktop.theme {
   home.file.".config/VencordDesktop/VencordDesktop/themes/rose-pine.theme.css".text = ''
     /* https://github.com/rose-pine/discord */
 
@@ -92,5 +98,6 @@
     .title-31SJ6t {
         background-color: var(--background-primary) !important;
     }
-  '';
+    '';
+  #};
 }
