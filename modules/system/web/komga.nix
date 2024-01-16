@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.cute.system.web.enable = lib.mkEnableOption "";
+  options.cute.system.web.komga.enable = lib.mkEnableOption "";
   config = let
     domain = "komga.${config.cute.system.web.domain}";
   in

@@ -4,7 +4,7 @@
   ...
 }: {
   options.cute.system.misc.homeassistant.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.system.web.homeassistant.enable {
+  config = lib.mkIf config.cute.system.misc.homeassistant.enable {
     services.home-assistant = {
       enable = true;
       openFirewall = true;

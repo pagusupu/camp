@@ -16,7 +16,7 @@
         vaultwarden.enable = true;
       };
       misc = {
-        condut.enable = false;
+        conduit.enable = false;
         fail2ban.enable = true;
         homeassistant.enable = true;
         mailserver.enable = false;
