@@ -5,42 +5,42 @@
   ...
 }: {
   cute = {
-    programs = {
-      htop.enable = true;
-      nixvim.enable = true;
-    };
-    wayland = {
-      greetd.enable = true;
-      hyprland.enable = true;
-    };
-    misc = {
-      age.enable = true;
-      audio.enable = true;
-      console.enable = true;
-      fonts.enable = true;
-      gaming.enable = true;
-      nix.enable = true;
-      shell = {
-        enable = true;
-        prompt = "'%F{magenta}% %~ >%f '";
-      };
-    };
-    hm = {
-      misc = {
-        cascade.theme = true;
-        games.enable = true;
-        gtk.theme = true;
-       #vesktop.theme = true;
-        xdg.enable = true;
-      };
+    desktop = {
       programs = {
         alacritty.enable = true;
         firefox.enable = true;
-        hyprland.config = true;
+        hyprland.enable = true;
         mako.enable = true;
         swaylock.enable = true;
         waybar.enable = true;
         wofi.enable = true;
+      };
+      misc = {
+        audio.enable = true;
+        fonts.enable = true;
+        gaming.enable = true;
+        greetd.enable = true;
+        xdg.enable = true;
+      };
+      themes = {
+        firefox.theme = true;
+        gtk.theme = true;
+        #vesktop.theme = true;
+      };
+    };
+    common = {
+      programs = {
+        htop.enable = true;
+        nixvim.enable = true;
+        zsh = {
+          enable = true;
+          prompt = "'%F{magenta}% %~ >%f '";
+        };
+      };
+      misc = {
+        age.enable = true;
+        console.enable = true;
+        nix.enable = true;
       };
     };
   };
@@ -65,7 +65,6 @@
     useUserPackages = true;
     extraSpecialArgs = {inherit inputs;};
     users.pagu = {
-      imports = [../system/misc/colours.nix]; 
       home = {
         username = "pagu";
         homeDirectory = "/home/pagu";
@@ -95,7 +94,6 @@
   };
   security = {
     tpm2.enable = true;
-    pam.services.swaylock = {};
     sudo = {
       execWheelOnly = true;
       wheelNeedsPassword = false;

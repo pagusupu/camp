@@ -54,8 +54,8 @@
             nh.nixosModules.default
           ]
           ++ importAll ./libs
-          ++ importAll ./system
-	  ++ importAll ./user;
+          ++ importAll ./modules/common
+          ++ importAll ./modules/desktop;
       };
       nixserver = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -66,7 +66,8 @@
             nh.nixosModules.default
           ]
           ++ importAll ./libs
-          ++ importAll ./system;
+	  ++ importAll ./modules/common
+          ++ importAll ./modules/system;
       };
     };
   };
