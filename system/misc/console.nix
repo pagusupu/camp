@@ -14,11 +14,19 @@
       colors = let
         inherit (config.cute) colours;
       in [
-        "000000"
+        colours.base
 	colours.love
-	colours.pine
-	colours.gold
 	colours.foam
+	colours.gold
+	colours.pine
+	colours.iris
+	colours.rose
+	colours.text
+	colours.overlay
+	colours.love
+	colours.foam
+	colours.gold
+	colours.pine
 	colours.iris
 	colours.rose
 	colours.text

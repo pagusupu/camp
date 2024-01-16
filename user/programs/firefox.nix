@@ -18,6 +18,7 @@
           "privacy.firstparty.isolate" = true;
           "browser.EULA.override" = true;
           "browser.tabs.inTitlebar" = 0;
+          "browser.startup.homepage" = "https://home.pagu.cafe";
         };
         search = {
           default = "DuckDuckGo";

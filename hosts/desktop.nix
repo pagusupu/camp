@@ -53,6 +53,7 @@
       ];
       hm = {
         misc = {
+	  cascade.enable = true;
 	  gaming.enable = true;
           theme.enable = true;
           xdg.enable = true;

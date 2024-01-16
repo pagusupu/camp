@@ -14,9 +14,9 @@
           position = "left";
           width = 44;
           output = ["DP-3"];
-          modules-left = ["custom/nix" "clock"];
+          modules-left = ["custom/nix" "clock" "tray"];
           modules-center = ["hyprland/workspaces"];
-          modules-right = ["pulseaudio/slider" "pulseaudio" "tray" "custom/dnd" "network" "custom/powermenu"];
+          modules-right = ["pulseaudio/slider" "pulseaudio" "custom/dnd" "network" "custom/powermenu"];
           "clock" = {
             format = "{: %I \n %M \n %p}";
           };
