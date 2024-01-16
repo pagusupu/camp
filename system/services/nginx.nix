@@ -12,7 +12,7 @@
   in
     lib.mkIf config.cute.services.nginx.enable {
       networking.firewall = {
-        allowedTCPPorts = [80 443 1313 4533 8080 8448];
+        allowedTCPPorts = [80 443 1313 8080 8448];
         allowedUDPPorts = [80 443 8448];
       };
       security.acme = {
@@ -37,6 +37,11 @@
           enableACME = true;
           serverAliases = [domain];
           root = "/storage/website/public";
+        };
+        virtualHosts."home.${domain}" = {
+          forceSSL = true;
+          enableACME = true;
+          root = "/storage/website/home";
         };
       };
       users.users.nginx.extraGroups = ["acme"];
