@@ -89,8 +89,23 @@
               interval = "once";
               tooltip = false;
             };
-            "custom/powermenu" = {
+            "custom/powermenu" = let
+              menu =
+                pkgs.writeShellScript
+                "menu.sh" ''
+                  op=$( echo -e "  Poweroff\n  Reboot\n  Lock" | wofi --dmenu -l 7 -L 4 -y -20| awk '{print tolower($2)}' )
+                  case $op in
+                   poweroff) systemctl poweroff
+                             ;&
+                   reboot)   systemctl reboot
+                             ;&
+                   lock)     swaylock
+                             ;;
+                  esac
+                '';
+            in {
               format = "󰐥";
+	      on-click = "${menu}";
               tooltip = false;
             };
           };
@@ -128,7 +143,7 @@
                  }
                  #workspaces button {
                    color: #${colours.iris};
-            font-size: 18px;
+                   font-size: 18px;
                  }
                  #clock {
                    background-color: #${colours.overlay};

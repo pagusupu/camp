@@ -54,6 +54,7 @@
             nh.nixosModules.default
           ]
           ++ importAll ./libs
+         # ++ importAll ./pkgs
           ++ importAll ./modules/common
           ++ importAll ./modules/desktop;
       };
@@ -66,7 +67,7 @@
             nh.nixosModules.default
           ]
           ++ importAll ./libs
-	  ++ importAll ./modules/common
+          ++ importAll ./modules/common
           ++ importAll ./modules/system;
       };
     };

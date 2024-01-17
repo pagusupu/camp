@@ -13,7 +13,7 @@
         settings = let
           inherit (config.cute) colours;
         in {
-          image = "~/flake/user/images/lockbg.png";
+          image = "~/flake/modules/desktop/images/lockbg.png";
           clock = true;
           indicator = true;
           timestr = "%I:%M %p";

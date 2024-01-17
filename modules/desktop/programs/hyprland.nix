@@ -9,7 +9,7 @@
   config = let
     m1 = "DP-3";
     m2 = "HDMI-A-1";
-    bg = "~/flake/user/images/bg.jpg";
+    bg = "~/flake/modules/desktop/images/bg.jpg";
     mod = "SUPER";
   in
     lib.mkIf config.cute.desktop.programs.hyprland.enable {

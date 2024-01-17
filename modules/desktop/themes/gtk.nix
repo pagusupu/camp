@@ -31,9 +31,9 @@
       home = {
         packages = [pkgs.dconf];
         pointerCursor = {
-          package = pkgs.numix-cursor-theme;
-          name = "Numix-Cursor";
-          size = 32;
+          package = (pkgs.callPackage ../../../pkgs/rose-pine-cursor.nix {});
+          name = "BreezeX-RosePineDawn";
+          size = 24;
           gtk.enable = true;
           x11.enable = true;
         };
