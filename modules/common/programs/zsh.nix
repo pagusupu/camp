@@ -49,6 +49,7 @@
       systemPackages = with pkgs; [
         bat
         eza
+	nh
         rm-improved
       ];
     };

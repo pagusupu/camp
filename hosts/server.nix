@@ -8,7 +8,7 @@
       web = {
         domain = "pagu.cafe";
         forgejo.enable = true;
-        jellyfin.enable = false;
+        jellyfin.enable = true;
         komga.enable = true;
         navidrome.enable = true;
         nextcloud.enable = true;
@@ -19,7 +19,7 @@
         conduit.enable = false;
         fail2ban.enable = true;
         homeassistant.enable = true;
-        mailserver.enable = false;
+        mailserver.enable = true;
       };
     };
     common = {
