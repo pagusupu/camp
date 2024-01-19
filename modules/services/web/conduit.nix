@@ -5,10 +5,10 @@
   inputs,
   ...
 }: {
-  options.cute.system.misc.conduit.enable = lib.mkEnableOption "";
+  options.cute.services.web.conduit = lib.mkEnableOption "";
   config = let
-    domain = "matrix.${config.cute.system.web.domain}";
-    baseDomain = "${config.cute.system.web.domain}";
+    domain = "matrix.${config.cute.services.web.domain}";
+    baseDomain = "${config.cute.services.web.domain}";
     well_known_server = pkgs.writeText "well-known-matrix-server" ''
       {
         "m.server": "${domain}"
@@ -22,7 +22,7 @@
       }
     '';
   in
-    lib.mkIf config.cute.system.misc.conduit.enable {
+    lib.mkIf config.cute.services.web.conduit {
       services = {
         matrix-conduit = {
           enable = true;

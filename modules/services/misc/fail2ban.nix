@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.system.misc.fail2ban.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.system.misc.fail2ban.enable {
+  options.cute.services.misc.fail2ban = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.services.misc.fail2ban {
     services.fail2ban = {
       enable = true;
       bantime-increment = {

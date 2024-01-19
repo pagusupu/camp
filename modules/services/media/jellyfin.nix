@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: {
-  options.cute.system.web.jellyfin.enable = lib.mkEnableOption "";
+  options.cute.services.media.jellyfin = lib.mkEnableOption "";
   config = let
-    domain = "jelly.${config.cute.system.web.domain}";
+    domain = "jelly.${config.cute.services.web.domain}";
   in
-    lib.mkIf config.cute.system.web.jellyfin.enable {
+    lib.mkIf config.cute.services.media.jellyfin {
       services = {
         jellyfin = {
           enable = true;

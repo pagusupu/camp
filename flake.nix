@@ -53,7 +53,7 @@
           [./hosts/server.nix]
           ++ importAll ./libs
           ++ importAll ./modules/common
-          ++ importAll ./modules/system;
+          ++ importAll ./modules/services;
       };
     };
   };

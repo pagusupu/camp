@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: {
-  options.cute.system.web.navidrome.enable = lib.mkEnableOption "";
+  options.cute.services.media.navidrome = lib.mkEnableOption "";
   config = let
-    domain = "navi.${config.cute.system.web.domain}";
+    domain = "navi.${config.cute.services.web.domain}";
   in
-    lib.mkIf config.cute.system.web.navidrome.enable {
+    lib.mkIf config.cute.services.media.navidrome {
       age.secrets.navi-fm.file = ../../../secrets/navi-fm.age;
       services = {
         navidrome = {
@@ -40,5 +40,6 @@
           locations."/".proxyPass = "http://127.0.0.1:8098";
         };
       };
+      environment.systemPackages = [pkgs.flac];
     };
 }

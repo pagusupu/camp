@@ -3,17 +3,16 @@
   lib,
   ...
 }: {
-  options.cute.system.web = {
-    nginx.enable = lib.mkEnableOption "";
+  options.cute.services.web = {
+    nginx = lib.mkEnableOption "";
     domain = lib.mkOption {type = lib.types.str;};
   };
   config = let
-    domain = "${config.cute.system.web.domain}";
+    domain = "${config.cute.services.web.domain}";
   in
-    lib.mkIf config.cute.system.web.nginx.enable {
+    lib.mkIf config.cute.services.web.nginx {
       networking.firewall = {
-        allowedTCPPorts = [80 443 1313 8080 8448];
-        allowedUDPPorts = [80 443 8448];
+        allowedTCPPorts = [80 443 1313 8080];
       };
       security.acme = {
         acceptTerms = true;
@@ -23,10 +22,7 @@
         enable = true;
         commonHttpConfig = ''
           real_ip_header CF-Connecting-IP;
-          add_header 'Referrer-Policy' 'origin-when-cross-origin';
-          add_header X-Frame-Options DENY;
-          add_header X-Content-Type-Options nosniff;
-          add_header Access-Control-Allows-Origin "*";
+          add_header 'Referrer-Policy' 'origin-when-cross-origin'; 
         '';
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
@@ -38,10 +34,10 @@
           serverAliases = [domain];
           root = "/storage/website/public";
         };
-        virtualHosts."home.${domain}" = {
+        virtualHosts."dash.${domain}" = {
           forceSSL = true;
           enableACME = true;
-          root = "/storage/website/home";
+          root = "/storage/website/dash";
         };
       };
       users.users.nginx.extraGroups = ["acme"];

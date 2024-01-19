@@ -4,23 +4,24 @@
   ...
 }: {
   cute = {
-    system = {
+    services = {
       web = {
         domain = "pagu.cafe";
-        forgejo.enable = true;
-        jellyfin.enable = true;
-        komga.enable = true;
-        navidrome.enable = true;
-        nextcloud.enable = true;
-        nginx.enable = true;
-        vaultwarden.enable = true;
+        conduit = false;
+        forgejo = true;
+        nextcloud = true;
+        nginx = true;
+        vaultwarden = true;
+      };
+      media = {
+        jellyfin = true;
+        komga = true;
+        navidrome = true;
       };
       misc = {
-        conduit.enable = false;
-        fail2ban.enable = true;
-        homeassistant.enable = true;
-        mailserver.enable = true;
-	synapse.enable = true;
+        fail2ban = true;
+        homeassistant = true;
+        mailserver = true;
       };
     };
     common = {
@@ -59,13 +60,10 @@
     ];
   };
   environment.systemPackages = with pkgs; [
-    flac
     git
     go
     hugo
     mdadm
-    rnr
-    wget
     yazi
   ];
   security.sudo.execWheelOnly = true;

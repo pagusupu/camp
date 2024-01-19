@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.system.web.komga.enable = lib.mkEnableOption "";
+  options.cute.services.media.komga = lib.mkEnableOption "";
   config = let
-    domain = "komga.${config.cute.system.web.domain}";
+    domain = "komga.${config.cute.services.web.domain}";
   in
-    lib.mkIf config.cute.system.web.komga.enable {
+    lib.mkIf config.cute.services.media.komga {
       services = {
         komga = {
           enable = true;
