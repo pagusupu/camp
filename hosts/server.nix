@@ -20,6 +20,7 @@
         fail2ban.enable = true;
         homeassistant.enable = true;
         mailserver.enable = true;
+	synapse.enable = true;
       };
     };
     common = {
