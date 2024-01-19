@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.common.programs.htop.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.programs.htop.enable {
+  options.cute.common.programs.htop = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.common.programs.htop {
     environment.systemPackages = [pkgs.htop];
     home.file.".config/htop/htoprc".text = ''
       htop_version=3.2.2

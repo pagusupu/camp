@@ -9,8 +9,8 @@
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.nix-gaming.nixosModules.steamCompat
   ];
-  options.cute.desktop.misc.gaming.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.gaming.enable {
+  options.cute.desktop.misc.gaming = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.misc.gaming {
     home-manager.users.pagu = {
       home.packages = with pkgs; [
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin

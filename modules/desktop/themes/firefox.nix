@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.desktop.themes.firefox.theme = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.themes.firefox.theme {
+  options.cute.desktop.themes.firefox = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.themes.firefox {
     home-manager.users.pagu = {
       programs.firefox.profiles."pagu".userChrome = ''
 /*==============================================================================================*

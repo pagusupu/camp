@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.programs.waybar.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.programs.waybar.enable {
+  options.cute.desktop.programs.waybar = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.waybar {
     home-manager.users.pagu = {
       programs.waybar = {
         enable = true;

@@ -6,45 +6,44 @@
   cute = {
     desktop = {
       programs = {
-        alacritty.enable = true;
-        firefox.enable = true;
-        hyprland.enable = true;
-        mako.enable = true;
-        swaylock.enable = true;
-        waybar.enable = true;
-        wofi.enable = true;
+        alacritty = true;
+        firefox = true;
+        hyprland = true;
+        mako = true;
+        swaylock = true;
+        waybar = true;
+        wofi = true;
       };
       misc = {
-        audio.enable = true;
-        fonts.enable = true;
-        gaming.enable = true;
-        greetd.enable = true;
-	hm.enable = true;
-        xdg.enable = true;
+        audio = true;
+        fonts = true;
+        gaming = true;
+        greetd = true;
+        hm = true;
+        xdg = true;
       };
       themes = {
-        firefox.theme = true;
-        gtk.theme = true;
-        #vesktop.theme = true;
+        firefox = true;
+        gtk = true;
+        #vesktop = true;
       };
     };
     common = {
       programs = {
-        htop.enable = true;
-        nixvim.enable = true;
+        htop = true;
+        nixvim = true;
         zsh = {
           enable = true;
           prompt = "'%F{magenta}% %~ >%f '";
         };
       };
       misc = {
-        age.enable = true;
-        console.enable = true;
-        nix.enable = true;
+        age = true;
+        console = true;
+        nix = true;
       };
     };
   };
-  nix.settings.sandbox = true;
   i18n.defaultLocale = "en_NZ.UTF-8";
   time = {
     timeZone = "NZ";

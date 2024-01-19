@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options.cute.common.programs.nixvim.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.programs.nixvim.enable {
+  options.cute.common.programs.nixvim = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.common.programs.nixvim {
     programs.nixvim = {
       enable = true;
       luaLoader.enable = true;

@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.misc.greetd.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.greetd.enable {
+  options.cute.desktop.misc.greetd = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.misc.greetd {
     services.greetd = {
       enable = true;
       settings = rec {

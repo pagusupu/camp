@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [inputs.agenix.nixosModules.default];
-  options.cute.common.misc.age.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.misc.age.enable {
+  options.cute.common.misc.age = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.common.misc.age {
     environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
     age.identityPaths = ["/home/pagu/.ssh/id_ed25519"];
   };

@@ -5,14 +5,14 @@
   inputs,
   ...
 }: {
-  options.cute.desktop.programs.hyprland.enable = lib.mkEnableOption "";
+  options.cute.desktop.programs.hyprland = lib.mkEnableOption "";
   config = let
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     bg = "~/flake/modules/desktop/images/bg.jpg";
     mod = "SUPER";
   in
-    lib.mkIf config.cute.desktop.programs.hyprland.enable {
+    lib.mkIf config.cute.desktop.programs.hyprland {
       home-manager.users.pagu = {
         wayland.windowManager.hyprland = {
           enable = true;

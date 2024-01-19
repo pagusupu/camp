@@ -4,8 +4,8 @@
   lib,
   ...
 }: {
-  options.cute.desktop.themes.gtk.theme = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.themes.gtk.theme {
+  options.cute.desktop.themes.gtk = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.themes.gtk {
     home-manager.users.pagu = {
       gtk = {
         enable = true;

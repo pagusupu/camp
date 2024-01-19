@@ -4,8 +4,8 @@
   config,
   ...
 }: {
-  options.cute.desktop.misc.fonts.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.fonts.enable {
+  options.cute.desktop.misc.fonts = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.misc.fonts {
     fonts = {
       fonts = with pkgs; [
         lato

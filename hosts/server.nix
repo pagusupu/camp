@@ -26,17 +26,17 @@
     };
     common = {
       programs = {
-        htop.enable = true;
-        nixvim.enable = true;
+        htop = true;
+        nixvim = true;
         zsh = {
           enable = true;
           prompt = "'%F{yellow}% %~ >%f '";
         };
       };
       misc = {
-        age.enable = true;
-        console.enable = true;
-        nix.enable = true;
+        age = true;
+        console = true;
+        nix = true;
       };
     };
   };

@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
-  options.cute.desktop.misc.hm.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.hm.enable {
+  options.cute.desktop.misc.hm = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.misc.hm {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;

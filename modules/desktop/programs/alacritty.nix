@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.desktop.programs.alacritty.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.programs.alacritty.enable {
+  options.cute.desktop.programs.alacritty = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.alacritty {
     home-manager.users.pagu = {
       programs.alacritty = {
         enable = true;

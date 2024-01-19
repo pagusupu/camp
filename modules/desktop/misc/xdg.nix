@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.misc.xdg.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.xdg.enable {
+  options.cute.desktop.misc.xdg = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.misc.xdg {
     home-manager.users.pagu = {
       xdg = {
         enable = true;

@@ -4,8 +4,8 @@
   lib,
   ...
 }: {
-  options.cute.common.misc.console.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.misc.console.enable {
+  options.cute.common.misc.console = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.common.misc.console {
     console = {
       earlySetup = true;
       font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";

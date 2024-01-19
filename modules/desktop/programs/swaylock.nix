@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.programs.swaylock.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.programs.swaylock.enable {
+  options.cute.desktop.programs.swaylock = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.swaylock {
     home-manager.users.pagu = {
       programs.swaylock = {
         enable = true;

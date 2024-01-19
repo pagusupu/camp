@@ -3,8 +3,8 @@
   config,
   ...
 }: {
-  options.cute.common.misc.nix.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.misc.nix.enable {
+  options.cute.common.misc.nix = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.common.misc.nix {
     nix = {
       settings = {
         experimental-features = [

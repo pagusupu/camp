@@ -3,8 +3,8 @@
   config,
   ...
 }: {
-  options.cute.desktop.programs.firefox.enable = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.programs.firefox.enable {
+  options.cute.desktop.programs.firefox = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.firefox {
     home-manager.users.pagu = {
       programs.firefox = {
         enable = true;
@@ -19,7 +19,7 @@
             "privacy.firstparty.isolate" = true;
             "browser.EULA.override" = true;
             "browser.tabs.inTitlebar" = 0;
-            "browser.startup.homepage" = "https://home.pagu.cafe";
+            "browser.startup.homepage" = "https://dash.pagu.cafe";
           };
           search = {
             default = "DuckDuckGo";
