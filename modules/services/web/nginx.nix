@@ -31,7 +31,6 @@
         virtualHosts."${domain}" = {
           forceSSL = true;
           enableACME = true;
-          serverAliases = [domain];
           root = "/storage/website/public";
         };
         virtualHosts."dash.${domain}" = {
