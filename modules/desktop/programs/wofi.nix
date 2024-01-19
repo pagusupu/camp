@@ -16,7 +16,7 @@
           #height = "30%";
 	  x = 2;
           prompt = "";
-	  location = 1;
+	  location = 0;
 	  lines = 11;
         };
 	style = ''

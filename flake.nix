@@ -1,6 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/?rev=317484b1ead87b9c1b8ac5261a8d2dd748a0492d";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-server.url = "github:NixOS/nixpkgs?rev=317484b1ead87b9c1b8ac5261a8d2dd748a0492d";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     agenix = {
@@ -13,7 +14,7 @@
     };
     conduit = {
       url = "gitlab:famedly/conduit";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-server";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -21,7 +22,7 @@
     };
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-server";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -30,8 +31,7 @@
   };
   outputs = {
     nixpkgs,
-    home-manager,
-    agenix,
+    nixpkgs-server,
     ...
   } @ inputs: let
     importAll = path:
@@ -42,22 +42,15 @@
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
-          [
-            ./hosts/desktop.nix
-            inputs.home-manager.nixosModules.home-manager
-            agenix.nixosModules.default
-          ]
+          [./hosts/desktop.nix]
           ++ importAll ./libs
           ++ importAll ./modules/common
           ++ importAll ./modules/desktop;
       };
-      nixserver = nixpkgs.lib.nixosSystem {
+      nixserver = nixpkgs-server.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
-          [
-            ./hosts/server.nix
-            agenix.nixosModules.default
-          ]
+          [./hosts/server.nix]
           ++ importAll ./libs
           ++ importAll ./modules/common
           ++ importAll ./modules/system;

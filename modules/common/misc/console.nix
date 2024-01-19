@@ -14,7 +14,7 @@
       colors = let
         inherit (config.cute) colours;
       in [
-        colours.base
+        "000000"
 	colours.love
 	colours.foam
 	colours.gold

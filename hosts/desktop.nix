@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  inputs,
   ...
 }: {
   cute = {
@@ -20,6 +19,7 @@
         fonts.enable = true;
         gaming.enable = true;
         greetd.enable = true;
+	hm.enable = true;
         xdg.enable = true;
       };
       themes = {
@@ -44,6 +44,7 @@
       };
     };
   };
+  nix.settings.sandbox = true;
   i18n.defaultLocale = "en_NZ.UTF-8";
   time = {
     timeZone = "NZ";
@@ -59,34 +60,6 @@
     extraGroups = ["wheel"];
     shell = pkgs.zsh;
     hashedPasswordFile = config.age.secrets.user.path;
-  };
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
-    users.pagu = {
-      home = {
-        username = "pagu";
-        homeDirectory = "/home/pagu";
-        packages = with pkgs; [
-          localsend
-          sublime-music
-          vesktop
-          xfce.thunar
-        ];
-        sessionVariables = {
-          EDITOR = "nvim";
-          MOZ_ENABLE_WAYLAND = 1;
-          NIXOS_OZONE_WL = 1;
-        };
-        stateVersion = "23.05";
-      };
-      programs.git = {
-        enable = true;
-        userName = "pagusupu";
-        userEmail = "me@pagu.cafe";
-      };
-    };
   };
   services = {
     dbus.enable = true;

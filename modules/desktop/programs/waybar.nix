@@ -10,11 +10,11 @@
       programs.waybar = {
         enable = true;
         settings = {
-          "bar1" = {
+          "bar" = {
             layer = "top";
             position = "left";
-            width = 44;
-            output = ["DP-3"];
+            width = 48;
+            output = ["DP-3" "HDMI-A-1"];
             modules-left = ["custom/nix" "clock" "tray"];
             modules-center = ["hyprland/workspaces"];
             modules-right = ["pulseaudio/slider" "pulseaudio" "custom/dnd" "network" "custom/powermenu"];
@@ -28,8 +28,8 @@
             };
             "network" = {
               format-wifi = "";
-              format-ethernet = "󰈀";
-              format = "!";
+              format-ethernet = "󰌗";
+              format = "";
               tooltip = false;
             };
             "pulseaudio/slider" = {
@@ -55,6 +55,10 @@
                 "2" = ["DP-3"];
                 "3" = ["DP-3"];
                 "4" = ["DP-3"];
+                "5" = ["HDMI-A-1"];
+                "6" = ["HDMI-A-1"];
+                "7" = ["HDMI-A-1"];
+                "8" = ["HDMI-A-1"];
               };
             };
             "custom/nix" = {
@@ -65,28 +69,33 @@
               dndclass =
                 pkgs.writeShellScript
                 "dnd-class.sh" ''
-                  if [ "$(makoctl mode)" = "default" ]; then
-                      echo '{"class":"disabled"}';
-                  else
+                  while true 
+		  do 
+		    if [ "$(makoctl mode)" = "default" ]; then
                       echo '{"class":"enabled"}';
-                  fi
+		    fi
+		    if [ "$(makoctl mode)" = "do-not-disturb" ]; then
+                      echo '{"class":"disabled"}';
+                    fi
+		   sleep 0.5
+		  done
                 '';
-              dndswap =
+              dndtoggle =
                 pkgs.writeShellScript
-                "dnd-swap.sh" ''
-                         if [ "$(makoctl mode)" = "default" ]; then
-                      exec "$(makoctl mode -s do-not-disturb)";
-                  else
+                "dnd-toggle.sh" ''
+                  if [ "$(makoctl mode)" = "do-not-disturb" ]; then
                       exec "$(makoctl mode -s default)";
+                  else
+                      exec "$(makoctl mode -s do-not-disturb)";
                   fi
                 '';
             in {
               format = "󰂚";
               return-type = "json";
               exec = "${dndclass}";
-              on-click = "${dndswap}";
+              on-click = "${dndtoggle}";
               exec-on-event = true;
-              interval = "once";
+	      interval = "1";
               tooltip = false;
             };
             "custom/powermenu" = let
@@ -104,8 +113,8 @@
                   esac
                 '';
             in {
-              format = "󰐥";
-	      on-click = "${menu}";
+              format = "󰤆";
+              on-click = "${menu}";
               tooltip = false;
             };
           };
@@ -113,152 +122,156 @@
         style = let
           inherit (config.cute) colours;
         in ''
-                 * {
-                   all: unset;
-                   font-family: "MonaspiceNe Nerd Font";
-                   font-size: 15px;
-                 }
-                 .modules-right {
-                   padding-bottom: 6px;
-                 }
-                 .modules-left {
-                   padding-top: 6px;
-                 }
-                 window#waybar {
-                   background: #${colours.base};
-                 }
-                 #workspaces {
-                   background: #${colours.overlay};
-                   border-bottom: 2px solid #${colours.iris};
-                   margin: 6px;
-                   padding-top: 6px;
-                   padding-bottom: 6px;
-                 }
-                 #workspaces button:hover {
-                   background: #${colours.overlay};
-                   border: #${colours.overlay};
-                   padding: 0px;
-                   box-shadow: inherit;
-                   text-shadow: inherit;
-                 }
-                 #workspaces button {
-                   color: #${colours.iris};
-                   font-size: 18px;
-                 }
-                 #clock {
-                   background-color: #${colours.overlay};
-                   padding-top: 6px;
-                   padding-bottom: 6px;
-                   margin-bottom: 6px;
-                   margin-left: 6px;
-                   margin-right: 6px;
-            margin-top: 6px;
-                   border-bottom: 2px solid #${colours.iris};
-                 }
-                 #network {
-                   padding-top: 7px;
-                   padding-right: 6px;
-                   padding-bottom: 7px;
-                   margin: 6px;
-                   background-color: #${colours.overlay};
-                   border-bottom: 2px solid #${colours.iris};
-                 }
-          #custom-nix {
-            background-color: #${colours.overlay};
-            border-bottom: 2px solid #${colours.iris};
-            font-size: 24px;
-            margin-left: 6px;
-            margin-right: 6px;
-            margin-bottom: 6px;
-            padding-right: 3px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-          }
-          #custom-dnd {
-            background-color: #${colours.overlay};
-            border-bottom: 2px solid #${colours.iris};
-            color: #${colours.text};
-            margin: 6px;
-            padding: 6px;
-            font-size: 18px;
-          }
-          #custom-dnd.enabled {
-            color: #${colours.text};
-          }
-          #custom-dnd.disabled {
-            color: #${colours.love};
-          }
-          #custom-powermenu {
-            background-color: #${colours.overlay};
-            border-bottom: 2px solid #${colours.iris};
-            padding-top: 4px;
-            padding-bottom: 4px;
-            margin-top: 6px;
-            margin-left: 6px;
-            margin-right: 6px;
-            font-size: 20px;
-          }
-                 #tray {
-                   padding-top: 6px;
-                   padding-bottom: 6px;
-                   background-color: #${colours.overlay};
-                   color: #${colours.text};
-                   margin: 6px;
-                   border-bottom: 2px solid #${colours.iris};
-                 }
-                 #tray menu {
-                   background: #${colours.surface};
-                   color: #${colours.text};
-                   padding: 4px;
-                   border: 1px solid #${colours.iris};
-                 }
-                 #tray > .needs-attention {
-                   color: #${colours.love};
-                 }
-                 #pulseaudio {
-                   background-color: #${colours.overlay};
-                   border-bottom: 2px solid #${colours.iris};
-                   padding-top: 6px;
-                   padding-bottom: 4px;
-                   margin-left: 6px;
-                   margin-right: 6px;
-                   margin-bottom: 6px;
-                 }
-                 #pulseaudio-slider {
-                   background-color: #${colours.overlay};
-                   padding-top: 6px;
-                   margin-top: 6px;
-                   margin-left: 6px;
-                   margin-right: 6px;
-                 }
-                 #pulseaudio-slider slider {
-                   min-height: 0px;
-                   min-width: 0px;
-                   opacity: 0;
-                   background-image: none;
-                   border: none;
-                   box-shadow: none;
-                 }
-                 #pulseaudio-slider trough {
-                   min-height: 100px;
-                   min-width: 20px;
-                   background-color: #${colours.surface};
-                 }
-                 #pulseaudio-slider highlight {
-                   min-width: 20px;
-                   background-color: #${colours.iris};
-                 }
-                 tooltip {
-                   background-color: transparent;
-                 }
-                 tooltip label {
-                   color: #${colours.text};
-                   background-color: #${colours.surface};
-               /*  margin-bottom: 30px; */
-                   margin-left: 34px;
-                   padding: 6px;
-                   border: 1px solid #${colours.iris};
-                 }
+                      * {
+                        all: unset;
+                        font-family: "MonaspiceNe Nerd Font";
+                        font-size: 15px;
+                      }
+                      .modules-right {
+                        padding-bottom: 6px;
+                      }
+                      .modules-left {
+                        padding-top: 6px;
+                      }
+                      window#waybar {
+                        background: #${colours.base};
+                      }
+                      #workspaces {
+                        background: #${colours.overlay};
+                        border-bottom: 2px solid #${colours.iris};
+                        margin: 6px;
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                      }
+                      #workspaces button:hover {
+                        background: #${colours.overlay};
+                        border: #${colours.overlay};
+                        padding: 0px;
+                        box-shadow: inherit;
+                        text-shadow: inherit;
+                      }
+                      #workspaces button {
+                        color: #${colours.iris};
+                        font-size: 18px;
+                      }
+                      #clock {
+                        background-color: #${colours.overlay};
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        margin-bottom: 6px;
+                        margin-left: 6px;
+                        margin-right: 6px;
+                 margin-top: 6px;
+                        border-bottom: 2px solid #${colours.iris};
+                      }
+                      #network {
+                        padding-top: 0px;
+                        padding-right: 6px;
+                        padding-bottom: 0px;
+                        margin-left: 6px;
+          margin-right: 6px;
+                        background-color: #${colours.overlay};
+                     /*   border-bottom: 2px solid #${colours.iris}; */
+                      }
+               #custom-nix {
+                 background-color: #${colours.overlay};
+                 border-bottom: 2px solid #${colours.iris};
+                 font-size: 24px;
+                 margin-left: 6px;
+                 margin-right: 6px;
+                 margin-bottom: 6px;
+                 padding-right: 3px;
+                 padding-top: 2px;
+                 padding-bottom: 2px;
+               }
+               #custom-dnd {
+                 background-color: #${colours.overlay};
+               /*  border-bottom: 2px solid #${colours.iris}; */
+                 color: #${colours.text};
+                 margin-top: 6px;
+                 margin-left: 6px;
+                 margin-right: 6px;
+                 padding: 6px;
+                 font-size: 18px;
+               }
+               #custom-dnd.enabled {
+                 color: #${colours.text};
+               }
+               #custom-dnd.disabled {
+                 color: #${colours.love};
+               }
+               #custom-powermenu {
+                 background-color: #${colours.overlay};
+                 border-bottom: 2px solid #${colours.iris};
+                 padding-top: 4px;
+                 padding-bottom: 4px;
+          padding-right: 1px;
+                  /*margin-top: 6px; */
+                 margin-left: 6px;
+                 margin-right: 6px;
+                 font-size: 19px;
+               }
+                      #tray {
+                        padding-top: 6px;
+                        padding-bottom: 6px;
+                        background-color: #${colours.overlay};
+                        color: #${colours.text};
+                        margin: 6px;
+                        border-bottom: 2px solid #${colours.iris};
+                      }
+                      #tray menu {
+                        background: #${colours.surface};
+                        color: #${colours.text};
+                        padding: 4px;
+                        border: 1px solid #${colours.iris};
+                      }
+                      #tray > .needs-attention {
+                        color: #${colours.love};
+                      }
+                      #pulseaudio {
+                        background-color: #${colours.overlay};
+                        border-bottom: 2px solid #${colours.iris};
+                        padding-top: 6px;
+                        padding-bottom: 4px;
+                        margin-left: 6px;
+                        margin-right: 6px;
+                        margin-bottom: 6px;
+                      }
+                      #pulseaudio-slider {
+                        background-color: #${colours.overlay};
+                        padding-top: 6px;
+                        margin-top: 6px;
+                        margin-left: 6px;
+                        margin-right: 6px;
+                      }
+                      #pulseaudio-slider slider {
+                        min-height: 0px;
+                        min-width: 0px;
+                        opacity: 0;
+                        background-image: none;
+                        border: none;
+                        box-shadow: none;
+                      }
+                      #pulseaudio-slider trough {
+                        min-height: 100px;
+                        min-width: 20px;
+                        background-color: #${colours.surface};
+                      }
+                      #pulseaudio-slider highlight {
+                        min-width: 20px;
+                        background-color: #${colours.iris};
+                      }
+                      tooltip {
+                        background-color: transparent;
+                      }
+                      tooltip label {
+                        color: #${colours.text};
+                        background-color: #${colours.surface};
+                    /*  margin-bottom: 30px; */
+                        margin-left: 34px;
+                        padding: 6px;
+                        border: 1px solid #${colours.iris};
+                      }
         '';
       };
     };
