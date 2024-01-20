@@ -19,7 +19,6 @@
           packages = with pkgs; [
             localsend
             sublime-music
-            vesktop
             xfce.thunar
           ];
           sessionVariables = {

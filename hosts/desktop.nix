@@ -25,7 +25,6 @@
       themes = {
         firefox = true;
         gtk = true;
-        #vesktop = true;
       };
     };
     common = {
@@ -65,6 +64,7 @@
     sshd.enable = true;
   };
   security = {
+    polkit.enable = true;
     tpm2.enable = true;
     sudo = {
       execWheelOnly = true;
