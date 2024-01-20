@@ -14,7 +14,7 @@
     };
     conduit = {
       url = "gitlab:famedly/conduit";
-      inputs.nixpkgs.follows = "nixpkgs-server";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";

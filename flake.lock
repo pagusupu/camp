@@ -45,7 +45,7 @@
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs-server"
+          "nixpkgs"
         ]
       },
       "locked": {
