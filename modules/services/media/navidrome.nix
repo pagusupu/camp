@@ -16,7 +16,7 @@
           openFirewall = true;
           settings = {
             Address = "0.0.0.0";
-	    Port = 8098;
+            Port = 8098;
             DataFolder = "/var/lib/navidrome";
             MusicFolder = "/storage/services/navidrome/music";
             ArtistArtPriority = "artist.*, album/artist.*";
@@ -24,8 +24,6 @@
             EnableSharing = true;
             EnableStarRating = false;
             EnableTranscodingConfig = true;
-            FFmpegPath = "${pkgs.ffmpeg_5-headless}";
-            MPVPath = "${pkgs.mpv}";
             UILoginBackgroundUrl = "https://i.imgur.com/dnVRU2A.png";
             UIWelcomeMessage = "";
             LastFM = {

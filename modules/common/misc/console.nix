@@ -15,21 +15,21 @@
         inherit (config.cute) colours;
       in [
         "000000"
-	colours.love
-	colours.foam
-	colours.gold
-	colours.pine
-	colours.iris
-	colours.rose
-	colours.text
-	colours.overlay
-	colours.love
-	colours.foam
-	colours.gold
-	colours.pine
-	colours.iris
-	colours.rose
-	colours.text
+        colours.love
+        colours.foam
+        colours.gold
+        colours.pine
+        colours.iris
+        colours.rose
+        colours.text
+        colours.overlay
+        colours.love
+        colours.foam
+        colours.gold
+        colours.pine
+        colours.iris
+        colours.rose
+        colours.text
       ];
     };
     # quiet
