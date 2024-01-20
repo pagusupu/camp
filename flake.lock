@@ -58,6 +58,7 @@
       },
       "original": {
         "owner": "famedly",
+        "ref": "next",
         "repo": "conduit",
         "type": "gitlab"
       }

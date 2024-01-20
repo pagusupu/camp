@@ -7,7 +7,7 @@
     services = {
       web = {
         domain = "pagu.cafe";
-        conduit = false;
+        conduit = true;
         forgejo = true;
         nextcloud = true;
         nginx = true;

@@ -13,7 +13,7 @@
       };
     };
     conduit = {
-      url = "gitlab:famedly/conduit";
+      url = "gitlab:famedly/conduit?ref=next";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
