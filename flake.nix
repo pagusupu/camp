@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-server.url = "github:NixOS/nixpkgs?rev=317484b1ead87b9c1b8ac5261a8d2dd748a0492d";
+    conduit.url = "gitlab:famedly/conduit?ref=next";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     agenix = {
@@ -11,11 +12,7 @@
         darwin.follows = "";
         home-manager.follows = "";
       };
-    };
-    conduit = {
-      url = "gitlab:famedly/conduit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

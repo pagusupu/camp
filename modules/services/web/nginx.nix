@@ -11,9 +11,7 @@
     domain = "${config.cute.services.web.domain}";
   in
     lib.mkIf config.cute.services.web.nginx {
-      networking.firewall = {
-        allowedTCPPorts = [80 443 1313 8080];
-      };
+      networking.firewall.allowedTCPPorts = [80 443 1313 8080];
       security.acme = {
         acceptTerms = true;
         defaults.email = "amce@${domain}";
@@ -22,7 +20,7 @@
         enable = true;
         commonHttpConfig = ''
           real_ip_header CF-Connecting-IP;
-          add_header 'Referrer-Policy' 'origin-when-cross-origin'; 
+          add_header 'Referrer-Policy' 'origin-when-cross-origin';
         '';
         recommendedProxySettings = true;
         recommendedTlsSettings = true;

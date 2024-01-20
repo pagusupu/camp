@@ -7,51 +7,36 @@
 }: {
   options.cute.services.web.conduit = lib.mkEnableOption "";
   config = let
-    domain = "matrix.${config.cute.services.web.domain}";
-    baseDomain = "${config.cute.services.web.domain}";
-    well_known_server = pkgs.writeText "well-known-matrix-server" ''
-      {
-        "m.server": "${domain}"
-      }
-    '';
-    well_known_client = pkgs.writeText "well-known-matrix-client" ''
-      {
-        "m.homeserver": {
-          "base_url": "https://${domain}"
-        }
-      }
-    '';
+    server_name = "${config.cute.services.web.domain};";
+    matrix_hostname = "matrix.${server_name}";
   in
     lib.mkIf config.cute.services.web.conduit {
       services = {
         matrix-conduit = {
           enable = true;
           package = inputs.conduit.packages.${pkgs.system}.default;
-          settings.global = {inherit baseDomain;};
+          settings.global = {
+            inherit server_name;
+            address = "0.0.0.0";
+          };
         };
         nginx = {
           virtualHosts = {
-            "${domain};" = {
+            "${matrix_hostname};" = {
               forceSSL = true;
               enableACME = true;
               listen = [
+                {
+                  addr = "0.0.0.0";
+                  port = 80;
+                }
                 {
                   addr = "0.0.0.0";
                   port = 443;
                   ssl = true;
                 }
                 {
-                  addr = "[::]";
-                  port = 443;
-                  ssl = true;
-                }
-		{
-		  addr = "0.0.0.0";
-		  port = 8448;
-		  ssl = true;
-		}
-                {
-                  addr = "[::]";
+                  addr = "0.0.0.0";
                   port = 8448;
                   ssl = true;
                 }
@@ -64,21 +49,29 @@
                   proxy_buffering off;
                 '';
               };
-              extraConfig = ''
-                merge_slashes = off;
-              '';
+              extraConfig = ''merge_slashes = off;'';
             };
-            "${baseDomain}" = {
-	      forceSSL = true;
-	      enableACME = true;
-              locations."=./well-known/matrix/server" = {
-                alias = "${well_known_server}";
+            "${server_name}".locations = let
+              formatJson = pkgs.formats.json {};
+            in {
+              "=/.well-known/matrix/server" = {
+                alias = formatJson.generate "well-known-matrix-server" {
+                  "m.server" = "${matrix_hostname}";
+                };
                 extraConfig = ''
                   default_type application/json;
+                  add_header Access-Control-Allow-Origin "*";
                 '';
               };
-              locations."/.well-known/matrix/client" = {
-                alias = "${well_known_client}";
+              "=/.well-known/matrix/client" = {
+                alias = formatJson.generate "well-known-matrix-client" {
+                  "m.homeserver" = {
+                    "base_url" = "https://${matrix_hostname}";
+                  };
+                  "org.matrix.msc3575.proxy" = {
+                    "url" = "https://${matrix_hostname}";
+                  };
+                };
                 extraConfig = ''
                   default_type application/json;
                   add_header Access-Control-Allow-Origin "*";
@@ -86,14 +79,12 @@
               };
             };
           };
-          upstreams = {
-            "backend_conduit" = {
-              servers = {
-                "[::1]:${toString config.services.matrix-conduit.settings.global.port}" = {};
-              };
-            };
+          upstreams."backend_conduit".servers = {
+            "0.0.0.0:${toString config.services.matrix-conduit.settings.global.port}" = {};
           };
         };
       };
+      networking.firewall.allowedTCPPorts = [8448];
+      networking.firewall.allowedUDPPorts = [8448];
     };
 }
