@@ -5,10 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [
-    inputs.nix-gaming.nixosModules.pipewireLowLatency
-    inputs.nix-gaming.nixosModules.steamCompat
-  ];
+  imports = [inputs.nix-gaming.nixosModules.steamCompat];
   options.cute.desktop.misc.gaming = lib.mkEnableOption "";
   config = lib.mkIf config.cute.desktop.misc.gaming {
     home-manager.users.pagu = {
