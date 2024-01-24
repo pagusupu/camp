@@ -1,13 +1,13 @@
 {
-  lib,
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   options.cute.services.web.conduit = lib.mkEnableOption "";
   config = let
-    server_name = "${config.cute.services.web.domain};";
+    server_name = "pagu.cafe";
     matrix_hostname = "matrix.${server_name}";
   in
     lib.mkIf config.cute.services.web.conduit {
@@ -18,26 +18,18 @@
           settings.global = {
             inherit server_name;
             address = "0.0.0.0";
+            allow_registration = true;
           };
         };
         nginx = {
           virtualHosts = {
-            "${matrix_hostname};" = {
+            "${matrix_hostname}" = {
               forceSSL = true;
               enableACME = true;
               listen = [
                 {
                   addr = "0.0.0.0";
-                  port = 80;
-                }
-                {
-                  addr = "0.0.0.0";
                   port = 443;
-                  ssl = true;
-                }
-                {
-                  addr = "0.0.0.0";
-                  port = 8448;
                   ssl = true;
                 }
               ];
@@ -49,14 +41,14 @@
                   proxy_buffering off;
                 '';
               };
-              extraConfig = ''merge_slashes = off;'';
+              extraConfig = ''merge_slashes off;'';
             };
             "${server_name}".locations = let
               formatJson = pkgs.formats.json {};
             in {
               "=/.well-known/matrix/server" = {
                 alias = formatJson.generate "well-known-matrix-server" {
-                  "m.server" = "${matrix_hostname}";
+                  "m.server" = "${matrix_hostname}:443";
                 };
                 extraConfig = ''
                   default_type application/json;
@@ -80,7 +72,7 @@
             };
           };
           upstreams."backend_conduit".servers = {
-            "0.0.0.0:${toString config.services.matrix-conduit.settings.global.port}" = {};
+            "localhost:${toString config.services.matrix-conduit.settings.global.port}" = {};
           };
         };
       };

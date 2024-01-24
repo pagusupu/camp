@@ -26,7 +26,7 @@
               background-color: #${colours.base};
               border-radius: 0px;
               border: 2px solid #${colours.iris};
-              color: #e0def4;
+              color: #${colours.text};
               font-family: 'MonaspiceNe Nerd Font';
               font-size: 15px;
           }
@@ -35,14 +35,14 @@
               border-radius: 0px;
               border: none;
               border-radius: 0px;;
-              color: #eb6f92;
+              color: #${colours.iris};
               background-color: #${colours.overlay};
           }
           #inner-box {
               margin: 5px;
               border: none;
               background-color: #${colours.overlay};
-              color: #191724;
+              color: #${colours.base};
               border-radius: 0px;
           }
           #outer-box {
