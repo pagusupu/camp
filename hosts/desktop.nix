@@ -8,8 +8,10 @@
       programs = {
         alacritty = true;
         firefox = true;
+        games = true;
         hyprland = true;
         mako = true;
+        misc = true;
         swaylock = true;
         waybar = true;
         wofi = true;
@@ -17,7 +19,6 @@
       misc = {
         audio = true;
         fonts = true;
-        gaming = true;
         greetd = true;
         hm = true;
         xdg = true;

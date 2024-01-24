@@ -2,7 +2,6 @@
   config,
   lib,
   inputs,
-  pkgs,
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
@@ -16,16 +15,6 @@
         home = {
           username = "pagu";
           homeDirectory = "/home/pagu";
-          packages = with pkgs; [
-            localsend
-            sublime-music
-            xfce.thunar
-          ];
-          sessionVariables = {
-            EDITOR = "nvim";
-            MOZ_ENABLE_WAYLAND = 1;
-            NIXOS_OZONE_WL = 1;
-          };
           stateVersion = "23.05";
         };
         programs.git = {

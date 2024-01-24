@@ -6,15 +6,15 @@
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
-  options.cute.desktop.misc.gaming = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.gaming {
+  options.cute.desktop.programs.games = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.games {
     home-manager.users.pagu = {
       home.packages = with pkgs; [
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
         prismlauncher-qt5
         protontricks
         r2modman
-        xivlauncher
+        # xivlauncher
       ];
     };
     programs.steam = {

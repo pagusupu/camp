@@ -40,10 +40,10 @@
       plugins = {
         treesitter.enable = true;
         rainbow-delimiters.enable = true;
-	barbar = {
-	  enable = true;
-	  autoHide = true;
-	};
+        barbar = {
+          enable = true;
+          autoHide = true;
+        };
         lsp = {
           enable = true;
           servers.nil_ls = {
@@ -81,5 +81,6 @@
         };
       };
     };
+    environment.sessionVariables = {EDITOR = "nvim";};
   };
 }

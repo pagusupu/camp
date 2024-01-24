@@ -25,9 +25,9 @@
               "waybar"
               "steam -console -silent"
               "${pkgs.localsend}/bin/localsend_app"
+	      "firefox"
             ];
             windowrulev2 = [
-              "workspace 5, class:(VencordDesktop)"
               "workspace 5, class:(.sublime-music-wrapped)"
               "float, class:(thunar)"
               "float, class:(localsend_app)"
@@ -110,13 +110,15 @@
             ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
           '';
         };
-        home.packages = with pkgs; [
-          wl-clipboard
-          grimblast
-          swayidle
-          swaybg
-          imv
-        ];
+        home = {
+          packages = with pkgs; [
+            wl-clipboard
+            grimblast
+            swayidle
+            swaybg
+          ];
+          sessionVariables = {NIXOS_OZONE_WL = 1;};
+        };
       };
       programs.hyprland = {
         enable = true;
