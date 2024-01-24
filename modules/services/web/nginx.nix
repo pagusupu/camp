@@ -29,7 +29,7 @@
         virtualHosts."${domain}" = {
           forceSSL = true;
           enableACME = true;
-          root = "/storage/website/public";
+          root = "/storage/website/cafe";
         };
         virtualHosts."dash.${domain}" = {
           forceSSL = true;
