@@ -10,10 +10,9 @@
   config = lib.mkIf config.cute.common.programs.nixvim {
     programs.nixvim = {
       enable = true;
-      luaLoader.enable = true;
       defaultEditor = true;
       vimAlias = true;
-      extraPlugins = with pkgs.vimPlugins; [plenary-nvim];
+      luaLoader.enable = true;
       colorschemes.rose-pine = {
         enable = true;
         disableItalics = true;
@@ -36,6 +35,11 @@
           key = "f";
           action = "<cmd>%!alejandra -qq<cr>";
         }
+      ];
+      extraPlugins = with pkgs.vimPlugins; [
+        plenary-nvim
+        nvim-treesitter-parsers.yuck
+        yuck-vim
       ];
       plugins = {
         treesitter.enable = true;

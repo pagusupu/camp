@@ -10,7 +10,12 @@
       programs.waybar = {
         enable = true;
         settings = {
-          "bar" = {
+          # rightbar = {
+          # name = "rightbar";
+          # output = ["HDMI-A-1"];
+          # };
+          leftbar = {
+            name = "leftbar";
             layer = "top";
             position = "left";
             width = 48;
@@ -18,9 +23,7 @@
             modules-left = ["custom/nix" "clock" "tray"];
             modules-center = ["hyprland/workspaces"];
             modules-right = ["pulseaudio/slider" "pulseaudio" "custom/dnd" "network" "custom/powermenu"];
-            "clock" = {
-              format = "{: %I \n %M \n %p}";
-            };
+            "clock" = {format = "{: %I \n %M \n %p}";};
             "tray" = {
               icon-size = 20;
               spacing = 4;
@@ -69,16 +72,16 @@
               dndclass =
                 pkgs.writeShellScript
                 "dnd-class.sh" ''
-                  while true 
-		  do 
-		    if [ "$(makoctl mode)" = "default" ]; then
-                      echo '{"class":"enabled"}';
-		    fi
-		    if [ "$(makoctl mode)" = "do-not-disturb" ]; then
-                      echo '{"class":"disabled"}';
+                                while true
+                  do
+                    if [ "$(makoctl mode)" = "default" ]; then
+                                    echo '{"class":"enabled"}';
                     fi
-		   sleep 0.5
-		  done
+                    if [ "$(makoctl mode)" = "do-not-disturb" ]; then
+                                    echo '{"class":"disabled"}';
+                                  fi
+                   sleep 0.5
+                  done
                 '';
               dndtoggle =
                 pkgs.writeShellScript
@@ -95,7 +98,7 @@
               exec = "${dndclass}";
               on-click = "${dndtoggle}";
               exec-on-event = true;
-	      interval = "1";
+              interval = "1";
               tooltip = false;
             };
             "custom/powermenu" = let

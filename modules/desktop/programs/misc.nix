@@ -10,7 +10,6 @@
       home.packages = with pkgs; [
         imv
         localsend
-        sublime-music
         xfce.thunar
       ];
     };

@@ -17,12 +17,12 @@
           package = pkgs.rose-pine-icon-theme;
           name = "rose-pine";
         };
-        gtk3.extraCss = ''
-          * { border-radius: 0px; }
-        '';
-        gtk4.extraCss = ''
-          * { border-radius: 0px; }
-        '';
+      #  gtk3.extraCss = ''
+      #    * { border-radius: 0px; }
+      #  '';
+      #  gtk4.extraCss = ''
+      #    * { border-radius: 0px; }
+      #  '';
       };
       qt = {
         enable = true;

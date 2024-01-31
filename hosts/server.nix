@@ -9,7 +9,7 @@
         domain = "pagu.cafe";
         conduit = true;
         forgejo = true;
-	grocy = true;
+        grocy = true;
         nextcloud = true;
         nginx = true;
         vaultwarden = true;

@@ -22,7 +22,7 @@
           videos = "\$HOME/.misc/videos";
         };
         desktopEntries = {
-          # removed
+          #removed
           Alacritty = {
             noDisplay = true;
             name = "alacritty";
@@ -51,11 +51,6 @@
           firefox = {
             name = "Firefox";
             exec = "firefox";
-            terminal = false;
-          };
-          steam = {
-            name = "Steam";
-            exec = "steam";
             terminal = false;
           };
           mpv = {

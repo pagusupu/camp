@@ -18,7 +18,6 @@
           enable = true;
           settings = {
             exec-once = [
-              "swaylock"
               "swayidle -w before-sleep 'swaylock'"
               "swaybg -i ${bg} -o ${m1} -m center"
               "swaybg -i ${bg} -o ${m2} -m center"
@@ -38,8 +37,8 @@
               sensitivity = "-0.1";
             };
             general = {
-              gaps_in = 5;
-              gaps_out = 10;
+              gaps_in = 3;
+              gaps_out = 6;
               border_size = 2;
               no_cursor_warps = true;
               resize_on_border = true;
@@ -52,9 +51,13 @@
               smart_resizing = false;
               force_split = 2;
             };
-            decoration.drop_shadow = false;
+            decoration = {
+	      drop_shadow = false;
+	    #  rounding = 6;
+	    };
             animations = {
               enabled = true;
+	      first_launch_animation = false;
               animation = [
                 "windows, 1, 2, default"
                 "border, 1, 2, default"
@@ -77,10 +80,10 @@
               "${mod}, BACKSPACE, exec, grimblast --notify --freeze copy area"
               "${mod}:SHIFT, BACKSPACE, exec, grimblast --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
               "${mod}, Q, killactive"
-              "${mod}, M, exit"
               "${mod}, F, fullscreen"
               "${mod}, SPACE, togglefloating"
               "${mod}, P, pin"
+	      "${mod}, M, exit"
               "${mod}, left, movefocus, l"
               "${mod}, right, movefocus, r"
               "${mod}, up, movefocus, u"
@@ -130,10 +133,7 @@
       };
       xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-gtk
-          lxqt.xdg-desktop-portal-lxqt
-        ];
+        extraPortals = [pkgs.xdg-desktop-portal-gtk];
       };
     };
 }

@@ -19,9 +19,23 @@
     };
     programs.steam = {
       enable = true;
-      extraCompatPackages = [
-        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
-      ];
+      extraCompatPackages = [inputs.nix-gaming.packages.${pkgs.system}.proton-ge];
+      gamescopeSession = {
+        enable = true;
+        args = ["-H 1080 -r 165 -e -b --expose-wayland"];
+      };
+    };
+    hardware = {
+      xone.enable = true;
+      opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+        extraPackages = with pkgs; [
+          vaapiVdpau
+          libvdpau-va-gl
+        ];
+      };
     };
     nix.settings = {
       substituters = ["https://nix-gaming.cachix.org"];

@@ -7,6 +7,7 @@
     desktop = {
       programs = {
         alacritty = true;
+        eww = true;
         firefox = true;
         games = true;
         hyprland = true;
@@ -21,6 +22,7 @@
         fonts = true;
         greetd = true;
         hm = true;
+        polkit = true;
         xdg = true;
       };
       themes = {
@@ -101,16 +103,6 @@
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
-    xone.enable = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
   };
   networking = {
     dhcpcd.wait = "background";
@@ -122,6 +114,7 @@
       allowedTCPPorts = [53317];
       allowedUDPPorts = [53317];
     };
+    networkmanager.enable = false;
     wireless = {
       enable = true;
       userControlled.enable = true;
