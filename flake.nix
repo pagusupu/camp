@@ -29,6 +29,7 @@
     conduit.url = "gitlab:famedly/conduit?ref=next";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
   };
   outputs = {
     nixpkgs,
@@ -44,7 +45,7 @@
         specialArgs = {inherit inputs;};
         modules =
           [./hosts/desktop.nix]
-          ++ importAll ./libs
+          ++ importAll ./lib
           ++ importAll ./modules/common
           ++ importAll ./modules/desktop;
       };
@@ -52,7 +53,7 @@
         specialArgs = {inherit inputs;};
         modules =
           [./hosts/server.nix]
-          ++ importAll ./libs
+          ++ importAll ./lib
           ++ importAll ./modules/common
           ++ importAll ./modules/services;
       };

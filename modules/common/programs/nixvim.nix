@@ -38,7 +38,6 @@
       ];
       extraPlugins = with pkgs.vimPlugins; [
         plenary-nvim
-        nvim-treesitter-parsers.yuck
         yuck-vim
       ];
       plugins = {
