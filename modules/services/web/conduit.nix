@@ -18,7 +18,7 @@
           settings.global = {
             inherit server_name;
             address = "0.0.0.0";
-            allow_registration = true;
+            allow_registration = false;
           };
         };
         nginx = {

@@ -12,6 +12,7 @@
         grocy = true;
         nextcloud = true;
         nginx = true;
+        qbittorrent = true;
         vaultwarden = true;
       };
       media = {

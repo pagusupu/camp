@@ -11,7 +11,7 @@
     domain = "${config.cute.services.web.domain}";
   in
     lib.mkIf config.cute.services.web.nginx {
-      networking.firewall.allowedTCPPorts = [80 443 1313 8080];
+      networking.firewall.allowedTCPPorts = [80 443 8080];
       security.acme = {
         acceptTerms = true;
         defaults.email = "amce@${domain}";

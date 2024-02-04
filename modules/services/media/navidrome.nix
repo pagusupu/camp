@@ -24,7 +24,6 @@
             EnableSharing = true;
             EnableStarRating = false;
             EnableTranscodingConfig = true;
-            UILoginBackgroundUrl = "https://i.imgur.com/dnVRU2A.png";
             UIWelcomeMessage = "";
             LastFM = {
               ApiKey = "9bb677319d28788826b28537483ab363";
