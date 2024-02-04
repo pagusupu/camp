@@ -20,6 +20,7 @@
             DataFolder = "/var/lib/navidrome";
             MusicFolder = "/storage/services/navidrome/music";
             ArtistArtPriority = "artist.*, album/artist.*";
+	    CoverArtPriority = "cover.*, external";
             AutoImportPlaylists = false;
             EnableSharing = true;
             EnableStarRating = false;

@@ -13,12 +13,8 @@
         # "esphome"
         # "met"
         # "radiob_browser"
-        "cups"
         "fritz"
         "light"
-        "seventeentrack"
-        "tuya"
-        "webostv"
         "wiz"
       ];
       config = {
