@@ -13,14 +13,14 @@
         settings = let
           inherit (config.cute) colours;
         in {
-          image = "~/flake/modules/desktop/images/lockbg.png";
           clock = true;
           indicator = true;
-          timestr = "%I:%M %p";
-          datestr = "";
-          font = "MonaspiceNE Nerd Font";
-          font-size = 18;
           line-uses-inside = true;
+          font-size = 18;
+          datestr = "";
+          timestr = "%I:%M %p";
+          font = "MonaspiceNE Nerd Font";
+          image = "~/flake/modules/desktop/images/lockbg.png";
 
           color = "#${colours.base}";
           bs-hl-color = "#${colours.love}";
@@ -29,8 +29,8 @@
 
           inside-color = "#${colours.surface}";
           inside-ver-color = "#${colours.surface}";
-          inside-clear-color = "#${colours.surface}";
           inside-wrong-color = "#${colours.surface}";
+          inside-clear-color = "#${colours.surface}";
           inside-caps-lock-color = "#${colours.surface}";
 
           ring-color = "#${colours.muted}";

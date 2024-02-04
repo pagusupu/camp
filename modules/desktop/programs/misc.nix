@@ -12,6 +12,6 @@
         localsend
         xfce.thunar
       ];
-    };
+    }; 
   };
 }

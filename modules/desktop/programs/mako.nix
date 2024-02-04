@@ -13,7 +13,7 @@
         maxVisible = 3;
         borderSize = 2;
         margin = "14";
-        backgroundColor = "#${config.cute.colours.surface}";
+        backgroundColor = "#${config.cute.colours.overlay}";
         borderColor = "#${config.cute.colours.iris}";
         textColor = "#${config.cute.colours.text}";
         extraConfig = ''

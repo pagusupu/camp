@@ -12,11 +12,10 @@
           hide_scroll = true;
           insensitive = true;
           dynamic_lines = true;
+	  allow_markup = false;
           width = "10%";
-          x = 2;
-	  location = 0;
           prompt = "";
-          lines = 11;
+          lines = 8;
         };
         style = let
 	  inherit (config.cute) colours;
