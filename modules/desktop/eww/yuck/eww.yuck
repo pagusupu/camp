@@ -1,0 +1,33 @@
+(defwindow leftbar
+  :monitor 0
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :focusable false
+  :geometry (geometry :x "6px" :y "6px" :width "2%" :height "1068px" :anchor "left center")
+  (bar))
+
+(defwidget bar []
+  (centerbox :orientation "v"
+    (box :class "top"
+         :valign "start"
+      (top))
+    (box :class "middle"
+         :valign "center"
+      (middle))))
+
+(defwidget top [] (L))
+(defwidget middle [] (time))
+
+(defwidget L []
+  (box :orientation "v"
+       :class "L"
+       "L"))
+
+(defwidget time []
+  (box :orientation "v"
+       :class "time"
+       hour min m))
+(defpoll hour :interval "1s" "date +%I")
+(defpoll min  :interval "1s" "date +%M")
+(defpoll m    :interval "1m" "date +%p")

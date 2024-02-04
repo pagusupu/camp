@@ -22,7 +22,7 @@
         fonts = true;
         greetd = true;
         hm = true;
-        polkit = true;
+        polkit = false;
         xdg = true;
       };
       themes = {
