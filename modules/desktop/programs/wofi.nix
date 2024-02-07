@@ -11,11 +11,9 @@
         settings = {
           hide_scroll = true;
           insensitive = true;
-          dynamic_lines = true;
-	  allow_markup = false;
           width = "10%";
           prompt = "";
-          lines = 8;
+          lines = 7;
         };
         style = let
 	  inherit (config.cute) colours;

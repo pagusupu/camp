@@ -21,8 +21,6 @@
         number = true;
         shiftwidth = 2;
         smartindent = true;
-        termguicolors = true;
-        title = true;
         ttyfast = true;
         undofile = true;
       };
@@ -30,10 +28,6 @@
         {
           key = "t";
           action = "<cmd>NvimTreeToggle<cr>";
-        }
-        {
-          key = "f";
-          action = "<cmd>%!alejandra -qq<cr>";
         }
       ];
       extraPlugins = with pkgs.vimPlugins; [
@@ -53,12 +47,17 @@
             enable = true;
             autostart = true;
             cmd = ["nil"];
-            settings.formatting.command = ["alejandra" "--quiet"];
+            settings.formatting.command = ["alejandra --quiet"];
           };
+        };
+        lsp-format = {
+          enable = true;
+          lspServersToEnable = ["nil_ls"];
         };
         none-ls = {
           enable = true;
           sources = {
+	    code_actions.statix.enable = true;
             formatting.alejandra.enable = true;
             diagnostics.deadnix.enable = true;
           };

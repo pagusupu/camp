@@ -16,18 +16,18 @@
       home-manager.users.pagu = {
         wayland.windowManager.hyprland = {
           enable = true;
+          package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+          plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
           settings = {
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
               "swaybg -i ${bg} -o ${m1} -m center"
               "swaybg -i ${bg} -o ${m2} -m center"
-              "waybar"
-              "steam -console -silent"
+              "pgrep -x eww > /dev/null || eww open-many leftbar rightbar"
               "${pkgs.localsend}/bin/localsend_app"
-	      "firefox"
+              "firefox"
             ];
             windowrulev2 = [
-              "workspace 5, class:(.sublime-music-wrapped)"
               "float, class:(thunar)"
               "float, class:(localsend_app)"
             ];
@@ -52,18 +52,23 @@
               force_split = 2;
             };
             decoration = {
-	      drop_shadow = false;
-	    #  rounding = 6;
-	    };
+              drop_shadow = false;
+              #  rounding = 6;
+            };
             animations = {
               enabled = true;
-	      first_launch_animation = false;
+              first_launch_animation = false;
               animation = [
                 "windows, 1, 2, default"
                 "border, 1, 2, default"
                 "fade, 1, 2, default"
                 "workspaces, 1, 1, default, slidevert"
               ];
+            };
+            plugin = {
+              split-monitor-workspaces = {
+                count = 4;
+              };
             };
             misc = {
               vrr = 1;
@@ -83,7 +88,7 @@
               "${mod}, F, fullscreen"
               "${mod}, SPACE, togglefloating"
               "${mod}, P, pin"
-	      "${mod}, M, exit"
+              "${mod}, M, exit"
               "${mod}, left, movefocus, l"
               "${mod}, right, movefocus, r"
               "${mod}, up, movefocus, u"
@@ -109,8 +114,8 @@
           extraConfig = ''
             ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m1}") ["1" "2" "3" "4"]}
             ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m2}") ["5" "6" "7" "8"]}
-            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
-            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
+            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},split-workspace,${n}") ["1" "2" "3" "4"]}
+            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},split-movetoworkspacesilent,${n}") ["1" "2" "3" "4"]}
           '';
         };
         home = {

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options.cute.desktop.programs.firefox = lib.mkEnableOption "";
@@ -35,6 +36,7 @@
             };
           };
         };
+	package = pkgs.firefox.override { cfg.speechSynthesisSupport = false; };
         policies = {
           CaptivePortal = false;
           DisableFirefoxStudies = true;
@@ -88,7 +90,10 @@
           };
         };
       };
-      home.sessionVariables = {MOZ_ENABLE_WAYLAND = 1;};
+      home = {
+	packages = [pkgs.libnotify];
+	sessionVariables = {MOZ_ENABLE_WAYLAND = 1;};
+      };
     };
   };
 }

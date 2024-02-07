@@ -12,14 +12,14 @@
         userDirs = {
           enable = true;
           createDirectories = true;
-          documents = "\$HOME/documents";
+          documents = "\$HOME/.misc/documents";
           download = "\$HOME/downloads";
           pictures = "\$HOME/pictures";
           desktop = "\$HOME/.misc/desktop";
           music = "\$HOME/.misc/music";
           publicShare = "\$HOME/.misc/public";
           templates = "\$HOME/.misc/templates";
-          videos = "\$HOME/.misc/videos";
+          videos = "\$HOME/pictures/videos";
         };
         desktopEntries = {
           #removed
@@ -39,6 +39,18 @@
             noDisplay = true;
             name = "Neovim Wrapper";
           };
+          "org.prismlauncher.PrismLauncher" = {
+            noDisplay = true;
+            name = "Prism Launcher";
+          };
+          osu-lazer-bin = {
+            noDisplay = true;
+            name = "osu!";
+          };
+          r2modman = {
+            noDisplay = true;
+            name = "r2modman";
+          };
           thunar-settings = {
             noDisplay = true;
             name = "File Manager Settings";
@@ -51,11 +63,6 @@
           firefox = {
             name = "Firefox";
             exec = "firefox";
-            terminal = false;
-          };
-          mpv = {
-            name = "mpv";
-            exec = "mpv --player-operation-mode=pseudo-gui -- %U";
             terminal = false;
           };
           thunar = {

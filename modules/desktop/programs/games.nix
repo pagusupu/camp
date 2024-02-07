@@ -22,7 +22,7 @@
       extraCompatPackages = [inputs.nix-gaming.packages.${pkgs.system}.proton-ge];
       gamescopeSession = {
         enable = true;
-        args = ["-H 1080 -r 165 -e -b --expose-wayland"];
+        args = ["-H 1080 -r 165 -e --expose-wayland"];
       };
     };
     hardware = {

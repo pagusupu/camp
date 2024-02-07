@@ -7,14 +7,12 @@
     desktop = {
       programs = {
         alacritty = true;
-        eww = true;
         firefox = true;
         games = true;
         hyprland = true;
         mako = true;
         misc = true;
         swaylock = true;
-        waybar = true;
         wofi = true;
       };
       misc = {
@@ -22,13 +20,13 @@
         fonts = true;
         greetd = true;
         hm = true;
-        polkit = false;
         xdg = true;
       };
       themes = {
         firefox = true;
         gtk = true;
       };
+      eww = true;
     };
     common = {
       programs = {
@@ -49,7 +47,7 @@
   i18n.defaultLocale = "en_NZ.UTF-8";
   time = {
     timeZone = "NZ";
-    hardwareClockInLocalTime = true;
+    hardwareClockInLocalTime = true; # windows
   };
   age.secrets.user = {
     file = ../secrets/user.age;
@@ -85,6 +83,8 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    supportedFilesystems = ["btrfs" "ntfs"];
+    kernelModules = ["kvm-amd" "amd_pstate"];
     initrd = {
       kernelModules = ["amdgpu"];
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
@@ -96,8 +96,6 @@
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
     ];
-    kernelModules = ["kvm-amd" "amd_pstate"];
-    supportedFilesystems = ["btrfs" "ntfs"];
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
@@ -108,12 +106,7 @@
     dhcpcd.wait = "background";
     hostName = "desktop";
     nameservers = ["1.1.1.1" "1.0.0.1"];
-    firewall = {
-      enable = true;
-      # localsend
-      allowedTCPPorts = [53317];
-      allowedUDPPorts = [53317];
-    };
+    firewall.enable = true;
     networkmanager.enable = false;
     wireless = {
       enable = true;

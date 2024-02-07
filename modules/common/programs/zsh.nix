@@ -27,17 +27,19 @@
         ZSH_HIGHLIGHT_STYLES[path]=none
         ZSH_HIGHLIGHT_STYLES[path_prefix]=none
         zsh-newuser-install() { :; }
-        # nix run alias
-        runix() {
+        nr() {
           nix run nixpkgs#$1 -- "''${@:2}"
         }
+	ns() {
+	  nix shell nixpkgs#''${^@}
+	}
       '';
       shellAliases = {
         cat = "bat";
+	grep = "grep --color=auto";
         ls = "eza";
         rm = "rip";
-        switch = "nh os switch";
-        update = "sudo nix flake update ~/flake && switch";
+        update = "sudo nix flake update ~/flake && nh os switch";
         ssh-server = "ssh pagu@192.168.178.182";
       };
       promptInit = "PROMPT=${config.cute.common.programs.zsh.prompt}";
