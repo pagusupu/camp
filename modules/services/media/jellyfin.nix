@@ -28,5 +28,6 @@
           libvdpau-va-gl
         ];
       };
+      users.users.jellyfin.extraGroups = ["media"];
     };
 }

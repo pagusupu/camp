@@ -1,4 +1,4 @@
-# https://github.com/nu-nu-ko/crystal/blob/main/lib/homeFiles.nix
+# https://github.com/nu-nu-ko/crystal/blob/main/libs/homeFiles.nix
 {
   config,
   lib,

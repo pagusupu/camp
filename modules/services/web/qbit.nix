@@ -26,19 +26,14 @@
               Port = tport;
               DefaultSavePath = "/storage/services/qbit/torrents";
               TorrentExportDirectory = "/storage/services/qbit/torrents/sources/";
-              TempPathEnabled = true;
               TempPath = "/storage/services/qbit/torrents/incomplete/";
+              TempPathEnabled = true;
               QueueingSystemEnabled = true;
+              IgnoreSlowTorrentsForQueueing = true;
               GlobalMaxRatio = 2;
               MaxActiveCheckingTorrents = 2;
               MaxActiveDownloads = 5;
-              MaxActiveUploads = 15;
-              MaxActiveTorrents = 20;
-              IgnoreSlowTorrentsForQueueing = true;
-              SlowTorrentsDownloadRate = 20; # kbps
-              SlowTorrentsUploadRate = 20; # kbps
               MaxConnections = 600;
-              MaxUploads = 200;
             };
             Preferences = {
               WebUI = let

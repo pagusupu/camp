@@ -3,7 +3,9 @@
   config,
   ...
 }: {
+  imports = [../modules/desktop/misc/fonts.nix];
   cute = {
+    desktop.misc.fonts = true;
     services = {
       web = {
         domain = "pagu.cafe";
@@ -63,10 +65,9 @@
   };
   environment.systemPackages = with pkgs; [
     git
-    go
-    hugo
     mdadm
-    yazi
+    ranger
+    wget
   ];
   security.sudo.execWheelOnly = true;
   services.openssh = {
