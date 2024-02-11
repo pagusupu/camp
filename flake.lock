@@ -472,7 +472,7 @@
         "blobs": "blobs",
         "flake-compat": "flake-compat_3",
         "nixpkgs": [
-          "nixpkgs-server"
+          "nixpkgs"
         ],
         "nixpkgs-23_05": "nixpkgs-23_05",
         "nixpkgs-23_11": "nixpkgs-23_11",
@@ -553,22 +553,6 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-server": {
-      "locked": {
-        "lastModified": 1704722960,
-        "narHash": "sha256-mKGJ3sPsT6//s+Knglai5YflJUF2DGj7Ai6Ynopz0kI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "317484b1ead87b9c1b8ac5261a8d2dd748a0492d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "317484b1ead87b9c1b8ac5261a8d2dd748a0492d",
         "type": "github"
       }
     },
@@ -706,11 +690,11 @@
     },
     "qbit": {
       "locked": {
-        "lastModified": 1707618576,
-        "narHash": "sha256-aujtuNUOv9dTkk7/LwmhdYNy0u8n22CDt4fFxMgzcVE=",
+        "lastModified": 1707622942,
+        "narHash": "sha256-x98BprSdhqz0YOJem3y+ZAsZ7LQzmaBuUTqRUxDCjjQ=",
         "owner": "nu-nu-ko",
         "repo": "nixpkgs",
-        "rev": "b1e4137d0d526734ab34e1a18b2918c802297174",
+        "rev": "dc84cc2aa83b3f4e29528c4f63e170a0c124920b",
         "type": "github"
       },
       "original": {
@@ -729,7 +713,6 @@
         "nix-gaming": "nix-gaming",
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-server": "nixpkgs-server",
         "nixvim": "nixvim",
         "qbit": "qbit",
         "split-monitor-workspaces": "split-monitor-workspaces"

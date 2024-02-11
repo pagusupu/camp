@@ -3,43 +3,41 @@
   config,
   ...
 }: {
-  imports = [../modules/desktop/misc/fonts.nix];
   cute = {
-    desktop.misc.fonts = true;
     services = {
       web = {
         domain = "pagu.cafe";
         conduit = true;
         forgejo = true;
-        grocy = true;
         nextcloud = true;
         nginx = true;
         qbittorrent = true;
         vaultwarden = true;
       };
       media = {
+        feishin = true;
         jellyfin = true;
         komga = true;
         navidrome = true;
       };
       misc = {
         fail2ban = true;
+        grocy = true;
         homeassistant = true;
         mailserver = true;
       };
     };
     common = {
-        age = true;
-        console = true;
-        htop = true;
-        nix = true;
-        nixvim = true;
-        zsh = {
-          enable = true;
-          prompt = "'%F{yellow}% %~ >%f '";
-        }; 
-        
+      age = true;
+      console = true;
+      htop = true;
+      nix = true;
+      nixvim = true;
+      zsh = {
+        enable = true;
+        prompt = "'%F{yellow}% %~ >%f '";
       };
+    };
   };
   time.timeZone = "NZ";
   i18n.defaultLocale = "en_NZ.UTF-8";

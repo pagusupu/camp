@@ -25,6 +25,7 @@
             EnableSharing = true;
             EnableStarRating = false;
             EnableTranscodingConfig = true;
+	    SessionTimeout = "96h";
             UIWelcomeMessage = "";
             LastFM = {
               ApiKey = "9bb677319d28788826b28537483ab363";

@@ -28,5 +28,6 @@
         };
         certificateScheme = "acme-nginx";
       };
+      services.dovecot2.sieve.extensions = ["fileinto"];
     };
 }

@@ -22,7 +22,7 @@
     };
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-      inputs.nixpkgs.follows = "nixpkgs-server";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
@@ -31,15 +31,10 @@
     conduit.url = "gitlab:famedly/conduit?ref=next";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-server.url = "github:NixOS/nixpkgs?rev=317484b1ead87b9c1b8ac5261a8d2dd748a0492d";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
   };
-  outputs = {
-    nixpkgs,
-    nixpkgs-server,
-    ...
-  } @ inputs: let
+  outputs = {nixpkgs, ...} @ inputs: let
     importAll = path:
       builtins.filter (nixpkgs.lib.hasSuffix ".nix")
       (map toString (nixpkgs.lib.filesystem.listFilesRecursive path));
@@ -48,14 +43,12 @@
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
-          [./hosts/desktop.nix
-	  ./modules/desktop/misc/default.nix
-	  ]
+          [./hosts/desktop.nix]
           ++ importAll ./lib
           ++ importAll ./modules/common
           ++ importAll ./modules/desktop;
       };
-      nixserver = nixpkgs-server.lib.nixosSystem {
+      nixserver = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
           [./hosts/server.nix]
