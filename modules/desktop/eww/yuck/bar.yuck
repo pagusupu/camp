@@ -46,6 +46,7 @@
   (box :orientation "v"
        :valign "end"
        :space-evenly false
+    (misc)
     (power)))
 
 ;; top widgets ;;
@@ -100,7 +101,16 @@
 
 ;; bottom widgets ;;
 
-
+(defwidget misc []
+  (box :class "misc"
+       :orientation "v"
+       :space-evenly false
+    (button :class "notif"
+            :onclick "" "")
+    (button :class "audio"
+            :onclick "" "󰓃")
+    (button :class "net"
+            :onclick "" "")))
 
 (defwidget power []
   (eventbox :onhover "eww update power=true"

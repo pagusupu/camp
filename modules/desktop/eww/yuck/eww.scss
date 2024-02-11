@@ -66,12 +66,34 @@
   border-radius: 6px;
 }
 
+// misc
+.misc {
+  background-color: #26233a;
+  color: #e0def4;
+  padding: 4px 0px;
+  margin: 0px 4px;
+  border-radius: 6px;
+}
+
+.audio {
+  font-size: 18px;
+  margin: 0px 0px 0px 2px;
+}
+
+.net {
+  margin: 0px 4px 0px 0px;
+}
+
+.notif {
+  margin: 0px 2px 0px 0px;
+}
+
 // powermenu
 
 .powermenu {
   background-color: #26233a;
   padding: 4px 0px;
-  margin: 0px 4px 4px 4px;
+  margin: 4px;
   border-radius: 6px;
 }
 
