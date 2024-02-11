@@ -28,11 +28,11 @@
               TorrentExportDirectory = "/storage/services/qbit/torrents/sources/";
               TempPath = "/storage/services/qbit/torrents/incomplete/";
               TempPathEnabled = true;
-              QueueingSystemEnabled = true;
+              QueueingSystemEnabled = false;
               IgnoreSlowTorrentsForQueueing = true;
               GlobalMaxRatio = 2;
               MaxActiveCheckingTorrents = 2;
-              MaxActiveDownloads = 5;
+            #  MaxActiveDownloads = 5;
               MaxConnections = 600;
             };
             Preferences = {

@@ -29,20 +29,17 @@
       };
     };
     common = {
-      programs = {
+        age = true;
+        console = true;
         htop = true;
+        nix = true;
         nixvim = true;
         zsh = {
           enable = true;
           prompt = "'%F{yellow}% %~ >%f '";
-        };
+        }; 
+        
       };
-      misc = {
-        age = true;
-        console = true;
-        nix = true;
-      };
-    };
   };
   time.timeZone = "NZ";
   i18n.defaultLocale = "en_NZ.UTF-8";

@@ -706,11 +706,11 @@
     },
     "qbit": {
       "locked": {
-        "lastModified": 1707207031,
-        "narHash": "sha256-Wb+T4iiNweKqMX6dprswzbI0fRU7SDpHZ9K3Pp5JQIs=",
+        "lastModified": 1707618576,
+        "narHash": "sha256-aujtuNUOv9dTkk7/LwmhdYNy0u8n22CDt4fFxMgzcVE=",
         "owner": "nu-nu-ko",
         "repo": "nixpkgs",
-        "rev": "0f85bab97347b423b31915caa7f508591dc401e7",
+        "rev": "b1e4137d0d526734ab34e1a18b2918c802297174",
         "type": "github"
       },
       "original": {
