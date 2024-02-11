@@ -29,18 +29,14 @@
       eww = true;
     };
     common = {
-      programs = {
-        htop = true;
-        nixvim = true;
-        zsh = {
-          enable = true;
-          prompt = "'%F{magenta}% %~ >%f '";
-        };
-      };
-      misc = {
-        age = true;
-        console = true;
-        nix = true;
+      age = true;
+      console = true;
+      htop = true;
+      nix = true;
+      nixvim = true;
+      zsh = {
+        enable = true;
+        prompt = "'%F{magenta}% %~ >%f '";
       };
     };
   };
@@ -80,6 +76,8 @@
         useOSProber = true;
         device = "nodev";
         splashImage = null;
+        configurationLimit = 10;
+        extraConfig = ''GRUB_TIMEOUT_STYLE=hidden'';
       };
       efi.canTouchEfiVariables = true;
     };
@@ -101,6 +99,7 @@
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
+    pulseaudio.enable = false;
   };
   networking = {
     dhcpcd.wait = "background";

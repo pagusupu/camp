@@ -48,7 +48,9 @@
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
-          [./hosts/desktop.nix]
+          [./hosts/desktop.nix
+	  ./modules/desktop/misc/default.nix
+	  ]
           ++ importAll ./lib
           ++ importAll ./modules/common
           ++ importAll ./modules/desktop;

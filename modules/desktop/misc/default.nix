@@ -15,7 +15,7 @@
     hm = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.misc) audio greetd hm;
+    inherit (config.cute.desktop.misc) greetd hm audio;
   in {
     services = {
       greetd = lib.mkIf greetd {
@@ -28,15 +28,18 @@
         };
       };
       pipewire = lib.mkIf audio {
+        enable = true;
+        jack.enable = true;
         pulse.enable = true;
+        wireplumber.enable = true;
         alsa = {
           enable = true;
           support32Bit = true;
         };
         lowLatency = {
           enable = true;
-          quantum = 96;
-          rate = 96000;
+          quantum = 192;
+          rate = 192000;
         };
       };
     };

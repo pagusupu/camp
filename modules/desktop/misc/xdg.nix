@@ -38,19 +38,7 @@
           nvim = {
             noDisplay = true;
             name = "Neovim Wrapper";
-          };
-          "org.prismlauncher.PrismLauncher" = {
-            noDisplay = true;
-            name = "Prism Launcher";
-          };
-          osu-lazer-bin = {
-            noDisplay = true;
-            name = "osu!";
-          };
-          r2modman = {
-            noDisplay = true;
-            name = "r2modman";
-          };
+          }; 
           thunar-settings = {
             noDisplay = true;
             name = "File Manager Settings";

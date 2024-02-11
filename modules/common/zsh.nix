@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: {
-  options.cute.common.programs.zsh = {
+  options.cute.common.zsh = {
     enable = lib.mkEnableOption "";
     prompt = lib.mkOption {type = lib.types.lines;};
   };
-  config = lib.mkIf config.cute.common.programs.zsh.enable {
+  config = lib.mkIf config.cute.common.zsh.enable {
     programs.zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -42,7 +42,7 @@
         update = "sudo nix flake update ~/flake && nh os switch";
         ssh-server = "ssh pagu@192.168.178.182";
       };
-      promptInit = "PROMPT=${config.cute.common.programs.zsh.prompt}";
+      promptInit = "PROMPT=${config.cute.common.zsh.prompt}";
     };
     environment = {
       shells = [pkgs.zsh];

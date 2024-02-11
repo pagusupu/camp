@@ -14,9 +14,9 @@
     home-manager.users.pagu = {
       home = lib.mkIf misc {
         packages = with pkgs; [
-          cartridges
           imv
           localsend
+	  pwvucontrol
           ueberzugpp
           xfce.thunar
           yazi

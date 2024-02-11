@@ -1,0 +1,100 @@
+* {
+  all: unset;
+  font-family: MonaspiceNe Nerd Font;
+}
+
+// bar
+
+.bar {
+  background-color: #191724;
+  border-radius: 6px;
+}
+
+// dash-open
+
+.dash-open-button {
+  background-color: #26233a;
+  padding: 4px 0px;
+  margin: 4px 4px 0px 4px;
+  border-radius: 6px;
+}
+
+// workspaces
+
+.active-workspace {
+  background-color: #26233a;
+  padding: 4px 0px 1px 0px;
+  margin: 4px 4px 0px 4px;
+  border-radius: 6px;
+}
+
+.workspaces {
+  padding: 4px 0px 1px 0px;
+}
+
+.ws1,
+.ws2,
+.ws3,
+.ws4 {
+  color: #1f1d2e;
+  padding: 2px 0px 0px 0px;
+  margin: 1px 6px 3px 5px;
+  border-radius: 50%;
+}
+.ws1 {
+  background-color: #908caa;
+}
+
+.ws2 {
+  background-color: #6e6a86;
+}
+
+.ws3 {
+  background-color: #524f67;
+}
+
+.ws4 {
+  background-color: #403d52;
+}
+
+// clock
+
+.time {
+  background-color: #26233a; 
+  padding: 6px 0px 2px 0px; 
+  margin: 0px 4px;
+  border-radius: 6px;
+}
+
+// powermenu
+
+.powermenu {
+  background-color: #26233a;
+  padding: 4px 0px;
+  margin: 0px 4px 4px 4px;
+  border-radius: 6px;
+}
+
+.button-lock {
+  font-size: 16px;
+  color: #31748f;
+}
+
+.button-quit {
+  color: #f6c177;
+}
+
+.button-reboot{
+  padding: 0px 3px 1px 0px;
+  color: #ebbcba;
+}
+
+.button-off {
+  padding: 0px 3px 0px 0px;
+  color: #eb6f92;
+}
+
+// dash
+.dash {
+  background-color: #000000;
+}

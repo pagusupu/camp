@@ -24,12 +24,14 @@
               "swaybg -i ${bg} -o ${m1} -m center"
               "swaybg -i ${bg} -o ${m2} -m center"
               "pgrep -x eww > /dev/null || eww open-many leftbar rightbar"
+	      "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
               "firefox"
             ];
             windowrulev2 = [
               "float, class:(thunar)"
               "float, class:(localsend_app)"
+	      "workspace 2, initialTitle:^(Sign*)(.*)$"
             ];
             input = {
               follow_mouse = 2;
@@ -53,7 +55,7 @@
             };
             decoration = {
               drop_shadow = false;
-              #  rounding = 6;
+              rounding = 6;
             };
             animations = {
               enabled = true;

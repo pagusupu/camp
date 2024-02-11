@@ -14,7 +14,6 @@
         prismlauncher-qt5
         protontricks
         r2modman
-        # xivlauncher
       ];
     };
     programs.steam = {

@@ -1,0 +1,128 @@
+;; windows ;;
+
+(defwindow leftbar
+  :monitor 0
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :focusable false
+  :geometry (geometry :x "6px" :y "6px" :width "2%" :height "1068px" :anchor "left center")
+  (bar))
+
+(defwindow rightbar
+  :monitor 1
+  :stacking "fg"
+  :windowtype "dock"
+  :exclusive true
+  :focusable false
+  :geometry (geometry :x "6px" :y "6px" :width "2%" :height "1068px" :anchor "right center")
+  (bar))
+
+;; widget groups ;;
+
+(defwidget bar []
+  (box :class "bar"
+       :orientation "v"
+       :vexpand false
+       :hexpand false
+    (top)
+    (middle)
+    (bottom)))
+
+(defwidget top []
+  (box :orientation "v"
+       :valign "start"
+       :space-evenly false
+    ;;(dash-open)
+    (workspaces)))
+
+(defwidget middle [] 
+  (box :orientation "v"
+       :valign "center"
+       :space-evenly false
+    (time)))
+
+(defwidget bottom [] 
+  (box :orientation "v"
+       :valign "end"
+       :space-evenly false
+    (power)))
+
+;; top widgets ;;
+
+(defwidget dash-open []
+  (box :class "dash-open"
+       :orientation "v"
+    (button :class "dash-open-button"
+            :on-click "eww update dash=true"
+      (label :text "T"))))
+
+(defwidget workspaces []
+  (eventbox :onhover "eww update workspace=true"
+            :onhoverlost "eww update workspace=false"
+  (box :class "active-workspace"
+       :orientation "v" 
+       :space-evenly false
+    (label :text "${current_workspace}")
+    (revealer :transition "slideup"
+              :reveal workspace
+              :duration "300ms"
+      (box :class "workspaces"
+           :orientation "v"
+           :space-evenly false
+        (button :class "ws1" 
+                :onclick "hyprctl dispatch split-workspace 1"
+           (label :text "1"))
+         (button :class "ws2"
+                 :onclick "hyprctl dispatch split-workspace 2"
+           (label :text "2"))
+         (button :class "ws3"
+                 :onclick "hyprctl dispatch split-workspace 3"
+           (label :text "3"))
+         (button :class "ws4"
+                 :onclick "hyprctl dispatch split-workspace 4"
+           (label :text "4")))))))
+
+(deflisten current_workspace :initial "1" "bash scripts/current-workspace")
+(defvar workspace false)
+
+;; middle widgets;;
+
+(defwidget time []
+  (box :class "time"
+       :orientation "v"
+       :vexpand false
+       :space-evenly false
+       hour min m))
+(defpoll hour  :interval "1s" "date +%I")
+(defpoll min   :interval "1s" "date +%M")
+(defpoll m     :interval "1m" "date +%p")
+
+;; bottom widgets ;;
+
+
+
+(defwidget power []
+  (eventbox :onhover "eww update power=true"
+            :onhoverlost "eww update power=false"
+    (box :class "powermenu"
+         :orientation "v"
+         :vexpand false
+         :space-evenly false
+      (revealer :transition "slidedown"
+                :reveal power
+                :duration "300ms"
+        (box :orientation "v"
+             :space-evenly false
+             :spacing "2"
+          (button :class "button-lock"
+                  :onclick "swaylock" "")
+          (button :class "button-quit"
+                  :onclick "hyprctl exit" "")
+          (button :class "button-reboot"
+                  :onclick "reboot" "")))
+          (button :class "button-off"
+                  :onclick "poweroff" ""))))
+(defvar power false)
+
+

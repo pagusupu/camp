@@ -1,0 +1,26 @@
+;; windows ;;
+
+(defwindow dash
+  :monitor 0
+  :stacking "fg"
+  :windowtype "normal"
+  :exclusive false
+  :focusable true
+  :geometry (geometry :x "40" :y "6px" :width "30%" :height "1068px" :anchor "left center")
+  (dash))
+
+;; widget groups ;;
+
+(defwidget dash []
+  (revealer :transition "slideleft"
+            :reveal dash
+            :duration "200ms"
+  (box :class "dash"
+       :orientation "v"
+       :vexpand false
+       :hexpand false
+    "hey")))
+
+(defvar dash false)
+
+;; widgets ;;
