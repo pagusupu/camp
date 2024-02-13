@@ -15,7 +15,6 @@
         vaultwarden = true;
       };
       media = {
-        feishin = true;
         jellyfin = true;
         komga = true;
         navidrome = true;
@@ -25,6 +24,11 @@
         grocy = true;
         homeassistant = true;
         mailserver = true;
+      };
+      docker = {
+	enable = true;
+	feishin = true;
+	watcharr = true;
       };
     };
     common = {
@@ -63,6 +67,11 @@
     mdadm
     ranger
     wget
+  ];
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
   ];
   security.sudo.execWheelOnly = true;
   services.openssh = {

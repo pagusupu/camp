@@ -13,7 +13,6 @@
           enable = true;
           openFirewall = true;
           port = 8097;
-          # stateDir = "/storage/services/komga/state";
         };
         nginx.virtualHosts."${domain}" = {
           forceSSL = true;
