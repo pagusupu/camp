@@ -19,7 +19,6 @@
         audio = true;
         fonts = true;
         greetd = true;
-        hm = true;
         xdg = true;
       };
       themes = {
@@ -27,6 +26,11 @@
         gtk = true;
       };
       eww = true;
+    };
+    home = {
+      enable = true;
+      ags = true;
+      git = true;
     };
     common = {
       age = true;

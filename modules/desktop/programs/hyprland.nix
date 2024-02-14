@@ -31,7 +31,7 @@
             windowrulev2 = [
               "float, class:(thunar)"
               "float, class:(localsend_app)"
-	      "workspace 2, class:(steam)"
+	     # "workspace 2, class:(steam)"
             ];
             input = {
               follow_mouse = 2;

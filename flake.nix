@@ -27,11 +27,12 @@
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
-    }; 
+    };
+    ags.url = "github:Aylur/ags";
     conduit.url = "gitlab:famedly/conduit?ref=next";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; 
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
   };
   outputs = {nixpkgs, ...} @ inputs: let
@@ -45,16 +46,14 @@
         modules =
           [./hosts/desktop.nix]
           ++ importAll ./lib
-          ++ importAll ./modules/common
-          ++ importAll ./modules/desktop;
+          ++ importAll ./modules;
       };
       nixserver = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
           [./hosts/server.nix]
           ++ importAll ./lib
-          ++ importAll ./modules/common
-          ++ importAll ./modules/services;
+          ++ importAll ./modules;
       };
     };
   };
