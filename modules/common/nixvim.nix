@@ -10,6 +10,7 @@
   config = lib.mkIf config.cute.common.nixvim {
     programs.nixvim = {
       enable = true;
+      enableMan = false;
       defaultEditor = true;
       vimAlias = true;
       luaLoader.enable = true;

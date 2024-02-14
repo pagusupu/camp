@@ -53,7 +53,8 @@
         modules =
           [./hosts/server.nix]
           ++ importAll ./lib
-          ++ importAll ./modules;
+          ++ importAll ./modules/common
+	  ++ importAll ./modules/services;
       };
     };
   };
