@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.desktop.programs.wofi = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.programs.wofi {
+  options.cute.desktop.wofi = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.wofi {
     home-manager.users.pagu = {
       programs.wofi = {
         enable = true;
@@ -16,12 +16,12 @@
           lines = 7;
         };
         style = let
-	  inherit (config.cute) colours;
-	in ''
+          inherit (config.cute) colours;
+        in ''
           window {
               margin: 0px;
               background-color: #${colours.base};
-              border-radius: 0px;
+              border-radius: 6px;
               border: 2px solid #${colours.iris};
               color: #${colours.text};
               font-family: 'MonaspiceNe Nerd Font';
@@ -29,18 +29,17 @@
           }
           #input {
               margin: 5px;
-              border-radius: 0px;
+              border-radius: 6px;
               border: none;
-              border-radius: 0px;;
               color: #${colours.iris};
               background-color: #${colours.overlay};
           }
           #inner-box {
               margin: 5px;
               border: none;
-              background-color: #${colours.overlay};
+              background-color: #${colours.base};
               color: #${colours.base};
-              border-radius: 0px;
+              border-radius: 6px;
           }
           #outer-box {
               margin: 15px;
@@ -59,13 +58,13 @@
           #entry:selected {
               background-color: #${colours.iris};
               color: #${colours.base};
-              border-radius: 0px;;
+              border-radius: 6px;
               outline: none;
           }
           #entry:selected * {
               background-color: #${colours.iris};
               color: #${colours.base};
-              border-radius: 0px;;
+              border-radius: 6px;
               outline: none;
           }
         '';

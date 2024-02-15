@@ -28,7 +28,6 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    ags.url = "github:Aylur/ags";
     conduit.url = "gitlab:famedly/conduit?ref=next";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -54,7 +53,7 @@
           [./hosts/server.nix]
           ++ importAll ./lib
           ++ importAll ./modules/common
-	  ++ importAll ./modules/services;
+          ++ importAll ./modules/services;
       };
     };
   };

@@ -5,36 +5,31 @@
 }: {
   cute = {
     desktop = {
-      programs = {
-        alacritty = true;
-        firefox = true;
-        games = true;
-        hyprland = true;
-        mako = true;
-        misc = true;
-        swaylock = true;
-        wofi = true;
-      };
-      misc = {
-        audio = true;
-        fonts = true;
-        greetd = true;
-        xdg = true;
-      };
+      alacritty = true;
+      audio = true;
+      firefox = true;
+      fonts = true;
+      games = true;
+      greetd = true;
+      hyprland = true;
+      mako = true;
+      misc = true;
+      swaylock = true;
+      wofi = true;
+      xdg = true;
+    };
+    home = {
+      enable = true;
+      eww = true;
       themes = {
         firefox = true;
         gtk = true;
       };
-      eww = true;
-    };
-    home = {
-      enable = true;
-      ags = true;
-      git = true;
     };
     common = {
       age = true;
       console = true;
+      git = true;
       htop = true;
       nix = true;
       nixvim = true;
@@ -110,14 +105,6 @@
     hostName = "desktop";
     nameservers = ["1.1.1.1" "1.0.0.1"];
     firewall.enable = true;
-    networkmanager.enable = false;
-    wireless = {
-      enable = true;
-      userControlled.enable = true;
-      networks."Upstairs-5G" = {
-        pskRaw = "690ab0d9f04e21ca329db4f36c9dd4402547dbd94c57def80b210b3311925091";
-      };
-    };
   };
   fileSystems = {
     "/boot" = {

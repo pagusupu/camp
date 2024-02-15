@@ -33,7 +33,7 @@
   (box :orientation "v"
        :valign "start"
        :space-evenly false
-    ;;(dash-open)
+    (dash-open)
     (workspaces)))
 
 (defwidget middle [] 
@@ -55,22 +55,24 @@
   (box :class "dash-open"
        :orientation "v"
     (button :class "dash-open-button"
-            :on-click "eww update dash=true"
-      (label :text "T"))))
+            ;;:on-click "eww update dash=true"
+      (label :class "dash-open-button-label"
+             :text "󰍜"))))
 
 (defwidget workspaces []
   (eventbox :onhover "eww update workspace=true"
             :onhoverlost "eww update workspace=false"
   (box :class "active-workspace"
        :orientation "v" 
-       :space-evenly false
-    (label :text "${current_workspace}")
-    (revealer :transition "slideup"
-              :reveal workspace
-              :duration "300ms"
-      (box :class "workspaces"
-           :orientation "v"
-           :space-evenly false
+       :space-evenly false 
+    (label :class "active-workspace-label"
+           :text "${current_workspace}")
+      (revealer :transition "slideup"
+                :reveal workspace
+                :duration "300ms"
+        (box :class "workspaces"
+             :orientation "v"
+             :space-evenly false
         (button :class "ws1" 
                 :onclick "hyprctl dispatch split-workspace 1"
            (label :text "1"))
@@ -94,7 +96,9 @@
        :orientation "v"
        :vexpand false
        :space-evenly false
-       hour min m))
+    (button :class "hour" hour)
+    (button :class "min" min)
+    (button :class "m" m)))
 (defpoll hour  :interval "1s" "date +%I")
 (defpoll min   :interval "1s" "date +%M")
 (defpoll m     :interval "1m" "date +%p")
@@ -108,7 +112,7 @@
     (button :class "notif"
             :onclick "" "")
     (button :class "audio"
-            :onclick "" "󰓃")
+            :onclick "pwvucontrol" "")
     (button :class "net"
             :onclick "" "")))
 

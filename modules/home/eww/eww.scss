@@ -19,13 +19,22 @@
   border-radius: 6px;
 }
 
+.dash-open-button-label {
+  font-size: 18px;
+}
+
 // workspaces
 
 .active-workspace {
   background-color: #26233a;
-  padding: 4px 0px 1px 0px;
+  padding: 7px 0px 5px 0px;
   margin: 4px 4px 0px 4px;
   border-radius: 6px;
+}
+
+.active-workspace-label {
+  color: #e0def4;
+  margin: 0px 0px 0px 1px;
 }
 
 .workspaces {
@@ -36,25 +45,18 @@
 .ws2,
 .ws3,
 .ws4 {
-  color: #1f1d2e;
+  color: #e0def4;
+  background-color: #26233a;
   padding: 2px 0px 0px 0px;
-  margin: 1px 6px 3px 5px;
-  border-radius: 50%;
-}
-.ws1 {
-  background-color: #908caa;
+  margin: 0px 4px 0px 5px;
+  border-radius: 6px;
 }
 
-.ws2 {
+.ws1:hover,
+.ws2:hover,
+.ws3:hover,
+.ws4:hover {
   background-color: #6e6a86;
-}
-
-.ws3 {
-  background-color: #524f67;
-}
-
-.ws4 {
-  background-color: #403d52;
 }
 
 // clock

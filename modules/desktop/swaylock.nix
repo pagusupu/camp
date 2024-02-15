@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.programs.swaylock = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.programs.swaylock {
+  options.cute.desktop.swaylock = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.swaylock {
     home-manager.users.pagu = {
       programs.swaylock = {
         enable = true;
@@ -20,7 +20,7 @@
           datestr = "";
           timestr = "%I:%M %p";
           font = "MonaspiceNE Nerd Font";
-          image = "~/flake/modules/desktop/images/lockbg.png";
+          image = "~/flake/modules/home/images/lockbg.png";
 
           color = "#${colours.base}";
           bs-hl-color = "#${colours.love}";

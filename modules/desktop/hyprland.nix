@@ -5,14 +5,14 @@
   inputs,
   ...
 }: {
-  options.cute.desktop.programs.hyprland = lib.mkEnableOption "";
+  options.cute.desktop.hyprland = lib.mkEnableOption "";
   config = let
     m1 = "DP-3";
     m2 = "HDMI-A-1";
-    bg = "~/flake/modules/desktop/images/bg.jpg";
     mod = "SUPER";
+    bg = "~/flake/modules/home/images/bg.jpg";
   in
-    lib.mkIf config.cute.desktop.programs.hyprland {
+    lib.mkIf config.cute.desktop.hyprland {
       home-manager.users.pagu = {
         wayland.windowManager.hyprland = {
           enable = true;
@@ -21,17 +21,16 @@
           settings = {
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
-              "swaybg -i ${bg} -o ${m1} -m center"
-              "swaybg -i ${bg} -o ${m2} -m center"
+              "rwpspread -w -i ${bg}"
               "pgrep -x eww > /dev/null || eww open-many leftbar rightbar"
-	      "steam -silent -console"
+              "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
               "firefox"
             ];
             windowrulev2 = [
               "float, class:(thunar)"
               "float, class:(localsend_app)"
-	     # "workspace 2, class:(steam)"
+              "float, class:(com.saivert.pwvucontrol)"
             ];
             input = {
               follow_mouse = 2;
@@ -122,10 +121,11 @@
         };
         home = {
           packages = with pkgs; [
-            wl-clipboard
             grimblast
+            rwpspread
             swayidle
-            swaybg
+            wpaperd
+            wl-clipboard
           ];
           sessionVariables = {NIXOS_OZONE_WL = 1;};
         };
@@ -137,6 +137,6 @@
       nix.settings = {
         substituters = ["https://hyprland.cachix.org"];
         trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-      }; 
+      };
     };
 }
