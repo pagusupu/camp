@@ -14,17 +14,15 @@
   config = let
     inherit (config.cute.desktop) misc greetd audio;
   in {
-    home-manager.users.pagu = {
-      home = lib.mkIf misc {
-        packages = with pkgs; [
-          imv
-          localsend
-          pwvucontrol
-          ueberzugpp
-          xfce.thunar
-          yazi
-        ];
-      };
+    home-manager.users.pagu.home = lib.mkIf misc {
+      packages = with pkgs; [
+        imv
+        localsend
+        pwvucontrol
+        ueberzugpp
+        xfce.thunar
+        yazi
+      ];
     };
     # localsend
     networking.firewall = {

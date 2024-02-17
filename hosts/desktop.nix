@@ -20,6 +20,7 @@
     };
     home = {
       enable = true;
+      ags = true;
       eww = true;
       themes = {
         firefox = true;

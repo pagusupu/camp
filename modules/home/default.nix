@@ -8,17 +8,18 @@
   imports = [inputs.home-manager.nixosModules.home-manager];
   options.cute.home = {
     enable = lib.mkEnableOption "";
-    git = lib.mkEnableOption "";
+    ags = lib.mkEnableOption "";
     eww = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.home) enable eww;
+    inherit (config.cute.home) enable ags eww;
   in {
     home-manager = lib.mkIf enable {
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {inherit inputs;};
       users.pagu = {
+        imports = [inputs.ags.homeManagerModules.default];
         home = {
           username = "pagu";
           homeDirectory = "/home/pagu";
@@ -28,10 +29,17 @@
             socat
           ];
         };
-        programs.eww = lib.mkIf eww {
-          enable = true;
-          package = pkgs.eww-wayland;
-          configDir = ./eww;
+        programs = {
+          ags = lib.mkIf ags {
+            enable = true;
+            configDir = ./ags;
+            #extraPackages = with pkgs; [];
+          };
+          eww = lib.mkIf eww {
+            enable = true;
+            package = pkgs.eww-wayland;
+            configDir = ./eww;
+          };
         };
       };
     };

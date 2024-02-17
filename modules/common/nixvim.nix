@@ -33,7 +33,6 @@
       ];
       extraPlugins = with pkgs.vimPlugins; [
         plenary-nvim
-        yuck-vim
       ];
       plugins = {
         treesitter.enable = true;

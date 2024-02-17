@@ -17,7 +17,7 @@
       histSize = 10000;
       histFile = "$HOME/.cache/zsh_history";
       shellInit = ''
-        PROMPT="'%F{green}% %~ >%f '"
+        eval "$(zoxide init zsh)"
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         bindkey '^H' backward-kill-word
@@ -39,6 +39,7 @@
 	grep = "grep --color=auto";
         ls = "eza";
         rm = "rip";
+	cd = "z";
         update = "sudo nix flake update ~/flake && nh os switch";
         ssh-server = "ssh pagu@192.168.178.182";
       };
@@ -51,8 +52,10 @@
       systemPackages = with pkgs; [
         bat
         eza
+	fzf
         nh
         rm-improved
+	zoxide
       ];
     };
   };
