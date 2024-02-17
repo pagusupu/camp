@@ -26,8 +26,8 @@
         mailserver = true;
       };
       docker = {
-	enable = true;
-	feishin = true;
+        enable = true;
+        feishin = true;
       };
     };
     common = {
