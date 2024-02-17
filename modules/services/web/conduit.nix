@@ -26,6 +26,7 @@
             "${matrix_hostname}" = {
               forceSSL = true;
               enableACME = true;
+	      root = "/storage/website/matrix";
               listen = [
                 {
                   addr = "0.0.0.0";

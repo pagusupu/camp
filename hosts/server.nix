@@ -28,7 +28,6 @@
       docker = {
 	enable = true;
 	feishin = true;
-	watcharr = true;
       };
     };
     common = {
