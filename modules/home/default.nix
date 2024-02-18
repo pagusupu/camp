@@ -11,12 +11,15 @@
     ags = lib.mkEnableOption "";
     eww = lib.mkEnableOption "";
     themes = {
-      firefox = lib.mkEnableOption "";
+      firefox = {
+        userChrome = lib.mkEnableOption "";
+        userContent = lib.mkEnableOption "";
+      };
     };
   };
   config = let
     inherit (config.cute.home) enable ags eww;
-    inherit (config.cute.home.themes) firefox;
+    inherit (config.cute.home.themes.firefox) userChrome userContent;
   in {
     home-manager = lib.mkIf enable {
       useGlobalPkgs = true;
@@ -28,11 +31,17 @@
           username = "pagu";
           homeDirectory = "/home/pagu";
           stateVersion = "23.05";
-          packages = with pkgs; [
-            jq
-            socat
-          ];
-          file.".mozilla/firefox/pagu/chrome/userChrome.css".source = lib.mkIf firefox ./themes/firefox.css;
+          packages = with pkgs; [jq socat];
+          file = {
+            "firefox-chrome" = lib.mkIf userChrome {
+              source = ./themes/firefox-chrome.css;
+              target = ".mozilla/firefox/pagu/chrome/userChrome.css";
+            };
+            "firefox-content" = lib.mkIf userContent {
+              source = ./themes/firefox-content.css;
+              target = ".mozilla/firefox/pagu/chrome/userContent.css";
+            };
+          };
         };
         programs = {
           ags = lib.mkIf ags {
