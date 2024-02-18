@@ -11,6 +11,7 @@
       fonts = true;
       games = true;
       greetd = true;
+      gtk = true;
       hyprland = true;
       mako = true;
       misc = true;
@@ -24,7 +25,6 @@
       eww = true;
       themes = {
         firefox = true;
-        gtk = true;
       };
     };
     common = {
