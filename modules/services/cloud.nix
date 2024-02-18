@@ -4,13 +4,13 @@
   lib,
   ...
 }: {
-  options.cute.services.web.nextcloud = lib.mkEnableOption "";
+  options.cute.services.cloud = lib.mkEnableOption "";
   config = let
-    domain = "cloud.${config.cute.services.web.domain}";
+    domain = "cloud.${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.web.nextcloud {
+    lib.mkIf config.cute.services.cloud {
       age.secrets.nextcloud = {
-        file = ../../../secrets/nextcloud.age;
+        file = ../../secrets/nextcloud.age;
         owner = "nextcloud";
       };
       services = {

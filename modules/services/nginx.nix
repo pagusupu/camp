@@ -3,14 +3,14 @@
   lib,
   ...
 }: {
-  options.cute.services.web = {
-    nginx = lib.mkEnableOption "";
+  options.cute.services.nginx = {
+    enable = lib.mkEnableOption "";
     domain = lib.mkOption {type = lib.types.str;};
   };
   config = let
-    domain = "${config.cute.services.web.domain}";
+    domain = "${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.web.nginx {
+    lib.mkIf config.cute.services.nginx.enable {
       networking.firewall.allowedTCPPorts = [80 443 8080];
       security.acme = {
         acceptTerms = true;
@@ -18,14 +18,14 @@
       };
       services.nginx = {
         enable = true;
-        commonHttpConfig = ''
-          real_ip_header CF-Connecting-IP;
-          add_header 'Referrer-Policy' 'origin-when-cross-origin';
-        '';
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
         recommendedOptimisation = true;
         recommendedGzipSettings = true;
+        commonHttpConfig = ''
+          real_ip_header CF-Connecting-IP;
+          add_header 'Referrer-Policy' 'origin-when-cross-origin';
+        '';
         virtualHosts."${domain}" = {
           forceSSL = true;
           enableACME = true;

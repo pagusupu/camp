@@ -3,8 +3,8 @@
   config,
   ...
 }: {
-  options.cute.services.misc.homeassistant = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.services.misc.homeassistant {
+  options.cute.services.hass = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.services.hass {
     services.home-assistant = {
       enable = true;
       openFirewall = true;

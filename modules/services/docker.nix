@@ -8,11 +8,11 @@
     feishin = lib.mkEnableOption "";
   };
   config = let
-    domain = "${config.cute.services.web.domain}";
+    domain = "${config.cute.services.nginx.domain}";
     inherit (config.cute.services.docker) enable feishin;
   in {
-    virtualisation = {
-      docker = lib.mkIf enable {
+    virtualisation = lib.mkIf enable {
+      docker = {
         enable = true;
         storageDriver = "btrfs";
       };
@@ -22,7 +22,7 @@
           "feishin" = lib.mkIf feishin {
             image = "ghcr.io/jeffvli/feishin:latest";
             ports = ["9180:9180"];
-          }; 
+          };
         };
       };
     };

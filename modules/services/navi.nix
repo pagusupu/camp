@@ -4,12 +4,12 @@
   pkgs,
   ...
 }: {
-  options.cute.services.media.navidrome = lib.mkEnableOption "";
+  options.cute.services.navi = lib.mkEnableOption "";
   config = let
-    domain = "navi.${config.cute.services.web.domain}";
+    domain = "navi.${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.media.navidrome {
-      age.secrets.navi-fm.file = ../../../secrets/navi-fm.age;
+    lib.mkIf config.cute.services.navi {
+      age.secrets.navi-fm.file = ../../secrets/navi-fm.age;
       services = {
         navidrome = {
           enable = true;
@@ -20,12 +20,12 @@
             DataFolder = "/var/lib/navidrome";
             MusicFolder = "/storage/services/navidrome/music";
             ArtistArtPriority = "artist.*, album/artist.*";
-	    CoverArtPriority = "cover.*, external";
+            CoverArtPriority = "cover.*, external";
             AutoImportPlaylists = false;
             EnableSharing = true;
             EnableStarRating = false;
             EnableTranscodingConfig = true;
-	    SessionTimeout = "96h";
+            SessionTimeout = "96h";
             UIWelcomeMessage = "";
             LastFM = {
               ApiKey = "9bb677319d28788826b28537483ab363";

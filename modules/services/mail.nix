@@ -5,13 +5,13 @@
   ...
 }: {
   imports = [inputs.nixos-mailserver.nixosModules.default];
-  options.cute.services.misc.mailserver = lib.mkEnableOption "";
+  options.cute.services.mail = lib.mkEnableOption "";
   config = let
-    domain = "${config.cute.services.web.domain}";
+    domain = "${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.misc.mailserver {
+    lib.mkIf config.cute.services.mail {
       age.secrets.mail = {
-        file = ../../../secrets/mail.age;
+        file = ../../secrets/mail.age;
         owner = "dovecot2";
       };
       mailserver = {

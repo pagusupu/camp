@@ -5,12 +5,12 @@
   lib,
   ...
 }: {
-  options.cute.services.web.conduit = lib.mkEnableOption "";
+  options.cute.services.conduit = lib.mkEnableOption "";
   config = let
     server_name = "pagu.cafe";
     matrix_hostname = "matrix.${server_name}";
   in
-    lib.mkIf config.cute.services.web.conduit {
+    lib.mkIf config.cute.services.conduit {
       services = {
         matrix-conduit = {
           enable = true;
