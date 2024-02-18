@@ -5,29 +5,25 @@
 }: {
   cute = {
     services = {
-      web = {
-        domain = "pagu.cafe";
-        conduit = true;
-        forgejo = true;
-        nextcloud = true;
-        nginx = true;
-        qbittorrent = true;
-        vaultwarden = true;
-      };
-      media = {
-        jellyfin = true;
-        komga = true;
-        navidrome = true;
-      };
-      misc = {
-        fail2ban = true;
-        grocy = true;
-        homeassistant = true;
-        mailserver = true;
-      };
+      cloud = true;
+      conduit = true;
+      f2ban = true;
+      forgejo = true;
+      grocy = true;
+      hass = true;
+      jelly = true;
+      komga = true;
+      mail = true;
+      navi = true;
+      qbit = true;
+      vault = true;
       docker = {
         enable = true;
         feishin = true;
+      };
+      nginx = {
+        enable = true;
+        domain = "pagu.cafe";
       };
     };
     common = {
@@ -67,11 +63,6 @@
     ranger
     wget
   ];
-  fonts.fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-  ];
   security.sudo.execWheelOnly = true;
   services.openssh = {
     enable = true;
@@ -98,6 +89,13 @@
   hardware = {
     enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = true;
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+      ];
+    };
   };
   boot = {
     loader = {

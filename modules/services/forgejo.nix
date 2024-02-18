@@ -3,18 +3,19 @@
   lib,
   ...
 }: {
-  options.cute.services.web.forgejo = lib.mkEnableOption "";
+  options.cute.services.forgejo = lib.mkEnableOption "";
   config = let
-    domain = "forge.${config.cute.services.web.domain}";
+    domain = "forge.${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.web.forgejo {
+    lib.mkIf config.cute.services.forgejo {
       services = {
         forgejo = {
           enable = true;
           settings = {
-            ui.DEFAULT_THEME = "forgejo-dark";
+            other.SHOW_FOOTER_VERSION = false;
             service.DISABLE_REGSTRATION = true;
             session.COOKIE_SECURE = true;
+            ui.DEFAULT_THEME = "forgejo-dark";
             server = {
               ROOT_URL = "https://${domain}";
               DOMAIN = "${domain}";
