@@ -14,8 +14,8 @@
   config = let
     inherit (config.cute.desktop) misc greetd audio;
   in {
-    home-manager.users.pagu.home = lib.mkIf misc {
-      packages = with pkgs; [
+    home-manager = lib.mkIf misc {
+      users.pagu.home.packages = with pkgs; [
         imv
         localsend
         pwvucontrol
@@ -25,7 +25,7 @@
       ];
     };
     # localsend
-    networking.firewall = {
+    networking.firewall = lib.mkIf misc {
       allowedTCPPorts = [53317];
       allowedUDPPorts = [53317];
     };

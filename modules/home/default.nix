@@ -22,8 +22,7 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = {inherit inputs;};
-      users.pagu = {
-        imports = [inputs.ags.homeManagerModules.default];
+      users.pagu = { 
         home = {
           username = "pagu";
           homeDirectory = "/home/pagu";
@@ -36,6 +35,7 @@
             }; 
           };
         };
+        imports = [inputs.ags.homeManagerModules.default];
         programs = {
           ags = lib.mkIf ags {
             enable = true;
