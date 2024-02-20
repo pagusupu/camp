@@ -17,7 +17,7 @@
         wayland.windowManager.hyprland = {
           enable = true;
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-          plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
+         # plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces];
           settings = {
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
@@ -115,8 +115,8 @@
           extraConfig = ''
             ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m1}") ["1" "2" "3" "4"]}
             ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m2}") ["5" "6" "7" "8"]}
-            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},split-workspace,${n}") ["1" "2" "3" "4"]}
-            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},split-movetoworkspacesilent,${n}") ["1" "2" "3" "4"]}
+            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") ["1" "2" "3" "4"]}
+            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4"]}
           '';
         };
         home = {

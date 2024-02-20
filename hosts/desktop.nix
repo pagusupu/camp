@@ -24,10 +24,7 @@
       ags = true;
       eww = true;
       themes = {
-        firefox = {
-	  userChrome = true;
-	  userContent = true;
-	};
+        firefox = true; 
       };
     };
     common = {
