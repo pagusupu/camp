@@ -35,26 +35,19 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
   };
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = inputs: let
+    inherit (inputs.nixpkgs) lib;
     importAll = path:
-      builtins.filter (nixpkgs.lib.hasSuffix ".nix")
-      (map toString (nixpkgs.lib.filesystem.listFilesRecursive path));
+      builtins.filter (lib.hasSuffix ".nix")
+      (map toString (lib.filesystem.listFilesRecursive path));
   in {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations = lib.genAttrs ["desktop" "nixserver"] (name:
+      lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
-          [./hosts/desktop.nix]
+          [./hosts/${name}.nix]
           ++ importAll ./lib
           ++ importAll ./modules;
-      };
-      nixserver = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules =
-          [./hosts/server.nix]
-          ++ importAll ./lib
-          ++ importAll ./modules;
-      };
-    };
+      });
   };
 }
