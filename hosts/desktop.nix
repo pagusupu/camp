@@ -24,7 +24,7 @@
       ags = false;
       eww = true;
       themes = {
-        firefox = true; 
+        firefox = true;
       };
     };
     common = {
@@ -43,7 +43,7 @@
   i18n.defaultLocale = "en_NZ.UTF-8";
   time = {
     timeZone = "NZ";
-    hardwareClockInLocalTime = true; # windows
+    hardwareClockInLocalTime = true; # windows dual-boot
   };
   age.secrets.user = {
     file = ../secrets/user.age;
@@ -77,7 +77,6 @@
         device = "nodev";
         splashImage = null;
         configurationLimit = 10;
-        extraConfig = ''GRUB_TIMEOUT_STYLE=hidden'';
       };
       efi.canTouchEfiVariables = true;
     };
@@ -99,7 +98,6 @@
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
-    pulseaudio.enable = false;
   };
   networking = {
     dhcpcd.wait = "background";

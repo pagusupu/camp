@@ -20,7 +20,7 @@
           settings = {
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
-              "rwpspread -w -i ${bg}"
+              "rwpspread -b swaybg -i ${bg}"
               "pgrep -x eww > /dev/null || eww open-many leftbar rightbar"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
@@ -118,7 +118,7 @@
             grimblast
             rwpspread
             swayidle
-            wpaperd
+	    swaybg
             wl-clipboard
           ];
           sessionVariables = {NIXOS_OZONE_WL = 1;};
@@ -132,6 +132,6 @@
         substituters = ["https://hyprland.cachix.org"];
         trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
       };
-      nixpkgs.config.permittedInsecurePackages = ["freeimage-unstable-2021-11-01"];
+      #nixpkgs.config.permittedInsecurePackages = ["freeimage-unstable-2021-11-01"];
     };
 }
