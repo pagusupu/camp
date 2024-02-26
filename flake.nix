@@ -23,11 +23,7 @@
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
+    }; 
     ags.url = "github:Aylur/ags";
     conduit.url = "gitlab:famedly/conduit?ref=next";
     hyprland.url = "github:hyprwm/Hyprland";

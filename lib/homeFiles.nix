@@ -38,7 +38,7 @@ in {
       type = _tmpfileType "homeFile";
     };
   };
-  config.systemd.user.tmpfiles.users.pagu.rules = let
+  config.systemd.user.tmpfiles.users.pagu.rules = let # update user
     _tmpStr = prefix: _: file: "L+ '${prefix}/${file.target}' - - - - ${file.source}";
   in
     flatten [

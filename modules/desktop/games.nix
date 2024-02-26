@@ -11,7 +11,6 @@
     home-manager.users.pagu = {
       home.packages = with pkgs; [
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
-	bottles
         prismlauncher
         protontricks
         r2modman

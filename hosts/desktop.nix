@@ -21,7 +21,7 @@
     };
     home = {
       enable = true;
-      ags = true;
+      ags = false;
       eww = true;
       themes = {
         firefox = true; 

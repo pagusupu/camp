@@ -17,7 +17,6 @@
         wayland.windowManager.hyprland = {
           enable = true;
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-          # plugins = [inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces]; broken for now
           settings = {
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
@@ -65,12 +64,7 @@
                 "fade, 1, 2, default"
                 "workspaces, 1, 1, default, slidevert"
               ];
-            };
-            plugin = {
-              split-monitor-workspaces = {
-                count = 4;
-              };
-            };
+            }; 
             misc = {
               vrr = 1;
               vfr = true;
@@ -115,8 +109,8 @@
           extraConfig = ''
             ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m1}") ["1" "2" "3" "4"]}
             ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m2}") ["5" "6" "7" "8"]}
-            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") ["1" "2" "3" "4"]}
-            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4"]}
+            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
+            ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
           '';
         };
         home = {
@@ -138,5 +132,6 @@
         substituters = ["https://hyprland.cachix.org"];
         trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
       };
+      nixpkgs.config.permittedInsecurePackages = ["freeimage-unstable-2021-11-01"];
     };
 }
