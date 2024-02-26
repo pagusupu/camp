@@ -5,11 +5,11 @@
 }: {
   options.cute.services.docker = {
     enable = lib.mkEnableOption "";
-    feishin = lib.mkEnableOption "";
+    fish = lib.mkEnableOption "";
   };
   config = let
     domain = "${config.cute.services.nginx.domain}";
-    inherit (config.cute.services.docker) enable feishin;
+    inherit (config.cute.services.docker) enable fish;
   in {
     virtualisation = lib.mkIf enable {
       docker = {
@@ -19,7 +19,7 @@
       oci-containers = {
         backend = "docker";
         containers = {
-          "feishin" = lib.mkIf feishin {
+          "feishin" = lib.mkIf fish {
             image = "ghcr.io/jeffvli/feishin:latest";
             ports = ["9180:9180"];
           };
@@ -27,7 +27,7 @@
       };
     };
     services.nginx.virtualHosts = {
-      "feishin.${domain}" = lib.mkIf feishin {
+      "fish.${domain}" = lib.mkIf fish {
         forceSSL = true;
         enableACME = true;
         locations."/".proxyPass = "http://127.0.0.1:9180";

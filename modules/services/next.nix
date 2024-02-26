@@ -4,11 +4,11 @@
   lib,
   ...
 }: {
-  options.cute.services.cloud = lib.mkEnableOption "";
+  options.cute.services.next = lib.mkEnableOption "";
   config = let
-    domain = "cloud.${config.cute.services.nginx.domain}";
+    domain = "next.${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.cloud {
+    lib.mkIf config.cute.services.next {
       age.secrets.nextcloud = {
         file = ../../secrets/nextcloud.age;
         owner = "nextcloud";
@@ -18,25 +18,40 @@
           enable = true;
           package = pkgs.nextcloud28;
           hostName = domain;
-          home = "/storage/services/nextcloud";
-          autoUpdateApps.enable = true;
+          https = true;
+          nginx.recommendedHttpHeaders = true;
           configureRedis = true;
           config = {
-            overwriteProtocol = "https";
-            extraTrustedDomains = ["https://${domain}"];
-            trustedProxies = ["https://${domain}"];
             adminuser = "pagu";
             adminpassFile = config.age.secrets.nextcloud.path;
             dbtype = "pgsql";
-            dbhost = "/run/postgresql";
             dbname = "nextcloud";
-            defaultPhoneRegion = "NZ";
+            dbhost = "/run/postgresql";
           };
-          nginx.recommendedHttpHeaders = true;
-          https = true;
+          extraOptions = {
+            overwriteProtocol = "https";
+            extraTrustedDomains = ["https://${domain}"];
+            trustedProxies = ["https://${domain}"];
+            defaultPhoneRegion = "NZ";
+            mail_smtpmode = "smtp";
+            mail_sendmailmode = "smtp";
+            mail_smtpsecure = "ssl";
+            mail_smtphost = "mail.${domain}";
+            mail_smtpport = "465";
+            mail_smtpauth = 1;
+            mail_smtpname = "cloud@${domain}";
+            mail_from_address = "cloud";
+            mail_domain = "${domain}";
+          };
           phpOptions = {
             "opcache.interned_strings_buffer" = "16";
             "output_buffering" = "off";
+          };
+          home = "/storage/services/nextcloud";
+          autoUpdateApps.enable = true;
+          extraAppsEnable = true;
+          extraApps = {
+            inherit (pkgs.nextcloud28Packages.apps) mail calendar notes;
           };
         };
         postgresql = {

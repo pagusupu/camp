@@ -5,13 +5,13 @@
 }: {
   options.cute.services = {
     f2ban = lib.mkEnableOption "";
-    grocy = lib.mkEnableOption "";
-    jelly = lib.mkEnableOption "";
-    komga = lib.mkEnableOption "";
+    grcy = lib.mkEnableOption "";
+    jlly = lib.mkEnableOption "";
+    kmga = lib.mkEnableOption "";
   };
   config = let
     domain = "${config.cute.services.nginx.domain}";
-    inherit (config.cute.services) f2ban grocy jelly komga;
+    inherit (config.cute.services) f2ban grcy jlly kmga;
   in {
     services = {
       fail2ban = lib.mkIf f2ban {
@@ -21,19 +21,19 @@
           factor = "16";
         };
       };
-      grocy = lib.mkIf grocy {
+      grocy = lib.mkIf grcy {
         enable = true;
-        hostName = "grocy.${domain}";
+        hostName = "grcy.${domain}";
         settings = {
           currency = "NZD";
           calendar.firstDayOfWeek = 1;
         };
       };
-      jellyfin = lib.mkIf jelly {
+      jellyfin = lib.mkIf jlly {
         enable = true;
         openFirewall = true;
       };
-      komga = lib.mkIf komga {
+      komga = lib.mkIf kmga {
         enable = true;
         openFirewall = true;
         port = 8097;
@@ -44,13 +44,13 @@
           enableACME = true;
         };
       in {
-        "grocy.${domain}" =
+        "grcy.${domain}" =
           common
           // {};
-        "jelly.${domain}" =
+        "jlly.${domain}" =
           common
           // {locations."/".proxyPass = "http://127.0.0.1:8096";};
-        "komga.${domain}" =
+        "kmga.${domain}" =
           common
           // {locations."/".proxyPass = "http://127.0.0.1:8097";};
       };

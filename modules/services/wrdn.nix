@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.services.vault = lib.mkEnableOption "";
+  options.cute.services.wrdn = lib.mkEnableOption "";
   config = let
-    domain = "vault.${config.cute.services.nginx.domain}";
+    domain = "wrdn.${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.vault {
+    lib.mkIf config.cute.services.wrdn {
       services = {
         vaultwarden = {
           enable = true;

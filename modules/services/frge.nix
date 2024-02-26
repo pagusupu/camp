@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.services.forgejo = lib.mkEnableOption "";
+  options.cute.services.frge = lib.mkEnableOption "";
   config = let
-    domain = "forge.${config.cute.services.nginx.domain}";
+    domain = "frge.${config.cute.services.nginx.domain}";
   in
-    lib.mkIf config.cute.services.forgejo {
+    lib.mkIf config.cute.services.frge {
       services = {
         forgejo = {
           enable = true;

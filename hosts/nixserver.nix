@@ -5,21 +5,22 @@
 }: {
   cute = {
     services = {
-      cloud = true;
       conduit = true;
       f2ban = true;
-      forgejo = true;
-      grocy = true;
+      frge = true;
+      grcy = true;
       hass = true;
-      jelly = true;
-      komga = true;
+      jlly = true;
+      kmga = true;
       mail = true;
       navi = true;
+      next = true;
       qbit = true;
-      vault = true;
+      synapse = false;
+      wrdn = true;
       docker = {
         enable = true;
-        feishin = true;
+        fish = true;
       };
       nginx = {
         enable = true;

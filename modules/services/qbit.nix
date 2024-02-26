@@ -16,6 +16,8 @@
         qbittorrent = {
           enable = true;
           openFirewall = true;
+	  webuiPort = 8077;
+	  torrentingPort = 43862;
           profileDir = "/storage/services/qbit/profile";
           package = pkgs.qbittorrent-nox.overrideAttrs {meta.mainProgram = "qbittorrent-nox";};
           serverConfig = {
