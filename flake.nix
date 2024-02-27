@@ -42,7 +42,6 @@
         specialArgs = {inherit inputs;};
         modules =
           [./hosts/${name}.nix]
-          ++ importAll ./lib
           ++ importAll ./modules;
       });
   };

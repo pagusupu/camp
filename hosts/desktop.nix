@@ -22,10 +22,7 @@
     home = {
       enable = true;
       ags = false;
-      eww = true;
-      themes = {
-        firefox = true;
-      };
+      themes.firefox = true;
     };
     common = {
       age = true;
