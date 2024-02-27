@@ -8,7 +8,6 @@
     programs.htop = {
       enable = true;
       settings = {
-      #  htop_version = "3.2.2";
         config_reader_min_version = 3;
         fields = [0 48 46 47 49 1];
         hide_kernel_threads = 1;
@@ -52,7 +51,7 @@
         sort_direction = 1;
         tree_sort_direction = 1;
         tree_view_always_by_pid = 1;
-        all_branches_collapsed = 1; 
+        all_branches_collapsed = 1;
       };
     };
   };
