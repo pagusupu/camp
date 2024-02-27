@@ -4,9 +4,7 @@
   ...
 }: {
   cute = {
-    services = {
-      conduit = true;
-      f2ban = true;
+    services = { 
       frge = true;
       grcy = true;
       hass = true;
@@ -16,8 +14,9 @@
       navi = true;
       next = true;
       qbit = true;
-      synapse = false;
       wrdn = true;
+      f2ban = true;
+      synapse = true;
       docker = {
         enable = true;
         fish = true;
@@ -62,7 +61,6 @@
     git
     mdadm
     ranger
-    wget
   ];
   security.sudo.execWheelOnly = true;
   services.openssh = {

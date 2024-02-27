@@ -22,21 +22,17 @@
           registration_requires_token = true;
           listeners = [
             {
-              bind_addresses = ["127.0.0.1"];
               port = 8008;
+              bind_addresses = ["0.0.0.0"];
+              type = "http";
+              tls = false;
+              x_forwarded = true;
               resources = [
                 {
+                  names = ["client" "federation"];
                   compress = true;
-                  names = ["client"];
-                }
-                {
-                  compress = false;
-                  names = "federation";
                 }
               ];
-              tls = false;
-              type = "http";
-              x_forwarded = true;
             }
           ];
         };
@@ -74,7 +70,21 @@
               inherit extraConfig;
             };
           };
+	  "elmt.${domain}" = {
+	    enableACME = true;
+	    forceSSL = true;
+	    root = pkgs.element-web;
+	  };
         };
+      };
+      postgresql = {
+	enable = true;
+	initialScript = pkgs.writeText "synapse-init.sql" ''
+	  CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+          TEMPLATE template0
+          LC_COLLATE = "C"
+          LC_CTYPE = "C";
+        '';
       };
     };
   };
