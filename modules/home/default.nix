@@ -2,7 +2,6 @@
   config,
   lib,
   inputs,
-  pkgs,
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
@@ -24,7 +23,6 @@
           username = "pagu";
           homeDirectory = "/home/pagu";
           stateVersion = "23.05";
-          packages = with pkgs; [jq socat];
           file = {
             "firefox" = lib.mkIf firefox {
               source = ./themes/firefox.css;
@@ -32,7 +30,7 @@
             };
           };
         };
-        imports = [inputs.ags.homeManagerModules.default];
+        imports = lib.mkIf ags [inputs.ags.homeManagerModules.default];
         programs = {
           ags = lib.mkIf ags {
             enable = true;

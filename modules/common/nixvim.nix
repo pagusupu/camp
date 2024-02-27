@@ -31,10 +31,9 @@
           action = "<cmd>NvimTreeToggle<cr>";
         }
       ];
-      extraPlugins = with pkgs.vimPlugins; [
-        plenary-nvim
-      ];
+      extraPlugins = with pkgs.vimPlugins; [plenary-nvim];
       plugins = {
+        lsp-lines.enable = true;
         treesitter.enable = true;
         rainbow-delimiters.enable = true;
         barbar = {
@@ -45,21 +44,22 @@
           enable = true;
           servers.nil_ls = {
             enable = true;
-            autostart = true;
             cmd = ["nil"];
             settings.formatting.command = ["alejandra --quiet"];
           };
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = ["nil_ls"];
+          lspServersToEnable = ["cssls" "html" "nil_ls"];
         };
         none-ls = {
           enable = true;
           sources = {
-	    code_actions.statix.enable = true;
             formatting.alejandra.enable = true;
-            diagnostics.deadnix.enable = true;
+            diagnostics = {
+              deadnix.enable = true;
+              statix.enable = true;
+            };
           };
         };
         nvim-tree = {
