@@ -70,20 +70,20 @@
               inherit extraConfig;
             };
           };
-	  "elmt.${domain}" = {
-	    enableACME = true;
-	    forceSSL = true;
-	    root = pkgs.element-web;
-	  };
+          "elmt.${domain}" = {
+            enableACME = true;
+            forceSSL = true;
+            root = pkgs.element-web;
+          };
         };
       };
       postgresql = {
-	enable = true;
-	initialScript = pkgs.writeText "synapse-init.sql" ''
-	  CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
-          TEMPLATE template0
-          LC_COLLATE = "C"
-          LC_CTYPE = "C";
+        enable = true;
+        initialScript = pkgs.writeText "synapse-init.sql" ''
+          CREATE DATABASE "matrix-synapse" WITH OWNER "matrix-synapse"
+                 TEMPLATE template0
+                 LC_COLLATE = "C"
+                 LC_CTYPE = "C";
         '';
       };
     };
