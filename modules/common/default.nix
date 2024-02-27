@@ -13,15 +13,15 @@
   };
   config = let
     inherit (config.cute.common) age git nix;
-  in { 
+  in {
     programs.git = lib.mkIf git {
       enable = true;
       config = {
-	init.defaultBranch = "main";
-	user = {
-	  name = "pagu";
-	  email = "me@pagu.cafe";
-	};
+        init.defaultBranch = "main";
+        user = {
+          name = "pagu";
+          email = "me@pagu.cafe";
+        };
       };
     };
     nix = lib.mkIf nix {
@@ -43,7 +43,7 @@
       hostPlatform = "x86_64-linux";
       config.allowUnfree = true;
     };
-     environment.systemPackages = lib.mkIf age [inputs.agenix.packages.${pkgs.system}.default];
+    environment.systemPackages = lib.mkIf age [inputs.agenix.packages.${pkgs.system}.default];
     age.identityPaths = lib.mkIf age ["/home/pagu/.ssh/id_ed25519"];
   };
 }
