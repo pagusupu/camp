@@ -9,9 +9,9 @@
       programs.alacritty = {
         enable = true;
         settings = {
-          window.padding = {
-            x = 10;
-            y = 10;
+          cursor = {
+            style = "Underline";
+            unfocused_hollow = false;
           };
           font = {
             size = 12;
@@ -20,9 +20,12 @@
               style = "Regular";
             };
           };
-          cursor = {
-            style = "Underline";
-            unfocused_hollow = false;
+          window = {
+            dynamic_title = false;
+            padding = {
+              x = 10;
+              y = 10;
+            };
           };
           colors = let
             inherit (config.cute) colours;
@@ -34,16 +37,6 @@
               bright_foreground = "#" + colours.text;
             };
             normal = {
-              black = "#" + colours.muted;
-              red = "#" + colours.love;
-              green = "#" + colours.pine;
-              yellow = "#" + colours.gold;
-              blue = "#" + colours.foam;
-              magenta = "#" + colours.iris;
-              cyan = "#" + colours.rose;
-              white = "#" + colours.text;
-            };
-            bright = {
               black = "#" + colours.muted;
               red = "#" + colours.love;
               green = "#" + colours.pine;

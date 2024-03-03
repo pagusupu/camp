@@ -14,9 +14,9 @@
         borderSize = 2;
         borderRadius = 6;
         margin = "14";
-        backgroundColor = "#${config.cute.colours.overlay}";
-        borderColor = "#${config.cute.colours.iris}";
-        textColor = "#${config.cute.colours.text}";
+        backgroundColor = "#" + config.cute.colours.overlay;
+        borderColor = "#" + config.cute.colours.iris;
+        textColor = "#" + config.cute.colours.text;
         extraConfig = ''
           [mode=do-not-disturb]
           invisible=1
