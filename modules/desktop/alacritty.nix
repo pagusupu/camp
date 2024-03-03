@@ -46,6 +46,16 @@
               cyan = "#" + colours.rose;
               white = "#" + colours.text;
             };
+            bright = {
+              black = "#" + colours.muted;
+              red = "#" + colours.love;
+              green = "#" + colours.pine;
+              yellow = "#" + colours.gold;
+              blue = "#" + colours.foam;
+              magenta = "#" + colours.iris;
+              cyan = "#" + colours.rose;
+              white = "#" + colours.text;
+            };
           };
         };
       };

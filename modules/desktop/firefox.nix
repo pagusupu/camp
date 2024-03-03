@@ -67,23 +67,28 @@
             "*" = {
               default_area = "menupanel";
             };
-            "uBlock0@raymondhill.net" = { # ublock
+            # ublock
+            "uBlock0@raymondhill.net" = {
               installation_mode = "force_installed";
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4188488/ublock_origin-1.55.0.xpi";
+              install_url = "https://addons.mozilla.org/firefox/downloads/file/4188488/ublock_origin-1.56.0.xpi";
             };
-            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = { # bitwarden
+            # bitwarden
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
               installation_mode = "force_installed";
               install_url = "https://addons.mozilla.org/firefox/downloads/file/4180072/bitwarden_password_manager-2024.2.0.xpi";
             };
-            "sponsorBlocker@ajay.app" = { # sponsorblock
+            # sponsorblock
+            "sponsorBlocker@ajay.app" = {
               installation_mode = "force_installed";
               install_url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.5.4.xpi";
             };
-            "treestyletab@piro.sakura.ne.jp" = { # tree style tab
+            # tree style tab
+            "treestyletab@piro.sakura.ne.jp" = {
               installation_mode = "force_installed";
               install_url = "https://addons.mozilla.org/firefox/downloads/file/4197314/tree_style_tab-3.9.22.xpi";
             };
-            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = { # return yt dislike
+            # return yt dislike
+            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = {
               installation_mode = "force_installed";
               install_url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";
             };

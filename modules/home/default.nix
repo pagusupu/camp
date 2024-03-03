@@ -30,7 +30,7 @@
             };
           };
         };
-        imports = lib.mkIf ags [inputs.ags.homeManagerModules.default];
+        imports = [inputs.ags.homeManagerModules.default];
         programs = {
           ags = lib.mkIf ags {
             enable = true;
