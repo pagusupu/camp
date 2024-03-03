@@ -49,6 +49,28 @@
     tpm2.enable = true;
     sudo.wheelNeedsPassword = false;
   };
+  networking = {
+    hostName = "desktop";
+    hostId = "6f257938";
+  };
+  systemd = {
+    services.systemd-udev-settle.enable = false;
+    network = {
+      enable = true;
+      wait-online.enable = false;
+      networks.enp10s0 = {
+        name = "enp10s0";
+        networkConfig = {
+          DHCP = "no";
+          DNSSEC = "yes";
+          DNSOverTLS = "yes";
+          DNS = ["1.0.0.1" "1.1.1.1"];
+        };
+        address = ["192.168.178.126/24"];
+        routes = [{routeConfig.Gateway = "192.168.178.1";}];
+      };
+    };
+  };
   boot = {
     loader = {
       grub = {
@@ -71,10 +93,6 @@
     ];
   };
   powerManagement.cpuFreqGovernor = "schedutil";
-  networking = {
-    dhcpcd.wait = "background";
-    hostName = "desktop";
-  };
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/NixBoot";
