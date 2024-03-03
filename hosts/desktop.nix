@@ -21,15 +21,22 @@
       themes.firefox = true;
     };
     common = {
-      age = true;
       console = true;
       git = true;
-      htop = true;
-      nix = true;
       nixvim = true;
+      tools = true;
       zsh = {
         enable = true;
         prompt = "'%F{magenta}% %~ >%f '";
+      };
+      system = {
+        age = true;
+        amd = true;
+        boot = true;
+        hardware = true;
+        misc = true;
+        nix = true;
+        user = true;
       };
     };
   };

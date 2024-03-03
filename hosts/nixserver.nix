@@ -23,16 +23,22 @@
       };
     };
     common = {
-      age = true;
       console = true;
-      htop = true;
-      misc = true;
-      nix = true;
+      git = true;
       nixvim = true;
       tools = true;
       zsh = {
         enable = true;
         prompt = "'%F{yellow}% %~ >%f '";
+      };
+      system = {
+        age = true;
+        amd = true;
+        boot = true;
+        hardware = true;
+        misc = true;
+        nix = true;
+        user = true;
       };
     };
   };

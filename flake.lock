@@ -28,19 +28,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1709288206,
-        "narHash": "sha256-m2XAuQL8ZWPi3dd3cG+lryWrL68TQrctEgSZ4r7SL1Q=",
-        "owner": "Aylur",
-        "repo": "ags",
-        "rev": "8f8e6d3717f7217b3b37698fe04b1d4ad21265c8",
-=======
         "lastModified": 1709482497,
         "narHash": "sha256-wLLLWr6A9QR2s6EU+B823jhLDfLIyYVHiia7HH3oFZI=",
         "owner": "Aylur",
         "repo": "ags",
         "rev": "4a22f38533a251a6245cfc1a147a315ec6ff6454",
->>>>>>> af8ff721b018a45e19241dd923220e2d361dba99
         "type": "github"
       },
       "original": {
@@ -237,19 +229,11 @@
         ]
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1709204054,
-        "narHash": "sha256-U1idK0JHs1XOfSI1APYuXi4AEADf+B+ZU4Wifc0pBHk=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "2f3367769a93b226c467551315e9e270c3f78b15",
-=======
         "lastModified": 1709485962,
         "narHash": "sha256-rmFB4uE10+LJbcVE4ePgiuHOBlUIjQOeZt4VQVJTU8M=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "d579633ff9915a8f4058d5c439281097e92380a8",
->>>>>>> af8ff721b018a45e19241dd923220e2d361dba99
         "type": "github"
       },
       "original": {
@@ -268,19 +252,11 @@
         "xdph": "xdph"
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1709432286,
-        "narHash": "sha256-ayIGbX4W6bYFo+F3h9JeCfKUhw/8taO0/0i/kRLQ4r4=",
-        "owner": "hyprwm",
-        "repo": "Hyprland",
-        "rev": "cc94123fa7d45e816327b4b8c8592589313f4718",
-=======
         "lastModified": 1709491298,
         "narHash": "sha256-GO98QYKyURXyxxps4RlXoLXaankHWfg7sVL4xItkYt4=",
         "owner": "hyprwm",
         "repo": "Hyprland",
         "rev": "063708df26e8b930f492200e1907eb47950f50e6",
->>>>>>> af8ff721b018a45e19241dd923220e2d361dba99
         "type": "github"
       },
       "original": {
@@ -508,19 +484,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1709419343,
-        "narHash": "sha256-st7fbu5Qzua+CdXOJAh3oFTWoB2WTYOLGWfxjHb0cfg=",
-        "owner": "nix-community",
-        "repo": "nixvim",
-        "rev": "cd86fd1e581cbd4ca48b885a4f67f8a8392b450e",
-=======
         "lastModified": 1709493170,
         "narHash": "sha256-ohqI7giJ/RFwFrsWCgnGPvHrPjQe0ipY53KOtPTRoDk=",
         "owner": "nix-community",
         "repo": "nixvim",
         "rev": "740b59c1f1cd0f994ae94244f560bad05dd6fed9",
->>>>>>> af8ff721b018a45e19241dd923220e2d361dba99
         "type": "github"
       },
       "original": {
