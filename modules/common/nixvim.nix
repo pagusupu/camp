@@ -80,7 +80,7 @@
             enable = true;
             showOnDirs = true;
           };
-        };
+        }; #
       };
     };
     environment.sessionVariables = {EDITOR = "nvim";};

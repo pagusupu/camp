@@ -24,8 +24,7 @@
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
-    ags.url = "github:Aylur/ags";
-    conduit.url = "gitlab:famedly/conduit?ref=next";
+    ags.url = "github:Aylur/ags"; 
     hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
