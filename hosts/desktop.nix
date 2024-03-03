@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   cute = {
     desktop = {
       alacritty = true;
@@ -37,35 +33,16 @@
       };
     };
   };
-  i18n.defaultLocale = "en_NZ.UTF-8";
-  time = {
-    timeZone = "NZ";
-    hardwareClockInLocalTime = true; # windows dual-boot
-  };
-  age.secrets.user = {
-    file = ../secrets/user.age;
-    owner = "pagu";
-  };
-  users.users.pagu = {
-    uid = 1000;
-    isNormalUser = true;
-    extraGroups = ["wheel"];
-    shell = pkgs.zsh;
-    hashedPasswordFile = config.age.secrets.user.path;
-  };
+  time.hardwareClockInLocalTime = true; # windows dual-boot
   services = {
     dbus.enable = true;
     sshd.enable = true;
   };
   security = {
     tpm2.enable = true;
-    sudo = {
-      execWheelOnly = true;
-      wheelNeedsPassword = false;
-    };
+    sudo.wheelNeedsPassword = false;
   };
   boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader = {
       grub = {
         enable = true;
@@ -75,14 +52,9 @@
         splashImage = null;
         configurationLimit = 10;
       };
-      efi.canTouchEfiVariables = true;
     };
-    supportedFilesystems = ["btrfs" "ntfs"];
-    kernelModules = ["kvm-amd" "amd_pstate"];
-    initrd = {
-      kernelModules = ["amdgpu"];
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-    };
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelModules = ["amd_pstate"];
     kernelParams = [
       "video=DP-3:1920x1080@165"
       "video=HDMI-A-1:1920x1080@75"
@@ -92,15 +64,9 @@
     ];
   };
   powerManagement.cpuFreqGovernor = "schedutil";
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-  };
   networking = {
     dhcpcd.wait = "background";
     hostName = "desktop";
-    nameservers = ["1.1.1.1" "1.0.0.1"];
-    firewall.enable = true;
   };
   fileSystems = {
     "/boot" = {

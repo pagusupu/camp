@@ -43,23 +43,30 @@
         };
         lsp = {
           enable = true;
-          servers.nil_ls = {
-            enable = true;
-            autostart = true;
-            cmd = ["nil"];
-            settings.formatting.command = ["alejandra --quiet"];
+          servers = {
+            nil_ls = {
+              enable = true;
+              autostart = true;
+              cmd = ["nil"];
+              settings.formatting.command = ["alejandra --quiet"];
+            };
+	    cssls.enable = true;
+            html.enable = true;
           };
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = ["nil_ls"];
+          lspServersToEnable = ["nil_ls" "cssls" "html"];
         };
         none-ls = {
           enable = true;
           sources = {
-	    code_actions.statix.enable = true;
+            code_actions.statix.enable = true;
             formatting.alejandra.enable = true;
-            diagnostics.deadnix.enable = true;
+            diagnostics = {
+	      deadnix.enable = true;
+	      stylelint.enable = true;
+	    };
           };
         };
         nvim-tree = {

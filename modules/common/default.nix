@@ -43,7 +43,7 @@
       hostPlatform = "x86_64-linux";
       config.allowUnfree = true;
     };
-    environment.systemPackages = lib.mkIf age [inputs.agenix.packages.${pkgs.system}.default];
     age.identityPaths = lib.mkIf age ["/home/pagu/.ssh/id_ed25519"];
+    environment.systemPackages = lib.mkIf age [inputs.agenix.packages.${pkgs.system}.default];
   };
 }

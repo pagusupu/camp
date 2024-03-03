@@ -23,7 +23,6 @@
           serverConfig = {
             LegalNotice.Accepted = true;
             BitTorrent.Session = {
-              Port = 43862;
               DefaultSavePath = "/storage/services/qbit/torrents";
               TorrentExportDirectory = "/storage/services/qbit/torrents/sources/";
               TempPath = "/storage/services/qbit/torrents/incomplete/";
@@ -51,7 +50,6 @@
               in {
                 AlternativeUIEnabled = true;
                 RootFolder = vue;
-                Port = 8077;
                 Username = "pagu";
                 Password_PBKDF2 = ''"@ByteArray(kZipcTwDuigp5wDRkynNQA==:roLYJRl9n/jcGRTXzgont6GAsBm7Bu7LGfrUfB7QcQqgQRSOLNvBs9YrC6h8nMgN/4e4dDETmAQGF16S+zBD5Q==)"'';
                 ReverseProxySupportEnabled = true;

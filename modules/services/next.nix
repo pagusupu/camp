@@ -6,7 +6,7 @@
 }: {
   options.cute.services.next = lib.mkEnableOption "";
   config = let
-    domain = "next.${config.cute.services.nginx.domain}";
+    domain = "${config.cute.services.nginx.domain}";
   in
     lib.mkIf config.cute.services.next {
       age.secrets.nextcloud = {
@@ -17,7 +17,7 @@
         nextcloud = {
           enable = true;
           package = pkgs.nextcloud28;
-          hostName = domain;
+          hostName = "next.${domain}";
           https = true;
           nginx.recommendedHttpHeaders = true;
           configureRedis = true;
@@ -30,29 +30,29 @@
           };
           extraOptions = {
             overwriteProtocol = "https";
-            extraTrustedDomains = ["https://${domain}"];
-            trustedProxies = ["https://${domain}"];
+            extraTrustedDomains = ["https://next.${domain}"];
+            trustedProxies = ["https://next.${domain}"];
             defaultPhoneRegion = "NZ";
-            mail_smtpmode = "smtp";
-            mail_sendmailmode = "smtp";
-            mail_smtpsecure = "ssl";
-            mail_smtphost = "mail.${domain}";
-            mail_smtpport = "465";
-            mail_smtpauth = 1;
-            mail_smtpname = "cloud@${domain}";
-            mail_from_address = "cloud";
-            mail_domain = "${domain}";
+            #     mail_smtpmode = "smtp";
+            #     mail_sendmailmode = "smtp";
+            #     mail_smtpsecure = "ssl";
+            #     mail_smtphost = "mail.${domain}";
+            #     mail_smtpport = "465";
+            #     mail_smtpauth = 1;
+            #     mail_smtpname = "cloud@${domain}";
+            #     mail_from_address = "cloud";
+            #     mail_domain = "${domain};
           };
           phpOptions = {
             "opcache.interned_strings_buffer" = "16";
             "output_buffering" = "off";
           };
           home = "/storage/services/nextcloud";
-          autoUpdateApps.enable = true;
-          extraAppsEnable = true;
-          extraApps = {
-            inherit (pkgs.nextcloud28Packages.apps) mail calendar notes;
-          };
+          #  autoUpdateApps.enable = true;
+          #     extraAppsEnable = true;
+          #     extraApps = {
+          #       inherit (pkgs.nextcloud28Packages.apps) mail calendar notes;
+          #     };
         };
         postgresql = {
           enable = true;
@@ -64,7 +64,7 @@
             }
           ];
         };
-        nginx.virtualHosts."${domain}" = {
+        nginx.virtualHosts."next.${domain}" = {
           forceSSL = true;
           enableACME = true;
           http2 = true;

@@ -21,7 +21,6 @@
         pwvucontrol
         ueberzugpp
         xfce.thunar
-        yazi
       ];
     };
     # localsend
@@ -55,7 +54,6 @@
         };
       };
     };
-    hardware.pulseaudio.enable = lib.mkIf audio false;
     security.rtkit.enable = lib.mkIf audio true;
   };
 }

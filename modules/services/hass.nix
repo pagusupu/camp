@@ -8,6 +8,7 @@
     services.home-assistant = {
       enable = true;
       openFirewall = true;
+      # configDir = /storage/services/hass;
       extraComponents = [
         # required for onboarding
         # "esphome"

@@ -16,13 +16,6 @@
             SIGNUPS_ALLOWED = true;
             ROCKET_ADDRESS = "127.0.0.1";
             ROCKET_PORT = 8222;
-            # SMTP_HOST = "mail.pagu.cafe";
-            # SMPT_PORT = 465;
-            # SMTP_SECURITY = "force_tls";
-            # SMTP_FROM = "vaultwarden@pagu.cafe";
-            # SMTP_FROM_NAME = "Vaultwarden";
-            # SMTP_USERNAME = "vaultwarden@pagu.cafe";
-            # SMTP_PASSWORD = "";
           };
           backupDir = "/storage/services/vaultwarden";
         };

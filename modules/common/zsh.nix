@@ -48,15 +48,7 @@
     environment = {
       shells = [pkgs.zsh];
       binsh = lib.getExe pkgs.dash;
-      sessionVariables.FLAKE = "/home/pagu/flake/";
-      systemPackages = with pkgs; [
-        bat
-        eza
-	fzf
-        nh
-        rm-improved
-	zoxide
-      ];
+      sessionVariables.FLAKE = "/home/pagu/flake/"; 
     };
   };
 }
