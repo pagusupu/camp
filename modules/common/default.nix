@@ -25,7 +25,8 @@
     security.sudo.execWheelOnly = lib.mkIf misc true;
     networking = lib.mkIf misc {
       firewall.enable = true;
-      nameservers = ["1.0.0.1" "1.1.1.1"];
+      enableIPv6 = false;
+      useDHCP = false;
     };
     age.secrets.user = lib.mkIf user {
       file = ../../secrets/user.age;
