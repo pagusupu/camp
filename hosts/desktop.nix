@@ -1,19 +1,25 @@
 {pkgs, ...}: {
   cute = {
     desktop = {
-      alacritty = true;
-      audio = true;
-      firefox = true;
-      fonts = true;
-      games = true;
-      greetd = true;
-      gtk = true;
-      hyprland = true;
-      mako = true;
-      misc = true;
-      swaylock = true;
-      wofi = true;
-      xdg = true;
+      environment = {
+        hyprland = true;
+        mako = true;
+        swaylock = true;
+        wofi = true;
+      };
+      misc = {
+        audio = true;
+        fonts = true;
+        greetd = true;
+        gtk = true;
+        misc = true;
+        xdg = true;
+      };
+      programs = {
+        alacritty = true;
+        firefox = true;
+        games = true;
+      };
     };
     home = {
       enable = true;

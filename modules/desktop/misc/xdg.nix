@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.xdg = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.xdg {
+  options.cute.desktop.misc.xdg = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.misc.xdg {
     home-manager.users.pagu = {
       xdg = {
         enable = true;
@@ -38,7 +38,7 @@
           nvim = {
             noDisplay = true;
             name = "Neovim Wrapper";
-          }; 
+          };
           thunar-settings = {
             noDisplay = true;
             name = "File Manager Settings";

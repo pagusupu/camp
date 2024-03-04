@@ -47,6 +47,7 @@
         radeontop
         rm-improved
         tldr
+        speedtest-cli
         wget
         yazi
         zoxide

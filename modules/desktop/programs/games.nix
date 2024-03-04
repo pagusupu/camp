@@ -6,8 +6,8 @@
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
-  options.cute.desktop.games = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.games {
+  options.cute.desktop.programs.games = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.games {
     home-manager.users.pagu = {
       home.packages = with pkgs; [
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin

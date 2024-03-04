@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.desktop.wofi = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.wofi {
+  options.cute.desktop.environment.wofi = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.environment.wofi {
     home-manager.users.pagu = {
       programs.wofi = {
         enable = true;

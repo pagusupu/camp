@@ -11,12 +11,13 @@
     amd = lib.mkEnableOption "";
     boot = lib.mkEnableOption "";
     hardware = lib.mkEnableOption "";
+    intel = lib.mkEnableOption "";
     misc = lib.mkEnableOption "";
     nix = lib.mkEnableOption "";
     user = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.common.system) age amd boot hardware misc nix user;
+    inherit (config.cute.common.system) age amd boot hardware intel misc nix user;
   in {
     age.identityPaths = lib.mkIf age ["/home/pagu/.ssh/id_ed25519"];
     environment.systemPackages = lib.mkIf age [inputs.agenix.packages.${pkgs.system}.default];
@@ -42,6 +43,7 @@
     hardware = lib.mkIf hardware {
       enableRedistributableFirmware = true;
       cpu.amd.updateMicrocode = lib.mkIf amd true;
+      cpu.intel.updateMicrocode = lib.mkIf intel true;
       opengl = {
         enable = true;
         extraPackages = with pkgs; [

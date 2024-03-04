@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.desktop.mako = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.mako {
+  options.cute.desktop.environment.mako = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.environment.mako {
     home-manager.users.pagu = {
       services.mako = {
         enable = true;

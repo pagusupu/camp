@@ -5,14 +5,14 @@
   inputs,
   ...
 }: {
-  options.cute.desktop.hyprland = lib.mkEnableOption "";
+  options.cute.desktop.environment.hyprland = lib.mkEnableOption "";
   config = let
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
     bg = "~/flake/modules/home/images/bg.jpg";
   in
-    lib.mkIf config.cute.desktop.hyprland {
+    lib.mkIf config.cute.desktop.environment.hyprland {
       home-manager.users.pagu = {
         wayland.windowManager.hyprland = {
           enable = true;
@@ -64,7 +64,7 @@
                 "fade, 1, 2, default"
                 "workspaces, 1, 1, default, slidevert"
               ];
-            }; 
+            };
             misc = {
               vrr = 1;
               vfr = true;
@@ -118,7 +118,7 @@
             grimblast
             rwpspread
             swayidle
-	    swaybg
+            swaybg
             wl-clipboard
           ];
           sessionVariables = {NIXOS_OZONE_WL = 1;};
