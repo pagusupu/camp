@@ -12,19 +12,22 @@
         fonts = true;
         greetd = true;
         gtk = true;
-        misc = true;
         xdg = true;
       };
       programs = {
         alacritty = true;
         firefox = true;
         games = true;
+        misc = true;
       };
     };
     home = {
       enable = true;
       ags = false;
-      themes.firefox = true;
+      themes = {
+        discord = true;
+        firefox = true;
+      };
     };
     common = {
       console = true;

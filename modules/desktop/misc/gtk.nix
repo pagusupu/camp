@@ -5,8 +5,8 @@
   ...
 }: {
   options.cute.desktop.misc.gtk = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.gtk {
-    home-manager.users.misc.pagu = {
+  config = lib.mkIf config.cute.desktop.misc.gtk {
+    home-manager.users.pagu = {
       gtk = {
         enable = true;
         theme = {
@@ -25,7 +25,7 @@
       home = {
         packages = [pkgs.dconf];
         pointerCursor = {
-          package = pkgs.callPackage ../../pkgs/rose-pine-cursor.nix {};
+          package = pkgs.callPackage ../../../pkgs/rose-pine-cursor.nix {};
           name = "BreezeX-RosePineDawn";
           size = 24;
           gtk.enable = true;

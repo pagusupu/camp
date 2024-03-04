@@ -21,15 +21,18 @@
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
               "rwpspread -b swaybg -i ${bg}"
-              "pgrep -x eww > /dev/null || eww open-many leftbar rightbar"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
-              "firefox"
+              "element-desktop"
+              "vesktop"
             ];
             windowrulev2 = [
               "float, class:(thunar)"
               "float, class:(localsend_app)"
               "float, class:(com.saivert.pwvucontrol)"
+              "workspace 5, class:(vesktop)"
+              "workspace 6, class:(Element)"
+              "workspace 5, class:(.sublime-music-wrapped)"
             ];
             input = {
               follow_mouse = 2;
@@ -115,6 +118,7 @@
         };
         home = {
           packages = with pkgs; [
+            imv
             grimblast
             rwpspread
             swayidle

@@ -14,7 +14,7 @@
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts-extra
-        (pkgs.callPackage ../../pkgs/sora.nix {})
+        (pkgs.callPackage ../../../pkgs/sora.nix {})
       ];
       fontconfig = {
         enable = true;

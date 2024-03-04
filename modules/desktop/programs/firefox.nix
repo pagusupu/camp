@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.firefox = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.firefox {
+  options.cute.desktop.programs.firefox = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.programs.firefox {
     home-manager.users.pagu = {
       programs.firefox = {
         enable = true;
