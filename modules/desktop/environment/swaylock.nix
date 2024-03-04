@@ -20,7 +20,7 @@
           datestr = "";
           timestr = "%I:%M %p";
           font = "MonaspiceNE Nerd Font";
-          image = "~/flake/modules/home/images/lockbg.png";
+          image = "${config.cute.images.lock}";
 
           color = "#" + colours.base;
           bs-hl-color = "#" + colours.love;

@@ -10,7 +10,7 @@
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
-    bg = "~/flake/modules/home/images/bg.jpg";
+    #  bg = "~/flake/modules/home/images/bg.jpg";
   in
     lib.mkIf config.cute.desktop.environment.hyprland {
       home-manager.users.pagu = {
@@ -20,7 +20,7 @@
           settings = {
             exec-once = [
               "swayidle -w before-sleep 'swaylock'"
-              "rwpspread -b swaybg -i ${bg}"
+              "rwpspread -b swaybg -i ${config.cute.images.bg}"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
               "element-desktop"
