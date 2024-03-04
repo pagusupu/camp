@@ -1,83 +1,57 @@
 {
-  config,
   lib,
+  config,
   pkgs,
-  inputs,
   ...
 }: {
-  imports = [inputs.agenix.nixosModules.default];
-  options.cute.common.system = {
-    age = lib.mkEnableOption "";
-    amd = lib.mkEnableOption "";
-    boot = lib.mkEnableOption "";
-    hardware = lib.mkEnableOption "";
-    intel = lib.mkEnableOption "";
-    misc = lib.mkEnableOption "";
-    nix = lib.mkEnableOption "";
-    user = lib.mkEnableOption "";
+  options.cute.common = {
+    git = lib.mkEnableOption "";
+    ssh = lib.mkEnableOption "";
+    tools = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.common.system) age amd boot hardware intel misc nix user;
+    inherit (config.cute.common) git ssh tools;
   in {
-    age.identityPaths = lib.mkIf age ["/home/pagu/.ssh/id_ed25519"];
-    environment.systemPackages = lib.mkIf age [inputs.agenix.packages.${pkgs.system}.default];
-    time.timeZone = lib.mkIf misc "NZ";
-    i18n.defaultLocale = lib.mkIf misc "en_NZ.UTF-8";
-    security.sudo.execWheelOnly = lib.mkIf misc true;
-    networking = lib.mkIf misc {
-      firewall.enable = true;
-      enableIPv6 = false;
-      useDHCP = false;
-    };
-    age.secrets.user = lib.mkIf user {
-      file = ../../secrets/user.age;
-      owner = "pagu";
-    };
-    users.users.pagu = lib.mkIf user {
-      uid = 1000;
-      isNormalUser = true;
-      extraGroups = ["wheel"];
-      shell = pkgs.zsh;
-      hashedPasswordFile = config.age.secrets.user.path;
-    };
-    hardware = lib.mkIf hardware {
-      enableRedistributableFirmware = true;
-      cpu.amd.updateMicrocode = lib.mkIf amd true;
-      cpu.intel.updateMicrocode = lib.mkIf intel true;
-      opengl = {
-        enable = true;
-        extraPackages = with pkgs; [
-          vaapiVdpau
-          libvdpau-va-gl
-        ];
+    programs.git = lib.mkIf git {
+      enable = true;
+      config = {
+        init.defaultBranch = "main";
+        user = {
+          name = "pagu";
+          email = "me@pagu.cafe";
+        };
       };
     };
-    boot = lib.mkIf boot {
-      loader.efi.canTouchEfiVariables = true;
-      initrd = {
-        supportedFilesystems = ["btrfs"];
-        kernelModules = lib.mkIf amd ["kvm-amd" "amdgpu"];
-        availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-      };
-    };
-    nix = lib.mkIf nix {
+    services.openssh = lib.mkIf ssh {
+      enable = true;
       settings = {
-        experimental-features = [
-          "flakes"
-          "nix-command"
-        ];
-        auto-optimise-store = true;
-        allowed-users = ["@wheel"];
-      };
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
       };
     };
-    nixpkgs = lib.mkIf nix {
-      hostPlatform = "x86_64-linux";
-      config.allowUnfree = true;
+    users.users.pagu.openssh.authorizedKeys.keys = lib.mkIf ssh [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKj709k07PEtMHhT9Leb1pVkS2kduiyogmyXqNmLRgfp" # server
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk" # desktop nixos
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # desktop windows
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPyA6gv1M1oeN8CnDLR3Z3VdcgK3hbRhHB3Nk6VbWwjK" # phone
+    ];
+    environment = lib.mkIf tools {
+      systemPackages = with pkgs; [
+        bat
+        btop
+        dust
+        eza
+        fzf
+        nh
+        radeontop
+        rm-improved
+        tldr
+        speedtest-cli
+        wget
+        yazi
+        zoxide
+      ];
     };
   };
 }

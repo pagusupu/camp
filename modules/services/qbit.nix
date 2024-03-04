@@ -16,8 +16,8 @@
         qbittorrent = {
           enable = true;
           openFirewall = true;
-	  webuiPort = 8077;
-	  torrentingPort = 43862;
+          webuiPort = 8077;
+          torrentingPort = 43862;
           profileDir = "/storage/services/qbit/profile";
           package = pkgs.qbittorrent-nox.overrideAttrs {meta.mainProgram = "qbittorrent-nox";};
           serverConfig = {
@@ -42,14 +42,14 @@
               MaxConnections = 600;
             };
             Preferences = {
-              WebUI = let
-                vue = pkgs.fetchzip {
-                  url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.7.0/vuetorrent.zip";
-                  hash = "sha256-ys9CrbpOPYu8xJsCnqYKyC4IFD/SSAF8j+T+USqvGA8=";
-                };
-              in {
+              WebUI = {
                 AlternativeUIEnabled = true;
-                RootFolder = vue;
+                RootFolder = pkgs.fetchFromGitHub {
+                  owner = "VueTorrent";
+                  repo = "VueTorrent";
+                  rev = "v2.7.1";
+                  hash = "sha256-ZkeDhXDBjakTmJYN9LZtSRMSkaySt1MhS9QDEujBdYI=";
+                };
                 Username = "pagu";
                 Password_PBKDF2 = ''"@ByteArray(kZipcTwDuigp5wDRkynNQA==:roLYJRl9n/jcGRTXzgont6GAsBm7Bu7LGfrUfB7QcQqgQRSOLNvBs9YrC6h8nMgN/4e4dDETmAQGF16S+zBD5Q==)"'';
                 ReverseProxySupportEnabled = true;

@@ -42,7 +42,6 @@
         age = true;
         amd = true;
         boot = true;
-        hardware = true;
         misc = true;
         nix = true;
         user = true;
