@@ -1,36 +1,30 @@
 {pkgs, ...}: {
   cute = {
     desktop = {
-      environment = {
-        hyprland = true;
-        mako = true;
-        swaylock = true;
-        wofi = true;
-      };
-      misc = {
-        audio = true;
-        fonts = true;
-        greetd = true;
-        gtk = true;
-        xdg = true;
-      };
-      programs = {
-        alacritty = true;
-        firefox = true;
+      alacritty = true;
+      audio = true;
+      firefox = true;
+      fonts = true;
+      greetd = true;
+      gtk = true;
+      misc = true;
+      xdg = true;
+      games = {
+        gamemode = true;
         misc = true;
-        games = {
-          gamemode = true;
-          misc = true;
-          steam = true;
-        };
+        steam = true;
       };
     };
     home = {
       enable = true;
       ags = false;
+      hyprland = true;
+      mako = true;
+      wofi = true;
       themes = {
         discord = true;
         firefox = true;
+        woficss = true;
       };
     };
     common = {

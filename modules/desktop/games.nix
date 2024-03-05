@@ -6,13 +6,13 @@
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.steamCompat];
-  options.cute.desktop.programs.games = {
+  options.cute.desktop.games = {
     misc = lib.mkEnableOption "";
     steam = lib.mkEnableOption "";
     gamemode = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.programs.games) misc steam gamemode;
+    inherit (config.cute.desktop.games) misc steam gamemode;
   in {
     home-manager.users.pagu = lib.mkIf misc {
       home.packages = with pkgs; [

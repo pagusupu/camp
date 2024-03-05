@@ -4,8 +4,8 @@
   config,
   ...
 }: {
-  options.cute.desktop.misc.fonts = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.misc.fonts {
+  options.cute.desktop.fonts = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.fonts {
     fonts = {
       packages = with pkgs; [
         lato
@@ -14,7 +14,7 @@
         noto-fonts-cjk
         noto-fonts-emoji
         noto-fonts-extra
-        (pkgs.callPackage ../../../pkgs/sora.nix {})
+        (pkgs.callPackage ../../pkgs/sora.nix {})
       ];
       fontconfig = {
         enable = true;

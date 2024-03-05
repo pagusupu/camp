@@ -6,13 +6,29 @@
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
-  options.cute.desktop.misc = {
+  options.cute.desktop = {
+    misc = lib.mkEnableOption "";
     greetd = lib.mkEnableOption "";
     audio = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.misc) greetd audio;
+    inherit (config.cute.desktop) misc greetd audio;
   in {
+    home-manager.users.pagu = lib.mkIf misc {
+      home.packages = with pkgs; [
+        element-desktop
+        localsend
+        pwvucontrol
+        sublime-music
+        ueberzugpp
+        vesktop
+        xfce.thunar
+      ];
+    };
+    networking.firewall = lib.mkIf misc {
+      allowedTCPPorts = [53317];
+      allowedUDPPorts = [53317];
+    };
     services = {
       greetd = lib.mkIf greetd {
         enable = true;

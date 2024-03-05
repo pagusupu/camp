@@ -37,7 +37,7 @@
       shellAliases = {
         cat = "bat";
 	grep = "grep --color=auto";
-        ls = "eza";
+        ls = "eza --group-directories-first";
         rm = "rip";
 	cd = "z";
         update = "sudo nix flake update ~/flake && nh os switch";

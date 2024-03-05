@@ -11,6 +11,7 @@
     programs.nixvim = {
       enable = true;
       enableMan = false;
+      clipboard.providers.wl-copy.enable = true;
       defaultEditor = true;
       vimAlias = true;
       luaLoader.enable = true;
@@ -34,7 +35,6 @@
       extraPlugins = with pkgs.vimPlugins; [plenary-nvim];
       plugins = {
         lsp-lines.enable = true;
-        treesitter.enable = true;
         rainbow-delimiters.enable = true;
         barbar = {
           enable = true;
@@ -80,8 +80,17 @@
             enable = true;
             showOnDirs = true;
           };
-        }; #
+        };
+        treesitter = {
+          enable = true;
+          nixvimInjections = true;
+        };
       };
+      extraConfigLua = ''
+        vim.filetype.add({
+          pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+        })
+      '';
     };
     environment.sessionVariables = {EDITOR = "nvim";};
   };

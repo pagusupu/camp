@@ -8,14 +8,17 @@
   options.cute.home = {
     enable = lib.mkEnableOption "";
     ags = lib.mkEnableOption "";
+    mako = lib.mkEnableOption "";
+    wofi = lib.mkEnableOption "";
     themes = {
       discord = lib.mkEnableOption "";
       firefox = lib.mkEnableOption "";
+      woficss = lib.mkEnableOption "";
     };
   };
   config = let
-    inherit (config.cute.home) enable ags;
-    inherit (config.cute.home.themes) discord firefox;
+    inherit (config.cute.home) enable ags mako wofi;
+    inherit (config.cute.home.themes) discord firefox woficss;
   in {
     home-manager = lib.mkIf enable {
       useGlobalPkgs = true;
@@ -35,6 +38,10 @@
               source = ./themes/firefox.css;
               target = ".mozilla/firefox/pagu/chrome/userChrome.css";
             };
+            "wofi" = lib.mkIf woficss {
+              source = ./themes/wofi.css;
+              target = ".config/wofi/style.css";
+            };
           };
         };
         imports = [inputs.ags.homeManagerModules.default];
@@ -43,6 +50,32 @@
             enable = true;
             configDir = ./ags;
           };
+          wofi = lib.mkIf wofi {
+            enable = true;
+            settings = {
+              hide_scroll = true;
+              insensitive = true;
+              width = "10%";
+              prompt = "";
+              lines = 7;
+            };
+          };
+        };
+        services.mako = lib.mkIf mako {
+          enable = true;
+          anchor = "bottom-left";
+          defaultTimeout = 3;
+          maxVisible = 3;
+          borderSize = 2;
+          borderRadius = 6;
+          margin = "14";
+          backgroundColor = "#" + config.cute.colours.overlay;
+          borderColor = "#" + config.cute.colours.iris;
+          textColor = "#" + config.cute.colours.text;
+          extraConfig = ''
+            [mode=do-not-disturb]
+            invisible=1
+          '';
         };
       };
     };
