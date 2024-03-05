@@ -37,7 +37,6 @@
       shell = pkgs.zsh;
       hashedPasswordFile = config.age.secrets.user.path;
     };
-
     boot = lib.mkIf boot {
       loader.efi.canTouchEfiVariables = true;
       initrd = {

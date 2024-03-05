@@ -17,8 +17,12 @@
       programs = {
         alacritty = true;
         firefox = true;
-        games = true;
         misc = true;
+        games = {
+          gamemode = true;
+          misc = true;
+          steam = true;
+        };
       };
     };
     home = {

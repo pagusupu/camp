@@ -48,7 +48,7 @@
     environment = {
       shells = [pkgs.zsh];
       binsh = lib.getExe pkgs.dash;
-      sessionVariables.FLAKE = "/home/pagu/flake/"; 
+      sessionVariables.FLAKE = "/home/pagu/flake/"; # nh 
     };
   };
 }
