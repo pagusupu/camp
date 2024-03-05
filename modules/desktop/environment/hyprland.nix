@@ -10,7 +10,6 @@
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
-    #  bg = "~/flake/modules/home/images/bg.jpg";
   in
     lib.mkIf config.cute.desktop.environment.hyprland {
       home-manager.users.pagu = {
@@ -19,7 +18,7 @@
           package = inputs.hyprland.packages.${pkgs.system}.hyprland;
           settings = {
             exec-once = [
-              "swayidle -w before-sleep 'swaylock'"
+	      "hypridle"
               "rwpspread -b swaybg -i ${config.cute.images.bg}"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
@@ -69,7 +68,6 @@
               ];
             };
             misc = {
-              vrr = 1;
               vfr = true;
               disable_hyprland_logo = true;
               disable_splash_rendering = true;
@@ -79,7 +77,7 @@
             bind = [
               "${mod}, RETURN, exec, alacritty"
               "${mod}, TAB, exec, wofi --show drun -l 0"
-              "${mod}, L, exec, swaylock"
+              "${mod}, L, exec, hyprpaper"
               "${mod}, BACKSPACE, exec, grimblast --notify --freeze copy area"
               "${mod}:SHIFT, BACKSPACE, exec, grimblast --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
               "${mod}, Q, killactive"
@@ -117,12 +115,57 @@
           '';
         };
         home = {
+          file = {
+	    "hyprlock" = {
+	      target = ".config/hypr/hyprlock.conf";
+	      text = ''
+	        general {
+		  hide_cursor = true
+		  disable_loading_bar = true
+		}
+	        background {
+		  monitor = 
+		  path = ${config.cute.images.lock}
+		}
+		label {
+		  monitor = ${m1}
+		  text = Locked
+		  color = 0xFF${config.cute.colours.text} 
+		  font_size = 24
+		  font_family = MonaspiceNe Nerd Font
+		  position = 0, 0
+		  halign = center
+		  valign = center
+		}
+	      '';
+	    };
+	    "hypridle" = {
+	      target = ".config/hypr/hypridle.conf";
+	      text = ''
+                general {
+                  lock_cmd = pidof hyprlock || hyprlock
+                }
+                listener {
+                  timeout = 150
+                  on-timeout = brightnessctl -s set 10
+                  on-resume = brightnessctl -r
+                }
+                listener {
+                  timeout = 300
+                  on-timeout = loginctl lock-session
+	        }
+              '';
+	    };
+	  };
           packages = with pkgs; [
+            brightnessctl
             imv
             grimblast
+            hypridle
+            hyprlock
+	    hyprpaper
             rwpspread
-            swayidle
-            swaybg
+	    swaybg
             wl-clipboard
           ];
           sessionVariables = {NIXOS_OZONE_WL = 1;};

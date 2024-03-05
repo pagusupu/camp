@@ -23,9 +23,10 @@
         hinting.autohint = true;
         subpixel.rgba = "rgb";
         defaultFonts = {
-          serif = ["Lato"];
-          sansSerif = ["Sora"];
+          emoji = ["Noto Color Emoji"];
           monospace = ["MonaspiceNe Nerd Font"];
+          sansSerif = ["Sora"];
+          serif = ["Lato"];
         };
       };
     };
