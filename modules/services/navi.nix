@@ -6,7 +6,7 @@
 }: {
   options.cute.services.navi = lib.mkEnableOption "";
   config = let
-    domain = "navi.${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.navi {
       age.secrets.navi-fm.file = ../../secrets/navi-fm.age;
@@ -33,7 +33,7 @@
             };
           };
         };
-        nginx.virtualHosts."${domain}" = {
+        nginx.virtualHosts."navi.${domain}" = {
           forceSSL = true;
           enableACME = true;
           locations."/".proxyPass = "http://127.0.0.1:8098";

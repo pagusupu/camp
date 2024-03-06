@@ -3,15 +3,12 @@
   lib,
   ...
 }: {
-  options.cute.services.nginx = {
-    enable = lib.mkEnableOption "";
-    domain = lib.mkOption {type = lib.types.str;};
-  };
+  options.cute.services.nginx = lib.mkEnableOption "";
   config = let
-    domain = "${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.nginx.enable {
-      networking.firewall.allowedTCPPorts = [80 443 8080];
+    lib.mkIf config.cute.services.nginx {
+      networking.firewall.allowedTCPPorts = [80 443];
       security.acme = {
         acceptTerms = true;
         defaults.email = "amce@${domain}";

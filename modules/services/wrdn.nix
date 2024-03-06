@@ -5,7 +5,7 @@
 }: {
   options.cute.services.wrdn = lib.mkEnableOption "";
   config = let
-    domain = "wrdn.${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.wrdn {
       services = {
@@ -19,7 +19,7 @@
           };
           backupDir = "/storage/services/vaultwarden";
         };
-        nginx.virtualHosts."${domain}" = {
+        nginx.virtualHosts."wrdn.${domain}" = {
           forceSSL = true;
           enableACME = true;
           locations."/" = {

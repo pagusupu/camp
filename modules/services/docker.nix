@@ -8,7 +8,7 @@
     fish = lib.mkEnableOption "";
   };
   config = let
-    domain = "${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
     inherit (config.cute.services.docker) enable fish;
   in {
     virtualisation = lib.mkIf enable {

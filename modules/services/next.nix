@@ -6,7 +6,7 @@
 }: {
   options.cute.services.next = lib.mkEnableOption "";
   config = let
-    domain = "${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.next {
       age.secrets.nextcloud = {
@@ -48,7 +48,7 @@
             "output_buffering" = "off";
           };
           home = "/storage/services/nextcloud";
-          #  autoUpdateApps.enable = true;
+          autoUpdateApps.enable = true;
           #     extraAppsEnable = true;
           #     extraApps = {
           #       inherit (pkgs.nextcloud28Packages.apps) mail calendar notes;
@@ -74,5 +74,6 @@
         requires = ["postgresql.service"];
         after = ["postgresql.service"];
       };
+      networking.firewall.allowedTCPPorts = [8080];
     };
 }

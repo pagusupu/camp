@@ -3,7 +3,6 @@
     services = {
       frge = true;
       grcy = true;
-      hass = true;
       jlly = true;
       kmga = true;
       mail = true;
@@ -12,14 +11,12 @@
       qbit = true;
       wrdn = true;
       f2ban = true;
+      homeassistant = true;
       synapse = true;
+      nginx = true;
       docker = {
         enable = true;
         fish = true;
-      };
-      nginx = {
-        enable = true;
-        domain = "pagu.cafe";
       };
     };
     common = {
@@ -43,6 +40,7 @@
     };
   };
   networking = {
+    domain = "pagu.cafe";
     hostName = "nixserver";
     hostId = "a3b49b22";
   };

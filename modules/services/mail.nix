@@ -7,7 +7,7 @@
   imports = [inputs.nixos-mailserver.nixosModules.default];
   options.cute.services.mail = lib.mkEnableOption "";
   config = let
-    domain = "${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.mail {
       age.secrets.mail = {

@@ -9,7 +9,7 @@
   # awaiting pr
   options.cute.services.qbit = lib.mkEnableOption "";
   config = let
-    domain = "qbit.${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.qbit {
       services = {
@@ -29,8 +29,8 @@
               TempPathEnabled = true;
               QueueingSystemEnabled = true;
               IgnoreSlowTorrentsForQueueing = true;
-              SlowTorrentsDownloadRate = 50;
-              SlowTorrentsUploadRate = 50;
+              SlowTorrentsDownloadRate = 40;
+              SlowTorrentsUploadRate = 40;
               GlobalDLSpeedLimit = 4000;
               GlobalUPSpeedLimit = 4000;
               GlobalMaxRatio = 2;
@@ -42,24 +42,24 @@
               MaxConnections = 600;
             };
             Preferences = {
-              WebUI = {
-                AlternativeUIEnabled = true;
-                RootFolder = pkgs.fetchFromGitHub {
-                  owner = "VueTorrent";
-                  repo = "VueTorrent";
-                  rev = "v2.7.1";
-                  hash = "sha256-ZkeDhXDBjakTmJYN9LZtSRMSkaySt1MhS9QDEujBdYI=";
+              WebUI = let
+                vue = pkgs.fetchzip {
+                  url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.7.0/vuetorrent.zip";
+                  hash = "sha256-ys9CrbpOPYu8xJsCnqYKyC4IFD/SSAF8j+T+USqvGA8=";
                 };
+              in {
+                AlternativeUIEnabled = true;
+                RootFolder = vue;
                 Username = "pagu";
                 Password_PBKDF2 = ''"@ByteArray(kZipcTwDuigp5wDRkynNQA==:roLYJRl9n/jcGRTXzgont6GAsBm7Bu7LGfrUfB7QcQqgQRSOLNvBs9YrC6h8nMgN/4e4dDETmAQGF16S+zBD5Q==)"'';
                 ReverseProxySupportEnabled = true;
-                TrustedReverseProxiesList = "${domain}";
+                TrustedReverseProxiesList = "qbit.${domain}";
               };
               General.Locale = "en";
             };
           };
         };
-        nginx.virtualHosts."${domain}" = {
+        nginx.virtualHosts."qbit.${domain}" = {
           forceSSL = true;
           enableACME = true;
           locations."/".proxyPass = "http://0.0.0.0:8077";

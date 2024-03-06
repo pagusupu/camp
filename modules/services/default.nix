@@ -10,7 +10,7 @@
     kmga = lib.mkEnableOption "";
   };
   config = let
-    domain = "${config.cute.services.nginx.domain}";
+    inherit (config.networking) domain;
     inherit (config.cute.services) f2ban grcy jlly kmga;
   in {
     services = {
