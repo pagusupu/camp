@@ -29,9 +29,9 @@
               "float, class:(thunar)"
               "float, class:(localsend_app)"
               "float, class:(com.saivert.pwvucontrol)"
-              "workspace 5, class:(vesktop)"
               "workspace 6, class:(Element)"
               "workspace 5, class:(.sublime-music-wrapped)"
+              "workspace 5, class:(vesktop)"
             ];
             input = {
               follow_mouse = 2;
@@ -45,8 +45,8 @@
               no_cursor_warps = true;
               resize_on_border = true;
               hover_icon_on_border = false;
-              "col.active_border" = "${"0xFF" + config.cute.colours.iris}";
-              "col.inactive_border" = "${"0xFF" + config.cute.colours.base}";
+              "col.active_border" = "0xFF" + config.cute.colours.iris;
+              "col.inactive_border" = "0xFF" + config.cute.colours.base;
               layout = "dwindle";
             };
             dwindle = {

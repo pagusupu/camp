@@ -1,7 +1,7 @@
+# https://rosepinetheme.com/palette/ingredients
 {lib, ...}: {
   options.cute.colours = lib.mkOption {};
-  config.cute.colours = {
-  # https://rosepinetheme.com/palette/ingredients/
+  config.cute.colours = { 
     base = "191724";
     surface = "1f1d2e";
     overlay = "26233a";
