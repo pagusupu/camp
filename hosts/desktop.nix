@@ -97,6 +97,7 @@
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
     ];
+    initrd.supportedFilesystems = ["ntfs"];
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {
