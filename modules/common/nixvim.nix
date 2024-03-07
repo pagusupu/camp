@@ -48,6 +48,7 @@
               settings.formatting.command = ["alejandra --quiet"];
             };
             cssls.enable = true;
+            html.enable = true;
           };
         };
         lsp-format = {
@@ -66,7 +67,7 @@
             };
             diagnostics = {
               deadnix.enable = true;
-              tidy.enable = true;
+              # tidy.enable = true;
             };
           };
         };

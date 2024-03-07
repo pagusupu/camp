@@ -5,13 +5,13 @@
       grcy = true;
       jlly = true;
       kmga = true;
-      mail = true;
       navi = true;
       next = false;
       qbit = true;
       wrdn = true;
-      f2ban = true;
+      fail2ban = true;
       homeassistant = true;
+      mailserver = true;
       synapse = true;
       nginx = true;
       docker = {

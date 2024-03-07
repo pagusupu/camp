@@ -5,11 +5,11 @@
   ...
 }: {
   imports = [inputs.nixos-mailserver.nixosModules.default];
-  options.cute.services.mail = lib.mkEnableOption "";
+  options.cute.services.mailserver = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.mail {
+    lib.mkIf config.cute.services.mailserver {
       age.secrets.mail = {
         file = ../../secrets/mail.age;
         owner = "dovecot2";

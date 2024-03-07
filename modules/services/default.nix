@@ -4,17 +4,17 @@
   ...
 }: {
   options.cute.services = {
-    f2ban = lib.mkEnableOption "";
+    fail2ban = lib.mkEnableOption "";
     grcy = lib.mkEnableOption "";
     jlly = lib.mkEnableOption "";
     kmga = lib.mkEnableOption "";
   };
   config = let
     inherit (config.networking) domain;
-    inherit (config.cute.services) f2ban grcy jlly kmga;
+    inherit (config.cute.services) fail2ban grcy jlly kmga;
   in {
     services = {
-      fail2ban = lib.mkIf f2ban {
+      fail2ban = lib.mkIf fail2ban {
         enable = true;
         bantime-increment = {
           enable = true;
