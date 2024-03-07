@@ -11,7 +11,6 @@
     programs.nixvim = {
       enable = true;
       enableMan = false;
-      clipboard.providers.wl-copy.enable = true;
       defaultEditor = true;
       vimAlias = true;
       luaLoader.enable = true;
@@ -42,23 +41,32 @@
         };
         lsp = {
           enable = true;
-          servers.nil_ls = {
-            enable = true;
-            cmd = ["nil"];
-            settings.formatting.command = ["alejandra --quiet"];
+          servers = {
+            nil_ls = {
+              enable = true;
+              cmd = ["nil"];
+              settings.formatting.command = ["alejandra --quiet"];
+            };
+            cssls.enable = true;
           };
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = ["cssls" "html" "nil_ls"];
+          lspServersToEnable = [
+            "cssls"
+            "html"
+          ];
         };
         none-ls = {
           enable = true;
           sources = {
-            formatting.alejandra.enable = true;
+            formatting = {
+              alejandra.enable = true;
+              biome.enable = true;
+            };
             diagnostics = {
               deadnix.enable = true;
-              statix.enable = true;
+              tidy.enable = true;
             };
           };
         };

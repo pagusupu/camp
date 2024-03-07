@@ -76,7 +76,7 @@
             };
             bind = [
               "${mod}, RETURN, exec, alacritty"
-              "${mod}, TAB, exec, wofi --show drun -l 0"
+              "${mod}, TAB, exec, pidof wofi || wofi --show drun -l 0"
               "${mod}, BACKSPACE, exec, grimblast --notify --freeze copy area"
               "${mod}:SHIFT, BACKSPACE, exec, grimblast --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
               "${mod}, L, exec, hyprlock"

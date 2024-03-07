@@ -25,6 +25,7 @@
         xfce.thunar
       ];
     };
+    # localsend
     networking.firewall = lib.mkIf misc {
       allowedTCPPorts = [53317];
       allowedUDPPorts = [53317];

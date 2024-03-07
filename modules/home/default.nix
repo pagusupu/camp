@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  #pkgs,
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
@@ -48,7 +49,7 @@
         programs = {
           ags = lib.mkIf ags {
             enable = true;
-            configDir = ./ags;
+            #extraPackages = with pkgs; [];
           };
           wofi = lib.mkIf wofi {
             enable = true;
