@@ -25,8 +25,8 @@
       home = {
         packages = [pkgs.dconf];
         pointerCursor = {
-          package = pkgs.callPackage ../../pkgs/rose-pine-cursor.nix {};
-          name = "BreezeX-RosePineDawn";
+          package = pkgs.rose-pine-cursor;
+          name = "BreezeX-RosePineDawn-Linux";
           size = 24;
           gtk.enable = true;
           x11.enable = true;

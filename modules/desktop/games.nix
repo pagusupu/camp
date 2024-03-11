@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.nix-gaming.nixosModules.steamCompat];
   options.cute.desktop.games = {
     misc = lib.mkEnableOption "";
     steam = lib.mkEnableOption "";
