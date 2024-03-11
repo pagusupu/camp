@@ -25,7 +25,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
-    hyprland.url = "github:hyprwm/Hyprland";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";

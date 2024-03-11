@@ -8,6 +8,7 @@
       greetd = true;
       gtk = true;
       misc = true;
+      rio = false;
       xdg = true;
       games = {
         gamemode = true;

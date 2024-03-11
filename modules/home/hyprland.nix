@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: {
   options.cute.home.hyprland = lib.mkEnableOption "";
@@ -14,8 +13,7 @@
     lib.mkIf config.cute.home.hyprland {
       home-manager.users.pagu = {
         wayland.windowManager.hyprland = {
-          enable = true;
-          package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+          enable = true; 
           settings = {
             exec-once = [
               "hypridle"
@@ -54,7 +52,7 @@
               force_split = 2;
             };
             decoration = {
-              drop_shadow = false;
+              blur.enabled = false;
               rounding = 6;
             };
             animations = {
@@ -73,6 +71,7 @@
               disable_splash_rendering = true;
               animate_manual_resizes = true;
               animate_mouse_windowdragging = true;
+              force_default_wallpaper = false;
             };
             bind = [
               "${mod}, RETURN, exec, alacritty"
@@ -126,26 +125,16 @@
             };
           };
           packages = with pkgs; [
-            brightnessctl
             imv
             grimblast
             hypridle
             hyprlock
-            hyprpaper
             rwpspread
             swaybg
             wl-clipboard
           ];
           sessionVariables = {NIXOS_OZONE_WL = 1;};
         };
-      };
-      programs.hyprland = {
-        enable = true;
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      };
-      nix.settings = {
-        substituters = ["https://hyprland.cachix.org"];
-        trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-      };
+      }; 
     };
 }
