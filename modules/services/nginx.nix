@@ -23,15 +23,22 @@
           real_ip_header CF-Connecting-IP;
           add_header 'Referrer-Policy' 'origin-when-cross-origin';
         '';
-        virtualHosts."${domain}" = {
-          forceSSL = true;
-          enableACME = true;
-          root = "/storage/website/cafe";
-        };
-        virtualHosts."dash.${domain}" = {
-          forceSSL = true;
-          enableACME = true;
-          root = "/storage/website/dash";
+        virtualHosts = {
+          "${domain}" = {
+            forceSSL = true;
+            enableACME = true;
+            root = "/storage/website/cafe";
+          };
+          "dash.${domain}" = {
+            forceSSL = true;
+            enableACME = true;
+            root = "/storage/website/dash";
+          };
+          "next.${domain}" = {
+            forceSSL = true;
+            enableACME = true;
+            root = "/storage/website/error";
+          };
         };
       };
       users.users.nginx.extraGroups = ["acme"];
