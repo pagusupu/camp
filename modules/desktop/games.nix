@@ -47,10 +47,9 @@
         };
       };
     };
-    users.users.pagu.extraGroups = lib.mkIf gamemode ["gamemode"];
-    hardware = lib.mkIf misc {
-      xone.enable = true;
-      opengl = {
+    hardware = {
+      xone.enable = lib.mkIf misc true;
+      opengl = lib.mkIf steam {
         driSupport = true;
         driSupport32Bit = true;
       };
@@ -59,5 +58,6 @@
       substituters = ["https://nix-gaming.cachix.org"];
       trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
     };
+    users.users.pagu.extraGroups = lib.mkIf gamemode ["gamemode"];
   };
 }

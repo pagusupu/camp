@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  rose-pine,
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
@@ -31,15 +32,15 @@
           stateVersion = "23.05";
           file = {
             "discord" = lib.mkIf discord {
-              source = ./themes/discord.css;
+              source = ./css/discord.css;
               target = ".config/vesktop/themes/rose-pine.theme.css";
             };
             "firefox" = lib.mkIf firefox {
-              source = ./themes/firefox.css;
+              source = ./css/firefox.css;
               target = ".mozilla/firefox/pagu/chrome/userChrome.css";
             };
             "wofi" = lib.mkIf woficss {
-              source = ./themes/wofi.css;
+              source = ./css/wofi.css;
               target = ".config/wofi/style.css";
             };
           };
@@ -61,23 +62,31 @@
             };
           };
         };
-        services.mako = lib.mkIf mako {
-          enable = true;
-          anchor = "bottom-left";
-          defaultTimeout = 3;
-          maxVisible = 3;
-          borderSize = 2;
-          borderRadius = 6;
-          margin = "14";
-          backgroundColor = "#" + config.cute.colours.overlay;
-          borderColor = "#" + config.cute.colours.iris;
-          textColor = "#" + config.cute.colours.text;
-          extraConfig = ''
-            [mode=do-not-disturb]
-            invisible=1
-          '';
+        services = let
+          inherit (rose-pine) moon;
+        in {
+          mako = lib.mkIf mako {
+            enable = true;
+            anchor = "bottom-left";
+            defaultTimeout = 3;
+            maxVisible = 3;
+            borderSize = 2;
+            borderRadius = 6;
+            margin = "14";
+            backgroundColor = "#" + moon.overlay;
+            borderColor = "#" + moon.iris;
+            textColor = "#" + moon.text;
+            extraConfig = ''
+              [mode=do-not-disturb]
+              invisible=1
+            '';
+          };
         };
       };
+    };
+    _module.args.images = {
+      bg = images/bg.jpg;
+      lock = images/lockbg.png;
     };
   };
 }

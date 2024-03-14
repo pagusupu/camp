@@ -27,36 +27,6 @@
               y = 10;
             };
           };
-          colors = let
-            inherit (config.cute) colours;
-          in {
-            primary = {
-              background = "#" + colours.base;
-              foreground = "#" + colours.text;
-              dim_foreground = "#" + colours.subtle;
-              bright_foreground = "#" + colours.text;
-            };
-            normal = {
-              black = "#" + colours.muted;
-              red = "#" + colours.love;
-              green = "#" + colours.pine;
-              yellow = "#" + colours.gold;
-              blue = "#" + colours.foam;
-              magenta = "#" + colours.iris;
-              cyan = "#" + colours.rose;
-              white = "#" + colours.text;
-            };
-            bright = {
-              black = "#" + colours.muted;
-              red = "#" + colours.love;
-              green = "#" + colours.pine;
-              yellow = "#" + colours.gold;
-              blue = "#" + colours.foam;
-              magenta = "#" + colours.iris;
-              cyan = "#" + colours.rose;
-              white = "#" + colours.text;
-            };
-          };
         };
       };
     };

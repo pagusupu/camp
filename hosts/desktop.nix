@@ -8,7 +8,6 @@
       greetd = true;
       gtk = true;
       misc = true;
-      rio = false;
       xdg = true;
       games = {
         gamemode = true;
@@ -33,6 +32,7 @@
       git = true;
       nixvim = true;
       tools = true;
+      yazi = true;
       zsh = {
         enable = true;
         prompt = "'%F{magenta}% %~ >%f '";

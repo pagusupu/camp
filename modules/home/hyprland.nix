@@ -2,6 +2,8 @@
   config,
   lib,
   pkgs,
+  images,
+  rose-pine,
   ...
 }: {
   options.cute.home.hyprland = lib.mkEnableOption "";
@@ -13,11 +15,12 @@
     lib.mkIf config.cute.home.hyprland {
       home-manager.users.pagu = {
         wayland.windowManager.hyprland = {
-          enable = true; 
+          enable = true;
           settings = {
             exec-once = [
               "hypridle"
-              "rwpspread -b swaybg -i ${config.cute.images.bg}"
+              "rwpspread -b swaybg -i ${images.bg}"
+              "rwpspread --hyprlock -i ${images.lock} -o .cache/rwpspread"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
               "element-desktop"
@@ -43,8 +46,8 @@
               no_cursor_warps = true;
               resize_on_border = true;
               hover_icon_on_border = false;
-              "col.active_border" = "0xFF" + config.cute.colours.iris;
-              "col.inactive_border" = "0xFF" + config.cute.colours.base;
+              "col.active_border" = "0xFF" + rose-pine.moon.iris;
+              "col.inactive_border" = "0xFF" + rose-pine.moon.base;
               layout = "dwindle";
             };
             dwindle = {
@@ -114,16 +117,6 @@
           '';
         };
         home = {
-          file = {
-            "hyprlock" = {
-              source = ./hypr/hyprlock.conf;
-              target = ".config/hypr/hyprlock.conf";
-            };
-            "hypridle" = {
-              source = ./hypr/hypridle.conf;
-              target = ".config/hypr/hypridle.conf";
-            };
-          };
           packages = with pkgs; [
             imv
             grimblast
@@ -133,8 +126,45 @@
             swaybg
             wl-clipboard
           ];
+          file = {
+            "hypridle" = {
+              target = ".config/hypr/hypridle.conf";
+              text = ''
+                general {
+                  lock_cmd = pidof hyprlock || hyprlock
+                }
+                listener {
+                  timeout 300
+                  on-timeout = loginctl lock-session
+                }
+              '';
+            };
+            "hyprlock" = {
+              target = ".config/hypr/hyprlock.conf";
+              text = ''
+                source=/home/pagu/.cache/rwpspread/rwps_hyprlock.conf
+                general {
+                  hide_cursor = true
+                  disable_loading_bar = true
+                }
+                input-field {
+                  monitor = ${m1}
+                  size = 200, 50
+                  position = 0, -20
+                  halign = center
+                  valign = center
+                  fade_on_empty = false
+                  outline_thickness = 2
+                  outer_color = 0xFF${rose-pine.moon.iris}
+                  inner_color = 0xFF${rose-pine.moon.base}
+                  font_color = 0xFF${rose-pine.moon.text}
+                  placeholder_text =
+                }
+              '';
+            };
+          };
           sessionVariables = {NIXOS_OZONE_WL = 1;};
         };
-      }; 
+      };
     };
 }

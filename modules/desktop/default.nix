@@ -22,7 +22,6 @@
         sublime-music
         ueberzugpp
         vesktop
-        xfce.thunar
       ];
     };
     # localsend

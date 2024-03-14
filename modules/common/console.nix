@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  rose-pine,
   ...
 }: {
   options.cute.common.console = lib.mkEnableOption "";
@@ -12,24 +13,24 @@
       packages = with pkgs; [terminus_font];
       keyMap = "us";
       colors = let
-        inherit (config.cute) colours;
+        inherit (rose-pine) moon;
       in [
-        colours.base
-        colours.love
-        colours.foam
-        colours.gold
-        colours.pine
-        colours.iris
-        colours.rose
-        colours.text
-        colours.overlay
-        colours.love
-        colours.foam
-        colours.gold
-        colours.pine
-        colours.iris
-        colours.rose
-        colours.text
+        moon.base
+        moon.love
+        moon.foam
+        moon.gold
+        moon.pine
+        moon.iris
+        moon.rose
+        moon.text
+        moon.overlay
+        moon.love
+        moon.foam
+        moon.gold
+        moon.pine
+        moon.iris
+        moon.rose
+        moon.text
       ];
     };
     # quiet

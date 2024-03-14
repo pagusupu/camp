@@ -35,7 +35,7 @@
 	}
       '';
       shellAliases = {
-        cat = "bat";
+        cat = "bat --theme='base16'";
 	grep = "grep --color=auto";
         ls = "eza --group-directories-first";
         rm = "rip";
@@ -47,8 +47,7 @@
     };
     environment = {
       shells = [pkgs.zsh];
-      binsh = lib.getExe pkgs.dash;
-      sessionVariables.FLAKE = "/home/pagu/flake/"; # nh 
+      binsh = lib.getExe pkgs.dash; 
     };
   };
 }

@@ -12,11 +12,13 @@
       enable = true;
       enableMan = false;
       defaultEditor = true;
+      viAlias = true;
       vimAlias = true;
       luaLoader.enable = true;
       colorschemes.rose-pine = {
         enable = true;
         disableItalics = true;
+        style = "moon";
       };
       options = {
         number = true;
