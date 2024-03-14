@@ -49,7 +49,7 @@
         programs = {
           ags = lib.mkIf ags {
             enable = true;
-            #extraPackages = with pkgs; [];
+            configDir = ../ags;
           };
           wofi = lib.mkIf wofi {
             enable = true;

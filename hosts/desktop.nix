@@ -17,7 +17,8 @@
     };
     home = {
       enable = true;
-      ags = true;
+      ags = false;
+      base16 = true;
       hyprland = true;
       mako = true;
       wofi = true;
