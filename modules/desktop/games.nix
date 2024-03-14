@@ -5,6 +5,7 @@
   pkgs,
   ...
 }: {
+  imports = [inputs.aagl.nixosModules.default];
   options.cute.desktop.games = {
     misc = lib.mkEnableOption "";
     steam = lib.mkEnableOption "";
@@ -46,6 +47,7 @@
           };
         };
       };
+      honkers-railway-launcher.enable = lib.mkIf misc true;
     };
     hardware = {
       xone.enable = lib.mkIf misc true;
@@ -55,8 +57,8 @@
       };
     };
     nix.settings = lib.mkIf misc {
-      substituters = ["https://nix-gaming.cachix.org"];
-      trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+      substituters = ["https://nix-gaming.cachix.org" "https://exkea.cachix.org"];
+      trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
     };
     users.users.pagu.extraGroups = lib.mkIf gamemode ["gamemode"];
   };
