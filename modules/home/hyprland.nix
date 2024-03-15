@@ -18,6 +18,7 @@
           enable = true;
           settings = {
             exec-once = [
+              "loginctl lock-session"
               "hypridle"
               "rwpspread -b swaybg -i ${images.bg}"
               "rwpspread --hyprlock -i ${images.lock} -o .cache/rwpspread"

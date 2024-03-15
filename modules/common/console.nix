@@ -15,7 +15,7 @@
       colors = let
         inherit (rose-pine) moon;
       in [
-        moon.base
+        "000000"
         moon.love
         moon.foam
         moon.gold

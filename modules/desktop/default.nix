@@ -32,11 +32,12 @@
     services = {
       greetd = lib.mkIf greetd {
         enable = true;
-        settings = {
-          default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --remember --cmd Hyprland";
+        settings = rec {
+          initial_session = {
+            command = "${pkgs.hyprland}/bin/Hyprland";
             user = "pagu";
           };
+          default_session = initial_session;
         };
       };
       pipewire = lib.mkIf audio {
