@@ -23,12 +23,9 @@
             "browser.startup.homepage" = "https://dash.pagu.cafe";
           };
           search = {
-            default = "DuckDuckGo";
             force = true;
-            order = [
-              "DuckDuckGo"
-              "Google"
-            ];
+            default = "DuckDuckGo";
+            order = ["DuckDuckGo" "Google"];
             engines = {
               "Bing".metaData.hidden = true;
               "Amazon.com".metaData.hidden = true;
@@ -48,6 +45,10 @@
           DontCheckDefaultBrowser = true;
           NoDefaultBookmarks = true;
           PasswordManagerEnabled = false;
+          Cookies = {
+            Behavior = "accept";
+            Locked = false;
+          };
           FirefoxHome = {
             Pocket = false;
             Snippets = false;
@@ -59,46 +60,21 @@
             ExtensionRecommendations = false;
             SkipOnboarding = true;
           };
-          Cookies = {
-            Behavior = "accept";
-            Locked = false;
-          };
           ExtensionSettings = {
             "*" = {
               default_area = "menupanel";
-            };
-            # ublock
-            "uBlock0@raymondhill.net" = {
               installation_mode = "force_installed";
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4188488/ublock_origin-1.56.0.xpi";
+              updates_disabled = false;
             };
-            # bitwarden
-         #   "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-         #     installation_mode = "force_installed";
-         #     install_url = "https://addons.mozilla.org/firefox/downloads/file/4180072/bitwarden_password_manager-2024.2.0.xpi";
-         #   };
-            # sponsorblock
-            "sponsorBlocker@ajay.app" = {
-              installation_mode = "force_installed";
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4178444/sponsorblock-5.5.4.xpi";
-            };
-            # tree style tab
-            "treestyletab@piro.sakura.ne.jp" = {
-              installation_mode = "force_installed";
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4197314/tree_style_tab-3.9.22.xpi";
-            };
-            # return yt dislike
-            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = {
-              installation_mode = "force_installed";
-              install_url = "https://addons.mozilla.org/firefox/downloads/file/4208483/return_youtube_dislikes-3.0.0.14.xpi";
-            };
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}".install_url = "https://addons.mozilla.org/firefox/downloads/latest/return-youtube-dislikes/latest.xpi";
+            "sponsorBlocker@ajay.app".install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+            "treestyletab@piro.sakura.ne.jp".install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
+            "uBlock0@raymondhill.net".install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           };
         };
       };
-      home = {
-        packages = [pkgs.libnotify];
-        sessionVariables = {MOZ_ENABLE_WAYLAND = 1;};
-      };
+      home.sessionVariables = {MOZ_ENABLE_WAYLAND = 1;};
     };
   };
 }

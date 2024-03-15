@@ -57,7 +57,7 @@
       };
     };
     nix.settings = lib.mkIf misc {
-      substituters = ["https://nix-gaming.cachix.org" "https://exkea.cachix.org"];
+      substituters = ["https://nix-gaming.cachix.org" "https://ezkea.cachix.org"];
       trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
     };
     users.users.pagu.extraGroups = lib.mkIf gamemode ["gamemode"];

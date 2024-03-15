@@ -19,17 +19,17 @@
 }
 
 .theme-dark {
-	--background-primary: #26233a;
-	--background-secondary: #1f1d2e;
-	--background-secondary-alt: #26233a;
+	--background-primary: #393552;
+	--background-secondary: #2a273f;
+	--background-secondary-alt: #393552;
 	--channeltextarea-background: #2c2842;
-	--background-tertiary: #191724;
+	--background-tertiary: #232136;
 	--background-accent: #ebbcba;
 	--text-normal: #dad7fd;
 	--text-spotify: #9ccfd8;
 	--text-muted: #4f4c58;
 	--text-link: #31748f;
-	--background-floating: #1f1d2e;
+	--background-floating: #2a273f;
 	--header-primary: #e0def4;
 	--header-secondary: #9ccfd8;
 	--header-spotify: #9ccfd8;
@@ -37,10 +37,10 @@
 	--interactive-hover: #c4a7e7;
 	--interactive-active: #e0def4;
 	--ping: #eb6f92;
-	--background-modifier-selected: #26233ab4;
-	--scrollbar-thin-thumb: #191724;
+	--background-modifier-selected: #393552b4;
+	--scrollbar-thin-thumb: #232136;
 	--scrollbar-thin-track: transparent;
-	--scrollbar-auto-thumb: #191724;
+	--scrollbar-auto-thumb: #232136;
 	--scrollbar-auto-track: transparent;
 }
 

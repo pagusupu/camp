@@ -7,7 +7,7 @@
       fonts = true;
       greetd = true;
       gtk = true;
-      misc = true;
+      programs = true;
       xdg = true;
       games = {
         gamemode = true;

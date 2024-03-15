@@ -24,16 +24,10 @@
               "rwpspread --hyprlock -i ${images.lock} -o .cache/rwpspread"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
-              "element-desktop"
-              "vesktop"
             ];
             windowrulev2 = [
-              "float, class:(thunar)"
               "float, class:(localsend_app)"
               "float, class:(com.saivert.pwvucontrol)"
-              "workspace 6, class:(Element)"
-              "workspace 5, class:(.sublime-music-wrapped)"
-              "workspace 5, class:(vesktop)"
             ];
             input = {
               follow_mouse = 2;
