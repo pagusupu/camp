@@ -7,12 +7,30 @@
 }: {
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
   options.cute.desktop = {
+    xdg = lib.mkEnableOption "";
     greetd = lib.mkEnableOption "";
     audio = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop) greetd audio;
+    inherit (config.cute.desktop) xdg greetd audio;
   in {
+    home-manager.users.pagu = {
+      xdg = lib.mkIf xdg {
+        enable = true;
+        desktopEntries = let
+          no = {noDisplay = true;};
+        in {
+          Alacritty = no // {name = "alacritty";};
+          nixos-manual = no // {name = "NixOS Manual";};
+          nvim = no // {name = "Neovim Wrapper";};
+          firefox = {
+            name = "Firefox";
+            exec = "firefox";
+            terminal = false;
+          };
+        };
+      };
+    };
     services = {
       greetd = lib.mkIf greetd {
         enable = true;

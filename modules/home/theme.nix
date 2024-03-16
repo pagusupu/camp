@@ -1,37 +1,65 @@
 {
   config,
   lib,
-  inputs,
+  pkgs,
   ...
 }: {
-  imports = [inputs.base16.nixosModule];
-  options.cute.home.base16 = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.home.base16 {
-    scheme = rose-pine/moon.yaml;
-    home-manager.users.pagu = {
-      programs.alacritty.settings.colors = with config.scheme.withHashtag; let
-        default = {
-          white = base06;
-          blue = base0C;
-          red = base08;
-          green = base0B;
-          yellow = base09;
-          magenta = base0D;
-          cyan = base0A;
+  options.cute.home = {
+    fonts = lib.mkEnableOption "";
+    gtk = lib.mkEnableOption "";
+  };
+  config = let
+    inherit (config.cute.home) fonts gtk;
+  in {
+    home-manager.users.pagu = lib.mkIf gtk {
+      gtk = {
+        enable = true;
+        theme = {
+          package = pkgs.rose-pine-gtk-theme;
+          name = "rose-pine-moon";
         };
-      in {
-        primary = {
-          background = base00;
-          foreground = base05;
-          dim_foreground = base04;
+        iconTheme = {
+          package = pkgs.rose-pine-icon-theme;
+          name = "rose-pine-moon";
         };
-        cursor = {
-          text = base02;
-          cursor = base07;
+      };
+      qt = {
+        enable = true;
+        platformTheme = "gtk";
+      };
+      home = {
+        packages = [pkgs.dconf];
+        pointerCursor = {
+          package = pkgs.rose-pine-cursor;
+          name = "BreezeX-RosePineDawn-Linux";
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
         };
-        normal = default // {black = base00;};
-        bright = default // {black = base03;};
-        dim = default // {black = base03;};
+      };
+    };
+    fonts = lib.mkIf fonts {
+      packages = with pkgs; [
+        lato
+        nerdfonts
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        noto-fonts-extra
+        (pkgs.callPackage ../../pkgs/sora.nix {})
+      ];
+      fontconfig = {
+        enable = true;
+        antialias = true;
+        hinting.enable = true;
+        hinting.autohint = true;
+        subpixel.rgba = "rgb";
+        defaultFonts = {
+          emoji = ["Noto Color Emoji"];
+          monospace = ["MonaspiceNe Nerd Font"];
+          sansSerif = ["Sora"];
+          serif = ["Lato"];
+        };
       };
     };
   };
