@@ -22,11 +22,6 @@
       hyprland = true;
       mako = true;
       wofi = true;
-      themes = {
-        discord = true;
-        firefox = true;
-        woficss = true;
-      };
     };
     common = {
       console = true;

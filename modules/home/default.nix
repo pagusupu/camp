@@ -12,14 +12,12 @@
     mako = lib.mkEnableOption "";
     wofi = lib.mkEnableOption "";
     themes = {
-      discord = lib.mkEnableOption "";
       firefox = lib.mkEnableOption "";
       woficss = lib.mkEnableOption "";
     };
   };
   config = let
     inherit (config.cute.home) enable ags mako wofi;
-    inherit (config.cute.home.themes) discord firefox woficss;
   in {
     home-manager = lib.mkIf enable {
       useGlobalPkgs = true;
@@ -30,19 +28,9 @@
           username = "pagu";
           homeDirectory = "/home/pagu";
           stateVersion = "23.05";
-          file = {
-            "discord" = lib.mkIf discord {
-              source = ./css/discord.css;
-              target = ".config/vesktop/themes/rose-pine.theme.css";
-            };
-            "firefox" = lib.mkIf firefox {
-              source = ./css/firefox.css;
-              target = ".mozilla/firefox/pagu/chrome/userChrome.css";
-            };
-            "wofi" = lib.mkIf woficss {
-              source = ./css/wofi.css;
-              target = ".config/wofi/style.css";
-            };
+          file."wofi" = lib.mkIf wofi {
+            source = ./css/wofi.css;
+            target = ".config/wofi/style.css";
           };
         };
         imports = [inputs.ags.homeManagerModules.default];

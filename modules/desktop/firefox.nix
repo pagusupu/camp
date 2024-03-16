@@ -13,14 +13,14 @@
           id = 0;
           name = "pagu";
           settings = {
-            "gfx.webrender.all" = true;
             "browser.aboutConfig.showWarning" = false;
-            "browser.tabs.firefox-view" = true;
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "privacy.firstparty.isolate" = true;
             "browser.EULA.override" = true;
-            "browser.tabs.inTitlebar" = 0;
             "browser.startup.homepage" = "https://dash.pagu.cafe";
+            "browser.tabs.firefox-view" = true;
+            "browser.tabs.inTitlebar" = 0;
+            "privacy.firstparty.isolate" = true;
+            "gfx.webrender.all" = true;
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
           search = {
             force = true;
