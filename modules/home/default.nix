@@ -23,11 +23,9 @@
           stateVersion = "23.05";
         };
         imports = [inputs.ags.homeManagerModules.default];
-        programs = {
-          ags = lib.mkIf ags {
-            enable = true;
-            configDir = ../ags;
-          };
+        programs.ags = lib.mkIf ags {
+          enable = true;
+          configDir = ../ags;
         };
       };
     };

@@ -1,8 +1,7 @@
 {
-  pkgs,
-  inputs,
-  lib,
   config,
+  lib,
+  inputs,
   ...
 }: {
   imports = [inputs.nixvim.nixosModules.nixvim];
@@ -33,7 +32,6 @@
           action = "<cmd>NvimTreeToggle<cr>";
         }
       ];
-      extraPlugins = with pkgs.vimPlugins; [plenary-nvim];
       plugins = {
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
@@ -55,10 +53,7 @@
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = [
-            "cssls"
-            "html"
-          ];
+          lspServersToEnable = ["cssls" "html"];
         };
         none-ls = {
           enable = true;
@@ -67,10 +62,7 @@
               alejandra.enable = true;
               biome.enable = true;
             };
-            diagnostics = {
-              deadnix.enable = true;
-              # tidy.enable = true;
-            };
+            diagnostics.deadnix.enable = true;
           };
         };
         nvim-tree = {
