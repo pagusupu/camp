@@ -10,8 +10,9 @@
   };
   config = let
     inherit (config.cute.desktop) alacritty programs;
+    inherit (config.cute.home) enable;
   in {
-    home-manager.users.pagu = {
+    home-manager.users.pagu = lib.mkIf enable {
       programs.alacritty = lib.mkIf alacritty {
         enable = true;
         settings = {

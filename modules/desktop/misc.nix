@@ -13,8 +13,9 @@
   };
   config = let
     inherit (config.cute.desktop) xdg greetd audio;
+    inherit (config.cute.home) enable;
   in {
-    home-manager.users.pagu = {
+    home-manager.users.pagu = lib.mkIf enable {
       xdg = lib.mkIf xdg {
         enable = true;
         desktopEntries = let

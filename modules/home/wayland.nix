@@ -5,14 +5,15 @@
   ...
 }: {
   options.cute.home = {
+    #enable = lib.mkEnableOption "";
     mako = lib.mkEnableOption "";
     wofi = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.home) mako wofi;
+    inherit (config.cute.home) enable mako wofi;
     inherit (rose-pine) moon;
   in {
-    home-manager.users.pagu = {
+    home-manager.users.pagu = lib.mkIf enable {
       programs.wofi = lib.mkIf wofi {
         enable = true;
         settings = {
