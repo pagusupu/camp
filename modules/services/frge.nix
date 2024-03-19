@@ -15,7 +15,6 @@
             other.SHOW_FOOTER_VERSION = false;
             service.DISABLE_REGSTRATION = true;
             session.COOKIE_SECURE = true;
-            ui.DEFAULT_THEME = "forgejo-dark";
             server = {
               ROOT_URL = "https://frge.${domain}";
               DOMAIN = "frge.${domain}";

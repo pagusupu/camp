@@ -27,7 +27,7 @@
       tools = true;
       zsh = {
         enable = true;
-        prompt = "'%F{yellow}% %~ >%f '";
+        prompt = "'%F{red}% %~ >%f '";
       };
       system = {
         age = true;
