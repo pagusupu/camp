@@ -30,7 +30,7 @@
       };
     };
     _module.args.images = {
-      bg = images/bg.jpg;
+      bg = images/blue.jpg;
       lock = images/lockbg.png;
     };
   };

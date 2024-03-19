@@ -9,10 +9,11 @@
   options.cute.desktop = {
     xdg = lib.mkEnableOption "";
     greetd = lib.mkEnableOption "";
+    fonts = lib.mkEnableOption "";
     audio = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop) xdg greetd audio;
+    inherit (config.cute.desktop) xdg greetd fonts audio;
     inherit (config.cute.home) enable;
   in {
     home-manager.users.pagu = lib.mkIf enable {
@@ -56,6 +57,30 @@
           enable = true;
           quantum = 192;
           rate = 192000;
+        };
+      };
+    };
+    fonts = lib.mkIf fonts {
+      packages = with pkgs; [
+        lato
+        nerdfonts
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        noto-fonts-extra
+        (pkgs.callPackage ../../pkgs/sora.nix {})
+      ];
+      fontconfig = {
+        enable = true;
+        antialias = true;
+        hinting.enable = true;
+        hinting.autohint = true;
+        subpixel.rgba = "rgb";
+        defaultFonts = {
+          emoji = ["Noto Color Emoji"];
+          monospace = ["MonaspiceNe Nerd Font"];
+          sansSerif = ["Sora"];
+          serif = ["Lato"];
         };
       };
     };

@@ -4,6 +4,7 @@
       alacritty = true;
       audio = true;
       firefox = true;
+      fonts = true;
       greetd = true;
       programs = true;
       xdg = true;
@@ -17,7 +18,6 @@
       enable = true;
       ags = false;
       base16 = true;
-      fonts = true;
       gtk = true;
       hyprland = true;
       mako = true;

@@ -3,7 +3,6 @@
   lib,
   pkgs,
   images,
-  rose-pine,
   ...
 }: {
   options.cute.home.hyprland = lib.mkEnableOption "";
@@ -18,12 +17,10 @@
           enable = true;
           settings = {
             exec-once = [
-              "rwpspread --hyprlock -i ${images.lock}"
+              "rwpspread -b swaybg -i ${images.bg}"
               "hyprlock"
               "hypridle"
-              "rwpspread -b swaybg -i ${images.bg}"
               "steam -silent -console"
-              "${pkgs.localsend}/bin/localsend_app"
             ];
             windowrulev2 = [
               "float, class:(localsend_app)"
@@ -134,11 +131,16 @@
             };
             "hyprlock" = {
               target = ".config/hypr/hyprlock.conf";
-              text = ''
-                source=/home/pagu/.cache/rwpspread/rwps_hyprlock.conf
+              text = with config.scheme; ''
                 general {
                   hide_cursor = true
                   disable_loading_bar = true
+                }
+                background {
+                  monitor =
+                  path = screenshot
+                  blur_size = 10
+                  blur_passes = 4
                 }
                 input-field {
                   monitor = ${m1}
@@ -148,9 +150,12 @@
                   valign = center
                   fade_on_empty = false
                   outline_thickness = 2
-                  outer_color = 0xFF${rose-pine.moon.iris}
-                  inner_color = 0xFF${rose-pine.moon.base}
-                  font_color = 0xFF${rose-pine.moon.text}
+                  outer_color = 0xFF${base0D}
+                  inner_color = 0xFF${base00}
+                  font_color = 0xFF${base05}
+                  check_color = 0xFF${base0B}
+                  fail_color = 0xFF${base08}
+                  capslock_color = 0xFF${base0A}
                   placeholder_text =
                 }
               '';
