@@ -42,8 +42,6 @@
         cd = "z";
         update = "sudo nix flake update ~/flake && nh os switch";
         ssh-server = "ssh pagu@192.168.178.182";
-        light = "sudo nixos-rebuild switch --flake ~/flake/# --specialisation light";
-        dark = "sudo nixos-rebuild switch --flake ~/flake/# --specialisation dark";
       };
       promptInit = "PROMPT=${config.cute.common.zsh.prompt}";
     };

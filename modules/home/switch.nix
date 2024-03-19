@@ -4,7 +4,8 @@
   ...
 }: {
   specialisation = let
-    inherit (config.cute.home) gtk;
+    inherit (config.cute.home) base16 gtk;
+    inherit (config.cute.common) nixvim;
   in {
     dark.configuration = {
       home-manager.users.pagu = lib.mkIf gtk {
@@ -16,7 +17,7 @@
         };
         home.pointerCursor.name = "BreezeX-RosePineDawn-Linux";
       };
-      scheme = rose-pine/moon.yaml;
+      scheme = lib.mkIf base16 rose-pine/moon.yaml;
       programs.nixvim.colorschemes.rose-pine.style = "moon";
     };
     light.configuration = {
@@ -27,8 +28,8 @@
         };
         home.pointerCursor.name = "BreezeX-RosePine-Linux";
       };
-      scheme = rose-pine/dawn.yaml;
-      programs.nixvim.colorschemes.rose-pine.style = "dawn";
+      scheme = lib.mkIf base16 rose-pine/dawn.yaml;
+      programs.nixvim.colorschemes.rose-pine.style = lib.mkIf nixvim "dawn";
     };
   };
 }

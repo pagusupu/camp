@@ -25,13 +25,12 @@
         imports = [inputs.ags.homeManagerModules.default];
         programs.ags = lib.mkIf ags {
           enable = true;
-          configDir = ../ags;
+          configDir = ./ags;
         };
       };
     };
-    _module.args.images = {
-      bg = images/blue.jpg;
-      lock = images/lockbg.png;
+    _module.args = {
+      images.bg = images/blue.jpg;
     };
   };
 }

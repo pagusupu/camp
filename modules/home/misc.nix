@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  rose-pine,
   ...
 }: {
   options.cute.home = {
@@ -12,18 +11,17 @@
   };
   config = let
     inherit (config.cute.home) enable gtk mako wofi;
-    inherit (rose-pine) moon;
   in {
     home-manager.users.pagu = lib.mkIf enable {
       gtk = lib.mkIf gtk {
         enable = true;
         theme = {
           package = pkgs.rose-pine-gtk-theme;
-          name = lib.mkDefault "rose-pine-moon";
+          name = lib.mkDefault "rose-pine-dawn";
         };
         iconTheme = {
           package = pkgs.rose-pine-icon-theme;
-          name = lib.mkDefault "rose-pine-moon";
+          name = lib.mkDefault "rose-pine-dawn";
         };
       };
       qt = lib.mkIf gtk {
@@ -34,7 +32,7 @@
         packages = [pkgs.dconf];
         pointerCursor = {
           package = pkgs.rose-pine-cursor;
-          name = lib.mkDefault "BreezeX-RosePineDawn-Linux";
+          name = lib.mkDefault "BreezeX-RosePine-Linux";
           size = 24;
           gtk.enable = true;
           x11.enable = true;
@@ -49,24 +47,8 @@
           prompt = "";
           lines = 7;
         };
-        style = ''
-          window {
-            background-color: #${moon.base};
-            color: #${moon.text};
-            border: 2px solid #${moon.iris};
-            border-radius: 6px;
-            font-family: 'MonaspiceNe Nerd Font';
-            font-size: 16px;
-          }
-          #input {
-            background-color: #${moon.surface};
-            color: #${moon.iris};
-            border: 2px solid #${moon.iris};
-            border-radius: 6px;
-          }
-        '';
       };
-      services = {
+      services = with config.scheme; {
         mako = lib.mkIf mako {
           enable = true;
           anchor = "bottom-left";
@@ -75,9 +57,9 @@
           borderSize = 2;
           borderRadius = 6;
           margin = "14";
-          backgroundColor = "#" + moon.overlay;
-          borderColor = "#" + moon.iris;
-          textColor = "#" + moon.text;
+          backgroundColor = "#" + base00;
+          borderColor = "#" + base0D;
+          textColor = "#" + base05;
           extraConfig = ''
             [mode=do-not-disturb]
             invisible=1

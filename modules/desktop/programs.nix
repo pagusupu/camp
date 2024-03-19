@@ -39,7 +39,7 @@
       home = lib.mkIf programs {
         packages = with pkgs; [
           localsend
-          pwvucontrol
+        #  pwvucontrol
           ueberzugpp
         ];
       };

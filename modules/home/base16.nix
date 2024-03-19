@@ -7,7 +7,7 @@
   imports = [inputs.base16.nixosModule];
   options.cute.home.base16 = lib.mkEnableOption "";
   config = lib.mkIf config.cute.home.base16 {
-    scheme = lib.mkDefault rose-pine/moon.yaml;
+    scheme = lib.mkDefault rose-pine/dawn.yaml;
     home-manager.users.pagu = {
       programs.alacritty.settings.colors = with config.scheme.withHashtag; let
         default = {
