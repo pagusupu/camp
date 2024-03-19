@@ -17,7 +17,7 @@
       colorschemes.rose-pine = {
         enable = true;
         disableItalics = true;
-        style = "moon";
+        style = lib.mkDefault "moon";
       };
       options = {
         number = true;

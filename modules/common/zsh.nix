@@ -24,30 +24,32 @@
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         bindkey '^H' backward-kill-word
-        bindkey '5~' kill-word 
+        bindkey '5~' kill-word
         zsh-newuser-install() { :; }
-	eval "$(zoxide init zsh)"
+        eval "$(zoxide init zsh)"
         nr() {
           nix run nixpkgs#$1 -- "''${@:2}"
         }
-	ns() {
-	  nix shell nixpkgs#''${^@}
-	}
+        ns() {
+          nix shell nixpkgs#''${^@}
+        }
       '';
       shellAliases = {
         cat = "bat --theme='base16'";
-	grep = "grep --color=auto";
+        grep = "grep --color=auto";
         ls = "eza --group-directories-first";
         rm = "rip";
-	cd = "z";
+        cd = "z";
         update = "sudo nix flake update ~/flake && nh os switch";
         ssh-server = "ssh pagu@192.168.178.182";
+        light = "sudo nixos-rebuild switch --flake ~/flake/# --specialisation light";
+        dark = "sudo nixos-rebuild switch --flake ~/flake/# --specialisation dark";
       };
       promptInit = "PROMPT=${config.cute.common.zsh.prompt}";
     };
     environment = {
       shells = [pkgs.zsh];
-      binsh = lib.getExe pkgs.dash; 
+      binsh = lib.getExe pkgs.dash;
     };
   };
 }

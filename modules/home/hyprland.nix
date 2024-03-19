@@ -18,10 +18,10 @@
           enable = true;
           settings = {
             exec-once = [
-              "loginctl lock-session"
+              "rwpspread --hyprlock -i ${images.lock}"
+              "hyprlock"
               "hypridle"
               "rwpspread -b swaybg -i ${images.bg}"
-              "rwpspread --hyprlock -i ${images.lock} -o .cache/rwpspread"
               "steam -silent -console"
               "${pkgs.localsend}/bin/localsend_app"
             ];
@@ -41,8 +41,6 @@
               no_cursor_warps = true;
               resize_on_border = true;
               hover_icon_on_border = false;
-              "col.active_border" = "0xFF" + rose-pine.moon.iris;
-              "col.inactive_border" = "0xFF" + rose-pine.moon.base;
               layout = "dwindle";
             };
             dwindle = {

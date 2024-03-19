@@ -16,11 +16,11 @@
         enable = true;
         theme = {
           package = pkgs.rose-pine-gtk-theme;
-          name = "rose-pine-moon";
+          name = lib.mkDefault "rose-pine-moon";
         };
         iconTheme = {
           package = pkgs.rose-pine-icon-theme;
-          name = "rose-pine-moon";
+          name = lib.mkDefault "rose-pine-moon";
         };
       };
       qt = {
@@ -31,7 +31,7 @@
         packages = [pkgs.dconf];
         pointerCursor = {
           package = pkgs.rose-pine-cursor;
-          name = "BreezeX-RosePineDawn-Linux";
+          name = lib.mkDefault "BreezeX-RosePineDawn-Linux";
           size = 24;
           gtk.enable = true;
           x11.enable = true;

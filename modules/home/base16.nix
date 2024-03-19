@@ -7,7 +7,7 @@
   imports = [inputs.base16.nixosModule];
   options.cute.home.base16 = lib.mkEnableOption "";
   config = lib.mkIf config.cute.home.base16 {
-    scheme = rose-pine/moon.yaml;
+    scheme = lib.mkDefault rose-pine/moon.yaml;
     home-manager.users.pagu = {
       programs.alacritty.settings.colors = with config.scheme.withHashtag; let
         default = {
@@ -32,6 +32,10 @@
         normal = default // {black = base00;};
         bright = default // {black = base03;};
         dim = default // {black = base03;};
+      };
+      wayland.windowManager.hyprland.settings.general = with config.scheme; {
+        "col.active_border" = "0xFF" + base0D;
+        "col.inactive_border" = "0xFF" + base00;
       };
     };
   };

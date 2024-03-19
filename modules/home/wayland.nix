@@ -5,7 +5,6 @@
   ...
 }: {
   options.cute.home = {
-    #enable = lib.mkEnableOption "";
     mako = lib.mkEnableOption "";
     wofi = lib.mkEnableOption "";
   };
