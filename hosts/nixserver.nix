@@ -20,25 +20,31 @@
       };
     };
     common = {
-      console = true;
       git = true;
       nixvim = true;
-      ssh = true;
       tools = true;
+      yazi = true;
       zsh = {
         enable = true;
         prompt = "'%F{red}% %~ >%f '";
       };
       system = {
-        age = true;
-        amd = true;
         boot = true;
-        misc = true;
         nix = true;
         user = true;
+        hardware = {
+          enable = true;
+          amd = true;
+        };
       };
     };
   };
+  users.users.pagu.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk" # desktop nixos
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # desktop windows
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPyA6gv1M1oeN8CnDLR3Z3VdcgK3hbRhHB3Nk6VbWwjK" # phone
+  ];
   networking = {
     domain = "pagu.cafe";
     hostName = "nixserver";

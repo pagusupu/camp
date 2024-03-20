@@ -36,13 +36,12 @@
           };
         };
       };
-      home = lib.mkIf programs {
-        packages = with pkgs; [
+      home.packages = with pkgs;
+        lib.mkIf programs [
           localsend
-        #  pwvucontrol
+          # pwvucontrol - requires wireplumber-0.4
           ueberzugpp
         ];
-      };
     };
     # localsend
     networking.firewall = lib.mkIf programs {

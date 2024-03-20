@@ -21,25 +21,26 @@
       gtk = true;
       hyprland = true;
       mako = true;
+      waybar = false;
       wofi = true;
     };
     common = {
-      console = true;
       git = true;
       nixvim = true;
       tools = true;
       yazi = true;
       zsh = {
         enable = true;
-        prompt = "'%F{magenta}% %~ >%f '";
+        prompt = "'%F{blue}% %~ >%f '";
       };
       system = {
-        age = true;
-        amd = true;
         boot = true;
-        misc = true;
         nix = true;
         user = true;
+        hardware = {
+          enable = true;
+          amd = true;
+        };
       };
     };
   };
@@ -94,7 +95,7 @@
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
     ];
-    initrd.supportedFilesystems = ["ntfs"];
+    supportedFilesystems = ["ntfs"];
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {
