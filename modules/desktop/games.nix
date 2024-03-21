@@ -25,7 +25,7 @@
     programs = {
       steam = lib.mkIf steam {
         enable = true;
-        extraCompatPackages = [inputs.nix-gaming.packages.${pkgs.system}.proton-ge];
+        extraCompatPackages = [pkgs.proton-ge-bin];
         gamescopeSession = {
           enable = true;
           args = ["-H 1080 -r 165 -e --expose-wayland"];
@@ -40,10 +40,6 @@
             apply_gpu_optimisations = "accept-responsibility";
             gpu_device = 0;
             amd_performance_level = "high";
-          };
-          custom = {
-            start = "${pkgs.libnotify}/bin/notify-send 'Gamemode started'";
-            end = "${pkgs.libnotify}/bin/notify-send 'Gamemode ended'";
           };
         };
       };
