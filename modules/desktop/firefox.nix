@@ -15,12 +15,8 @@
           settings = {
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
-            "browser.startup.homepage" = "https://dash.pagu.cafe";
-            "browser.tabs.firefox-view" = true;
-            "browser.tabs.inTitlebar" = 0;
             "privacy.firstparty.isolate" = true;
             "gfx.webrender.all" = true;
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           };
           search = {
             force = true;
@@ -33,7 +29,7 @@
             };
           };
         };
-        package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
+        package = pkgs.firefox-wayland.override {cfg.speechSynthesisSupport = false;};
         policies = {
           CaptivePortal = false;
           DisableFirefoxStudies = true;

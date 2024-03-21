@@ -39,7 +39,7 @@
       home.packages = with pkgs;
         lib.mkIf programs [
           localsend
-          # pwvucontrol - requires wireplumber-0.4
+          # pwvucontrol - https://github.com/NixOS/nixpkgs/pull/297581
           ueberzugpp
         ];
     };

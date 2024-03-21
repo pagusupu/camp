@@ -19,6 +19,13 @@
     home-manager.users.pagu = lib.mkIf enable {
       xdg = lib.mkIf xdg {
         enable = true;
+        userDirs = {
+          enable = true;
+          documents = "\$HOME/documents";
+          download = "\$HOME/downloads";
+          pictures = "\$HOME/pictures";
+          videos = "\$HOME/pictures/videos";
+        };
         desktopEntries = let
           no = {noDisplay = true;};
         in {
