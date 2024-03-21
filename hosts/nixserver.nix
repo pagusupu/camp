@@ -22,6 +22,7 @@
     common = {
       git = true;
       nixvim = true;
+      ssh = true;
       tools = true;
       yazi = true;
       zsh = {
