@@ -1,6 +1,7 @@
 {
   cute = {
     services = {
+      seafile = true;
       frge = true;
       grcy = true;
       jlly = true;
