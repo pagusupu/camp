@@ -21,7 +21,7 @@
       gtk = true;
       hyprland = true;
       mako = true;
-      waybar = false;
+      waybar = true;
       wofi = true;
     };
     common = {

@@ -18,8 +18,9 @@
           settings = {
             exec-once = [
               "rwpspread -b swaybg -i ${images.bg}"
-              "hyprlock"
+              "waybar"
               "hypridle"
+              "hyprlock"
               "steam -silent -console"
             ];
             windowrulev2 = [

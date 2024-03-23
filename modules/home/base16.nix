@@ -46,7 +46,7 @@
       };
       console.colors = with config.scheme;
         lib.mkIf boot [
-          base00
+          "000000"
           base08
           base0C
           base09

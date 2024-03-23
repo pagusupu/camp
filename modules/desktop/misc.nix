@@ -80,9 +80,11 @@
       fontconfig = {
         enable = true;
         antialias = true;
-        hinting.enable = true;
-        hinting.autohint = true;
         subpixel.rgba = "rgb";
+        hinting = {
+          enable = true;
+          autohint = true;
+        };
         defaultFonts = {
           emoji = ["Noto Color Emoji"];
           monospace = ["MonaspiceNe Nerd Font"];
