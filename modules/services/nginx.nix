@@ -33,12 +33,7 @@
             forceSSL = true;
             enableACME = true;
             root = "/storage/website/dash";
-          };
-          "next.${domain}" = {
-            forceSSL = true;
-            enableACME = true;
-            root = "/storage/website/error";
-          };
+          }; 
         };
       };
       users.users.nginx.extraGroups = ["acme"];
