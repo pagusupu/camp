@@ -35,7 +35,7 @@
             general = {
               gaps_in = 3;
               gaps_out = 6;
-              border_size = 2;
+              border_size = 3;
               no_cursor_warps = true;
               resize_on_border = true;
               hover_icon_on_border = false;
@@ -125,7 +125,7 @@
                   lock_cmd = pidof hyprlock || hyprlock
                 }
                 listener {
-                  timeout 300
+                  timeout = 300
                   on-timeout = loginctl lock-session
                 }
               '';

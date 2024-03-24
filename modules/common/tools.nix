@@ -48,16 +48,13 @@
         nh
         radeontop
         rm-improved
-        tldr
+        tealdeer
         speedtest-cli
         unzip
         wget
         zoxide
       ];
       sessionVariables.FLAKE = lib.mkIf tools "/home/pagu/flake/"; # nh
-      variables = lib.mkIf yazi {
-        YAZI_CONFIG_HOME = lib.mkForce "/etc/yazi";
-      };
     };
   };
 }

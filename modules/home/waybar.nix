@@ -13,7 +13,6 @@
             layer = "top";
             width = 36;
             modules-left = ["hyprland/workspaces"];
-            #modules-center = ["clock"];
             modules-right = ["clock"];
             clock.format = "{:%I \n%M \n%p}";
             "hyprland/workspaces" = {
