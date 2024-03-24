@@ -15,25 +15,28 @@
       };
       services.nginx = {
         enable = true;
+        recommendedBrotliSettings = true;
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
-        recommendedOptimisation = true;
-        recommendedGzipSettings = true;
+        recommendedZstdSettings = true;
         commonHttpConfig = ''
           real_ip_header CF-Connecting-IP;
           add_header 'Referrer-Policy' 'origin-when-cross-origin';
         '';
-        virtualHosts = {
-          "${domain}" = {
+        virtualHosts = let
+          common = {
             forceSSL = true;
             enableACME = true;
-            root = "/storage/website/cafe";
           };
-          "dash.${domain}" = {
-            forceSSL = true;
-            enableACME = true;
-            root = "/storage/website/dash";
-          }; 
+        in {
+          "${domain}" =
+            common
+            // {root = "/storage/website/cafe";};
+          "dash.${domain}" =
+            common
+            // {root = "/storage/website/dash";};
         };
       };
       users.users.nginx.extraGroups = ["acme"];

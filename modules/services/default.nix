@@ -38,12 +38,6 @@
         openFirewall = true;
         port = 8097;
       };
-      shiori = {
-        enable = true;
-        port = 8085;
-        address = "127.0.0.1";
-        webRoot = "/";
-      };
       nginx.virtualHosts = let
         common = {
           forceSSL = true;
@@ -57,8 +51,6 @@
         "kmga.${domain}" =
           common
           // {locations."/".proxyPass = "http://127.0.0.1:8097";};
-        "shio.${domain}" =
-          common // {locations."/".proxyPass = "http://127.0.0.1:8085";};
       };
     };
   };

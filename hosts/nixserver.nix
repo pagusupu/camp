@@ -1,13 +1,13 @@
 {
   cute = {
+    desktop.fonts = true;
     services = {
-      seafile = true;
+      file = false;
       frge = true;
       grcy = true;
       jlly = true;
       kmga = true;
       navi = true;
-      next = false;
       qbit = true;
       wrdn = true;
       fail2ban = true;

@@ -3,14 +3,14 @@
   lib,
   ...
 }: {
-  options.cute.services.seafile = lib.mkEnableOption "";
+  options.cute.services.file = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.seafile {
+    lib.mkIf config.cute.services.file {
       services = {
         seafile = {
-          enable = false;
+          enable = true;
           adminEmail = "me@${domain}";
           #initialAdminPassword = "temp";
           ccnetSettings.General.SERVICE_URL = "https://file.${domain}";
@@ -18,7 +18,14 @@
         nginx.virtualHosts."file.${domain}" = {
           forceSSL = true;
           enableACME = true;
-          #locations."/".proxyPass = "http://127.0.0.1:8082";
+          locations = {
+            "/" = {
+              proxyPass = "http://127.0.0.1:8000";
+            };
+            "/seafhttp" = {
+              proxyPass = "http://127.0.0.1:8082";
+            };
+          };
         };
       };
     };
