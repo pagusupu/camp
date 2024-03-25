@@ -2,11 +2,11 @@
   config,
   lib,
   pkgs,
-  images,
   ...
 }: {
   options.cute.home.hyprland = lib.mkEnableOption "";
   config = let
+    bg = images/blue.jpg;
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
@@ -17,7 +17,7 @@
           enable = true;
           settings = {
             exec-once = [
-              "rwpspread -b swaybg -i ${images.bg}"
+              "rwpspread -b swaybg -i ${bg}"
               "waybar"
               "hypridle"
               "hyprlock"
@@ -162,7 +162,7 @@
               '';
             };
           };
-          sessionVariables = {NIXOS_OZONE_WL = 1;};
+          sessionVariables.NIXOS_OZONE_WL = 1;
         };
       };
     };

@@ -29,8 +29,5 @@
         };
       };
     };
-    _module.args = {
-      images.bg = images/blue.jpg;
-    };
   };
 }
