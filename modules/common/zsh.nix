@@ -60,7 +60,7 @@
             truncation_length = 5;
           };
           git_status.deleted = "x";
-          ssh_symbol = "";
+          hostname.format = "[$hostname]($style) in ";
         };
       };
     };

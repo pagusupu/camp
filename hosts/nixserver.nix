@@ -1,6 +1,5 @@
 {
   cute = {
-    desktop.fonts = true;
     services = {
       file = false;
       frge = true;
