@@ -94,5 +94,6 @@
       };
     };
     security.rtkit.enable = lib.mkIf audio true;
+    hardware.pulseaudio.enable = lib.mkIf audio false;
   };
 }
