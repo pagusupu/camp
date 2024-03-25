@@ -21,10 +21,10 @@
           user = {
             name = "pagu";
             email = "me@pagu.cafe";
-	    signingKey = "/home/pagu/.ssh/id_ed25519.pub";
+            signingKey = "/home/pagu/.ssh/id_ed25519.pub";
           };
-	  gpg.format = "ssh";
-	  commit.gpgsign = true;
+          gpg.format = "ssh";
+          commit.gpgsign = true;
         };
       };
       yazi = lib.mkIf yazi {
@@ -48,6 +48,7 @@
         btop
         dust
         eza
+        fzf
         nh
         radeontop
         rm-improved

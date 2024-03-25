@@ -1,6 +1,6 @@
 {
-  inputs = {
-    agenix = {
+  inputs = { 
+    agenix = { 
       url = "github:ryantm/agenix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -23,11 +23,7 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    }; 
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";

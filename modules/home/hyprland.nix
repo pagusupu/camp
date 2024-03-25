@@ -6,7 +6,6 @@
 }: {
   options.cute.home.hyprland = lib.mkEnableOption "";
   config = let
-    bg = images/blue.jpg;
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
@@ -17,7 +16,7 @@
           enable = true;
           settings = {
             exec-once = [
-              "rwpspread -b swaybg -i ${bg}"
+              "rwpspread -b swaybg -i ~/pictures/active/bg.jpg"
               "waybar"
               "hypridle"
               "hyprlock"
@@ -150,7 +149,7 @@
                   halign = center
                   valign = center
                   fade_on_empty = false
-                  outline_thickness = 2
+                  outline_thickness = 3
                   outer_color = 0xFF${base0D}
                   inner_color = 0xFF${base00}
                   font_color = 0xFF${base05}

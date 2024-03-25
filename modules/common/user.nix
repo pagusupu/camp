@@ -20,7 +20,6 @@
       uid = 1000;
       isNormalUser = true;
       extraGroups = ["wheel"];
-      shell = pkgs.zsh;
       hashedPasswordFile = config.age.secrets.user.path;
     };
     security.sudo.execWheelOnly = true;

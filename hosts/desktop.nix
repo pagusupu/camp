@@ -32,6 +32,7 @@
       yazi = true;
       zsh = {
         enable = true;
+        starship = true;
         prompt = "'%F{blue}% %~ >%f '";
       };
       system = {

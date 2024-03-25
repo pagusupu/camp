@@ -89,11 +89,6 @@
           nixvimInjections = true;
         };
       };
-      extraConfigLua = ''
-        vim.filetype.add({
-          pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-        })
-      '';
     };
     environment.sessionVariables = {EDITOR = "nvim";};
   };
