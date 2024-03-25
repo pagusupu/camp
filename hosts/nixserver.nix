@@ -31,12 +31,12 @@
         prompt = "'%F{red}% %~ >%f '";
       };
       system = {
-        boot = true;
         nix = true;
         user = true;
         hardware = {
           enable = true;
           amd = true;
+          boot = true;
         };
       };
     };
@@ -72,6 +72,9 @@
       timeout = 0;
       systemd-boot.enable = true;
     };
+    availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+    kernelModules = ["kvm-amd" "amdgpu"];
+    supportedFilesystems = ["btrfs"];
     swraid.enable = true;
   };
   fileSystems = {

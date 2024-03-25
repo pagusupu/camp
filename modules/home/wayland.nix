@@ -11,24 +11,23 @@
   config = let
     inherit (config.cute.home) mako waybar wofi;
   in {
-    home-manager.users.pagu = {
-      services.mako = with config.scheme;
-        lib.mkIf mako {
-          enable = true;
-          anchor = "bottom-left";
-          defaultTimeout = 3;
-          maxVisible = 3;
-          borderSize = 2;
-          borderRadius = 6;
-          margin = "14";
-          backgroundColor = "#" + base00;
-          borderColor = "#" + base0D;
-          textColor = "#" + base05;
-          extraConfig = ''
-            [mode=do-not-disturb]
-            invisible=1
-          '';
-        };
+    home-manager.users.pagu = with config.scheme; {
+      services.mako = lib.mkIf mako {
+        enable = true;
+        anchor = "bottom-left";
+        defaultTimeout = 3;
+        maxVisible = 3;
+        borderSize = 2;
+        borderRadius = 6;
+        margin = "14";
+        backgroundColor = "#" + base00;
+        borderColor = "#" + base0D;
+        textColor = "#" + base05;
+        extraConfig = ''
+          [mode=do-not-disturb]
+          invisible=1
+        '';
+      };
       programs = {
         wofi = lib.mkIf wofi {
           enable = true;
@@ -74,7 +73,7 @@
                 output = ["HDMI-A-1"];
               };
           };
-          style = with config.scheme; ''
+          style = ''
             * {
               all: unset;
               font-family: "MonaspiceNe Nerd Font";

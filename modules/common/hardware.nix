@@ -6,11 +6,12 @@
 }: {
   options.cute.common.system.hardware = {
     enable = lib.mkEnableOption "";
+    boot = lib.mkEnableOption "";
     amd = lib.mkEnableOption "";
     intel = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.common.system.hardware) enable amd intel;
+    inherit (config.cute.common.system.hardware) enable boot amd intel;
   in
     lib.mkIf enable {
       hardware = {
@@ -28,7 +29,17 @@
             ];
         };
       };
-      boot.kernelModules = lib.mkIf amd ["kvm-amd" "amdgpu"];
+      boot = lib.mkIf boot {
+        loader.efi.canTouchEfiVariables = true;
+        # quiet
+        initrd.verbose = false;
+        consoleLogLevel = 0;
+        kernelParams = ["quiet" "splash"];
+      };
+      console = lib.mkIf boot {
+        earlySetup = true;
+        font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
+      };
       networking = {
         firewall.enable = true;
         enableIPv6 = false;

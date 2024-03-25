@@ -27,6 +27,7 @@
     common = {
       git = true;
       nixvim = true;
+      ssh = false;
       tools = true;
       yazi = true;
       zsh = {
@@ -34,12 +35,12 @@
         prompt = "'%F{blue}% %~ >%f '";
       };
       system = {
-        boot = true;
         nix = true;
         user = true;
         hardware = {
           enable = true;
           amd = true;
+          boot = true;
         };
       };
     };
@@ -87,7 +88,7 @@
       };
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = ["amd_pstate"];
+    kernelModules = ["amd_pstate" "kvm-amd" "amdgpu"];
     kernelParams = [
       "video=DP-3:1920x1080@165"
       "video=HDMI-A-1:1920x1080@75"
@@ -95,7 +96,10 @@
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
     ];
-    supportedFilesystems = ["ntfs"];
+    initrd = {
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+      supportedFilesystems = ["btrfs ntfs"];
+    };
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {
