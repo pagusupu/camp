@@ -31,12 +31,8 @@
             enableACME = true;
           };
         in {
-          "${domain}" =
-            common
-            // {root = "/storage/website/cafe";};
-          "dash.${domain}" =
-            common
-            // {root = "/storage/website/dash";};
+          "${domain}" = {root = "/storage/website/cafe";} // common;
+          "dash.${domain}" = {root = "/storage/website/dash";} // common;
         };
       };
       users.users.nginx.extraGroups = ["acme"];
