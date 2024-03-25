@@ -9,9 +9,9 @@
     wofi = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.home) mako waybar wofi;
+    inherit (config.cute.home) enable mako waybar wofi;
   in {
-    home-manager.users.pagu = {
+    home-manager.users.pagu = lib.mkIf enable {
       services.mako = with config.scheme;
         lib.mkIf mako {
           enable = true;

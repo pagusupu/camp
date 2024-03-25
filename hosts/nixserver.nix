@@ -72,9 +72,11 @@
       timeout = 0;
       systemd-boot.enable = true;
     };
-    availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+    initrd = {
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+      supportedFilesystems = ["btrfs"];
+    };
     kernelModules = ["kvm-amd" "amdgpu"];
-    supportedFilesystems = ["btrfs"];
     swraid.enable = true;
   };
   fileSystems = {
