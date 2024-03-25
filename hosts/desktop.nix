@@ -33,7 +33,6 @@
       zsh = {
         enable = true;
         starship = true;
-        prompt = "'%F{blue}% %~ >%f '";
       };
       system = {
         nix = true;

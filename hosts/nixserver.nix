@@ -28,7 +28,7 @@
       yazi = true;
       zsh = {
         enable = true;
-        prompt = "'%F{red}% %~ >%f '";
+        starship = true;
       };
       system = {
         nix = true;

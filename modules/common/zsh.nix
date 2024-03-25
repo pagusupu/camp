@@ -6,7 +6,6 @@
 }: {
   options.cute.common.zsh = {
     enable = lib.mkEnableOption "";
-    prompt = lib.mkOption {type = lib.types.lines;};
     starship = lib.mkEnableOption "";
   };
   config = let
@@ -45,7 +44,6 @@
           update = "sudo nix flake update ~/flake && nh os switch";
           ssh-server = "ssh pagu@192.168.178.182";
         };
-        promptInit = "PROMPT=${config.cute.common.zsh.prompt}";
       };
       starship = lib.mkIf starship {
         enable = true;
@@ -62,6 +60,7 @@
             truncation_length = 5;
           };
           git_status.deleted = "x";
+          ssh_symbol = "";
         };
       };
     };
