@@ -1,6 +1,7 @@
 {
   cute = {
     services = {
+      cube = true;
       file = false;
       frge = true;
       grcy = true;
@@ -8,6 +9,7 @@
       kmga = true;
       navi = true;
       qbit = true;
+      sync = true;
       wrdn = true;
       fail2ban = true;
       homeassistant = true;
