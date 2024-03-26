@@ -164,6 +164,10 @@
           sessionVariables.NIXOS_OZONE_WL = 1;
         };
       };
+      cute.desktop.greetd = {
+        enable = true;
+        command = "${pkgs.hyprland}/bin/Hyprland";
+      };
       security.pam.services.hyprlock = {};
     };
 }

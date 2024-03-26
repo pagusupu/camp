@@ -8,9 +8,12 @@
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
   options.cute.desktop = {
     xdg = lib.mkEnableOption "";
-    greetd = lib.mkEnableOption "";
     fonts = lib.mkEnableOption "";
     audio = lib.mkEnableOption "";
+    greetd = {
+      enable = lib.mkEnableOption "";
+      command = lib.mkOption {type = lib.types.str;};
+    };
   };
   config = let
     inherit (config.cute.desktop) xdg greetd fonts audio;
@@ -21,6 +24,7 @@
         enable = true;
         userDirs = {
           enable = true;
+          desktop = "\$HOME/deskto";
           documents = "\$HOME/documents";
           download = "\$HOME/downloads";
           pictures = "\$HOME/pictures";
@@ -41,11 +45,11 @@
       };
     };
     services = {
-      greetd = lib.mkIf greetd {
+      greetd = lib.mkIf greetd.enable {
         enable = true;
         settings = rec {
           initial_session = {
-            command = "${pkgs.hyprland}/bin/Hyprland";
+            command = greetd.command;
             user = "pagu";
           };
           default_session = initial_session;
