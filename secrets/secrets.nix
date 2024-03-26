@@ -5,6 +5,7 @@ in {
   "etebase.age".publicKeys = [server];
   "mail.age".publicKeys = [server];
   "navi-fm.age".publicKeys = [server];
+  "photoprism.age".publicKeys = [server];
   "synapse.age".publicKeys = [server];
   "user.age".publicKeys = [desktop server];
 }

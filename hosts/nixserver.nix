@@ -8,6 +8,7 @@
       jlly = true;
       kmga = true;
       navi = true;
+      prsm = false;
       qbit = true;
       sync = true;
       wrdn = true;
