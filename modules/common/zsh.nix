@@ -7,6 +7,10 @@
   options.cute.common.zsh = {
     enable = lib.mkEnableOption "";
     starship = lib.mkEnableOption "";
+    prompt = lib.mkOption {
+      type = lib.types.lines;
+      default = "'%F{blue}% %~ >%f '";
+    };
   };
   config = let
     inherit (config.cute.common.zsh) enable starship;

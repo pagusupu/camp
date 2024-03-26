@@ -5,7 +5,6 @@
       audio = true;
       firefox = true;
       fonts = true;
-      greetd = true;
       programs = true;
       xdg = true;
       games = {
