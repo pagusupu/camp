@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.cute.services.sync = lib.mkEnableOption "";
