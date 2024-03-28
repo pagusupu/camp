@@ -34,11 +34,11 @@
       };
       system = {
         nix = true;
+        plymouth = true;
         user = true;
         hardware = {
           enable = true;
           amd = true;
-          boot = true;
         };
         networking = {
           enable = true;
@@ -66,14 +66,20 @@
     loader = {
       timeout = 0;
       systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
+    kernelModules = ["kvm-amd" "amdgpu"];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
       supportedFilesystems = ["btrfs"];
+      # quiet
+      verbose = false;
     };
-    kernelModules = ["kvm-amd" "amdgpu"];
+    consoleLogLevel = 0;
+    kernelParams = ["quiet" "splash"];
     swraid.enable = true;
   };
+  console.earlySetup = true;
   powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
     "/boot" = {

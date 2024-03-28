@@ -35,11 +35,11 @@
       };
       system = {
         nix = true;
+        plymouth = true;
         user = true;
         hardware = {
           enable = true;
           amd = true;
-          boot = true;
         };
         networking = {
           enable = true;

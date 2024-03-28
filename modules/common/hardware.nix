@@ -4,14 +4,17 @@
   pkgs,
   ...
 }: {
-  options.cute.common.system.hardware = {
-    enable = lib.mkEnableOption "";
-    boot = lib.mkEnableOption "";
-    amd = lib.mkEnableOption "";
-    intel = lib.mkEnableOption "";
+  options.cute.common.system = {
+    plymouth = lib.mkEnableOption "";
+    hardware = {
+      enable = lib.mkEnableOption "";
+      amd = lib.mkEnableOption "";
+      intel = lib.mkEnableOption "";
+    };
   };
   config = let
-    inherit (config.cute.common.system.hardware) enable boot amd intel;
+    inherit (config.cute.common.system) plymouth;
+    inherit (config.cute.common.system.hardware) enable amd intel;
   in
     lib.mkIf enable {
       hardware = {
@@ -29,13 +32,11 @@
             ];
         };
       };
-      boot = lib.mkIf boot {
-        loader.efi.canTouchEfiVariables = true;
-        plymouth = {
-          enable = true;
-          font = "${pkgs.nerdfonts}/share/fonts/opentype/NerdFonts/MonaspiceNeNerdFont-Regular.otf";
-        };
+      boot.plymouth = lib.mkIf plymouth {
+        enable = true;
+        font = "${pkgs.nerdfonts}/share/fonts/opentype/NerdFonts/MonaspiceNeNerdFont-Regular.otf";
       };
+      console.font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
       time.timeZone = "NZ";
       i18n.defaultLocale = "en_NZ.UTF-8";
     };
