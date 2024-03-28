@@ -39,6 +39,14 @@
           amd = true;
           boot = true;
         };
+        networking = {
+          enable = true;
+          wired = {
+            enable = true;
+            ip = "192.168.178.182";
+            interface = "enp37s0";
+          };
+        };
       };
     };
   };
@@ -53,21 +61,6 @@
     hostName = "nixserver";
     hostId = "a3b49b22";
   };
-  systemd.network = {
-    enable = true;
-    networks.enp37s0 = {
-      enable = true;
-      name = "enp37s0";
-      networkConfig = {
-        DHCP = "no";
-        DNSSEC = "yes";
-        DNSOverTLS = "yes";
-        DNS = ["1.0.0.1" "1.1.1.1"];
-      };
-      address = ["192.168.178.182/24"];
-      routes = [{routeConfig.Gateway = "192.168.178.1";}];
-    };
-  };
   boot = {
     loader = {
       timeout = 0;
@@ -80,6 +73,7 @@
     kernelModules = ["kvm-amd" "amdgpu"];
     swraid.enable = true;
   };
+  powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";

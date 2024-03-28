@@ -59,17 +59,32 @@
           ExtensionSettings = let
             link = "https://addons.mozilla.org/firefox/downloads/latest/";
             xpi = "/latest.xpi";
-          in {
-            "*" = {
+            common = {
               default_area = "menupanel";
               installation_mode = "force_installed";
               updates_disabled = false;
             };
-            "{446900e4-71c2-419f-a6a7-df9c091e268b}".install_url = "${link}bitwarden-password-manager${xpi}";
-            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}".install_url = "${link}return-youtube-dislikes${xpi}";
-            "sponsorBlocker@ajay.app".install_url = "${link}sponsorblock${xpi}";
-            "treestyletab@piro.sakura.ne.jp".install_url = "${link}tree-style-tab${xpi}";
-            "uBlock0@raymondhill.net".install_url = "${link}ublock-origin${xpi}";
+          in {
+            "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+              install_url = "${link}bitwarden-password-manager${xpi}";
+              inherit common;
+            };
+            "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = {
+              install_url = "${link}return-youtube-dislikes${xpi}";
+              inherit common;
+            };
+            "sponsorBlocker@ajay.app" = {
+              install_url = "${link}sponsorblock${xpi}";
+              inherit common;
+            };
+            "treestyletab@piro.sakura.ne.jp" = {
+              install_url = "${link}tree-style-tab${xpi}";
+              inherit common;
+            };
+            "uBlock0@raymondhill.net" = {
+              install_url = "${link}ublock-origin${xpi}";
+              inherit common;
+            };
           };
         };
       };

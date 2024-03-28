@@ -43,7 +43,7 @@
           };
         };
       };
-      honkers-railway-launcher.enable = lib.mkIf misc true;
+      honkers-railway-launcher.enable = lib.mkIf misc false;
     };
     hardware = {
       xone.enable = lib.mkIf misc true;

@@ -31,19 +31,10 @@
       };
       boot = lib.mkIf boot {
         loader.efi.canTouchEfiVariables = true;
-        # quiet
-        initrd.verbose = false;
-        consoleLogLevel = 0;
-        kernelParams = ["quiet" "splash"];
-      };
-      console = lib.mkIf boot {
-        earlySetup = true;
-        font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
-      };
-      networking = {
-        firewall.enable = true;
-        enableIPv6 = false;
-        useDHCP = false;
+        plymouth = {
+          enable = true;
+          font = "${pkgs.nerdfonts}/share/fonts/opentype/NerdFonts/MonaspiceNeNerdFont-Regular.otf";
+        };
       };
       time.timeZone = "NZ";
       i18n.defaultLocale = "en_NZ.UTF-8";

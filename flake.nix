@@ -33,9 +33,10 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
   outputs = inputs: let
-    inherit (inputs.nixpkgs) lib;
+    inherit (inputs.nixpkgs) lib legacyPackages;
     importAll = path:
       builtins.filter (lib.hasSuffix ".nix")
       (map toString (lib.filesystem.listFilesRecursive path));
@@ -47,5 +48,13 @@
           [./hosts/${name}.nix]
           ++ importAll ./modules;
       });
+    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper legacyPackages.x86_64-linux {
+      projectRootFile = "flake.nix";
+      programs = {
+        alejandra.enable = true;
+        biome.enable = false; # for ags when i finally start
+        deadnix.enable = true;
+      };
+    };
   };
 }

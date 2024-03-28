@@ -41,6 +41,14 @@
           amd = true;
           boot = true;
         };
+        networking = {
+          enable = true;
+          wired = {
+            enable = true;
+            ip = "192.168.178.126";
+            interface = "enp10s0";
+          };
+        };
       };
     };
   };
@@ -59,32 +67,16 @@
   };
   systemd = {
     services.systemd-udev-settle.enable = false;
-    network = {
-      enable = true;
-      wait-online.enable = false;
-      networks.enp10s0 = {
-        name = "enp10s0";
-        networkConfig = {
-          DHCP = "no";
-          DNSSEC = "yes";
-          DNSOverTLS = "yes";
-          DNS = ["1.0.0.1" "1.1.1.1"];
-        };
-        address = ["192.168.178.126/24"];
-        routes = [{routeConfig.Gateway = "192.168.178.1";}];
-      };
-    };
+    network.wait-online.enable = false;
   };
   boot = {
-    loader = {
-      grub = {
-        enable = true;
-        efiSupport = true;
-        useOSProber = true;
-        device = "nodev";
-        splashImage = null;
-        configurationLimit = 10;
-      };
+    loader.grub = {
+      enable = true;
+      efiSupport = true;
+      useOSProber = true;
+      device = "nodev";
+      splashImage = null;
+      configurationLimit = 10;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = ["amd_pstate" "kvm-amd" "amdgpu"];

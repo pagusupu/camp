@@ -161,7 +161,10 @@
               '';
             };
           };
-          sessionVariables.NIXOS_OZONE_WL = 1;
+          sessionVariables = {
+            NIXOS_OZONE_WL = 1;
+            _JAVA_AWT_WM_NONREPARENTING = 1;
+          };
         };
       };
       cute.desktop.greetd = {
