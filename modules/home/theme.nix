@@ -15,7 +15,6 @@
     inherit (config.cute.desktop) alacritty;
     inherit (config.cute.home) gtk hyprland;
     inherit (config.cute.common) nixvim;
-    inherit (config.cute.common.system.hardware) boot;
   in
     lib.mkIf config.cute.home.base16 {
       scheme = lib.mkDefault rose-pine/dawn.yaml;
@@ -75,25 +74,24 @@
             "col.inactive_border" = "0xFF" + base00;
           };
       };
-      console.colors = with rose-pine.moon;
-        lib.mkIf boot [
-          "000000"
-          love
-          foam
-          gold
-          pine
-          iris
-          rose
-          text
-          overlay
-          love
-          foam
-          gold
-          pine
-          iris
-          rose
-          text
-        ];
+      console.colors = with rose-pine.moon; [
+        "000000"
+        love
+        foam
+        gold
+        pine
+        iris
+        rose
+        text
+        overlay
+        love
+        foam
+        gold
+        pine
+        iris
+        rose
+        text
+      ];
       specialisation.dark.configuration = {
         home-manager.users.pagu = lib.mkIf gtk {
           gtk = {

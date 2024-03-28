@@ -8,10 +8,9 @@
     git = lib.mkEnableOption "";
     ssh = lib.mkEnableOption "";
     tools = lib.mkEnableOption "";
-    yazi = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.common) git ssh tools yazi;
+    inherit (config.cute.common) git ssh tools;
   in {
     programs = {
       git = lib.mkIf git {
@@ -27,7 +26,7 @@
           commit.gpgsign = true;
         };
       };
-      yazi = lib.mkIf yazi {
+      yazi = lib.mkIf tools {
         enable = true;
         settings.yazi.manager = {
           sort_by = "natural";
@@ -50,11 +49,11 @@
         eza
         fzf
         nh
+        ouch
         radeontop
         rm-improved
         tealdeer
         speedtest-cli
-        unzip
         wget
         zoxide
       ];

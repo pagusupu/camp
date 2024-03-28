@@ -27,7 +27,6 @@
       nixvim = true;
       ssh = true;
       tools = true;
-      yazi = true;
       zsh = {
         enable = true;
         starship = true;
@@ -72,11 +71,7 @@
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
       supportedFilesystems = ["btrfs"];
-      # quiet
-      verbose = false;
     };
-    consoleLogLevel = 0;
-    kernelParams = ["quiet" "splash"];
     swraid.enable = true;
   };
   console.earlySetup = true;

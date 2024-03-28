@@ -28,7 +28,6 @@
       nixvim = true;
       ssh = false;
       tools = true;
-      yazi = true;
       zsh = {
         enable = true;
         starship = true;
@@ -70,13 +69,16 @@
     network.wait-online.enable = false;
   };
   boot = {
-    loader.grub = {
-      enable = true;
-      efiSupport = true;
-      useOSProber = true;
-      device = "nodev";
-      splashImage = null;
-      configurationLimit = 10;
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        useOSProber = true;
+        device = "nodev";
+        splashImage = null;
+        configurationLimit = 10;
+      };
+      efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = ["amd_pstate" "kvm-amd" "amdgpu"];
@@ -86,11 +88,16 @@
       "initcall_blacklist=acpi_cpu_freq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
+      "quiet"
+      "splash"
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
       supportedFilesystems = ["btrfs ntfs"];
+      # quiet
+      verbose = false;
     };
+    consoleLogLevel = 0;
   };
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {

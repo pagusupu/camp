@@ -34,7 +34,7 @@
       };
       boot.plymouth = lib.mkIf plymouth {
         enable = true;
-        font = "${pkgs.nerdfonts}/share/fonts/opentype/NerdFonts/MonaspiceNeNerdFont-Regular.otf";
+        theme = "breeze";
       };
       console.font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
       time.timeZone = "NZ";
