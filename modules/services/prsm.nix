@@ -12,7 +12,7 @@
     services = {
       photoprism = rec {
         enable = true;
-        address = "127.0.0.1";
+        address = "0.0.0.0";
         storagePath = "/storage/services/photoprism";
         originalsPath = "/storage/services/photoprism/originals";
         importPath = originalsPath;
@@ -66,6 +66,6 @@
         device = "/data/originals";
         options = ["bind"];
       };
-    }; 
+    };
   };
 }
