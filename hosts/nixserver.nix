@@ -8,7 +8,7 @@
       jlly = true;
       kmga = true;
       navi = true;
-      prsm = false;
+      prsm = true;
       qbit = true;
       sync = true;
       wrdn = true;
@@ -33,7 +33,7 @@
       };
       system = {
         nix = true;
-        plymouth = true;
+        plymouth = false;
         user = true;
         hardware = {
           enable = true;
