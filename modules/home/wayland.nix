@@ -59,20 +59,21 @@
               };
             };
           in {
+            # alejandra is a bit funky here
             leftbar =
-              common
-              // {
+              {
                 position = "left";
                 margin-left = 6;
                 output = ["DP-3"];
-              };
+              }
+              // common;
             rightbar =
-              common
-              // {
+              {
                 position = "right";
                 margin-right = 6;
                 output = ["HDMI-A-1"];
-              };
+              }
+              // common;
           };
           style = with config.scheme; ''
             * {

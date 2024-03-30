@@ -43,6 +43,7 @@
           ueberzugpp
         ];
     };
+    programs.goldwarden.enable = true;
     # localsend
     networking.firewall = lib.mkIf programs {
       allowedTCPPorts = [53317];

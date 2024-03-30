@@ -20,6 +20,7 @@
               "waybar"
               "hypridle"
               "hyprlock"
+	      "goldwaren daemonize"
               "steam -silent -console"
             ];
             windowrulev2 = [

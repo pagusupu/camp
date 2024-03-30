@@ -24,7 +24,7 @@
         enable = true;
         userDirs = {
           enable = true;
-          desktop = "\$HOME/deskto";
+          desktop = "\$HOME/desktop";
           documents = "\$HOME/documents";
           download = "\$HOME/downloads";
           pictures = "\$HOME/pictures";

@@ -24,19 +24,20 @@
         userControlled.enable = true;
       };
     };
-    systemd.network = lib.mkIf wired.enable {
-      enable = true;
-      networks.${wired.interface} = {
-        name = wired.interface;
-        networkConfig = {
-          DHCP = "no";
-          DNSSEC = "yes";
-          DNSOverTLS = "yes";
-          DNS = ["1.0.0.1" "1.1.1.1"];
+    systemd.network = with wired;
+      lib.mkIf wired.enable {
+        enable = true;
+        networks.${interface} = {
+          name = interface;
+          networkConfig = {
+            DHCP = "no";
+            DNSSEC = "yes";
+            DNSOverTLS = "yes";
+            DNS = ["1.0.0.1" "1.1.1.1"];
+          };
+          address = ["${ip}/24"];
+          routes = [{routeConfig.Gateway = "192.168.178.1";}];
         };
-        address = ["${wired.ip}/24"];
-        routes = [{routeConfig.Gateway = "192.168.178.1";}];
       };
-    };
   };
 }

@@ -61,7 +61,7 @@
             xpi = "/latest.xpi";
             common = {
               default_area = "menupanel";
-              installation_mode = "force_installed";
+              installation_mode = "normal_installed";
               updates_disabled = false;
             };
           in {

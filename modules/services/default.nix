@@ -45,12 +45,8 @@
         };
       in {
         "grcy.${domain}" = common;
-        "jlly.${domain}" =
-          common
-          // {locations."/".proxyPass = "http://127.0.0.1:8096";};
-        "kmga.${domain}" =
-          common
-          // {locations."/".proxyPass = "http://127.0.0.1:8097";};
+        "jlly.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:8096";} // common;
+        "kmga.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:8097";} // common;
       };
     };
   };
