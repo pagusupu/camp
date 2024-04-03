@@ -56,8 +56,14 @@
         speedtest-cli
         wget
         zoxide
+        (pkgs.callPackage ../../pkgs/localsend-rs.nix {})
       ];
       sessionVariables.FLAKE = lib.mkIf tools "/home/pagu/flake/"; # nh
+    };
+    # localsend 
+    networking.firewall = lib.mkIf tools {
+      allowedTCPPorts = [53317];
+      allowedUDPPorts = [53317];
     };
   };
 }

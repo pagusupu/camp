@@ -39,15 +39,9 @@
       home.packages = with pkgs;
         lib.mkIf programs [
           localsend
-          # pwvucontrol - https://github.com/NixOS/nixpkgs/pull/297581
+          pwvucontrol
           ueberzugpp
         ];
-    };
-    programs.goldwarden.enable = true;
-    # localsend
-    networking.firewall = lib.mkIf programs {
-      allowedTCPPorts = [53317];
-      allowedUDPPorts = [53317];
     };
   };
 }

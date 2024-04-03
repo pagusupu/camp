@@ -34,7 +34,7 @@
       };
       system = {
         nix = true;
-        plymouth = true;
+        #plymouth = true;
         user = true;
         hardware = {
           enable = true;
