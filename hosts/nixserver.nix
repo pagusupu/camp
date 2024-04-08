@@ -33,7 +33,6 @@
       };
       system = {
         nix = true;
-        plymouth = false;
         user = true;
         hardware = {
           enable = true;

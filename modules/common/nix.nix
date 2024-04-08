@@ -8,20 +8,25 @@
     nix = {
       settings = {
         experimental-features = [
+          "auto-allocate-uids"
           "flakes"
           "nix-command"
+          "no-url-literals"
         ];
-        auto-optimise-store = true;
         allowed-users = ["@wheel"];
-	builders-use-substitutes = true;
+        auto-optimise-store = true;
+        nix-path = ["nixpkgs=flake:nixpkgs"];
+        use-xdg-base-directories = true;
+        warn-dirty = false;
       };
       gc = {
         automatic = true;
         dates = "weekly";
         options = "--delete-older-than 7d";
       };
-      optimise.automatic = true;
       channel.enable = false;
+      nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
+      optimise.automatic = true;
     };
     nixpkgs = {
       hostPlatform = "x86_64-linux";

@@ -5,20 +5,15 @@
   ...
 }: {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options.cute.common.nixvim = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.nixvim {
+  options.cute.common.nvim = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.common.nvim {
     programs.nixvim = {
       enable = true;
       enableMan = false;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
-      luaLoader.enable = true;
-      colorschemes.rose-pine = {
-        enable = true;
-        disableItalics = true;
-        style = lib.mkDefault "dawn";
-      };
+      luaLoader.enable = true; 
       options = {
         number = true;
         shiftwidth = 2;

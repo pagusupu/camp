@@ -6,7 +6,6 @@
       firefox = true;
       fonts = true;
       programs = true;
-      xdg = true;
       games = {
         gamemode = true;
         misc = true;
@@ -15,17 +14,16 @@
     };
     home = {
       enable = true;
-      ags = false;
       base16 = true;
       gtk = true;
       hyprland = true;
-      mako = true;
       waybar = true;
       wofi = true;
+      xdg = true;
     };
     common = {
       git = true;
-      nixvim = true;
+      nvim = true;
       ssh = false;
       tools = true;
       zsh = {
@@ -34,7 +32,6 @@
       };
       system = {
         nix = true;
-        #plymouth = true;
         user = true;
         hardware = {
           enable = true;

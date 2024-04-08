@@ -26,6 +26,12 @@
               "float, class:(localsend_app)"
               "float, class:(com.saivert.pwvucontrol)"
             ];
+            env = [
+              "XCURSOR_SIZE,24"
+              "XCURSOR_THEME,BreezeX-RosePine-Linux"
+              "NIXOS_OZONE_WL,1"
+              "_JAVA_AWT_WM_NONREPARENTING,1"
+            ];
             input = {
               follow_mouse = 2;
               accel_profile = "flat";
@@ -38,6 +44,8 @@
               no_cursor_warps = true;
               resize_on_border = true;
               hover_icon_on_border = false;
+              "col.active_border" = "0xFF" + config.scheme.base0B;
+              "col.inactive_border" = "0xFF" + config.scheme.base00;
               layout = "dwindle";
             };
             dwindle = {
@@ -114,6 +122,7 @@
               grimblast
               hypridle
               hyprlock
+              mako
               rwpspread
               swaybg
               wl-clipboard
@@ -163,10 +172,6 @@
                 }
               '';
             };
-          };
-          sessionVariables = {
-            NIXOS_OZONE_WL = 1;
-            _JAVA_AWT_WM_NONREPARENTING = 1;
           };
         };
       };

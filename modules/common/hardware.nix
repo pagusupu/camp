@@ -13,7 +13,6 @@
     };
   };
   config = let
-    inherit (config.cute.common.system) plymouth;
     inherit (config.cute.common.system.hardware) enable amd intel;
   in
     lib.mkIf enable {
@@ -31,10 +30,6 @@
               libvdpau-va-gl
             ];
         };
-      };
-      boot.plymouth = lib.mkIf plymouth {
-        enable = true;
-        theme = "breeze";
       };
       console.font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
       time.timeZone = "NZ";
