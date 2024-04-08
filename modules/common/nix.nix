@@ -13,6 +13,7 @@
         ];
         auto-optimise-store = true;
         allowed-users = ["@wheel"];
+	builders-use-substitutes = true;
       };
       gc = {
         automatic = true;
