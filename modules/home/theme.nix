@@ -3,7 +3,7 @@
   lib,
   inputs,
   pkgs,
-  rose-pine,
+  colours,
   ...
 }: {
   imports = [inputs.base16.nixosModule];
@@ -12,12 +12,9 @@
     gtk = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop) alacritty;
     inherit (config.cute.home) gtk hyprland;
-    inherit (config.cute.common) nixvim;
   in
     lib.mkIf config.cute.home.base16 {
-      scheme = lib.mkDefault rose-pine/dawn.yaml;
       home-manager.users.pagu = {
         gtk = lib.mkIf gtk {
           enable = true;
@@ -44,53 +41,33 @@
             x11.enable = true;
           };
         };
-        programs.alacritty.settings.colors = with config.scheme.withHashtag; let
-          default = {
-            white = base06;
-            blue = base0C;
-            red = base08;
-            green = base0B;
-            yellow = base09;
-            magenta = base0D;
-            cyan = base0A;
-          };
+        wayland.windowManager.hyprland.settings.general = let
+          inherit (config) scheme;
         in
-          lib.mkIf alacritty {
-            primary = {
-              background = base00;
-              foreground = base05;
-            };
-            cursor = {
-              text = base02;
-              cursor = base07;
-            };
-            normal = default // {black = base00;};
-            bright = default // {black = base03;};
-            dim = default // {black = base03;};
-          };
-        wayland.windowManager.hyprland.settings.general = with config.scheme;
           lib.mkIf hyprland {
-            "col.active_border" = "0xFF" + base0B;
-            "col.inactive_border" = "0xFF" + base00;
+            "col.active_border" = "0xFF" + scheme.base0B;
+            "col.inactive_border" = "0xFF" + scheme.base00;
           };
       };
-      console.colors = with rose-pine.moon; [
+      console.colors = let
+        inherit (colours) dark;
+      in [
         "000000"
-        love
-        foam
-        gold
-        pine
-        iris
-        rose
-        text
-        overlay
-        love
-        foam
-        gold
-        pine
-        iris
-        rose
-        text
+        dark.love
+        dark.foam
+        dark.gold
+        dark.pine
+        dark.iris
+        dark.rose
+        dark.text
+        dark.overlay
+        dark.love
+        dark.foam
+        dark.gold
+        dark.pine
+        dark.iris
+        dark.rose
+        dark.text
       ];
       specialisation.dark.configuration = {
         home-manager.users.pagu = lib.mkIf gtk {
@@ -100,8 +77,6 @@
           };
           home.pointerCursor.name = "BreezeX-RosePineDawn-Linux";
         };
-        scheme = rose-pine/moon.yaml;
-        programs.nixvim.colorschemes.rose-pine.style = lib.mkIf nixvim "moon";
       };
     };
 }

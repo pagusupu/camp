@@ -107,15 +107,18 @@
           '';
         };
         home = {
-          packages = with pkgs; [
-            imv
-            grimblast
-            hypridle
-            hyprlock
-            rwpspread
-            swaybg
-            wl-clipboard
-          ];
+          packages = builtins.attrValues {
+            inherit
+              (pkgs)
+              imv
+              grimblast
+              hypridle
+              hyprlock
+              rwpspread
+              swaybg
+              wl-clipboard
+              ;
+          };
           file = {
             "hypridle" = {
               target = ".config/hypr/hypridle.conf";

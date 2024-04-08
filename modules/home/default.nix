@@ -10,7 +10,7 @@
     ags = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute.home) enable ags;
+    inherit (config.cute.home) enable;
   in {
     home-manager = lib.mkIf enable {
       useGlobalPkgs = true;
@@ -21,12 +21,7 @@
           username = "pagu";
           homeDirectory = "/home/pagu";
           stateVersion = "23.05";
-        };
-        imports = [inputs.ags.homeManagerModules.default];
-        programs.ags = lib.mkIf ags {
-          enable = true;
-          configDir = ./ags;
-        };
+        }; 
       };
     };
   };

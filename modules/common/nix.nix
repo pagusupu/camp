@@ -19,10 +19,18 @@
         dates = "weekly";
         options = "--delete-older-than 7d";
       };
+      optimise.automatic = true;
+      channel.enable = false;
     };
     nixpkgs = {
       hostPlatform = "x86_64-linux";
       config.allowUnfree = true;
+    };
+    documentation = {
+      enable = false;
+      doc.enable = false;
+      info.enable = false;
+      nixos.enable = false;
     };
   };
 }

@@ -52,9 +52,8 @@
       projectRootFile = "flake.nix";
       programs = {
         alejandra.enable = true;
-        biome.enable = false; # for ags when i finally start
         deadnix.enable = true;
-        yamlfmt.enable = true;
+        statix.enable = true;
       };
     };
   };

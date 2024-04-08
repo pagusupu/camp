@@ -12,7 +12,9 @@
     inherit (config.cute.home) enable mako waybar wofi;
   in {
     home-manager.users.pagu = lib.mkIf enable {
-      services.mako = with config.scheme;
+      services.mako = let
+        inherit (config) scheme;
+      in
         lib.mkIf mako {
           enable = true;
           anchor = "bottom-left";
@@ -21,9 +23,9 @@
           borderSize = 2;
           borderRadius = 6;
           margin = "14";
-          backgroundColor = "#" + base00;
-          borderColor = "#" + base0D;
-          textColor = "#" + base05;
+          backgroundColor = "#" + scheme.base00;
+          borderColor = "#" + scheme.base0D;
+          textColor = "#" + scheme.base05;
           extraConfig = ''
             [mode=do-not-disturb]
             invisible=1
@@ -59,7 +61,6 @@
               };
             };
           in {
-            # alejandra is a bit funky here
             leftbar =
               {
                 position = "left";
@@ -75,7 +76,9 @@
               }
               // common;
           };
-          style = with config.scheme; ''
+          style = let
+            inherit (config) scheme;
+          in ''
             * {
               all: unset;
               font-family: "MonaspiceNe Nerd Font";
@@ -85,20 +88,20 @@
               background: transparent;
             }
             #workspaces {
-              background: #${base00};
+              background: #${scheme.base00};
               border-radius: 20px;
               padding: 5px 2px 5px 0px;
               margin-top: 6px;
             }
             #workspaces button {
-              color: #${base0B};
+              color: #${scheme.base0B};
             }
             #workspaces button.empty {
-              color: #${base05};
+              color: #${scheme.base05};
             }
             #clock {
-              color: #${base05};
-              background: #${base00};
+              color: #${scheme.base05};
+              background: #${scheme.base00};
               border-radius: 20px;
               padding: 7px 0px 6px 9px;
               margin-bottom: 6px;

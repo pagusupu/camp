@@ -17,39 +17,20 @@
   };
   config = let
     inherit (config.cute.desktop) xdg greetd fonts audio;
-    inherit (config.cute.home) enable;
   in {
-    home-manager.users.pagu = lib.mkIf enable {
-      xdg = lib.mkIf xdg {
-        enable = true;
-        userDirs = {
-          enable = true;
-          desktop = "\$HOME/desktop";
-          documents = "\$HOME/documents";
-          download = "\$HOME/downloads";
-          pictures = "\$HOME/pictures";
-          videos = "\$HOME/pictures/videos";
-        };
-        desktopEntries = let
-          no = {noDisplay = true;};
-        in {
-          Alacritty = no // {name = "alacritty";};
-          nixos-manual = no // {name = "NixOS Manual";};
-          nvim = no // {name = "Neovim Wrapper";};
-          firefox = {
-            name = "Firefox";
-            exec = "firefox";
-            terminal = false;
-          };
-        };
-      };
+    environment.sessionVariables = lib.mkIf xdg {
+      XDG_DESKTOP_DIR = "\$HOME/desktop";
+      XDG_DOCUMENTS_DIR = "\$HOME/documents";
+      XDG_DOWNLOAD_DIR = "\$HOME/downloads";
+      XDG_PICTURES_DIR = "\$HOME/pictures";
+      XDG_VIDEOS_DIR = "\$HOME/pictures/videos";
     };
     services = {
       greetd = lib.mkIf greetd.enable {
         enable = true;
         settings = rec {
           initial_session = {
-            command = greetd.command;
+            inherit (greetd) command;
             user = "pagu";
           };
           default_session = initial_session;
@@ -72,23 +53,21 @@
       };
     };
     fonts = lib.mkIf fonts {
-      packages = with pkgs; [
-        lato
-        nerdfonts
-        noto-fonts
-        noto-fonts-cjk
-        noto-fonts-emoji
-        noto-fonts-extra
-        (pkgs.callPackage ../../pkgs/sora.nix {})
-      ];
+      packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          lato
+          nerdfonts
+          noto-fonts
+          noto-fonts-cjk
+          noto-fonts-emoji
+          noto-fonts-extra
+          ;
+        sora = pkgs.callPackage ../../pkgs/sora.nix {};
+      };
       fontconfig = {
         enable = true;
-        antialias = true;
         subpixel.rgba = "rgb";
-        hinting = {
-          enable = true;
-          autohint = true;
-        };
         defaultFonts = {
           emoji = ["Noto Color Emoji"];
           monospace = ["MonaspiceNe Nerd Font"];

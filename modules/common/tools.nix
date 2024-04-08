@@ -42,25 +42,28 @@
       };
     };
     environment = lib.mkIf tools {
-      systemPackages = with pkgs; [
-        bat
-        btop
-        dust
-        eza
-        fzf
-        nh
-        ouch
-        radeontop
-        rm-improved
-        tealdeer
-        speedtest-cli
-        wget
-        zoxide
-        (pkgs.callPackage ../../pkgs/localsend-rs.nix {})
-      ];
+      systemPackages = builtins.attrValues {
+        inherit
+          (pkgs)
+          bat
+          btop
+          dust
+          eza
+          fzf
+          nh
+          ouch
+          radeontop
+          rm-improved
+          tealdeer
+          speedtest-cli
+          wget
+          zoxide
+          ;
+        localsend-rs = pkgs.callPackage ../../pkgs/localsend-rs.nix {};
+      };
       sessionVariables.FLAKE = lib.mkIf tools "/home/pagu/flake/"; # nh
     };
-    # localsend 
+    # localsend
     networking.firewall = lib.mkIf tools {
       allowedTCPPorts = [53317];
       allowedUDPPorts = [53317];

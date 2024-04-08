@@ -1,6 +1,11 @@
-{...}: {
-  _module.args.rose-pine = {
-    moon = {
+{
+  config,
+  lib,
+  ...
+}:
+lib.mkIf config.cute.themes.rose-pine {
+  _module.args.colours = {
+    dark = {
       base = "232136";
       surface = "2a273f";
       overlay = "393552";
@@ -15,7 +20,7 @@
       iris = "c4a7e7";
       highlight = "56526e";
     };
-    dawn = {
+    light = {
       base = "faf4ed";
       surface = "fffaf3";
       overlay = "f2e9e1";
@@ -30,5 +35,9 @@
       iris = "907aa9";
       highlight = "cecacd";
     };
+  };
+  scheme = lib.mkDefault scheme/light.yaml;
+  specialisation.dark.configuration = {
+    scheme = scheme/dark.yaml;
   };
 }
