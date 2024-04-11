@@ -3,21 +3,23 @@
   config,
   pkgs,
   ...
-}: {
-  options.cute.common.zsh = {
-    enable = lib.mkEnableOption "";
-    starship = lib.mkEnableOption "";
-    prompt = lib.mkOption {
-      type = lib.types.lines;
+}: let
+  inherit (lib) mkEnableOption mkOption types mkIf getExe;
+in {
+  options.cute.programs.cli.zsh = {
+    enable = mkEnableOption "";
+    prompt = mkOption {
+      type = types.lines;
       default = "'%F{blue}% %~ >%f '";
     };
   };
   config = let
-    inherit (config.cute.common.zsh) enable starship;
-  in {
-    programs = {
-      zsh = lib.mkIf enable {
+    inherit (config.cute.programs.cli.zsh) enable prompt;
+  in
+    mkIf enable {
+      programs.zsh = {
         enable = true;
+        promptInit = "PROMPT=${prompt}";
         autosuggestions.enable = true;
         syntaxHighlighting.enable = true;
         enableGlobalCompInit = false;
@@ -49,29 +51,10 @@
           ssh-server = "ssh pagu@192.168.178.182";
         };
       };
-      starship = lib.mkIf starship {
-        enable = true;
-        settings = {
-          add_newline = false;
-          character = {
-            success_symbol = "[](bold green)";
-            error_symbol = "[](bold red)";
-          };
-          directory = {
-            home_symbol = " ";
-            read_only = " ";
-            style = "bold purple";
-            truncation_length = 5;
-          };
-          git_status.deleted = "x";
-          hostname.format = "[$hostname]($style) in ";
-        };
+      environment = {
+        shells = [pkgs.zsh];
+        binsh = getExe pkgs.dash;
       };
+      users.users.pagu.shell = pkgs.zsh;
     };
-    environment = {
-      shells = [pkgs.zsh];
-      binsh = lib.getExe pkgs.dash;
-    };
-    users.users.pagu.shell = pkgs.zsh;
-  };
 }

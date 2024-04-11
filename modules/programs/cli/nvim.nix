@@ -5,15 +5,15 @@
   ...
 }: {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options.cute.common.nvim = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.common.nvim {
+  options.cute.programs.cli.nvim = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.programs.cli.nvim {
     programs.nixvim = {
       enable = true;
       enableMan = false;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
-      luaLoader.enable = true; 
+      luaLoader.enable = true;
       options = {
         number = true;
         shiftwidth = 2;

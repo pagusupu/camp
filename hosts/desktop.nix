@@ -1,51 +1,49 @@
 {pkgs, ...}: {
   cute = {
-    desktop = {
-      alacritty = true;
-      audio = true;
-      firefox = true;
-      fonts = true;
-      programs = true;
-      games = {
-        gamemode = true;
+    enabled = {
+      net = {
+        ip = "192.168.178.126";
+        interface = "enp10s0";
+      };
+    };
+    programs = {
+      cli = {
         misc = true;
-        steam = true;
-      };
-    };
-    home = {
-      enable = true;
-      base16 = true;
-      gtk = true;
-      hyprland = true;
-      waybar = true;
-      wofi = true;
-      xdg = true;
-    };
-    common = {
-      git = true;
-      nvim = true;
-      ssh = false;
-      tools = true;
-      zsh = {
-        enable = true;
+        nvim = true;
         starship = true;
+        yazi = true;
+        zsh.enable = true;
       };
-      system = {
-        nix = true;
-        user = true;
-        hardware = {
-          enable = true;
-          amd = true;
-        };
-        networking = {
-          enable = true;
-          wired = {
-            enable = true;
-            ip = "192.168.178.126";
-            interface = "enp10s0";
-          };
+      gui = {
+        alacritty = true;
+        firefox = true;
+        misc = true;
+        waybar = true;
+        wofi = true;
+        games = {
+          gamemode = true;
+          misc = true;
+          steam = true;
         };
       };
+    };
+    desktop = {
+      audio = true;
+      fonts = true;
+    };
+    hypr = {
+      land = true;
+      lock = true;
+      idle = true;
+      pack = true;
+    };
+    system = {
+      boot = true;
+      opengl = true;
+    };
+    themes = {
+      enable = true;
+      rose-pine = true;
     };
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot
@@ -85,17 +83,13 @@
       "initcall_blacklist=acpi_cpu_freq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
-      "quiet"
-      "splash"
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
       supportedFilesystems = ["btrfs ntfs"];
-      # quiet
-      verbose = false;
     };
-    consoleLogLevel = 0;
   };
+  hardware.cpu.amd.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {
     "/boot" = {

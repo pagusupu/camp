@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.firefox = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.firefox {
+  options.cute.programs.gui.firefox = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.programs.gui.firefox {
     programs.firefox = {
       enable = true;
       package = pkgs.firefox-wayland.override {cfg.speechSynthesisSupport = false;};

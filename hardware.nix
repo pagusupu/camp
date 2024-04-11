@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.cute.common.system = {
@@ -17,22 +16,10 @@
   in
     lib.mkIf enable {
       hardware = {
-        enableRedistributableFirmware = true;
         cpu = {
           amd.updateMicrocode = lib.mkIf amd true;
           intel.updateMicrocode = lib.mkIf intel true;
         };
-        opengl = {
-          enable = true;
-          extraPackages = with pkgs;
-            lib.mkIf amd [
-              vaapiVdpau
-              libvdpau-va-gl
-            ];
-        };
       };
-      console.font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
-      time.timeZone = "NZ";
-      i18n.defaultLocale = "en_NZ.UTF-8";
     };
 }

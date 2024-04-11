@@ -4,14 +4,9 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop = {
-    alacritty = lib.mkEnableOption "";
-    programs = lib.mkEnableOption "";
-  };
-  config = let
-    inherit (config.cute.desktop) alacritty programs;
-  in {
-    home.file."alacritty" = lib.mkIf alacritty {
+  options.cute.programs.gui.alacritty = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.programs.gui.alacritty {
+    home.file."alacritty" = {
       target = ".config/alacritty/alacritty.toml";
       source = (pkgs.formats.toml {}).generate "alacritty.toml" {
         cursor = {
@@ -54,16 +49,6 @@
         };
       };
     };
-    environment = lib.mkIf programs {
-      systemPackages = builtins.attrValues {
-        inherit
-          (pkgs)
-          alacritty
-          localsend
-          pwvucontrol
-          ueberzugpp
-          ;
-      };
-    };
+    environment.systemPackages = [pkgs.alacritty];
   };
 }

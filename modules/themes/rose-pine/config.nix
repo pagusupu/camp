@@ -5,13 +5,12 @@
   ...
 }: let
   inherit (lib) mkIf mkDefault;
-  inherit (config.cute.common) nvim;
-  inherit (config.cute.home) gtk;
+  inherit (config.cute.programs.cli) nvim;
   dawn = "rose-pine-dawn";
   moon = "rose-pine-moon";
 in
   mkIf config.cute.themes.rose-pine {
-    home-manager.users.pagu = mkIf gtk {
+    home-manager.users.pagu = {
       gtk = {
         enable = true;
         theme = {
@@ -44,7 +43,7 @@ in
       programs.nixvim.colorschemes.rose-pine = mkIf nvim {
         style = "moon";
       };
-      home-manager.users.pagu = mkIf gtk {
+      home-manager.users.pagu = {
         gtk = {
           theme.name = moon;
           iconTheme.name = moon;

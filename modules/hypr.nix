@@ -3,16 +3,24 @@
   lib,
   pkgs,
   ...
-}: {
-  options.cute.home.hyprland = lib.mkEnableOption "";
+}: let
+  inherit (lib) mkEnableOption mkMerge mkIf;
+in {
+  options.cute.hypr = {
+    land = mkEnableOption "";
+    lock = mkEnableOption "";
+    idle = mkEnableOption "";
+    pack = mkEnableOption "";
+  };
   config = let
+    inherit (config.cute.hypr) land lock idle pack;
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
   in
-    lib.mkIf config.cute.home.hyprland {
-      home-manager.users.pagu = {
-        wayland.windowManager.hyprland = {
+    mkMerge [
+      (mkIf land {
+        home-manager.users.pagu.wayland.windowManager.hyprland = {
           enable = true;
           settings = {
             exec-once = [
@@ -27,8 +35,6 @@
               "float, class:(com.saivert.pwvucontrol)"
             ];
             env = [
-              "XCURSOR_SIZE,24"
-              "XCURSOR_THEME,BreezeX-RosePine-Linux"
               "NIXOS_OZONE_WL,1"
               "_JAVA_AWT_WM_NONREPARENTING,1"
             ];
@@ -114,71 +120,78 @@
             ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
           '';
         };
-        home = {
-          packages = builtins.attrValues {
-            inherit
-              (pkgs)
-              imv
-              grimblast
-              hypridle
-              hyprlock
-              mako
-              rwpspread
-              swaybg
-              wl-clipboard
-              ;
+      })
+      (mkIf lock {
+        home-manager.users.pagu.home = {
+          file."hyprlock" = {
+            target = ".config/hypr/hyprlock.conf";
+            text = let
+              inherit (config) scheme;
+            in ''
+              general {
+                hide_cursor = true
+                disable_loading_bar = true
+              }
+              background {
+                monitor =
+                path = screenshot
+                blur_size = 10
+                blur_passes = 4
+              }
+              input-field {
+                monitor = ${m1}
+                size = 200, 50
+                position = 0, -20
+                halign = center
+                valign = center
+                fade_on_empty = false
+                outline_thickness = 3
+                outer_color = 0xFF${scheme.base0D}
+                inner_color = 0xFF${scheme.base00}
+                font_color = 0xFF${scheme.base05}
+                check_color = 0xFF${scheme.base0B}
+                fail_color = 0xFF${scheme.base08}
+                capslock_color = 0xFF${scheme.base0A}
+                placeholder_text =
+              }
+            '';
           };
-          file = {
-            "hypridle" = {
-              target = ".config/hypr/hypridle.conf";
-              text = ''
-                general {
-                  lock_cmd = pidof hyprlock || hyprlock
-                }
-                listener {
-                  timeout = 300
-                  on-timeout = loginctl lock-session
-                }
-              '';
-            };
-            "hyprlock" = {
-              target = ".config/hypr/hyprlock.conf";
-              text = with config.scheme; ''
-                general {
-                  hide_cursor = true
-                  disable_loading_bar = true
-                }
-                background {
-                  monitor =
-                  path = screenshot
-                  blur_size = 10
-                  blur_passes = 4
-                }
-                input-field {
-                  monitor = ${m1}
-                  size = 200, 50
-                  position = 0, -20
-                  halign = center
-                  valign = center
-                  fade_on_empty = false
-                  outline_thickness = 3
-                  outer_color = 0xFF${base0D}
-                  inner_color = 0xFF${base00}
-                  font_color = 0xFF${base05}
-                  check_color = 0xFF${base0B}
-                  fail_color = 0xFF${base08}
-                  capslock_color = 0xFF${base0A}
-                  placeholder_text =
-                }
-              '';
-            };
-          };
+          packages = [pkgs.hyprlock];
         };
-      };
-      cute.desktop.greetd = {
-        enable = true;
-        command = "${pkgs.hyprland}/bin/Hyprland";
-      };
-      security.pam.services.hyprlock = {};
-    };
+        cute.desktop.greetd = {
+          enable = true;
+          command = "${pkgs.hyprland}/bin/Hyprland";
+        };
+        security.pam.services.hyprlock = {};
+      })
+      (mkIf idle {
+        home-manager.users.pagu.home = {
+          file."hypridle" = {
+            target = ".config/hypr/hypridle.conf";
+            text = ''
+              general {
+                lock_cmd = pidof hyprlock || hyprlock
+              }
+              listener {
+                timeout = 300
+                on-timeout = loginctl lock-session
+              }
+            '';
+          };
+          packages = [pkgs.hypridle];
+        };
+      })
+      (mkIf pack {
+        home-manager.users.pagu.home.packages = builtins.attrValues {
+          inherit
+            (pkgs)
+            grimblast
+            mako
+            rwpspread
+            swaybg
+            wl-clipboard
+            ;
+        };
+      })
+    ];
 }
