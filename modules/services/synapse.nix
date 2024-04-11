@@ -10,7 +10,7 @@
   in
     lib.mkIf config.cute.services.synapse {
       age.secrets.synapse = {
-        file = ../../secrets/synapse.age;
+        file = ../../misc/secrets/synapse.age;
         owner = "matrix-synapse";
       };
       services = {

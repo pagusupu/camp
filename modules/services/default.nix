@@ -2,52 +2,50 @@
   config,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkMerge mkIf;
+in {
   options.cute.services = {
-    fail2ban = lib.mkEnableOption "";
-    grcy = lib.mkEnableOption "";
-    jlly = lib.mkEnableOption "";
-    kmga = lib.mkEnableOption "";
+    fail2ban = mkEnableOption "";
+    homeassistant = mkEnableOption "";
   };
   config = let
-    inherit (config.networking) domain;
-    inherit (config.cute.services) fail2ban grcy jlly kmga;
-  in {
-    services = {
-      fail2ban = lib.mkIf fail2ban {
-        enable = true;
-        bantime-increment = {
+    inherit (config.cute.services) fail2ban homeassistant;
+  in
+    mkMerge [
+      (mkIf fail2ban {
+        services.fail2ban = {
           enable = true;
-          factor = "16";
+          bantime-increment = {
+            enable = true;
+            factor = "16";
+          };
         };
-      };
-      grocy = lib.mkIf grcy {
-        enable = true;
-        hostName = "grcy.${domain}";
-        settings = {
-          currency = "NZD";
-          calendar.firstDayOfWeek = 1;
+      })
+      (mkIf homeassistant {
+        services.home-assistant = {
+          enable = true;
+          openFirewall = true;
+          # configDir = /storage/services/hass;
+          extraComponents = [
+            # required for onboarding
+            # "esphome"
+            # "met"
+            # "radiob_browser"
+            "fritz"
+            "light"
+            "wiz"
+          ];
+          config = {
+            default_config = {};
+            homeassistant = {
+              time_zone = "Pacific/Auckland";
+              temperature_unit = "C";
+              unit_system = "metric";
+            };
+          };
         };
-      };
-      jellyfin = lib.mkIf jlly {
-        enable = true;
-        openFirewall = true;
-      };
-      komga = lib.mkIf kmga {
-        enable = true;
-        openFirewall = true;
-        port = 8097;
-      };
-      nginx.virtualHosts = let
-        common = {
-          forceSSL = true;
-          enableACME = true;
-        };
-      in {
-        "grcy.${domain}" = common;
-        "jlly.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:8096";} // common;
-        "kmga.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:8097";} // common;
-      };
-    };
-  };
+        nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"]; # https://nixos.wiki/wiki/Home_Assistant#OpenSSL_1.1_is_marked_as_insecure.2C_refusing_to_evaluate
+      })
+    ];
 }

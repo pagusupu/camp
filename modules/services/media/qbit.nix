@@ -7,11 +7,11 @@
 }: {
   imports = ["${inputs.qbit}/nixos/modules/services/torrent/qbittorrent.nix"];
   # awaiting pr
-  options.cute.services.qbit = lib.mkEnableOption "";
+  options.cute.services.media.qbit = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.qbit {
+    lib.mkIf config.cute.services.media.qbit {
       services = {
         qbittorrent = {
           enable = true;

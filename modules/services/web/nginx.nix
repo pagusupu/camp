@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.services.nginx = lib.mkEnableOption "";
+  options.cute.services.web.nginx = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.nginx {
+    lib.mkIf config.cute.services.web.nginx {
       networking.firewall.allowedTCPPorts = [80 443];
       security.acme = {
         acceptTerms = true;

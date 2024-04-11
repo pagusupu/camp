@@ -3,16 +3,16 @@
   lib,
   ...
 }: {
-  options.cute.services.wrdn = lib.mkEnableOption "";
+  options.cute.services.web.wrdn = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.wrdn {
+    lib.mkIf config.cute.services.web.wrdn {
       services = {
         vaultwarden = {
           enable = true;
           config = {
-            DOMAIN = "https://vault.pagu.cafe";
+            DOMAIN = "https://wrdn.${domain}";
             SIGNUPS_ALLOWED = true;
             ROCKET_ADDRESS = "127.0.0.1";
             ROCKET_PORT = 8222;

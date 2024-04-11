@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+  inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -12,10 +12,7 @@ in {
   ];
   options.cute.themes = {
     enable = mkEnableOption "";
-    rose-pine = mkOption {
-      type = types.bool;
-      default = true;
-    };
+    rose-pine = mkEnableOption "";
   };
   config = mkIf config.cute.themes.enable {
     home-manager = {
