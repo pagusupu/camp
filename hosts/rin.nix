@@ -54,7 +54,7 @@
     sudo.wheelNeedsPassword = false;
   };
   networking = {
-    hostName = "Rin";
+    hostName = "rin";
     hostId = "6f257938";
   };
   systemd = {
@@ -84,7 +84,7 @@
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-      supportedFilesystems = ["btrfs ntfs"];
+      supportedFilesystems = ["btrfs" "ntfs"];
     };
   };
   hardware.cpu.amd.updateMicrocode = true;

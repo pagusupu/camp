@@ -28,7 +28,7 @@
             };
           };
         };
-        users.users.pagu.extraGroups = lib.mkIf gamemode ["gamemode"];
+        users.users.pagu.extraGroups = ["gamemode"];
       })
       (mkIf misc {
         environment.systemPackages = builtins.attrValues {

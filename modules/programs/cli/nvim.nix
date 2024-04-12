@@ -85,6 +85,9 @@
         };
       };
     };
-    environment.sessionVariables.EDITOR = "nvim";
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
   };
 }
