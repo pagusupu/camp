@@ -33,6 +33,7 @@
       };
     };
     programs.cli = {
+      btop = true;
       misc = true;
       nvim = true;
       ssh = true;
@@ -44,7 +45,7 @@
   };
   networking = {
     domain = "pagu.cafe";
-    hostName = "nixserver";
+    hostName = "Aoi";
     hostId = "a3b49b22";
   };
   boot = {

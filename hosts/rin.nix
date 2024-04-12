@@ -54,7 +54,7 @@
     sudo.wheelNeedsPassword = false;
   };
   networking = {
-    hostName = "desktop";
+    hostName = "Rin";
     hostId = "6f257938";
   };
   systemd = {

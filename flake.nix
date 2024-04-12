@@ -37,7 +37,7 @@
       builtins.filter (lib.hasSuffix ".nix")
       (map toString (lib.filesystem.listFilesRecursive path));
   in {
-    nixosConfigurations = lib.genAttrs ["desktop" "nixserver"] (name:
+    nixosConfigurations = lib.genAttrs ["aoi" "rin"] (name:
       lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules =

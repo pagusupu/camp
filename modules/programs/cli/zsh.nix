@@ -47,7 +47,6 @@ in {
           ls = "eza --group-directories-first";
           rm = "rip";
           cd = "z";
-          update = "sudo nix flake update ~/flake";
           ssh-server = "ssh pagu@192.168.178.182";
         };
       };
