@@ -46,7 +46,10 @@ in {
       (mkIf misc {
         time.timeZone = "NZ";
         i18n.defaultLocale = "en_NZ.UTF-8";
-        hardware.enableRedistributableFirmware = true;
+        hardware = {
+          enableRedistributableFirmware = true;
+          opengl.enable = true;
+        };
       })
       (mkIf user {
         environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];

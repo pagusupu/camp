@@ -3,13 +3,15 @@
   config,
   pkgs,
   inputs,
+  colours,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkOption types mkMerge mkIf;
+in {
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
-  options.cute.desktop = let
-    inherit (lib) mkEnableOption mkOption types;
-  in {
+  options.cute.desktop = {
     audio = mkEnableOption "";
+    boot = mkEnableOption "";
     fonts = mkEnableOption "";
     greetd = {
       enable = mkEnableOption "";
@@ -17,8 +19,7 @@
     };
   };
   config = let
-    inherit (config.cute.desktop) audio fonts greetd;
-    inherit (lib) mkMerge mkIf;
+    inherit (config.cute.desktop) audio boot fonts greetd;
   in
     mkMerge [
       (mkIf audio {
@@ -39,6 +40,36 @@
         };
         security.rtkit.enable = true;
         hardware.pulseaudio.enable = false;
+      })
+      (mkIf boot {
+        boot = {
+          enableContainers = false;
+          initrd.verbose = false;
+          kernelParams = ["quiet" "splash"];
+        };
+        console = {
+          font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
+          colors = let
+            inherit (colours) dark;
+          in [
+            "000000"
+            dark.love
+            dark.foam
+            dark.gold
+            dark.pine
+            dark.iris
+            dark.rose
+            dark.text
+            dark.overlay
+            dark.love
+            dark.foam
+            dark.gold
+            dark.pine
+            dark.iris
+            dark.rose
+            dark.text
+          ];
+        };
       })
       (mkIf fonts {
         fonts = {

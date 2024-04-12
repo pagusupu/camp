@@ -30,6 +30,7 @@
     };
     desktop = {
       audio = true;
+      boot = true;
       fonts = true;
     };
     hypr = {
@@ -37,10 +38,6 @@
       lock = true;
       idle = true;
       pack = true;
-    };
-    system = {
-      boot = true;
-      opengl = true;
     };
     themes.gtk = true;
   };

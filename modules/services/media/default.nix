@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -25,6 +26,9 @@ in {
             openFirewall = true;
           };
           nginx.virtualHosts."jlly.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:8096";} // common;
+        };
+        hardware.opengl.extraPackages = builtins.attrValues {
+          inherit (pkgs) vaapiVdpau libvdpau-va-gl;
         };
       })
       (mkIf komga {
