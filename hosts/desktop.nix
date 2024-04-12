@@ -42,10 +42,7 @@
       boot = true;
       opengl = true;
     };
-    themes = {
-      enable = true;
-      rose-pine = true;
-    };
+    themes.gtk = true;
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot
   services = {
