@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.cute.services.storage.sync = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.services.storage.sync {
+  options.cute.services.storage.etesync = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.services.storage.etesync {
     age.secrets.etebase = {
       file = ../../../misc/secrets/etebase.age;
       owner = "etebase-server";

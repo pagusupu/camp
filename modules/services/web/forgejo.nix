@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.services.web.frge = lib.mkEnableOption "";
+  options.cute.services.web.forgejo = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.web.frge {
+    lib.mkIf config.cute.services.web.forgejo {
       services = {
         forgejo = {
           enable = true;

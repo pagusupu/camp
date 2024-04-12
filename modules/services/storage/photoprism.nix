@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.services.storage.prsm = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.services.storage.prsm {
+  options.cute.services.storage.photoprism = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.services.storage.photoprism {
     age.secrets.photoprism = {
       file = ../../secrets/photoprism.age;
     };

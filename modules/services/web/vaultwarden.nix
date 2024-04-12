@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.services.web.wrdn = lib.mkEnableOption "";
+  options.cute.services.web.vaultwarden = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.web.wrdn {
+    lib.mkIf config.cute.services.web.vaultwarden {
       services = {
         vaultwarden = {
           enable = true;

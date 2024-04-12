@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.cute.services.media.navi = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.services.media.navi {
+  options.cute.services.media.navidrome = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.services.media.navidrome {
     age.secrets.navi-fm.file = ../../../misc/secrets/navi-fm.age;
     services = {
       navidrome = {

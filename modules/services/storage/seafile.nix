@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  options.cute.services.storage.file = lib.mkEnableOption "";
+  options.cute.services.storage.seafile = lib.mkEnableOption "";
   config = let
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.storage.file {
+    lib.mkIf config.cute.services.storage.seafile {
       services = {
         seafile = {
           enable = true;

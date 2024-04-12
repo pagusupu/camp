@@ -11,25 +11,25 @@
       synapse = true;
       docker = {
         enable = true;
-        fish = true;
+        feishin = true;
       };
       media = {
-        jlly = true;
-        kmga = true;
-        navi = true;
-        qbit = true;
+        jellyfin = true;
+        komga = true;
+        navidrome = true;
+        qbittorrent = true;
       };
       storage = {
-        file = false;
-        prsm = false;
-        sync = true;
+        etesync = true;
+        photoprism = false;
+        seafile = false;
       };
       web = {
-        cube = true;
-        frge = true;
-        grcy = true;
+        forgejo = true;
+        grocy = true;
         nginx = true;
-        wrdn = true;
+        roundcube = true;
+        vaultwarden = true;
       };
     };
     programs.cli = {

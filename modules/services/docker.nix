@@ -7,10 +7,10 @@
 in {
   options.cute.services.docker = {
     enable = mkEnableOption "";
-    fish = mkEnableOption "";
+    feishin = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.services.docker) enable fish;
+    inherit (config.cute.services.docker) enable feishin;
   in
     mkMerge [
       (mkIf enable {
@@ -22,7 +22,7 @@ in {
           oci-containers.backend = "docker";
         };
       })
-      (mkIf fish {
+      (mkIf feishin {
         virtualisation.oci-containers.containers = {
           "feishin" = {
             image = "ghcr.io/jeffvli/feishin:latest";

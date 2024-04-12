@@ -6,15 +6,15 @@
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   options.cute.services.web = {
-    cube = mkEnableOption "";
-    grcy = mkEnableOption "";
+    roundcube = mkEnableOption "";
+    grocy = mkEnableOption "";
   };
   config = let
     inherit (config.networking) domain;
-    inherit (config.cute.services.web) cube grcy;
+    inherit (config.cute.services.web) roundcube grocy;
   in
     mkMerge [
-      (mkIf grcy {
+      (mkIf grocy {
         services = {
           grocy = {
             enable = true;
@@ -30,7 +30,7 @@ in {
           };
         };
       })
-      (mkIf cube {
+      (mkIf roundcube {
         services.roundcube = {
           enable = true;
           hostName = "cube.${domain}";
