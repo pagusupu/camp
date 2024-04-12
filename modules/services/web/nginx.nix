@@ -25,14 +25,10 @@
           real_ip_header CF-Connecting-IP;
           add_header 'Referrer-Policy' 'origin-when-cross-origin';
         '';
-        virtualHosts = let
-          common = {
-            forceSSL = true;
-            enableACME = true;
-          };
-        in {
-          "${domain}" = {root = "/storage/website/cafe";} // common;
-          "dash.${domain}" = {root = "/storage/website/dash";} // common;
+        virtualHosts."${domain}" = {
+          forceSSL = true;
+          enableACME = true;
+          root = "/storage/website/cafe";
         };
       };
       users.users.nginx.extraGroups = ["acme"];

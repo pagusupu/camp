@@ -41,11 +41,10 @@
       yazi = true;
       zsh.enable = true;
     };
-    system.opengl = true;
   };
   networking = {
     domain = "pagu.cafe";
-    hostName = "Aoi";
+    hostName = "aoi";
     hostId = "a3b49b22";
   };
   boot = {
