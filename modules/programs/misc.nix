@@ -30,7 +30,6 @@ in {
             inherit
               (pkgs)
               bat
-              btop
               dust
               eza
               fzf

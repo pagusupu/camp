@@ -3,14 +3,16 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkMerge mkIf;
+in {
   options.cute.programs.cli = {
-    ssh = lib.mkEnableOption "";
-    yazi = lib.mkEnableOption "";
+    ssh = mkEnableOption "";
+    btop = mkEnableOption "";
+    yazi = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.cli) ssh yazi;
-    inherit (lib) mkMerge mkIf;
+    inherit (config.cute.programs.cli) ssh btop yazi;
   in
     mkMerge [
       (mkIf ssh {
@@ -27,6 +29,23 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPyA6gv1M1oeN8CnDLR3Z3VdcgK3hbRhHB3Nk6VbWwjK" # phone
         ];
+      })
+      (mkIf btop {
+        home.file."btop" = {
+          target = ".config/btop/btop.conf";
+          source = (pkgs.formats.toml {}).generate "btop.conf" {
+            color_theme = "TTY";
+            theme_background = false;
+            proc_sorting = "name";
+            proc_tree = true;
+            proc_left = true;
+            show_swap = false;
+            show_io_stat = false;
+            show_battery = false;
+            net_iface = "${config.cute.enabled.net.interface}";
+          };
+        };
+        environment.systemPackages = [pkgs.btop];
       })
       (mkIf yazi {
         home.file."yazi" = {

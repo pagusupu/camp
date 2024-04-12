@@ -36,7 +36,6 @@
             (pkgs)
             prismlauncher
             r2modman
-            #xivlauncher
             ;
           osu = inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin;
         };

@@ -21,9 +21,8 @@
           truncation_length = 5;
         };
         hostname = {
-          format = "[$hostname\$ssh_symbol]($style) | ";
+          format = "[$hostname](bold purple) | ";
           ssh_only = false;
-          ssh_symbol = "";
         };
         git_status.deleted = "x";
       };

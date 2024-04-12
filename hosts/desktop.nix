@@ -8,6 +8,7 @@
     };
     programs = {
       cli = {
+        btop = true;
         misc = true;
         nvim = true;
         starship = true;
