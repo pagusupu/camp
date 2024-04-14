@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.xfce.thunar];
   cute = {
     enabled = {
       net = {
