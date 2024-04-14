@@ -28,6 +28,7 @@ in {
               "waybar"
               "hypridle"
               "hyprlock"
+              "wayland-pipewire-idle-inhibit"
               "steam -silent -console"
             ];
             windowrulev2 = [
@@ -189,6 +190,7 @@ in {
             mako
             rwpspread
             swaybg
+            wayland-pipewire-idle-inhibit
             wl-clipboard
             ;
         };

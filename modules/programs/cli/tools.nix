@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -53,12 +54,16 @@ in {
           target = ".config/yazi/yazi.toml";
           source = (pkgs.formats.toml {}).generate "yazi.toml" {
             manager = {
-              sort_by = "natrual";
+              sort_by = "natural";
               sort_dir_first = true;
             };
           };
         };
-        environment.systemPackages = [pkgs.yazi];
+        nix.settings = {
+          extra-substituters = ["https://yazi.cachix.org"];
+          extra-trusted-public-keys = ["yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="];
+        };
+        environment.systemPackages = [inputs.yazi.packages.${pkgs.system}.default];
       })
     ];
 }

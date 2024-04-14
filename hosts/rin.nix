@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  environment.systemPackages = [pkgs.xfce.thunar];
   cute = {
     enabled = {
       net = {
@@ -81,8 +82,9 @@
     ];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-      supportedFilesystems = ["btrfs" "ntfs"];
+      supportedFilesystems.btrfs = true;
     };
+    supportedFilesystems.ntfs = true;
   };
   hardware.cpu.amd.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "schedutil";

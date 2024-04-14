@@ -4,15 +4,16 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkMerge mkIf;
+in {
   options.cute.programs.gui.games = {
-    gamemode = lib.mkEnableOption "";
-    misc = lib.mkEnableOption "";
-    steam = lib.mkEnableOption "";
+    gamemode = mkEnableOption "";
+    misc = mkEnableOption "";
+    steam = mkEnableOption "";
   };
   config = let
     inherit (config.cute.programs.gui.games) gamemode misc steam;
-    inherit (lib) mkMerge mkIf;
   in
     mkMerge [
       (mkIf gamemode {
@@ -36,6 +37,7 @@
             (pkgs)
             prismlauncher
             r2modman
+            ryujinx
             ;
           osu = inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin;
         };
