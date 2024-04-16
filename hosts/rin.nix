@@ -22,6 +22,7 @@
         waybar = true;
         wofi = true;
         games = {
+          aagl = true;
           gamemode = true;
           misc = true;
           steam = true;

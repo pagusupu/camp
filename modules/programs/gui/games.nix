@@ -7,15 +7,24 @@
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
+  imports = [inputs.aagl.nixosModules.default];
   options.cute.programs.gui.games = {
+    aagl = mkEnableOption "";
     gamemode = mkEnableOption "";
     misc = mkEnableOption "";
     steam = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui.games) gamemode misc steam;
+    inherit (config.cute.programs.gui.games) aagl gamemode misc steam;
   in
     mkMerge [
+      (mkIf aagl {
+        nix.settings = {
+          substituters = ["https://ezkea.cachix.org"];
+          trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
+        };
+        programs.honkers-railway-launcher.enable = true;
+      })
       (mkIf gamemode {
         programs.gamemode = {
           enable = true;
@@ -35,6 +44,7 @@ in {
         environment.systemPackages = builtins.attrValues {
           inherit
             (pkgs)
+            minigalaxy
             prismlauncher
             r2modman
             ryujinx

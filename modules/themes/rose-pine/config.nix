@@ -36,13 +36,18 @@ in
     programs = {
       nixvim.colorschemes.rose-pine = mkIf nvim {
         enable = true;
-        disableItalics = true;
-        style = mkDefault "dawn";
+        settings = {
+          dark_variant = mkDefault "dawn";
+          styles = {
+            italic = false;
+            transparency = false;
+          };
+        };
       };
     };
     specialisation.dark.configuration = {
-      programs.nixvim.colorschemes.rose-pine = mkIf nvim {
-        style = "moon";
+      programs.nixvim.colorschemes.rose-pine.settings = mkIf nvim {
+        dark_variant = "moon";
       };
       home-manager.users.pagu = mkIf gtk {
         gtk = {

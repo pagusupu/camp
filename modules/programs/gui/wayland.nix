@@ -21,7 +21,7 @@ in {
             insensitive = true;
             width = "10%";
             prompt = "";
-            lines = 7;
+            lines = 2;
           };
         };
       })
