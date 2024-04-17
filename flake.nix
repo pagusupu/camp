@@ -38,7 +38,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    yazi.url = "github:sxyazi/yazi";
   };
   outputs = inputs: let
     inherit (inputs.nixpkgs) lib legacyPackages;

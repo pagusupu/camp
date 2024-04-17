@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -59,11 +58,7 @@ in {
             };
           };
         };
-        nix.settings = {
-          extra-substituters = ["https://yazi.cachix.org"];
-          extra-trusted-public-keys = ["yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="];
-        };
-        environment.systemPackages = [inputs.yazi.packages.${pkgs.system}.default];
+        environment.systemPackages = [pkgs.yazi];
       })
     ];
 }
