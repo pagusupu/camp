@@ -29,7 +29,6 @@ in {
               "hypridle"
               "hyprlock"
               "wayland-pipewire-idle-inhibit"
-              "steam -silent -console"
             ];
             windowrulev2 = [
               "float, class:(localsend_app)"
@@ -167,19 +166,36 @@ in {
       })
       (mkIf idle {
         home-manager.users.pagu.home = {
-          file."hypridle" = {
-            target = ".config/hypr/hypridle.conf";
-            text = ''
-              general {
-                lock_cmd = pidof hyprlock || hyprlock
-              }
-              listener {
-                timeout = 300
-                on-timeout = loginctl lock-session
-              }
-            '';
+          file = {
+            "hypridle" = {
+              target = ".config/hypr/hypridle.conf";
+              text = ''
+                general {
+                  lock_cmd = pidof hyprlock || hyprlock
+                }
+                listener {
+                  timeout = 300
+                  on-timeout = loginctl lock-session
+                }
+              '';
+            };
+            "inhibit" = {
+              target = ".config/wayland-pipewire-idle-inhibit";
+              source = (pkgs.formats.toml {}).generate "config.toml" {
+                quiet = true;
+                node_blacklist = [
+                  {name = "Steam";}
+                ];
+              };
+            };
           };
-          packages = [pkgs.hypridle];
+          packages = builtins.attrValues {
+            inherit
+              (pkgs)
+              hypridle
+              wayland-pipewire-idle-inhibit
+              ;
+          };
         };
       })
       (mkIf pack {
@@ -190,7 +206,6 @@ in {
             mako
             rwpspread
             swaybg
-            wayland-pipewire-idle-inhibit
             wl-clipboard
             ;
         };

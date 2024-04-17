@@ -74,7 +74,7 @@ in {
             #workspaces {
               background: #${scheme.base00};
               border-radius: 20px;
-              padding: 5px 2px 5px 0px;
+              padding: 5px 4px 5px 0px;
               margin-top: 6px;
             }
             #workspaces button {

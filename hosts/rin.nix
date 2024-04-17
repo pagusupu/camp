@@ -25,7 +25,9 @@
           aagl = true;
           gamemode = true;
           misc = true;
+          osu = true;
           steam = true;
+          umu = false;
         };
       };
     };
