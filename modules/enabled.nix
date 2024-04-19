@@ -94,11 +94,6 @@ in {
             use-xdg-base-directories = true;
             warn-dirty = false;
           };
-          gc = {
-            automatic = true;
-            dates = "weekly";
-            options = "--delete-older-than 7d";
-          };
           channel.enable = false;
           nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
           optimise.automatic = true;

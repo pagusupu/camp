@@ -9,10 +9,11 @@ in {
   options.cute.programs.cli = {
     ssh = mkEnableOption "";
     btop = mkEnableOption "";
+    nh = mkEnableOption "";
     yazi = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.cli) ssh btop yazi;
+    inherit (config.cute.programs.cli) ssh btop nh yazi;
   in
     mkMerge [
       (mkIf ssh {
@@ -24,8 +25,8 @@ in {
           };
         };
         users.users.pagu.openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk" # desktop nixos
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # desktop windows
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk" # rin
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # ena
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPyA6gv1M1oeN8CnDLR3Z3VdcgK3hbRhHB3Nk6VbWwjK" # phone
         ];
@@ -47,6 +48,16 @@ in {
           };
         };
         environment.systemPackages = [pkgs.btop];
+      })
+      (mkIf nh {
+        programs.nh = {
+          enable = true;
+          flake = /home/pagu/flake;
+          clean = {
+            enable = true;
+            extraArgs = "--keep 10 --keep-since 3d";
+          };
+        };
       })
       (mkIf yazi {
         home.file."yazi" = {

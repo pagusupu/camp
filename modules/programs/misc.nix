@@ -25,26 +25,22 @@ in {
         };
       })
       (mkIf cli.misc {
-        environment = {
-          systemPackages = builtins.attrValues {
-            inherit
-              (pkgs)
-              bat
-              dust
-              eza
-              fzf
-              nh
-              ouch
-              radeontop
-              rm-improved
-              tealdeer
-              speedtest-cli
-              wget
-              zoxide
-              ;
-            localsend-rs = pkgs.callPackage ../../misc/pkgs/localsend-rs.nix {};
-          };
-          sessionVariables.FLAKE = "/home/pagu/flake/"; # nh
+        environment.systemPackages = builtins.attrValues {
+          inherit
+            (pkgs)
+            bat
+            dust
+            eza
+            fzf
+            ouch
+            radeontop
+            rm-improved
+            tealdeer
+            speedtest-cli
+            wget
+            zoxide
+            ;
+          localsend-rs = pkgs.callPackage ../../misc/pkgs/localsend-rs.nix {};
         };
         # localsend
         networking.firewall = {

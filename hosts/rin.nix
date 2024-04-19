@@ -10,6 +10,7 @@
       cli = {
         btop = true;
         misc = true;
+        nh = true;
         nvim = true;
         starship = true;
         yazi = true;
