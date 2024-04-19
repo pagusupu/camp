@@ -6,10 +6,7 @@
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
 in {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-    inputs.base16.nixosModule
-  ];
+  imports = [inputs.base16.nixosModule];
   options.cute.themes = {
     gtk = mkEnableOption "";
     rose-pine = mkOption {
@@ -18,21 +15,9 @@ in {
     };
   };
   config = mkIf config.cute.themes.gtk {
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      extraSpecialArgs = {inherit inputs;};
-      users.pagu = {
-        home = {
-          username = "pagu";
-          homeDirectory = "/home/pagu";
-          stateVersion = "23.05";
-        };
-        qt = {
-          enable = true;
-          platformTheme = "gtk";
-        };
-      };
+    home-manager.users.pagu.qt = {
+      enable = true;
+      platformTheme.name = "gtk";
     };
     programs.dconf.enable = true;
   };

@@ -52,7 +52,7 @@ in {
       (mkIf nh {
         programs.nh = {
           enable = true;
-          flake = /home/pagu/flake;
+          flake = "/home/pagu/camp/";
           clean = {
             enable = true;
             extraArgs = "--keep 10 --keep-since 3d";

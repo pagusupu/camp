@@ -24,7 +24,7 @@ in {
           enable = true;
           settings = {
             exec-once = [
-              "rwpspread -b swaybg -i ~/pictures/active/bg.jpg"
+              "rwpspread -b swaybg -i ~/camp/misc/images/bg.jpg"
               "waybar"
               "hypridle"
               "hyprlock"

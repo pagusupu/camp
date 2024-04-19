@@ -36,6 +36,7 @@
       audio = true;
       boot = true;
       fonts = true;
+      home = true;
     };
     hypr = {
       land = true;

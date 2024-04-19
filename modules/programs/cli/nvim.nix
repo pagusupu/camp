@@ -14,7 +14,7 @@
       viAlias = true;
       vimAlias = true;
       luaLoader.enable = true;
-      options = {
+      opts = {
         number = true;
         shiftwidth = 2;
         smartindent = true;

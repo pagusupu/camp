@@ -8,7 +8,10 @@
 }: let
   inherit (lib) mkEnableOption mkOption types mkMerge mkIf;
 in {
-  imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
+  imports = [
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
+    inputs.home-manager.nixosModules.home-manager
+  ];
   options.cute.desktop = {
     audio = mkEnableOption "";
     boot = mkEnableOption "";
@@ -17,9 +20,10 @@ in {
       enable = mkEnableOption "";
       command = mkOption {type = types.str;};
     };
+    home = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop) audio boot fonts greetd;
+    inherit (config.cute.desktop) audio boot fonts greetd home;
   in
     mkMerge [
       (mkIf audio {
@@ -106,6 +110,20 @@ in {
               user = "pagu";
             };
             default_session = initial_session;
+          };
+        };
+      })
+      (mkIf home {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {inherit inputs;};
+          users.pagu = {
+            home = {
+              username = "pagu";
+              homeDirectory = "/home/pagu";
+              stateVersion = "23.05";
+            };
           };
         };
       })
