@@ -33,11 +33,13 @@ in
         };
       };
     };
-    programs = {
-      nixvim.colorschemes.rose-pine = mkIf nvim {
+    programs.nixvim = mkIf nvim {
+      plugins.lightline.colorscheme = mkDefault "rosepine";
+      colorschemes.rose-pine = {
         enable = true;
         settings = {
-          dark_variant = mkDefault "dawn";
+          variant = "auto";
+          dark_variant = "moon";
           styles = {
             italic = false;
             transparency = false;
@@ -46,9 +48,7 @@ in
       };
     };
     specialisation.dark.configuration = {
-      programs.nixvim.colorschemes.rose-pine.settings = mkIf nvim {
-        dark_variant = "moon";
-      };
+      programs.nixvim.plugins.lightline.colorscheme = mkIf nvim "rosepine_moon";
       home-manager.users.pagu = mkIf gtk {
         gtk = {
           theme.name = moon;

@@ -9,7 +9,6 @@
   config = lib.mkIf config.cute.programs.cli.nvim {
     programs.nixvim = {
       enable = true;
-      enableMan = false;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
@@ -17,6 +16,7 @@
       opts = {
         number = true;
         shiftwidth = 2;
+        showmode = false;
         smartindent = true;
         ttyfast = true;
         undofile = true;
@@ -28,11 +28,20 @@
         }
       ];
       plugins = {
+        lightline.enable = true;
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
         barbar = {
           enable = true;
           autoHide = true;
+        };
+        indent-blankline = {
+          enable = true;
+          settings.scope = {
+            enabled = true;
+            show_start = false;
+            show_end = false;
+          };
         };
         lsp = {
           enable = true;
@@ -83,6 +92,7 @@
           enable = true;
           nixvimInjections = true;
         };
+        treesitter-refactor.enable = true;
       };
     };
     environment.variables = {
