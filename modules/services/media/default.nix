@@ -25,7 +25,17 @@ in {
             enable = true;
             openFirewall = true;
           };
-          nginx.virtualHosts."jlly.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:8096";} // common;
+          nginx.virtualHosts."jlly.${domain}" =
+            {
+              locations = {
+                "/" = {
+                  proxyWebsockets = true;
+                  proxyPass = "http://127.0.0.1:8096";
+                  extraConfig = "proxy_buffering off;";
+                };
+              };
+            }
+            // common;
         };
         hardware.opengl.extraPackages = builtins.attrValues {
           inherit (pkgs) vaapiVdpau libvdpau-va-gl;

@@ -35,6 +35,7 @@
     programs.cli = {
       btop = true;
       misc = true;
+      nh = true;
       nvim = true;
       ssh = true;
       starship = true;
