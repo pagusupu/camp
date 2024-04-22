@@ -32,6 +32,7 @@ in {
             dust
             eza
             fzf
+            nix-output-monitor
             ouch
             radeontop
             rm-improved

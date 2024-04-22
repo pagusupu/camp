@@ -44,11 +44,38 @@ in {
         };
       })
       (mkIf misc {
-        time.timeZone = "NZ";
+        boot.enableContainers = false;
         i18n.defaultLocale = "en_NZ.UTF-8";
+        time.timeZone = "NZ";
+        xdg.sounds.enable = false;
+        documentation = {
+          enable = false;
+          doc.enable = false;
+          info.enable = false;
+          nixos.enable = false;
+        };
         hardware = {
           enableRedistributableFirmware = true;
           opengl.enable = true;
+        };
+        programs = {
+          bash.enableCompletion = false;
+          command-not-found.enable = false;
+          nano.enable = false;
+        };
+        environment = {
+          defaultPackages = [];
+          variables = {
+            XDG_DATA_HOME = "\$HOME/.local/share";
+            XDG_CONFIG_HOME = "\$HOME/.config";
+            XDG_STATE_HOME = "\$HOME/.local/state";
+            XDG_CACHE_HOME = "\$HOME/.cache";
+            XDG_DESKTOP_DIR = "\$HOME/desktop";
+            XDG_DOCUMENTS_DIR = "\$HOME/documents";
+            XDG_DOWNLOAD_DIR = "\$HOME/downloads";
+            XDG_PICTURES_DIR = "\$HOME/pictures";
+            XDG_VIDEOS_DIR = "\$HOME/pictures/videos";
+          };
         };
       })
       (mkIf user {
@@ -65,17 +92,6 @@ in {
           isNormalUser = true;
           extraGroups = ["wheel"];
           hashedPasswordFile = config.age.secrets.user.path;
-        };
-        environment.variables = {
-          XDG_DATA_HOME = "\$HOME/.local/share";
-          XDG_CONFIG_HOME = "\$HOME/.config";
-          XDG_STATE_HOME = "\$HOME/.local/state";
-          XDG_CACHE_HOME = "\$HOME/.cache";
-          XDG_DESKTOP_DIR = "\$HOME/desktop";
-          XDG_DOCUMENTS_DIR = "\$HOME/documents";
-          XDG_DOWNLOAD_DIR = "\$HOME/downloads";
-          XDG_PICTURES_DIR = "\$HOME/pictures";
-          XDG_VIDEOS_DIR = "\$HOME/pictures/videos";
         };
         security.sudo.execWheelOnly = true;
       })
@@ -101,12 +117,6 @@ in {
         nixpkgs = {
           hostPlatform = "x86_64-linux";
           config.allowUnfree = true;
-        };
-        documentation = {
-          enable = false;
-          doc.enable = false;
-          info.enable = false;
-          nixos.enable = false;
         };
       })
       (let

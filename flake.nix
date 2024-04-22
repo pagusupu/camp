@@ -41,12 +41,13 @@
   };
   outputs = inputs: let
     inherit (inputs.nixpkgs) lib legacyPackages;
+    inherit (lib) hasSuffix filesystem genAttrs nixosSystem;
     importAll = path:
-      builtins.filter (lib.hasSuffix ".nix")
-      (map toString (lib.filesystem.listFilesRecursive path));
+      builtins.filter (hasSuffix ".nix")
+      (map toString (filesystem.listFilesRecursive path));
   in {
-    nixosConfigurations = lib.genAttrs ["aoi" "rin"] (name:
-      lib.nixosSystem {
+    nixosConfigurations = genAttrs ["aoi" "rin"] (name:
+      nixosSystem {
         specialArgs = {inherit inputs;};
         modules =
           [./hosts/${name}.nix]

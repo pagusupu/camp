@@ -9,7 +9,7 @@
       enable = true;
       settings = {
         add_newline = false;
-        format = "$hostname\$directory\$git_branch\$git_status\$nix_shell\$cmd_duration\$line_break\$character";
+        format = "$hostname\$directory\$git_branch\$git_status\$cmd_duration\$line_break\$character";
         character = {
           success_symbol = "[](bold green)";
           error_symbol = "[](bold red)";

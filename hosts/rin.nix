@@ -22,13 +22,14 @@
         misc = true;
         waybar = true;
         wofi = true;
-        games = {
-          aagl = true;
+        gaming = {
           gamemode = true;
-          misc = true;
-          osu = true;
           steam = true;
-          umu = false;
+          games = {
+            aagl = true;
+            misc = true;
+            osu = true;
+          };
         };
       };
     };
@@ -85,7 +86,7 @@
       "amd_pstate.shared_mem=1"
     ];
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+      availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
       supportedFilesystems.btrfs = true;
     };
     supportedFilesystems.ntfs = true;
@@ -96,6 +97,7 @@
     "/boot" = {
       device = "/dev/disk/by-label/NixBoot";
       fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
     };
     "/" = {
       device = "/dev/disk/by-label/Flake";

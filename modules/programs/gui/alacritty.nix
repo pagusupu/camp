@@ -28,24 +28,24 @@
           };
         };
         colors = let
-          inherit (config) scheme;
+          inherit (config.scheme) withHashtag;
           default = {
-            white = "#${scheme.base05}";
-            blue = "#${scheme.base0C}";
-            red = "#${scheme.base08}";
-            green = "#${scheme.base0B}";
-            yellow = "#${scheme.base09}";
-            magenta = "#${scheme.base0D}";
-            cyan = "#${scheme.base0A}";
+            white = withHashtag.base05;
+            blue = withHashtag.base0C;
+            red = withHashtag.base08;
+            green = withHashtag.base0B;
+            yellow = withHashtag.base09;
+            magenta = withHashtag.base0D;
+            cyan = withHashtag.base0A;
           };
         in {
           primary = {
-            background = "#${scheme.base00}";
-            foreground = "#${scheme.base05}";
+            background = withHashtag.base00;
+            foreground = withHashtag.base05;
           };
-          normal = default // {black = "#${scheme.base00}";};
-          bright = default // {black = "#${scheme.base03}";};
-          dim = default // {black = "#${scheme.base03}";};
+          normal = default // {black = withHashtag.base00;};
+          bright = default // {black = withHashtag.base03;};
+          dim = default // {black = withHashtag.base03;};
         };
       };
     };

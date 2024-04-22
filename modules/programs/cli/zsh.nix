@@ -22,31 +22,31 @@ in {
         promptInit = "PROMPT=${prompt}";
         autosuggestions.enable = true;
         syntaxHighlighting.enable = true;
-        enableGlobalCompInit = false;
         histSize = 10000;
         histFile = "$HOME/.cache/zsh_history";
         shellInit = ''
-          # disable weird underline
-          (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-          ZSH_HIGHLIGHT_STYLES[path]=none
-          ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-          bindkey "^[[1;5C" forward-word
-          bindkey "^[[1;5D" backward-word
           zsh-newuser-install() { :; }
           eval "$(zoxide init zsh)"
           nr() {
             nix run nixpkgs#$1 -- "''${@:2}"
           }
           ns() {
-            nix shell nixpkgs#''${^@}
+             nom shell nixpkgs#''${^@}
           }
+          # disable weird underline
+          (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+          ZSH_HIGHLIGHT_STYLES[path]=none
+          ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+          bindkey "^[[1;5C" forward-word
+          bindkey "^[[1;5D" backward-word
         '';
         shellAliases = {
           cat = "bat --theme='base16'";
+          cd = "z";
           grep = "grep --color=auto";
           ls = "eza --group-directories-first";
+          nix = "nom";
           rm = "rip";
-          cd = "z";
           ssh-server = "ssh pagu@192.168.178.182";
         };
       };

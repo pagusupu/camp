@@ -40,43 +40,41 @@
             ];
           };
         };
-        nginx = {
-          virtualHosts = {
-            "matrix.${domain}" = {
-              forceSSL = true;
-              enableACME = true;
-              root = /storage/website/matrix;
-              locations = {
-                "/_matrix".proxyPass = "http://127.0.0.1:8008";
-                "/_synapse".proxyPass = "http://127.0.0.1:8008";
-              };
+        nginx.virtualHosts = {
+          "matrix.${domain}" = {
+            forceSSL = true;
+            enableACME = true;
+            root = /storage/website/matrix;
+            locations = {
+              "/_matrix".proxyPass = "http://127.0.0.1:8008";
+              "/_synapse".proxyPass = "http://127.0.0.1:8008";
             };
-            "${domain}".locations = let
-              formatJson = pkgs.formats.json {};
-              extraConfig = ''
-                default_type application/json;
-                add_header Access-Control-Allow-Origin "*";
-              '';
-            in {
-              "=/.well-known/matrix/server" = {
-                alias = formatJson.generate "well-known-matrix-server" {
-                  "m.server" = "matrix.${domain}:443";
-                };
-                inherit extraConfig;
+          };
+          "${domain}".locations = let
+            formatJson = pkgs.formats.json {};
+            extraConfig = ''
+              default_type application/json;
+              add_header Access-Control-Allow-Origin "*";
+            '';
+          in {
+            "=/.well-known/matrix/server" = {
+              alias = formatJson.generate "well-known-matrix-server" {
+                "m.server" = "matrix.${domain}:443";
               };
-              "=/.well-known/matrix/client" = {
-                alias = formatJson.generate "well-known-matrix-client" {
-                  "m.homeserver" = {"base_url" = "https://matrix.${domain}";};
-                  "org.matrix.msc3575.proxy" = {"url" = "https://matrix.${domain}";};
-                };
-                inherit extraConfig;
+              inherit extraConfig;
+            };
+            "=/.well-known/matrix/client" = {
+              alias = formatJson.generate "well-known-matrix-client" {
+                "m.homeserver" = {"base_url" = "https://matrix.${domain}";};
+                "org.matrix.msc3575.proxy" = {"url" = "https://matrix.${domain}";};
               };
+              inherit extraConfig;
             };
-            "elmt.${domain}" = {
-              enableACME = true;
-              forceSSL = true;
-              root = pkgs.element-web;
-            };
+          };
+          "elmt.${domain}" = {
+            enableACME = true;
+            forceSSL = true;
+            root = pkgs.element-web;
           };
         };
         postgresql = {

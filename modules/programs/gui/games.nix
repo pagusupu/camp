@@ -7,26 +7,23 @@
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
-  imports = [inputs.aagl.nixosModules.default];
-  options.cute.programs.gui.games = {
-    aagl = mkEnableOption "";
+  imports = [
+    inputs.aagl.nixosModules.default
+    inputs.nix-gaming.nixosModules.platformOptimizations
+  ];
+  options.cute.programs.gui.gaming = {
     gamemode = mkEnableOption "";
-    misc = mkEnableOption "";
-    osu = mkEnableOption "";
     steam = mkEnableOption "";
-    umu = mkEnableOption "";
+    games = {
+      aagl = mkEnableOption "";
+      misc = mkEnableOption "";
+      osu = mkEnableOption "";
+    };
   };
   config = let
-    inherit (config.cute.programs.gui.games) aagl gamemode misc osu steam umu;
+    inherit (config.cute.programs.gui.gaming) gamemode games steam;
   in
     mkMerge [
-      (mkIf aagl {
-        nix.settings = {
-          substituters = ["https://ezkea.cachix.org"];
-          trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
-        };
-        programs.honkers-railway-launcher.enable = true;
-      })
       (mkIf gamemode {
         programs.gamemode = {
           enable = true;
@@ -42,7 +39,14 @@ in {
         };
         users.users.pagu.extraGroups = ["gamemode"];
       })
-      (mkIf misc {
+      (mkIf games.aagl {
+        nix.settings = {
+          substituters = ["https://ezkea.cachix.org"];
+          trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
+        };
+        programs.honkers-railway-launcher.enable = true;
+      })
+      (mkIf games.misc {
         environment.systemPackages = builtins.attrValues {
           inherit
             (pkgs)
@@ -54,7 +58,7 @@ in {
         };
         hardware.xone.enable = true;
       })
-      (mkIf osu {
+      (mkIf games.osu {
         nix.settings = {
           substituters = ["https://nix-gaming.cachix.org"];
           trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
@@ -65,6 +69,7 @@ in {
         programs.steam = {
           enable = true;
           extraCompatPackages = [pkgs.proton-ge-bin];
+          platformOptimizations.enable = true;
           gamescopeSession = {
             enable = true;
             args = ["-H 1080 -r 165 -e --expose-wayland"];
@@ -75,12 +80,6 @@ in {
           driSupport32Bit = true;
         };
         environment.systemPackages = [pkgs.protontricks];
-      })
-      (mkIf umu {
-        environment.systemPackages = [
-          inputs.umu.packages.${pkgs.system}.umu
-          pkgs.python3
-        ];
       })
     ];
 }
