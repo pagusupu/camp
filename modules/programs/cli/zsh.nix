@@ -45,7 +45,6 @@ in {
           cd = "z";
           grep = "grep --color=auto";
           ls = "eza --group-directories-first";
-          nix = "nom";
           rm = "rip";
           ssh-server = "ssh pagu@192.168.178.182";
         };

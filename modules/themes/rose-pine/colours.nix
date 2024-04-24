@@ -4,7 +4,7 @@
   ...
 }:
 lib.mkIf config.cute.themes.rose-pine {
-  boot.loader.grub.configurationName = "light";
+  boot.loader.grub.configurationName = lib.mkDefault "light";
   _module.args.colours = {
     dark = {
       base = "232136";
@@ -40,6 +40,7 @@ lib.mkIf config.cute.themes.rose-pine {
   scheme = lib.mkDefault scheme/light.yaml;
   specialisation.dark.configuration = {
     environment.etc."specialisation".text = "dark";
+    boot.loader.grub.configurationName = "dark";
     scheme = scheme/dark.yaml;
   };
 }

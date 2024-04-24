@@ -64,7 +64,7 @@ in {
           nano.enable = false;
         };
         environment = {
-          defaultPackages = [];
+          #defaultPackages = [];
           variables = {
             XDG_DATA_HOME = "\$HOME/.local/share";
             XDG_CONFIG_HOME = "\$HOME/.config";
@@ -106,6 +106,7 @@ in {
             ];
             allowed-users = ["@wheel"];
             auto-optimise-store = true;
+            builders-use-substitutes = true;
             nix-path = ["nixpkgs=flake:nixpkgs"];
             use-xdg-base-directories = true;
             warn-dirty = false;

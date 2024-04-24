@@ -52,7 +52,6 @@ in {
             (pkgs)
             heroic
             prismlauncher
-            r2modman
             ryujinx
             ;
         };

@@ -18,10 +18,10 @@
       };
       gui = {
         alacritty = true;
+        anyrun = true;
         firefox = true;
         misc = true;
         waybar = true;
-        wofi = true;
         gaming = {
           gamemode = true;
           steam = true;
@@ -77,13 +77,13 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = ["amd_pstate" "kvm-amd" "amdgpu"];
+    kernelModules = ["amd_pstate" "amdgpu" "kvm-amd"];
     kernelParams = [
-      "video=DP-3:1920x1080@165"
-      "video=HDMI-A-1:1920x1080@75"
-      "initcall_blacklist=acpi_cpu_freq_init"
       "amd_pstate=passive"
       "amd_pstate.shared_mem=1"
+      "initcall_blacklist=acpi_cpu_freq_init"
+      "video=DP-3:1920x1080@165"
+      "video=HDMI-A-1:1920x1080@75"
     ];
     initrd = {
       availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];

@@ -30,38 +30,14 @@ in {
               "hyprlock"
               "wayland-pipewire-idle-inhibit"
             ];
-            windowrulev2 = [
-              "float, class:(localsend_app)"
-              "float, class:(com.saivert.pwvucontrol)"
-            ];
             env = [
               "NIXOS_OZONE_WL,1"
               "_JAVA_AWT_WM_NONREPARENTING,1"
             ];
-            input = {
-              follow_mouse = 2;
-              accel_profile = "flat";
-              sensitivity = "-0.1";
-            };
-            general = {
-              gaps_in = 3;
-              gaps_out = 6;
-              border_size = 3;
-              no_cursor_warps = true;
-              resize_on_border = true;
-              hover_icon_on_border = false;
-              "col.active_border" = "0xFF" + config.scheme.base0B;
-              "col.inactive_border" = "0xFF" + config.scheme.base00;
-              layout = "dwindle";
-            };
-            dwindle = {
-              smart_resizing = false;
-              force_split = 2;
-            };
-            decoration = {
-              blur.enabled = false;
-              rounding = 6;
-            };
+            windowrulev2 = [
+              "float, class:(localsend_app)"
+              "float, class:(com.saivert.pwvucontrol)"
+            ];
             animations = {
               enabled = true;
               first_launch_animation = false;
@@ -72,17 +48,41 @@ in {
                 "workspaces, 1, 1, default, slidevert"
               ];
             };
+            decoration = {
+              blur.enabled = false;
+              rounding = 6;
+            };
+            dwindle = {
+              smart_resizing = false;
+              force_split = 2;
+            };
+            general = {
+              layout = "dwindle";
+              border_size = 3;
+              gaps_in = 3;
+              gaps_out = 6;
+              hover_icon_on_border = false;
+              no_cursor_warps = true;
+              resize_on_border = true;
+              "col.active_border" = "0xFF" + config.scheme.base0B;
+              "col.inactive_border" = "0xFF" + config.scheme.base00;
+            };
+            input = {
+              accel_profile = "flat";
+              follow_mouse = 2;
+              sensitivity = "-0.1";
+            };
             misc = {
-              vfr = true;
-              disable_hyprland_logo = true;
-              disable_splash_rendering = true;
               animate_manual_resizes = true;
               animate_mouse_windowdragging = true;
+              disable_hyprland_logo = true;
+              disable_splash_rendering = true;
               force_default_wallpaper = false;
+              vfr = true;
             };
             bind = [
               "${mod}, RETURN, exec, alacritty"
-              "${mod}, TAB, exec, pidof wofi || wofi --show drun -l 0"
+              "${mod}, TAB, exec, anyrun"
               "${mod}, BACKSPACE, exec, grimblast --notify --freeze copy area"
               "${mod}:SHIFT, BACKSPACE, exec, grimblast --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
               "${mod}, L, exec, hyprlock"
