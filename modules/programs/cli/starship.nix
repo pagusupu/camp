@@ -11,8 +11,12 @@
         add_newline = false;
         format = "$hostname\$directory\$git_branch\$git_status\$cmd_duration\$line_break\$character";
         character = {
-          success_symbol = "[](bold green)";
           error_symbol = "[](bold red)";
+          success_symbol = "[](bold green)";
+          vimcmd_symbol = "[](bold green)";
+          vimcmd_replace_one_symbol = "[](bold orange)";
+          vimcmd_replace_symbol = "[](bold orange)";
+          vimcmd_visual_symbol = "[](bold yellow)";
         };
         directory = {
           home_symbol = " ";
