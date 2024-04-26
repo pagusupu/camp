@@ -18,14 +18,15 @@
           openFirewall = true;
           webuiPort = 8077;
           torrentingPort = 43862;
-          profileDir = "/storage/services/qbit/profile";
-          package = pkgs.qbittorrent-nox.overrideAttrs {meta.mainProgram = "qbittorrent-nox";};
+          package = inputs.qbit.legacyPackages.${pkgs.system}.qbittorrent-nox;
           serverConfig = {
             LegalNotice.Accepted = true;
-            BitTorrent.Session = {
-              DefaultSavePath = "/storage/services/qbit/torrents";
-              TorrentExportDirectory = "/storage/services/qbit/torrents/sources/";
-              TempPath = "/storage/services/qbit/torrents/incomplete/";
+            BitTorrent.Session = let
+              basePath = "/storage/services/qbit/torrents/";
+            in {
+              DefaultSavePath = basePath + "misc/";
+              TorrentExportDirectory = basePath + "sources/";
+              TempPath = basePath + "incomplete/";
               TempPathEnabled = true;
               QueueingSystemEnabled = true;
               IgnoreSlowTorrentsForQueueing = true;
@@ -34,7 +35,7 @@
               GlobalDLSpeedLimit = 4000;
               GlobalUPSpeedLimit = 4000;
               GlobalMaxRatio = 2;
-              MaxActiveCheckingTorrents = 2;
+              MaxActiveCheckingTorrents = 5;
               MaxActiveDownloads = 3;
               MaxActiveUploads = 300;
               MaxActiveTorrents = 305;
@@ -42,14 +43,12 @@
               MaxConnections = 600;
             };
             Preferences = {
-              WebUI = let
-                vue = pkgs.fetchzip {
-                  url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.7.2/vuetorrent.zip";
-                  hash = "sha256-ys9CrbpOPYu8xJsCnqYKyC4IFD/SSAF8j+T+USqvGA8=";
-                };
-              in {
+              WebUI = {
                 AlternativeUIEnabled = true;
-                RootFolder = vue;
+                RootFolder = pkgs.fetchzip {
+                  url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.8.0/vuetorrent.zip";
+                  hash = "sha256-ewk4P88Nyd9dzsBJ/7jHaFSipbEOuSnj2Bpesl5+itc=";
+                };
                 Username = "pagu";
                 Password_PBKDF2 = ''"@ByteArray(kZipcTwDuigp5wDRkynNQA==:roLYJRl9n/jcGRTXzgont6GAsBm7Bu7LGfrUfB7QcQqgQRSOLNvBs9YrC6h8nMgN/4e4dDETmAQGF16S+zBD5Q==)"'';
                 ReverseProxySupportEnabled = true;

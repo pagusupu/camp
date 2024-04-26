@@ -18,7 +18,10 @@
           MusicFolder = "/storage/services/navidrome/music";
           ArtistArtPriority = "artist.*, album/artist.*";
           CoverArtPriority = "cover.*, external";
+          CoverJpegQuality = 100;
+          ImageCacheSize = "0";
           AutoImportPlaylists = false;
+          EnableMediaFileCoverArt = false;
           EnableSharing = true;
           EnableStarRating = false;
           EnableTranscodingConfig = true;

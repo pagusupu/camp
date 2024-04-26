@@ -12,6 +12,7 @@
       docker = {
         enable = true;
         feishin = true;
+	memos = true;
       };
       media = {
         jellyfin = true;
