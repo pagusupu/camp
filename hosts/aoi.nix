@@ -22,8 +22,8 @@
       };
       storage = {
         etesync = true;
-	nextcloud = false;
-        photoprism = false;
+        nextcloud = false;
+        photoprism = true;
       };
       web = {
         forgejo = true;
