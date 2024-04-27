@@ -12,7 +12,7 @@
       docker = {
         enable = true;
         feishin = true;
-	memos = true;
+        memos = true;
       };
       media = {
         jellyfin = true;
@@ -22,8 +22,8 @@
       };
       storage = {
         etesync = true;
+	nextcloud = false;
         photoprism = false;
-        seafile = false;
       };
       web = {
         forgejo = true;
