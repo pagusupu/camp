@@ -17,13 +17,17 @@
       mailserver = {
         enable = true;
         fqdn = "mail.${domain}";
-        domains = ["${domain}"];
-        loginAccounts."me@${domain}" = {
-          hashedPasswordFile = config.age.secrets.mail.path;
-          aliases = ["signup@${domain}" "acme@${domain}" "admin@${domain}"];
+        domains = [domain];
+        loginAccounts = {
+          "me@${domain}" = {
+            hashedPasswordFile = config.age.secrets.mail.path;
+            aliases = ["signup@${domain}" "acme@${domain}" "admin@${domain}"];
+          };
+          "nextcloud@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
         };
-        certificateScheme = "acme-nginx";
+        enableImap = false;
+        enableSubmission = false;
+        localDnsResolver = false;
       };
-      services.dovecot2.sieve.extensions = ["fileinto"];
     };
 }

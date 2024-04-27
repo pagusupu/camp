@@ -36,6 +36,15 @@
             overwriteprotocol = "https";
             trusted_proxies = ["https://next.${domain}"];
             trusted_domains = ["https://next.${domain}"];
+            mail_smtpmode = "smtp";
+            mail_sendmailmode = "smtp";
+            mail_smtpsecure = "ssl";
+            mail_smtphost = "mail.${domain}";
+            mail_smtpport = "465";
+            mail_smtpauth = 1;
+            mail_smtpname = "nextcloud@${domain}";
+            mail_from_address = "nextcloud";
+            mail_domain = domain;
           };
           hostName = "next.${domain}";
           https = true;
