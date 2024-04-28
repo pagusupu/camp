@@ -21,8 +21,7 @@
         qbittorrent = true;
       };
       storage = {
-        etesync = true;
-        nextcloud = false;
+        nextcloud = true;
         photoprism = true;
       };
       web = {

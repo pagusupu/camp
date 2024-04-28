@@ -21,11 +21,9 @@
           package = pkgs.nextcloud28;
           home = "/storage/services/nextcloud";
           configureRedis = true;
-          database.createLocally = true;
           config = {
             adminuser = "pagu";
             adminpassFile = config.age.secrets.nextcloud.path; # setup only
-            dbtype = "pgsql";
           };
           phpOptions = {
             "opcache.interned_strings_buffer" = "16";
@@ -45,6 +43,12 @@
             mail_smtpname = "nextcloud@${domain}";
             mail_from_address = "nextcloud";
             mail_domain = domain;
+          };
+          appstoreEnable = false;
+          autoUpdateApps.enable = true;
+          extraAppsEnable = true;
+          extraApps = {
+            inherit (pkgs.nextcloud28Packages.apps) calendar contacts;
           };
           hostName = "next.${domain}";
           https = true;

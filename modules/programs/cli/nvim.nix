@@ -10,6 +10,7 @@
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
+      enableMan = false;
       viAlias = true;
       vimAlias = true;
       luaLoader.enable = true;
