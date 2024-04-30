@@ -38,7 +38,7 @@ in {
               inherit (config) scheme;
             in ''
               * {
-                font-family: MonaspiceNe Nerd Font;
+                font-family: monospace;
                 font-size: 16px;
               }
               #match {
@@ -116,7 +116,7 @@ in {
           in ''
             * {
               all: unset;
-              font-family: "MonaspiceNe Nerd Font";
+              font-family: monospace;
               font-size: 14px;
             }
             window#waybar {

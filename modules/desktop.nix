@@ -118,12 +118,10 @@ in {
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = {inherit inputs;};
-          users.pagu = {
-            home = {
-              username = "pagu";
-              homeDirectory = "/home/pagu";
-              stateVersion = "23.05";
-            };
+          users.pagu.home = {
+            username = "pagu";
+            homeDirectory = "/home/pagu";
+            stateVersion = "23.05";
           };
         };
       })

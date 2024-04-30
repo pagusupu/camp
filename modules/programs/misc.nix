@@ -18,6 +18,7 @@ in {
         environment.systemPackages = builtins.attrValues {
           inherit
             (pkgs)
+	    lapce
             localsend
             pwvucontrol
             ueberzugpp

@@ -41,7 +41,7 @@
         in {
           primary = {
             background = withHashtag.base00;
-            foreground = withHashtag.base05;
+            foreground = default.white;
           };
           normal = default // {black = withHashtag.base00;};
           bright = default // {black = withHashtag.base03;};

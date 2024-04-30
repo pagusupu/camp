@@ -17,12 +17,12 @@
       };
       policies = {
         CaptivePortal = false;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-        DisableSetDesktopBackground = true;
         DisableFeedbackCommands = true;
         DisableFirefoxScreenshots = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableSetDesktopBackground = true;
+        DisableTelemetry = true;
         DontCheckDefaultBrowser = true;
         NoDefaultBookmarks = true;
         PasswordManagerEnabled = false;
@@ -31,11 +31,11 @@
           Locked = false;
         };
         FirefoxHome = {
+          Highlights = false;
+          Locked = true;
           Pocket = false;
           Snippets = false;
           TopSites = false;
-          Highlights = false;
-          Locked = true;
         };
         UserMessaging = {
           ExtensionRecommendations = false;

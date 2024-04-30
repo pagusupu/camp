@@ -74,7 +74,7 @@ in {
             };
             misc = {
               animate_manual_resizes = true;
-              animate_mouse_windowdragging = true;
+              animate_mouse_windowdragging = false;
               disable_hyprland_logo = true;
               disable_splash_rendering = true;
               force_default_wallpaper = false;
@@ -203,6 +203,7 @@ in {
           inherit
             (pkgs)
             grimblast
+            imv
             mako
             rwpspread
             swaybg

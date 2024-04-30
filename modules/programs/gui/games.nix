@@ -31,9 +31,9 @@ in {
           settings = {
             general.renice = 10;
             gpu = {
+              amd_performance_level = "high";
               apply_gpu_optimisations = "accept-responsibility";
               gpu_device = 0;
-              amd_performance_level = "high";
             };
           };
         };
