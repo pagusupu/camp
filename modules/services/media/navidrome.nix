@@ -6,31 +6,30 @@
 }: {
   options.cute.services.media.navidrome = lib.mkEnableOption "";
   config = lib.mkIf config.cute.services.media.navidrome {
-    age.secrets.navi-fm.file = ../../../misc/secrets/navi-fm.age;
     services = {
       navidrome = {
         enable = true;
         openFirewall = true;
-        settings = {
+        settings = let
+          dir = "/storage/services/navidrome/";
+        in {
           Address = "0.0.0.0";
           Port = 8098;
-          DataFolder = "/var/lib/navidrome";
-          MusicFolder = "/storage/services/navidrome/music";
-          ArtistArtPriority = "artist.*, album/artist.*";
-          CoverArtPriority = "cover.*, external";
+          CacheFolder = "/var/lib/navidrome";
+          DataFolder = dir + "data";
+          MusicFolder = dir + "music";
           CoverJpegQuality = 100;
+          IgnoredArticles = "";
           ImageCacheSize = "0";
+          SessionTimeout = "96h";
+          UILoginBackgroundUrl = "https://raw.githubusercontent.com/pagusupu/camp/b7b046def06e7098e76c9d498a38fc336a66e9cb/misc/images/solo.jpg";
+          UIWelcomeMessage = "";
           AutoImportPlaylists = false;
+          EnableExternalServices = false;
           EnableMediaFileCoverArt = false;
           EnableSharing = true;
           EnableStarRating = false;
           EnableTranscodingConfig = true;
-          SessionTimeout = "96h";
-          UIWelcomeMessage = "";
-          LastFM = {
-            ApiKey = "9bb677319d28788826b28537483ab363";
-            Secret = config.age.secrets.navi-fm.path;
-          };
         };
       };
       nginx.virtualHosts."navi.${config.networking.domain}" = {
@@ -39,6 +38,6 @@
         locations."/".proxyPass = "http://127.0.0.1:8098";
       };
     };
-    environment.systemPackages = [pkgs.flac];
+    environment.systemPackages = [pkgs.flac]; # for metaflac
   };
 }

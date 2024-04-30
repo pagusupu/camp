@@ -71,6 +71,6 @@
           options = ["bind"];
         };
       };
-      environment.systemPackages = [pkgs.photoprism];
+      environment.systemPackages = [pkgs.photoprism]; # for cli
     };
 }

@@ -7,7 +7,7 @@
     services = {
       fail2ban = true;
       homeassistant = true;
-      mailserver = true;
+      mailserver = false;
       synapse = true;
       docker = {
         enable = true;
@@ -25,10 +25,11 @@
         photoprism = true;
       };
       web = {
+        cinny = true;
         forgejo = true;
         grocy = true;
         nginx = true;
-        roundcube = true;
+        roundcube = false;
         vaultwarden = true;
       };
     };
@@ -57,7 +58,7 @@
     kernelModules = ["kvm-amd" "amdgpu"];
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
-      supportedFilesystems = ["btrfs"];
+      supportedFilesystems.btrfs = true;
     };
     swraid.enable = true;
   };

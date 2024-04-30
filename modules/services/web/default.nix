@@ -1,19 +1,30 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   options.cute.services.web = {
-    roundcube = mkEnableOption "";
+    cinny = mkEnableOption "";
     grocy = mkEnableOption "";
+    roundcube = mkEnableOption "";
   };
   config = let
     inherit (config.networking) domain;
-    inherit (config.cute.services.web) roundcube grocy;
+    inherit (config.cute.services.web) cinny grocy roundcube;
+    common = {
+      forceSSL = true;
+      enableACME = true;
+    };
   in
     mkMerge [
+      (mkIf cinny {
+        services.nginx.virtualHosts."ciny.${domain}" =
+          {root = pkgs.cinny;}
+          // common;
+      })
       (mkIf grocy {
         services = {
           grocy = {
@@ -24,10 +35,7 @@ in {
               calendar.firstDayOfWeek = 1;
             };
           };
-          nginx.virtualHosts."grcy.${domain}" = {
-            forceSSL = true;
-            enableACME = true;
-          };
+          nginx.virtualHosts."grcy.${domain}" = {} // common;
         };
       })
       (mkIf roundcube {

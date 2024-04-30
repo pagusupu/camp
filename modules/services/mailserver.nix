@@ -25,9 +25,7 @@
           };
           "nextcloud@${domain}".hashedPasswordFile = config.age.secrets.mail.path;
         };
-        enableImap = false;
-        enableSubmission = false;
-        localDnsResolver = false;
+        certificateScheme = "acme-nginx";
       };
     };
 }

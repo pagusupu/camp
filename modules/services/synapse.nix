@@ -71,11 +71,6 @@
               inherit extraConfig;
             };
           };
-          "elmt.${domain}" = {
-            enableACME = true;
-            forceSSL = true;
-            root = pkgs.element-web;
-          };
         };
         postgresql = {
           enable = true;
