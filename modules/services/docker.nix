@@ -8,11 +8,12 @@ in {
   options.cute.services.docker = {
     enable = mkEnableOption "";
     feishin = mkEnableOption "";
+    linkding = mkEnableOption "";
     memos = mkEnableOption "";
   };
   config = let
     inherit (config.networking) domain;
-    inherit (config.cute.services.docker) enable feishin memos;
+    inherit (config.cute.services.docker) enable feishin linkding memos;
     common = {
       forceSSL = true;
       enableACME = true;
@@ -34,6 +35,16 @@ in {
           ports = ["9180:9180"];
         };
         services.nginx.virtualHosts."fish.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:9180";} // common;
+      })
+      (mkIf linkding {
+        age.secrets.linkding.file = ../../misc/secrets/linkding.age;
+        virtualisation.oci-containers.containers."linkding" = {
+          image = "sissbruecker/linkding:latest";
+          ports = ["9090:9090"];
+          volumes = ["/storage/services/linkding/:/etc/linkding/data"];
+          environmentFiles = [config.age.secrets.linkding.path];
+        };
+        services.nginx.virtualHosts."link.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:9090";} // common;
       })
       (mkIf memos {
         virtualisation.oci-containers.containers."memos" = {

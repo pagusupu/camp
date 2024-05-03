@@ -12,6 +12,7 @@
       docker = {
         enable = true;
         feishin = true;
+	linkding = true;
         memos = true;
       };
       media = {
