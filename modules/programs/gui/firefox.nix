@@ -12,8 +12,8 @@
       preferences = {
         "browser.aboutConfig.showWarning" = false;
         "browser.EULA.override" = true;
-        "privacy.firstparty.isolate" = true;
         "gfx.webrender.all" = true;
+        "privacy.firstparty.isolate" = true;
       };
       policies = {
         CaptivePortal = false;
@@ -24,6 +24,7 @@
         DisableSetDesktopBackground = true;
         DisableTelemetry = true;
         DontCheckDefaultBrowser = true;
+        HardwareAcceleration = true;
         NoDefaultBookmarks = true;
         PasswordManagerEnabled = false;
         Cookies = {
@@ -32,10 +33,16 @@
         };
         FirefoxHome = {
           Highlights = false;
-          Locked = true;
           Pocket = false;
           Snippets = false;
           TopSites = false;
+          Locked = true;
+        };
+        FirefoxSuggest = {
+          ImproveSuggest = false;
+          SponsoredSuggestions = false;
+          WebSuggestions = true;
+          Locked = true;
         };
         UserMessaging = {
           ExtensionRecommendations = false;
@@ -50,26 +57,24 @@
             updates_disabled = false;
           };
         in {
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-            install_url = "${link}bitwarden-password-manager${xpi}";
-            inherit common;
-          };
-          "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = {
-            install_url = "${link}return-youtube-dislikes${xpi}";
-            inherit common;
-          };
-          "sponsorBlocker@ajay.app" = {
-            install_url = "${link}sponsorblock${xpi}";
-            inherit common;
-          };
-          "treestyletab@piro.sakura.ne.jp" = {
-            install_url = "${link}tree-style-tab${xpi}";
-            inherit common;
-          };
-          "uBlock0@raymondhill.net" = {
-            install_url = "${link}ublock-origin${xpi}";
-            inherit common;
-          };
+          "{446900e4-71c2-419f-a6a7-df9c091e268b}" =
+            {install_url = "${link}bitwarden-password-manager${xpi}";}
+            // common;
+          "{61a05c39-ad45-4086-946f-32adb0a40a9d}" =
+            {install_url = "${link}linkding-extension${xpi}";}
+            // common;
+          "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" =
+            {install_url = "${link}return-youtube-dislikes${xpi}";}
+            // common;
+          "sponsorBlocker@ajay.app" =
+            {install_url = "${link}sponsorblock${xpi}";}
+            // common;
+          "treestyletab@piro.sakura.ne.jp" =
+            {install_url = "${link}tree-style-tab${xpi}";}
+            // common;
+          "uBlock0@raymondhill.net" =
+            {install_url = "${link}ublock-origin${xpi}";}
+            // common;
         };
       };
     };

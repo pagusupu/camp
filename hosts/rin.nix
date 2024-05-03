@@ -43,7 +43,7 @@
       land = true;
       lock = true;
       idle = true;
-      pack = true;
+      misc = true;
     };
     themes.gtk = true;
   };

@@ -18,7 +18,9 @@ in {
         environment.systemPackages = builtins.attrValues {
           inherit
             (pkgs)
-	    lapce
+            epiphany
+            lapce
+            losslessaudiochecker
             localsend
             pwvucontrol
             ueberzugpp

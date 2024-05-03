@@ -2,18 +2,19 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib) mkEnableOption mkMerge mkIf getExe;
 in {
   options.cute.hypr = {
     land = mkEnableOption "";
     lock = mkEnableOption "";
     idle = mkEnableOption "";
-    pack = mkEnableOption "";
+    misc = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.hypr) land lock idle pack;
+    inherit (config.cute.hypr) land lock idle misc;
     m1 = "DP-3";
     m2 = "HDMI-A-1";
     mod = "SUPER";
@@ -160,7 +161,7 @@ in {
         };
         cute.desktop.greetd = {
           enable = true;
-          command = "${pkgs.hyprland}/bin/Hyprland";
+          command = "${getExe pkgs.hyprland}";
         };
         security.pam.services.hyprlock = {};
       })
@@ -198,17 +199,24 @@ in {
           };
         };
       })
-      (mkIf pack {
-        home-manager.users.pagu.home.packages = builtins.attrValues {
-          inherit
-            (pkgs)
-            grimblast
-            imv
-            mako
-            rwpspread
-            swaybg
-            wl-clipboard
-            ;
+      (mkIf misc {
+        home-manager.users.pagu = {
+          home.packages = builtins.attrValues {
+            inherit
+              (pkgs)
+              grimblast
+              imv
+              mako
+              rwpspread
+              swaybg
+              wl-clipboard
+              ;
+          };
+          programs.ags = {
+            enable = false;
+            # extraPackages = [];
+          };
+          imports = [inputs.ags.homeManagerModules.default];
         };
       })
     ];
