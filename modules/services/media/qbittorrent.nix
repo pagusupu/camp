@@ -34,8 +34,7 @@
               SlowTorrentsUploadRate = 40;
               GlobalDLSpeedLimit = 4000;
               GlobalUPSpeedLimit = 4000;
-              GlobalMaxRatio = 2;
-              MaxActiveCheckingTorrents = 5;
+              MaxActiveCheckingTorrents = 2;
               MaxActiveDownloads = 3;
               MaxActiveUploads = 300;
               MaxActiveTorrents = 305;

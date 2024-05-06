@@ -39,14 +39,17 @@ in {
         };
       })
       (mkIf roundcube {
-        services.roundcube = {
-          enable = true;
-          hostName = "cube.${domain}";
-          extraConfig = ''
-            $config['smtp_server']  = "tls://mail.${domain}";
-            $config['smtp_user'] = "%u";
-            $config['smtp_pass'] = "%p";
-          '';
+        services = {
+          roundcube = {
+            enable = true;
+            hostName = "cube.${domain}";
+            extraConfig = ''
+              $config['smtp_server']  = "tls://mail.${domain}";
+              $config['smtp_user'] = "%u";
+              $config['smtp_pass'] = "%p";
+            '';
+          };
+          nginx.virtualHosts."cube.${domain}" = {} // common;
         };
       })
     ];
