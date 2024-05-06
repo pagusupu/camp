@@ -18,6 +18,7 @@
       policies = {
         CaptivePortal = false;
         DisableFeedbackCommands = true;
+        DisableFirefoxAccounts = true;
         DisableFirefoxScreenshots = true;
         DisableFirefoxStudies = true;
         DisablePocket = true;
@@ -48,6 +49,23 @@
           ExtensionRecommendations = false;
           SkipOnboarding = true;
         };
+        Bookmarks = [
+          {
+            URL = "https://discord.com/channels/@me";
+            Title = "";
+            Placement = "toolbar";
+          }
+          {
+            URL = "https://ciny.pagu.cafe";
+            Title = "";
+            Placement = "toolbar";
+          }
+          {
+            URL = "https://link.pagu.cafe/bookmarks";
+            Title = "";
+            Placement = "toolbar";
+          }
+        ];
         ExtensionSettings = let
           link = "https://addons.mozilla.org/firefox/downloads/latest/";
           xpi = "/latest.xpi";

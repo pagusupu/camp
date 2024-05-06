@@ -18,9 +18,7 @@ in {
         environment.systemPackages = builtins.attrValues {
           inherit
             (pkgs)
-            epiphany
-            lapce
-            losslessaudiochecker
+            discord
             localsend
             pwvucontrol
             ueberzugpp
@@ -34,6 +32,7 @@ in {
             bat
             dust
             eza
+            flac
             fzf
             nix-output-monitor
             ouch
@@ -41,6 +40,7 @@ in {
             rm-improved
             tealdeer
             speedtest-cli
+            spek
             wget
             zoxide
             ;
