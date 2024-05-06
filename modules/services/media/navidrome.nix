@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options.cute.services.media.navidrome = lib.mkEnableOption "";
@@ -38,6 +37,5 @@
         locations."/".proxyPass = "http://127.0.0.1:8098";
       };
     };
-    environment.systemPackages = [pkgs.flac]; # for metaflac
   };
 }

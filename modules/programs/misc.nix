@@ -18,9 +18,9 @@ in {
         environment.systemPackages = builtins.attrValues {
           inherit
             (pkgs)
-            discord
             localsend
             pwvucontrol
+            spek
             ueberzugpp
             ;
         };
@@ -40,7 +40,6 @@ in {
             rm-improved
             tealdeer
             speedtest-cli
-            spek
             wget
             zoxide
             ;
