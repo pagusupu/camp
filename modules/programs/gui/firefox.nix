@@ -49,50 +49,41 @@
           ExtensionRecommendations = false;
           SkipOnboarding = true;
         };
-        Bookmarks = [
-          {
-            URL = "https://discord.com/channels/@me";
+        Bookmarks = let
+          c = {
             Title = "";
             Placement = "toolbar";
-          }
-          {
-            URL = "https://ciny.pagu.cafe";
-            Title = "";
-            Placement = "toolbar";
-          }
-          {
-            URL = "https://link.pagu.cafe/bookmarks";
-            Title = "";
-            Placement = "toolbar";
-          }
+          };
+        in [
+          ({URL = "https://discord.com/channels/@me";} // c)
+          ({URL = "https://ciny.pagu.cafe";} // c)
+          ({URL = "https://link.pagu.cafe/bookmarks";} // c)
         ];
         ExtensionSettings = let
-          link = "https://addons.mozilla.org/firefox/downloads/latest/";
-          xpi = "/latest.xpi";
-          common = {
+          l = "https://addons.mozilla.org/firefox/downloads/latest/";
+          x = "/latest.xpi";
+          c = {
             default_area = "menupanel";
-            installation_mode = "normal_installed";
+            installation_mode = "force_installed";
             updates_disabled = false;
           };
         in {
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" =
-            {install_url = "${link}bitwarden-password-manager${xpi}";}
-            // common;
+            {install_url = "${l}bitwarden-password-manager${x}";} // c;
           "{61a05c39-ad45-4086-946f-32adb0a40a9d}" =
-            {install_url = "${link}linkding-extension${xpi}";}
-            // common;
+            {install_url = "${l}linkding-extension${x}";} // c;
           "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" =
-            {install_url = "${link}return-youtube-dislikes${xpi}";}
-            // common;
+            {install_url = "${l}return-youtube-dislikes${x}";} // c;
           "sponsorBlocker@ajay.app" =
-            {install_url = "${link}sponsorblock${xpi}";}
-            // common;
+            {install_url = "${l}sponsorblock${x}";} // c;
           "treestyletab@piro.sakura.ne.jp" =
-            {install_url = "${link}tree-style-tab${xpi}";}
-            // common;
+            {install_url = "${l}tree-style-tab${x}";} // c;
           "uBlock0@raymondhill.net" =
-            {install_url = "${link}ublock-origin${xpi}";}
-            // common;
+            {install_url = "${l}ublock-origin${x}";} // c;
+          "{30280527-c46c-4e03-bb16-2e3ed94fa57c}" =
+            {install_url = "${l}protondb-for-steam${x}";} // c;
+          "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" =
+            {install_url = "${l}augmented-steam${x}";} // c;
         };
       };
     };

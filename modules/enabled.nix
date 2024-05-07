@@ -6,22 +6,23 @@
   ...
 }: let
   inherit (lib) mkOption types mkMerge mkIf;
+  inherit (types) str;
 in {
   imports = [inputs.agenix.nixosModules.default];
   options.cute.enabled = let
-    common = {
+    c = {
       type = types.bool;
       default = true;
     };
   in {
-    git = mkOption {} // common;
-    misc = mkOption {} // common;
-    nix = mkOption {} // common;
-    user = mkOption {} // common;
+    git = mkOption {} // c;
+    misc = mkOption {} // c;
+    nix = mkOption {} // c;
+    user = mkOption {} // c;
     net = {
-      enable = mkOption {} // common;
-      interface = mkOption {type = types.str;};
-      ip = mkOption {type = types.str;};
+      enable = mkOption {} // c;
+      interface = mkOption {type = str;};
+      ip = mkOption {type = str;};
     };
   };
   config = let
@@ -88,9 +89,9 @@ in {
           };
         };
         users.users.pagu = {
-          uid = 1000;
           isNormalUser = true;
           extraGroups = ["wheel"];
+          uid = 1000;
           hashedPasswordFile = config.age.secrets.user.path;
         };
         security.sudo.execWheelOnly = true;
@@ -104,20 +105,20 @@ in {
               "nix-command"
               "no-url-literals"
             ];
-            allowed-users = ["@wheel"];
             auto-optimise-store = true;
             builders-use-substitutes = true;
-            nix-path = ["nixpkgs=flake:nixpkgs"];
             use-xdg-base-directories = true;
             warn-dirty = false;
+            allowed-users = ["@wheel"];
+            nix-path = ["nixpkgs=flake:nixpkgs"];
           };
           channel.enable = false;
-          nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
           optimise.automatic = true;
+          nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
         };
         nixpkgs = {
-          hostPlatform = "x86_64-linux";
           config.allowUnfree = true;
+          hostPlatform = "x86_64-linux";
         };
       })
       (let
