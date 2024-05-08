@@ -34,7 +34,7 @@ in {
           image = "ghcr.io/jeffvli/feishin:latest";
           ports = ["9180:9180"];
         };
-        services.nginx.virtualHosts."fish.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:9180";} // common;
+        services.nginx.virtualHosts."fish.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:9180";} // config.cute.shortcuts.ssl;
       })
       (mkIf linkding {
         age.secrets.linkding.file = ../../misc/secrets/linkding.age;

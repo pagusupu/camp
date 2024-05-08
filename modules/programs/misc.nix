@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (builtins) attrValues;
 in {
   options.cute.programs = {
     cli.misc = mkEnableOption "";
@@ -15,10 +16,12 @@ in {
   in
     mkMerge [
       (mkIf gui.misc {
-        environment.systemPackages = builtins.attrValues {
+        environment.systemPackages = attrValues {
           inherit
             (pkgs)
             localsend
+            mpv
+            picard
             pwvucontrol
             spek
             ueberzugpp
@@ -26,7 +29,7 @@ in {
         };
       })
       (mkIf cli.misc {
-        environment.systemPackages = builtins.attrValues {
+        environment.systemPackages = attrValues {
           inherit
             (pkgs)
             bat
@@ -40,6 +43,7 @@ in {
             rm-improved
             tealdeer
             speedtest-cli
+            sox
             wget
             zoxide
             ;
