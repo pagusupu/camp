@@ -66,16 +66,18 @@ in {
         };
         environment = {
           #defaultPackages = [];
-          variables = {
-            XDG_DATA_HOME = "\$HOME/.local/share";
-            XDG_CONFIG_HOME = "\$HOME/.config";
-            XDG_STATE_HOME = "\$HOME/.local/state";
-            XDG_CACHE_HOME = "\$HOME/.cache";
-            XDG_DESKTOP_DIR = "\$HOME/desktop";
-            XDG_DOCUMENTS_DIR = "\$HOME/documents";
-            XDG_DOWNLOAD_DIR = "\$HOME/downloads";
-            XDG_PICTURES_DIR = "\$HOME/pictures";
-            XDG_VIDEOS_DIR = "\$HOME/pictures/videos";
+          variables = let
+            d = "/home/pagu/";
+          in {
+            XDG_DATA_HOME = d + ".local/share";
+            XDG_CONFIG_HOME = d + ".config";
+            XDG_STATE_HOME = d + ".local/state";
+            XDG_CACHE_HOME = d + ".cache";
+            XDG_DESKTOP_DIR = d + "desktop";
+            XDG_DOCUMENTS_DIR = d + "documents";
+            XDG_DOWNLOAD_DIR = d + "downloads";
+            XDG_PICTURES_DIR = d + "pictures";
+            XDG_VIDEOS_DIR = d + "pictures/videos";
           };
         };
       })
