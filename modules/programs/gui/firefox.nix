@@ -82,8 +82,6 @@
             {install_url = "${l}ublock-origin${x}";} // c;
           "{30280527-c46c-4e03-bb16-2e3ed94fa57c}" =
             {install_url = "${l}protondb-for-steam${x}";} // c;
-          "{1be309c5-3e4f-4b99-927d-bb500eb4fa88}" =
-            {install_url = "${l}augmented-steam${x}";} // c;
         };
       };
     };

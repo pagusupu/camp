@@ -33,7 +33,6 @@ in {
           inherit
             (pkgs)
             bat
-            dust
             eza
             flac
             fzf
@@ -42,7 +41,6 @@ in {
             radeontop
             rm-improved
             tealdeer
-            speedtest-cli
             sox
             wget
             zoxide

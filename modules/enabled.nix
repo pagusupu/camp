@@ -73,11 +73,6 @@ in {
             XDG_CONFIG_HOME = d + ".config";
             XDG_STATE_HOME = d + ".local/state";
             XDG_CACHE_HOME = d + ".cache";
-            XDG_DESKTOP_DIR = d + "desktop";
-            XDG_DOCUMENTS_DIR = d + "documents";
-            XDG_DOWNLOAD_DIR = d + "downloads";
-            XDG_PICTURES_DIR = d + "pictures";
-            XDG_VIDEOS_DIR = d + "pictures/videos";
           };
         };
       })

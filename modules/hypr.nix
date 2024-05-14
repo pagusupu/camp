@@ -213,6 +213,15 @@ in {
               wl-clipboard
               ;
           };
+          xdg.userDirs = let
+            d = "/home/pagu/";
+          in {
+            desktop = d + ".local/misc/desktop";
+            documents = d + "documents";
+            download = d + "downloads";
+            pictures = d + "pictures";
+            videos = d + "pictures/videos";
+          };
           programs.ags = {
             enable = true;
             # extraPackages = [];
