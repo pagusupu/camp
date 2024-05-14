@@ -14,6 +14,7 @@
         feishin = true;
         linkding = true;
         memos = true;
+        multi-scrobbler = true;
       };
       media = {
         jellyfin = true;

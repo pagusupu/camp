@@ -34,7 +34,10 @@
       nginx.virtualHosts."navi.${config.networking.domain}" = {
         forceSSL = true;
         enableACME = true;
-        locations."/".proxyPass = "http://127.0.0.1:8098";
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8098";
+          proxyWebsockets = true;
+        };
       };
     };
   };
