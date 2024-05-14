@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
