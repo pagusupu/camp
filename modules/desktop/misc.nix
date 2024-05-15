@@ -12,7 +12,7 @@ in {
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.home-manager.nixosModules.home-manager
   ];
-  options.cute.desktop = {
+  options.cute.desktop.misc = {
     audio = mkEnableOption "";
     boot = mkEnableOption "";
     fonts = mkEnableOption "";
@@ -23,7 +23,7 @@ in {
     home = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop) audio boot fonts greetd home;
+    inherit (config.cute.desktop.misc) audio boot fonts greetd home;
   in
     mkMerge [
       (mkIf audio {
@@ -87,7 +87,7 @@ in {
               noto-fonts-emoji
               noto-fonts-extra
               ;
-            sora = pkgs.callPackage ../misc/pkgs/sora.nix {};
+            sora = pkgs.callPackage ../../misc/pkgs/sora.nix {};
           };
           fontconfig = {
             enable = true;

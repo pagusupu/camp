@@ -7,12 +7,13 @@
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
-  options.cute.programs.gui = {
+  options.cute.desktop.env = {
     anyrun = mkEnableOption "";
     waybar = mkEnableOption "";
+    misc = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) anyrun waybar;
+    inherit (config.cute.desktop.env) anyrun waybar misc;
   in
     mkMerge [
       (mkIf anyrun {
@@ -142,6 +143,30 @@ in {
               padding: 7px 0px 6px 9px;
             }
           '';
+        };
+      })
+      (mkIf misc {
+        home-manager.users.pagu = {
+          home.packages = builtins.attrValues {
+            inherit
+              (pkgs)
+              grimblast
+              imv
+              mako
+              rwpspread
+              swaybg
+              wl-clipboard
+              ;
+          };
+          xdg.userDirs = let
+            d = "/home/pagu/";
+          in {
+            desktop = d + ".local/misc/desktop";
+            documents = d + "documents";
+            download = d + "downloads";
+            pictures = d + "pictures";
+            videos = d + "pictures/videos";
+          };
         };
       })
     ];

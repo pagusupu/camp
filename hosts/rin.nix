@@ -18,10 +18,8 @@
       };
       gui = {
         alacritty = true;
-        anyrun = true;
         firefox = true;
         misc = true;
-        waybar = true;
         gaming = {
           gamemode = true;
           steam = true;
@@ -34,16 +32,22 @@
       };
     };
     desktop = {
-      audio = true;
-      boot = true;
-      fonts = true;
-      home = true;
-    };
-    hypr = {
-      land = true;
-      lock = true;
-      idle = true;
-      misc = true;
+      env = {
+        anyrun = true;
+        waybar = true;
+        misc = true;
+      };
+      hypr = {
+        idle = true;
+        lock = true;
+      };
+      misc = {
+        audio = true;
+        boot = true;
+        fonts = true;
+        home = true;
+      };
+      wm.hyprland = true;
     };
     themes.gtk = true;
   };
