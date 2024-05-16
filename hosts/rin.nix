@@ -20,22 +20,20 @@
         alacritty = true;
         firefox = true;
         misc = true;
-        gaming = {
-          gamemode = true;
-          steam = true;
-          games = {
-            aagl = true;
-            misc = true;
-            osu = true;
-          };
+        steam = true;
+        games = {
+          aagl = true;
+          misc = true;
+          osu = true;
         };
       };
     };
     desktop = {
       env = {
         anyrun = true;
-        waybar = true;
         misc = true;
+        swaync = true;
+        waybar = true;
       };
       hypr = {
         idle = true;
@@ -47,7 +45,10 @@
         fonts = true;
         home = true;
       };
-      wm.hyprland = true;
+      wm = {
+        hyprland = true;
+        niri = true;
+      };
     };
     themes.gtk = true;
   };

@@ -9,11 +9,12 @@
 in {
   options.cute.desktop.env = {
     anyrun = mkEnableOption "";
-    waybar = mkEnableOption "";
     misc = mkEnableOption "";
+    swaync = mkEnableOption "";
+    waybar = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.env) anyrun waybar misc;
+    inherit (config.cute.desktop.env) anyrun misc swaync waybar;
   in
     mkMerge [
       (mkIf anyrun {
@@ -77,11 +78,45 @@ in {
           trusted-public-keys = ["anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="];
         };
       })
+      (mkIf misc {
+        home-manager.users.pagu = {
+          home.packages = builtins.attrValues {
+            inherit
+              (pkgs)
+              grimblast
+              imv
+              rwpspread
+              swaybg
+              wl-clipboard
+              ;
+          };
+          xdg.userDirs = let
+            d = "/home/pagu/";
+          in {
+            desktop = d + ".local/misc/desktop";
+            documents = d + "documents";
+            download = d + "downloads";
+            pictures = d + "pictures";
+            videos = d + "pictures/videos";
+          };
+        };
+      })
+      (mkIf swaync {
+        home-manager.users.pagu.services.swaync = {
+          enable = true;
+          settings = {
+            positionX = "left";
+            positionY = "bottom";
+            timeout = "3";
+            timeout-low = "3";
+          };
+        };
+      })
       (mkIf waybar {
         home-manager.users.pagu.programs.waybar = {
           enable = true;
           settings = let
-            common = {
+            hypr = {
               layer = "top";
               width = 36;
               modules-left = ["hyprland/workspaces"];
@@ -97,20 +132,21 @@ in {
               };
             };
           in {
-            leftbar =
+            hyprleft =
               {
                 position = "left";
                 margin-left = 6;
                 output = ["DP-3"];
               }
-              // common;
-            rightbar =
+              // hypr;
+            hyprright =
               {
                 position = "right";
                 margin-right = 6;
                 output = ["HDMI-A-1"];
               }
-              // common;
+              // hypr;
+            #niri = {};
           };
           style = let
             inherit (config) scheme;
@@ -143,30 +179,6 @@ in {
               padding: 7px 0px 6px 9px;
             }
           '';
-        };
-      })
-      (mkIf misc {
-        home-manager.users.pagu = {
-          home.packages = builtins.attrValues {
-            inherit
-              (pkgs)
-              grimblast
-              imv
-              mako
-              rwpspread
-              swaybg
-              wl-clipboard
-              ;
-          };
-          xdg.userDirs = let
-            d = "/home/pagu/";
-          in {
-            desktop = d + ".local/misc/desktop";
-            documents = d + "documents";
-            download = d + "downloads";
-            pictures = d + "pictures";
-            videos = d + "pictures/videos";
-          };
         };
       })
     ];
