@@ -11,10 +11,9 @@ in {
     anyrun = mkEnableOption "";
     misc = mkEnableOption "";
     swaync = mkEnableOption "";
-    waybar = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.env) anyrun misc swaync waybar;
+    inherit (config.cute.desktop.env) anyrun misc swaync;
   in
     mkMerge [
       (mkIf anyrun {
@@ -110,75 +109,6 @@ in {
             timeout = "3";
             timeout-low = "3";
           };
-        };
-      })
-      (mkIf waybar {
-        home-manager.users.pagu.programs.waybar = {
-          enable = true;
-          settings = let
-            hypr = {
-              layer = "top";
-              width = 36;
-              modules-left = ["hyprland/workspaces"];
-              modules-right = ["clock"];
-              clock.format = "{:%I \n%M \n%p}";
-              "hyprland/workspaces" = {
-                format = "{icon}";
-                format-icons = {
-                  active = "";
-                  persistent = "";
-                };
-                persistent-workspaces."*" = 4;
-              };
-            };
-          in {
-            hyprleft =
-              {
-                position = "left";
-                margin-left = 6;
-                output = ["DP-3"];
-              }
-              // hypr;
-            hyprright =
-              {
-                position = "right";
-                margin-right = 6;
-                output = ["HDMI-A-1"];
-              }
-              // hypr;
-            #niri = {};
-          };
-          style = let
-            inherit (config) scheme;
-          in ''
-            * {
-              all: unset;
-              font-family: monospace;
-              font-size: 14px;
-            }
-            window#waybar {
-              background: transparent;
-            }
-            #workspaces {
-              background: #${scheme.base00};
-              border-radius: 20px;
-              margin-top: 6px;
-              padding: 5px 4px 5px 0px;
-            }
-            #workspaces button {
-              color: #${scheme.base0B};
-            }
-            #workspaces button.empty {
-              color: #${scheme.base05};
-            }
-            #clock {
-              color: #${scheme.base05};
-              background: #${scheme.base00};
-              border-radius: 20px;
-              margin-bottom: 6px;
-              padding: 7px 0px 6px 9px;
-            }
-          '';
         };
       })
     ];

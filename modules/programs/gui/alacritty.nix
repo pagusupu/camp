@@ -16,7 +16,7 @@
         font = {
           size = 12;
           normal = {
-            family = "MonaspiceNe Nerd Font";
+            family = "monospace";
             style = "Regular";
           };
         };

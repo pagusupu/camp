@@ -31,7 +31,6 @@ in {
           enable = true;
           jack.enable = true;
           pulse.enable = true;
-          wireplumber.enable = true;
           alsa = {
             enable = true;
             support32Bit = true;
@@ -94,7 +93,7 @@ in {
             subpixel.rgba = "rgb";
             defaultFonts = {
               emoji = ["Noto Color Emoji"];
-              monospace = ["MonaspiceNe Nerd Font"];
+              monospace = ["JetBrainsMono Nerd Font"];
               sansSerif = ["Sora"];
               serif = ["Lato"];
             };
