@@ -8,18 +8,17 @@
     };
     programs = {
       cli = {
-        btop = true;
+        btop = false;
         misc = true;
         nh = true;
         nvim = true;
         starship = true;
-        yazi = true;
+        yazi = false;
         zsh.enable = true;
       };
       gui = {
-        alacritty = true;
+        alacritty = false;
         firefox = true;
-        misc = true;
         steam = true;
         games = {
           aagl = true;
@@ -28,29 +27,17 @@
         };
       };
     };
-    desktop = {
-      env = {
-        anyrun = true;
-        misc = true;
-        swaync = true;
-        waybar = true;
-      };
-      hypr = {
-        idle = true;
-        lock = true;
-      };
+    gnome = {
+      enable = true;
+      packages = true;
+      theme = true;
       misc = {
         audio = true;
-        boot = true;
         fonts = true;
         home = true;
-      };
-      wm = {
-        hyprland = true;
-        niri = true;
+        plymouth = true;
       };
     };
-    themes.gtk = true;
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot
   services = {

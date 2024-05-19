@@ -29,7 +29,6 @@ in {
           driSupport = true;
           driSupport32Bit = true;
         };
-        environment.systemPackages = [pkgs.protontricks];
       })
       (mkIf steam {
         programs.gamemode = {

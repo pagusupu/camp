@@ -3,27 +3,22 @@
   config,
   pkgs,
   inputs,
-  colours,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types mkMerge mkIf;
+  inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.home-manager.nixosModules.home-manager
   ];
-  options.cute.desktop.misc = {
+  options.cute.gnome.misc = {
     audio = mkEnableOption "";
-    boot = mkEnableOption "";
     fonts = mkEnableOption "";
-    greetd = {
-      enable = mkEnableOption "";
-      command = mkOption {type = types.str;};
-    };
     home = mkEnableOption "";
+    plymouth = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.misc) audio boot fonts greetd home;
+    inherit (config.cute.gnome.misc) audio fonts home plymouth;
   in
     mkMerge [
       (mkIf audio {
@@ -44,49 +39,17 @@ in {
         security.rtkit.enable = true;
         hardware.pulseaudio.enable = false;
       })
-      (mkIf boot {
-        boot = {
-          enableContainers = false;
-          initrd.verbose = false;
-          kernelParams = ["quiet" "splash"];
-        };
-        console = {
-          font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
-          colors = let
-            inherit (colours) dark;
-          in [
-            "000000"
-            dark.love
-            dark.foam
-            dark.gold
-            dark.pine
-            dark.iris
-            dark.rose
-            dark.text
-            dark.overlay
-            dark.love
-            dark.foam
-            dark.gold
-            dark.pine
-            dark.iris
-            dark.rose
-            dark.text
-          ];
-        };
-      })
       (mkIf fonts {
         fonts = {
           packages = builtins.attrValues {
             inherit
               (pkgs)
-              lato
               nerdfonts
               noto-fonts
               noto-fonts-cjk
               noto-fonts-emoji
               noto-fonts-extra
               ;
-            sora = pkgs.callPackage ../../misc/pkgs/sora.nix {};
           };
           fontconfig = {
             enable = true;
@@ -94,21 +57,9 @@ in {
             defaultFonts = {
               emoji = ["Noto Color Emoji"];
               monospace = ["JetBrainsMono Nerd Font"];
-              sansSerif = ["Sora"];
-              serif = ["Lato"];
+              sansSerif = ["Noto Sans"];
+              serif = ["Noto Serif"];
             };
-          };
-        };
-      })
-      (mkIf greetd.enable {
-        services.greetd = {
-          enable = true;
-          settings = rec {
-            initial_session = {
-              inherit (greetd) command;
-              user = "pagu";
-            };
-            default_session = initial_session;
           };
         };
       })
@@ -122,6 +73,12 @@ in {
             homeDirectory = "/home/pagu";
             stateVersion = "23.05";
           };
+        };
+      })
+      (mkIf plymouth {
+        boot.plymouth = {
+          enable = true;
+          font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/JetBrainsMonoNLNerdFontMono-Regular.ttf";
         };
       })
     ];
