@@ -1,0 +1,21 @@
+system: "base16"
+name: "Rosé Pine Dawn"
+author: "Emilia Dunfelt"
+variant: "light"
+palette:
+  base00: "faf4ed" # base
+  base01: "fffaf3" # surface
+  base02: "f2e9de" # overlay
+  base03: "9893a5" # muted
+  base04: "797593" # subtle
+  base05: "575279" # text
+  base06: "575279" # text
+  base07: "cecacd" # highlight
+  base08: "b4637a" # love
+  base09: "ea9d34" # gold
+  base0A: "d7827e" # rose
+  base0B: "286983" # pine
+  base0C: "56949f" # foam
+  base0D: "907aa9" # iris
+  base0E: "ea9d34" # gold
+  base0F: "cecacd" # highlight

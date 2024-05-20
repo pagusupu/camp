@@ -27,31 +27,28 @@
             y = 10;
           };
         };
-        # colors = let
-        #   inherit (config.scheme) withHashtag;
-        #   default = {
-        #     white = withHashtag.base05;
-        #     blue = withHashtag.base0C;
-        #    red = withHashtag.base08;
-        #    green = withHashtag.base0B;
-        #    yellow = withHashtag.base09;
-        #    magenta = withHashtag.base0D;
-        #    cyan = withHashtag.base0A;
-        #  };
-        #in {
-        #  primary = {
-        #    background = withHashtag.base00;
-        #    foreground = default.white;
-        #   };
-        #   normal = default // {black = withHashtag.base00;};
-        #   bright = default // {black = withHashtag.base03;};
-        #   dim = default // {black = withHashtag.base03;};
-        #  };
+        colors = let
+          inherit (config.scheme) withHashtag;
+          default = {
+            white = withHashtag.base05;
+            blue = withHashtag.base0C;
+            red = withHashtag.base08;
+            green = withHashtag.base0B;
+            yellow = withHashtag.base09;
+            magenta = withHashtag.base0D;
+            cyan = withHashtag.base0A;
+          };
+        in {
+          primary = {
+            background = withHashtag.base00;
+            foreground = default.white;
+          };
+          normal = default // {black = withHashtag.base00;};
+          bright = default // {black = withHashtag.base03;};
+          dim = default // {black = withHashtag.base03;};
+        };
       };
     };
-    environment.systemPackages = [
-      pkgs.alacritty
-      pkgs.ueberzugpp
-    ];
+    environment.systemPackages = [pkgs.alacritty];
   };
 }
