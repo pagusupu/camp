@@ -30,14 +30,13 @@
     };
     nixos-mailserver = {
       url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     ags.url = "github:Aylur/ags";
     base16.url = "github:SenchoPens/base16.nix";
     niri.url = "github:sodiboo/niri-flake";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };

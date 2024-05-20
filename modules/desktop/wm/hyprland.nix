@@ -40,6 +40,10 @@ in {
             "workspaces, 1, 1, default, slidevert"
           ];
         };
+        cursor = {
+          enable_hyprcursor = false;
+          no_warps = true;
+        };
         decoration = {
           blur.enabled = false;
           rounding = 6;
@@ -54,7 +58,6 @@ in {
           gaps_in = 3;
           gaps_out = 6;
           hover_icon_on_border = false;
-          no_cursor_warps = true;
           resize_on_border = true;
           "col.active_border" = "0xFF" + config.scheme.base0B;
           "col.inactive_border" = "0xFF" + config.scheme.base00;
