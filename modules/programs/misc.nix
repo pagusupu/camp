@@ -21,7 +21,6 @@ in {
             (pkgs)
             localsend
             mpv
-            picard
             pwvucontrol
             spek
             ueberzugpp

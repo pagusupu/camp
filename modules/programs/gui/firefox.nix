@@ -68,6 +68,8 @@
             updates_disabled = false;
           };
         in {
+          "{20fc2e06-e3e4-4b2b-812b-ab431220cada}" =
+            {install_url = "${l}startpage-private-search${x}";} // c;
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" =
             {install_url = "${l}bitwarden-password-manager${x}";} // c;
           "{61a05c39-ad45-4086-946f-32adb0a40a9d}" =
@@ -80,8 +82,6 @@
             {install_url = "${l}tree-style-tab${x}";} // c;
           "uBlock0@raymondhill.net" =
             {install_url = "${l}ublock-origin${x}";} // c;
-          "{30280527-c46c-4e03-bb16-2e3ed94fa57c}" =
-            {install_url = "${l}protondb-for-steam${x}";} // c;
         };
       };
     };
