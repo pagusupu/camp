@@ -14,10 +14,21 @@ in {
   config = let
     inherit (config.networking) domain;
     inherit (config.cute.services.docker) enable feishin linkding memos;
-    common = {
+    c = {
       forceSSL = true;
       enableACME = true;
     };
+    i = "http://127.0.0.1:";
+    assertions = [
+      {
+        assertion = config.cute.services.docker.enable;
+        message = "requires docker service.";
+      }
+      {
+        assertion = config.cute.services.web.nginx;
+        message = "requires nginx service.";
+      }
+    ];
   in
     mkMerge [
       (mkIf enable {
@@ -31,10 +42,11 @@ in {
       })
       (mkIf feishin {
         virtualisation.oci-containers.containers."feishin" = {
-          image = "ghcr.io/jeffvli/feishin:0.7.1";
+          image = "ghcr.io/jeffvli/feishin:latest";
           ports = ["9180:9180"];
         };
-        services.nginx.virtualHosts."fish.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:9180";} // common;
+        services.nginx.virtualHosts."fish.${domain}" = {locations."/".proxyPass = i + "9180";} // c;
+        inherit assertions;
       })
       (mkIf linkding {
         age.secrets.linkding.file = ../../misc/secrets/linkding.age;
@@ -44,7 +56,8 @@ in {
           volumes = ["/storage/services/linkding/:/etc/linkding/data"];
           environmentFiles = [config.age.secrets.linkding.path];
         };
-        services.nginx.virtualHosts."link.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:9090";} // common;
+        services.nginx.virtualHosts."link.${domain}" = {locations."/".proxyPass = i + "9090";} // c;
+        inherit assertions;
       })
       (mkIf memos {
         virtualisation.oci-containers.containers."memos" = {
@@ -52,7 +65,8 @@ in {
           ports = ["5230:5230"];
           volumes = ["/storage/services/memos/:/var/opt/memos"];
         };
-        services.nginx.virtualHosts."memo.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:5230";} // common;
+        services.nginx.virtualHosts."memo.${domain}" = {locations."/".proxyPass = i + "5230";} // c;
+        inherit assertions;
       })
     ];
 }

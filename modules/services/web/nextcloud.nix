@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   pkgs,
   ...
 }: {
@@ -9,6 +10,7 @@
     inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.web.nextcloud {
+      assertions = _lib.assertNginx;
       age.secrets = {
         nextcloud = {
           file = ../../../misc/secrets/nextcloud.age;

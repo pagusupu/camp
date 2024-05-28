@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   ...
 }: {
   options.cute.services.web.vaultwarden = lib.mkEnableOption "";
@@ -8,6 +9,7 @@
     inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.web.vaultwarden {
+      assertions = _lib.assertNginx;
       services = {
         vaultwarden = {
           enable = true;

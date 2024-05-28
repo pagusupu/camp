@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   pkgs,
   ...
 }: {
@@ -19,8 +20,15 @@
     lib.mkMerge [
       (lib.mkIf cinny {
         services.nginx.virtualHosts."ciny.${domain}" = {root = pkgs.cinny;} // c;
+        assertions = [
+          {
+            assertion = config.cute.services.matrix.synapse;
+            message = "requires synapse service";
+          }
+        ];
       })
       (lib.mkIf synapse {
+        assertions = _lib.assertNginx;
         age.secrets.synapse = {
           file = ../../misc/secrets/synapse.age;
           owner = "matrix-synapse";

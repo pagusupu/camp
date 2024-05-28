@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   pkgs,
   ...
 }: let
@@ -13,6 +14,7 @@ in {
   config = let
     inherit (config.cute.services.media) jellyfin komga;
     inherit (config.networking) domain;
+    inherit (_lib) assertNginx;
     common = {
       forceSSL = true;
       enableACME = true;
@@ -20,6 +22,7 @@ in {
   in
     mkMerge [
       (mkIf jellyfin {
+        assertions = assertNginx;
         services = {
           jellyfin = {
             enable = true;
@@ -40,6 +43,7 @@ in {
         };
       })
       (mkIf komga {
+        assertions = assertNginx;
         services = {
           komga = {
             enable = true;

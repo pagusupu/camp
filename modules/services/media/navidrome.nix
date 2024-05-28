@@ -1,10 +1,12 @@
 {
   config,
   lib,
+  _lib,
   ...
 }: {
   options.cute.services.media.navidrome = lib.mkEnableOption "";
   config = lib.mkIf config.cute.services.media.navidrome {
+    assertions = _lib.assertNginx;
     services = {
       navidrome = {
         enable = true;

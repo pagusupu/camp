@@ -1,7 +1,8 @@
 {
   config,
-  pkgs,
   lib,
+  _lib,
+  pkgs,
   inputs,
   ...
 }: {
@@ -11,6 +12,7 @@
     inherit (config.networking) domain;
   in
     lib.mkIf config.cute.services.media.qbittorrent {
+      assertions = _lib.assertNginx;
       services = {
         qbittorrent = {
           enable = true;
