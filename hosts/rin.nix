@@ -14,7 +14,7 @@
         nvim = true;
         starship = true;
         yazi = true;
-        zsh.enable = true;
+        zsh = true;
       };
       gui = {
         alacritty = true;
@@ -47,7 +47,7 @@
       };
       wm = {
         hyprland = true;
-        niri = true;
+        niri = false;
       };
     };
     themes.gtk = true;
