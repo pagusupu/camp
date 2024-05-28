@@ -23,7 +23,7 @@
           forceSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+            proxyPass = "http://127.0.0.1:8222";
             extraConfig = "proxy_pass_header Authorization;";
           };
         };

@@ -5,16 +5,15 @@
       interface = "enp37s0";
     };
     services = {
-      fail2ban = true;
-      homeassistant = true;
-      mailserver = false;
-      synapse = true;
       docker = {
         enable = true;
         feishin = true;
         linkding = true;
         memos = true;
-        multi-scrobbler = true;
+      };
+      matrix = {
+        cinny = true;
+        synapse = true;
       };
       media = {
         jellyfin = true;
@@ -22,16 +21,10 @@
         navidrome = true;
         qbittorrent = true;
       };
-      storage = {
-        nextcloud = true;
-        photoprism = true;
-      };
       web = {
-        cinny = true;
-        forgejo = true;
-        grocy = true;
+        homeassistant = true;
+        nextcloud = true;
         nginx = true;
-        roundcube = false;
         vaultwarden = true;
       };
     };
@@ -43,7 +36,7 @@
       ssh = true;
       starship = true;
       yazi = true;
-      zsh.enable = true;
+      zsh = true;
     };
   };
   networking = {

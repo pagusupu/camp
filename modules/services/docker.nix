@@ -10,11 +10,10 @@ in {
     feishin = mkEnableOption "";
     linkding = mkEnableOption "";
     memos = mkEnableOption "";
-    multi-scrobbler = mkEnableOption "";
   };
   config = let
     inherit (config.networking) domain;
-    inherit (config.cute.services.docker) enable feishin linkding memos multi-scrobbler;
+    inherit (config.cute.services.docker) enable feishin linkding memos;
     common = {
       forceSSL = true;
       enableACME = true;
@@ -54,18 +53,6 @@ in {
           volumes = ["/storage/services/memos/:/var/opt/memos"];
         };
         services.nginx.virtualHosts."memo.${domain}" = {locations."/".proxyPass = "http://127.0.0.1:5230";} // common;
-      })
-      (mkIf multi-scrobbler {
-        virtualisation.oci-containers.containers."mutli-scrobbler" = {
-          image = "foxxmd/multi-scrobbler";
-          ports = ["9078:9078"];
-          volumes = ["/storage/services/scrobble:/config"];
-          environment = {
-            PUID = "1000";
-            GUID = "1000";
-            TZ = "Pacific/Auckland";
-          };
-        };
       })
     ];
 }

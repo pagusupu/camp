@@ -27,12 +27,10 @@ in {
           };
           nginx.virtualHosts."jlly.${domain}" =
             {
-              locations = {
-                "/" = {
-                  proxyWebsockets = true;
-                  proxyPass = "http://127.0.0.1:8096";
-                  extraConfig = "proxy_buffering off;";
-                };
+              locations."/" = {
+                proxyWebsockets = true;
+                proxyPass = "http://127.0.0.1:8096";
+                extraConfig = "proxy_buffering off;";
               };
             }
             // common;
