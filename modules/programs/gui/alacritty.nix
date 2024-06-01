@@ -49,6 +49,9 @@
         };
       };
     };
-    environment.systemPackages = [pkgs.alacritty];
+    environment.systemPackages = [
+      pkgs.alacritty
+      pkgs.ueberzugpp
+    ];
   };
 }

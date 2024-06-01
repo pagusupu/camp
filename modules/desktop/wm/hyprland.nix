@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf getExe;
+  inherit (lib) mkEnableOption mkIf getExe concatMapStringsSep;
 in {
   options.cute.desktop.wm.hyprland = mkEnableOption "";
   config = mkIf config.cute.desktop.wm.hyprland {
@@ -40,10 +40,10 @@ in {
             "workspaces, 1, 1, default, slidevert"
           ];
         };
-        cursor = {
-          enable_hyprcursor = false;
-          no_warps = true;
-        };
+        #cursor = {
+        #  enable_hyprcursor = false;
+        #  no_warps = true;
+        #};
         decoration = {
           blur.enabled = false;
           rounding = 6;
@@ -110,10 +110,10 @@ in {
         ];
       };
       extraConfig = ''
-        ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m1}") ["1" "2" "3" "4"]}
-        ${lib.concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m2}") ["5" "6" "7" "8"]}
-        ${lib.concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
-        ${lib.concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
+        ${concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m1}") ["1" "2" "3" "4"]}
+        ${concatMapStringsSep "\n" (n: "workspace=${n}, monitor:${m2}") ["5" "6" "7" "8"]}
+        ${concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
+        ${concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") ["1" "2" "3" "4" "5" "6" "7" "8"]}
       '';
     };
     cute.desktop.misc.greetd = {

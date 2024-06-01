@@ -100,9 +100,10 @@
         };
       };
     };
-    hardware.opengl.extraPackages = builtins.attrValues {
-      inherit (pkgs) vaapiVdpau libvdpau-va-gl;
-    };
+    hardware.opengl.extraPackages = [
+      pkgs.libvdpau-va-gl
+      pkgs.vaapiVdpau
+    ];
     environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
   };
 }

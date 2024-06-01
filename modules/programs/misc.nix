@@ -23,7 +23,6 @@ in {
             mpv
             pwvucontrol
             spek
-            ueberzugpp
             ;
         };
       })

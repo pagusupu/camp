@@ -8,9 +8,7 @@
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
-  options.cute.programs.gui = {
-    steam = mkEnableOption "";
-  };
+  options.cute.programs.gui.steam = mkEnableOption "";
   config = let
     inherit (config.cute.programs.gui) steam;
   in
