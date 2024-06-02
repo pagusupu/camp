@@ -4,18 +4,16 @@
   _lib,
   inputs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
-in {
+}: {
   imports = [inputs.base16.nixosModule];
   options.cute.themes = {
-    gtk = mkEnableOption "";
-    rose-pine = mkOption {
-      type = types.bool;
+    gtk = lib.mkEnableOption "";
+    rose-pine = lib.mkOption {
       default = true;
+      type = lib.types.bool;
     };
   };
-  config = mkIf config.cute.themes.gtk {
+  config = lib.mkIf config.cute.themes.gtk {
     assertions = _lib.assertHm;
     home-manager.users.pagu.qt = {
       enable = true;

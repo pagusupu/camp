@@ -34,7 +34,7 @@
         rainbow-delimiters.enable = true;
         barbar = {
           enable = true;
-          autoHide = true;
+          autoHide = 1;
         };
         indent-blankline = {
           enable = true;

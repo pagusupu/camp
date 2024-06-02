@@ -26,24 +26,20 @@ in
             name = mkDefault dawn;
           };
         };
-        home = {
-          pointerCursor = {
-            package = pkgs.rose-pine-cursor;
-            name = mkDefault "BreezeX-RosePine-Linux";
-            size = 24;
-            gtk.enable = true;
-            x11.enable = true;
-          };
+        home.pointerCursor = {
+          package = pkgs.rose-pine-cursor;
+          name = mkDefault "BreezeX-RosePine-Linux";
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
         };
       };
-      specialisation.dark.configuration = {
-        home-manager.users.pagu = mkIf gtk {
-          gtk = {
-            theme.name = moon;
-            iconTheme.name = moon;
-          };
-          home.pointerCursor.name = "BreezeX-RosePineDawn-Linux";
+      specialisation.dark.configuration.home-manager.users.pagu = mkIf gtk {
+        gtk = {
+          theme.name = moon;
+          iconTheme.name = moon;
         };
+        home.pointerCursor.name = "BreezeX-RosePineDawn-Linux";
       };
     })
     (mkIf nvim {
