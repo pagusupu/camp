@@ -1,4 +1,3 @@
-# https://github.com/nu-nu-ko/crystal?tab=readme-ov-file#notes
 {
   config,
   lib,

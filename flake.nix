@@ -36,20 +36,30 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
   outputs = inputs: let
-    inherit (inputs.nixpkgs) lib legacyPackages;
-    inherit (lib) hasSuffix filesystem genAttrs nixosSystem;
-    importAll = path:
-      builtins.filter (hasSuffix ".nix")
-      (map toString (filesystem.listFilesRecursive path));
+    inherit (inputs) nixpkgs treefmt-nix;
+    inherit (nixpkgs) lib legacyPackages;
+    inherit (lib) genAttrs nixosSystem hasSuffix filesystem;
+    inherit (filesystem) listFilesRecursive;
+    inherit (builtins) concatMap filter;
+    genHosts = hosts:
+      genAttrs hosts (
+        name:
+          nixosSystem {
+            modules =
+              concatMap (x:
+                filter (hasSuffix ".nix")
+                (map toString (listFilesRecursive x)))
+              [./modules]
+              ++ [./hosts/${name}.nix];
+            specialArgs = {inherit inputs;};
+          }
+      );
   in {
-    nixosConfigurations = genAttrs ["aoi" "rin"] (name:
-      nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules =
-          [./hosts/${name}.nix]
-          ++ importAll ./modules;
-      });
-    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper legacyPackages.x86_64-linux {
+    nixosConfigurations = genHosts [
+      "aoi"
+      "rin"
+    ];
+    formatter.x86_64-linux = treefmt-nix.lib.mkWrapper legacyPackages.x86_64-linux {
       projectRootFile = "flake.nix";
       programs = {
         alejandra.enable = true;
