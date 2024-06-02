@@ -49,7 +49,10 @@
               concatMap (x:
                 filter (hasSuffix ".nix")
                 (map toString (listFilesRecursive x)))
-              [./modules]
+              [
+                ./lib
+                ./modules
+              ]
               ++ [./hosts/${name}.nix];
             specialArgs = {inherit inputs;};
           }
