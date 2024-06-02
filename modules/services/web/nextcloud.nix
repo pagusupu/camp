@@ -5,11 +5,12 @@
   pkgs,
   ...
 }: {
-  options.cute.services.web.nextcloud = lib.mkEnableOption "";
+  options.cute.services.web.nextcloud = _lib.mkWebOpt "next" 0;
   config = let
+    inherit (config.cute.services.web.nextcloud) enable dns;
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.web.nextcloud {
+    lib.mkIf enable {
       assertions = _lib.assertNginx;
       age.secrets = {
         nextcloud = {
@@ -17,45 +18,39 @@
           owner = "nextcloud";
         };
       };
-      services = {
-        nextcloud = {
-          enable = true;
-          package = pkgs.nextcloud29;
-          home = "/storage/services/nextcloud";
-          configureRedis = true;
-          config = {
-            adminuser = "pagu";
-            adminpassFile = config.age.secrets.nextcloud.path; # setup only
-          };
-          phpOptions = {
-            "opcache.interned_strings_buffer" = "16";
-            "output_buffering" = "off";
-          };
-          settings = {
-            default_phone_region = "NZ";
-            overwriteprotocol = "https";
-            trusted_proxies = ["https://next.${domain}"];
-            trusted_domains = ["https://next.${domain}"];
-          };
-          appstoreEnable = false;
-          autoUpdateApps.enable = true;
-          extraAppsEnable = true;
-          extraApps = {
-            inherit
-              (config.services.nextcloud.package.packages.apps)
-              calendar
-              contacts
-              ;
-          };
-          hostName = "next.${domain}";
-          https = true;
-          nginx.recommendedHttpHeaders = true;
+      services.nextcloud = {
+        inherit enable;
+        package = pkgs.nextcloud29;
+        home = "/storage/services/nextcloud";
+        configureRedis = true;
+        config = {
+          adminuser = "pagu";
+          adminpassFile = config.age.secrets.nextcloud.path; # setup only
         };
-        nginx.virtualHosts."next.${domain}" = {
-          forceSSL = true;
-          enableACME = true;
-          http2 = true;
+        phpOptions = {
+          "opcache.interned_strings_buffer" = "16";
+          "output_buffering" = "off";
         };
+        settings = {
+          default_phone_region = "NZ";
+          overwriteprotocol = "https";
+          trusted_proxies = ["https://${dns}.${domain}"];
+          trusted_domains = ["https://${dns}.${domain}"];
+        };
+        appstoreEnable = false;
+        autoUpdateApps.enable = true;
+        extraAppsEnable = true;
+        extraApps = {
+          inherit
+            (config.services.nextcloud.package.packages.apps)
+            calendar
+            contacts
+            notes
+            ;
+        };
+        hostName = "${dns}.${domain}";
+        https = true;
+        nginx.recommendedHttpHeaders = true;
       };
     };
 }

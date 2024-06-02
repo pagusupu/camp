@@ -4,31 +4,21 @@
   _lib,
   ...
 }: {
-  options.cute.services.web.vaultwarden = lib.mkEnableOption "";
+  options.cute.services.web.vaultwarden = _lib.mkWebOpt "wrdn" 8222;
   config = let
+    inherit (config.cute.services.web.vaultwarden) enable port;
     inherit (config.networking) domain;
   in
-    lib.mkIf config.cute.services.web.vaultwarden {
+    lib.mkIf enable {
       assertions = _lib.assertNginx;
-      services = {
-        vaultwarden = {
-          enable = true;
-          config = {
-            DOMAIN = "https://wrdn.${domain}";
-            SIGNUPS_ALLOWED = true;
-            ROCKET_ADDRESS = "127.0.0.1";
-            ROCKET_PORT = 8222;
-          };
-          backupDir = "/storage/services/vaultwarden";
+      services.vaultwarden = {
+        inherit enable;
+        config = {
+          DOMAIN = "https://wrdn.${domain}";
+          ROCKET_PORT = port;
+          SIGNUPS_ALLOWED = false;
         };
-        nginx.virtualHosts."wrdn.${domain}" = {
-          forceSSL = true;
-          enableACME = true;
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:8222";
-            extraConfig = "proxy_pass_header Authorization;";
-          };
-        };
+        backupDir = "/storage/services/vaultwarden";
       };
     };
 }

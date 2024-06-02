@@ -4,18 +4,19 @@
   _lib,
   ...
 }: {
-  options.cute.services.media.navidrome = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.services.media.navidrome {
-    assertions = _lib.assertNginx;
-    services = {
-      navidrome = {
-        enable = true;
+  options.cute.services.web.navidrome = _lib.mkWebOpt "navi" 8098;
+  config = let
+    inherit (config.cute.services.web.navidrome) enable port;
+  in
+    lib.mkIf enable {
+      assertions = _lib.assertNginx;
+      services.navidrome = {
+        inherit enable;
         openFirewall = true;
         settings = let
           dir = "/storage/services/navidrome/";
         in {
-          Address = "0.0.0.0";
-          Port = 8098;
+          Port = port;
           CacheFolder = "/var/lib/navidrome";
           DataFolder = dir + "data";
           MusicFolder = dir + "music";
@@ -33,14 +34,5 @@
           EnableTranscodingConfig = true;
         };
       };
-      nginx.virtualHosts."navi.${config.networking.domain}" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8098";
-          proxyWebsockets = true;
-        };
-      };
     };
-  };
 }

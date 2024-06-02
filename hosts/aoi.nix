@@ -5,27 +5,22 @@
       interface = "enp37s0";
     };
     services = {
+      homeassistant = true;
+      nginx = true;
+      synapse = true;
       docker = {
         enable = true;
         feishin = true;
-        linkding = true;
-        memos = true;
-      };
-      matrix = {
-        cinny = true;
-        synapse = true;
-      };
-      media = {
-        jellyfin = true;
-        komga = true;
-        navidrome = true;
-        qbittorrent = true;
       };
       web = {
-        homeassistant = true;
-        nextcloud = true;
-        nginx = true;
-        vaultwarden = true;
+        cinny.enable = true;
+        jellyfin.enable = true;
+        komga.enable = true;
+        linkding.enable = true;
+        navidrome.enable = true;
+        nextcloud.enable = true;
+        qbittorrent.enable = true;
+        vaultwarden.enable = true;
       };
     };
     programs.cli = {
