@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   pkgs,
   ...
 }: let
@@ -8,6 +9,7 @@
 in {
   options.cute.desktop.wm.hyprland = mkEnableOption "";
   config = mkIf config.cute.desktop.wm.hyprland {
+    assertions = _lib.assertHm;
     home-manager.users.pagu.wayland.windowManager.hyprland = let
       m1 = "DP-3";
       m2 = "HDMI-A-1";

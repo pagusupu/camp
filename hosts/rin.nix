@@ -1,10 +1,8 @@
 {pkgs, ...}: {
   cute = {
-    enabled = {
-      net = {
-        ip = "192.168.178.126";
-        interface = "enp10s0";
-      };
+    enabled.net = {
+      ip = "192.168.178.126";
+      interface = "enp10s0";
     };
     programs = {
       cli = {
@@ -19,6 +17,7 @@
       gui = {
         alacritty = true;
         firefox = true;
+        gamemode = true;
         misc = true;
         steam = true;
         games = {

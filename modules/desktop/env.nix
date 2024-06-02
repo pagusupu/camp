@@ -1,11 +1,13 @@
 {
   config,
   lib,
+  _lib,
   inputs,
   pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (_lib) assertHm;
 in {
   options.cute.desktop.env = {
     anyrun = mkEnableOption "";
@@ -17,6 +19,7 @@ in {
   in
     mkMerge [
       (mkIf anyrun {
+        assertions = assertHm;
         home-manager.users.pagu = let
           inherit (inputs.anyrun) homeManagerModules packages;
         in {
@@ -78,6 +81,7 @@ in {
         };
       })
       (mkIf misc {
+        assertions = assertHm;
         home-manager.users.pagu = {
           home.packages = builtins.attrValues {
             inherit
@@ -101,6 +105,7 @@ in {
         };
       })
       (mkIf swaync {
+        assertions = assertHm;
         home-manager.users.pagu.services.swaync = {
           enable = true;
           settings = {

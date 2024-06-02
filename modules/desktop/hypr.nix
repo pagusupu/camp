@@ -1,10 +1,12 @@
 {
   config,
   lib,
+  _lib,
   pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (_lib) assertHm;
 in {
   options.cute.desktop.hypr = {
     lock = mkEnableOption "";
@@ -15,6 +17,7 @@ in {
   in
     mkMerge [
       (mkIf lock {
+        assertions = assertHm;
         home-manager.users.pagu.home = {
           file."hyprlock" = {
             target = ".config/hypr/hyprlock.conf";
@@ -54,6 +57,7 @@ in {
         security.pam.services.hyprlock = {};
       })
       (mkIf idle {
+        assertions = _lib.assertHm;
         home-manager.users.pagu.home = {
           file = {
             "hypridle" = {

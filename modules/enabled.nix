@@ -1,26 +1,23 @@
 {
   config,
   lib,
+  _lib,
   inputs,
   pkgs,
   ...
 }: let
   inherit (lib) mkOption types mkMerge mkIf;
+  inherit (_lib) mkEnabledOption;
   inherit (types) str;
 in {
   imports = [inputs.agenix.nixosModules.default];
-  options.cute.enabled = let
-    c = {
-      type = types.bool;
-      default = true;
-    };
-  in {
-    git = mkOption {} // c;
-    misc = mkOption {} // c;
-    nix = mkOption {} // c;
-    user = mkOption {} // c;
+  options.cute.enabled = {
+    git = mkEnabledOption;
+    misc = mkEnabledOption;
+    nix = mkEnabledOption;
+    user = mkEnabledOption;
     net = {
-      enable = mkOption {} // c;
+      enable = mkEnabledOption;
       interface = mkOption {type = str;};
       ip = mkOption {type = str;};
     };

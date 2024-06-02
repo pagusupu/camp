@@ -8,9 +8,12 @@
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
-  options.cute.programs.gui.steam = mkEnableOption "";
+  options.cute.programs.gui = {
+    gamemode = mkEnableOption "";
+    steam = mkEnableOption "";
+  };
   config = let
-    inherit (config.cute.programs.gui) steam;
+    inherit (config.cute.programs.gui) gamemode steam;
   in
     mkMerge [
       (mkIf steam {
@@ -29,7 +32,7 @@ in {
         };
         environment.systemPackages = [pkgs.protontricks];
       })
-      (mkIf steam {
+      (mkIf gamemode {
         programs.gamemode = {
           enable = true;
           enableRenice = true;

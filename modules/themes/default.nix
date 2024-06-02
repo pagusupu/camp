@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   inputs,
   ...
 }: let
@@ -15,6 +16,7 @@ in {
     };
   };
   config = mkIf config.cute.themes.gtk {
+    assertions = _lib.assertHm;
     home-manager.users.pagu.qt = {
       enable = true;
       platformTheme.name = "gtk";

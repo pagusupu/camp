@@ -1,12 +1,14 @@
 {
   config,
   lib,
+  _lib,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
   options.cute.desktop.env.waybar = mkEnableOption "";
   config = mkIf config.cute.desktop.env.waybar {
+    assertions = _lib.assertHm;
     home-manager.users.pagu.programs.waybar = {
       enable = true;
       settings = let
