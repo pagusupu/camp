@@ -8,9 +8,9 @@
   imports = [inputs.base16.nixosModule];
   options.cute.themes = {
     gtk = lib.mkEnableOption "";
-    rose-pine = lib.mkOption {
-      default = true;
-      type = lib.types.bool;
+    name = lib.mkOption {
+      default = "rose-pine";
+      type = lib.types.enum ["rose-pine"];
     };
   };
   config = lib.mkIf config.cute.themes.gtk {

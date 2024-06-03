@@ -30,14 +30,16 @@ in {
         programs.git = {
           enable = true;
           config = {
+            core.editor = "nvim";
+            github.user = "pagusupu";
             init.defaultBranch = "main";
             user = {
               name = "pagu";
               email = "me@pagu.cafe";
               signingKey = "/home/pagu/.ssh/id_ed25519.pub";
             };
-            gpg.format = "ssh";
             commit.gpgsign = true;
+            gpg.format = "ssh";
           };
         };
       })

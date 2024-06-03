@@ -3,7 +3,7 @@
   lib,
   ...
 }:
-lib.mkIf config.cute.themes.rose-pine {
+lib.mkIf (config.cute.themes.name == "rose-pine") {
   _module.args.colours = {
     dark = {
       base = "232136";

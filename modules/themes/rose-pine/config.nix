@@ -10,11 +10,12 @@
   inherit (config.cute.themes) gtk;
   dawn = "rose-pine-dawn";
   moon = "rose-pine-moon";
+  cfg = config.cute.themes.name;
 in
   mkMerge [
     (mkIf gtk {
       assertions = _lib.assertHm;
-      home-manager.users.pagu = {
+      home-manager.users.pagu = mkIf (cfg == "rose-pine") {
         gtk = {
           enable = true;
           theme = {
@@ -34,7 +35,7 @@ in
           x11.enable = true;
         };
       };
-      specialisation.dark.configuration.home-manager.users.pagu = mkIf gtk {
+      specialisation.dark.configuration.home-manager.users.pagu = mkIf (cfg == "rose-pine") {
         gtk = {
           theme.name = moon;
           iconTheme.name = moon;
@@ -43,7 +44,7 @@ in
       };
     })
     (mkIf nvim {
-      programs.nixvim = {
+      programs.nixvim = mkIf (cfg == "rose-pine") {
         plugins.lightline.colorscheme = mkDefault "rosepine";
         colorschemes.rose-pine = {
           enable = true;
@@ -57,6 +58,6 @@ in
           };
         };
       };
-      specialisation.dark.configuration.programs.nixvim.plugins.lightline.colorscheme = "rosepine_moon";
+      specialisation.dark.configuration.programs.nixvim.plugins.lightline.colorscheme = mkIf (cfg == "rose-pine") "rosepine_moon";
     })
   ]

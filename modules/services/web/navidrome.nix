@@ -16,7 +16,7 @@
         settings = let
           dir = "/storage/services/navidrome/";
         in {
-	  Address = "0.0.0.0";
+          Address = "0.0.0.0";
           Port = port;
           CacheFolder = "/var/lib/navidrome";
           DataFolder = dir + "data";
