@@ -37,35 +37,31 @@
   };
   outputs = inputs: let
     inherit (inputs) nixpkgs treefmt-nix;
-    inherit (nixpkgs) legacyPackages lib;
-    inherit (lib) hasSuffix filesystem;
+    inherit (nixpkgs) lib legacyPackages;
+    inherit (lib) genAttrs nixosSystem hasSuffix filesystem;
+    inherit (filesystem) listFilesRecursive;
     inherit (builtins) concatMap filter;
+    genHosts = hosts:
+      genAttrs hosts (
+        name:
+          nixosSystem {
+            modules =
+              concatMap (x:
+                filter (hasSuffix ".nix")
+                (map toString (listFilesRecursive x)))
+              [
+                ./lib
+                ./modules
+              ]
+              ++ [./hosts/${name}.nix];
+            specialArgs = {inherit inputs;};
+          }
+      );
   in {
-    colmena = {
-      meta = {
-        nixpkgs = legacyPackages.x86_64-linux;
-        specialArgs = {inherit inputs;};
-      };
-      defaults = {name, ...}: {
-        imports =
-          concatMap (x:
-            filter (hasSuffix ".nix")
-            (map toString (filesystem.listFilesRecursive x)))
-          [
-            ./lib
-            ./modules
-          ]
-          ++ [./hosts/${name}.nix];
-      };
-      rin.deployment = {
-        allowLocalDeployment = true;
-        targetHost = null;
-      };
-      aoi.deployment = {
-        targetUser = "pagu";
-        targetHost = "192.168.178.182";
-      };
-    };
+    nixosConfigurations = genHosts [
+      "aoi"
+      "rin"
+    ];
     formatter.x86_64-linux = treefmt-nix.lib.mkWrapper legacyPackages.x86_64-linux {
       projectRootFile = "flake.nix";
       programs = {

@@ -62,7 +62,7 @@ in {
           nano.enable = false;
         };
         environment = {
-          systemPackages = [pkgs.colmena];
+          #defaultPackages = [];
           variables = let
             d = "/home/pagu/";
           in {
