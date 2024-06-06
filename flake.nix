@@ -12,8 +12,8 @@
       url = "github:nix-community/nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nix-darwin.follows = "";
         home-manager.follows = "";
+        nix-darwin.follows = "";
       };
     };
     aagl = {

@@ -2,6 +2,7 @@
   config,
   lib,
   _lib,
+  pkgs,
   ...
 }: {
   options.cute.services.web.navidrome = _lib.mkWebOpt "navi" 8098;
@@ -35,5 +36,6 @@
           EnableTranscodingConfig = true;
         };
       };
+      environment.systemPackages = [pkgs.flac pkgs.sox];
     };
 }

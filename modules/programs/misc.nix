@@ -22,7 +22,6 @@ in {
             localsend
             mpv
             pwvucontrol
-            spek
             ;
         };
       })
@@ -32,14 +31,12 @@ in {
             (pkgs)
             bat
             eza
-            flac
             fzf
             nix-output-monitor
             ouch
             radeontop
             rm-improved
             tealdeer
-            sox
             wget
             zoxide
             ;

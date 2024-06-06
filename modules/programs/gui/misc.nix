@@ -23,13 +23,18 @@ in {
           platformOptimizations.enable = true;
           gamescopeSession = {
             enable = true;
-            args = ["-H 1080 -r 165 -e --expose-wayland"];
+            args = [
+              "-H 1080" # height, assumes 16:9
+              "-r 165" # refresh rate
+              "-e" # steam integration
+              "--expose-wayland"
+            ];
+            env = {
+              SDL_VIDEODRIVER = "x11";
+              WLR_RENDERER = "vulkan";
+            };
           };
-        };
-        hardware.opengl = {
-          driSupport = true;
-          driSupport32Bit = true;
-        };
+        }; 
         environment.systemPackages = [pkgs.protontricks];
       })
       (mkIf gamemode {
