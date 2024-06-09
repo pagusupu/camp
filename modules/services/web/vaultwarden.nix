@@ -6,7 +6,7 @@
 }: {
   options.cute.services.web.vaultwarden = _lib.mkWebOpt "wrdn" 8222;
   config = let
-    inherit (config.cute.services.web.vaultwarden) enable port;
+    inherit (config.cute.services.web.vaultwarden) enable dns port;
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
@@ -14,7 +14,7 @@
       services.vaultwarden = {
         inherit enable;
         config = {
-          DOMAIN = "https://wrdn.${domain}";
+          DOMAIN = "https://${dns}.${domain}";
           ROCKET_PORT = port;
           SIGNUPS_ALLOWED = false;
         };
