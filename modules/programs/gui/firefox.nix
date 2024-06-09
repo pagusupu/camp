@@ -87,12 +87,9 @@
             (extension "uBlock0@raymondhill.net" "ublock-origin")
           ];
         "3rdparty".Extensions = {
-          "uBlock0@raymondhill.net".adminSettings = {
-            userSettings = {
-              cloudStorageEnabled = false;
-              importedLists = ["https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"];
-            };
-            selectedFilterLists = [
+          "uBlock0@raymondhill.net" = {
+            userSettings.cloudStorageEnabled = false;
+            adminSettings.selectedFilterLists = [
               "user-filters"
               "ublock-filters"
               "ublock-badware"
@@ -126,6 +123,7 @@
               "adguard-popup-overlays"
               "adguard-widgets"
               "ublock-annoyances"
+              "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
             ];
           };
         };
