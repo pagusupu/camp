@@ -32,7 +32,7 @@
     }));
 in {
   options = {
-    home.file = mkOption {
+    homefile = mkOption {
       default = {};
       type = _tmpfileType "homeFile";
     };
@@ -41,6 +41,6 @@ in {
     _tmpStr = prefix: _: file: "L+ '${prefix}/${file.target}' - - - - ${file.source}";
   in
     flatten [
-      (mapAttrsToList (_tmpStr "%h") config.home.file)
+      (mapAttrsToList (_tmpStr "%h") config.homefile)
     ];
 }

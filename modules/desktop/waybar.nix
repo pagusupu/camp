@@ -34,7 +34,7 @@ in {
             format-linked = "";
             interval = "20";
             tooltip = false;
-            interface = "${config.cute.enabled.net.interface}";
+            interface = "${config.cute.net.interface}";
           };
         };
       in {

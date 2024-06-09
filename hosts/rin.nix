@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   cute = {
-    enabled.net = {
+    net = {
       ip = "192.168.178.126";
       interface = "enp10s0";
     };
@@ -82,15 +82,10 @@
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = ["amd_pstate" "amdgpu" "kvm-amd"];
-    kernelParams = [
-      "amd_pstate=passive"
-      "amd_pstate.shared_mem=1"
-      "initcall_blacklist=acpi_cpu_freq_init"
-      "video=DP-3:1920x1080@165"
-      "video=HDMI-A-1:1920x1080@75"
-    ];
+    kernelParams = ["amd_pstate=guided"];
     initrd = {
       availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
+      systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
     supportedFilesystems.ntfs = true;

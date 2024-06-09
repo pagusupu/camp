@@ -32,7 +32,7 @@ in {
         ];
       })
       (mkIf btop {
-        home.file."btop" = {
+        homefile."btop" = {
           target = ".config/btop/btop.conf";
           source = (pkgs.formats.toml {}).generate "btop.conf" {
             color_theme = "TTY";
@@ -44,7 +44,7 @@ in {
             show_swap = false;
             show_io_stat = false;
             show_battery = false;
-            net_iface = "${config.cute.enabled.net.interface}";
+            net_iface = "${config.cute.net.interface}";
           };
         };
         environment.systemPackages = [pkgs.btop];
@@ -60,7 +60,7 @@ in {
         };
       })
       (mkIf yazi {
-        home.file."yazi" = {
+        homefile."yazi" = {
           target = ".config/yazi/yazi.toml";
           source = (pkgs.formats.toml {}).generate "yazi.toml" {
             manager = {

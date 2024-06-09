@@ -20,7 +20,6 @@ in {
         exec-once = [
           "rwpspread -b swaybg -i ~/camp/misc/images/bg.jpg"
           "waybar"
-          "hypridle"
           "hyprlock"
           "wayland-pipewire-idle-inhibit"
         ];

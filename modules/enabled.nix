@@ -11,11 +11,13 @@
   inherit (types) str;
 in {
   imports = [inputs.agenix.nixosModules.default];
-  options.cute.enabled = {
-    git = mkEnabledOption;
-    misc = mkEnabledOption;
-    nix = mkEnabledOption;
-    user = mkEnabledOption;
+  options.cute = {
+    enabled = {
+      git = mkEnabledOption;
+      misc = mkEnabledOption;
+      nix = mkEnabledOption;
+      user = mkEnabledOption;
+    };
     net = {
       enable = mkEnabledOption;
       interface = mkOption {type = str;};
@@ -23,7 +25,7 @@ in {
     };
   };
   config = let
-    inherit (config.cute.enabled) git misc net nix user;
+    inherit (config.cute.enabled) git misc nix user;
   in
     mkMerge [
       (mkIf git {
@@ -118,7 +120,7 @@ in {
         };
       })
       (let
-        inherit (net) enable interface ip;
+        inherit (config.cute.net) enable interface ip;
       in
         mkIf enable {
           networking = {

@@ -49,27 +49,22 @@
               concatMap (x:
                 filter (hasSuffix ".nix")
                 (map toString (listFilesRecursive x)))
-              [
-                ./lib
-                ./modules
-              ]
+              [./lib ./modules]
               ++ [./hosts/${name}.nix];
             specialArgs = {inherit inputs;};
           }
       );
   in {
-    nixosConfigurations = genHosts [
-      "aoi"
-      "rin"
-    ];
-    formatter.x86_64-linux = treefmt-nix.lib.mkWrapper legacyPackages.x86_64-linux {
-      projectRootFile = "flake.nix";
-      programs = {
-        alejandra.enable = true;
-        deadnix.enable = true;
-        statix.enable = true;
-        yamlfmt.enable = true;
+    nixosConfigurations = genHosts ["aoi" "rin"];
+    formatter.x86_64-linux =
+      treefmt-nix.lib.mkWrapper
+      legacyPackages.x86_64-linux {
+        programs = {
+          alejandra.enable = true;
+          statix.enable = true;
+          yamlfmt.enable = true;
+        };
+        projectRootFile = "flake.nix";
       };
-    };
   };
 }

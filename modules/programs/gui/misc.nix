@@ -16,6 +16,21 @@ in {
     inherit (config.cute.programs.gui) gamemode steam;
   in
     mkMerge [
+      (mkIf gamemode {
+        programs.gamemode = {
+          enable = true;
+          enableRenice = true;
+          settings = {
+            general.renice = 10;
+            gpu = {
+              amd_performance_level = "high";
+              apply_gpu_optimisations = "accept-responsibility";
+              gpu_device = 0;
+            };
+          };
+        };
+        users.users.pagu.extraGroups = ["gamemode"];
+      })
       (mkIf steam {
         programs.steam = {
           enable = true;
@@ -34,23 +49,8 @@ in {
               WLR_RENDERER = "vulkan";
             };
           };
-        }; 
-        environment.systemPackages = [pkgs.protontricks];
-      })
-      (mkIf gamemode {
-        programs.gamemode = {
-          enable = true;
-          enableRenice = true;
-          settings = {
-            general.renice = 10;
-            gpu = {
-              amd_performance_level = "high";
-              apply_gpu_optimisations = "accept-responsibility";
-              gpu_device = 0;
-            };
-          };
         };
-        users.users.pagu.extraGroups = ["gamemode"];
+        environment.systemPackages = [pkgs.protontricks];
       })
     ];
 }

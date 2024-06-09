@@ -6,7 +6,7 @@
 }: {
   options.cute.programs.gui.alacritty = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.gui.alacritty {
-    home.file."alacritty" = {
+    homefile."alacritty" = {
       target = ".config/alacritty/alacritty.toml";
       source = (pkgs.formats.toml {}).generate "alacritty.toml" {
         cursor = {

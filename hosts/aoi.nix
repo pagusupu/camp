@@ -1,6 +1,6 @@
 {
   cute = {
-    enabled.net = {
+    net = {
       ip = "192.168.178.182";
       interface = "enp37s0";
     };
@@ -45,9 +45,9 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelModules = ["kvm-amd" "amdgpu"];
+    kernelModules = ["amdgpu" "kvm-amd"];
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+      availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
       supportedFilesystems.btrfs = true;
     };
     swraid.enable = true;
