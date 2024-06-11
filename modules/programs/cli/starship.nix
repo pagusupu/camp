@@ -10,7 +10,7 @@
       settings = {
         add_newline = false;
         format = ''
-          [$username[@](bold cyan)$hostname $directory$git_branch$git_status]($style)
+          [$username[@](bold cyan)$hostname$directory$git_branch$git_status]($style)
           $character
         '';
         character = {

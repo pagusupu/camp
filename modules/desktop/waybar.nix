@@ -17,7 +17,7 @@ in {
           width = 36;
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["network"];
+          modules-right = ["custom/swaync"];
           "hyprland/workspaces" = {
             format = "{icon}";
             format-icons = {
@@ -27,14 +27,10 @@ in {
             persistent-workspaces."*" = 4;
           };
           clock.format = "{:%I \n%M \n%p}";
-          network = {
-            format = "";
-            format-ethernet = "<span size='16pt'>󰌗</span>";
-            format-wifi = "";
-            format-linked = "";
-            interval = "20";
+          "custom/swaync" = {
+            format = "";
+            on-click = "swaync-client -t";
             tooltip = false;
-            interface = "${config.cute.net.interface}";
           };
         };
       in {
@@ -77,10 +73,11 @@ in {
           color: #${scheme.base05};
           padding: 7px 0px 6px 9px;
         }
-        #network {
+        #custom-swaync {
           color: #${scheme.base05};
+          font-size: 17px;
           margin-bottom: 2px;
-          padding-right: 3px;
+          margin-right: 5px;
         }
       '';
     };

@@ -31,11 +31,11 @@
           "opcache.interned_strings_buffer" = "16";
           "output_buffering" = "off";
         };
-        settings = {
+        settings = rec {
           default_phone_region = "NZ";
           overwriteprotocol = "https";
-          trusted_proxies = ["https://${dns}.${domain}"];
           trusted_domains = ["https://${dns}.${domain}"];
+          trusted_proxies = trusted_domains;
         };
         appstoreEnable = false;
         autoUpdateApps.enable = true;

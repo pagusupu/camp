@@ -1,8 +1,14 @@
 {
   cute = {
-    net = {
-      ip = "192.168.178.182";
-      interface = "enp37s0";
+    programs.cli = {
+      btop = true;
+      misc = true;
+      nh = true;
+      nvim = true;
+      ssh = true;
+      starship = true;
+      yazi = true;
+      zsh = true;
     };
     services = {
       homeassistant = true;
@@ -24,15 +30,9 @@
         vaultwarden.enable = true;
       };
     };
-    programs.cli = {
-      btop = true;
-      misc = true;
-      nh = true;
-      nvim = true;
-      ssh = true;
-      starship = true;
-      yazi = true;
-      zsh = true;
+    net = {
+      ip = "192.168.178.182";
+      interface = "enp37s0";
     };
     theme.name = "rose-pine";
   };

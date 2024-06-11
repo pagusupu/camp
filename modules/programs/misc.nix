@@ -19,8 +19,11 @@ in {
         environment.systemPackages = attrValues {
           inherit
             (pkgs)
+            heroic
+            imv
             localsend
             mpv
+            prismlauncher
             pwvucontrol
             ;
         };

@@ -1,32 +1,5 @@
 {pkgs, ...}: {
   cute = {
-    net = {
-      ip = "192.168.178.126";
-      interface = "enp10s0";
-    };
-    programs = {
-      cli = {
-        btop = true;
-        misc = true;
-        nh = true;
-        nvim = true;
-        starship = true;
-        yazi = true;
-        zsh = true;
-      };
-      gui = {
-        alacritty = true;
-        firefox = true;
-        gamemode = true;
-        misc = true;
-        steam = true;
-        games = {
-          aagl = true;
-          misc = true;
-          osu = true;
-        };
-      };
-    };
     desktop = {
       anyrun = true;
       swaync = true;
@@ -46,23 +19,46 @@
         niri = false;
       };
     };
+    programs = {
+      cli = {
+        btop = true;
+        misc = true;
+        nh = true;
+        nvim = true;
+        starship = true;
+        yazi = true;
+        zsh = true;
+      };
+      gui = {
+        aagl = true;
+        alacritty = true;
+        firefox = true;
+        gamemode = true;
+        misc = true;
+        steam = true;
+      };
+    };
+    net = {
+      ip = "192.168.178.126";
+      interface = "enp10s0";
+    };
     theme = {
       gtk = true;
       name = "rose-pine";
     };
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot
-  services = {
-    dbus.enable = true;
-    sshd.enable = true;
+  networking = {
+    hostName = "rin";
+    hostId = "6f257938";
   };
   security = {
     tpm2.enable = true;
     sudo.wheelNeedsPassword = false;
   };
-  networking = {
-    hostName = "rin";
-    hostId = "6f257938";
+  services = {
+    dbus.enable = true;
+    sshd.enable = true;
   };
   systemd = {
     services.systemd-udev-settle.enable = false;

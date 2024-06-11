@@ -11,10 +11,15 @@ in {
   config = lib.mkIf config.cute.desktop.wm.hyprland {
     assertions = _lib.assertHm;
     home-manager.users.pagu = {
-      home.packages = [
-        pkgs.imv
-        pkgs.wl-clipboard
-      ];
+      home.packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          imv
+          rwpspread
+          swaybg
+          wl-clipboard
+          ;
+      };
       wayland.windowManager.hyprland = let
         m1 = "DP-3";
         m2 = "HDMI-A-1";
@@ -23,7 +28,7 @@ in {
         enable = true;
         settings = {
           exec-once = [
-            "${getExe pkgs.rwpspread} -b ${getExe pkgs.swaybg} -i ~/camp/misc/images/bg.jpg"
+            "rwpspread -b swaybg -i ~/camp/misc/images/bg.jpg"
             "waybar"
             "hyprlock"
             "${getExe pkgs.wayland-pipewire-idle-inhibit}"
@@ -81,6 +86,7 @@ in {
           bind = [
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, anyrun"
+            "${mod}, N, exec, swaync-client -op"
             "${mod}, BACKSPACE, exec, ${getExe pkgs.grimblast} --notify --freeze copy area"
             "${mod}:SHIFT, BACKSPACE, exec, ${getExe pkgs.grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             "${mod}, L, exec, hyprlock"
