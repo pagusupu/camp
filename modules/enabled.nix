@@ -70,10 +70,10 @@ in {
           variables = let
             d = "/home/pagu/";
           in {
-            XDG_DATA_HOME = d + ".local/share";
-            XDG_CONFIG_HOME = d + ".config";
-            XDG_STATE_HOME = d + ".local/state";
             XDG_CACHE_HOME = d + ".cache";
+            XDG_CONFIG_HOME = d + ".config";
+            XDG_DATA_HOME = d + ".local/share";
+            XDG_STATE_HOME = d + ".local/state";
           };
         };
       })
@@ -103,16 +103,16 @@ in {
               "nix-command"
               "no-url-literals"
             ];
+            allowed-users = ["@wheel"];
             auto-optimise-store = true;
             builders-use-substitutes = true;
+            nix-path = ["nixpkgs=flake:nixpkgs"];
             use-xdg-base-directories = true;
             warn-dirty = false;
-            allowed-users = ["@wheel"];
-            nix-path = ["nixpkgs=flake:nixpkgs"];
           };
           channel.enable = false;
-          optimise.automatic = true;
           nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
+          optimise.automatic = true;
         };
         nixpkgs = {
           config.allowUnfree = true;

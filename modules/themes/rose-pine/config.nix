@@ -7,10 +7,10 @@
 }: let
   inherit (lib) mkMerge mkIf mkDefault;
   inherit (config.cute.programs.cli) nvim;
-  inherit (config.cute.themes) gtk;
+  inherit (config.cute.theme) gtk;
   dawn = "rose-pine-dawn";
   moon = "rose-pine-moon";
-  cfg = config.cute.themes.name;
+  cfg = config.cute.theme.name;
 in
   mkMerge [
     (mkIf gtk {

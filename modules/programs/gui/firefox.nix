@@ -28,7 +28,7 @@
         DisableTelemetry = true;
         DisplayBookmarksToolbar = "newtab";
         DontCheckDefaultBrowser = true;
-        DownloadDirectory = lib.mkIf (config.cute.desktop.env.misc == false) "/home/pagu/downloads";
+        DownloadDirectory = lib.mkIf (!config.cute.desktop.misc.home) "/home/pagu/downloads";
         HardwareAcceleration = true;
         NoDefaultBookmarks = true;
         PasswordManagerEnabled = false;
@@ -65,6 +65,7 @@
         in [
           ({URL = "https://discord.com/channels/@me";} // c)
           ({URL = "https://ciny.pagu.cafe";} // c)
+          ({URL = "http://192.168.178.182:9180";} // c)
           ({URL = "https://link.pagu.cafe/bookmarks";} // c)
         ];
         ExtensionSettings = let

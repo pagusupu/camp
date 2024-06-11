@@ -29,7 +29,7 @@
         };
         colors = let
           inherit (config.scheme) withHashtag;
-          default = {
+          c = {
             white = withHashtag.base05;
             blue = withHashtag.base0C;
             red = withHashtag.base08;
@@ -41,11 +41,11 @@
         in {
           primary = {
             background = withHashtag.base00;
-            foreground = default.white;
+            foreground = c.white;
           };
-          normal = default // {black = withHashtag.base00;};
-          bright = default // {black = withHashtag.base03;};
-          dim = default // {black = withHashtag.base03;};
+          normal = c // {black = withHashtag.base00;};
+          bright = c // {black = withHashtag.base03;};
+          dim = c // {black = withHashtag.base03;};
         };
       };
     };

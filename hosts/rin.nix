@@ -28,12 +28,9 @@
       };
     };
     desktop = {
-      env = {
-        anyrun = true;
-        misc = true;
-        swaync = true;
-        waybar = true;
-      };
+      anyrun = true;
+      swaync = true;
+      waybar = true;
       hypr = {
         idle = true;
         lock = true;
@@ -49,7 +46,10 @@
         niri = false;
       };
     };
-    themes.gtk = true;
+    theme = {
+      gtk = true;
+      name = "rose-pine";
+    };
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot
   services = {

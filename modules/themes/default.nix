@@ -6,14 +6,14 @@
   ...
 }: {
   imports = [inputs.base16.nixosModule];
-  options.cute.themes = {
+  options.cute.theme = {
     gtk = lib.mkEnableOption "";
     name = lib.mkOption {
-      default = "rose-pine";
+      default = "";
       type = lib.types.enum ["rose-pine"];
     };
   };
-  config = lib.mkIf config.cute.themes.gtk {
+  config = lib.mkIf config.cute.theme.gtk {
     assertions = _lib.assertHm;
     home-manager.users.pagu.qt = {
       enable = true;

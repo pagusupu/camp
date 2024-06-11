@@ -51,26 +51,22 @@ in {
         programs.hyprlock.enable = true;
       })
       (mkIf idle {
-        homefile = {
-          "hypridle" = {
-            target = ".config/hypr/hypridle.conf";
-            text = ''
-              general {
-                lock_cmd = pidof hyprlock || hyprlock
-              }
-              listener {
-                timeout = 300
-                on-timeout = loginctl lock-session
-              }
-            '';
-          };
-          "inhibit" = {
-            target = ".config/wayland-pipewire-idle-inhibit";
-            source = (pkgs.formats.toml {}).generate "config.toml" {
-              quiet = true;
-              sink_whitelist = ["E30 II Lite Headphones"];
-            };
-          };
+        homefile."hypridle" = {
+          target = ".config/hypr/hypridle.conf";
+          text = ''
+            general {
+              lock_cmd = pidof hyprlock || hyprlock
+              before_sleep_cmd = lock_cmd = pidof hyprlock || hyprlock
+            }
+            listener {
+              timeout = 300
+              on-timeout = loginctl lock-session
+            }
+            listener {
+              timeout = 600
+              on-timeout = systemctl suspend
+            }
+          '';
         };
         services.hypridle.enable = true;
         environment.systemPackages = [pkgs.wayland-pipewire-idle-inhibit];

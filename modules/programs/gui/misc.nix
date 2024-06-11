@@ -50,7 +50,10 @@ in {
             };
           };
         };
-        environment.systemPackages = [pkgs.protontricks];
+        environment = {
+          sessionVariables = {WINEDEBUG = "-all";};
+          systemPackages = [pkgs.protontricks];
+        };
       })
     ];
 }
