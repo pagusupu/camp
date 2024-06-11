@@ -10,21 +10,20 @@
       settings = {
         add_newline = false;
         format = ''
-          [\[$username[@](bold cyan)$hostname\] $directory$git_branch$git_status]($style)
-          [](bold purple) $character
+          [$username[@](bold cyan)$hostname $directory$git_branch$git_status]($style)
+          $character
         '';
         character = {
-          error_symbol = "[󰜥 ](bold red)";
-          success_symbol = "[󰜥 ](bold blue)";
+          error_symbol = "[󰋕 ~>](bold red)";
+          success_symbol = "[󰋕 ~>](bold purple)";
         };
         directory = {
-          home_symbol = " ";
           read_only = " ";
           style = "bold green";
         };
         hostname = {
-          format = "[$hostname](bold yellow)[$ssh_symbol](bold red)";
-          ssh_symbol = "<ssh>";
+          format = "[$hostname](bold yellow) [$ssh_symbol](bold red)";
+          ssh_symbol = "!";
           ssh_only = false;
         };
         username = {

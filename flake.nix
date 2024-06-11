@@ -62,6 +62,7 @@
       legacyPackages.x86_64-linux {
         programs = {
           alejandra.enable = true;
+	  deadnix.enable = true;
           statix.enable = true;
           yamlfmt.enable = true;
         };

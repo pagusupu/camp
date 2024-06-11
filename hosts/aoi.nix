@@ -34,6 +34,7 @@
       yazi = true;
       zsh = true;
     };
+    theme.name = "rose-pine";
   };
   networking = {
     domain = "pagu.cafe";
@@ -46,9 +47,9 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelModules = ["amdgpu" "kvm-amd"];
+    kernelModules = ["kvm-amd"];
     initrd = {
-      availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
+      availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
       supportedFilesystems.btrfs = true;
     };
     swraid.enable = true;
@@ -59,6 +60,7 @@
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
     };
     "/" = {
       device = "/dev/disk/by-label/main";
