@@ -14,7 +14,6 @@ in {
       home.packages = builtins.attrValues {
         inherit
           (pkgs)
-          imv
           rwpspread
           swaybg
           wl-clipboard
@@ -31,7 +30,7 @@ in {
             "rwpspread -b swaybg -i ~/camp/misc/images/bg.jpg"
             "waybar"
             "hyprlock"
-            "${getExe pkgs.wayland-pipewire-idle-inhibit}"
+            "wayland-pipewire-idle-inhibit"
           ];
           env = [
             "NIXOS_OZONE_WL,1"

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -54,8 +55,8 @@ in {
           target = ".config/hypr/hypridle.conf";
           text = ''
             general {
-              lock_cmd = pidof hyprlock || hyprlock
-              before_sleep_cmd = pidof hyprlock || hyprlock
+              lock_cmd = hyprlock
+              before_sleep_cmd = hyprlock
             }
             listener {
               timeout = 300
@@ -68,6 +69,7 @@ in {
           '';
         };
         services.hypridle.enable = true;
+        environment.systemPackages = [pkgs.wayland-pipewire-idle-inhibit];
       })
     ];
 }

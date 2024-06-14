@@ -33,7 +33,8 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    qbit.url = "github:nu-nu-ko/nixpkgs?ref=init-nixos-qbittorrent";
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
   outputs = inputs: let
@@ -62,7 +63,7 @@
       legacyPackages.x86_64-linux {
         programs = {
           alejandra.enable = true;
-	  deadnix.enable = true;
+          deadnix.enable = true;
           statix.enable = true;
           yamlfmt.enable = true;
         };
