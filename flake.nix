@@ -41,7 +41,6 @@
     inherit (inputs) nixpkgs treefmt-nix;
     inherit (nixpkgs) lib legacyPackages;
     inherit (lib) genAttrs nixosSystem hasSuffix filesystem;
-    inherit (filesystem) listFilesRecursive;
     inherit (builtins) concatMap filter;
     genHosts = hosts:
       genAttrs hosts (
@@ -50,7 +49,7 @@
             modules =
               concatMap (x:
                 filter (hasSuffix ".nix")
-                (map toString (listFilesRecursive x)))
+                (map toString (filesystem.listFilesRecursive x)))
               [./lib ./modules]
               ++ [./hosts/${name}.nix];
             specialArgs = {inherit inputs;};

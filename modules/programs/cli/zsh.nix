@@ -10,11 +10,17 @@ in {
   config = mkIf config.cute.programs.cli.zsh {
     programs.zsh = {
       enable = true;
-      promptInit = "PROMPT='%F{blue}% %~ >%f '";
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
-      histSize = 10000;
-      histFile = "$HOME/.cache/zsh_history";
+      shellAliases = {
+        cat = "bat --theme='base16'";
+        cd = "z";
+        grep = "grep --color=auto";
+        ls = "eza --group-directories-first";
+        rm = "rip";
+        sshaoi = "ssh pagu@192.168.178.182";
+        cv = "sudo tmux -S /run/minecraft/vanilla.sock attach";
+      };
       shellInit = ''
         zsh-newuser-install() { :; }
         eval "$(zoxide init zsh)"
@@ -31,15 +37,9 @@ in {
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
       '';
-      shellAliases = {
-        cat = "bat --theme='base16'";
-        cd = "z";
-        grep = "grep --color=auto";
-        ls = "eza --group-directories-first";
-        rm = "rip";
-        sshaoi = "ssh pagu@192.168.178.182";
-        cv = "sudo tmux -S /run/minecraft/vanilla.sock attach";
-      };
+      histFile = "$HOME/.cache/zsh_history";
+      histSize = 10000;
+      promptInit = "PROMPT='%F{blue}% %~ >%f '";
     };
     environment = {
       shells = [pkgs.zsh];

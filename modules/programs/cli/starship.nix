@@ -23,7 +23,7 @@
         };
         hostname = {
           format = "[$hostname](bold yellow) [$ssh_symbol](bold red)";
-          ssh_symbol = "!";
+          ssh_symbol = "! ";
           ssh_only = false;
         };
         username = {

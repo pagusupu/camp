@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -69,7 +68,6 @@ in {
           '';
         };
         services.hypridle.enable = true;
-        environment.systemPackages = [pkgs.wayland-pipewire-idle-inhibit];
       })
     ];
 }

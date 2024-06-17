@@ -44,7 +44,7 @@
           };
           Preferences = {
             WebUI = {
-              AlternativeUIEnabled = true;
+              #AlternativeUIEnabled = true;
               #RootFolder = pkgs.fetchzip {
               #  url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.8.0/vuetorrent.zip";
               #  hash = "sha256-ewk4P88Nyd9dzsBJ/7jHaFSipbEOuSnj2Bpesl5+itc=";

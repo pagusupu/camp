@@ -16,6 +16,7 @@ in {
           (pkgs)
           rwpspread
           swaybg
+          wayland-pipewire-idle-inhibit
           wl-clipboard
           ;
       };
