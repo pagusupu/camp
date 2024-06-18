@@ -33,7 +33,6 @@
       ip = "192.168.178.182";
       interface = "enp37s0";
     };
-    theme.name = "rose-pine";
   };
   networking = {
     domain = "pagu.cafe";

@@ -23,11 +23,11 @@
         serverConfig = {
           LegalNotice.Accepted = true;
           BitTorrent.Session = let
-            basePath = "/storage/services/qbit/torrents/";
+            p = "/storage/services/qbit/torrents/";
           in {
-            DefaultSavePath = basePath + "misc/";
-            TorrentExportDirectory = basePath + "sources/";
-            TempPath = basePath + "incomplete/";
+            DefaultSavePath = p + "misc/";
+            TorrentExportDirectory = p + "sources/";
+            TempPath = p + "incomplete/";
             TempPathEnabled = true;
             QueueingSystemEnabled = true;
             IgnoreSlowTorrentsForQueueing = true;

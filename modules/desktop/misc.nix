@@ -6,7 +6,7 @@
   colours,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types mkMerge mkIf;
+  inherit (lib) mkEnableOption mkOption types concatStringsSep mkMerge mkIf getExe;
 in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -18,7 +18,11 @@ in {
     fonts = mkEnableOption "";
     greetd = {
       enable = mkEnableOption "";
-      command = mkOption {type = types.str;};
+      sessionDirs = mkOption {
+        type = types.listOf types.str;
+        apply = concatStringsSep ":";
+        default = [];
+      };
     };
     home = mkEnableOption "";
   };
@@ -103,12 +107,9 @@ in {
       (mkIf greetd.enable {
         services.greetd = {
           enable = true;
-          settings = rec {
-            initial_session = {
-              inherit (greetd) command;
-              user = "pagu";
-            };
-            default_session = initial_session;
+          settings.default_session = {
+            command = "${getExe pkgs.greetd.tuigreet} --sessions ${greetd.sessionDirs} --asterisks --remember-session -r -t";
+            user = "greeter";
           };
         };
       })
@@ -126,14 +127,14 @@ in {
             xdg = {
               enable = true;
               userDirs = let
-                d = "/home/pagu/";
+                p = "/home/pagu/";
               in {
                 enable = true;
-                desktop = d + ".local/misc/desktop";
-                documents = d + "documents";
-                download = d + "downloads";
-                pictures = d + "pictures";
-                videos = d + "pictures/videos";
+                desktop = p + ".local/misc/desktop";
+                documents = p + "documents";
+                download = p + "downloads";
+                pictures = p + "pictures";
+                videos = p + "pictures/videos";
               };
             };
           };

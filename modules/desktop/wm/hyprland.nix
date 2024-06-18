@@ -5,10 +5,11 @@
   pkgs,
   ...
 }: let
-  inherit (lib) getExe;
+  inherit (lib) mkEnableOption mkIf;
+  inherit (config.cute.desktop.wm) hyprland;
 in {
-  options.cute.desktop.wm.hyprland = lib.mkEnableOption "";
-  config = lib.mkIf config.cute.desktop.wm.hyprland {
+  options.cute.desktop.wm.hyprland = mkEnableOption "";
+  config = mkIf hyprland {
     assertions = _lib.assertHm;
     home-manager.users.pagu = {
       home.packages = builtins.attrValues {
@@ -30,7 +31,6 @@ in {
           exec-once = [
             "rwpspread -b swaybg -i ~/camp/misc/images/bg.jpg"
             "waybar"
-            "hyprlock"
             "wayland-pipewire-idle-inhibit"
           ];
           env = [
@@ -87,8 +87,8 @@ in {
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, anyrun"
             "${mod}, N, exec, swaync-client -rs && swaync-client -op"
-            "${mod}, BACKSPACE, exec, ${getExe pkgs.grimblast} --notify --freeze copy area"
-            "${mod}:SHIFT, BACKSPACE, exec, ${getExe pkgs.grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
+            "${mod}, BACKSPACE, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copy area"
+            "${mod}:SHIFT, BACKSPACE, exec, ${lib.getExe pkgs.grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             "${mod}, L, exec, hyprlock"
             "${mod}, Q, killactive"
             "${mod}, F, fullscreen"
@@ -130,7 +130,7 @@ in {
     };
     cute.desktop.misc.greetd = {
       enable = true;
-      command = "${getExe pkgs.hyprland}";
+      sessionDirs = ["${pkgs.hyprland}/share/wayland-sessions"];
     };
   };
 }

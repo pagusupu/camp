@@ -30,6 +30,7 @@
           format = "[$user]($style)";
           show_always = true;
         };
+        git_status.deleted = "x";
       };
     };
   };

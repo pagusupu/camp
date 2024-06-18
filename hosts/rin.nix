@@ -16,7 +16,7 @@
       };
       wm = {
         hyprland = true;
-        niri = false;
+        niri = true;
       };
     };
     programs = {

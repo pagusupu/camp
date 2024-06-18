@@ -9,7 +9,7 @@
   options.cute.theme = {
     gtk = lib.mkEnableOption "";
     name = lib.mkOption {
-      default = "";
+      default = "rose-pine";
       type = lib.types.enum ["rose-pine"];
     };
   };

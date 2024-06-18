@@ -15,13 +15,13 @@
         inherit enable;
         openFirewall = true;
         settings = let
-          dir = "/storage/services/navidrome/";
+          p = "/storage/services/navidrome/";
         in {
           Address = "0.0.0.0";
           Port = port;
           CacheFolder = "/var/lib/navidrome";
-          DataFolder = dir + "data";
-          MusicFolder = dir + "music";
+          DataFolder = p + "data";
+          MusicFolder = p + "music";
           AutoImportPlaylists = false;
           EnableExternalServices = false;
           EnableMediaFileCoverArt = false;
