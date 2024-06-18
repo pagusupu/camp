@@ -37,6 +37,7 @@
         localsend = true;
         misc = true;
         steam = true;
+        vscode = false;
       };
     };
     net = {
