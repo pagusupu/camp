@@ -12,11 +12,9 @@
   in
     lib.mkIf enable {
       assertions = _lib.assertNginx;
-      age.secrets = {
-        nextcloud = {
-          file = ../../../misc/secrets/nextcloud.age;
-          owner = "nextcloud";
-        };
+      age.secrets.nextcloud = {
+        file = ../../../misc/secrets/nextcloud.age;
+        owner = "nextcloud";
       };
       services.nextcloud = {
         inherit enable;

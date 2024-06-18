@@ -29,7 +29,7 @@ in {
           clock.format = "{:%I \n%M \n%p}";
           "custom/swaync" = {
             format = "";
-            on-click = "swaync-client -t";
+            on-click = "swaync-client -rs && swaync-client -t";
             tooltip = false;
           };
         };

@@ -12,7 +12,6 @@
     };
     services = {
       homeassistant = true;
-      minecraft = true;
       nginx = true;
       synapse = true;
       docker = {

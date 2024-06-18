@@ -19,7 +19,6 @@ in {
         ls = "eza --group-directories-first";
         rm = "rip";
         sshaoi = "ssh pagu@192.168.178.182";
-        cv = "sudo tmux -S /run/minecraft/vanilla.sock attach";
       };
       shellInit = ''
         zsh-newuser-install() { :; }

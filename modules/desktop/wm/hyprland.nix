@@ -86,7 +86,7 @@ in {
           bind = [
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, anyrun"
-            "${mod}, N, exec, swaync-client -op"
+            "${mod}, N, exec, swaync-client -rs && swaync-client -op"
             "${mod}, BACKSPACE, exec, ${getExe pkgs.grimblast} --notify --freeze copy area"
             "${mod}:SHIFT, BACKSPACE, exec, ${getExe pkgs.grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             "${mod}, L, exec, hyprlock"

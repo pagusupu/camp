@@ -17,18 +17,18 @@
         settings = let
           dir = "/storage/services/navidrome/";
         in {
-          AutoImportPlaylists = false;
           Address = "0.0.0.0";
+          Port = port;
           CacheFolder = "/var/lib/navidrome";
           DataFolder = dir + "data";
+          MusicFolder = dir + "music";
+          AutoImportPlaylists = false;
           EnableExternalServices = false;
           EnableMediaFileCoverArt = false;
           EnableSharing = true;
           EnableStarRating = false;
           EnableTranscodingConfig = true;
-          MusicFolder = dir + "music";
           IgnoredArticles = "";
-          Port = port;
           SessionTimeout = "96h";
           UILoginBackgroundUrl = "https://raw.githubusercontent.com/pagusupu/camp/b7b046def06e7098e76c9d498a38fc336a66e9cb/misc/images/solo.jpg";
           UIWelcomeMessage = "";

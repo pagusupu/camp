@@ -58,18 +58,18 @@
           Locked = true;
         };
         Bookmarks = let
-          c = {
+          b = l: {
+            URL = l;
             Title = "";
             Placement = "toolbar";
           };
         in [
-          ({URL = "https://discord.com/channels/@me";} // c)
-          ({URL = "https://ciny.pagu.cafe";} // c)
-          ({URL = "http://192.168.178.182:9180";} // c)
-          ({URL = "https://link.pagu.cafe/bookmarks";} // c)
+          (b "https://discord.com/channels/@me")
+          (b "https://ciny.pagu.cafe")
+          (b "https://link.pagu.cafe/bookmarks")
         ];
         ExtensionSettings = let
-          extension = u: l: {
+          e = u: l: {
             name = u;
             value = {
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/${l}/latest.xpi";
@@ -80,12 +80,12 @@
           };
         in
           builtins.listToAttrs [
-            (extension "{446900e4-71c2-419f-a6a7-df9c091e268b}" "bitwarden-password-manager")
-            (extension "{61a05c39-ad45-4086-946f-32adb0a40a9d}" "linkding-extension")
-            (extension "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "return-youtube-dislikes")
-            (extension "sponsorBlocker@ajay.app" "sponsorblock")
-            (extension "treestyletab@piro.sakura.ne.jp" "tree-style-tab")
-            (extension "uBlock0@raymondhill.net" "ublock-origin")
+            (e "{446900e4-71c2-419f-a6a7-df9c091e268b}" "bitwarden-password-manager")
+            (e "{61a05c39-ad45-4086-946f-32adb0a40a9d}" "linkding-extension")
+            (e "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "return-youtube-dislikes")
+            (e "sponsorBlocker@ajay.app" "sponsorblock")
+            (e "treestyletab@piro.sakura.ne.jp" "tree-style-tab")
+            (e "uBlock0@raymondhill.net" "ublock-origin")
           ];
         "3rdparty".Extensions = {
           "uBlock0@raymondhill.net" = {

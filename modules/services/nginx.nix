@@ -43,6 +43,10 @@ in {
           (let
             inherit (config.cute.services.web) cinny jellyfin navidrome nextcloud vaultwarden;
           in {
+            "${domain}" = {
+              root = "/storage/website/cafe";
+              inherit forceSSL enableACME;
+            };
             "ciny.${domain}" = mkIf cinny.enable {
               root = pkgs.cinny;
               inherit forceSSL enableACME;
@@ -55,7 +59,6 @@ in {
             "next.${domain}" = mkIf nextcloud.enable {inherit forceSSL enableACME;};
             "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";
           })
-          {"${domain}".root = "/storage/website/cafe";}
           (mkIf config.cute.services.synapse {
             "matrix.${domain}" = {
               root = /storage/website/matrix;
@@ -88,7 +91,6 @@ in {
                     inherit extraConfig;
                   };
                 };
-              inherit forceSSL enableACME;
             };
           })
         ];
