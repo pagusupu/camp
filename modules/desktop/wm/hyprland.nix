@@ -4,12 +4,9 @@
   _lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf;
-  inherit (config.cute.desktop.wm) hyprland;
-in {
-  options.cute.desktop.wm.hyprland = mkEnableOption "";
-  config = mkIf hyprland {
+}: {
+  options.cute.desktop.wm.hyprland = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.desktop.wm.hyprland {
     assertions = _lib.assertHm;
     home-manager.users.pagu = {
       home.packages = builtins.attrValues {

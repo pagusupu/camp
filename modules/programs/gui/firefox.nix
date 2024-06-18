@@ -8,7 +8,7 @@
   config = lib.mkIf config.cute.programs.gui.firefox {
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox-wayland.override {cfg.speechSynthesisSupport = false;};
+      package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
       preferences = {
         "browser.aboutConfig.showWarning" = false;
         "browser.EULA.override" = true;
@@ -69,8 +69,8 @@
           (b "https://link.pagu.cafe/bookmarks")
         ];
         ExtensionSettings = let
-          e = u: l: {
-            name = u;
+          e = n: l: {
+            name = n;
             value = {
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/${l}/latest.xpi";
               default_area = "menupanel";
@@ -87,46 +87,44 @@
             (e "treestyletab@piro.sakura.ne.jp" "tree-style-tab")
             (e "uBlock0@raymondhill.net" "ublock-origin")
           ];
-        "3rdparty".Extensions = {
-          "uBlock0@raymondhill.net" = {
-            userSettings.cloudStorageEnabled = false;
-            adminSettings.selectedFilterLists = [
-              "user-filters"
-              "ublock-filters"
-              "ublock-badware"
-              "ublock-privacy"
-              "ublock-quick-fixes"
-              "ublock-unbreak"
-              "easylist"
-              "adguard-generic"
-              "adguard-mobile"
-              "easyprivacy"
-              "adguard-spyware"
-              "adguard-spyware-url"
-              "block-lan"
-              "urlhaus-1"
-              "curben-phishing"
-              "plowe-0"
-              "dpollock-0"
-              "fanboy-cookiemonster"
-              "ublock-cookies-easylist"
-              "adguard-cookies"
-              "ublock-cookies-adguard"
-              "fanboy-social"
-              "adguard-social"
-              "fanboy-thirdparty_social"
-              "easylist-chat"
-              "easylist-newsletters"
-              "easylist-notifications"
-              "easylist-annoyances"
-              "adguard-mobile-app-banners"
-              "adguard-other-annoyances"
-              "adguard-popup-overlays"
-              "adguard-widgets"
-              "ublock-annoyances"
-              "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
-            ];
-          };
+        "3rdparty".Extensions."uBlock0@raymondhill.net" = {
+          userSettings.cloudStorageEnabled = false;
+          adminSettings.selectedFilterLists = [
+            "user-filters"
+            "ublock-filters"
+            "ublock-badware"
+            "ublock-privacy"
+            "ublock-quick-fixes"
+            "ublock-unbreak"
+            "easylist"
+            "adguard-generic"
+            "adguard-mobile"
+            "easyprivacy"
+            "adguard-spyware"
+            "adguard-spyware-url"
+            "block-lan"
+            "urlhaus-1"
+            "curben-phishing"
+            "plowe-0"
+            "dpollock-0"
+            "fanboy-cookiemonster"
+            "ublock-cookies-easylist"
+            "adguard-cookies"
+            "ublock-cookies-adguard"
+            "fanboy-social"
+            "adguard-social"
+            "fanboy-thirdparty_social"
+            "easylist-chat"
+            "easylist-newsletters"
+            "easylist-notifications"
+            "easylist-annoyances"
+            "adguard-mobile-app-banners"
+            "adguard-other-annoyances"
+            "adguard-popup-overlays"
+            "adguard-widgets"
+            "ublock-annoyances"
+            "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+          ];
         };
       };
     };

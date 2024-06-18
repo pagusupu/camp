@@ -15,7 +15,7 @@
         padding-x = 10;
         fonts = {
           family = "monospace";
-          extras = [{family = "Noto Color Emoji";}];
+          extras = [{family = "NerdFontsSymbolsOnly";}];
         };
         navigation = {
           #mode = "TopTab";

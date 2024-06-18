@@ -3,7 +3,6 @@
   config,
   pkgs,
   inputs,
-  colours,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types concatStringsSep mkMerge mkIf getExe;
@@ -14,7 +13,7 @@ in {
   ];
   options.cute.desktop.misc = {
     audio = mkEnableOption "";
-    boot = mkEnableOption "";
+    console = mkEnableOption "";
     fonts = mkEnableOption "";
     greetd = {
       enable = mkEnableOption "";
@@ -27,7 +26,7 @@ in {
     home = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.misc) audio boot fonts greetd home;
+    inherit (config.cute.desktop.misc) audio console fonts greetd home;
   in
     mkMerge [
       (mkIf audio {
@@ -48,33 +47,26 @@ in {
         security.rtkit.enable = true;
         hardware.pulseaudio.enable = false;
       })
-      (mkIf boot {
+      (mkIf console {
         boot = {
           enableContainers = false;
           initrd.verbose = false;
           kernelParams = ["quiet" "splash"];
         };
-        console = {
-          font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
-          colors = let
-            inherit (colours) dark;
-          in [
-            "000000"
-            dark.love
-            dark.foam
-            dark.gold
-            dark.pine
-            dark.iris
-            dark.rose
-            dark.text
-            dark.overlay
-            dark.love
-            dark.foam
-            dark.gold
-            dark.pine
-            dark.iris
-            dark.rose
-            dark.text
+        services.kmscon = {
+          enable = true;
+          hwRender = true;
+          fonts = [
+            {
+              name = "Terminus";
+              package = pkgs.terminus_font;
+            }
+            {
+              name = "NerdFontsSymbolsOnly";
+              package = pkgs.nerdfonts.override {
+                fonts = ["NerdFontsSymbolsOnly"];
+              };
+            }
           ];
         };
       })
@@ -83,14 +75,17 @@ in {
           packages = builtins.attrValues {
             inherit
               (pkgs)
-              lato
-              nerdfonts
               noto-fonts
               noto-fonts-cjk
               noto-fonts-emoji
               noto-fonts-extra
               ;
-            sora = pkgs.callPackage ../../misc/pkgs/sora.nix {};
+            googlefonts = pkgs.google-fonts.override {
+              fonts = ["Lato" "Nunito"];
+            };
+            nerdfonts = pkgs.nerdfonts.override {
+              fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];
+            };
           };
           fontconfig = {
             enable = true;
@@ -98,7 +93,7 @@ in {
             defaultFonts = {
               emoji = ["Noto Color Emoji"];
               monospace = ["JetBrainsMono Nerd Font"];
-              sansSerif = ["Sora"];
+              sansSerif = ["Nunito"];
               serif = ["Lato"];
             };
           };

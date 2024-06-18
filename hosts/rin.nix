@@ -10,7 +10,7 @@
       };
       misc = {
         audio = true;
-        boot = true;
+        console = true;
         fonts = true;
         home = true;
       };
@@ -34,6 +34,7 @@
         alacritty = true;
         firefox = true;
         gamemode = true;
+        localsend = true;
         misc = true;
         steam = true;
       };

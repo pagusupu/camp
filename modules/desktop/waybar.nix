@@ -18,32 +18,42 @@ in {
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
           modules-right = ["custom/swaync"];
-          "hyprland/workspaces" = {
-            format = "{icon}";
-            format-icons = {
-              active = "";
-              persistent = "";
-            };
-            persistent-workspaces."*" = 4;
+        };
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            active = "";
+            persistent = "";
           };
-          clock.format = "{:%I \n%M \n%p}";
-          "custom/swaync" = {
-            format = "";
-            on-click = "swaync-client -rs && swaync-client -t";
-            tooltip = false;
-          };
+          persistent-workspaces."*" = 4;
+        };
+        clock.format = "{:%I \n%M \n%p}";
+        "custom/swaync" = {
+          format = "";
+          on-click = "swaync-client -rs && swaync-client -t";
+          tooltip = false;
         };
       in {
         hyprleft =
           {
             position = "left";
             output = ["DP-3"];
+            inherit
+              "hyprland/workspaces"
+              clock
+              "custom/swaync"
+              ;
           }
           // hypr;
         hyprright =
           {
             position = "right";
             output = ["HDMI-A-1"];
+            inherit
+              "hyprland/workspaces"
+              clock
+              "custom/swaync"
+              ;
           }
           // hypr;
         #niri = {};

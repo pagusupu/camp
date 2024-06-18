@@ -21,7 +21,6 @@ in {
             (pkgs)
             heroic
             imv
-            localsend
             mpv
             prismlauncher
             pwvucontrol
@@ -39,16 +38,9 @@ in {
             ouch
             radeontop
             rm-improved
-            tealdeer
             wget
             zoxide
             ;
-          localsend-rs = pkgs.callPackage ../../misc/pkgs/localsend-rs.nix {};
-        };
-        # localsend
-        networking.firewall = {
-          allowedTCPPorts = [53317];
-          allowedUDPPorts = [53317];
         };
       })
     ];

@@ -39,7 +39,6 @@ lib.mkIf (config.cute.theme.name == "rose-pine") {
   scheme = lib.mkDefault scheme/light.yaml;
   specialisation.dark.configuration = {
     environment.etc."specialisation".text = "dark";
-    boot.loader.grub.configurationName = "dark";
     scheme = scheme/dark.yaml;
   };
 }

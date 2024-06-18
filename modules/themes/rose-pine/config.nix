@@ -44,20 +44,16 @@ in
       };
     })
     (mkIf nvim {
-      programs.nixvim = mkIf (cfg == "rose-pine") {
-        plugins.lightline.colorscheme = mkDefault "rosepine";
-        colorschemes.rose-pine = {
-          enable = true;
-          settings = {
-            variant = "auto";
-            dark_variant = "moon";
-            styles = {
-              italic = false;
-              transparency = false;
-            };
+      programs.nixvim.colorschemes.rose-pine = mkIf (cfg == "rose-pine") {
+        enable = true;
+        settings = {
+          variant = "auto";
+          dark_variant = "moon";
+          styles = {
+            italic = false;
+            transparency = false;
           };
         };
       };
-      specialisation.dark.configuration.programs.nixvim.plugins.lightline.colorscheme = mkIf (cfg == "rose-pine") "rosepine_moon";
     })
   ]

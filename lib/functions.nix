@@ -4,7 +4,7 @@
   _lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types listToAttrs;
+  inherit (lib) mkEnableOption mkOption types;
   inherit (types) bool int str;
   inherit (_lib) setInt setStr mkAssert;
 in {
@@ -39,6 +39,5 @@ in {
     assertDocker = mkAssert config.cute.services.docker.enable "requires docker service.";
     assertHm = mkAssert config.cute.desktop.misc.home "requires home-manager service.";
     assertNginx = mkAssert config.cute.services.nginx "requires nginx service.";
-    genAttrs' = list: f: listToAttrs (map f list);
   };
 }

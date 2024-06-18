@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  _lib,
   pkgs,
   ...
 }: let
@@ -15,18 +14,21 @@ in {
   config = let
     forceSSL = true;
     enableACME = true;
-    genHosts = i:
-      _lib.genAttrs' i (
-        x: let
-          inherit (config.cute.services.web.${x}) enable dns port;
-        in {
-          name = "${dns}.${domain}";
-          value = {
-            locations."/".proxyPass = lib.mkIf enable "http://localhost:${builtins.toString port}";
-            inherit forceSSL enableACME;
-          };
-        }
-      );
+    genHosts = let
+      genAttrs' = list: f: lib.listToAttrs (map f list);
+    in
+      i:
+        genAttrs' i (
+          x: let
+            inherit (config.cute.services.web.${x}) enable dns port;
+          in {
+            name = "${dns}.${domain}";
+            value = {
+              locations."/".proxyPass = lib.mkIf enable "http://localhost:${builtins.toString port}";
+              inherit forceSSL enableACME;
+            };
+          }
+        );
   in
     mkIf config.cute.services.nginx {
       services.nginx = {
