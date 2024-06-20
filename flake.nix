@@ -31,7 +31,6 @@
     base16.url = "github:SenchoPens/base16.nix";
     niri.url = "github:sodiboo/niri-flake";
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt-nix.url = "github:numtide/treefmt-nix";
