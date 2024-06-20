@@ -119,18 +119,15 @@ in {
               homeDirectory = "/home/pagu";
               stateVersion = "23.05";
             };
-            xdg = {
+            xdg.userDirs = let
+              p = "/home/pagu/";
+            in {
               enable = true;
-              userDirs = let
-                p = "/home/pagu/";
-              in {
-                enable = true;
-                desktop = p + ".local/misc/desktop";
-                documents = p + "documents";
-                download = p + "downloads";
-                pictures = p + "pictures";
-                videos = p + "pictures/videos";
-              };
+              desktop = p + ".local/misc/desktop";
+              documents = p + "documents";
+              download = p + "downloads";
+              pictures = p + "pictures";
+              videos = p + "pictures/videos";
             };
           };
         };

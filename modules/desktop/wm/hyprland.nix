@@ -126,7 +126,7 @@
       };
     };
     cute.desktop.misc.greetd = {
-      enable = true;
+      inherit (config.home-manager.users.pagu.wayland.windowManager.hyprland) enable;
       sessionDirs = ["${pkgs.hyprland}/share/wayland-sessions"];
     };
   };

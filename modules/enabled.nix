@@ -32,7 +32,6 @@ in {
         programs.git = {
           enable = true;
           config = {
-            core.editor = "nvim";
             github.user = "pagusupu";
             init.defaultBranch = "main";
             user = {

@@ -29,12 +29,12 @@ in {
         ns() {
            nom shell nixpkgs#''${^@}
         }
+        bindkey "^[[1;5C" forward-word
+        bindkey "^[[1;5D" backward-word
         # disable weird underline
         (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
         ZSH_HIGHLIGHT_STYLES[path]=none
         ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-        bindkey "^[[1;5C" forward-word
-        bindkey "^[[1;5D" backward-word
       '';
       histFile = "$HOME/.cache/zsh_history";
       histSize = 10000;

@@ -9,6 +9,7 @@
     assertions = _lib.assertHm;
     home-manager.users.pagu.services.swaync = {
       enable = true;
+      # https://github.com/rose-pine/swaync
       settings = {
         cssPriority = "application";
         fit-to-screen = true;

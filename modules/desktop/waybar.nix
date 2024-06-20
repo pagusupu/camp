@@ -36,6 +36,7 @@ in {
       in {
         hyprleft =
           {
+            bar_id = "hyprleft";
             position = "left";
             output = ["DP-3"];
             inherit
@@ -47,6 +48,7 @@ in {
           // hypr;
         hyprright =
           {
+            bar_id = "hyprright";
             position = "right";
             output = ["HDMI-A-1"];
             inherit
@@ -56,7 +58,6 @@ in {
               ;
           }
           // hypr;
-        #niri = {};
       };
       style = let
         inherit (config) scheme;

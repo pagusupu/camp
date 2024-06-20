@@ -24,13 +24,10 @@
           "vsicons.dontShowNewVersionMessage" = true;
         };
       };
-      home.packages = builtins.attrValues {
-        inherit
-          (pkgs)
-          alejandra
-          nil
-          ;
-      };
+      home.packages = with pkgs; [
+        alejandra
+        nil
+      ];
     };
   };
 }

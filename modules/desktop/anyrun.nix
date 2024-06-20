@@ -14,17 +14,21 @@
       programs.anyrun = {
         enable = true;
         config = {
-          plugins = builtins.attrValues {
-            inherit
-              (inputs.anyrun.packages.${pkgs.system})
-              applications
-              rink
-              ;
-          };
+          plugins = with inputs.anyrun.packages.${pkgs.system}; [
+            applications
+            rink
+          ];
           closeOnClick = true;
           hideIcons = true;
           showResultsImmediately = true;
         };
+        extraConfigFiles."applications.ron".text = ''
+          Config(
+            desktop_actions: false,
+            max_entries: 3,
+            terminal: Some("alacritty"),
+          )
+        '';
         extraCss = let
           inherit (config) scheme;
         in ''
