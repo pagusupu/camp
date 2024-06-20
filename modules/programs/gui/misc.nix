@@ -15,10 +15,9 @@ in {
     aagl = mkEnableOption "";
     gamemode = mkEnableOption "";
     localsend = mkEnableOption "";
-    steam = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) aagl gamemode localsend steam;
+    inherit (config.cute.programs.gui) aagl gamemode localsend;
   in
     mkMerge [
       (mkIf aagl {
@@ -39,6 +38,10 @@ in {
               apply_gpu_optimisations = "accept-responsibility";
               gpu_device = 0;
             };
+            custom = {
+              start = "notify-send 'Gamemode' 'Optimizations enabled'";
+              end = "notify-send 'Gamemode' 'Optimizations disabled'";
+            };
           };
         };
         users.users.pagu.extraGroups = ["gamemode"];
@@ -49,30 +52,6 @@ in {
           allowedTCPPorts = [53317];
           allowedUDPPorts = [53317];
         };
-      })
-      (mkIf steam {
-        programs.steam = {
-          enable = true;
-          localNetworkGameTransfers.openFirewall = true;
-          platformOptimizations.enable = true;
-          protontricks.enable = true;
-          gamescopeSession = {
-            enable = true;
-            args = [
-              "-H 1080" # height, assumes 16:9
-              "-r 165" # refresh rate
-              "-e" # steam integration
-              "--expose-wayland"
-            ];
-            env = {
-              SDL_VIDEODRIVER = "x11";
-              WLR_RENDERER = "vulkan";
-            };
-          };
-          extraCompatPackages = [pkgs.proton-ge-bin];
-        };
-        environment.sessionVariables = {WINEDEBUG = "-all";};
-        hardware.xone.enable = true;
       })
     ];
 }

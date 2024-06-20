@@ -9,15 +9,12 @@
   config = lib.mkIf config.cute.desktop.wm.hyprland {
     assertions = _lib.assertHm;
     home-manager.users.pagu = {
-      home.packages = builtins.attrValues {
-        inherit
-          (pkgs)
-          rwpspread
-          swaybg
-          wayland-pipewire-idle-inhibit
-          wl-clipboard
-          ;
-      };
+      home.packages = with pkgs; [
+        rwpspread
+        swaybg
+        wayland-pipewire-idle-inhibit
+        wl-clipboard
+      ];
       wayland.windowManager.hyprland = let
         m1 = "DP-3";
         m2 = "HDMI-A-1";
@@ -29,6 +26,8 @@
             "rwpspread -b swaybg -i ~/camp/misc/images/bg.jpg"
             "waybar"
             "wayland-pipewire-idle-inhibit"
+            "steam -console -silent"
+            "notify-send 'Steam' 'Opening in background!'"
           ];
           env = [
             "NIXOS_OZONE_WL,1"
