@@ -22,6 +22,7 @@
           "nix.serverPath" = "nil";
           "nix.serverSettings"."nil"."formatting" = {"command" = ["alejandra --quiet"];};
           "vsicons.dontShowNewVersionMessage" = true;
+          "workbench.iconTheme" = "vscode-icons";
         };
       };
       home.packages = with pkgs; [

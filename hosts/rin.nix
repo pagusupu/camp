@@ -38,7 +38,7 @@
         misc = true;
         prismlauncher = true;
         steam = true;
-        vscode = false;
+        vscode = true;
       };
     };
     net = {

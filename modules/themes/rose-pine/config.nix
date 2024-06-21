@@ -7,7 +7,6 @@
 }: let
   inherit (lib) mkMerge mkIf mkDefault;
   inherit (config.cute.programs.cli) nvim;
-  inherit (config.cute.programs.gui) vscode;
   inherit (config.cute.theme) name gtk;
   dawn = "rose-pine-dawn";
   moon = "rose-pine-moon";
@@ -41,19 +40,6 @@ in
           iconTheme.name = moon;
         };
         home.pointerCursor.name = "BreezeX-RosePine-Linux";
-      };
-    })
-    (mkIf vscode {
-      home-manager.users.pagu.programs.vscode = {
-        extensions = [pkgs.vscode-extensions.mvllow.rose-pine];
-        userSettings = {
-          "workbench.colorTheme" = mkDefault "Rosé Pine Dawn (no italics)";
-        };
-      };
-      specialisation.dark.configuration.home-manager.users.pagu = {
-        programs.vscode.userSettings = {
-          "workbench.colorTheme" = "Rosé Pine Moon (no italics)";
-        };
       };
     })
     (mkIf nvim {
