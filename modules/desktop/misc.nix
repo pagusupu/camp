@@ -72,21 +72,24 @@ in {
       })
       (mkIf fonts {
         fonts = {
-          packages = builtins.attrValues {
-            inherit
-              (pkgs)
-              noto-fonts
-              noto-fonts-cjk
-              noto-fonts-emoji
-              noto-fonts-extra
-              ;
-            googlefonts = pkgs.google-fonts.override {
-              fonts = ["Lato" "Nunito"];
-            };
-            nerdfonts = pkgs.nerdfonts.override {
-              fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];
-            };
-          };
+          packages = with pkgs; [
+            (google-fonts.override {
+              fonts = [
+                "Lato"
+                "Nunito"
+              ];
+            })
+            (nerdfonts.override {
+              fonts = [
+                "JetBrainsMono"
+                "NerdFontsSymbolsOnly"
+              ];
+            })
+            noto-fonts
+            noto-fonts-cjk
+            noto-fonts-emoji
+            noto-fonts-extra
+          ];
           fontconfig = {
             enable = true;
             subpixel.rgba = "rgb";

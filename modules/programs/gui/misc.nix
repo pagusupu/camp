@@ -7,17 +7,15 @@
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
-  imports = [
-    inputs.aagl.nixosModules.default
-    inputs.nix-gaming.nixosModules.platformOptimizations
-  ];
+  imports = [inputs.aagl.nixosModules.default];
   options.cute.programs.gui = {
     aagl = mkEnableOption "";
     gamemode = mkEnableOption "";
     localsend = mkEnableOption "";
+    prismlauncher = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) aagl gamemode localsend;
+    inherit (config.cute.programs.gui) aagl gamemode localsend prismlauncher;
   in
     mkMerge [
       (mkIf aagl {
@@ -51,6 +49,16 @@ in {
         networking.firewall = {
           allowedTCPPorts = [53317];
           allowedUDPPorts = [53317];
+        };
+      })
+      (mkIf prismlauncher {
+        environment = {
+          systemPackages = [pkgs.prismlauncher];
+          etc = {
+            "jdks/21".source = pkgs.openjdk21 + /bin;
+            "jdks/17".source = pkgs.openjdk17 + /bin;
+            "jdks/8".source = pkgs.openjdk8 + /bin;
+          };
         };
       })
     ];

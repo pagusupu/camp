@@ -16,16 +16,17 @@ in {
       git = mkEnabledOption;
       misc = mkEnabledOption;
       nix = mkEnabledOption;
+      ssh = mkEnabledOption;
       user = mkEnabledOption;
     };
     net = {
       enable = mkEnabledOption;
-      interface = mkOption {type = str;};
+      name = mkOption {type = str;};
       ip = mkOption {type = str;};
     };
   };
   config = let
-    inherit (config.cute.enabled) git misc nix user;
+    inherit (config.cute.enabled) git misc nix ssh user;
   in
     mkMerge [
       (mkIf git {
@@ -76,23 +77,6 @@ in {
           };
         };
       })
-      (mkIf user {
-        environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
-        age = {
-          identityPaths = ["/home/pagu/.ssh/id_ed25519"];
-          secrets.user = {
-            file = ../misc/secrets/user.age;
-            owner = "pagu";
-          };
-        };
-        users.users.pagu = {
-          isNormalUser = true;
-          extraGroups = ["wheel"];
-          uid = 1000;
-          hashedPasswordFile = config.age.secrets.user.path;
-        };
-        security.sudo.execWheelOnly = true;
-      })
       (mkIf nix {
         nix = {
           settings = {
@@ -118,19 +102,53 @@ in {
           hostPlatform = "x86_64-linux";
         };
       })
+      (mkIf ssh {
+        services.openssh = {
+          knownHosts = {
+            aoi = mkIf (config.networking.hostName != "aoi") {
+              extraHostNames = ["192.168.178.182"];
+              publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICR4g9u714ldK2AjbqpHUL3CMnBm18EsaTNUqWitzNkN";
+            };
+            "github.com".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+          };
+          hostKeys = [
+            {
+              comment = "${config.networking.hostName} host";
+              path = "/etc/ssh/${config.networking.hostName}_ed25519_key";
+              type = "ed25519";
+            }
+          ];
+        };
+      })
+      (mkIf user {
+        environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
+        age = {
+          identityPaths = ["/etc/ssh/${config.networking.hostName}_ed25519_key"];
+          secrets.user = {
+            file = ../misc/secrets/user.age;
+            owner = "pagu";
+          };
+        };
+        users.users.pagu = {
+          isNormalUser = true;
+          extraGroups = ["wheel"];
+          uid = 1000;
+          hashedPasswordFile = config.age.secrets.user.path;
+        };
+        security.sudo.execWheelOnly = true;
+      })
       (let
-        inherit (config.cute.net) enable interface ip;
+        inherit (config.cute.net) enable name ip;
       in
         mkIf enable {
           networking = {
-            firewall.enable = true;
             enableIPv6 = false;
             useDHCP = false;
           };
           systemd.network = {
             enable = true;
-            networks.${interface} = {
-              name = interface;
+            networks.${name} = {
+              inherit enable name;
               networkConfig = {
                 DHCP = "no";
                 DNSSEC = "yes";

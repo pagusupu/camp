@@ -1,9 +1,11 @@
 {
   config,
   lib,
+  inputs,
   pkgs,
   ...
 }: {
+  imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
   options.cute.programs.gui.steam = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.gui.steam {
     programs.steam = {
@@ -26,7 +28,7 @@
       };
       extraCompatPackages = [pkgs.proton-ge-bin];
     };
-    environment.sessionVariables = {WINEDEBUG = "-all";};
+    environment.sessionVariables.WINEDEBUG = "-all";
     hardware.xone.enable = true;
   };
 }

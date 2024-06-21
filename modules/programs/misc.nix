@@ -19,7 +19,6 @@ in {
           heroic
           imv
           mpv
-          prismlauncher
           pwvucontrol
         ];
       })

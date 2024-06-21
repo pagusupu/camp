@@ -36,13 +36,14 @@
         gamemode = true;
         localsend = true;
         misc = true;
+        prismlauncher = true;
         steam = true;
         vscode = false;
       };
     };
     net = {
       ip = "192.168.178.126";
-      interface = "enp10s0";
+      name = "enp10s0";
     };
     theme = {
       gtk = true;

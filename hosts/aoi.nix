@@ -5,7 +5,6 @@
       misc = true;
       nh = true;
       nvim = true;
-      ssh = true;
       starship = true;
       yazi = true;
       zsh = true;
@@ -13,6 +12,7 @@
     services = {
       homeassistant = true;
       nginx = true;
+      ssh = true;
       synapse = true;
       docker = {
         enable = true;
@@ -31,7 +31,7 @@
     };
     net = {
       ip = "192.168.178.182";
-      interface = "enp37s0";
+      name = "enp37s0";
     };
   };
   networking = {
