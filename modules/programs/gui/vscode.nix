@@ -17,6 +17,7 @@
         ];
         userSettings = {
           "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'monospace', monospace";
+          "git.confirmSync" = false;
           "nix.enableLanguageServer" = true;
           "nix.formatterPath" = "alejandra";
           "nix.serverPath" = "nil";
