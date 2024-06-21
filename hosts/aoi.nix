@@ -12,7 +12,7 @@
     services = {
       homeassistant = true;
       nginx = true;
-      ssh = true;
+      openssh = true;
       synapse = true;
       docker = {
         enable = true;
