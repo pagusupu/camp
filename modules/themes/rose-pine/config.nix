@@ -35,23 +35,26 @@ in
           x11.enable = true;
         };
       };
-      specialisation.dark.configuration.home-manager.users.pagu = {
-        gtk = {
-          theme.name = moon;
-          iconTheme.name = moon;
+      specialisation.dark.configuration = {
+        home-manager.users.pagu = {
+          gtk = {
+            theme.name = moon;
+            iconTheme.name = moon;
+          };
+          home.pointerCursor.name = "BreezeX-RosePine-Linux";
         };
-        home.pointerCursor.name = "BreezeX-RosePine-Linux";
       };
     })
     (mkIf vscode {
+      assertions = _lib.assertHm;
       home-manager.users.pagu.programs.vscode = {
         extensions = [pkgs.vscode-extensions.mvllow.rose-pine];
         userSettings = {
           "workbench.colorTheme" = mkDefault "Rosé Pine Dawn (no italics)";
         };
       };
-      specialisation.dark.configuration.home-manager.users.pagu = {
-        programs.vscode.userSettings = {
+      specialisation.dark.configuration = {
+        home-manager.users.pagu.programs.vscode.userSettings = {
           "workbench.colorTheme" = "Rosé Pine Moon (no italics)";
         };
       };
@@ -60,8 +63,8 @@ in
       programs.nixvim.colorschemes.rose-pine = {
         enable = true;
         settings = {
-          variant = "auto";
           dark_variant = "moon";
+          variant = "auto";
           styles = {
             italic = false;
             transparency = false;

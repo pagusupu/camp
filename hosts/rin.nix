@@ -71,11 +71,11 @@
     loader = {
       grub = {
         enable = true;
-        efiSupport = true;
-        useOSProber = true;
-        device = "nodev";
-        splashImage = null;
         configurationLimit = 10;
+        device = "nodev";
+        efiSupport = true;
+        splashImage = null;
+        useOSProber = true;
       };
       efi.canTouchEfiVariables = true;
     };

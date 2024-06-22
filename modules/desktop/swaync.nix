@@ -55,9 +55,9 @@
 
           .floating-notifications.background .notification-row .notification-background {
             border-radius: 0.5rem;
-            background-color: ${A1};
-            color: ${A6};
-            border: 1px solid ${A4};
+            background-color: #${A1};
+            color: #${A6};
+            border: 1px solid #${A4};
           }
 
           .floating-notifications.background
@@ -72,7 +72,7 @@
             .notification-row
             .notification-background
             .notification.critical {
-            border: 1px solid ${B1};
+            border: 1px solid #${B1};
           }
 
           .floating-notifications.background
@@ -82,7 +82,7 @@
             .notification-content
             .summary {
             margin: 0.5rem;
-            color: ${A6};
+            color: #${A6};
             font-weight: bold;
           }
 
@@ -93,7 +93,7 @@
             .notification-content
             .body {
             margin: 0.5rem;
-            color: ${A5};
+            color: #${A5};
           }
 
           .floating-notifications.background
@@ -113,9 +113,9 @@
             > *
             .notification-action {
             border-radius: 0.5rem;
-            color: ${A6};
-            background-color: ${A2};
-            border: 1px solid ${A4};
+            color: #${A6};
+            background-color: #${A2};
+            border: 1px solid #${A4};
           }
 
           .floating-notifications.background
@@ -125,7 +125,7 @@
             > *:last-child
             > *
             .notification-action:hover {
-            background-color: ${A3};
+            background-color: #${A3};
           }
 
           .floating-notifications.background
@@ -135,7 +135,7 @@
             > *:last-child
             > *
             .notification-action:active {
-            background-color: ${A4};
+            background-color: #${A4};
           }
 
           .floating-notifications.background
@@ -145,60 +145,60 @@
             margin: 0.5rem;
             padding: 0.25rem;
             border-radius: 0.5rem;
-            color: ${A6};
-            background-color: ${B1};
+            color: #${A6};
+            background-color: #${B1};
           }
 
           .floating-notifications.background
             .notification-row
             .notification-background
             .close-button:hover {
-            color: ${A1};
+            color: #${A1};
           }
 
           .floating-notifications.background
             .notification-row
             .notification-background
             .close-button:active {
-            background-color: ${B3};
+            background-color: #${B3};
           }
 
           .control-center {
             border-radius: 0.5rem;
             margin: 1rem;
-            background-color: ${A1};
-            color: ${A6};
+            background-color: #${A1};
+            color: #${A6};
             padding: 1rem;
-            border: 1px solid ${A4};
+            border: 1px solid #${A4};
           }
 
           .control-center .widget-title {
-            color: ${B3};
+            color: #${B3};
             font-weight: bold;
           }
 
           .control-center .widget-title button {
             border-radius: 0.5rem;
-            color: ${A6};
-            background-color: ${A2};
-            border: 1px solid ${A4};
+            color: #${A6};
+            background-color: #${A2};
+            border: 1px solid #${A4};
             padding: 0.5rem;
           }
 
           .control-center .widget-title button:hover {
-            background-color: ${A3};
+            background-color: #${A3};
           }
 
           .control-center .widget-title button:active {
-            background-color: ${A4};
+            background-color: #${A4};
           }
 
           .control-center .notification-row .notification-background {
             border-radius: 0.5rem;
             margin: 0.5rem 0;
-            background-color: ${A2};
-            color: ${A6};
-            border: 1px solid ${A4};
+            background-color: #${A2};
+            color: #${A6};
+            border: 1px solid #${A4};
           }
 
           .control-center .notification-row .notification-background .notification {
@@ -210,7 +210,7 @@
             .notification-row
             .notification-background
             .notification.critical {
-            border: 1px solid ${B1};
+            border: 1px solid #${B1};
           }
 
           .control-center
@@ -218,7 +218,7 @@
             .notification-background
             .notification
             .notification-content {
-            color: ${A6};
+            color: #${A6};
           }
 
           .control-center
@@ -228,7 +228,7 @@
             .notification-content
             .summary {
             margin: 0.5rem;
-            color: ${B5};
+            color: #${B5};
             font-weight: bold;
           }
 
@@ -239,7 +239,7 @@
             .notification-content
             .body {
             margin: 0.5rem;
-            color: ${A5};
+            color: #${A5};
           }
 
           .control-center
@@ -259,9 +259,9 @@
             > *
             .notification-action {
             border-radius: 0.5rem;
-            color: ${A6};
-            background-color: ${A2};
-            border: 1px solid ${A4};
+            color: #${A6};
+            background-color: #${A2};
+            border: 1px solid #${A4};
           }
 
           .control-center
@@ -271,7 +271,7 @@
             > *:last-child
             > *
             .notification-action:hover {
-            background-color: ${A3};
+            background-color: #${A3};
           }
 
           .control-center
@@ -281,26 +281,26 @@
             > *:last-child
             > *
             .notification-action:active {
-            background-color: ${A4};
+            background-color: #${A4};
           }
 
           .control-center .notification-row .notification-background .close-button {
             margin: 0.5rem;
             padding: 0.25rem;
             border-radius: 0.5rem;
-            color: ${A6};
-            background-color: ${B1};
+            color: #${A6};
+            background-color: #${B1};
           }
 
           .control-center .notification-row .notification-background .close-button:hover {
-            color: ${A1};
+            color: #${A1};
           }
 
           .control-center
             .notification-row
             .notification-background
             .close-button:active {
-            background-color: ${B3};
+            background-color: #${B3};
           }
 
           progressbar,
@@ -310,20 +310,20 @@
           }
 
           .notification.critical progress {
-            background-color: ${B6};
+            background-color: #${B6};
           }
 
           .notification.low progress,
           .notification.normal progress {
-            background-color: ${B4};
+            background-color: #${B4};
           }
 
           trough {
-            background-color: ${A2};
+            background-color: #${A2};
           }
 
           .control-center trough {
-            background-color: ${A2};
+            background-color: #${A2};
           }
 
           .control-center-dnd {
@@ -332,18 +332,18 @@
           }
 
           .control-center-dnd slider {
-            background: ${A3};
+            background: #${A3};
             border-radius: 0.5rem;
           }
 
           .widget-dnd {
-            color: ${A5};
+            color: #${A5};
           }
 
           .widget-dnd > switch {
             border-radius: 0.5rem;
-            background: ${A3};
-            border: 1px solid ${A4};
+            background: #${A3};
+            border: 1px solid #${A4};
           }
 
           .widget-dnd > switch:checked slider {
@@ -351,7 +351,7 @@
           }
 
           .widget-dnd > switch slider {
-            background: ${A4};
+            background: #${A4};
             border-radius: 0.5rem;
             margin: 0.25rem;
           }

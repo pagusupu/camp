@@ -6,6 +6,7 @@
   inherit (lib) mkIf mkDefault;
 in
   mkIf (config.cute.theme.name == "rose-pine") {
+    # https://rosepinetheme.com/palette/ingredients
     colours.base16 = rec {
       A1 = mkDefault "faf4ed"; # base
       A2 = mkDefault "fffaf3"; # surface

@@ -65,16 +65,13 @@ in {
           command-not-found.enable = false;
           nano.enable = false;
         };
-        environment = {
-          #defaultPackages = [];
-          variables = let
-            d = "/home/pagu/";
-          in {
-            XDG_CACHE_HOME = d + ".cache";
-            XDG_CONFIG_HOME = d + ".config";
-            XDG_DATA_HOME = d + ".local/share";
-            XDG_STATE_HOME = d + ".local/state";
-          };
+        environment.variables = let
+          d = "/home/pagu/";
+        in {
+          XDG_CACHE_HOME = d + ".cache";
+          XDG_CONFIG_HOME = d + ".config";
+          XDG_DATA_HOME = d + ".local/share";
+          XDG_STATE_HOME = d + ".local/state";
         };
       })
       (mkIf nix {

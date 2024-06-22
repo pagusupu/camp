@@ -49,7 +49,6 @@ in {
       })
       (mkIf console {
         boot = {
-          enableContainers = false;
           initrd.verbose = false;
           kernelParams = ["quiet" "splash"];
         };
