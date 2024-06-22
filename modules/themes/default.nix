@@ -2,18 +2,39 @@
   config,
   lib,
   _lib,
-  inputs,
   ...
-}: {
-  imports = [inputs.base16.nixosModule];
-  options.cute.theme = {
-    gtk = lib.mkEnableOption "";
-    name = lib.mkOption {
-      default = "rose-pine";
-      type = lib.types.enum ["rose-pine"];
+}: let
+  inherit (lib) mkOption mkEnableOption types mkIf;
+  inherit (types) str enum;
+in {
+  options = {
+    colours.base16 = {
+      A1 = mkOption {type = str;};
+      A2 = mkOption {type = str;};
+      A3 = mkOption {type = str;};
+      A4 = mkOption {type = str;};
+      A5 = mkOption {type = str;};
+      A6 = mkOption {type = str;};
+      A7 = mkOption {type = str;};
+      A8 = mkOption {type = str;};
+      B1 = mkOption {type = str;};
+      B2 = mkOption {type = str;};
+      B3 = mkOption {type = str;};
+      B4 = mkOption {type = str;};
+      B5 = mkOption {type = str;};
+      B6 = mkOption {type = str;};
+      B7 = mkOption {type = str;};
+      B8 = mkOption {type = str;};
+    };
+    cute.theme = {
+      gtk = mkEnableOption "";
+      name = mkOption {
+        default = "rose-pine";
+        type = enum ["rose-pine"];
+      };
     };
   };
-  config = lib.mkIf config.cute.theme.gtk {
+  config = mkIf config.cute.theme.gtk {
     assertions = _lib.assertHm;
     home-manager.users.pagu.qt = {
       enable = true;

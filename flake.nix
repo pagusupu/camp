@@ -28,17 +28,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    base16.url = "github:SenchoPens/base16.nix";
     niri.url = "github:sodiboo/niri-flake";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
   outputs = inputs: let
-    inherit (inputs) nixpkgs treefmt-nix;
-    inherit (nixpkgs) lib legacyPackages;
-    inherit (lib) genAttrs nixosSystem hasSuffix filesystem;
+    inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
     inherit (builtins) concatMap filter;
     genHosts = hosts:
       genAttrs hosts (
@@ -55,16 +51,5 @@
       );
   in {
     nixosConfigurations = genHosts ["aoi" "rin"];
-    formatter.x86_64-linux =
-      treefmt-nix.lib.mkWrapper
-      legacyPackages.x86_64-linux {
-        programs = {
-          alejandra.enable = true;
-          deadnix.enable = true;
-          statix.enable = true;
-          yamlfmt.enable = true;
-        };
-        projectRootFile = "flake.nix";
-      };
   };
 }

@@ -43,9 +43,7 @@ in {
       (mkIf lock {
         home-manager.users.pagu.programs.hyprlock = {
           enable = true;
-          settings = let
-            inherit (config) scheme;
-          in {
+          settings = {
             general = {
               hide_cursor = true;
               disable_loading_bar = true;
@@ -56,7 +54,7 @@ in {
               blur_size = 10;
               blur_passes = 4;
             };
-            input-field = {
+            input-field = with config.colours.base16; {
               monitor = "DP-3";
               size = "200, 50";
               position = "0, -20";
@@ -64,12 +62,12 @@ in {
               valign = "center";
               fade_on_empty = false;
               outline_thickness = 3;
-              outer_color = "0xFF" + scheme.base0D;
-              inner_color = "0xFF" + scheme.base00;
-              font_color = "0xFF" + scheme.base05;
-              check_color = "0xFF" + scheme.base0B;
-              fail_color = "0xFF" + scheme.base08;
-              capslock_color = "0xFF" + scheme.base0A;
+              outer_color = "0xFF" + B6;
+              inner_color = "0xFF" + A1;
+              font_color = "0xFF" + A6;
+              check_color = "0xFF" + B4;
+              fail_color = "0xFF" + B1;
+              capslock_color = "0xFF" + B3;
               placeholder_text = "";
             };
           };

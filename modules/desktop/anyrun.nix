@@ -29,9 +29,7 @@
             terminal: Some("alacritty"),
           )
         '';
-        extraCss = let
-          inherit (config) scheme;
-        in ''
+        extraCss = with config.colours.base16; ''
           * {
             font-family: monospace;
             font-size: 16px;
@@ -43,21 +41,21 @@
             background-color: transparent;
           }
           #entry {
-            background: #${scheme.base00};
-            color: #${scheme.base05};
+            background: #${A1};
+            color: #${A6};
             border-width: 3px;
             border-radius: 6px;
             margin-bottom: 6px;
             margin-top: 14px;
           }
           list#main, list#main:hover {
-            background: #${scheme.base02};
-            color: #${scheme.base05};
+            background: #${A3};
+            color: #${A6};
             border-radius: 6px;
           }
           box#match:hover {
-            color: #${scheme.base00};
-            background: #${scheme.base0D};
+            color: #${A1};
+            background: #${B6};
           }
           row#plugin, row#plugin:hover {
             background: none;

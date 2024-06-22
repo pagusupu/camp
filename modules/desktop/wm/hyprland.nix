@@ -62,8 +62,8 @@
             gaps_out = 6;
             hover_icon_on_border = false;
             resize_on_border = true;
-            "col.active_border" = "0xFF" + config.scheme.base0B;
-            "col.inactive_border" = "0xFF" + config.scheme.base00;
+            "col.active_border" = "0xFF" + config.colours.base16.B4;
+            "col.inactive_border" = "0xFF" + config.colours.base16.A1;
           };
           input = {
             accel_profile = "flat";

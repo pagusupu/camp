@@ -27,25 +27,24 @@
             y = 10;
           };
         };
-        colors = let
-          inherit (config.scheme) withHashtag;
+        colors = with config.colours.base16; let
           c = {
-            white = withHashtag.base05;
-            blue = withHashtag.base0C;
-            red = withHashtag.base08;
-            green = withHashtag.base0B;
-            yellow = withHashtag.base09;
-            magenta = withHashtag.base0D;
-            cyan = withHashtag.base0A;
+            white = "#" + A6;
+            blue = "#" + B5;
+            red = "#" + B1;
+            green = "#" + B4;
+            yellow = "#" + B2;
+            magenta = "#" + B6;
+            cyan = "#" + B3;
           };
         in {
           primary = {
-            background = withHashtag.base00;
-            foreground = c.white;
+            background = "#" + A1;
+            foreground = "#" + A6;
           };
-          normal = c // {black = withHashtag.base00;};
-          bright = c // {black = withHashtag.base03;};
-          dim = c // {black = withHashtag.base03;};
+          normal = c // {black = "#" + A1;};
+          bright = c // {black = "#" + A4;};
+          dim = c // {black = "#" + A4;};
         };
       };
     };

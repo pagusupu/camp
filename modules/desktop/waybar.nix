@@ -59,33 +59,31 @@ in {
           }
           // hypr;
       };
-      style = let
-        inherit (config) scheme;
-      in ''
+      style = with config.colours.base16; ''
         * {
           all: unset;
           font-family: monospace;
           font-size: 15px;
         }
         window#waybar {
-          background: #${scheme.base00};
+          background: #${A1};
         }
         #workspaces {
           margin-top: 2px;
           padding: 5px 4px 5px 0px;
         }
         #workspaces button {
-          color: #${scheme.base0B};
+          color: #${B4};
         }
         #workspaces button.empty {
-          color: #${scheme.base05};
+          color: #${A6};
         }
         #clock {
-          color: #${scheme.base05};
+          color: #${A6};
           padding: 7px 0px 6px 9px;
         }
         #custom-swaync {
-          color: #${scheme.base05};
+          color: #${A6};
           font-size: 17px;
           margin-bottom: 2px;
           margin-right: 5px;

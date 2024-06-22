@@ -2,43 +2,45 @@
   config,
   lib,
   ...
-}:
-lib.mkIf (config.cute.theme.name == "rose-pine") {
-  _module.args.colours = {
-    dark = {
-      base = "232136";
-      surface = "2a273f";
-      overlay = "393552";
-      muted = "6e6a86";
-      subtle = "908caa";
-      text = "e0def4";
-      love = "eb6f92";
-      gold = "f6c177";
-      rose = "ebbcba";
-      pine = "31748f";
-      foam = "9ccfd8";
-      iris = "c4a7e7";
-      highlight = "56526e";
+}: let
+  inherit (lib) mkIf mkDefault;
+in
+  mkIf (config.cute.theme.name == "rose-pine") {
+    colours.base16 = rec {
+      A1 = mkDefault "faf4ed"; # base
+      A2 = mkDefault "fffaf3"; # surface
+      A3 = mkDefault "f2e9de"; # overlay
+      A4 = mkDefault "9893a5"; # muted
+      A5 = mkDefault "797593"; # subtle
+      A6 = mkDefault "575279"; # text
+      A7 = A6;
+      A8 = mkDefault "cecacd"; # highlight
+      B1 = mkDefault "b4637a"; # love
+      B2 = mkDefault "ea9d34"; # gold
+      B3 = mkDefault "d7827e"; # rose
+      B4 = mkDefault "286983"; # pine
+      B5 = mkDefault "56949f"; # foam
+      B6 = mkDefault "907aa9"; # iris
+      B7 = B2;
+      B8 = A8;
     };
-    light = {
-      base = "faf4ed";
-      surface = "fffaf3";
-      overlay = "f2e9e1";
-      muted = "9893a5";
-      subtle = "797593";
-      text = "575279";
-      love = "b4637a";
-      gold = "ea9e34";
-      rose = "d7827e";
-      pine = "286983";
-      foam = "56949f";
-      iris = "907aa9";
-      highlight = "cecacd";
+    specialisation.dark.configuration = {
+      colours.base16 = {
+        A1 = "232136"; # base
+        A2 = "2a273f"; # surface
+        A3 = "393552"; # overlay
+        A4 = "6e6a86"; # muted
+        A5 = "908caa"; # subtle
+        A6 = "e0def4"; # text
+        A8 = "56526e"; # highlight
+        B1 = "eb6f92"; # love
+        B2 = "f6c177"; # gold
+        B3 = "ea9a97"; # rose
+        B4 = "3e8fb0"; # pine
+        B5 = "9ccfd8"; # foam
+        B6 = "c4a7e7"; # iris
+      };
+      boot.loader.grub.configurationName = "dark";
+      environment.etc."specialisation".text = "dark";
     };
-  };
-  scheme = lib.mkDefault scheme/light.yaml;
-  specialisation.dark.configuration = {
-    environment.etc."specialisation".text = "dark";
-    scheme = scheme/dark.yaml;
-  };
-}
+  }
