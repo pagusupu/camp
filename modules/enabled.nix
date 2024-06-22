@@ -36,8 +36,8 @@ in {
             github.user = "pagusupu";
             init.defaultBranch = "main";
             user = {
-              name = "pagu";
               email = "me@pagu.cafe";
+              name = "pagu";
               signingKey = "/home/pagu/.ssh/id_ed25519.pub";
             };
             commit.gpgsign = true;
@@ -58,10 +58,10 @@ in {
         };
         hardware = {
           enableRedistributableFirmware = true;
-          opengl.enable = true;
+          graphics.enable = true;
         };
         programs = {
-          bash.enableCompletion = false;
+          bash.completion.enable = false;
           command-not-found.enable = false;
           nano.enable = false;
         };
@@ -156,7 +156,7 @@ in {
                 DNS = ["1.0.0.1" "1.1.1.1"];
               };
               address = ["${ip}/24"];
-              routes = [{routeConfig.Gateway = "192.168.178.1";}];
+              routes = [{Gateway = "192.168.178.1";}];
             };
           };
         })

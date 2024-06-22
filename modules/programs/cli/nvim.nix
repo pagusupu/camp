@@ -33,7 +33,7 @@
         lsp = {
           enable = true;
           servers = {
-            nil_ls = {
+            nil-ls = {
               enable = true;
               cmd = ["nil"];
               settings.formatting.command = ["alejandra --quiet"];

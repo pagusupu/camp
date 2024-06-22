@@ -15,6 +15,10 @@ in {
       shellAliases = {
         cat = "bat --theme='base16'";
         cd = "z";
+        ga = "git add -A";
+        gc = "git commit -m";
+        gp = "git push -u";
+        gpo = "git push -u origin main";
         grep = "grep --color=auto";
         ls = "eza --group-directories-first";
         rm = "rip";
