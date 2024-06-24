@@ -9,8 +9,6 @@
   inherit (config.cute.programs.cli) nvim;
   inherit (config.cute.programs.gui) vscode;
   inherit (config.cute.theme) name gtk;
-  dawn = "rose-pine-dawn";
-  moon = "rose-pine-moon";
 in
   mkIf (name == "rose-pine") (mkMerge [
     (mkIf gtk {
@@ -19,18 +17,25 @@ in
         gtk = {
           theme = {
             package = pkgs.rose-pine-gtk-theme;
-            name = mkDefault dawn;
+            name = mkDefault "rose-pine-dawn";
           };
           iconTheme = {
             package = pkgs.rose-pine-icon-theme;
-            name = mkDefault dawn;
+            name = mkDefault "rose-pine-dawn";
           };
+        };
+        home.pointerCursor = {
+          package = pkgs.rose-pine-cursor;
+          name = mkDefault "BreezeX-RosePine-Linux";
         };
       };
       specialisation.dark.configuration = {
-        home-manager.users.pagu.gtk = {
-          theme.name = moon;
-          iconTheme.name = moon;
+        home-manager.users.pagu = {
+          gtk = {
+            theme.name = "rose-pine-moon";
+            iconTheme.name = "rose-pine-moon";
+          };
+          home.pointerCursor.name = "BreezeX-RosePine-linux";
         };
       };
     })
@@ -39,12 +44,15 @@ in
         enable = true;
         settings = {
           dark_variant = "moon";
-          variant = "auto";
           styles = {
             italic = false;
             transparency = false;
           };
+          variant = "auto";
         };
+      };
+      specialisation.dark.configuration = {
+        programs.nixvim.plugins.lightline.colorscheme = "rosepine_moon";
       };
     })
     (mkIf vscode {

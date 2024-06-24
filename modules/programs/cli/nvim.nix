@@ -14,12 +14,14 @@
       vimAlias = true;
       luaLoader.enable = true;
       opts = {
+        showmode = false;
         number = true;
         shiftwidth = 2;
         smartindent = true;
         undofile = true;
       };
       plugins = {
+        lightline.enable = true;
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
         indent-blankline = {
