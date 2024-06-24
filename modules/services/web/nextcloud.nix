@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  options.cute.services.web.nextcloud = _lib.mkWebOpt "next" 0;
+  options.cute.services.web.nextcloud = _lib.mkWebOpt "next" null;
   config = let
     inherit (config.cute.services.web.nextcloud) enable dns;
     inherit (config.networking) domain;

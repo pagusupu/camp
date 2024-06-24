@@ -19,7 +19,8 @@ in {
         gc = "git commit -m";
         gp = "git push -u";
         gpo = "git push -u origin main";
-        gs = "git status";
+        gs = "git status -s";
+	gsv = "git status -v";
         grep = "grep --color=auto";
         ls = "eza --group-directories-first";
         rm = "rip";
