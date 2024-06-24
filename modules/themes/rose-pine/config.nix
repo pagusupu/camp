@@ -17,7 +17,6 @@ in
       assertions = _lib.assertHm;
       home-manager.users.pagu = {
         gtk = {
-          enable = true;
           theme = {
             package = pkgs.rose-pine-gtk-theme;
             name = mkDefault dawn;
@@ -27,35 +26,11 @@ in
             name = mkDefault dawn;
           };
         };
-        home.pointerCursor = {
-          package = pkgs.rose-pine-cursor;
-          name = mkDefault "BreezeX-RosePineDawn-Linux";
-          size = 24;
-          gtk.enable = true;
-          x11.enable = true;
-        };
       };
       specialisation.dark.configuration = {
-        home-manager.users.pagu = {
-          gtk = {
-            theme.name = moon;
-            iconTheme.name = moon;
-          };
-          home.pointerCursor.name = "BreezeX-RosePine-Linux";
-        };
-      };
-    })
-    (mkIf vscode {
-      assertions = _lib.assertHm;
-      home-manager.users.pagu.programs.vscode = {
-        extensions = [pkgs.vscode-extensions.mvllow.rose-pine];
-        userSettings = {
-          "workbench.colorTheme" = mkDefault "Rosé Pine Dawn (no italics)";
-        };
-      };
-      specialisation.dark.configuration = {
-        home-manager.users.pagu.programs.vscode.userSettings = {
-          "workbench.colorTheme" = "Rosé Pine Moon (no italics)";
+        home-manager.users.pagu.gtk = {
+          theme.name = moon;
+          iconTheme.name = moon;
         };
       };
     })
@@ -69,6 +44,18 @@ in
             italic = false;
             transparency = false;
           };
+        };
+      };
+    })
+    (mkIf vscode {
+      assertions = _lib.assertHm;
+      home-manager.users.pagu.programs.vscode = {
+        extensions = [pkgs.vscode-extensions.mvllow.rose-pine];
+        userSettings."workbench.colorTheme" = mkDefault "Rosé Pine Dawn (no italics)";
+      };
+      specialisation.dark.configuration = {
+        home-manager.users.pagu.programs.vscode = {
+          userSettings."workbench.colorTheme" = "Rosé Pine Moon (no italics)";
         };
       };
     })

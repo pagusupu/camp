@@ -2,6 +2,7 @@
   config,
   lib,
   _lib,
+  pkgs,
   ...
 }: {
   options = {
@@ -35,9 +36,26 @@
   };
   config = lib.mkIf config.cute.theme.gtk {
     assertions = _lib.assertHm;
-    home-manager.users.pagu.qt = {
-      enable = true;
-      platformTheme.name = "gtk";
+    home-manager.users.pagu = {
+      gtk.enable = true;
+      qt = {
+        enable = true;
+        platformTheme.name = "gtk";
+      };
+      home.pointerCursor = {
+        package = pkgs.rose-pine-cursor;
+        name = lib.mkOverride 1001 "BreezeX-RosePine-Linux";
+        size = 24;
+        gtk.enable = true;
+        x11.enable = true;
+      };
+    };
+    specialisation.dark.configuration = {
+      home-manager.users.pagu.home.pointerCursor = {
+        name = lib.mkDefault "BreezeX-RosePineDawn-Linux";
+      };
+      boot.loader.grub.configurationName = "dark";
+      environment.etc."specialisation".text = "dark";
     };
     programs.dconf.enable = true;
   };

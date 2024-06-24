@@ -41,7 +41,5 @@ in
         B5 = "9ccfd8"; # foam
         B6 = "c4a7e7"; # iris
       };
-      boot.loader.grub.configurationName = "dark";
-      environment.etc."specialisation".text = "dark";
     };
   }

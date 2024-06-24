@@ -13,19 +13,20 @@ in {
       enable = true;
       settings = let
         hypr = {
+          reload_style_on_change = true;
           layer = "top";
           width = 36;
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
           modules-right = ["custom/swaync"];
-        };
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          format-icons = {
-            active = "";
-            persistent = "";
+          "hyprland/workspaces" = {
+            format = "{icon}";
+            format-icons = {
+              active = "";
+              persistent = "";
+            };
+            persistent-workspaces."*" = 4;
           };
-          persistent-workspaces."*" = 4;
         };
         clock.format = "{:%I \n%M \n%p}";
         "custom/swaync" = {
@@ -36,26 +37,18 @@ in {
       in {
         hyprleft =
           {
-            bar_id = "hyprleft";
+            id = 0;
             position = "left";
             output = ["DP-3"];
-            inherit
-              "hyprland/workspaces"
-              clock
-              "custom/swaync"
-              ;
+            inherit clock "custom/swaync";
           }
           // hypr;
         hyprright =
           {
-            bar_id = "hyprright";
+            id = 1;
             position = "right";
             output = ["HDMI-A-1"];
-            inherit
-              "hyprland/workspaces"
-              clock
-              "custom/swaync"
-              ;
+            inherit clock "custom/swaync";
           }
           // hypr;
       };
