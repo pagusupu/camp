@@ -47,21 +47,17 @@ in {
           platformTheme.name = "gtk";
         };
         home.pointerCursor = {
-          #size = 24;
-          #gtk.enable = true;
-          #x11.enable = true;
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
         };
       };
       programs.dconf.enable = true;
     })
     (mkIf nvim {
-      programs.nixvim.extraConfigLuaPre = mkDefault ''
-        vim.o.background = "light"
-      '';
+      programs.nixvim.opts.background = mkDefault "light";
       specialisation.dark.configuration = {
-        programs.nixvim.extraConfigLuaPre = ''
-          vim.o.background = "dark"
-        '';
+        programs.nixvim.opts.background = "dark";
       };
     })
     {

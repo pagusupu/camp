@@ -41,7 +41,7 @@
           notification-inline-replies = false;
           notification-window-width = 500;
         };
-        style = with config.colours.base16; ''
+        style = with config.colours.base16; /*css*/ ''
           * {
             all: unset;
             font-family: monospace;

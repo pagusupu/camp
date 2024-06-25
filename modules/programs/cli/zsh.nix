@@ -26,7 +26,7 @@ in {
         rm = "rip";
         sshaoi = "ssh pagu@192.168.178.182";
       };
-      shellInit = ''
+      shellInit = /*sh*/ ''
         zsh-newuser-install() { :; }
         eval "$(zoxide init zsh)"
         nr() {

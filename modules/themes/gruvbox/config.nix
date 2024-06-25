@@ -27,9 +27,6 @@ in
         home.pointerCursor = {
           package = pkgs.capitaine-cursors-themed;
           name = mkDefault "Capitaine Cursors (Gruvbox) - White";
-          size = 24;
-          gtk.enable = true;
-          x11.enable = true;
         };
       };
       specialisation.dark.configuration = {
@@ -45,12 +42,9 @@ in
     (mkIf nvim {
       programs.nixvim = {
         extraPlugins = [pkgs.vimPlugins.lightline-gruvbox-vim];
-        extraConfigVim = "let g:lightline_gruvbox_style = 'hard'";
         colorschemes.gruvbox = {
           enable = true;
-          settings = {
-            contrast = "hard";
-          };
+          settings.contrast = "hard";
         };
       };
     })

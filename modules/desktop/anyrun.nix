@@ -29,7 +29,7 @@
             terminal: Some("alacritty"),
           )
         '';
-        extraCss = with config.colours.base16; ''
+        extraCss = with config.colours.base16; /*css*/ ''
           * {
             font-family: monospace;
             font-size: 16px;

@@ -26,7 +26,10 @@ in
         };
         home.pointerCursor = {
           package = pkgs.rose-pine-cursor;
-          name = mkDefault "BreezeX-RosePine-Linux";
+          name = mkDefault "BreezeX-RosePineDawn-Linux";
+          size = 24;
+          gtk.enable = true;
+          x11.enable = true;
         };
       };
       specialisation.dark.configuration = {
@@ -35,21 +38,24 @@ in
             theme.name = "rose-pine-moon";
             iconTheme.name = "rose-pine-moon";
           };
-          home.pointerCursor.name = "BreezeX-RosePine-linux";
+          home.pointerCursor.name = "BreezeX-RosePine-Linux";
         };
       };
     })
     (mkIf nvim {
-      programs.nixvim.colorschemes.rose-pine = {
-        enable = true;
-        settings = {
-          dark_variant = "moon";
-          styles = {
-            italic = false;
-            transparency = false;
+      programs.nixvim = {
+        colorschemes.rose-pine = {
+          enable = true;
+          settings = {
+            dark_variant = "moon";
+            styles = {
+              italic = false;
+              transparency = false;
+            };
+            variant = "auto";
           };
-          variant = "auto";
         };
+        plugins.lightline.colorscheme = mkDefault "rosepine";
       };
       specialisation.dark.configuration = {
         programs.nixvim.plugins.lightline.colorscheme = "rosepine_moon";

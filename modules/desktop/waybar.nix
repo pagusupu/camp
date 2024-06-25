@@ -45,14 +45,14 @@ in {
           // hypr;
         hyprright =
           {
-            id = 1;
+	    id = 1;
             position = "right";
             output = ["HDMI-A-1"];
             inherit clock "custom/swaync";
           }
           // hypr;
       };
-      style = with config.colours.base16; ''
+      style = with config.colours.base16; /*css*/ ''
         * {
           all: unset;
           font-family: monospace;
