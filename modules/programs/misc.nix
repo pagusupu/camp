@@ -24,15 +24,9 @@ in {
       })
       (mkIf cli.misc {
         environment.systemPackages = with pkgs; [
-          bat
-          eza
-          fzf
-          nix-output-monitor
           ouch
           radeontop
-          rm-improved
           wget
-          zoxide
         ];
       })
     ];

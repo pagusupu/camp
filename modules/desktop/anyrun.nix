@@ -29,39 +29,41 @@
             terminal: Some("alacritty"),
           )
         '';
-        extraCss = with config.colours.base16; /*css*/ ''
-          * {
-            font-family: monospace;
-            font-size: 16px;
-          }
-          #match {
-            border-radius: 6px;
-          }
-          #window {
-            background-color: transparent;
-          }
-          #entry {
-            background: #${A1};
-            color: #${A6};
-            border-width: 3px;
-            border-radius: 6px;
-            margin-bottom: 6px;
-            margin-top: 14px;
-          }
-          list#main, list#main:hover {
-            background: #${A3};
-            color: #${A6};
-            border-radius: 6px;
-          }
-          box#match:hover {
-            color: #${A1};
-            background: #${B6};
-          }
-          row#plugin, row#plugin:hover {
-            background: none;
-            outline: none;
-          }
-        '';
+        extraCss = with config.colours.base16;
+        # css
+          ''
+            * {
+              font-family: monospace;
+              font-size: 16px;
+            }
+            #match {
+              border-radius: 6px;
+            }
+            #window {
+              background-color: transparent;
+            }
+            #entry {
+              background: #${A1};
+              color: #${A6};
+              border-width: 3px;
+              border-radius: 6px;
+              margin-bottom: 6px;
+              margin-top: 14px;
+            }
+            list#main, list#main:hover {
+              background: #${A3};
+              color: #${A6};
+              border-radius: 6px;
+            }
+            box#match:hover {
+              color: #${A1};
+              background: #${B6};
+            }
+            row#plugin, row#plugin:hover {
+              background: none;
+              outline: none;
+            }
+          '';
       };
     };
     nix.settings = {
