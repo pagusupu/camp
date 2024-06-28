@@ -97,6 +97,7 @@ in {
             auto-optimise-store = true;
             builders-use-substitutes = true;
             nix-path = ["nixpkgs=flake:nixpkgs"];
+            trusted-users = ["pagu"];
             use-xdg-base-directories = true;
             warn-dirty = false;
           };

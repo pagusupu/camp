@@ -42,13 +42,14 @@
     filter-nix = builtins.concatMap (
       x: builtins.filter (hasSuffix ".nix") (map toString (filesystem.listFilesRecursive x))
     );
+    specialArgs = {inherit inputs;};
   in let
     genHosts = hosts:
       genAttrs hosts (
         name:
           nixosSystem {
             modules = filter-nix [./lib ./modules] ++ [./hosts/${name}.nix];
-            specialArgs = {inherit inputs;};
+            inherit specialArgs;
           }
       );
   in {
@@ -59,7 +60,7 @@
     colmena = {
       meta = {
         nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        specialArgs = {inherit inputs;};
+        inherit specialArgs;
       };
       defaults = {name, ...}: {
         imports = filter-nix [./lib ./modules] ++ [./hosts/${name}.nix];
@@ -69,7 +70,7 @@
           targetUser = "pagu";
         };
       };
-      aoi.deployment.targetHost = "192.168.178.126";
+      aoi.deployment.targetHost = "192.168.178.182";
       rin.deployment.targetHost = null;
     };
     formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
