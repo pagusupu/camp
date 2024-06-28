@@ -26,7 +26,14 @@ in {
     };
   };
   config = let
-    inherit (config.cute.enabled) git misc nix ssh user;
+    inherit
+      (config.cute.enabled)
+      git
+      misc
+      nix
+      ssh
+      user
+      ;
   in
     mkMerge [
       (mkIf git {
@@ -134,28 +141,30 @@ in {
         };
         security.sudo.execWheelOnly = true;
       })
-      (let
-        inherit (config.cute.net) enable name ip;
-      in
-        mkIf enable {
-          networking = {
-            enableIPv6 = false;
-            useDHCP = false;
-          };
-          systemd.network = {
-            enable = true;
-            networks.${name} = {
-              inherit enable name;
-              networkConfig = {
-                DHCP = "no";
-                DNSSEC = "yes";
-                DNSOverTLS = "yes";
-                DNS = ["1.0.0.1" "1.1.1.1"];
-              };
-              address = ["${ip}/24"];
-              routes = [{Gateway = "192.168.178.1";}];
+      (
+        let
+          inherit (config.cute.net) enable name ip;
+        in
+          mkIf enable {
+            networking = {
+              enableIPv6 = false;
+              useDHCP = false;
             };
-          };
-        })
+            systemd.network = {
+              enable = true;
+              networks.${name} = {
+                inherit enable name;
+                networkConfig = {
+                  DHCP = "no";
+                  DNSSEC = "yes";
+                  DNSOverTLS = "yes";
+                  DNS = ["1.0.0.1" "1.1.1.1"];
+                };
+                address = ["${ip}/24"];
+                routes = [{Gateway = "192.168.178.1";}];
+              };
+            };
+          }
+      )
     ];
 }

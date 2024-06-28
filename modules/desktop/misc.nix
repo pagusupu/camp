@@ -5,7 +5,16 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types concatStringsSep mkMerge mkIf getExe;
+  inherit
+    (lib)
+    mkEnableOption
+    mkOption
+    types
+    concatStringsSep
+    mkMerge
+    mkIf
+    getExe
+    ;
 in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -26,7 +35,14 @@ in {
     home = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.misc) audio console fonts greetd home;
+    inherit
+      (config.cute.desktop.misc)
+      audio
+      console
+      fonts
+      greetd
+      home
+      ;
   in
     mkMerge [
       (mkIf audio {
@@ -62,9 +78,7 @@ in {
             }
             {
               name = "NerdFontsSymbolsOnly";
-              package = pkgs.nerdfonts.override {
-                fonts = ["NerdFontsSymbolsOnly"];
-              };
+              package = pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];};
             }
           ];
         };

@@ -15,7 +15,13 @@ in {
     prismlauncher = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) aagl gamemode localsend prismlauncher;
+    inherit
+      (config.cute.programs.gui)
+      aagl
+      gamemode
+      localsend
+      prismlauncher
+      ;
   in
     mkMerge [
       (mkIf aagl {

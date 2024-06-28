@@ -24,6 +24,10 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,15 +45,17 @@
         name:
           nixosSystem {
             modules =
-              concatMap (x:
-                filter (hasSuffix ".nix")
-                (map toString (filesystem.listFilesRecursive x)))
+              concatMap (x: filter (hasSuffix ".nix") (map toString (filesystem.listFilesRecursive x)))
               [./lib ./modules]
               ++ [./hosts/${name}.nix];
             specialArgs = {inherit inputs;};
           }
       );
   in {
-    nixosConfigurations = genHosts ["aoi" "rin"];
+    nixosConfigurations = genHosts [
+      "aoi"
+      "rin"
+    ];
+    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
 }

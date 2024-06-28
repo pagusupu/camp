@@ -20,7 +20,11 @@
           search = {
             force = true;
             default = "Google";
-            order = ["Google" "DuckDuckGo" "Nix Packages"];
+            order = [
+              "Google"
+              "DuckDuckGo"
+              "Nix Packages"
+            ];
             engines = {
               "Nix Packages" = {
                 urls = [

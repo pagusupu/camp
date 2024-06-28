@@ -42,25 +42,34 @@ in {
             "qbittorrent"
             "vaultwarden"
           ])
-          (let
-            inherit (config.cute.services.web) cinny jellyfin navidrome nextcloud vaultwarden;
-          in {
-            "${domain}" = {
-              root = "/storage/website/cafe";
-              inherit forceSSL enableACME;
-            };
-            "ciny.${domain}" = mkIf cinny.enable {
-              root = pkgs.cinny;
-              inherit forceSSL enableACME;
-            };
-            "jlly.${domain}".locations."/" = mkIf jellyfin.enable {
-              proxyWebsockets = true;
-              extraConfig = "proxy_buffering off;";
-            };
-            "navi.${domain}".locations."/".proxyWebsockets = mkIf navidrome.enable true;
-            "next.${domain}" = mkIf nextcloud.enable {inherit forceSSL enableACME;};
-            "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";
-          })
+          (
+            let
+              inherit
+                (config.cute.services.web)
+                cinny
+                jellyfin
+                navidrome
+                nextcloud
+                vaultwarden
+                ;
+            in {
+              "${domain}" = {
+                root = "/storage/website/cafe";
+                inherit forceSSL enableACME;
+              };
+              "ciny.${domain}" = mkIf cinny.enable {
+                root = pkgs.cinny;
+                inherit forceSSL enableACME;
+              };
+              "jlly.${domain}".locations."/" = mkIf jellyfin.enable {
+                proxyWebsockets = true;
+                extraConfig = "proxy_buffering off;";
+              };
+              "navi.${domain}".locations."/".proxyWebsockets = mkIf navidrome.enable true;
+              "next.${domain}" = mkIf nextcloud.enable {inherit forceSSL enableACME;};
+              "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";
+            }
+          )
           (mkIf config.cute.services.synapse {
             "matrix.${domain}" = {
               root = /storage/website/matrix;

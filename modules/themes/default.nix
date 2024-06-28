@@ -4,7 +4,15 @@
   _lib,
   ...
 }: let
-  inherit (lib) mkOption types mkEnableOption mkMerge mkIf mkDefault;
+  inherit
+    (lib)
+    mkOption
+    types
+    mkEnableOption
+    mkMerge
+    mkIf
+    mkDefault
+    ;
   inherit (config.cute.theme) gtk;
   inherit (config.cute.programs.cli) nvim;
 in {

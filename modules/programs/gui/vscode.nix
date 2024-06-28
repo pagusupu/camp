@@ -21,7 +21,9 @@
           "nix.enableLanguageServer" = true;
           "nix.formatterPath" = "alejandra";
           "nix.serverPath" = "nil";
-          "nix.serverSettings"."nil"."formatting" = {"command" = ["alejandra --quiet"];};
+          "nix.serverSettings"."nil"."formatting" = {
+            "command" = ["alejandra --quiet"];
+          };
           "vsicons.dontShowNewVersionMessage" = true;
           "window.menuBarVisibility" = "toggle";
           "workbench.iconTheme" = "vscode-icons";
