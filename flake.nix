@@ -24,12 +24,12 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
@@ -39,15 +39,15 @@
   };
   outputs = inputs: let
     inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
-    inherit (builtins) concatMap filter;
+    filter-nix = builtins.concatMap (
+      x: builtins.filter (hasSuffix ".nix") (map toString (filesystem.listFilesRecursive x))
+    );
+  in let
     genHosts = hosts:
       genAttrs hosts (
         name:
           nixosSystem {
-            modules =
-              concatMap (x: filter (hasSuffix ".nix") (map toString (filesystem.listFilesRecursive x)))
-              [./lib ./modules]
-              ++ [./hosts/${name}.nix];
+            modules = filter-nix [./lib ./modules] ++ [./hosts/${name}.nix];
             specialArgs = {inherit inputs;};
           }
       );
@@ -56,6 +56,30 @@
       "aoi"
       "rin"
     ];
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    colmena = {
+      meta = {
+        nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        specialArgs = {inherit inputs;};
+      };
+      defaults = {name, ...}: {
+        imports = filter-nix [./lib ./modules] ++ [./hosts/${name}.nix];
+        deployment = {
+          allowLocalDeployment = true;
+          buildOnTarget = true;
+          targetUser = "pagu";
+        };
+        aoi.deployment.targetHost = "192.168.178.126";
+        rin.deployment.targetHost = null;
+      };
+    };
+    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
+    inputs.nixpkgs.legacyPackages.x86_64-linux {
+      programs = {
+        alejandra.enable = true;
+        deadnix.enable = true;
+        statix.enable = true;
+      };
+      projectRootFile = "flake.nix";
+    };
   };
 }

@@ -59,10 +59,6 @@
     tpm2.enable = true;
     sudo.wheelNeedsPassword = false;
   };
-  services = {
-    dbus.enable = true;
-    sshd.enable = true;
-  };
   systemd = {
     services.systemd-udev-settle.enable = false;
     network.wait-online.enable = false;
