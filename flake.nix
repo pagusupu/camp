@@ -68,9 +68,9 @@
           buildOnTarget = true;
           targetUser = "pagu";
         };
-        aoi.deployment.targetHost = "192.168.178.126";
-        rin.deployment.targetHost = null;
       };
+      aoi.deployment.targetHost = "192.168.178.126";
+      rin.deployment.targetHost = null;
     };
     formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
     inputs.nixpkgs.legacyPackages.x86_64-linux {
