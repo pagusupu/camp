@@ -36,6 +36,8 @@
           windowrulev2 = [
             "float, class:(localsend_app)"
             "float, class:(com.saivert.pwvucontrol)"
+            "nomaxsize, title:^(Wine configuration)$"
+            "forceinput, title:^(Wine configuration)$"
           ];
           animations = {
             enabled = true;
@@ -125,7 +127,7 @@
       };
     };
     cute.desktop.misc.greetd = {
-      inherit (config.home-manager.users.pagu.wayland.windowManager.hyprland) enable;
+      enable = true;
       sessionDirs = ["${pkgs.hyprland}/share/wayland-sessions"];
     };
   };

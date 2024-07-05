@@ -102,7 +102,7 @@
           in [
             (b "https://discord.com/channels/@me")
             (b "https://ciny.pagu.cafe")
-            (b "https://link.pagu.cafe/bookmarks")
+            (b "http://192.168.178.182:9090")
           ];
           ExtensionSettings = let
             e = n: l: {

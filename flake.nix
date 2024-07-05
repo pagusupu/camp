@@ -38,18 +38,20 @@
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
   };
   outputs = inputs: let
+    inherit (inputs.nixpkgs.legacyPackages) x86_64-linux;
     inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
-    filter-nix = builtins.concatMap (
-      x: builtins.filter (hasSuffix ".nix") (map toString (filesystem.listFilesRecursive x))
-    );
     specialArgs = {inherit inputs;};
-  in let
+    filter = builtins.concatMap (
+      x:
+        builtins.filter (hasSuffix ".nix")
+        (map toString (filesystem.listFilesRecursive x))
+    );
     genHosts = hosts:
       genAttrs hosts (
         name:
           nixosSystem {
-            modules = filter-nix [./lib ./modules] ++ [./hosts/${name}.nix];
             inherit specialArgs;
+            modules = filter [./lib ./modules] ++ [./hosts/${name}.nix];
           }
       );
   in {
@@ -59,22 +61,21 @@
     ];
     colmena = {
       meta = {
-        nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        nixpkgs = x86_64-linux;
         inherit specialArgs;
       };
       defaults = {name, ...}: {
-        imports = filter-nix [./lib ./modules] ++ [./hosts/${name}.nix];
         deployment = {
           allowLocalDeployment = true;
           buildOnTarget = true;
           targetUser = "pagu";
         };
+        imports = filter [./lib ./modules] ++ [./hosts/${name}.nix];
       };
       aoi.deployment.targetHost = "192.168.178.182";
       rin.deployment.targetHost = null;
     };
-    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
-    inputs.nixpkgs.legacyPackages.x86_64-linux {
+    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper x86_64-linux {
       programs = {
         alejandra.enable = true;
         deadnix.enable = true;

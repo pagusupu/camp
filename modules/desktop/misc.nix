@@ -73,8 +73,8 @@ in {
           hwRender = true;
           fonts = [
             {
-              name = "Terminus";
-              package = pkgs.terminus_font;
+              name = "JetBrainsMono Nerd Font";
+              package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
             }
             {
               name = "NerdFontsSymbolsOnly";
@@ -105,13 +105,13 @@ in {
           ];
           fontconfig = {
             enable = true;
-            subpixel.rgba = "rgb";
             defaultFonts = {
               emoji = ["Noto Color Emoji"];
               monospace = ["JetBrainsMono Nerd Font"];
               sansSerif = ["Nunito"];
               serif = ["Lato"];
             };
+            subpixel.rgba = "rgb";
           };
         };
       })

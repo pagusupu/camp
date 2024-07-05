@@ -26,10 +26,7 @@ in
         };
         home.pointerCursor = {
           package = pkgs.rose-pine-cursor;
-          name = mkDefault "BreezeX-RosePineDawn-Linux";
-          size = 24;
-          gtk.enable = true;
-          x11.enable = true;
+          name = mkDefault "BreezeX-RosePineDawn-Linux"; 
         };
       };
       specialisation.dark.configuration = {

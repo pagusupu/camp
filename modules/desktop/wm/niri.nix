@@ -14,7 +14,7 @@
       package = pkgs.niri-stable;
     };
     cute.desktop.misc.greetd = {
-      inherit (config.programs.niri) enable;
+      enable = true;
       sessionDirs = ["${pkgs.niri-stable}/share/wayland-sessions"];
     };
     nix.settings = {
