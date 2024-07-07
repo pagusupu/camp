@@ -41,11 +41,11 @@ in
     })
     (mkIf nvim {
       programs.nixvim = {
-        extraPlugins = [pkgs.vimPlugins.lightline-gruvbox-vim];
         colorschemes.gruvbox = {
           enable = true;
           settings.contrast = "hard";
         };
+        extraPlugins = [pkgs.vimPlugins.lightline-gruvbox-vim];
       };
     })
     (mkIf vscode {

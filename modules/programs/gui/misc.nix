@@ -2,30 +2,28 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
-  imports = [inputs.aagl.nixosModules.default];
   options.cute.programs.gui = {
-    aagl = mkEnableOption "";
+    misc = mkEnableOption "";
     localsend = mkEnableOption "";
     prismlauncher = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) aagl localsend prismlauncher;
+    inherit (config.cute.programs) gui;
+    inherit (gui) localsend prismlauncher;
   in
     mkMerge [
-      (mkIf aagl {
-        programs = {
-          honkers-railway-launcher.enable = true;
-          sleepy-launcher.enable = true;
-        };
-        nix.settings = {
-          substituters = ["https://ezkea.cachix.org"];
-          trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
-        };
+      (mkIf gui.misc {
+        environment.systemPackages = with pkgs; [
+          heroic
+          imv
+          mpv
+          pwvucontrol
+          xivlauncher
+        ];
       })
       (mkIf localsend {
         networking.firewall = {

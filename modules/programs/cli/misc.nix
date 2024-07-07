@@ -7,14 +7,23 @@
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   options.cute.programs.cli = {
+    misc = mkEnableOption "";
     btop = mkEnableOption "";
     nh = mkEnableOption "";
     yazi = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.cli) btop nh yazi;
+    inherit (config.cute.programs) cli;
+    inherit (cli) btop nh yazi;
   in
     mkMerge [
+      (mkIf cli.misc {
+        environment.systemPackages = with pkgs; [
+          ouch
+          radeontop
+          wget
+        ];
+      })
       (mkIf btop {
         homefile."btop" = {
           target = ".config/btop/btop.conf";
@@ -36,11 +45,11 @@ in {
       (mkIf nh {
         programs.nh = {
           enable = true;
-          flake = "/home/pagu/camp/";
           clean = {
             enable = true;
             extraArgs = "--keep 10 --keep-since 3d";
           };
+          flake = "/home/pagu/camp/";
         };
       })
       (mkIf yazi {

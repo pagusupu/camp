@@ -49,7 +49,6 @@ in {
     (mkIf gtk {
       assertions = _lib.assertHm;
       home-manager.users.pagu = {
-        gtk.enable = true;
         qt = {
           enable = true;
           platformTheme.name = "gtk";
@@ -59,6 +58,7 @@ in {
           gtk.enable = true;
           x11.enable = true;
         };
+        gtk.enable = true;
       };
       programs.dconf.enable = true;
     })

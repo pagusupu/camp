@@ -30,7 +30,11 @@
         zsh = true;
       };
       gui = {
-        aagl = true;
+        aagl = {
+          enable = true;
+          honkers = true;
+          sleepy = true;
+        };
         alacritty = true;
         firefox = true;
         localsend = true;
