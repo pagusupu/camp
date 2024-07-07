@@ -128,7 +128,9 @@
     };
     cute.desktop.misc.greetd = {
       enable = true;
-      sessionDirs = ["${pkgs.hyprland}/share/wayland-sessions"];
+      sessionDirs = lib.mkIf config.home-manager.users.pagu.wayland.windowManager.hyprland.enable [
+        "${pkgs.hyprland}/share/wayland-sessions"
+      ];
     };
   };
 }

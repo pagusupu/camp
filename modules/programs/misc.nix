@@ -21,7 +21,6 @@ in {
           mpv
           pwvucontrol
           xivlauncher
-	  xfce.thunar
         ];
       })
       (mkIf cli.misc {

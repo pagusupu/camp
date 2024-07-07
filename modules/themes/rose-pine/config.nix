@@ -26,7 +26,7 @@ in
         };
         home.pointerCursor = {
           package = pkgs.rose-pine-cursor;
-          name = mkDefault "BreezeX-RosePineDawn-Linux"; 
+          name = mkDefault "BreezeX-RosePineDawn-Linux";
         };
       };
       specialisation.dark.configuration = {

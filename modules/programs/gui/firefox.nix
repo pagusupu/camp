@@ -1,11 +1,13 @@
 {
-  lib,
   config,
+  lib,
+  _lib,
   pkgs,
   ...
 }: {
   options.cute.programs.gui.firefox = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.gui.firefox {
+    assertions = _lib.assertHm;
     home-manager.users.pagu = {
       programs.firefox = {
         enable = true;
@@ -165,9 +167,9 @@
         };
       };
     };
-    hardware.graphics.extraPackages = [
-      pkgs.libvdpau-va-gl
-      pkgs.vaapiVdpau
+    hardware.graphics.extraPackages = with pkgs; [
+      libvdpau-va-gl
+      vaapiVdpau
     ];
     environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
   };

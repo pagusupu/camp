@@ -15,7 +15,9 @@
     };
     cute.desktop.misc.greetd = {
       enable = true;
-      sessionDirs = ["${pkgs.niri-stable}/share/wayland-sessions"];
+      sessionDirs = lib.mkIf config.programs.niri.enable [
+        "${pkgs.niri-stable}/share/wayland-sessions"
+      ];
     };
     nix.settings = {
       substituters = ["https://niri.cachix.org"];

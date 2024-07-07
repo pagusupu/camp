@@ -1,9 +1,6 @@
 {pkgs, ...}: {
   cute = {
     desktop = {
-      anyrun = true;
-      swaync = true;
-      waybar = true;
       hypr = {
         idle = true;
         lock = true;
@@ -18,6 +15,9 @@
         hyprland = true;
         niri = true;
       };
+      anyrun = true;
+      swaync = true;
+      waybar = true;
     };
     programs = {
       cli = {
@@ -33,7 +33,6 @@
         aagl = true;
         alacritty = true;
         firefox = true;
-        gamemode = true;
         localsend = true;
         misc = true;
         prismlauncher = true;
