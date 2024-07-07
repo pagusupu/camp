@@ -15,9 +15,13 @@
         inherit enable;
         openFirewall = true;
       };
-      hardware.graphics.extraPackages = [
-        pkgs.libvdpau-va-gl
-        pkgs.vaapiVdpau
+      environment.systemPackages = with pkgs; [
+        id3v2
+        yt-dlp
+      ];
+      hardware.graphics.extraPackages = with pkgs; [
+        libvdpau-va-gl
+        vaapiVdpau
       ];
     };
 }
