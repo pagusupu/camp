@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  _lib,
   pkgs,
   ...
 }: let
@@ -12,7 +11,6 @@
 in
   mkIf (name == "gruvbox") (mkMerge [
     (mkIf gtk {
-      assertions = _lib.assertHm;
       home-manager.users.pagu = {
         gtk = {
           theme = {
@@ -49,7 +47,6 @@ in
       };
     })
     (mkIf vscode {
-      assertions = _lib.assertHm;
       home-manager.users.pagu.programs.vscode = {
         extensions = [pkgs.vscode-extensions.jdinhlife.gruvbox];
         userSettings."workbench.colorTheme" = mkDefault "Gruvbox Light Hard";

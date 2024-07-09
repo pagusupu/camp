@@ -47,7 +47,7 @@ in {
   };
   config = mkMerge [
     (mkIf gtk {
-      assertions = _lib.assertHm;
+      assertions = _lib.assertHm "gtk";
       home-manager.users.pagu = {
         qt = {
           enable = true;

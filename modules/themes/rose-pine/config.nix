@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  _lib,
   pkgs,
   ...
 }: let
@@ -12,7 +11,6 @@
 in
   mkIf (name == "rose-pine") (mkMerge [
     (mkIf gtk {
-      assertions = _lib.assertHm;
       home-manager.users.pagu = {
         gtk = {
           theme = {
@@ -59,7 +57,6 @@ in
       };
     })
     (mkIf vscode {
-      assertions = _lib.assertHm;
       home-manager.users.pagu.programs.vscode = {
         extensions = [pkgs.vscode-extensions.mvllow.rose-pine];
         userSettings."workbench.colorTheme" = mkDefault "Rosé Pine Dawn (no italics)";
