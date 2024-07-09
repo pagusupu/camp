@@ -40,6 +40,7 @@
         localsend = true;
         misc = true;
         prismlauncher = true;
+        rio = true;
         steam = true;
         vscode = true;
       };

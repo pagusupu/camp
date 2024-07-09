@@ -11,6 +11,7 @@
     {
       programs.steam = {
         enable = true;
+        extest.enable = true;
         localNetworkGameTransfers.openFirewall = true;
         platformOptimizations.enable = true;
         protontricks.enable = true;

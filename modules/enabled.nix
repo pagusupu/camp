@@ -104,11 +104,13 @@ in {
           channel.enable = false;
           nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
           optimise.automatic = true;
+          registry.nixpkgs.flake = inputs.nixpkgs;
         };
         nixpkgs = {
           config.allowUnfree = true;
           hostPlatform = "x86_64-linux";
         };
+        environment.etc."nix/inputs/nixpkgs".source = inputs.nixpkgs.outPath;
       })
       (mkIf ssh {
         services.openssh = {

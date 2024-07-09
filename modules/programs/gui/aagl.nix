@@ -15,42 +15,47 @@ in {
   };
   config = let
     inherit (config.cute.programs.gui.aagl) enable honkers sleepy;
+    source = (pkgs.formats.json {}).generate "config.json" {
+      game = {
+        enhancements = {
+          fsr.enabled = false;
+          gamemode = true;
+          hud = "None";
+          gamescope.enabled = false;
+        };
+        wine = {
+          language = "System";
+          selected = "wine-9.12-staging-tkg-amd64";
+          sync = "FSync";
+          shared_libraries = {
+            wine = true;
+            gstreamer = true;
+          };
+        };
+        voices = ["en-us"];
+      };
+      launcher = {
+        language = "en-us";
+        edition = "Global";
+        style = "Modern";
+        behavior = "Nothing";
+      };
+      sandbox.enabled = false;
+    };
   in
     mkIf enable (mkMerge [
       (mkIf honkers {
         homefile."honkers" = {
           target = ".local/share/honkers-railway-launcher/config.json";
-          source = (pkgs.formats.json {}).generate "config.json" {
-            game = {
-              enhancements = {
-                fsr.enabled = false;
-                gamemode = true;
-                hud = "None";
-                gamescope.enabled = false;
-              };
-              wine = {
-                language = "System";
-                selected = "wine-9.12-staging-tkg-amd64";
-                sync = "FSync";
-                shared_libraries = {
-                  wine = true;
-                  gstreamer = true;
-                };
-              };
-              voices = ["en-us"];
-            };
-            launcher = {
-              language = "en-us";
-              edition = "Global";
-              style = "Modern";
-              behavior = "Nothing";
-            };
-            sandbox.enabled = false;
-          };
+          inherit source;
         };
         programs.honkers-railway-launcher.enable = true;
       })
       (mkIf sleepy {
+        homefile."sleepy" = {
+          target = ".local/share/sleepy-launcher/config.json";
+          inherit source;
+        };
         programs.sleepy-launcher.enable = true;
       })
       {

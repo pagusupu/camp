@@ -3,11 +3,9 @@
   config,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf getExe;
-in {
-  options.cute.programs.cli.zsh = mkEnableOption "";
-  config = mkIf config.cute.programs.cli.zsh {
+}: {
+  options.cute.programs.cli.zsh = lib.mkEnableOption "";
+  config = lib.mkIf config.cute.programs.cli.zsh {
     programs.zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -49,7 +47,7 @@ in {
       promptInit = "PROMPT='%F{blue}% %~ >%f '";
     };
     environment = {
-      binsh = getExe pkgs.dash;
+      binsh = lib.getExe pkgs.dash;
       shells = [pkgs.zsh];
       systemPackages = with pkgs; [
         bat

@@ -70,8 +70,8 @@ in {
     })
     {
       specialisation.dark.configuration = {
-        boot.loader.grub.configurationName = "Dark";
-        environment.etc."specialisation".text = "Dark";
+        boot.loader.grub.configurationName = "dark";
+        environment.etc."specialisation".text = "dark";
       };
     }
   ];

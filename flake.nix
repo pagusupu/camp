@@ -38,7 +38,6 @@
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
   };
   outputs = inputs: let
-    inherit (inputs.nixpkgs.legacyPackages) x86_64-linux;
     inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
     specialArgs = {inherit inputs;};
     filter = builtins.concatMap (
@@ -61,7 +60,7 @@
     ];
     colmena = {
       meta = {
-        nixpkgs = x86_64-linux;
+        nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
         inherit specialArgs;
       };
       defaults = {name, ...}: {
@@ -75,7 +74,8 @@
       aoi.deployment.targetHost = "192.168.178.182";
       rin.deployment.targetHost = null;
     };
-    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper x86_64-linux {
+    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
+    inputs.nixpkgs.legacyPackages.x86_64-linux {
       programs = {
         alejandra.enable = true;
         deadnix.enable = true;

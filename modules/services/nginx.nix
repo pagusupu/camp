@@ -72,7 +72,8 @@ in {
           )
           (mkIf config.cute.services.synapse {
             "matrix.${domain}" = {
-              # root = /storage/website/matrix; colmena wont build with this?
+              # root = /storage/website/matrix;
+              # colmena wont build with this?
               locations = {
                 "/_matrix".proxyPass = "http://127.0.0.1:8008";
                 "/_synapse".proxyPass = "http://127.0.0.1:8008";
