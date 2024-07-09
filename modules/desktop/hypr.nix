@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -14,6 +15,7 @@ in {
   in
     mkMerge [
       (mkIf idle {
+        assertions = _lib.assertHm "hypridle";
         home-manager.users.pagu.services.hypridle = {
           enable = true;
           settings = {
@@ -41,6 +43,7 @@ in {
         };
       })
       (mkIf lock {
+        assertions = _lib.assertHm "hyprlock";
         home-manager.users.pagu.programs.hyprlock = {
           enable = true;
           settings = {

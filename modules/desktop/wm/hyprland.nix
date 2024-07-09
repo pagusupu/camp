@@ -7,7 +7,7 @@
 }: {
   options.cute.desktop.wm.hyprland = lib.mkEnableOption "";
   config = lib.mkIf config.cute.desktop.wm.hyprland {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "hyprland";
     home-manager.users.pagu = {
       home.packages = with pkgs; [
         rwpspread

@@ -10,7 +10,7 @@
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx;
+      assertions = _lib.assertNginx "vaultwarden";
       services.vaultwarden = {
         inherit enable;
         config = {

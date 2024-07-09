@@ -11,7 +11,7 @@
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx;
+      assertions = _lib.assertNginx "nextcloud";
       age.secrets.nextcloud = {
         file = ../../../misc/secrets/nextcloud.age;
         owner = "nextcloud";

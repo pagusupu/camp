@@ -7,7 +7,7 @@
 }: {
   options.cute.desktop.swaync = lib.mkEnableOption "";
   config = lib.mkIf config.cute.desktop.swaync {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "swaync";
     home-manager.users.pagu = {
       home.packages = [pkgs.libnotify];
       services.swaync = {

@@ -8,7 +8,7 @@
 in {
   options.cute.desktop.waybar = mkEnableOption "";
   config = mkIf config.cute.desktop.waybar {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "waybar";
     home-manager.users.pagu.programs.waybar = {
       enable = true;
       settings = let

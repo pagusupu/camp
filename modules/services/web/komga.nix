@@ -9,7 +9,7 @@
     inherit (config.cute.services.web.komga) enable port;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx;
+      assertions = _lib.assertNginx "komga";
       services.komga = {
         inherit enable port;
         openFirewall = true;

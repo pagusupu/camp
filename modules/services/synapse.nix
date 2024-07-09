@@ -7,7 +7,7 @@
 }: {
   options.cute.services.synapse = lib.mkEnableOption "";
   config = lib.mkIf config.cute.services.synapse {
-    assertions = _lib.assertNginx;
+    assertions = _lib.assertNginx "synapse";
     age.secrets.synapse = {
       file = ../../misc/secrets/synapse.age;
       owner = "matrix-synapse";

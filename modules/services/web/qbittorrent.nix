@@ -13,7 +13,7 @@
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx;
+      assertions = _lib.assertNginx "qbittorrent";
       services.qbittorrent = {
         inherit enable;
         openFirewall = true;

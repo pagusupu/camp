@@ -11,9 +11,9 @@
   in
     lib.mkIf enable (
       lib.mkMerge [
-        {assertions = _lib.assertNginx;}
+        {assertions = _lib.assertNginx "linkding";}
         {
-          assertions = _lib.assertDocker;
+          assertions = _lib.assertDocker "linkding";
           virtualisation.oci-containers.containers."linkding" = {
             image = "sissbruecker/linkding:latest";
             ports = ["${toString port}:${toString port}"];

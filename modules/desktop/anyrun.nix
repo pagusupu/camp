@@ -8,7 +8,7 @@
 }: {
   options.cute.desktop.anyrun = lib.mkEnableOption "";
   config = lib.mkIf config.cute.desktop.anyrun {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "anyrun";
     home-manager.users.pagu = {
       imports = [inputs.anyrun.homeManagerModules.default];
       programs.anyrun = {

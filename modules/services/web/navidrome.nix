@@ -10,7 +10,7 @@
     inherit (config.cute.services.web.navidrome) enable port;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx;
+      assertions = _lib.assertNginx "navidrome";
       services.navidrome = {
         inherit enable;
         openFirewall = true;

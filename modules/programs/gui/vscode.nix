@@ -7,7 +7,7 @@
 }: {
   options.cute.programs.gui.vscode = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.gui.vscode {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "vscode";
     home-manager.users.pagu = {
       programs.vscode = {
         enable = true;

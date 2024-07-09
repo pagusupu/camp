@@ -7,7 +7,7 @@
 }: {
   options.cute.programs.gui.firefox = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.gui.firefox {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "firefox";
     home-manager.users.pagu = {
       programs.firefox = {
         enable = true;

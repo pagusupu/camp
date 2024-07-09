@@ -6,7 +6,7 @@
 }: {
   options.cute.programs.gui.rio = lib.mkEnableOption "";
   config = lib.mkIf config.cute.programs.gui.rio {
-    assertions = _lib.assertHm;
+    assertions = _lib.assertHm "rio";
     home-manager.users.pagu = {
       programs.rio = {
         enable = true;

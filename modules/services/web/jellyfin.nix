@@ -10,7 +10,7 @@
     inherit (config.cute.services.web.jellyfin) enable;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx;
+      assertions = _lib.assertNginx "jellyfin";
       services.jellyfin = {
         inherit enable;
         openFirewall = true;

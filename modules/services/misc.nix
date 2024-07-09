@@ -28,7 +28,7 @@ in {
         };
       })
       (mkIf docker.feishin {
-        assertions = _lib.assertDocker;
+        assertions = _lib.assertDocker "feishin";
         virtualisation.oci-containers.containers."feishin" = {
           image = "ghcr.io/jeffvli/feishin:0.7.1";
           ports = ["9180:9180"];
