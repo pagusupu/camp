@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     anyrun = {
-      url = "github:Kirottu/anyrun";
+      url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -39,18 +39,18 @@
   };
   outputs = inputs: let
     inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
-    specialArgs = {inherit inputs;};
-    filter = builtins.concatMap (
-      x:
-        builtins.filter (hasSuffix ".nix")
-        (map toString (filesystem.listFilesRecursive x))
-    );
+    inherit (builtins) concatMap filter;
     genHosts = hosts:
       genAttrs hosts (
         name:
           nixosSystem {
-            inherit specialArgs;
-            modules = filter [./lib ./modules] ++ [./hosts/${name}.nix];
+            modules =
+              concatMap (x:
+                filter (hasSuffix ".nix")
+                (map toString (filesystem.listFilesRecursive x)))
+              [./lib ./modules]
+              ++ [./hosts/${name}.nix];
+            specialArgs = {inherit inputs;};
           }
       );
   in {
@@ -58,22 +58,6 @@
       "aoi"
       "rin"
     ];
-    colmena = {
-      meta = {
-        nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-        inherit specialArgs;
-      };
-      defaults = {name, ...}: {
-        deployment = {
-          allowLocalDeployment = true;
-          buildOnTarget = true;
-          targetUser = "pagu";
-        };
-        imports = filter [./lib ./modules] ++ [./hosts/${name}.nix];
-      };
-      aoi.deployment.targetHost = "192.168.178.182";
-      rin.deployment.targetHost = null;
-    };
     formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
     inputs.nixpkgs.legacyPackages.x86_64-linux {
       programs = {

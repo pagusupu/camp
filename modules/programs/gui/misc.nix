@@ -18,6 +18,7 @@ in {
     mkMerge [
       (mkIf gui.misc {
         environment.systemPackages = with pkgs; [
+          audacity
           heroic
           imv
           mpv

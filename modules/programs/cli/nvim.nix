@@ -14,8 +14,9 @@
       vimAlias = true;
       luaLoader.enable = true;
       opts = {
-        showmode = false;
+        foldmethod = "manual";
         number = true;
+        showmode = false;
         shiftwidth = 2;
         smartindent = true;
         undofile = true;
