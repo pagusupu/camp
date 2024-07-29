@@ -24,24 +24,22 @@
         rm = "rip";
         sshaoi = "ssh pagu@192.168.178.182";
       };
-      shellInit =
-        # sh
-        ''
-          zsh-newuser-install() { :; }
-          eval "$(zoxide init zsh)"
-          nr() {
-            nix run nixpkgs#$1 -- "''${@:2}"
-          }
-          ns() {
-             nom shell nixpkgs#''${^@}
-          }
-          bindkey "^[[1;5C" forward-word
-          bindkey "^[[1;5D" backward-word
-          # disable weird underline
-          (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-          ZSH_HIGHLIGHT_STYLES[path]=none
-          ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-        '';
+      shellInit = ''
+        zsh-newuser-install() { :; }
+        eval "$(zoxide init zsh)"
+        nr() {
+          nix run nixpkgs#$1 -- "''${@:2}"
+        }
+        ns() {
+           nom shell nixpkgs#''${^@}
+        }
+        bindkey "^[[1;5C" forward-word
+        bindkey "^[[1;5D" backward-word
+        # disable weird underline
+        (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+        ZSH_HIGHLIGHT_STYLES[path]=none
+        ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+      '';
       histFile = "$HOME/.cache/zsh_history";
       histSize = 10000;
       promptInit = "PROMPT='%F{blue}% %~ >%f '";
@@ -52,7 +50,7 @@
       systemPackages = with pkgs; [
         bat
         eza
-        fzf
+        fzf # for zoxide
         nix-output-monitor
         rm-improved
         zoxide

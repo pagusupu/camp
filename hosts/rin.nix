@@ -32,15 +32,15 @@
       gui = {
         aagl = {
           enable = true;
+          anime = true;
           honkers = true;
-          sleepy = true;
         };
         alacritty = true;
         firefox = true;
         localsend = true;
         misc = true;
         prismlauncher = true;
-        rio = true;
+        rio = false;
         steam = true;
         vscode = true;
       };

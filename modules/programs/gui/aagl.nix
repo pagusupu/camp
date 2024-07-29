@@ -10,53 +10,54 @@ in {
   imports = [inputs.aagl.nixosModules.default];
   options.cute.programs.gui.aagl = {
     enable = mkEnableOption "";
+    anime = mkEnableOption "";
     honkers = mkEnableOption "";
-    sleepy = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui.aagl) enable honkers sleepy;
-    source = (pkgs.formats.json {}).generate "config.json" {
-      game = {
-        enhancements = {
-          fsr.enabled = false;
-          gamemode = true;
-          hud = "None";
-          gamescope.enabled = false;
-        };
-        wine = {
-          language = "System";
-          selected = "wine-9.12-staging-tkg-amd64";
-          sync = "FSync";
-          shared_libraries = {
-            wine = true;
-            gstreamer = true;
-          };
-        };
-        voices = ["en-us"];
-      };
-      launcher = {
-        language = "en-us";
-        edition = "Global";
-        style = "Modern";
-        behavior = "Nothing";
-      };
-      sandbox.enabled = false;
+    inherit (config.cute.programs.gui.aagl) enable anime honkers;
+    fsr.enabled = false;
+    gamemode = true;
+    gamescope.enabled = false;
+    launcher = {
+      behavior = "Nothing";
+      language = "en-us";
     };
   in
     mkIf enable (mkMerge [
+      (mkIf anime {
+        homefile."anime" = {
+          target = ".local/share/anime-game-launcher/config.json";
+          source = (pkgs.formats.json {}).generate "config.json" {
+            game = {
+              enhancements = {
+                fps_unlocker = {
+                  enabled = true;
+                  config.fps = 165;
+                };
+                inherit fsr gamemode gamescope;
+              };
+              wine = {
+                borderless = true;
+                selected = "lutris-GE-Proton8-26-x86_64";
+              };
+            };
+            inherit launcher;
+          };
+        };
+        programs.anime-game-launcher.enable = true;
+      })
       (mkIf honkers {
         homefile."honkers" = {
           target = ".local/share/honkers-railway-launcher/config.json";
-          inherit source;
+          source = (pkgs.formats.json {}).generate "config.json" {
+            game = {
+              enhancements = {inherit fsr gamemode gamescope;};
+              wine.selected = "wine-9.13-staging-tkg-amd64";
+            };
+            inherit launcher;
+          };
         };
         programs.honkers-railway-launcher.enable = true;
-      })
-      (mkIf sleepy {
-        homefile."sleepy" = {
-          target = ".local/share/sleepy-launcher/config.json";
-          inherit source;
-        };
-        programs.sleepy-launcher.enable = true;
       })
       {
         nix.settings = {

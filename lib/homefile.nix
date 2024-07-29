@@ -9,15 +9,7 @@
   inherit (lib.lists) flatten;
   inherit (lib.modules) mkIf mkDefault mkDerivedConfig;
   inherit (lib.options) mkOption;
-  inherit
-    (lib.types)
-    attrsOf
-    lines
-    nullOr
-    path
-    str
-    submodule
-    ;
+  inherit (lib.types) attrsOf lines nullOr path str submodule;
   _tmpfileType = prefix:
     attrsOf (
       submodule (
