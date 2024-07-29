@@ -23,6 +23,7 @@
         jellyfin.enable = true;
         komga.enable = true;
         linkding.enable = true;
+        mealie.enable = true;
         navidrome.enable = true;
         nextcloud.enable = true;
         qbittorrent.enable = true;

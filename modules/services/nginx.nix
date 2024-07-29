@@ -38,6 +38,7 @@ in {
             "jellyfin"
             "komga"
             "linkding"
+            "mealie"
             "navidrome"
             "qbittorrent"
             "vaultwarden"
@@ -72,7 +73,6 @@ in {
           )
           (mkIf config.cute.services.synapse {
             "matrix.${domain}" = {
-              # colmena wont build with this?
               root = /storage/website/matrix;
               locations = {
                 "/_matrix".proxyPass = "http://127.0.0.1:8008";
