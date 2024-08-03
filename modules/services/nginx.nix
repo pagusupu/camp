@@ -86,17 +86,17 @@ in {
                   default_type application/json;
                   add_header Access-Control-Allow-Origin "*";
                 '';
-                json = pkgs.formats.json {};
+                json = (pkgs.formats.json {}).generate;
               in
                 mkIf config.cute.services.synapse {
                   "=/.well-known/matrix/server" = {
-                    alias = json.generate "well-known-matrix-server" {
+                    alias = json "well-known-matrix-server" {
                       "m.server" = "matrix.${domain}:443";
                     };
                     inherit extraConfig;
                   };
                   "=/.well-known/matrix/client" = {
-                    alias = json.generate "well-known-matrix-client" {
+                    alias = json "well-known-matrix-client" {
                       "m.homeserver"."base_url" = "https://matrix.${domain}";
                       "org.matrix.msc3575.proxy"."url" = "https://matrix.${domain}";
                     };
