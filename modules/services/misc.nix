@@ -1,39 +1,18 @@
 {
   config,
   lib,
-  _lib,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   options.cute.services = {
-    docker = {
-      enable = mkEnableOption "";
-      feishin = mkEnableOption "";
-    };
     homeassistant = mkEnableOption "";
     openssh = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.services) docker homeassistant openssh;
+    inherit (config.cute.services) homeassistant openssh;
   in
     mkMerge [
-      (mkIf docker.enable {
-        virtualisation = {
-          docker = {
-            enable = true;
-            storageDriver = "btrfs";
-          };
-          oci-containers.backend = "docker";
-        };
-      })
-      (mkIf docker.feishin {
-        assertions = _lib.assertDocker "feishin";
-        virtualisation.oci-containers.containers."feishin" = {
-          image = "ghcr.io/jeffvli/feishin:0.7.1";
-          ports = ["9180:9180"];
-        };
-      })
       (mkIf homeassistant {
         services.home-assistant = {
           enable = true;
