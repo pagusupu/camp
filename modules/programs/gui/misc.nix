@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
@@ -17,14 +18,16 @@ in {
   in
     mkMerge [
       (mkIf gui.misc {
-        environment.systemPackages = with pkgs; [
-          audacity
-          heroic
-          imv
-          mpv
-          pwvucontrol
-          xivlauncher
-        ];
+        environment.systemPackages = with pkgs;
+          [
+            audacity
+            heroic
+            imv
+            mpv
+            pwvucontrol
+            webcord
+          ]
+          ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
       })
       (mkIf localsend {
         networking.firewall = {

@@ -124,11 +124,11 @@ in {
       (mkIf user {
         environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
         age = {
-          identityPaths = ["/etc/ssh/${config.networking.hostName}_ed25519_key"];
           secrets.user = {
             file = ../misc/secrets/user.age;
             owner = "pagu";
           };
+          identityPaths = ["/etc/ssh/${config.networking.hostName}_ed25519_key"];
         };
         users.users.pagu = {
           isNormalUser = true;

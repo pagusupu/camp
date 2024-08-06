@@ -50,13 +50,12 @@ in {
           enable = true;
           jack.enable = true;
           pulse.enable = true;
-          wireplumber.enable = true;
           alsa = {
             enable = true;
             support32Bit = true;
           };
           lowLatency = {
-            enable = false;
+            enable = true;
             quantum = 48;
             rate = 192000;
           };
@@ -120,7 +119,7 @@ in {
         services.greetd = {
           enable = true;
           settings.default_session = {
-            command = "${getExe pkgs.greetd.tuigreet} --sessions ${greetd.sessionDirs} --asterisks --remember-session -r -t";
+            command = "${getExe pkgs.greetd.tuigreet} --sessions ${greetd.sessionDirs} --asterisks --remember-session -r";
             user = "greeter";
           };
         };

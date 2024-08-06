@@ -41,13 +41,13 @@
           ];
           animations = {
             enabled = true;
-            first_launch_animation = false;
             animation = [
               "windows, 1, 2, default"
               "border, 1, 2, default"
               "fade, 1, 2, default"
               "workspaces, 1, 1, default, slidevert"
             ];
+            first_launch_animation = false;
           };
           decoration = {
             blur.enabled = false;

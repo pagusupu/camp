@@ -15,47 +15,40 @@ in {
   };
   config = let
     inherit (config.cute.programs.gui.aagl) enable anime honkers;
+    p = ".local/share";
+    c = "config.json";
+    json = (pkgs.formats.json {}).generate "${c}";
     fsr.enabled = false;
     gamemode = true;
-    gamescope.enabled = false;
-    launcher = {
-      behavior = "Nothing";
-      language = "en-us";
-    };
+    launcher.behavior = "Nothing";
   in
     mkIf enable (mkMerge [
       (mkIf anime {
-        homefile."anime" = {
-          target = ".local/share/anime-game-launcher/config.json";
-          source = (pkgs.formats.json {}).generate "config.json" {
-            game = {
-              enhancements = {
-                fps_unlocker = {
-                  enabled = true;
-                  config.fps = 165;
-                };
-                inherit fsr gamemode gamescope;
+        homefile."${p}/anime-game-launcher/${c}".source = json {
+          game = {
+            enhancements = {
+              fps_unlocker = {
+                enabled = true;
+                config.fps = 165;
               };
-              wine = {
-                borderless = true;
-                selected = "lutris-GE-Proton8-26-x86_64";
-              };
+              inherit fsr gamemode;
             };
-            inherit launcher;
+            wine = {
+              borderless = true;
+              selected = "lutris-GE-Proton8-26-x86_64";
+            };
           };
+          inherit launcher;
         };
         programs.anime-game-launcher.enable = true;
       })
       (mkIf honkers {
-        homefile."honkers" = {
-          target = ".local/share/honkers-railway-launcher/config.json";
-          source = (pkgs.formats.json {}).generate "config.json" {
-            game = {
-              enhancements = {inherit fsr gamemode gamescope;};
-              wine.selected = "wine-9.13-staging-tkg-amd64";
-            };
-            inherit launcher;
+        homefile."${p}/honkers-railway-launcher/${c}".source = json {
+          game = {
+            enhancements = {inherit fsr gamemode;};
+            wine.selected = "wine-9.12-staging-tkg-amd64";
           };
+          inherit launcher;
         };
         programs.honkers-railway-launcher.enable = true;
       })
