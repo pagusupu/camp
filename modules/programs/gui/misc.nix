@@ -30,11 +30,10 @@ in {
           ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
       })
       (mkIf localsend {
-        networking.firewall = {
-          allowedTCPPorts = [53317];
-          allowedUDPPorts = [53317];
+        programs.localsend = {
+          enable = true;
+          openFirewall = true;
         };
-        environment.systemPackages = [pkgs.localsend];
       })
       (mkIf prismlauncher {
         environment = {

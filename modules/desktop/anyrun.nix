@@ -16,7 +16,8 @@
         config = {
           plugins = with inputs.anyrun.packages.${pkgs.system}; [
             applications
-            rink
+            translate
+            websearch
           ];
           closeOnClick = true;
           hideIcons = true;

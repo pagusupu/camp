@@ -11,13 +11,10 @@
         fonts = true;
         home = true;
       };
-      wm = {
-        hyprland = true;
-        niri = true;
-      };
       anyrun = true;
       swaync = true;
       waybar = true;
+      wm.hyprland = true;
     };
     programs = {
       cli = {

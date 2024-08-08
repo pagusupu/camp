@@ -28,11 +28,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
@@ -49,7 +52,8 @@
                 filter (hasSuffix ".nix")
                 (map toString (filesystem.listFilesRecursive x)))
               [./lib ./modules]
-              ++ [./hosts/${name}.nix];
+              ++ [./hosts/${name}.nix]
+              ++ [inputs.lix-module.nixosModules.default];
             specialArgs = {inherit inputs;};
           }
       );

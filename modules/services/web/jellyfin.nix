@@ -14,7 +14,7 @@
       services.jellyfin = {
         inherit enable;
         openFirewall = true;
-      }; 
+      };
       hardware.graphics.extraPackages = with pkgs; [
         libvdpau-va-gl
         vaapiVdpau

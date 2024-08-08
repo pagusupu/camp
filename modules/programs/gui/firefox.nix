@@ -103,7 +103,7 @@
             };
           in [
             (b "https://discord.com/channels/@me")
-            (b "https://ciny.pagu.cafe")
+            (b "https://chat.pagu.cafe")
             (b "http://192.168.178.182:9090")
             (b "http://192.168.178.182:9180")
           ];
