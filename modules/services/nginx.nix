@@ -9,7 +9,7 @@
 in {
   options.cute.services = {
     nginx = mkEnableOption "";
-    web.cinny.enable = mkEnableOption "";
+    web.fluffychat.enable = mkEnableOption "";
   };
   config = let
     forceSSL = true;
@@ -47,7 +47,7 @@ in {
             let
               inherit
                 (config.cute.services.web)
-                cinny
+                fluffychat
                 jellyfin
                 navidrome
                 nextcloud
@@ -58,8 +58,8 @@ in {
                 root = "/storage/website/cafe";
                 inherit forceSSL enableACME;
               };
-              "ciny.${domain}" = mkIf cinny.enable {
-                root = pkgs.cinny;
+              "chat.${domain}" = mkIf fluffychat.enable {
+                root = pkgs.fluffychat-web;
                 inherit forceSSL enableACME;
               };
               "jlly.${domain}".locations."/" = mkIf jellyfin.enable {
