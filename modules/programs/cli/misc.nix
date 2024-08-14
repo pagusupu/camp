@@ -62,7 +62,7 @@ in {
             };
           };
         };
-        environment.systemPackages = [pkgs.yazi];
+        programs.yazi.enable = true;
       })
     ];
 }

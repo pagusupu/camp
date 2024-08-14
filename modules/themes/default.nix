@@ -17,6 +17,7 @@
   inherit (config.cute.programs.cli) nvim;
 in {
   options = {
+    # i forgot about this ill fix it eventually
     colours.base16 = let
       str = mkOption {type = types.str;};
     in {
