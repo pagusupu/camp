@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722680456,
-        "narHash": "sha256-q3ZxjLD/6WnAGwihLlRLoEzIEaVE1AqnH5h1TePYP/I=",
+        "lastModified": 1723815556,
+        "narHash": "sha256-TgkChEFJHqrciuI1Va7buSs5RQHCSxbWRFmuOI+e2tY=",
         "owner": "ezKEa",
         "repo": "aagl-gtk-on-nix",
-        "rev": "54264a57d0c58afd12888eb1c576f96ca811530c",
+        "rev": "4d7fa422b50b612aa29bfb8487472f1cd9bad85b",
         "type": "github"
       },
       "original": {
@@ -342,11 +342,11 @@
         "umu": "umu"
       },
       "locked": {
-        "lastModified": 1723425928,
-        "narHash": "sha256-BFj0H0h3+hTCTsHTMCzmO7hQL3ym2MTgIdQe1SN1wPw=",
+        "lastModified": 1723857668,
+        "narHash": "sha256-DWOnhDHEAEsXypFF6gll56ouenyIqswZpWgDckUHT9Y=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "cd19f284c40ce697db66314d0b7d29e41d47eb6b",
+        "rev": "aaddd014658f1451c2f861b27e19a042c7c90dae",
         "type": "github"
       },
       "original": {
@@ -385,11 +385,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1723362943,
-        "narHash": "sha256-dFZRVSgmJkyM0bkPpaYRtG/kRMRTorUIDj8BxoOt1T4=",
+        "lastModified": 1723637854,
+        "narHash": "sha256-med8+5DSWa2UnOqtdICndjDAEjxr5D7zaIiK4pn0Q7c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a58bc8ad779655e790115244571758e8de055e3d",
+        "rev": "c3aa7b8938b17aebd2deecf7be0636000d62a2b9",
         "type": "github"
       },
       "original": {
@@ -414,11 +414,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1723481641,
-        "narHash": "sha256-9djT72/Ab2E3SpUbB3l0WmqZQ5mj05+LIVoorcjCWgE=",
+        "lastModified": 1723923888,
+        "narHash": "sha256-w+/PG6KqB8en0x1JH5aMuf0QC78Nfei208EaaaRuYG4=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "dbf6f7bc997dc3a9ab1f014ea075600357226950",
+        "rev": "78fc4be6a830e8dc01f3e66ddbe3243b4bfe8560",
         "type": "github"
       },
       "original": {
@@ -567,11 +567,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1723454642,
-        "narHash": "sha256-S0Gvsenh0II7EAaoc9158ZB4vYyuycvMGKGxIbERNAM=",
+        "lastModified": 1723808491,
+        "narHash": "sha256-rhis3qNuGmJmYC/okT7Dkc4M8CeUuRCSvW6kC2f3hBc=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "349de7bc435bdff37785c2466f054ed1766173be",
+        "rev": "1d07739554fdc4f8481068f1b11d6ab4c1a4167a",
         "type": "github"
       },
       "original": {
@@ -589,11 +589,11 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1723576310,
-        "narHash": "sha256-HYJXb0+Ch3/VFeBid3BGgjSjIOXBq0O6gDi91OuY/20=",
+        "lastModified": 1723697867,
+        "narHash": "sha256-LTfbJXR8x35oZ8Mo3R0WTVEp9toWpVfzD21xCSr64IM=",
         "ref": "refs/heads/main",
-        "rev": "22786bef52abbadfaf304054a91863784bb925df",
-        "revCount": 698,
+        "rev": "c71a45ad53036f4c668bcbe1be7a49f9d3460151",
+        "revCount": 699,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/"

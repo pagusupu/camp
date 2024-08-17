@@ -50,7 +50,7 @@
     };
     environment.systemPackages = with pkgs; [
       alacritty
-      ueberzugpp
+      #ueberzugpp
     ];
   };
 }

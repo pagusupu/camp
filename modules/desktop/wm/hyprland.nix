@@ -37,7 +37,7 @@
             "float, class:(localsend_app)"
             "float, class:(com.saivert.pwvucontrol)"
             "nomaxsize, title:^(Wine configuration)$"
-            "forceinput, title:^(Wine configuration)$"
+            "stayfocused, title:^(Wine configuration)$"
           ];
           animations = {
             enabled = true;

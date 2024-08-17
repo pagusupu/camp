@@ -27,17 +27,11 @@
         zsh = true;
       };
       gui = {
-        aagl = {
-          enable = true;
-          anime = true;
-          honkers = true;
-        };
+        aagl = true;
         alacritty = true;
         firefox = true;
-        localsend = true;
         misc = true;
         prismlauncher = true;
-        rio = true;
         steam = true;
         vscode = true;
       };
