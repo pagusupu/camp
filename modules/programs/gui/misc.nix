@@ -36,7 +36,7 @@ in {
       (mkIf aagl {
         homefile."honkers" = {
           target = ".local/share/honkers-railway-launcher/config.json";
-          source = (pkgs.formats.toml {}).generate "config.json" {
+          source = (pkgs.formats.json {}).generate "config.json" {
             game = {
               enhancements = {
                 fsr.enabled = false;
