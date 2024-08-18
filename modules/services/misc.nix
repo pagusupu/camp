@@ -6,13 +6,23 @@
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   options.cute.services = {
+    docker = mkEnableOption "";
     homeassistant = mkEnableOption "";
     openssh = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.services) homeassistant openssh;
+    inherit (config.cute.services) docker homeassistant openssh;
   in
     mkMerge [
+    (mkIf docker {
+      virtualisation = {
+          docker = {
+            enable = true;
+            storageDriver = "btrfs";
+          };
+          oci-containers.backend = "docker";
+        };
+    })
       (mkIf homeassistant {
         services.home-assistant = {
           enable = true;

@@ -35,6 +35,7 @@ in {
         enable = true;
         virtualHosts = mkMerge [
           (genHosts [
+            "feishin"
             "jellyfin"
             "komga"
             "linkding"

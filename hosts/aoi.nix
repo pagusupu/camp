@@ -10,15 +10,13 @@
       zsh = true;
     };
     services = {
+      docker = true;
       homeassistant = true;
       nginx = true;
       openssh = true;
       synapse = true;
-      docker = {
-        enable = true;
-        feishin = true;
-      };
       web = {
+        feishin.enable = true;
         fluffychat.enable = true;
         jellyfin.enable = true;
         komga.enable = true;
