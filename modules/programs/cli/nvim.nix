@@ -41,13 +41,13 @@
               cmd = ["nil"];
               settings.formatting.command = ["alejandra --quiet"];
             };
-            cssls.enable = true;
-            html.enable = true;
+            #cssls.enable = true;
+            #html.enable = true;
           };
         };
         lsp-format = {
           enable = true;
-          lspServersToEnable = ["cssls" "html"];
+          #lspServersToEnable = ["cssls" "html"];
         };
         none-ls = {
           enable = true;

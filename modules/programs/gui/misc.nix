@@ -25,6 +25,7 @@ in {
             imv
             mpv
             pwvucontrol
+	    qbittorrent
             webcord
           ]
           ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
