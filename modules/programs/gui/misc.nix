@@ -26,7 +26,11 @@ in {
             mpv
             pwvucontrol
             webcord
+<<<<<<< HEAD
 	    zed-editor
+=======
+            zed-editor
+>>>>>>> d2d8ad10b627443db2add8b6ba061c1669ebf2e7
           ]
           ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
         programs.localsend = {

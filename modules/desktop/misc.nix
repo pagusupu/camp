@@ -54,10 +54,10 @@ in {
             enable = true;
             support32Bit = true;
           };
-          lowLatency = {
+          lowLatency = mkIf (config.networking.hostName == "rin") {
             enable = true;
             quantum = 48;
-            rate = 192000;
+            rate = 96000;
           };
         };
         security.rtkit.enable = true;
