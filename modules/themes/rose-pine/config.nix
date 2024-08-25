@@ -50,10 +50,10 @@ in
             variant = "auto";
           };
         };
-        plugins.lightline.colorscheme = mkDefault "rosepine";
+        plugins.lightline.settings.colorscheme = mkDefault "rosepine";
       };
       specialisation.dark.configuration = {
-        programs.nixvim.plugins.lightline.colorscheme = "rosepine_moon";
+        programs.nixvim.plugins.lightline.settings.colorscheme = "rosepine_moon";
       };
     })
     (mkIf vscode {

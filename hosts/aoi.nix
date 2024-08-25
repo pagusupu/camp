@@ -49,6 +49,7 @@
       availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
       supportedFilesystems.btrfs = true;
     };
+    supportedFilesystems.ntfs = true;
     swraid.enable = true;
   };
   hardware.cpu.amd.updateMicrocode = true;

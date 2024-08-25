@@ -21,7 +21,7 @@ in {
         environment.systemPackages = with pkgs; [
           ouch
           radeontop
-          wget
+          wget 
         ];
       })
       (mkIf btop {
