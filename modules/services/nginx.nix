@@ -124,5 +124,9 @@ in {
       };
       users.users.nginx.extraGroups = ["acme"];
       networking.firewall.allowedTCPPorts = [80 443];
+      nixpkgs.config.permittedInsecurePackages = lib.mkIf config.cute.services.web.fluffychat.enable [
+        "fluffychat-web-1.20.0"
+        "olm-3.2.16"
+      ];
     };
 }

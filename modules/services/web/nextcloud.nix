@@ -29,11 +29,11 @@
           "opcache.interned_strings_buffer" = "16";
           "output_buffering" = "off";
         };
-        settings = rec {
+        settings = {
           default_phone_region = "NZ";
           overwriteprotocol = "https";
           trusted_domains = ["https://${dns}.${domain}"];
-          trusted_proxies = trusted_domains;
+          trusted_proxies = ["127.0.0.1"];
         };
         appstoreEnable = false;
         autoUpdateApps.enable = true;
@@ -45,6 +45,11 @@
             contacts
             notes
             ;
+          news = pkgs.fetchNextcloudApp {
+            sha256 = "sha256-nj1yR2COwQ6ZqZ1/8v9csb/dipXMa61e45XQmA5WPwg=";
+            url = "https://github.com/nextcloud/news/releases/download/25.0.0-alpha8/news.tar.gz";
+            license = "gpl3";
+          };
         };
         hostName = "${dns}.${domain}";
         https = true;

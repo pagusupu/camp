@@ -14,15 +14,15 @@ in {
     inherit (config.cute.services) docker homeassistant openssh;
   in
     mkMerge [
-    (mkIf docker {
-      virtualisation = {
+      (mkIf docker {
+        virtualisation = {
           docker = {
             enable = true;
             storageDriver = "btrfs";
           };
           oci-containers.backend = "docker";
         };
-    })
+      })
       (mkIf homeassistant {
         services.home-assistant = {
           enable = true;
