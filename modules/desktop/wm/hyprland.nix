@@ -11,6 +11,7 @@
     home-manager.users.pagu = {
       home.packages = with pkgs; [
         rwpspread
+        satty
         swaybg
         wayland-pipewire-idle-inhibit
         wl-clipboard
@@ -37,7 +38,6 @@
             "float, class:(localsend_app)"
             "float, class:(com.saivert.pwvucontrol)"
             "nomaxsize, title:^(Wine configuration)$"
-            "stayfocused, title:^(Wine configuration)$"
           ];
           animations = {
             enabled = true;
@@ -81,12 +81,17 @@
             vfr = true;
             vrr = 2;
           };
-          bind = [
+          bind = let
+            inherit (lib) getExe;
+            inherit (pkgs) grimblast grim slurp;
+          in [
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, anyrun"
             "${mod}, N, exec, swaync-client -rs && swaync-client -op"
-            "${mod}, BACKSPACE, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copy area"
-            "${mod}:SHIFT, BACKSPACE, exec, ${lib.getExe pkgs.grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
+            "${mod}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
+            "${mod}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
+            ''${mod}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''
+            ''${mod}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png ''
             "${mod}, L, exec, hyprlock"
             "${mod}, Q, killactive"
             "${mod}, F, fullscreen"
@@ -126,11 +131,11 @@
         '';
       };
     };
-    cute.desktop.misc.greetd = {
+    cute.desktop.misc.greetd = let
+      inherit (config.home-manager.users.pagu.wayland.windowManager.hyprland) enable package;
+    in {
       enable = true;
-      sessionDirs = lib.mkIf config.home-manager.users.pagu.wayland.windowManager.hyprland.enable [
-        "${pkgs.hyprland}/share/wayland-sessions"
-      ];
+      sessionDirs = lib.mkIf enable ["${package}/share/wayland-sessions"];
     };
   };
 }

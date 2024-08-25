@@ -14,18 +14,18 @@
           unfocused_hollow = false;
         };
         font = {
-          size = 12;
           normal = {
             family = "monospace";
             style = "Regular";
           };
+          size = 12;
         };
         window = {
-          dynamic_title = false;
           padding = {
             x = 10;
             y = 10;
           };
+          dynamic_title = false;
         };
         colors = with config.colours.base16; let
           c = {
@@ -50,7 +50,7 @@
     };
     environment.systemPackages = with pkgs; [
       alacritty
-      #ueberzugpp
+      ueberzugpp
     ];
   };
 }

@@ -25,8 +25,8 @@ in {
             imv
             mpv
             pwvucontrol
-	    qbittorrent
             webcord
+            zed-editor
           ]
           ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
         programs.localsend = {
