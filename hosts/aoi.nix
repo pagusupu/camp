@@ -11,16 +11,15 @@
     };
     services = {
       docker = true;
+      feishin = true;
       homeassistant = true;
       nginx = true;
       openssh = true;
       synapse = true;
       web = {
-        feishin.enable = true;
         fluffychat.enable = true;
         jellyfin.enable = true;
         komga.enable = true;
-        linkding.enable = true;
         mealie.enable = true;
         navidrome.enable = true;
         nextcloud.enable = true;

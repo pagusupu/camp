@@ -1,17 +1,19 @@
 {
   config,
   lib,
+  _lib,
   ...
 }: let
   inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   options.cute.services = {
     docker = mkEnableOption "";
+    feishin = mkEnableOption "";
     homeassistant = mkEnableOption "";
     openssh = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.services) docker homeassistant openssh;
+    inherit (config.cute.services) docker feishin homeassistant openssh;
   in
     mkMerge [
       (mkIf docker {
@@ -21,6 +23,13 @@ in {
             storageDriver = "btrfs";
           };
           oci-containers.backend = "docker";
+        };
+      })
+      (mkIf feishin {
+        assertions = _lib.assertDocker "feishin";
+        virtualisation.oci-containers.containers."feishin" = {
+          image = "ghcr.io/jeffvli/feishin:0.7.3";
+          ports = ["9180:9180"];
         };
       })
       (mkIf homeassistant {
@@ -58,7 +67,7 @@ in {
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk" # rin
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # desktop win
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBiWUZRqsWDA78zsv3LJVcWjIiUdnecPoOi8+ZddxRSa" # phone
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBMiF9xzJshgudYgsmkfWa3+zfeCayH72dKmjDUyktS" # phone
         ];
       })
     ];
