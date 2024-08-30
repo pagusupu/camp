@@ -91,12 +91,11 @@
             "${mod}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
             "${mod}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             ''${mod}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''
-            ''${mod}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png ''
+            ''${mod}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
             "${mod}, L, exec, hyprlock"
             "${mod}, Q, killactive"
             "${mod}, F, fullscreen"
             "${mod}, SPACE, togglefloating"
-            "${mod}, P, pin"
             "${mod}:SHIFT, M, exit"
             "${mod}, left, movefocus, l"
             "${mod}, right, movefocus, r"

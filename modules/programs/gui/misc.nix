@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  _lib,
   pkgs,
   inputs,
   ...
@@ -11,22 +12,24 @@ in {
   options.cute.programs.gui = {
     misc = mkEnableOption "";
     aagl = mkEnableOption "";
+    chromium = mkEnableOption "";
     prismlauncher = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) misc aagl prismlauncher;
+    inherit (config.cute.programs.gui) misc aagl chromium prismlauncher;
   in
     mkMerge [
       (mkIf misc {
         environment.systemPackages = with pkgs;
           [
             audacity
+            feishin
             heroic
             imv
+            lrcget
             mpv
             pwvucontrol
             webcord
-            zed-editor
           ]
           ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
         programs.localsend = {
@@ -53,6 +56,21 @@ in {
           trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
         };
         programs.honkers-railway-launcher.enable = true;
+      })
+      (mkIf chromium {
+        assertions = _lib.assertHm "chromium";
+        home-manager.users.pagu = {
+          programs.chromium = {
+            enable = true;
+            extensions = [
+              {id = "ddkjiahejlhfcafbddmgiahcphecmpfh";} # ublock
+              {id = "nngceckbapebfimnlniiiahkandclblb";} # bitwarden
+              {id = "mnjggcdmjocbbbhaepdhchncahnbgone";} # sponsorblock
+              {id = "gebbhagfogifgggkldgodflihgfeippi";} # return yt dislike
+              {id = "nnfoalnhmdfefeoggnhglcgfgeneolii";} # nextcloud bookmarker
+            ];
+          };
+        };
       })
       (mkIf prismlauncher {
         environment = {
