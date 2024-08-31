@@ -45,7 +45,9 @@
             calendar
             contacts
             notes
+            previewgenerator
             tasks
+            unroundedcorners
             ;
           news = pkgs.fetchNextcloudApp {
             sha256 = "sha256-nj1yR2COwQ6ZqZ1/8v9csb/dipXMa61e45XQmA5WPwg=";
