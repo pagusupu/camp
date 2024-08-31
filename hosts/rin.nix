@@ -29,10 +29,8 @@
       gui = {
         aagl = true;
         alacritty = true;
-        chromium = true;
-        firefox = false;
+        firefox = true;
         misc = true;
-        prismlauncher = true;
         steam = true;
         vscode = true;
       };

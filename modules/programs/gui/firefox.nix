@@ -16,8 +16,10 @@
           settings = {
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
+            "extensions.webextensions.restrictedDomains" = "";
             "gfx.webrender.all" = true;
             "privacy.firstparty.isolate" = true;
+            "privacy.resistFingerprinting.block_mozAddonManager" = true;
           };
           search = {
             force = true;
@@ -25,28 +27,8 @@
             order = [
               "Google"
               "DuckDuckGo"
-              "Nix Packages"
             ];
             engines = {
-              "Nix Packages" = {
-                urls = [
-                  {
-                    template = "https://search.nixos.org/packages?channel=unstable";
-                    params = [
-                      {
-                        name = "type";
-                        value = "packages";
-                      }
-                      {
-                        name = "query";
-                        value = "{searchTerms}";
-                      }
-                    ];
-                  }
-                ];
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = ["@np"];
-              };
               "Amazon.com".metaData.hidden = true;
               "Bing".metaData.hidden = true;
               "eBay".metaData.hidden = true;
@@ -104,7 +86,7 @@
           in [
             (b "https://discord.com/channels/@me")
             (b "https://chat.pagu.cafe")
-            (b "http://192.168.178.182:9090")
+            (b "https://next.pagu.cafe")
             (b "http://192.168.178.182:9180")
           ];
           ExtensionSettings = let
@@ -120,15 +102,27 @@
           in
             builtins.listToAttrs [
               (e "{446900e4-71c2-419f-a6a7-df9c091e268b}" "bitwarden-password-manager")
-              (e "{61a05c39-ad45-4086-946f-32adb0a40a9d}" "linkding-extension")
+              (e "addon@darkreader.org" "darkreader")
               (e "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "return-youtube-dislikes")
               (e "sponsorBlocker@ajay.app" "sponsorblock")
               (e "treestyletab@piro.sakura.ne.jp" "tree-style-tab")
               (e "uBlock0@raymondhill.net" "ublock-origin")
             ];
-          "3rdparty".Extensions."uBlock0@raymondhill.net" = {
-            userSettings.cloudStorageEnabled = false;
-            adminSettings.selectedFilterLists = [
+          "3rdparty".Extensions = {
+            "addon@darkreader.org" = {
+              automation = {
+                enabled = true;
+                behaviour = "OnOff";
+                mode = "system";
+              };
+              detectDarkTheme = true;
+              enableContextMenus = true;
+              enableForProtectedPages = true;
+              fetchNews = false;
+              previewNewDesign = true;
+              syncSettings = false;
+            };
+            "uBlock0@raymondhill.net".adminSettings.selectedFilterLists = [
               "user-filters"
               "ublock-filters"
               "ublock-badware"

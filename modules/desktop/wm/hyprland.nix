@@ -28,7 +28,6 @@
             "waybar"
             "wayland-pipewire-idle-inhibit"
             "steam -console -silent"
-            "notify-send 'Steam' 'Opening in background!'"
           ];
           env = [
             "NIXOS_OZONE_WL,1"
