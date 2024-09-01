@@ -32,7 +32,6 @@
         firefox = true;
         misc = true;
         steam = true;
-        vscode = true;
       };
     };
     net = {

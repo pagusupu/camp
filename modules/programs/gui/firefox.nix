@@ -110,6 +110,7 @@
             ];
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {
+              enabled = false;
               automation = {
                 enabled = true;
                 behaviour = "OnOff";

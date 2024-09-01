@@ -6,7 +6,6 @@
 }: let
   inherit (lib) mkMerge mkIf mkDefault;
   inherit (config.cute.programs.cli) nvim;
-  inherit (config.cute.programs.gui) vscode;
   inherit (config.cute.theme) name gtk;
 in
   mkIf (name == "gruvbox") (mkMerge [
@@ -44,17 +43,6 @@ in
           settings.contrast = "hard";
         };
         extraPlugins = [pkgs.vimPlugins.lightline-gruvbox-vim];
-      };
-    })
-    (mkIf vscode {
-      home-manager.users.pagu.programs.vscode = {
-        extensions = [pkgs.vscode-extensions.jdinhlife.gruvbox];
-        userSettings."workbench.colorTheme" = mkDefault "Gruvbox Light Hard";
-      };
-      specialisation.dark.configuration = {
-        home-manager.users.pagu.programs.vscode = {
-          userSettings."workbench.colorTheme" = "Gruvbox Dark Hard";
-        };
       };
     })
   ])
