@@ -42,7 +42,7 @@ in {
       gtk = mkEnableOption "";
       name = mkOption {
         default = "rose-pine";
-        type = types.enum ["rose-pine" "gruvbox"];
+        type = types.enum ["graphite" "rose-pine"];
       };
     };
   };
