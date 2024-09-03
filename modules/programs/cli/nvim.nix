@@ -22,9 +22,6 @@
         undofile = true;
       };
       plugins = {
-        lightline.enable = true;
-        lsp-lines.enable = true;
-        rainbow-delimiters.enable = true;
         indent-blankline = {
           enable = true;
           settings.scope = {
@@ -41,13 +38,13 @@
               cmd = ["nil"];
               settings.formatting.command = ["alejandra --quiet"];
             };
-            #cssls.enable = true;
-            #html.enable = true;
+            cssls.enable = true;
+            html.enable = true;
           };
         };
         lsp-format = {
           enable = true;
-          #lspServersToEnable = ["cssls" "html"];
+          lspServersToEnable = ["cssls" "html"];
         };
         none-ls = {
           enable = true;
@@ -59,10 +56,10 @@
             diagnostics.deadnix.enable = true;
           };
         };
-        treesitter = {
-          enable = true;
-          nixvimInjections = true;
-        };
+        lualine.enable = true;
+        lsp-lines.enable = true;
+        rainbow-delimiters.enable = true;
+        treesitter.enable = true;
         treesitter-refactor.enable = true;
       };
     };

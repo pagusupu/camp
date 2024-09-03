@@ -40,7 +40,7 @@
     };
     theme = {
       gtk = true;
-      name = "rose-pine";
+      name = "everforest";
     };
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot

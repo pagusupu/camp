@@ -2,6 +2,7 @@
   config,
   lib,
   _lib,
+  pkgs,
   ...
 }: let
   inherit
@@ -12,6 +13,7 @@
     mkMerge
     mkIf
     mkDefault
+    mkOverride
     ;
   inherit (config.cute.theme) gtk;
   inherit (config.cute.programs.cli) nvim;
@@ -42,7 +44,7 @@ in {
       gtk = mkEnableOption "";
       name = mkOption {
         default = "rose-pine";
-        type = types.enum ["graphite" "rose-pine"];
+        type = types.enum ["everforest" "graphite" "rose-pine"];
       };
     };
   };
@@ -50,18 +52,35 @@ in {
     (mkIf gtk {
       assertions = _lib.assertHm "gtk";
       home-manager.users.pagu = {
+        gtk = {
+          enable = true;
+          iconTheme = {
+            package = mkOverride 1001 pkgs.adwaita-icon-theme;
+            name = mkOverride 1001 "Adwaita";
+          };
+        };
         qt = {
           enable = true;
-          platformTheme.name = "gtk";
+          style = {
+            package = pkgs.adwaita-qt;
+            name = mkDefault "adwaita";
+          };
         };
         home.pointerCursor = {
+          package = mkOverride 1001 pkgs.posy-cursors;
+          name = mkOverride 1002 "Posy_Cursor_Mono";
           size = 24;
           gtk.enable = true;
           x11.enable = true;
         };
-        gtk.enable = true;
       };
       programs.dconf.enable = true;
+      specialisation.dark.configuration = {
+        home-manager.users.pagu = {
+          home.pointerCursor.name = mkOverride 1001 "Posy_Cursor_Mono_Black";
+          qt.style.name = "adwaita-dark";
+        };
+      };
     })
     (mkIf nvim {
       programs.nixvim.opts.background = mkDefault "light";

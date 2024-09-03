@@ -110,14 +110,13 @@
             ];
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {
-              enabled = false;
+              enabled = true;
               automation = {
                 enabled = true;
                 behaviour = "OnOff";
                 mode = "system";
               };
               detectDarkTheme = true;
-              enableContextMenus = true;
               enableForProtectedPages = true;
               fetchNews = false;
               previewNewDesign = true;

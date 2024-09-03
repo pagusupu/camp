@@ -49,10 +49,6 @@ in
             variant = "auto";
           };
         };
-        plugins.lightline.settings.colorscheme = mkDefault "rosepine";
-      };
-      specialisation.dark.configuration = {
-        programs.nixvim.plugins.lightline.settings.colorscheme = "rosepine_moon";
       };
     })
   ])
