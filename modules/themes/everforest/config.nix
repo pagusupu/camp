@@ -22,7 +22,7 @@ in
           };
         };
         home.pointerCursor = {
-          package = pkgs.callPackage ../../../misc/pkgs/everforest-cursors.nix {};
+          package = pkgs.callPackage ../../../pkgs/everforest-cursors.nix {};
           name = mkDefault "everforest-cursors-light";
         };
       };

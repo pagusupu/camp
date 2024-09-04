@@ -50,6 +50,10 @@ in {
         i18n.defaultLocale = "en_NZ.UTF-8";
         time.timeZone = "NZ";
         xdg.sounds.enable = false;
+        boot = {
+          initrd.verbose = false;
+          kernelParams = ["quiet" "splash"];
+        };
         documentation = {
           enable = false;
           doc.enable = false;
@@ -125,7 +129,7 @@ in {
         environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
         age = {
           secrets.user = {
-            file = ../misc/secrets/user.age;
+            file = ../secrets/user.age;
             owner = "pagu";
           };
           identityPaths = ["/etc/ssh/${config.networking.hostName}_ed25519_key"];

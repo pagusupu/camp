@@ -13,12 +13,11 @@ in {
       enable = true;
       settings = let
         hypr = {
-          reload_style_on_change = true;
           layer = "top";
-          width = 36;
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["custom/swaync"];
+          reload_style_on_change = true;
+          width = 36;
           "hyprland/workspaces" = {
             format = "{icon}";
             format-icons = {
@@ -27,26 +26,19 @@ in {
             };
             persistent-workspaces."*" = 4;
           };
-        };
-        clock.format = "{:%I \n%M \n%p}";
-        "custom/swaync" = {
-          format = "";
-          on-click = "swaync-client -rs && swaync-client -t";
-          tooltip = false;
+          clock.format = "{:%I \n%M \n%p}";
         };
       in {
-        hyprleft =
+        left =
           {
             position = "left";
             output = ["DP-3"];
-            inherit clock "custom/swaync";
           }
           // hypr;
-        hyprright =
+        right =
           {
             position = "right";
             output = ["HDMI-A-1"];
-            inherit clock "custom/swaync";
           }
           // hypr;
       };

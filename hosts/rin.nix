@@ -3,18 +3,18 @@
     desktop = {
       hypr = {
         idle = true;
+        land = true;
         lock = true;
+        paper = false; # build failure
       };
       misc = {
         audio = true;
-        console = true;
         fonts = true;
         home = true;
       };
-      anyrun = true;
-      swaync = true;
+      mako = true;
+      tofi = true;
       waybar = true;
-      wm.hyprland = true;
     };
     programs = {
       cli = {
@@ -31,6 +31,7 @@
         alacritty = true;
         firefox = true;
         misc = true;
+        prismlauncher = true;
         steam = true;
       };
     };

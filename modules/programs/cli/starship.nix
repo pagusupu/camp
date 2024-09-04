@@ -15,7 +15,7 @@
         '';
         character = {
           error_symbol = "[󰋕 ~>](bold red)";
-          success_symbol = "[󰋕 ~>](bold blue)";
+          success_symbol = "[󰋕 ~>](bold purple)";
         };
         directory = {
           read_only = " ";
@@ -30,7 +30,6 @@
           format = "[$user]($style)";
           show_always = true;
         };
-        git_branch.style = "bold cyan";
         git_status.deleted = "x";
       };
     };

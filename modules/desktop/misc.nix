@@ -5,28 +5,24 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types concatStringsSep mkMerge mkIf getExe;
+  inherit (lib) mkEnableOption mkMerge mkIf;
 in {
   imports = [
     inputs.nix-gaming.nixosModules.pipewireLowLatency
     inputs.home-manager.nixosModules.home-manager
   ];
-  options.cute.desktop.misc = {
-    audio = mkEnableOption "";
-    console = mkEnableOption "";
-    fonts = mkEnableOption "";
-    greetd = {
-      enable = mkEnableOption "";
-      sessionDirs = mkOption {
-        type = types.listOf types.str;
-        apply = concatStringsSep ":";
-        default = [];
-      };
+  options.cute.desktop = {
+    misc = {
+      audio = mkEnableOption "";
+      fonts = mkEnableOption "";
+      home = mkEnableOption "";
     };
-    home = mkEnableOption "";
+    mako = mkEnableOption "";
+    tofi = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.desktop.misc) audio console fonts greetd home;
+    inherit (config.cute.desktop) misc mako tofi;
+    inherit (misc) audio fonts home;
   in
     mkMerge [
       (mkIf audio {
@@ -46,26 +42,6 @@ in {
         };
         security.rtkit.enable = true;
         hardware.pulseaudio.enable = false;
-      })
-      (mkIf console {
-        boot = {
-          initrd.verbose = false;
-          kernelParams = ["quiet" "splash"];
-        };
-        services.kmscon = {
-          enable = true;
-          hwRender = true;
-          fonts = [
-            {
-              name = "JetBrainsMono Nerd Font";
-              package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-            }
-            {
-              name = "NerdFontsSymbolsOnly";
-              package = pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];};
-            }
-          ];
-        };
       })
       (mkIf fonts {
         fonts = {
@@ -99,20 +75,8 @@ in {
           };
         };
       })
-      (mkIf greetd.enable {
-        services.greetd = {
-          enable = true;
-          settings.default_session = {
-            command = "${getExe pkgs.greetd.tuigreet} --sessions ${greetd.sessionDirs} --asterisks --remember-session -r";
-            user = "greeter";
-          };
-        };
-      })
       (mkIf home {
         home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = {inherit inputs;};
           users.pagu = {
             home = {
               username = "pagu";
@@ -129,6 +93,32 @@ in {
               pictures = p + "pictures";
               videos = p + "pictures/videos";
             };
+          };
+          extraSpecialArgs = {inherit inputs;};
+          useGlobalPkgs = true;
+          useUserPackages = true;
+        };
+      })
+      (mkIf mako {
+        home-manager.users.pagu = {
+          services.mako = with config.colours.base16; {
+            enable = true;
+            anchor = "bottom-left";
+            defaultTimeout = 3;
+            maxVisible = 3;
+            borderSize = 2;
+            borderRadius = 6;
+            margin = "6";
+            backgroundColor = "#" + A3;
+            borderColor = "#" + B6;
+            textColor = "#" + A6;
+          };
+        };
+      })
+      (mkIf tofi {
+        home-manager.users.pagu = {
+          programs.tofi = {
+            enable = true;
           };
         };
       })

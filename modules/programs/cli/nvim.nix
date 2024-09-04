@@ -36,8 +36,11 @@
           servers = {
             nil-ls = {
               enable = true;
+              settings = {
+                formatting.command = ["alejandra"];
+                nix.flake.autoArchive = false;
+              };
               cmd = ["nil"];
-              settings.formatting.command = ["alejandra"];
             };
             cssls.enable = true;
             html.enable = true;
@@ -59,7 +62,6 @@
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
         treesitter.enable = true;
-        treesitter-refactor.enable = true;
       };
     };
     environment = {

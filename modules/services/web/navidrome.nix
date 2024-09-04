@@ -30,7 +30,6 @@
           EnableTranscodingConfig = true;
           IgnoredArticles = "";
           SessionTimeout = "96h";
-          UILoginBackgroundUrl = "https://raw.githubusercontent.com/pagusupu/camp/main/misc/images/solo.jpg";
           UIWelcomeMessage = "";
         };
       };

@@ -1,27 +1,11 @@
 {
   inputs = {
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        darwin.follows = "";
-        home-manager.follows = "";
-      };
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "";
-        nix-darwin.follows = "";
-      };
-    };
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -32,18 +16,20 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-gaming.url = "github:fufexan/nix-gaming";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
   outputs = inputs: let
     inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
     inherit (builtins) concatMap filter;
-    genHosts = hosts:
+    mkHost = hosts:
       genAttrs hosts (
         name:
           nixosSystem {
@@ -58,7 +44,7 @@
           }
       );
   in {
-    nixosConfigurations = genHosts [
+    nixosConfigurations = mkHost [
       "aoi"
       "rin"
     ];

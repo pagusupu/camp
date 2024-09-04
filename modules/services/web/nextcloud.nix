@@ -13,7 +13,7 @@
     lib.mkIf enable {
       assertions = _lib.assertNginx "nextcloud";
       age.secrets.nextcloud = {
-        file = ../../../misc/secrets/nextcloud.age;
+        file = ../../../secrets/nextcloud.age;
         owner = "nextcloud";
       };
       services.nextcloud = {
@@ -45,7 +45,6 @@
             calendar
             contacts
             notes
-            previewgenerator
             tasks
             unroundedcorners
             ;

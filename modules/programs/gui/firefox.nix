@@ -86,8 +86,8 @@
           in [
             (b "https://discord.com/channels/@me")
             (b "https://chat.pagu.cafe")
-            (b "https://next.pagu.cafe")
             (b "http://192.168.178.182:9180")
+            (b "https://next.pagu.cafe")
           ];
           ExtensionSettings = let
             e = n: l: {

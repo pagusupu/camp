@@ -11,9 +11,10 @@ in {
   options.cute.programs.gui = {
     misc = mkEnableOption "";
     aagl = mkEnableOption "";
+    prismlauncher = mkEnableOption "";
   };
   config = let
-    inherit (config.cute.programs.gui) misc aagl;
+    inherit (config.cute.programs.gui) misc aagl prismlauncher;
   in
     mkMerge [
       (mkIf misc {
@@ -53,6 +54,16 @@ in {
           trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
         };
         programs.honkers-railway-launcher.enable = true;
+      })
+      (mkIf prismlauncher {
+        environment = {
+          etc = {
+            "jdks/21".source = pkgs.openjdk21 + /bin;
+            "jdks/17".source = pkgs.openjdk17 + /bin;
+            "jdks/8".source = pkgs.openjdk8 + /bin;
+          };
+          systemPackages = [pkgs.prismlauncher];
+        };
       })
     ];
 }
