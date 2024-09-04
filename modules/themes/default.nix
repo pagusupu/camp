@@ -5,16 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkOption
-    types
-    mkEnableOption
-    mkMerge
-    mkIf
-    mkDefault
-    mkOverride
-    ;
+  inherit (lib) mkOption types mkEnableOption mkMerge mkIf mkDefault mkOverride;
   inherit (config.cute.theme) gtk;
   inherit (config.cute.programs.cli) nvim;
 in {
@@ -43,8 +34,8 @@ in {
     cute.theme = {
       gtk = mkEnableOption "";
       name = mkOption {
-        default = "rose-pine";
-        type = types.enum ["everforest" "graphite" "rose-pine"];
+        default = "everforest";
+        type = types.enum ["everforest" "rose-pine"];
       };
     };
   };
@@ -55,32 +46,26 @@ in {
         gtk = {
           enable = true;
           iconTheme = {
-            package = mkOverride 1001 pkgs.adwaita-icon-theme;
-            name = mkOverride 1001 "Adwaita";
+            package = mkOverride 1111 pkgs.adwaita-icon-theme;
+            name = mkOverride 1111 "Adwaita";
           };
         };
         qt = {
           enable = true;
-          style = {
-            package = pkgs.adwaita-qt;
-            name = mkDefault "adwaita";
-          };
+          style = {inherit (config.home-manager.users.pagu.gtk.theme) package name;};
         };
         home.pointerCursor = {
-          package = mkOverride 1001 pkgs.posy-cursors;
-          name = mkOverride 1002 "Posy_Cursor_Mono";
+          package = mkOverride 1111 pkgs.phinger-cursors;
+          name = mkOverride 2222 "phinger-cursors-light";
           size = 24;
           gtk.enable = true;
           x11.enable = true;
         };
       };
-      programs.dconf.enable = true;
       specialisation.dark.configuration = {
-        home-manager.users.pagu = {
-          home.pointerCursor.name = mkOverride 1001 "Posy_Cursor_Mono_Black";
-          qt.style.name = "adwaita-dark";
-        };
+        home-manager.users.pagu.home.pointerCursor.name = mkOverride 1111 "phinger-cursors-dark";
       };
+      programs.dconf.enable = true;
     })
     (mkIf nvim {
       programs.nixvim.opts.background = mkDefault "light";

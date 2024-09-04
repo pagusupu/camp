@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [inputs.nixvim.nixosModules.nixvim];
@@ -36,36 +37,37 @@
             nil-ls = {
               enable = true;
               cmd = ["nil"];
-              settings.formatting.command = ["alejandra --quiet"];
+              settings.formatting.command = ["alejandra"];
             };
             cssls.enable = true;
             html.enable = true;
           };
         };
-        lsp-format = {
-          enable = true;
-          lspServersToEnable = ["cssls" "html"];
-        };
         none-ls = {
           enable = true;
           sources = {
-            formatting = {
-              alejandra.enable = true;
-              biome.enable = true;
+            diagnostics = {
+              deadnix.enable = true;
+              statix.enable = true;
             };
-            diagnostics.deadnix.enable = true;
+            code_actions.statix.enable = true;
           };
+          enableLspFormat = false;
         };
         lualine.enable = true;
+        lsp-format.enable = true;
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
         treesitter.enable = true;
         treesitter-refactor.enable = true;
       };
     };
-    environment.variables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+    environment = {
+      variables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+      };
+      systemPackages = [pkgs.alejandra];
     };
   };
 }

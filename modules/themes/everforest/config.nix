@@ -21,11 +21,18 @@ in
             name = mkDefault "everforest_light";
           };
         };
+        home.pointerCursor = {
+          package = pkgs.callPackage ../../../misc/pkgs/everforest-cursors.nix {};
+          name = mkDefault "everforest-cursors-light";
+        };
       };
       specialisation.dark.configuration = {
-        home-manager.users.pagu.gtk = {
-          theme.name = "Everforest-Dark-BL-LB";
-          iconTheme.name = "Everforest-Dark";
+        home-manager.users.pagu = {
+          gtk = {
+            theme.name = "Everforest-Dark-BL-LB";
+            iconTheme.name = "Everforest-Dark";
+          };
+          home.pointerCursor.name = "everforest-cursors";
         };
       };
     })
