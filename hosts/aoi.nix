@@ -15,9 +15,8 @@
       homeassistant = true;
       nginx = true;
       openssh = true;
-      synapse = true;
       web = {
-        fluffychat.enable = true;
+        element.enable = true;
         jellyfin.enable = true;
         komga.enable = true;
         mealie.enable = true;

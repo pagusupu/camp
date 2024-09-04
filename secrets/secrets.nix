@@ -4,6 +4,5 @@ let
   rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIcZJ0IEzuvGNglNevP/pSpHNYd+iJwrpRO2yK8mg4lt";
 in {
   "nextcloud.age".publicKeys = [aoi];
-  "synapse.age".publicKeys = [aoi];
   "user.age".publicKeys = [aoi ena rin];
 }

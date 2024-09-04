@@ -9,7 +9,7 @@
 in {
   options.cute.services = {
     nginx = mkEnableOption "";
-    web.fluffychat.enable = mkEnableOption "";
+    web.element.enable = mkEnableOption "";
   };
   config = let
     forceSSL = true;
@@ -46,7 +46,7 @@ in {
             let
               inherit
                 (config.cute.services.web)
-                fluffychat
+                element
                 jellyfin
                 navidrome
                 nextcloud
@@ -57,8 +57,8 @@ in {
                 root = "/storage/website/cafe";
                 inherit forceSSL enableACME;
               };
-              "chat.${domain}" = mkIf fluffychat.enable {
-                root = pkgs.fluffychat-web;
+              "chat.${domain}" = mkIf element.enable {
+                root = pkgs.element-web;
                 inherit forceSSL enableACME;
               };
               "jlly.${domain}".locations."/" = mkIf jellyfin.enable {
@@ -70,40 +70,6 @@ in {
               "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";
             }
           )
-          (mkIf config.cute.services.synapse {
-            "matrix.${domain}" = {
-              root = /storage/website/matrix;
-              locations = {
-                "/_matrix".proxyPass = "http://127.0.0.1:8008";
-                "/_synapse".proxyPass = "http://127.0.0.1:8008";
-              };
-              inherit forceSSL enableACME;
-            };
-            "${domain}" = {
-              locations = let
-                extraConfig = ''
-                  default_type application/json;
-                  add_header Access-Control-Allow-Origin "*";
-                '';
-                json = (pkgs.formats.json {}).generate;
-              in
-                mkIf config.cute.services.synapse {
-                  "=/.well-known/matrix/server" = {
-                    alias = json "well-known-matrix-server" {
-                      "m.server" = "matrix.${domain}:443";
-                    };
-                    inherit extraConfig;
-                  };
-                  "=/.well-known/matrix/client" = {
-                    alias = json "well-known-matrix-client" {
-                      "m.homeserver"."base_url" = "https://matrix.${domain}";
-                      "org.matrix.msc3575.proxy"."url" = "https://matrix.${domain}";
-                    };
-                    inherit extraConfig;
-                  };
-                };
-            };
-          })
         ];
         recommendedBrotliSettings = true;
         recommendedGzipSettings = true;
@@ -121,10 +87,6 @@ in {
         defaults.email = "amce@${domain}";
       };
       users.users.nginx.extraGroups = ["acme"];
-      networking.firewall.allowedTCPPorts = [80 443];
-      nixpkgs.config.permittedInsecurePackages = lib.mkIf config.cute.services.web.fluffychat.enable [
-        "fluffychat-web-1.20.0"
-        "olm-3.2.16"
-      ];
+      networking.firewall.allowedTCPPorts = [80 443]; 
     };
 }
