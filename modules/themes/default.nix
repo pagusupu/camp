@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkOption types mkEnableOption mkMerge mkIf mkDefault mkOverride;
+  inherit (lib) mkOption types mkMerge mkIf mkDefault mkOverride;
   inherit (config.cute.theme) gtk;
   inherit (config.cute.programs.cli) nvim;
 in {
@@ -32,11 +32,11 @@ in {
       B8 = str;
     };
     cute.theme = {
-      gtk = mkEnableOption "";
       name = mkOption {
         default = "everforest";
         type = types.enum ["everforest" "rose-pine"];
       };
+      gtk = _lib.mkEnable;
     };
   };
   config = mkMerge [
