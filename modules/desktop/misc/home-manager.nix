@@ -19,7 +19,7 @@
           p = "/home/pagu/";
         in {
           enable = true;
-          desktop = p + ".local/misc/desktop";
+          desktop = p + ".desktop";
           documents = p + "documents";
           download = p + "downloads";
           pictures = p + "pictures";

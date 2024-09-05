@@ -2,6 +2,7 @@
   config,
   lib,
   _lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -12,10 +13,11 @@ in {
     home-manager.users.pagu.programs.waybar = {
       enable = true;
       settings = let
-        hypr = {
+        common = {
           layer = "top";
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
+          modules-right = ["custom/powermenu"];
           reload_style_on_change = true;
           width = 36;
           "hyprland/workspaces" = {
@@ -27,6 +29,16 @@ in {
             persistent-workspaces."*" = 4;
           };
           clock.format = "{:%I \n%M \n%p}";
+          "custom/powermenu" = let
+            menu = pkgs.writeShellScript "pm" ''
+              op=$( echo -e "  Poweroff\n  Reboot\n  Lock\n  Logout" | ${lib.getExe pkgs.tofi} | awk '{print tolower($2)}' )
+              case $op in poweroff) poweroff ;& reboot) reboot ;& lock) hyprlock ;; logout) hyprctl exit ;; esac
+            '';
+          in {
+            on-click = "${menu}";
+            format = "";
+            tooltip = false;
+          };
         };
       in {
         left =
@@ -34,13 +46,13 @@ in {
             position = "left";
             output = ["DP-3"];
           }
-          // hypr;
+          // common;
         right =
           {
             position = "right";
             output = ["HDMI-A-1"];
           }
-          // hypr;
+          // common;
       };
       style = with config.colours.base16;
       # css
@@ -67,10 +79,10 @@ in {
             color: #${A6};
             padding: 7px 0px 6px 9px;
           }
-          #custom-swaync {
+          #custom-powermenu {
             color: #${A6};
-            font-size: 17px;
-            margin-bottom: 2px;
+            font-size: 16px;
+            margin-bottom: 4px;
             margin-right: 5px;
           }
         '';

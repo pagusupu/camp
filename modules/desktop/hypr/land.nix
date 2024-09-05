@@ -24,7 +24,7 @@
         enable = true;
         settings = {
           exec-once = [
-            "rwpspread -b swaybg -i ~/pictures/active/bg.jpg"
+            "rwpspread -b swaybg -i ~/pictures/wallpapers/blueflip.jpg"
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
@@ -91,7 +91,7 @@
             inherit (pkgs) grimblast grim slurp;
           in [
             "${mod}, RETURN, exec, alacritty"
-            "${mod}, TAB, exec, tofi-drun --drun-launch=true"
+            "${mod}, TAB, exec, tofi-drun"
             "${mod}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
             "${mod}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             ''${mod}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''
@@ -137,7 +137,7 @@
     services.greetd = {
       enable = true;
       settings.default_session = {
-        command = "${lib.getExe pkgs.greetd.tuigreet} --asterisks -r Hyprland";
+        command = "${lib.getExe pkgs.greetd.tuigreet} --asterisks -r --cmd ${lib.getExe pkgs.hyprland}";
         user = "greeter";
       };
     };

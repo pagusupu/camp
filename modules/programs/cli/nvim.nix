@@ -10,7 +10,6 @@
   config = lib.mkIf config.cute.programs.cli.nvim {
     programs.nixvim = {
       enable = true;
-      defaultEditor = true;
       enableMan = false;
       vimAlias = true;
       luaLoader.enable = true;
@@ -25,11 +24,7 @@
       plugins = {
         indent-blankline = {
           enable = true;
-          settings.scope = {
-            enabled = true;
-            show_start = false;
-            show_end = false;
-          };
+          settings.scope.enabled = false;
         };
         lsp = {
           enable = true;
@@ -37,7 +32,7 @@
             nil-ls = {
               enable = true;
               settings = {
-                formatting.command = ["alejandra"];
+                formatting.command = ["${lib.getExe pkgs.alejandra}"];
                 nix.flake.autoArchive = false;
               };
               cmd = ["nil"];
@@ -57,19 +52,21 @@
           };
           enableLspFormat = false;
         };
+        treesitter = {
+          enable = true;
+          settings.highlight.enable = true;
+        };
+        autoclose.enable = true;
         lualine.enable = true;
         lsp-format.enable = true;
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
-        treesitter.enable = true;
       };
+      defaultEditor = true;
     };
-    environment = {
-      variables = {
-        EDITOR = "nvim";
-        VISUAL = "nvim";
-      };
-      systemPackages = [pkgs.alejandra];
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
   };
 }
