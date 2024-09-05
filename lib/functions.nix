@@ -9,6 +9,10 @@
   inherit (_lib) setInt setStr mkAssert;
 in {
   _module.args._lib = {
+    mkEnable = mkOption {
+      default = false;
+      type = bool;
+    };
     mkEnabledOption = mkOption {
       default = true;
       type = bool;
