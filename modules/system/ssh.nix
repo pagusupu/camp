@@ -21,7 +21,7 @@
         cute.pubkeys = {
           aoi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExuEEnRUnoo1qZVnvLUtvXqCcBd7DcDJkohVCg0Qbij";
           ena = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDM4qA5VHz8pRZMmEZk06ber5mm3apBexIwkc5pIlQvE";
-          rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIcZJ0IEzuvGNglNevP/pSpHNYd+iJwrpRO2yK8mg4lt";
+          rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk";
         };
       }
       (lib.mkIf enabled.ssh {
@@ -53,6 +53,7 @@
         };
         users.users.pagu.openssh.authorizedKeys.keys = [
           pubkeys.rin
+          #"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIcZJ0IEzuvGNglNevP/pSpHNYd+iJwrpRO2yK8mg4lt"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # desktop win
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBMiF9xzJshgudYgsmkfWa3+zfeCayH72dKmjDUyktS" # phone

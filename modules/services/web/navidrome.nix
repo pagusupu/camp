@@ -30,6 +30,7 @@
           EnableTranscodingConfig = true;
           IgnoredArticles = "";
           SessionTimeout = "96h";
+          UILoginBackgroundUrl = "https://raw.githubusercontent.com/pagusupu/camp/main/modules/themes/rose-pine/wallpapers/light-left.png";
           UIWelcomeMessage = "";
         };
       };

@@ -13,6 +13,7 @@
       docker = true;
       feishin = true;
       homeassistant = true;
+      minecraft = true;
       nginx = true;
       openssh = true;
       web = {
