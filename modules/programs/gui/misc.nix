@@ -21,6 +21,7 @@ in {
         environment.systemPackages = with pkgs;
           [
             audacity
+            element-desktop
             feishin
             heroic
             imv

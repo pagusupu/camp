@@ -9,13 +9,6 @@
   config = lib.mkIf config.cute.desktop.hypr.land {
     assertions = _lib.assertHm "hyprland";
     home-manager.users.pagu = {
-      home.packages = with pkgs; [
-        rwpspread
-        satty
-        swaybg
-        wayland-pipewire-idle-inhibit
-        wl-clipboard
-      ];
       wayland.windowManager.hyprland = let
         m1 = "DP-3";
         m2 = "HDMI-A-1";
@@ -24,7 +17,7 @@
         enable = true;
         settings = {
           exec-once = [
-            "rwpspread -b swaybg -i ~/pictures/wallpapers/blueflip.jpg"
+            "hyprpaper"
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
@@ -32,8 +25,14 @@
           ];
           exec = let
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
+            p = "~/camp/modules/themes/${config.cute.theme.name}/wallpapers";
           in [
             "hyprctl setcursor ${name} ${builtins.toString size}"
+            "hyprctl hyprpaper unload all"
+            ''hyprctl hyprpaper preload "${m1},${p}/left"''
+            ''hyprctl hyprpaper preload "${m2},${p}/right"''
+            ''hyprctl hyprpaper wallpaper "${m1},${p}/left"''
+            ''hyprctl hyprpaper wallpaper "${m1},${p}/right"''
           ];
           env = [
             "NIXOS_OZONE_WL,1"
@@ -88,14 +87,14 @@
           };
           bind = let
             inherit (lib) getExe;
-            inherit (pkgs) grimblast grim slurp;
+            inherit (pkgs) grimblast grim satty slurp;
           in [
             "${mod}, RETURN, exec, alacritty"
             "${mod}, TAB, exec, tofi-drun"
             "${mod}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
             "${mod}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
-            ''${mod}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''
-            ''${mod}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
+            ''${mod}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --copy-command wl-copy''
+            ''${mod}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
             "${mod}, L, exec, hyprlock"
             "${mod}, Q, killactive"
             "${mod}, F, fullscreen"
@@ -133,6 +132,10 @@
           ${concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") (map toString (range 1 8))}
         '';
       };
+      home.packages = with pkgs; [
+        wayland-pipewire-idle-inhibit
+        wl-clipboard
+      ];
     };
     services.greetd = {
       enable = true;

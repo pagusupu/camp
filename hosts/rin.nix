@@ -5,7 +5,7 @@
         idle = true;
         land = true;
         lock = true;
-        paper = false; # build failure
+        paper = true;
       };
       misc = {
         audio = true;
@@ -41,7 +41,7 @@
     };
     theme = {
       gtk = true;
-      name = "everforest";
+      name = "rose-pine";
     };
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot

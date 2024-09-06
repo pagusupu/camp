@@ -17,24 +17,14 @@
           enable = true;
           settings = {
             preload = [
-              "${p}/light-left"
-              "${p}/light-right"
-              "${p}/dark-left"
-              "${p}/dark-right"
+              "${p}/left.png"
+              "${p}/right.png"
             ];
             wallpaper = lib.mkDefault [
-              "${m1}, ${p}/light-left"
-              "${m2}, ${p}/light-right"
+              "${m1}, ${p}/left.png"
+              "${m2}, ${p}/right.png"
             ];
           };
-        };
-      };
-      specialisation.dark.configuration = {
-        home-manager.users.pagu = {
-          services.hyprpaper.settings.wallpaper = [
-            "${m1}, ${p}/dark-left"
-            "${m2}, ${p}/dark-right"
-          ];
         };
       };
     };
