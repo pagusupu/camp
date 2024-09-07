@@ -26,7 +26,7 @@ in {
       (mkIf feishin {
         assertions = cutelib.assertDocker "feishin";
         virtualisation.oci-containers.containers."feishin" = {
-          image = "ghcr.io/jeffvli/feishin:0.7.3";
+          image = "ghcr.io/jeffvli/feishin:0.8.1";
           ports = ["9180:9180"];
         };
       })
