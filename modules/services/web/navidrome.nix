@@ -1,16 +1,16 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.services.web.navidrome = _lib.mkWebOpt "navi" 8098;
+  options.cute.services.web.navidrome = cutelib.mkWebOpt "navi" 8098;
   config = let
     inherit (config.cute.services.web.navidrome) enable port;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx "navidrome";
+      assertions = cutelib.assertNginx "navidrome";
       services.navidrome = {
         inherit enable;
         openFirewall = true;

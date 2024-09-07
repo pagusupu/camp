@@ -1,16 +1,18 @@
 {
   config,
   lib,
+  cutelib,
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib) mkMerge mkIf;
+  inherit (cutelib) mkEnable;
 in {
   options.cute.programs.cli = {
-    misc = mkEnableOption "";
-    btop = mkEnableOption "";
-    nh = mkEnableOption "";
-    yazi = mkEnableOption "";
+    misc = mkEnable;
+    btop = mkEnable;
+    nh = mkEnable;
+    yazi = mkEnable;
   };
   config = let
     inherit (config.cute.programs) cli;

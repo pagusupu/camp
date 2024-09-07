@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   inputs,
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.home-manager];
-  options.cute.desktop.misc.home = _lib.mkEnable;
+  options.cute.desktop.misc.home = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.misc.home {
     home-manager = {
       users.pagu = {

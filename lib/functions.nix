@@ -1,14 +1,14 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
   inherit (types) bool int str;
-  inherit (_lib) setInt setStr mkAssert;
+  inherit (cutelib) setInt setStr mkAssert;
 in {
-  _module.args._lib = {
+  _module.args.cutelib = {
     mkEnable = mkOption {
       default = false;
       type = bool;

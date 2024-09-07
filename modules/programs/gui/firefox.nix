@@ -1,13 +1,13 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.programs.gui.firefox = lib.mkEnableOption "";
+  options.cute.programs.gui.firefox = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.firefox {
-    assertions = _lib.assertHm "firefox";
+    assertions = cutelib.assertHm "firefox";
     home-manager.users.pagu = {
       programs.firefox = {
         enable = true;

@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.desktop.hypr.lock = _lib.mkEnable;
+  options.cute.desktop.hypr.lock = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.hypr.lock {
-    assertions = _lib.assertHm "hyprlock";
+    assertions = cutelib.assertHm "hyprlock";
     home-manager.users.pagu = {
       programs.hyprlock = {
         enable = true;

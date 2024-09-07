@@ -1,14 +1,14 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib) mkMerge mkIf;
 in {
   options.cute.services = {
-    docker = mkEnableOption "";
-    feishin = mkEnableOption "";
+    docker = cutelib.mkEnable;
+    feishin = cutelib.mkEnable;
   };
   config = let
     inherit (config.cute.services) docker feishin;
@@ -24,7 +24,7 @@ in {
         };
       })
       (mkIf feishin {
-        assertions = _lib.assertDocker "feishin";
+        assertions = cutelib.assertDocker "feishin";
         virtualisation.oci-containers.containers."feishin" = {
           image = "ghcr.io/jeffvli/feishin:0.7.3";
           ports = ["9180:9180"];

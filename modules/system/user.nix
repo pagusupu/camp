@@ -1,13 +1,13 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   inputs,
   pkgs,
   ...
 }: {
   imports = [inputs.agenix.nixosModules.default];
-  options.cute.system.user = _lib.mkEnabledOption;
+  options.cute.system.user = cutelib.mkEnabledOption;
   config = lib.mkIf config.cute.system.user {
     environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
     age = {

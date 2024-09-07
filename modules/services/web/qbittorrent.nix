@@ -1,19 +1,19 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   inputs,
   ...
 }: {
   imports = ["${inputs.qbit}/nixos/modules/services/torrent/qbittorrent.nix"];
-  options.cute.services.web.qbittorrent = _lib.mkWebOpt "qbit" 8077;
+  options.cute.services.web.qbittorrent = cutelib.mkWebOpt "qbit" 8077;
   config = let
     inherit (config.cute.services.web.qbittorrent) enable port dns;
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx "qbittorrent";
+      assertions = cutelib.assertNginx "qbittorrent";
       services.qbittorrent = {
         inherit enable;
         openFirewall = true;

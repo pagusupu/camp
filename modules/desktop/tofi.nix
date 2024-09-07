@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.desktop.tofi = _lib.mkEnable;
+  options.cute.desktop.tofi = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.tofi {
-    assertions = _lib.assertHm "tofi";
+    assertions = cutelib.assertHm "tofi";
     home-manager.users.pagu = {
       programs.tofi = {
         enable = true;

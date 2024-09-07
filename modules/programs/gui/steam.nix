@@ -1,12 +1,13 @@
 {
   config,
   lib,
+  cutelib,
   inputs,
   pkgs,
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
-  options.cute.programs.gui.steam = lib.mkEnableOption "";
+  options.cute.programs.gui.steam = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.steam {
     programs.steam = {
       enable = true;

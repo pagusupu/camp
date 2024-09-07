@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.desktop.hypr.idle = _lib.mkEnable;
+  options.cute.desktop.hypr.idle = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.hypr.idle {
-    assertions = _lib.assertHm "hypridle";
+    assertions = cutelib.assertHm "hypridle";
     home-manager.users.pagu = {
       services.hypridle = {
         enable = true;

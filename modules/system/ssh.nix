@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
   options.cute = {
@@ -10,7 +10,7 @@
       ena = lib.mkOption {type = lib.types.str;};
       rin = lib.mkOption {type = lib.types.str;};
     };
-    enabled.ssh = _lib.mkEnabledOption;
+    enabled.ssh = cutelib.mkEnabledOption;
     services.openssh = lib.mkEnableOption "";
   };
   config = let

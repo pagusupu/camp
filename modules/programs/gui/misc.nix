@@ -1,36 +1,37 @@
 {
   config,
   lib,
+  cutelib,
   pkgs,
   inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkMerge mkIf;
+  inherit (lib) mkMerge mkIf;
+  inherit (cutelib) mkEnable;
 in {
   imports = [inputs.aagl.nixosModules.default];
   options.cute.programs.gui = {
-    misc = mkEnableOption "";
-    aagl = mkEnableOption "";
-    prismlauncher = mkEnableOption "";
+    misc = mkEnable;
+    aagl = mkEnable;
+    prismlauncher = mkEnable;
   };
   config = let
     inherit (config.cute.programs.gui) misc aagl prismlauncher;
   in
     mkMerge [
       (mkIf misc {
-        environment.systemPackages = with pkgs;
-          [
-            audacity
-            element-desktop
-            feishin
-            heroic
-            imv
-            lrcget
-            mpv
-            pwvucontrol
-            vesktop
-          ]
-          ++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
+        environment.systemPackages = with pkgs; [
+          audacity
+          element-desktop
+          feishin
+          heroic
+          imv
+          lrcget
+          mpv
+          pwvucontrol
+          vesktop
+        ];
+        #++ [inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin];
         programs.localsend = {
           enable = true;
           openFirewall = true;

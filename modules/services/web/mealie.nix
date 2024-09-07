@@ -1,15 +1,15 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.services.web.mealie = _lib.mkWebOpt "meal" 9000;
+  options.cute.services.web.mealie = cutelib.mkWebOpt "meal" 9000;
   config = let
     inherit (config.cute.services.web.mealie) enable dns port;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx "mealie";
+      assertions = cutelib.assertNginx "mealie";
       services.mealie = {
         inherit enable port;
         settings = {

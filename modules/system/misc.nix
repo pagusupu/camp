@@ -1,10 +1,10 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.system.misc = _lib.mkEnabledOption;
+  options.cute.system.misc = cutelib.mkEnabledOption;
   config = lib.mkIf config.cute.system.misc {
     boot.enableContainers = false;
     i18n.defaultLocale = "en_NZ.UTF-8";

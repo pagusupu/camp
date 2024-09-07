@@ -1,11 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.desktop.mako = _lib.mkEnable;
+  options.cute.desktop.mako = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.mako {
+    assertions = cutelib.assertHm "mako";
     home-manager.users.pagu = {
       services.mako = with config.colours.base16; {
         enable = true;

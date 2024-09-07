@@ -1,16 +1,16 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.services.web.vaultwarden = _lib.mkWebOpt "wrdn" 8222;
+  options.cute.services.web.vaultwarden = cutelib.mkWebOpt "wrdn" 8222;
   config = let
     inherit (config.cute.services.web.vaultwarden) enable dns port;
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx "vaultwarden";
+      assertions = cutelib.assertNginx "vaultwarden";
       services.vaultwarden = {
         inherit enable;
         config = {

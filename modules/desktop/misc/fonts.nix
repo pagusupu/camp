@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.desktop.misc.fonts = _lib.mkEnable;
+  options.cute.desktop.misc.fonts = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.misc.fonts {
     fonts = {
       packages = with pkgs; [

@@ -1,17 +1,17 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.services.web.nextcloud = _lib.mkWebOpt "next" null;
+  options.cute.services.web.nextcloud = cutelib.mkWebOpt "next" null;
   config = let
     inherit (config.cute.services.web.nextcloud) enable dns;
     inherit (config.networking) domain;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx "nextcloud";
+      assertions = cutelib.assertNginx "nextcloud";
       age.secrets.nextcloud = {
         file = ../../../secrets/nextcloud.age;
         owner = "nextcloud";

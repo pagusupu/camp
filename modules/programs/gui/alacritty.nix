@@ -1,10 +1,11 @@
 {
   config,
   lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.programs.gui.alacritty = lib.mkEnableOption "";
+  options.cute.programs.gui.alacritty = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.alacritty {
     homefile."alacritty" = {
       target = ".config/alacritty/alacritty.toml";

@@ -1,10 +1,10 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.system.git = _lib.mkEnabledOption;
+  options.cute.system.git = cutelib.mkEnabledOption;
   config = lib.mkIf config.cute.system.git {
     programs.git = {
       enable = true;

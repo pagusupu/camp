@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   inputs,
   ...
 }: {
-  options.cute.system.nix = _lib.mkEnabledOption;
+  options.cute.system.nix = cutelib.mkEnabledOption;
   config = lib.mkIf config.cute.system.nix {
     nix = {
       settings = {

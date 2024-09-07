@@ -1,10 +1,10 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.services.homeassistant = _lib.mkEnable;
+  options.cute.services.homeassistant = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.homeassistant {
     services.home-assistant = {
       enable = true;

@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   inputs,
   ...
 }: {
   imports = [inputs.nix-gaming.nixosModules.pipewireLowLatency];
-  options.cute.desktop.misc.audio = _lib.mkEnable;
+  options.cute.desktop.misc.audio = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.misc.audio {
     services.pipewire = {
       enable = true;

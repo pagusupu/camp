@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
   options.cute.net = {
-    enable = _lib.mkEnabledOption;
+    enable = cutelib.mkEnabledOption;
     name = lib.mkOption {type = lib.types.str;};
     ip = lib.mkOption {type = lib.types.str;};
   };

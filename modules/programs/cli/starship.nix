@@ -1,9 +1,10 @@
 {
   config,
   lib,
+  cutelib,
   ...
 }: {
-  options.cute.programs.cli.starship = lib.mkEnableOption "";
+  options.cute.programs.cli.starship = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.cli.starship {
     programs.starship = {
       enable = true;

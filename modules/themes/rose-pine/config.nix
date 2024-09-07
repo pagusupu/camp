@@ -37,17 +37,15 @@ in
       };
     })
     (mkIf nvim {
-      programs.nixvim = {
-        colorschemes.rose-pine = {
-          enable = true;
-          settings = {
-            dark_variant = "moon";
-            styles = {
-              italic = false;
-              transparency = false;
-            };
-            variant = "auto";
+      programs.nixvim.colorschemes.rose-pine = {
+        enable = true;
+        settings = {
+          dark_variant = "moon";
+          styles = {
+            italic = false;
+            transparency = false;
           };
+          variant = "auto";
         };
       };
     })

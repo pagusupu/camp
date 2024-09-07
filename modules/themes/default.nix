@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   ...
 }: let
@@ -36,12 +36,12 @@ in {
         default = "everforest";
         type = types.enum ["everforest" "rose-pine"];
       };
-      gtk = _lib.mkEnable;
+      gtk = cutelib.mkEnable;
     };
   };
   config = mkMerge [
     (mkIf gtk {
-      assertions = _lib.assertHm "gtk";
+      assertions = cutelib.assertHm "gtk";
       home-manager.users.pagu = {
         gtk = {
           enable = true;

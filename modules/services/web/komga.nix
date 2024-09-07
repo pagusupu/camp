@@ -1,15 +1,15 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.services.web.komga = _lib.mkWebOpt "kmga" 8097;
+  options.cute.services.web.komga = cutelib.mkWebOpt "kmga" 8097;
   config = let
     inherit (config.cute.services.web.komga) enable port;
   in
     lib.mkIf enable {
-      assertions = _lib.assertNginx "komga";
+      assertions = cutelib.assertNginx "komga";
       services.komga = {
         inherit enable port;
         openFirewall = true;

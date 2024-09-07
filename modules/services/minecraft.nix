@@ -1,12 +1,12 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   ...
 }: {
-  options.cute.services.minecraft = _lib.mkEnable;
+  options.cute.services.minecraft = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.minecraft {
-    assertions = _lib.assertDocker "minecraft";
+    assertions = cutelib.assertDocker "minecraft";
     virtualisation.oci-containers.containers."minecraft" = {
       image = "itzg/minecraft-server:stable";
       ports = ["25565:25565"];

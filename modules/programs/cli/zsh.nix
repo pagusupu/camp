@@ -1,10 +1,11 @@
 {
-  lib,
   config,
+  lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.programs.cli.zsh = lib.mkEnableOption "";
+  options.cute.programs.cli.zsh = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.cli.zsh {
     programs.zsh = {
       enable = true;

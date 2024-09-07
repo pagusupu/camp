@@ -1,13 +1,13 @@
 {
   config,
   lib,
-  _lib,
+  cutelib,
   pkgs,
   ...
 }: {
-  options.cute.desktop.hypr.land = _lib.mkEnable;
+  options.cute.desktop.hypr.land = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.hypr.land {
-    assertions = _lib.assertHm "hyprland";
+    assertions = cutelib.assertHm "hyprland";
     home-manager.users.pagu = {
       wayland.windowManager.hyprland = let
         m1 = "DP-3";
@@ -29,10 +29,11 @@
           in [
             "hyprctl setcursor ${name} ${builtins.toString size}"
             "hyprctl hyprpaper unload all"
-            ''hyprctl hyprpaper preload "${m1},${p}/left"''
-            ''hyprctl hyprpaper preload "${m2},${p}/right"''
-            ''hyprctl hyprpaper wallpaper "${m1},${p}/left"''
-            ''hyprctl hyprpaper wallpaper "${m1},${p}/right"''
+            ''hyprctl hyprpaper preload "${p}/left.png"''
+            ''hyprctl hyprpaper preload "${p}/right.png"''
+            ''hyprctl hyprpaper wallpaper "${m1},${p}/left.png"''
+            ''hyprctl hyprpaper wallpaper "${m2},${p}/right.png"''
+            "rm ~/.cache/tofi-drun"
           ];
           env = [
             "NIXOS_OZONE_WL,1"

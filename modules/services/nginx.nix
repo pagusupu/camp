@@ -1,15 +1,16 @@
 {
   config,
   lib,
+  cutelib,
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf mkMerge;
+  inherit (lib) mkIf mkMerge;
   inherit (config.networking) domain;
 in {
   options.cute.services = {
-    nginx = mkEnableOption "";
-    web.element.enable = mkEnableOption "";
+    nginx = cutelib.mkEnable;
+    web.element.enable = cutelib.mkEnable;
   };
   config = let
     forceSSL = true;
