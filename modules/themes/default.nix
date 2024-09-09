@@ -33,7 +33,7 @@ in {
     };
     cute.theme = {
       name = mkOption {
-        default = "everforest";
+        default = "rose-pine";
         type = types.enum ["everforest" "rose-pine"];
       };
       gtk = cutelib.mkEnable;

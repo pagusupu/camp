@@ -36,6 +36,7 @@ in {
         enable = true;
         virtualHosts = mkMerge [
           (genHosts [
+            "invidious"
             "jellyfin"
             "komga"
             "mealie"
@@ -48,6 +49,7 @@ in {
               inherit
                 (config.cute.services.web)
                 element
+                invidious
                 jellyfin
                 navidrome
                 nextcloud
@@ -66,6 +68,7 @@ in {
                 proxyWebsockets = true;
                 extraConfig = "proxy_buffering off;";
               };
+              "tube.${domain}".locations."/".extraConfig = mkIf invidious.enable "proxy_buffering off;";
               "navi.${domain}".locations."/".proxyWebsockets = mkIf navidrome.enable true;
               "next.${domain}" = mkIf nextcloud.enable {inherit forceSSL enableACME;};
               "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";

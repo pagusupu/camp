@@ -19,12 +19,12 @@
         "wiz"
       ];
       config = {
-        default_config = {};
         homeassistant = {
           time_zone = "Pacific/Auckland";
           temperature_unit = "C";
           unit_system = "metric";
         };
+        default_config = {};
       };
     };
   };

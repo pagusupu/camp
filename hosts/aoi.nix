@@ -13,11 +13,15 @@
       docker = true;
       feishin = true;
       homeassistant = true;
-      minecraft = true;
       nginx = true;
       openssh = true;
+      minecraft = {
+        enable = false;
+        server = "modded";
+      };
       web = {
         element.enable = true;
+        invidious.enable = true;
         jellyfin.enable = true;
         komga.enable = true;
         mealie.enable = true;
