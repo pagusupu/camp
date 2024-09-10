@@ -22,14 +22,16 @@ in {
         {
           image = "itzg/minecraft-server:stable";
           ports = ["25565:25565"];
+          volumes = ["/storage/services/minecraft/${server}:/data"];
           environment = {
             EULA = "true";
             MEMORY = "8G";
-            SERVER_NAME = mkDefault "${server}";
+            SERVER_PORT = "25565";
+            SERVER_NAME = mkDefault "hehe";
             MOTD = mkDefault ":3";
             DIFFICULTY = mkDefault "normal";
           };
-          volumes = ["/storage/services/minecraft/${server}:/data"];
+          autoStart = false;
         }
         (mkIf (server == "vanilla") {
           environment = {
@@ -39,13 +41,12 @@ in {
         })
         (mkIf (server == "modded") {
           environment = {
-            SERVER_NAME = "";
             VERSION = "1.21.1";
             TYPE = "FABRIC";
-            #MODPACK = "";
+            RCON_COMMANDS_STARTUP = "gamerule playersSleepingPercentage 20";
           };
+          ports = ["24454:24454/udp"]; # vc mod
         })
       ];
-      networking.firewall.allowedUDPPorts = mkIf (server == "modded") [24454]; # vc mod
     };
 }

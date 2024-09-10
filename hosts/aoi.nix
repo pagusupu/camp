@@ -16,12 +16,11 @@
       nginx = true;
       openssh = true;
       minecraft = {
-        enable = false;
+        enable = true;
         server = "modded";
       };
       web = {
         element.enable = true;
-        invidious.enable = true;
         jellyfin.enable = true;
         komga.enable = true;
         mealie.enable = true;
