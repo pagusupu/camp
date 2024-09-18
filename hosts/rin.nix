@@ -17,12 +17,10 @@
     };
     programs = {
       cli = {
-        btop = true;
         misc = true;
-        nh = true;
+        nushell = true;
         nvim = true;
         starship = true;
-        yazi = true;
         zsh = true;
       };
       gui = {
@@ -30,7 +28,6 @@
         alacritty = true;
         firefox = true;
         misc = true;
-        prismlauncher = true;
         steam = true;
       };
     };

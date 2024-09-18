@@ -4,30 +4,27 @@
   cutelib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkMerge mkIf;
-  inherit (cutelib) mkEnable;
-in {
-  options.cute.programs.cli = {
-    misc = mkEnable;
-    btop = mkEnable;
-    nh = mkEnable;
-    yazi = mkEnable;
-  };
-  config = let
-    inherit (config.cute.programs) cli;
-    inherit (cli) btop nh yazi;
-  in
-    mkMerge [
-      (mkIf cli.misc {
-        environment.systemPackages = with pkgs; [
-          ouch
-          radeontop
-          wget
-        ];
-      })
-      (mkIf btop {
-        homefile."btop" = {
+}: {
+  options.cute.programs.cli.misc = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.cli.misc (lib.mkMerge [
+    {
+      programs.nh = {
+        enable = true;
+        clean = {
+          enable = true;
+          extraArgs = "--keep 10 --keep-since 3d";
+        };
+        flake = "/home/pagu/camp/";
+      };
+      environment.systemPackages = with pkgs; [
+        ouch
+        radeontop
+        wget
+      ];
+    }
+    {
+      homefile = {
+        "btop" = {
           target = ".config/btop/btop.conf";
           source = (pkgs.formats.toml {}).generate "btop.conf" {
             color_theme = "TTY";
@@ -42,20 +39,7 @@ in {
             net_iface = "${config.cute.net.name}";
           };
         };
-        environment.systemPackages = [pkgs.btop];
-      })
-      (mkIf nh {
-        programs.nh = {
-          enable = true;
-          clean = {
-            enable = true;
-            extraArgs = "--keep 10 --keep-since 3d";
-          };
-          flake = "/home/pagu/camp/";
-        };
-      })
-      (mkIf yazi {
-        homefile."yazi" = {
+        "yazi" = {
           target = ".config/yazi/yazi.toml";
           source = (pkgs.formats.toml {}).generate "yazi.toml" {
             manager = {
@@ -64,7 +48,11 @@ in {
             };
           };
         };
-        environment.systemPackages = [pkgs.yazi];
-      })
-    ];
+      };
+      environment.systemPackages = with pkgs; [
+        btop
+        yazi
+      ];
+    }
+  ]);
 }

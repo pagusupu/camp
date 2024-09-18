@@ -2,18 +2,15 @@
   config,
   lib,
   cutelib,
-  inputs,
   pkgs,
   ...
 }: {
-  imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
   options.cute.programs.gui.steam = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.steam {
     programs.steam = {
       enable = true;
       extest.enable = true;
       localNetworkGameTransfers.openFirewall = true;
-      platformOptimizations.enable = true;
       protontricks.enable = true;
       gamescopeSession = {
         enable = true;
@@ -30,7 +27,13 @@
       };
       extraCompatPackages = [pkgs.proton-ge-bin];
     };
-    environment.sessionVariables.WINEDEBUG = "-all"; # also supposedly helps
     hardware.xone.enable = true;
+    # https://github.com/fufexan/nix-gaming/blob/master/modules/platformOptimizations.nix
+    boot.kernel.sysctl = {
+      "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+      "net.ipv4.tcp_fin_timeout" = 5;
+      "vm.max_map_count" = 2147483642;
+    };
+    environment.sessionVariables.WINEDEBUG = "-all"; # also supposedly helps
   };
 }
