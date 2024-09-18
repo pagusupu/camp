@@ -10,14 +10,18 @@
       zsh = true;
     };
     services = {
-      docker = true;
       feishin = true;
       homeassistant = true;
-      nginx = true;
       openssh = true;
+      qbittorrent = true;
+      tailscale = true;
       minecraft = {
         enable = true;
         server = "modded";
+      };
+      servers = {
+        docker = true;
+        nginx = true;
       };
       web = {
         jellyfin.enable = true;
@@ -26,7 +30,6 @@
         mealie.enable = true;
         navidrome.enable = true;
         nextcloud.enable = true;
-        qbittorrent.enable = true;
         vaultwarden.enable = true;
       };
     };

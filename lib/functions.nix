@@ -40,8 +40,8 @@ in {
         message = b;
       }
     ];
-    assertDocker = n: mkAssert config.cute.services.docker "${n} requires docker service.";
+    assertDocker = n: mkAssert config.cute.services.servers.docker "${n} requires docker service.";
     assertHm = n: mkAssert config.cute.desktop.misc.home "${n} requires home-manager service.";
-    assertNginx = n: mkAssert config.cute.services.nginx "${n} requires nginx service.";
+    assertNginx = n: mkAssert config.cute.services.servers.nginx "${n} requires nginx service.";
   };
 }

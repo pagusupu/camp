@@ -9,7 +9,7 @@
   inherit (config.networking) domain;
 in {
   options.cute.services = {
-    nginx = cutelib.mkEnable;
+    servers.nginx = cutelib.mkEnable;
     web.matrix-client = {
       enable = cutelib.mkEnable;
       package = lib.mkOption {
@@ -37,7 +37,7 @@ in {
           }
         );
   in
-    mkIf config.cute.services.nginx {
+    mkIf config.cute.services.servers.nginx {
       services.nginx = {
         enable = true;
         virtualHosts = mkMerge [
@@ -46,7 +46,6 @@ in {
             "komga"
             "mealie"
             "navidrome"
-            "qbittorrent"
             "vaultwarden"
           ])
           (

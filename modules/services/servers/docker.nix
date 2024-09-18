@@ -7,14 +7,14 @@
   inherit (lib) mkMerge mkIf;
 in {
   options.cute.services = {
-    docker = cutelib.mkEnable;
+    servers.docker = cutelib.mkEnable;
     feishin = cutelib.mkEnable;
   };
   config = let
-    inherit (config.cute.services) docker feishin;
+    inherit (config.cute.services) servers feishin;
   in
     mkMerge [
-      (mkIf docker {
+      (mkIf servers.docker {
         virtualisation = {
           docker = {
             enable = true;
