@@ -14,6 +14,7 @@
         package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
           settings = {
+            "browser.startup.homepage" = "https://next.pagu.cafe";
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
             "extensions.webextensions.restrictedDomains" = "";
@@ -23,10 +24,10 @@
           };
           search = {
             force = true;
-            default = "Google";
+            default = "DuckDuckGo";
             order = [
-              "Google"
               "DuckDuckGo"
+              "Google"
             ];
             engines = {
               "Amazon.com".metaData.hidden = true;

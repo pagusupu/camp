@@ -12,27 +12,23 @@
       wayland.windowManager.hyprland = let
         m1 = "DP-3";
         m2 = "HDMI-A-1";
-        mod = "SUPER";
+        m = "SUPER";
       in {
         enable = true;
         settings = {
           exec-once = [
+            "gtklock -d"
             "hyprpaper"
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
+            "ianny"
             "steam -console -silent"
           ];
           exec = let
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
-            p = "~/camp/modules/themes/${config.cute.theme.name}/wallpapers";
           in [
             "hyprctl setcursor ${name} ${builtins.toString size}"
-            "hyprctl hyprpaper unload all"
-            ''hyprctl hyprpaper preload "${p}/left.png"''
-            ''hyprctl hyprpaper preload "${p}/right.png"''
-            ''hyprctl hyprpaper wallpaper "${m1},${p}/left.png"''
-            ''hyprctl hyprpaper wallpaper "${m2},${p}/right.png"''
             "rm ~/.cache/tofi-drun"
           ];
           env = [
@@ -90,29 +86,29 @@
             inherit (lib) getExe;
             inherit (pkgs) grimblast grim satty slurp;
           in [
-            "${mod}, RETURN, exec, alacritty"
-            "${mod}, TAB, exec, tofi-drun"
-            "${mod}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
-            "${mod}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
-            ''${mod}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --copy-command wl-copy''
-            ''${mod}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
-            "${mod}, L, exec, hyprlock"
-            "${mod}, Q, killactive"
-            "${mod}, F, fullscreen"
-            "${mod}, SPACE, togglefloating"
-            "${mod}:SHIFT, M, exit"
-            "${mod}, left, movefocus, l"
-            "${mod}, right, movefocus, r"
-            "${mod}, up, movefocus, u"
-            "${mod}, down, movefocus, d"
-            "${mod}:SHIFT, left, movewindow, l"
-            "${mod}:SHIFT, right, movewindow, r"
-            "${mod}:SHIFT, up, movewindow, u"
-            "${mod}:SHIFT, down, movewindow, d"
+            "${m}, RETURN, exec, alacritty"
+            "${m}, TAB, exec, tofi-drun"
+            "${m}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
+            "${m}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
+            ''${m}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --copy-command wl-copy''
+            ''${m}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
+            "${m}, L, exec, gtklock"
+            "${m}, Q, killactive"
+            "${m}, F, fullscreen"
+            "${m}, SPACE, togglefloating"
+            "${m}:SHIFT, M, exit"
+            "${m}, left, movefocus, l"
+            "${m}, right, movefocus, r"
+            "${m}, up, movefocus, u"
+            "${m}, down, movefocus, d"
+            "${m}:SHIFT, left, movewindow, l"
+            "${m}:SHIFT, right, movewindow, r"
+            "${m}:SHIFT, up, movewindow, u"
+            "${m}:SHIFT, down, movewindow, d"
           ];
           bindm = [
-            "${mod}, mouse:272, movewindow"
-            "${mod}, mouse:273, resizewindow"
+            "${m}, mouse:272, movewindow"
+            "${m}, mouse:273, resizewindow"
           ];
           monitor = [
             "${m1}, 1920x1080@165, 0x0, 1"
@@ -134,16 +130,23 @@
         '';
       };
       home.packages = with pkgs; [
+        gtklock
+        ianny
+        satty
         wayland-pipewire-idle-inhibit
         wl-clipboard
       ];
     };
     services.greetd = {
       enable = true;
-      settings.default_session = {
-        command = "${lib.getExe pkgs.greetd.tuigreet} --asterisks -r --cmd ${lib.getExe pkgs.hyprland}";
-        user = "greeter";
+      settings = rec {
+        initial_session = {
+          command = "${lib.getExe pkgs.hyprland}";
+          user = "pagu";
+        };
+        default_session = initial_session;
       };
     };
+    security.pam.services.gtklock = {};
   };
 }

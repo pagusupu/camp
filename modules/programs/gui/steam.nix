@@ -24,13 +24,13 @@
           "--expose-wayland"
         ];
         env = {
-          SDL_VIDEODRIVER = "x11"; # games apparently prefer this
+          SDL_VIDEODRIVER = "x11"; # games supposedly prefer this
           WLR_RENDERER = "vulkan";
         };
       };
       extraCompatPackages = [pkgs.proton-ge-bin];
     };
-    environment.sessionVariables.WINEDEBUG = "-all"; # also apparently helps
+    environment.sessionVariables.WINEDEBUG = "-all"; # also supposedly helps
     hardware.xone.enable = true;
   };
 }

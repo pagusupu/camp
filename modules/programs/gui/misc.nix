@@ -60,9 +60,9 @@ in {
       (mkIf prismlauncher {
         environment = {
           etc = {
-            "jdks/21".source = pkgs.openjdk21 + /bin;
-            "jdks/17".source = pkgs.openjdk17 + /bin;
-            "jdks/8".source = pkgs.openjdk8 + /bin;
+            "jdks/21".source = lib.getBin pkgs.openjdk21;
+            "jdks/17".source = lib.getBin pkgs.openjdk17;
+            "jdks/8".source = lib.getBin pkgs.openjdk8;
           };
           systemPackages = [pkgs.prismlauncher];
         };

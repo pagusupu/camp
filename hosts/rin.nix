@@ -4,7 +4,6 @@
       hypr = {
         idle = true;
         land = true;
-        lock = true;
         paper = true;
       };
       misc = {

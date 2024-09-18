@@ -12,13 +12,13 @@
         enable = true;
         settings = {
           general = {
-            lock_cmd = "hyprlock";
-            before_sleep_cmd = "hyprlock";
+            lock_cmd = "gtklock";
+            before_sleep_cmd = "gtklock";
           };
           listener = [
             {
               timeout = 300;
-              on-timeout = "hyprlock";
+              on-timeout = "gtklock";
             }
           ];
         };
