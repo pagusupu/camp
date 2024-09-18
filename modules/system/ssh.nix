@@ -5,10 +5,15 @@
   ...
 }: {
   options.cute = {
-    pubkeys = {
-      aoi = lib.mkOption {type = lib.types.str;};
-      ena = lib.mkOption {type = lib.types.str;};
-      rin = lib.mkOption {type = lib.types.str;};
+    pubkeys = let
+      str = lib.mkOption {type = lib.types.str;};
+    in {
+      aoi = str;
+      ena = str;
+      rin = str;
+      win = str;
+      laptop = str;
+      phone = str;
     };
     enabled.ssh = cutelib.mkEnabledOption;
     services.openssh = lib.mkEnableOption "";
@@ -22,6 +27,9 @@
           aoi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExuEEnRUnoo1qZVnvLUtvXqCcBd7DcDJkohVCg0Qbij";
           ena = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDM4qA5VHz8pRZMmEZk06ber5mm3apBexIwkc5pIlQvE";
           rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk";
+          win = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V";
+          laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR";
+          phone = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBMiF9xzJshgudYgsmkfWa3+zfeCayH72dKmjDUyktS";
         };
       }
       (lib.mkIf enabled.ssh {
@@ -51,13 +59,15 @@
             PermitRootLogin = "no";
           };
         };
-        users.users.pagu.openssh.authorizedKeys.keys = [
-          pubkeys.rin
-          #"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIcZJ0IEzuvGNglNevP/pSpHNYd+iJwrpRO2yK8mg4lt"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V" # desktop win
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR" # laptop
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBMiF9xzJshgudYgsmkfWa3+zfeCayH72dKmjDUyktS" # phone
-        ];
+        users.users.pagu.openssh.authorizedKeys.keys = builtins.attrValues {
+          inherit
+            (pubkeys)
+            rin
+            win
+            laptop
+            phone
+            ;
+        };
       })
     ];
 }

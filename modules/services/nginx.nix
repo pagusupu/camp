@@ -10,7 +10,13 @@
 in {
   options.cute.services = {
     nginx = cutelib.mkEnable;
-    web.element.enable = cutelib.mkEnable;
+    web.matrix-client = {
+      enable = cutelib.mkEnable;
+      package = lib.mkOption {
+        type = lib.types.package;
+        default = pkgs.element-web;
+      };
+    };
   };
   config = let
     forceSSL = true;
@@ -47,8 +53,8 @@ in {
             let
               inherit
                 (config.cute.services.web)
-                element
                 jellyfin
+                matrix-client
                 navidrome
                 nextcloud
                 vaultwarden
@@ -57,14 +63,18 @@ in {
               "${domain}" = {
                 root = "/storage/website/cafe";
                 inherit forceSSL enableACME;
-              };
-              "chat.${domain}" = mkIf element.enable {
-                root = pkgs.element-web;
-                inherit forceSSL enableACME;
+                locations = mkIf config.cute.services.minecraft.enable {
+                  "/paguicon".tryFiles = "/paguicon.jpg $uri";
+                  "/pagupack".tryFiles = "/pagupack.mrpack $uri";
+                };
               };
               "jlly.${domain}".locations."/" = mkIf jellyfin.enable {
                 proxyWebsockets = true;
                 extraConfig = "proxy_buffering off;";
+              };
+              "chat.${domain}" = mkIf matrix-client.enable {
+                root = pkgs.element-web;
+                inherit forceSSL enableACME;
               };
               "navi.${domain}".locations."/".proxyWebsockets = mkIf navidrome.enable true;
               "next.${domain}" = mkIf nextcloud.enable {inherit forceSSL enableACME;};
@@ -72,12 +82,10 @@ in {
             }
           )
         ];
-        recommendedBrotliSettings = true;
         recommendedGzipSettings = true;
         recommendedOptimisation = true;
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
-        recommendedZstdSettings = true;
         commonHttpConfig = ''
           real_ip_header CF-Connecting-IP;
           add_header 'Referrer-Policy' 'origin-when-cross-origin';

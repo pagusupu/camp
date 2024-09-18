@@ -27,9 +27,13 @@ in {
             EULA = "true";
             MEMORY = "8G";
             SERVER_PORT = "25565";
-            SERVER_NAME = mkDefault "hehe";
-            MOTD = mkDefault ":3";
-            DIFFICULTY = mkDefault "normal";
+            ENABLE_WHITELIST = "true";
+            WHITELIST_FILE = "/storage/services/minecraft/whitelist.json";
+            MAX_TICK_TIME = "-1";
+            MOTD = ":3";
+            DIFFICULTY = mkDefault "hard";
+            ICON = "https://pagu.cafe/paguicon.jpg";
+            ENABLE_AUTOPAUSE = "true";
           };
           autoStart = false;
         }
@@ -42,8 +46,9 @@ in {
         (mkIf (server == "modded") {
           environment = {
             VERSION = "1.21.1";
-            TYPE = "FABRIC";
-            RCON_COMMANDS_STARTUP = "gamerule playersSleepingPercentage 20";
+            TYPE = "MODRINTH";
+            MODRINTH_MODPACK = "https://pagu.cafe/pagupack.mrpack";
+            RCON_COMMANDS_STARTUP = "/gamerule playersSleepingPercentage 20";
           };
           ports = ["24454:24454/udp"]; # vc mod
         })

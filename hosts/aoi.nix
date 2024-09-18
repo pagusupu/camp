@@ -20,9 +20,9 @@
         server = "modded";
       };
       web = {
-        element.enable = true;
         jellyfin.enable = true;
         komga.enable = true;
+        matrix-client.enable = true;
         mealie.enable = true;
         navidrome.enable = true;
         nextcloud.enable = true;
