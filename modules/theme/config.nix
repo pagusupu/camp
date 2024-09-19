@@ -21,6 +21,7 @@ in {
       assertions = cutelib.assertHm "gtk";
       home-manager.users.pagu = {
         gtk = {
+          enable = true;
           theme = {
             package = pkgs.rose-pine-gtk-theme;
             name = mkDefault "rose-pine-dawn";
