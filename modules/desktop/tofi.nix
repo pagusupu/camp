@@ -16,7 +16,7 @@
           height = 600;
           corner-radius = 6;
           outline-width = 1;
-          outline-color = "#" + B4;
+          outline-color = "#" + B1;
           border-width = 0;
           padding-top = 10;
           padding-left = 10;
@@ -25,7 +25,7 @@
           background-color = "#" + A1;
           text-color = "#" + A6;
           selection-color = "#" + A1;
-          selection-background = "#" + B4;
+          selection-background = "#" + B1;
           selection-background-padding = 8;
           selection-background-corner-radius = 6;
           result-spacing = 20;

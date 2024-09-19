@@ -68,7 +68,7 @@
             padding: 5px 4px 5px 0px;
           }
           #workspaces button {
-            color: #${B4};
+            color: #${B1};
           }
           #workspaces button.empty {
             color: #${A6};

@@ -10,14 +10,14 @@
     home-manager.users.pagu = {
       services.mako = with config.colours.base16; {
         enable = true;
-        anchor = "bottom-left";
+        anchor = "top-right";
         defaultTimeout = 3;
         maxVisible = 3;
         borderSize = 2;
         borderRadius = 6;
         margin = "6";
         backgroundColor = "#" + A3;
-        borderColor = "#" + B6;
+        borderColor = "#" + B1;
         textColor = "#" + A6;
       };
     };

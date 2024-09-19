@@ -1,16 +1,12 @@
 {pkgs, ...}: {
   cute = {
     desktop = {
-      hypr = {
-        idle = true;
-        land = true;
-        paper = true;
-      };
       misc = {
         audio = true;
         fonts = true;
         home = true;
       };
+      hyprland = true;
       mako = true;
       tofi = true;
       waybar = true;
@@ -35,10 +31,7 @@
       ip = "192.168.178.126";
       name = "enp10s0";
     };
-    theme = {
-      gtk = true;
-      name = "rose-pine";
-    };
+    theme.gtk = true;
   };
   time.hardwareClockInLocalTime = true; # windows dual-boot
   networking = {

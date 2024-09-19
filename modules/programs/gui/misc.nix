@@ -15,9 +15,9 @@
       };
       environment.systemPackages = with pkgs; [
         audacity
+        easyeffects
         feishin
         heroic
-        pwvucontrol
         vesktop
       ];
     }

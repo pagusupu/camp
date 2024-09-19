@@ -5,31 +5,20 @@
   ...
 }: {
   options.cute = {
-    pubkeys = let
-      str = lib.mkOption {type = lib.types.str;};
-    in {
-      aoi = str;
-      rin = str;
-      win = str;
-      laptop = str;
-      phone = str;
-    };
     enabled.ssh = cutelib.mkEnabledOption;
     services.openssh = lib.mkEnableOption "";
   };
   config = let
-    inherit (config.cute) pubkeys enabled services;
+    inherit (config.cute) enabled services;
+    pubkeys = {
+      aoi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExuEEnRUnoo1qZVnvLUtvXqCcBd7DcDJkohVCg0Qbij";
+      rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk";
+      win = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V";
+      laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR";
+      phone = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBMiF9xzJshgudYgsmkfWa3+zfeCayH72dKmjDUyktS";
+    };
   in
     lib.mkMerge [
-      {
-        cute.pubkeys = {
-          aoi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExuEEnRUnoo1qZVnvLUtvXqCcBd7DcDJkohVCg0Qbij";
-          rin = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMGwCFQYJB+4nhIqktQwJemynSOEP/sobnV2vESSY3tk";
-          win = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIqJoNQ+5r3whthoNHP3C++gI/KE6iMgrD81K6xDQ//V";
-          laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAqzdZDv69pd3yQEIiq79vRKrDE5PlxINJFhpDvpE/vR";
-          phone = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILBMiF9xzJshgudYgsmkfWa3+zfeCayH72dKmjDUyktS";
-        };
-      }
       (lib.mkIf enabled.ssh {
         services.openssh = {
           enable = true;

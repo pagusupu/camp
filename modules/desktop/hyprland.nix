@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.hypr.land = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.hypr.land {
+  options.cute.desktop.hyprland = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.hyprland {
     assertions = cutelib.assertHm "hyprland";
     home-manager.users.pagu = {
       wayland.windowManager.hyprland = let
@@ -18,7 +18,6 @@
         settings = {
           exec-once = [
             "gtklock -d"
-            "hyprpaper"
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
@@ -26,8 +25,12 @@
             "steam -console -silent"
           ];
           exec = let
+            inherit (config.cute.theme) type;
+            inherit (config.colours) wallpaper;
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
           in [
+            "kill $(pidof swaybg)"
+            ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
             "hyprctl setcursor ${name} ${builtins.toString size}"
             "rm ~/.cache/tofi-drun"
           ];
@@ -65,7 +68,7 @@
             gaps_out = 6;
             hover_icon_on_border = false;
             resize_on_border = true;
-            "col.active_border" = "0xFF" + config.colours.base16.B4;
+            "col.active_border" = "0xFF" + config.colours.base16.B1;
             "col.inactive_border" = "0xFF" + config.colours.base16.A1;
           };
           input = {
@@ -84,14 +87,14 @@
           };
           bind = let
             inherit (lib) getExe;
-            inherit (pkgs) grimblast grim satty slurp;
+            inherit (pkgs) grimblast grim slurp;
           in [
             "${m}, RETURN, exec, alacritty"
             "${m}, TAB, exec, tofi-drun"
             "${m}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
             "${m}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
-            ''${m}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --copy-command wl-copy''
-            ''${m}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | ${getExe satty} --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
+            ''${m}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''
+            ''${m}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
             "${m}, L, exec, gtklock"
             "${m}, Q, killactive"
             "${m}, F, fullscreen"
@@ -129,10 +132,27 @@
           ${concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") (map toString (range 1 8))}
         '';
       };
+      services.hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = "gtklock";
+            before_sleep_cmd = "gtklock";
+          };
+          listener = [
+            {
+              timeout = 300;
+              on-timeout = "gtklock";
+            }
+          ];
+        };
+      };
       home.packages = with pkgs; [
         gtklock
         ianny
+        rwpspread
         satty
+        swaybg
         wayland-pipewire-idle-inhibit
         wl-clipboard
       ];
