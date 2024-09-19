@@ -12,7 +12,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lix-module = {
+    lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -22,9 +22,9 @@
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt.url = "github:numtide/treefmt-nix";
   };
-  outputs = inputs: let
+  outputs = {systems, ...} @ inputs: let
     inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
     inherit (builtins) concatMap filter;
     mkHost = hosts:
@@ -37,7 +37,7 @@
                 (map toString (filesystem.listFilesRecursive x)))
               [./lib ./modules]
               ++ [./hosts/${name}.nix]
-              ++ [inputs.lix-module.nixosModules.default];
+              ++ [inputs.lix.nixosModules.default];
             specialArgs = {inherit inputs;};
           }
       );
@@ -46,14 +46,10 @@
       "aoi"
       "rin"
     ];
-    formatter.x86_64-linux = inputs.treefmt-nix.lib.mkWrapper
-    inputs.nixpkgs.legacyPackages.x86_64-linux {
-      programs = {
-        alejandra.enable = true;
-        deadnix.enable = true;
-        statix.enable = true;
-      };
-      projectRootFile = "flake.nix";
-    };
+    formatter = let
+      eachSystem = f: genAttrs (import systems) (system: f inputs.nixpkgs.legacyPackages.${system});
+      treefmtEval = eachSystem (pkgs: inputs.treefmt.lib.evalModule pkgs ./treefmt.nix);
+    in
+      eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
   };
 }
