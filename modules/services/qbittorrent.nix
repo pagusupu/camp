@@ -13,7 +13,7 @@
     services.qbittorrent = {
       enable = true;
       openFirewall = true;
-      webuiPort = 9077;
+      webuiPort = 8077;
       torrentingPort = 43862;
       package = inputs.qbit.legacyPackages.${pkgs.system}.qbittorrent-nox;
       serverConfig = {

@@ -72,7 +72,7 @@ in {
                 extraConfig = "proxy_buffering off;";
               };
               "chat.${domain}" = mkIf matrix-client.enable {
-                root = pkgs.element-web;
+                root = matrix-client.package;
                 inherit forceSSL enableACME;
               };
               "navi.${domain}".locations."/".proxyWebsockets = mkIf navidrome.enable true;
