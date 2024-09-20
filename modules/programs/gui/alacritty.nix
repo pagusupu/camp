@@ -28,24 +28,24 @@
           };
           dynamic_title = false;
         };
-        colors = with config.colours.base16; let
+        colors = with config.wh.colours; let
           c = {
-            white = "#" + A6;
-            blue = "#" + B5;
-            red = "#" + B1;
-            green = "#" + B4;
-            yellow = "#" + B2;
-            magenta = "#" + B6;
-            cyan = "#" + B3;
+            white = text;
+            blue = foam;
+            red = love;
+            green = pine;
+            yellow = gold;
+            magenta = iris;
+            cyan = rose;
           };
         in {
           primary = {
-            background = "#" + A1;
-            foreground = "#" + A6;
+            background = base;
+            foreground = text;
           };
-          normal = c // {black = "#" + A1;};
-          bright = c // {black = "#" + A4;};
-          dim = c // {black = "#" + A4;};
+          normal = c // {black = base;};
+          bright = c // {black = muted;};
+          dim = c // {black = muted;};
         };
       };
     };

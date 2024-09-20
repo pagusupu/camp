@@ -5,64 +5,74 @@
 }: let
   inherit (lib) mkOption types mkMerge mkDefault;
 in {
-  options.colours = let
+  options = let
     str = mkOption {type = types.str;};
-  in {
-    base16 = {
-      A1 = str;
-      A2 = str;
-      A3 = str;
-      A4 = str;
-      A5 = str;
-      A6 = str;
-      A7 = str;
-      A8 = str;
-      B1 = str;
-      B2 = str;
-      B3 = str;
-      B4 = str;
-      B5 = str;
-      B6 = str;
-      B7 = str;
-      B8 = str;
+  in rec {
+    colours = {
+      base = str;
+      surface = str;
+      overlay = str;
+      muted = str;
+      subtle = str;
+      text = str;
+      highlight = str;
+      love = str;
+      gold = str;
+      rose = str;
+      pine = str;
+      foam = str;
+      iris = str;
+      wallpaper = str;
     };
-    wallpaper = str;
+    wh.colours = colours;
   };
   config = mkMerge [
     {
-      colours.base16 = rec {
-        A1 = mkDefault "faf4ed";
-        A2 = mkDefault "fffaf3";
-        A3 = mkDefault "f2e9de";
-        A4 = mkDefault "9893a5";
-        A5 = mkDefault "797593";
-        A6 = mkDefault "575279";
-        A7 = A6;
-        A8 = mkDefault "cecacd";
-        B1 = mkDefault "b4637a";
-        B2 = mkDefault "ea9d34";
-        B3 = mkDefault "d7827e";
-        B4 = mkDefault "286983";
-        B5 = mkDefault "56949f";
-        B6 = mkDefault "907aa9";
-        B7 = B2;
-        B8 = A8;
+      colours = {
+        base = mkDefault "faf4ed";
+        surface = mkDefault "fffaf3";
+        overlay = mkDefault "f2e9de";
+        muted = mkDefault "9893a5";
+        subtle = mkDefault "797593";
+        text = mkDefault "575279";
+        highlight = mkDefault "cecacd";
+        love = mkDefault "b4637a";
+        gold = mkDefault "ea9d34";
+        rose = mkDefault "d7827e";
+        pine = mkDefault "286983";
+        foam = mkDefault "56949f";
+        iris = mkDefault "907aa9";
+      };
+      wh.colours = with config.colours; {
+        base = "#" + base;
+        surface = "#" + surface;
+        overlay = "#" + overlay;
+        muted = "#" + muted;
+        subtle = "#" + subtle;
+        text = "#" + text;
+        highlight = "#" + highlight;
+        love = "#" + love;
+        gold = "#" + gold;
+        rose = "#" + rose;
+        pine = "#" + pine;
+        foam = "#" + foam;
+        iris = "#" + iris;
       };
       specialisation.dark.configuration = {
-        colours.base16 = {
-          A1 = "232136";
-          A2 = "2a273f";
-          A3 = "393552";
-          A4 = "6e6a86";
-          A5 = "908caa";
-          A6 = "e0def4";
-          A8 = "56526e";
-          B1 = "eb6f92";
-          B2 = "f6c177";
-          B3 = "ea9a97";
-          B4 = "3e8fb0";
-          B5 = "9ccfd8";
-          B6 = "c4a7e7";
+        colours = {
+          base = "232136";
+          surface = "2a273f";
+          overlay = "393552";
+          muted = "6e6a86";
+          subtle = "908caa";
+          text = "e0def4";
+          highlight = "56526e";
+          love = "eb6f92";
+          gold = "f6c177";
+          rose = "ea9a97";
+          pine = "3e8fb0";
+          foam = "9ccfd8";
+          iris = "c4a7e7";
         };
       };
     }

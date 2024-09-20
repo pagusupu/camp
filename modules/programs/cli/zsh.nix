@@ -24,7 +24,6 @@
         ls = "eza --group-directories-first";
         rm = "rip";
         sshaoi = "ssh pagu@192.168.178.182";
-        sshena = "ssh pagu@192.168.178.82";
       };
       shellInit = ''
         zsh-newuser-install() { :; }

@@ -52,7 +52,7 @@
           }
           // common;
       };
-      style = with config.colours.base16;
+      style = with config.wh.colours;
       # css
         ''
           * {
@@ -61,24 +61,24 @@
             font-size: 15px;
           }
           window#waybar {
-            background: #${A1};
+            background: ${base};
           }
           #workspaces {
             margin-top: 2px;
             padding: 5px 4px 5px 0px;
           }
           #workspaces button {
-            color: #${B1};
+            color: ${love};
           }
           #workspaces button.empty {
-            color: #${A6};
+            color: ${text};
           }
           #clock {
-            color: #${A6};
+            color: ${text};
             padding: 7px 0px 6px 9px;
           }
           #custom-powermenu {
-            color: #${A6};
+            color: ${text};
             font-size: 16px;
             margin-bottom: 4px;
             margin-right: 5px;

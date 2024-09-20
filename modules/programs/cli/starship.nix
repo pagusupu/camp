@@ -9,14 +9,14 @@
     programs.starship = {
       enable = true;
       settings = {
-        palettes.rose-pine = with config.colours.base16; {
-          overlay = "#" + A3;
-          love = "#" + B1;
-          gold = "#" + B2;
-          rose = "#" + B3;
-          pine = "#" + B4;
-          foam = "#" + B5;
-          iris = "#" + B6;
+        palettes.rose-pine = with config.colours; {
+          overlay = "#" + overlay;
+          love = "#" + love;
+          gold = "#" + gold;
+          rose = "#" + rose;
+          pine = "#" + pine;
+          foam = "#" + foam;
+          iris = "#" + iris;
         };
         palette = "rose-pine";
         format = ''
