@@ -9,29 +9,63 @@
     programs.starship = {
       enable = true;
       settings = {
-        add_newline = false;
+        palettes.rose-pine = with config.colours.base16; {
+          overlay = "#" + A3;
+          love = "#" + B1;
+          gold = "#" + B2;
+          rose = "#" + B3;
+          pine = "#" + B4;
+          foam = "#" + B5;
+          iris = "#" + B6;
+        };
+        palette = "rose-pine";
         format = ''
-          [$username[@](bold cyan)$hostname$directory$git_branch$git_status]($style)
+          [$username[@](bg:overlay fg:rose)$hostname $directory $git_branch $git_status$fill $time]($style)
           $character
         '';
         character = {
-          error_symbol = "[󰋕 ~>](bold red)";
-          success_symbol = "[󰋕 ~>](bold purple)";
+          error_symbol = "[󰴈 ~>](fg:love)";
+          success_symbol = "[󰴈 ~>](fg:iris)";
         };
         directory = {
+          format = "[](fg:overlay)[ $path ]($style)[](fg:overlay)";
           read_only = " ";
-          style = "bold green";
+          style = "bg:overlay fg:pine";
+          truncation_length = 3;
+          truncation_symbol = ".../";
+        };
+        fill = {
+          style = "fg:overlay";
+          symbol = " ";
+        };
+        git_branch = {
+          format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay)";
+          style = "bg:overlay fg:iris";
+          symbol = "";
+        };
+        git_status = {
+          format = "[](fg:overlay)[ $all_status$ahead_behind ]($style)[](fg:overlay)";
+          style = "bg:overlay fg:love";
+          deleted = "x";
         };
         hostname = {
-          format = "[$hostname](bold yellow) [$ssh_symbol](bold red)";
-          ssh_symbol = "! ";
+          format = "[$hostname ](bg:overlay fg:gold)[](fg:overlay)[$ssh_symbol]($style)";
+          ssh_symbol = " [](fg:overlay)[  ](bg:overlay fg:love)[](fg:overlay)";
+          style = "";
           ssh_only = false;
         };
+        time = {
+          disabled = false;
+          format = "[](fg:overlay)[ $time ]($style)[](fg:overlay)";
+          style = "bg:overlay fg:rose";
+          time_format = "%I:%M%P";
+          use_12hr = true;
+        };
         username = {
-          format = "[$user]($style)";
+          format = "[](fg:overlay)[ $user](bg:overlay fg:gold)";
           show_always = true;
         };
-        git_status.deleted = "x";
+        add_newline = false;
       };
     };
   };
