@@ -20,7 +20,7 @@
         };
         palette = "rose-pine";
         format = ''
-          [$username[@](bg:overlay fg:rose)$hostname $directory $git_branch $git_status$fill $time]($style)
+          [$username[@](bg:overlay fg:rose)$hostname $directory $git_branch$fill $time]($style)
           $character
         '';
         character = {
@@ -42,11 +42,6 @@
           format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay)";
           style = "bg:overlay fg:iris";
           symbol = "";
-        };
-        git_status = {
-          format = "[](fg:overlay)[ $all_status$ahead_behind ]($style)[](fg:overlay)";
-          style = "bg:overlay fg:love";
-          deleted = "x";
         };
         hostname = {
           format = "[$hostname ](bg:overlay fg:gold)[](fg:overlay)[$ssh_symbol]($style)";
