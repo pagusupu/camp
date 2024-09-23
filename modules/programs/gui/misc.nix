@@ -19,6 +19,8 @@
         feishin
         heroic
         vesktop
+        delfin
+        jellyfin-media-player
       ];
     }
     {

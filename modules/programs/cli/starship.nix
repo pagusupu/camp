@@ -9,14 +9,17 @@
     programs.starship = {
       enable = true;
       settings = {
-        palettes.rose-pine = with config.colours; {
-          overlay = "#" + overlay;
-          love = "#" + love;
-          gold = "#" + gold;
-          rose = "#" + rose;
-          pine = "#" + pine;
-          foam = "#" + foam;
-          iris = "#" + iris;
+        palettes.rose-pine = {
+          inherit
+            (config.wh.colours)
+            overlay
+            love
+            gold
+            rose
+            pine
+            foam
+            iris
+            ;
         };
         palette = "rose-pine";
         format = ''
@@ -32,7 +35,7 @@
           read_only = " ";
           style = "bg:overlay fg:pine";
           truncation_length = 3;
-          truncation_symbol = ".../";
+          truncation_symbol = "/";
         };
         fill = {
           style = "fg:overlay";

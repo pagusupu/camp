@@ -2,14 +2,12 @@
   config,
   lib,
   cutelib,
-  pkgs,
   inputs,
   ...
 }: {
   options.cute.system.nix = cutelib.mkEnabledOption;
   config = lib.mkIf config.cute.system.nix {
     nix = {
-      package = pkgs.lix;
       settings = {
         experimental-features = [
           "auto-allocate-uids"

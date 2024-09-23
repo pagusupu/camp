@@ -14,7 +14,6 @@
     programs = {
       cli = {
         misc = true;
-        nushell = true;
         nvim = true;
         starship = true;
         zsh = true;
@@ -47,6 +46,11 @@
     network.wait-online.enable = false;
   };
   boot = {
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+      themePackages = [pkgs.nixos-bgrt-plymouth];
+    };
     loader = {
       grub = {
         enable = true;

@@ -13,11 +13,14 @@
         m1 = "DP-3";
         m2 = "HDMI-A-1";
         m = "SUPER";
+        inherit (config.cute.theme) type;
+        inherit (config.colours) wallpaper;
       in {
         enable = true;
         settings = {
           exec-once = [
             "gtklock -d"
+            ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
@@ -25,8 +28,6 @@
             "steam -console -silent"
           ];
           exec = let
-            inherit (config.cute.theme) type;
-            inherit (config.colours) wallpaper;
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
           in [
             "kill $(pidof swaybg)"

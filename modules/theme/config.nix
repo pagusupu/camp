@@ -6,7 +6,6 @@
   ...
 }: let
   inherit (lib) mkOption types mkMerge mkIf mkDefault;
-  inherit (config.cute.programs.cli) nvim;
   inherit (config.cute.theme) gtk;
 in {
   options.cute.theme = {
@@ -53,19 +52,6 @@ in {
         };
       };
       programs.dconf.enable = true;
-    })
-    (mkIf nvim {
-      programs.nixvim.colorschemes.rose-pine = {
-        enable = true;
-        settings = {
-          dark_variant = "moon";
-          styles = {
-            italic = false;
-            transparency = false;
-          };
-          variant = "auto";
-        };
-      };
     })
     {
       specialisation.dark.configuration = {

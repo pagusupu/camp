@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +36,8 @@
                 filter (hasSuffix ".nix")
                 (map toString (filesystem.listFilesRecursive x)))
               [./lib ./modules]
-              ++ [./hosts/${name}.nix];
+              ++ [./hosts/${name}.nix]
+              ++ [inputs.lix.nixosModules.default];
             specialArgs = {inherit inputs;};
           }
       );
