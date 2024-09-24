@@ -26,6 +26,7 @@
         steam = true;
       };
     };
+    services.tailscale = true;
     net = {
       ip = "192.168.178.126";
       name = "enp10s0";

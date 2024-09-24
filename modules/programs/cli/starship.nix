@@ -35,7 +35,7 @@
           read_only = " ";
           style = "bg:overlay fg:pine";
           truncation_length = 3;
-          truncation_symbol = "/";
+          truncation_symbol = "../";
         };
         fill = {
           style = "fg:overlay";

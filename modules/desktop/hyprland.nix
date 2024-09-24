@@ -33,7 +33,6 @@
             "kill $(pidof swaybg)"
             ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
             "hyprctl setcursor ${name} ${builtins.toString size}"
-            "rm ~/.cache/tofi-drun"
           ];
           env = [
             "NIXOS_OZONE_WL,1"
@@ -91,7 +90,7 @@
             inherit (pkgs) grimblast grim slurp;
           in [
             "${m}, RETURN, exec, alacritty"
-            "${m}, TAB, exec, tofi-drun"
+            "${m}, TAB, exec, tofi-drun && rm ~/.cache/tofi-drun"
             "${m}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
             "${m}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
             ''${m}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''

@@ -3,7 +3,6 @@
   lib,
   cutelib,
   pkgs,
-  #inputs,
   ...
 }: {
   options.cute.programs.gui.misc = cutelib.mkEnable;
@@ -18,9 +17,8 @@
         easyeffects
         feishin
         heroic
+        tailscale
         vesktop
-        delfin
-        jellyfin-media-player
       ];
     }
     {

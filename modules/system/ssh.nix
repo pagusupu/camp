@@ -23,10 +23,6 @@
         services.openssh = {
           enable = true;
           knownHosts = {
-            aoi = lib.mkIf (config.networking.hostName != "aoi") {
-              extraHostNames = ["192.168.178.182"];
-              publicKey = pubkeys.aoi;
-            };
             "github.com".publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
           };
           hostKeys = [

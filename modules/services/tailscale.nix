@@ -12,7 +12,6 @@
         enable = true;
         openFirewall = true;
         authKeyFile = config.age.secrets.tailscale.path;
-        #extraUpFlags = lib.mkDefault ["--ssh"];
         useRoutingFeatures = lib.mkDefault "client";
       }
       (lib.mkIf (config.networking.hostName == "aoi") {

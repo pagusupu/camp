@@ -23,7 +23,6 @@
         grep = "grep --color=auto";
         ls = "eza --group-directories-first";
         rm = "rip";
-        sshaoi = "ssh pagu@192.168.178.182";
       };
       shellInit = ''
         zsh-newuser-install() { :; }

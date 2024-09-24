@@ -21,6 +21,7 @@
             "NerdFontsSymbolsOnly"
           ];
         })
+        dejavu_fonts
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji

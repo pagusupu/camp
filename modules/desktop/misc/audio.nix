@@ -13,7 +13,7 @@
           max-quantum = 48;
           min-quantum = 48;
           quantum = 48;
-          rate = 96000;
+          rate = 48000;
         };
       };
       alsa = {
