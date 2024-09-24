@@ -43,6 +43,7 @@ in {
         virtualHosts = mkMerge [
           (genHosts [
             "jellyfin"
+            "jellyseerr"
             "komga"
             "mealie"
             "navidrome"

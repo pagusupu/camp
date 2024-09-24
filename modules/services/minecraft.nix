@@ -35,7 +35,7 @@ in {
             ICON = "https://pagu.cafe/paguicon.jpg";
             ENABLE_AUTOPAUSE = "true";
           };
-          #autoStart = false;
+          autoStart = false;
         }
         (mkIf (server == "vanilla") {
           environment = {

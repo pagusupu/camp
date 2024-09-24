@@ -22,6 +22,7 @@
       };
       web = {
         jellyfin.enable = true;
+        jellyseerr.enable = true;
         komga.enable = true;
         matrix-client.enable = true;
         mealie.enable = true;

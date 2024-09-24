@@ -11,9 +11,11 @@
   in
     lib.mkIf enable {
       assertions = cutelib.assertNginx "jellyfin";
-      services.jellyfin = {
-        inherit enable;
-        openFirewall = true;
+      services = {
+        jellyfin = {
+          inherit enable;
+          openFirewall = true;
+        };
       };
       hardware.graphics.extraPackages = with pkgs; [
         libvdpau-va-gl

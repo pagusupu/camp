@@ -56,7 +56,6 @@
         };
         hostName = "${dns}.${domain}";
         https = true;
-        nginx.recommendedHttpHeaders = true;
       };
     };
 }
