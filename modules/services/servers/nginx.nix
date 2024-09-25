@@ -42,6 +42,7 @@ in {
         enable = true;
         virtualHosts = mkMerge [
           (genHosts [
+            "audiobookshelf"
             "jellyfin"
             "jellyseerr"
             "komga"
@@ -53,6 +54,7 @@ in {
             let
               inherit
                 (config.cute.services.web)
+                audiobookshelf
                 jellyfin
                 matrix-client
                 navidrome
@@ -76,6 +78,7 @@ in {
                 root = matrix-client.package;
                 inherit forceSSL enableACME;
               };
+              "shlf.${domain}".locations."/".proxyWebsockets = mkIf audiobookshelf.enable true;
               "navi.${domain}".locations."/".proxyWebsockets = mkIf navidrome.enable true;
               "next.${domain}" = mkIf nextcloud.enable {inherit forceSSL enableACME;};
               "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";

@@ -7,7 +7,7 @@
 }: {
   options.cute.services.web.navidrome = cutelib.mkWebOpt "navi" 8098;
   config = let
-    inherit (config.cute.services.web.navidrome) enable port;
+    inherit (config.cute.services.web.navidrome) enable port dns;
   in
     lib.mkIf enable {
       assertions = cutelib.assertNginx "navidrome";
@@ -23,16 +23,21 @@
           DataFolder = p + "data";
           MusicFolder = p + "music";
           AutoImportPlaylists = false;
+          DefaultTheme = "Auto";
           EnableExternalServices = false;
           EnableMediaFileCoverArt = false;
           EnableSharing = true;
           EnableStarRating = false;
-          EnableTranscodingConfig = true;
           IgnoredArticles = "";
           SessionTimeout = "96h";
+          ShareURL = "https://${dns}.${config.networking.domain}";
           UIWelcomeMessage = "";
         };
       };
-      environment.systemPackages = [pkgs.flac pkgs.sox];
+      environment.systemPackages = with pkgs; [
+        flac
+        streamrip
+        sox
+      ];
     };
 }

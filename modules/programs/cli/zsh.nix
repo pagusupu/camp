@@ -22,7 +22,6 @@
         gsv = "git status -v";
         grep = "grep --color=auto";
         ls = "eza --group-directories-first";
-        rm = "rip";
       };
       shellInit = ''
         zsh-newuser-install() { :; }
@@ -52,7 +51,6 @@
         eza
         fzf # for zoxide
         nix-output-monitor
-        rm-improved
         zoxide
       ];
     };

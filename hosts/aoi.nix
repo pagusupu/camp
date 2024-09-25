@@ -21,6 +21,7 @@
         nginx = true;
       };
       web = {
+        audiobookshelf.enable = true;
         jellyfin.enable = true;
         jellyseerr.enable = true;
         komga.enable = true;
