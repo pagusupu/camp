@@ -46,6 +46,7 @@ in {
             "jellyfin"
             "jellyseerr"
             "komga"
+            "linkding"
             "mealie"
             "navidrome"
             "vaultwarden"

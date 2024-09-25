@@ -9,7 +9,6 @@
     services = {
       feishin = true;
       homeassistant = true;
-      openssh = true;
       qbittorrent = true;
       tailscale = true;
       minecraft = {
@@ -25,6 +24,7 @@
         jellyfin.enable = true;
         jellyseerr.enable = true;
         komga.enable = true;
+        linkding.enable = true;
         matrix-client.enable = true;
         mealie.enable = true;
         navidrome.enable = true;
