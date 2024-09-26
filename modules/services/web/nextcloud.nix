@@ -41,10 +41,6 @@
         extraApps = {
           inherit
             (config.services.nextcloud.package.packages.apps)
-            calendar
-            contacts
-            notes
-            tasks
             unroundedcorners
             ;
           news = pkgs.fetchNextcloudApp {

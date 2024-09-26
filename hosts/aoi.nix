@@ -7,6 +7,7 @@
       zsh = true;
     };
     services = {
+      etebase = true;
       feishin = true;
       homeassistant = true;
       qbittorrent = true;
@@ -27,6 +28,7 @@
         linkding.enable = true;
         matrix-client.enable = true;
         mealie.enable = true;
+        memos.enable = true;
         navidrome.enable = true;
         nextcloud.enable = true;
         vaultwarden.enable = true;

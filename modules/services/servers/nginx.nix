@@ -48,6 +48,7 @@ in {
             "komga"
             "linkding"
             "mealie"
+            "memos"
             "navidrome"
             "vaultwarden"
           ])
@@ -85,6 +86,12 @@ in {
               "wrdn.${domain}".locations."/".extraConfig = mkIf vaultwarden.enable "proxy_pass_header Authorization;";
             }
           )
+          (mkIf config.cute.services.etebase {
+            "sync.${domain}" = {
+              inherit forceSSL enableACME;
+              locations."/".proxyPass = "http://unix:/var/lib/etebase-server/etebase-server.sock";
+            };
+          })
         ];
         recommendedGzipSettings = true;
         recommendedOptimisation = true;

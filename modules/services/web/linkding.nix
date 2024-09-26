@@ -16,7 +16,7 @@
           assertions = cutelib.assertDocker "linkding";
           virtualisation.oci-containers.containers."linkding" = {
             image = "sissbruecker/linkding:latest";
-            ports = ["${toString port}:${toString port}"];
+            ports = ["${toString port}:9090"];
             volumes = ["/storage/services/linkding/:/etc/linkding/data"];
             environment = {
               LD_SUPERUSER_NAME = "pagu";
