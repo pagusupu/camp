@@ -7,7 +7,6 @@
       zsh = true;
     };
     services = {
-      comin = true;
       etebase = true;
       feishin = true;
       homeassistant = true;
