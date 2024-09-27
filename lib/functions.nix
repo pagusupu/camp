@@ -4,9 +4,9 @@
   cutelib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types;
+  inherit (lib) mkOption types;
   inherit (types) bool int str;
-  inherit (cutelib) setInt setStr mkAssert;
+  inherit (cutelib) setInt setStr mkEnable mkAssert;
 in {
   _module.args.cutelib = {
     mkEnable = mkOption {
@@ -30,9 +30,14 @@ in {
         readOnly = true;
       };
     mkWebOpt = dns: port: {
-      enable = mkEnableOption "";
+      enable = mkEnable;
+      websocket = mkEnable;
       dns = setStr dns;
       port = setInt port;
+      extraSettings = {
+        enable = mkEnable;
+        text = mkOption {type = str;};
+      };
     };
     mkAssert = a: b: [
       {
@@ -42,6 +47,6 @@ in {
     ];
     assertDocker = n: mkAssert config.cute.services.servers.docker "${n} requires docker service.";
     assertHm = n: mkAssert config.cute.desktop.misc.home "${n} requires home-manager service.";
-    assertNginx = n: mkAssert config.cute.services.servers.nginx "${n} requires nginx service.";
+    assertNginx = n: mkAssert config.cute.services.servers.nginx.enable "${n} requires nginx service.";
   };
 }

@@ -14,5 +14,6 @@
         inherit enable port;
         openFirewall = true;
       };
+      cute.services.servers.nginx.hosts = ["komga"];
     };
 }

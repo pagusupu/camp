@@ -14,5 +14,6 @@
         ports = ["${builtins.toString port}:5230"];
         volumes = ["/storage/services/memos/:/var/opt/memos"];
       };
+      cute.services.servers.nginx.hosts = ["memos"];
     };
 }

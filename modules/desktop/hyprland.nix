@@ -20,7 +20,7 @@
         settings = {
           exec-once = [
             "gtklock -d"
-            ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
+            ''swaybg -o ${m1} -i ~/camp/modules/system/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
@@ -31,7 +31,7 @@
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
           in [
             "kill $(pidof swaybg)"
-            ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
+            ''swaybg -o ${m1} -i ~/camp/modules/system/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
             "hyprctl setcursor ${name} ${builtins.toString size}"
           ];
           env = [

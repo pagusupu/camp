@@ -23,6 +23,7 @@
               LD_SUPERUSER_PASSWORD = "changeme";
             };
           };
+          cute.services.servers.nginx.hosts = ["linkding"];
         }
       ]
     );

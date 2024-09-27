@@ -15,5 +15,9 @@
         openFirewall = true;
         host = "0.0.0.0";
       };
+      cute.services = {
+        servers.nginx.hosts = ["audiobookshelf"];
+        web.audiobookshelf.websocket = true;
+      };
     };
 }

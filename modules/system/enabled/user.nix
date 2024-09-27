@@ -12,7 +12,7 @@
     environment.systemPackages = [inputs.agenix.packages.${pkgs.system}.default];
     age = {
       secrets.user = {
-        file = ../../secrets/user.age;
+        file = ../../../secrets/user.age;
         owner = "pagu";
       };
       identityPaths = ["/etc/ssh/${config.networking.hostName}_ed25519_key"];

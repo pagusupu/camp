@@ -20,5 +20,12 @@
         };
         backupDir = "/storage/services/vaultwarden";
       };
+      cute.services = {
+        web.vaultwarden.extraSettings = {
+          enable = true;
+          text = "proxy_pass_header Authorization;";
+        };
+        servers.nginx.hosts = ["vaultwarden"];
+      };
     };
 }

@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   cute = {
     programs.cli = {
       misc = true;
@@ -18,10 +18,11 @@
       };
       servers = {
         docker = true;
-        nginx = true;
+        nginx.enable = true;
       };
       web = {
         audiobookshelf.enable = true;
+        freshrss.enable = true;
         jellyfin.enable = true;
         jellyseerr.enable = true;
         komga.enable = true;
@@ -44,6 +45,7 @@
     hostName = "aoi";
     hostId = "a3b49b22";
   };
+  environment.systemPackages = [pkgs.mdadm];
   boot = {
     loader = {
       timeout = 0;
@@ -55,7 +57,6 @@
       availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
       supportedFilesystems.btrfs = true;
     };
-    swraid.enable = true;
   };
   hardware.cpu.amd.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "powersave";

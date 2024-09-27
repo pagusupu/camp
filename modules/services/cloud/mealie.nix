@@ -21,5 +21,6 @@
         device = "/storage/services/mealie";
         options = ["bind"];
       };
+      cute.services.servers.nginx.hosts = ["mealie"];
     };
 }

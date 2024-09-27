@@ -6,7 +6,7 @@
 }: {
   options.cute.services.tailscale = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.tailscale {
-    age.secrets.tailscale.file = ../../secrets/tailscale.age;
+    age.secrets.tailscale.file = ../../../secrets/tailscale.age;
     services.tailscale = lib.mkMerge [
       {
         enable = true;

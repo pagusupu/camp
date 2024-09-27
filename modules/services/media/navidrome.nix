@@ -39,5 +39,9 @@
         streamrip
         sox
       ];
+      cute.services = {
+        servers.nginx.hosts = ["navidrome"];
+        web.navidrome.websocket = true;
+      };
     };
 }
