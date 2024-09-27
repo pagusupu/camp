@@ -18,6 +18,11 @@
           ++ [inputs.lix.nixosModules.default];
         inherit specialArgs;
       });
+ena = withSystem "x86_64-linux" (_:
+nixosSystem {
+modules = filternix [../lib ../modules ./ena];
+inherit specialArgs; 
+});
     rin = withSystem "x86_64-linux" (_:
       nixosSystem {
         modules =
@@ -25,6 +30,5 @@
           ++ [inputs.lix.nixosModules.default];
         inherit specialArgs;
       });
-    # test
   };
 }
