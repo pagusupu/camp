@@ -42,26 +42,6 @@
         "type": "github"
       }
     },
-    "comin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1724145018,
-        "narHash": "sha256-6R5CeMgr3EGKhqWPkqtteOtix7hBaurfpjHepiq2OrU=",
-        "owner": "nlewo",
-        "repo": "comin",
-        "rev": "84ef9af404b9157eab2c5e3e44d7c29239329901",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nlewo",
-        "repo": "comin",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -525,7 +505,6 @@
       "inputs": {
         "aagl": "aagl",
         "agenix": "agenix",
-        "comin": "comin",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager_2",
         "lix": "lix",

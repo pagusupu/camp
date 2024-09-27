@@ -31,7 +31,6 @@
         mealie.enable = true;
         memos.enable = true;
         navidrome.enable = true;
-        nextcloud.enable = true;
         vaultwarden.enable = true;
       };
     };

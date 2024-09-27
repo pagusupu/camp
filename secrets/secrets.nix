@@ -4,7 +4,6 @@ let
 in {
   "etebase.age".publicKeys = [aoi];
   "freshrss.age".publicKeys = [aoi];
-  "nextcloud.age".publicKeys = [aoi];
   "tailscale.age".publicKeys = [aoi rin];
   "user.age".publicKeys = [aoi rin];
 }
