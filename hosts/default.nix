@@ -22,10 +22,7 @@
       nixosSystem {
         modules =
           filternix [../lib ../modules ./rin]
-          ++ [
-            inputs.lix.nixosModules.default
-            inputs.home-manager.nixosModules.home-manager
-          ];
+          ++ [inputs.lix.nixosModules.default];
         inherit specialArgs;
       });
   };
