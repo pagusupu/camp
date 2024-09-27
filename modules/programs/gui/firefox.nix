@@ -14,7 +14,7 @@
         package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
           settings = {
-            "browser.startup.homepage" = "https://next.pagu.cafe";
+            #"browser.startup.homepage" = "https://next.pagu.cafe";
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
             "extensions.webextensions.restrictedDomains" = "";
@@ -88,7 +88,9 @@
             (b "https://discord.com/channels/@me")
             (b "https://chat.pagu.cafe")
             (b "http://192.168.178.182:9180")
-            (b "https://next.pagu.cafe")
+            (b "http://192.168.178.182:9090")
+            (b "https://account.proton.me/apps")
+            (b "https://search.nixos.org/packages?channel=unstable")
           ];
           ExtensionSettings = let
             e = n: l: {
@@ -104,6 +106,7 @@
             builtins.listToAttrs [
               (e "{446900e4-71c2-419f-a6a7-df9c091e268b}" "bitwarden-password-manager")
               (e "addon@darkreader.org" "darkreader")
+              (e "{61a05c39-ad45-4086-946f-32adb0a40a9d}" "linkding-extension")
               (e "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "return-youtube-dislikes")
               (e "sponsorBlocker@ajay.app" "sponsorblock")
               (e "treestyletab@piro.sakura.ne.jp" "tree-style-tab")
@@ -112,7 +115,11 @@
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {
               enabled = true;
-              automation.enabled = true;
+              automation = {
+                enabled = true;
+                behavior = "OnOff";
+                mode = "system";
+              };
               detectDarkTheme = true;
               enabledByDefault = false;
               enableForProtectedPages = true;
