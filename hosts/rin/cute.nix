@@ -19,12 +19,15 @@
       steam = true;
       zsh = true;
     };
-    theme.gtk = true;
+    services = {
+      comin = true;
+      tailscale = true;
+    };
     net = {
       ip = "192.168.178.126";
       name = "enp10s0";
     };
-    services.tailscale = true;
+    theme.gtk = true;
   };
   networking = {
     hostName = "rin";
