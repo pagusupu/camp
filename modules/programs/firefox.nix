@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.gui.firefox = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.gui.firefox {
+  options.cute.programs.firefox = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.firefox {
     assertions = cutelib.assertHm "firefox";
     home-manager.users.pagu = {
       programs.firefox = {

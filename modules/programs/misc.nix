@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.cli.misc = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.cli.misc (lib.mkMerge [
+  options.cute.programs.misc = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.misc (lib.mkMerge [
     {
       programs.nh = {
         enable = true;
@@ -18,7 +18,6 @@
       };
       environment.systemPackages = with pkgs; [
         ouch
-        radeontop
         wget
       ];
     }

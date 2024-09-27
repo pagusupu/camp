@@ -1,10 +1,4 @@
-{pkgs, ...}: {
-  networking = {
-    domain = "pagu.cafe";
-    hostName = "aoi";
-    hostId = "a3b49b22";
-  };
-  environment.systemPackages = [pkgs.mdadm];
+{
   boot = {
     loader = {
       timeout = 0;
@@ -17,7 +11,11 @@
       supportedFilesystems.btrfs = true;
     };
   };
-  hardware.cpu.amd.updateMicrocode = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
+    enableRedistributableFirmware = true;
+    graphics.enable = true;
+  };
   powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
     "/boot" = {

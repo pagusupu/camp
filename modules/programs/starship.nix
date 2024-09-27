@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.programs.cli.starship = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.cli.starship {
+  options.cute.programs.starship = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.starship {
     programs.starship = {
       enable = true;
       settings = {

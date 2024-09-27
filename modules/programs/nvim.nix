@@ -7,8 +7,8 @@
   ...
 }: {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options.cute.programs.cli.nvim = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.cli.nvim {
+  options.cute.programs.nvim = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.nvim {
     programs.nixvim = {
       enable = true;
       enableMan = false;

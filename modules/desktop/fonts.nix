@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.misc.fonts = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.misc.fonts {
+  options.cute.desktop.fonts = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.fonts {
     fonts = {
       packages = with pkgs; [
         (google-fonts.override {

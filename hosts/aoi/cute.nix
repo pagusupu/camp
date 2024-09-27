@@ -1,6 +1,6 @@
-{
+{pkgs, ...}: {
   cute = {
-    programs.cli = {
+    programs = {
       misc = true;
       nvim = true;
       starship = true;
@@ -40,4 +40,10 @@
       name = "enp37s0";
     };
   };
+  networking = {
+    domain = "pagu.cafe";
+    hostName = "aoi";
+    hostId = "a3b49b22";
+  };
+  environment.systemPackages = [pkgs.mdadm];
 }

@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.gui.alacritty = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.gui.alacritty {
+  options.cute.programs.alacritty = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.alacritty {
     homefile."alacritty" = {
       target = ".config/alacritty/alacritty.toml";
       source = (pkgs.formats.toml {}).generate "alacritty.toml" {

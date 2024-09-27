@@ -1,36 +1,33 @@
 {
   cute = {
     desktop = {
-      misc = {
-        audio = true;
-        fonts = true;
-        home = true;
-      };
+      audio = true;
+      fonts = true;
+      home-manager = true;
       hyprland = true;
       mako = true;
       tofi = true;
       waybar = true;
     };
     programs = {
-      cli = {
-        misc = true;
-        nvim = true;
-        starship = true;
-        zsh = true;
-      };
-      gui = {
-        aagl = true;
-        alacritty = true;
-        firefox = true;
-        misc = true;
-        steam = true;
-      };
+      aagl = true;
+      alacritty = true;
+      firefox = true;
+      misc = true;
+      nvim = true;
+      starship = true;
+      steam = true;
+      zsh = true;
     };
-    services.tailscale = true;
+    theme.gtk = true;
     net = {
       ip = "192.168.178.126";
       name = "enp10s0";
     };
-    theme.gtk = true;
+    services.tailscale = true;
+  };
+  networking = {
+    hostName = "rin";
+    hostId = "6f257938";
   };
 }

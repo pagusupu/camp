@@ -7,8 +7,8 @@
   ...
 }: {
   imports = [inputs.aagl.nixosModules.default];
-  options.cute.programs.gui.aagl = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.gui.aagl {
+  options.cute.programs.aagl = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.aagl {
     homefile."honkers" = {
       target = ".local/share/honkers-railway-launcher/config.json";
       source = (pkgs.formats.json {}).generate "config.json" {

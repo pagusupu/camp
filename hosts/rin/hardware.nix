@@ -1,9 +1,5 @@
 {pkgs, ...}: {
   time.hardwareClockInLocalTime = true; # windows dual-boot
-  networking = {
-    hostName = "rin";
-    hostId = "6f257938";
-  };
   security = {
     tpm2.enable = true;
     sudo.wheelNeedsPassword = false;
@@ -46,7 +42,11 @@
     };
     supportedFilesystems.ntfs = true;
   };
-  hardware.cpu.amd.updateMicrocode = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
+    enableRedistributableFirmware = true;
+    graphics.enable = true;
+  };
   powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {
     "/boot" = {
