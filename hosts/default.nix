@@ -25,5 +25,6 @@
           ++ [inputs.lix.nixosModules.default];
         inherit specialArgs;
       });
+    # test
   };
 }
