@@ -46,5 +46,8 @@
     hostName = "aoi";
     hostId = "a3b49b22";
   };
-  environment.systemPackages = [pkgs.mdadm];
+  environment.systemPackages = [
+    pkgs.mdadm
+    pkgs.leaf
+  ];
 }
