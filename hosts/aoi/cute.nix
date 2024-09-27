@@ -10,7 +10,6 @@
       etebase = true;
       feishin = true;
       homeassistant = true;
-      qbittorrent = true;
       tailscale = true;
       minecraft = {
         enable = true;
@@ -31,6 +30,7 @@
         mealie.enable = true;
         memos.enable = true;
         navidrome.enable = true;
+        qbittorrent.enable = true;
         vaultwarden.enable = true;
       };
     };
