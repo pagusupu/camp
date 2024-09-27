@@ -11,12 +11,12 @@
       supportedFilesystems.btrfs = true;
     };
   };
+  powerManagement.cpuFreqGovernor = "powersave";
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
     graphics.enable = true;
   };
-  powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";

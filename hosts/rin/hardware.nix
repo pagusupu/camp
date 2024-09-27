@@ -1,19 +1,5 @@
 {pkgs, ...}: {
-  time.hardwareClockInLocalTime = true; # windows dual-boot
-  security = {
-    tpm2.enable = true;
-    sudo.wheelNeedsPassword = false;
-  };
-  systemd = {
-    services.systemd-udev-settle.enable = false;
-    network.wait-online.enable = false;
-  };
   boot = {
-    plymouth = {
-      enable = true;
-      theme = "bgrt";
-      themePackages = [pkgs.nixos-bgrt-plymouth];
-    };
     loader = {
       grub = {
         enable = true;
@@ -21,13 +7,9 @@
         device = "nodev";
         efiSupport = true;
         splashImage = null;
-        useOSProber = true;
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = ["amd_pstate" "amdgpu" "kvm-amd"];
-    kernelParams = ["amd_pstate=guided"];
     initrd = {
       availableKernelModules = [
         "ahci"
@@ -40,14 +22,16 @@
       systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
-    supportedFilesystems.ntfs = true;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelModules = ["amd_pstate" "amdgpu" "kvm-amd"];
+    kernelParams = ["amd_pstate=guided"];
   };
+  powerManagement.cpuFreqGovernor = "schedutil";
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
     graphics.enable = true;
   };
-  powerManagement.cpuFreqGovernor = "schedutil";
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/NixBoot";
