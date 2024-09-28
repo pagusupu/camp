@@ -64,13 +64,14 @@ in {
         ]))
       (let
         inherit (komga) enable port;
-      in {
-        assertions = assertNginx "komga";
-        services.komga = {
-          inherit enable port;
-          openFirewall = true;
-        };
-        cute.services.servers.nginx.hosts = ["komga"];
-      })
+      in
+        mkIf enable {
+          assertions = assertNginx "komga";
+          services.komga = {
+            inherit enable port;
+            openFirewall = true;
+          };
+          cute.services.servers.nginx.hosts = ["komga"];
+        })
     ];
 }

@@ -14,7 +14,7 @@
         package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
           settings = {
-            #"browser.startup.homepage" = "https://next.pagu.cafe";
+            "browser.startup.homepage" = "http://192.168.178.182:8333";
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
             "extensions.webextensions.restrictedDomains" = "";

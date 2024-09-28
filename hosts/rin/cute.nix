@@ -24,7 +24,7 @@
       ip = "192.168.178.126";
       name = "enp10s0";
     };
-    services.tailscale = true;
+    services.tailscale.enable = true;
     system.winDualBoot = true;
     theme.gtk = true;
   };
