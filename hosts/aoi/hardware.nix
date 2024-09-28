@@ -5,11 +5,11 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelModules = ["kvm-amd"];
     initrd = {
-      availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
       supportedFilesystems.btrfs = true;
+      availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
     };
+    kernelModules = ["kvm-amd"];
   };
   powerManagement.cpuFreqGovernor = "powersave";
   hardware = {

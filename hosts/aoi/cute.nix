@@ -8,12 +8,15 @@
     };
     services = {
       etebase = true;
-      feishin = true;
+      glance = true;
       homeassistant = true;
-      tailscale = true;
       minecraft = {
         enable = true;
         server = "modded";
+      };
+      tailscale = {
+        enable = true;
+        server = true;
       };
       servers = {
         docker = true;
@@ -21,6 +24,7 @@
       };
       web = {
         audiobookshelf.enable = true;
+        feishin.enable = true;
         freshrss.enable = true;
         jellyfin.enable = true;
         jellyseerr.enable = true;

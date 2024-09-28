@@ -8,7 +8,7 @@
   config = lib.mkIf config.cute.services.etebase {
     assertions = cutelib.assertNginx "etebase";
     age.secrets.etebase = {
-      file = ../../../secrets/etebase.age;
+      file = ../../secrets/etebase.age;
       owner = "etebase-server";
     };
     services = let
