@@ -24,6 +24,10 @@
   };
   outputs = {systems, ...} @ inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./hosts
+        inputs.treefmt.flakeModule
+      ];
       perSystem.treefmt.config = {
         programs = {
           alejandra.enable = true;
@@ -32,7 +36,6 @@
         };
         projectRootFile = "flake.nix";
       };
-      imports = [./hosts inputs.treefmt.flakeModule];
       systems = ["x86_64-linux"];
     };
 }

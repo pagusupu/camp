@@ -9,7 +9,7 @@
     services = {
       etebase = true;
       glance = true;
-      homeassistant = true;
+      homeassistant = false;
       minecraft = {
         enable = true;
         server = "modded";

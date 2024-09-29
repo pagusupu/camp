@@ -39,6 +39,7 @@ in {
         text = mkOption {type = str;};
       };
     };
+
     mkAssert = a: b: [
       {
         assertion = a;
