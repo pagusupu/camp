@@ -24,7 +24,6 @@
             "waybar"
             "mako"
             "wayland-pipewire-idle-inhibit"
-            "ianny"
             "steam -console -silent"
           ];
           exec = let
@@ -149,7 +148,6 @@
       };
       home.packages = with pkgs; [
         gtklock
-        ianny
         rwpspread
         satty
         swaybg

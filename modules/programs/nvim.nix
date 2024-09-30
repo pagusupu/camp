@@ -23,10 +23,6 @@
         undofile = true;
       };
       plugins = {
-        barbar = {
-          enable = true;
-          settings.auto_hide = 1;
-        };
         indent-blankline = {
           enable = true;
           settings.scope.enabled = false;
@@ -58,20 +54,6 @@
           };
           enableLspFormat = false;
         };
-        nvim-tree = {
-          enable = true;
-          autoClose = true;
-          openOnSetup = true;
-          filters.dotfiles = true;
-          modified.enable = true;
-          renderer = {
-            icons.gitPlacement = "after";
-            highlightGit = true;
-          };
-          disableNetrw = true;
-          hijackNetrw = true;
-          hijackCursor = true;
-        };
         treesitter = {
           enable = true;
           settings.highlight.enable = true;
@@ -81,14 +63,7 @@
         lsp-format.enable = true;
         lsp-lines.enable = true;
         rainbow-delimiters.enable = true;
-        web-devicons.enable = true;
       };
-      keymaps = [
-        {
-          key = "t";
-          action = "<cmd>NvimTreeToggle<cr>";
-        }
-      ];
       colorschemes.rose-pine = {
         enable = true;
         settings = {

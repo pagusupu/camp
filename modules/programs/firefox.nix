@@ -14,7 +14,7 @@
         package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
           settings = {
-            "browser.startup.homepage" = "http://192.168.178.182:8333";
+            "browser.startup.homepage" = "http://192.168.178.82:8333";
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
             "extensions.webextensions.restrictedDomains" = "";
@@ -48,7 +48,7 @@
           DisableProfileRefresh = true;
           DisableSetDesktopBackground = true;
           DisableTelemetry = true;
-          DisplayBookmarksToolbar = "newtab";
+          DisplayBookmarksToolbar = "never";
           DontCheckDefaultBrowser = true;
           HardwareAcceleration = true;
           NoDefaultBookmarks = true;
@@ -78,20 +78,6 @@
             WhatsNew = false;
             Locked = true;
           };
-          Bookmarks = let
-            b = l: {
-              URL = l;
-              Title = "";
-              Placement = "toolbar";
-            };
-          in [
-            (b "https://discord.com/channels/@me")
-            (b "https://chat.pagu.cafe")
-            (b "http://192.168.178.182:9180")
-            (b "http://192.168.178.182:9090")
-            (b "https://account.proton.me/apps")
-            (b "https://search.nixos.org/packages?channel=unstable")
-          ];
           ExtensionSettings = let
             e = n: l: {
               name = n;
