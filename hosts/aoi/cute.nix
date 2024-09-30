@@ -7,9 +7,6 @@
       zsh = true;
     };
     services = {
-      etebase = true;
-      glance = true;
-      homeassistant = false;
       minecraft = {
         enable = true;
         server = "modded";
@@ -26,6 +23,7 @@
         audiobookshelf.enable = true;
         feishin.enable = true;
         freshrss.enable = true;
+        immich.enable = true;
         jellyfin.enable = true;
         jellyseerr.enable = true;
         komga.enable = true;
@@ -37,6 +35,7 @@
         qbittorrent.enable = true;
         vaultwarden.enable = true;
       };
+      etebase = true;
     };
     net = {
       ip = "192.168.178.182";
