@@ -18,10 +18,7 @@
           {
             columns = [
               {
-                widgets = let
-                  #inherit (config.cute.net) ip;
-                  inherit (config.networking) domain;
-                in [
+                widgets = [
                   {
                     type = "search";
                     autofocus = true;
@@ -43,7 +40,7 @@
                       }
                       {
                         title = "FreshRSS";
-                        url = "https://frss.${domain}";
+                        url = "https://frss.pagu.cafe";
                         icon = "si:rss";
                         same-tab = true;
                       }
@@ -55,13 +52,13 @@
                       }
                       {
                         title = "Immich";
-                        url = "https://meal.${domain}";
+                        url = "http://aoi:3001";
                         icon = "si:immich";
                         same-tab = true;
                       }
                       {
                         title = "Vaultwarden";
-                        url = "https://wrdn.${domain}";
+                        url = "https://wrdn.pagu.cafe";
                         icon = "si:vaultwarden";
                         same-tab = true;
                       }
@@ -82,7 +79,7 @@
                           }
                           {
                             title = "Element";
-                            url = "https://chat.${domain}";
+                            url = "https://chat.pagu.cafe";
                             same-tab = true;
                           }
                           {
