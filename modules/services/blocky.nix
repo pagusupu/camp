@@ -11,8 +11,12 @@
       enable = true;
       settings = {
         blocking = {
-          denylists.ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling/hosts"];
           clientGroupsBlock.default = ["ads"];
+          denylists.ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts"];
+        };
+        ports = {
+          dns = 56;
+          http = 4000;
         };
         upstreams.groups.default = [
           "1.0.0.1"
@@ -21,16 +25,12 @@
           "8.8.8.8"
         ];
         connectIPVersion = "v4";
-        ports = {
-          dns = "56";
-          http = 4000;
-        };
       };
     };
     networking.firewall = {
       allowedTCPPorts = [56 4000];
       allowedUDPPorts = [56];
     };
-    environment.systemPackages = [pkgs.blocky];
+    environment.systemPackages = [pkgs.blocky]; # cli
   };
 }

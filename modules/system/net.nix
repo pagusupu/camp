@@ -25,7 +25,7 @@
             DHCP = "no";
             DNSSEC = "yes";
             DNSOverTLS = "yes";
-            DNS = ["192.168.178.82"];
+            DNS = ["1.0.0.1" "1.1.1.1"];
           };
           address = ["${ip}/24"];
           routes = [{Gateway = "192.168.178.1";}];
