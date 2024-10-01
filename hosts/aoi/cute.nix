@@ -35,6 +35,7 @@
         qbittorrent.enable = true;
         vaultwarden.enable = true;
       };
+      comin = true;
       etebase = true;
     };
     net = {
@@ -47,5 +48,4 @@
     hostName = "aoi";
     hostId = "a3b49b22";
   };
-  environment.systemPackages = [pkgs.mdadm];
 }

@@ -12,6 +12,7 @@
         server = true;
       };
       blocky = true;
+      comin = true;
       glance = true;
       homeassistant = true;
     };
