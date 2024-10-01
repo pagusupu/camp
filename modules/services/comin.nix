@@ -12,9 +12,8 @@
       enable = true;
       remotes = [
         {
-          name = "local";
-          url = "/home/pagu/camp";
-          poller.period = 5;
+          name = "origin";
+          url = "https://github.com/pagusupu/camp.git";
         }
       ];
     };
