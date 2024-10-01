@@ -2,8 +2,10 @@
   config,
   lib,
   cutelib,
+  inputs,
   ...
 }: {
+  imports = [inputs.hosts.nixosModule];
   options.cute.net = {
     enable = cutelib.mkEnabledOption;
     name = lib.mkOption {type = lib.types.str;};
@@ -14,6 +16,11 @@
   in
     lib.mkIf enable {
       networking = {
+        stevenBlackHosts = {
+          enable = true;
+          blockFakenews = true;
+          blockGambling = true;
+        };
         enableIPv6 = false;
         useDHCP = false;
       };
