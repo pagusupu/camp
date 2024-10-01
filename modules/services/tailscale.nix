@@ -21,7 +21,7 @@
           useRoutingFeatures = lib.mkDefault "client";
         }
         (lib.mkIf server {
-          extraUpFlags = ["--ssh"];
+          extraUpFlags = ["--ssh" "--accept-risk="];
           useRoutingFeatures = "server";
         })
         (lib.mkIf (config.networking.hostName == "aoi") {

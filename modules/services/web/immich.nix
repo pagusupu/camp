@@ -11,9 +11,7 @@
       openFirewall = true;
       host = "0.0.0.0";
       mediaLocation = "/storage/services/immich";
-      environment = {
-        TZ = "NZ";
-      };
+      environment.TZ = "NZ";
       machine-learning.enable = false;
     };
     cute.services = {
