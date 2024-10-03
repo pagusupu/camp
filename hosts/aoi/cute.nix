@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   cute = {
     programs = {
       misc = true;
@@ -23,6 +23,7 @@
         audiobookshelf.enable = true;
         feishin.enable = true;
         freshrss.enable = true;
+        grafana.enable = true;
         immich.enable = true;
         jellyfin.enable = true;
         jellyseerr.enable = true;

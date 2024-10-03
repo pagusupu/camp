@@ -68,6 +68,7 @@ in {
               EnableMediaFileCoverArt = false;
               EnableSharing = true;
               EnableStarRating = false;
+              Prometheus.Enabled = true;
               IgnoredArticles = "";
               SessionTimeout = "96h";
               ShareURL = "https://${dns}.${config.networking.domain}";
