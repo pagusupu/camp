@@ -17,7 +17,7 @@
             fsr.enabled = false;
             gamemode = true;
           };
-          wine.selected = "wine-9.12-staging-tkg-amd64";
+          wine.selected = "wine-9.18-staging-tkg-amd64";
         };
         launcher.behavior = "Nothing";
       };

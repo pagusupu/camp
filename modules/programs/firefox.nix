@@ -3,6 +3,7 @@
   lib,
   cutelib,
   pkgs,
+  inputs,
   ...
 }: {
   options.cute.programs.firefox = cutelib.mkEnable;
@@ -13,6 +14,14 @@
         enable = true;
         package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
+          extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+            bitwarden
+            darkreader
+            linkding-extension
+            return-youtube-dislikes
+            sponsorblock
+            tree-style-tab
+          ];
           settings = {
             "browser.startup.homepage" = "http://192.168.178.82:8333";
             "browser.aboutConfig.showWarning" = false;
@@ -78,26 +87,6 @@
             WhatsNew = false;
             Locked = true;
           };
-          ExtensionSettings = let
-            e = n: l: {
-              name = n;
-              value = {
-                install_url = "https://addons.mozilla.org/firefox/downloads/latest/${l}/latest.xpi";
-                default_area = "menupanel";
-                installation_mode = "force_installed";
-                updates_disabled = false;
-              };
-            };
-          in
-            builtins.listToAttrs [
-              (e "{446900e4-71c2-419f-a6a7-df9c091e268b}" "bitwarden-password-manager")
-              (e "addon@darkreader.org" "darkreader")
-              (e "{61a05c39-ad45-4086-946f-32adb0a40a9d}" "linkding-extension")
-              (e "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "return-youtube-dislikes")
-              (e "sponsorBlocker@ajay.app" "sponsorblock")
-              (e "treestyletab@piro.sakura.ne.jp" "tree-style-tab")
-              (e "uBlock0@raymondhill.net" "ublock-origin")
-            ];
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {
               enabled = true;
