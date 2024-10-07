@@ -11,7 +11,6 @@ lib.mkMerge [
       feishin
       heroic
       radeontop
-      vesktop
     ];
     programs.localsend = {
       enable = true;

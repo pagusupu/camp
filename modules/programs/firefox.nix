@@ -45,47 +45,36 @@
               "Wikipedia (en)".metaData.hidden = true;
             };
           };
+          extraConfig = let
+            betterfox = pkgs.fetchFromGitHub {
+              owner = "yokoffing";
+              repo = "Betterfox";
+              rev = "129.0";
+              hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
+            };
+            inherit (builtins) readFile;
+          in ''
+            ${readFile "${betterfox}/Fastfox.js"}
+            ${readFile "${betterfox}/Peskyfox.js"}
+            ${readFile "${betterfox}/Securefox.js"}
+            ${readFile "${betterfox}/Smoothfox.js"}
+          '';
         };
         policies = {
-          CaptivePortal = false;
           DisableFeedbackCommands = true;
           DisableFirefoxAccounts = true;
           DisableFirefoxScreenshots = true;
-          DisableFirefoxStudies = true;
           DisablePocket = true;
           DisableProfileImport = true;
           DisableProfileRefresh = true;
           DisableSetDesktopBackground = true;
-          DisableTelemetry = true;
           DisplayBookmarksToolbar = "never";
-          DontCheckDefaultBrowser = true;
           HardwareAcceleration = true;
           NoDefaultBookmarks = true;
           PasswordManagerEnabled = false;
           Cookies = {
             Behavior = "accept";
             Locked = false;
-          };
-          FirefoxHome = {
-            Highlights = false;
-            Pocket = false;
-            Snippets = false;
-            TopSites = false;
-            Locked = true;
-          };
-          FirefoxSuggest = {
-            ImproveSuggest = false;
-            SponsoredSugRegexgestions = false;
-            WebSuggestions = true;
-            Locked = true;
-          };
-          UserMessaging = {
-            ExtensionRecommendations = false;
-            FeatureRecommendations = false;
-            MoreFromMozilla = false;
-            SkipOnboarding = true;
-            WhatsNew = false;
-            Locked = true;
           };
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {

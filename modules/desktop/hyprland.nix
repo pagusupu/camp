@@ -20,11 +20,11 @@
         settings = {
           exec-once = [
             "gtklock -d"
-            ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
             "waybar"
             "mako"
-            "wayland-pipewire-idle-inhibit"
             "steam -console -silent"
+            "discord"
+            "feishin"
           ];
           exec = let
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
@@ -38,8 +38,12 @@
             "_JAVA_AWT_WM_NONREPARENTING,1"
           ];
           windowrulev2 = [
-            "float, class:(localsend_app)"
-            "float, class:(com.saivert.pwvucontrol)"
+            "workspace 5, class:^(feishin)$"
+            "workspace 5, class:^(discord)$"
+            "float, class:^(localsend)$"
+            "float, title:^(Steam - News)$"
+            "float, class:^(steam)$,title:^(Special Offers)$"
+            "float, title:^(Open Files)$"
             "nomaxsize, title:^(Wine configuration)$"
           ];
           animations = {
@@ -130,28 +134,15 @@
           ${concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") (map toString (range 1 8))}
           ${concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") (map toString (range 1 8))}
         '';
-      };
-      services.hypridle = {
-        enable = true;
-        settings = {
-          general = {
-            lock_cmd = "gtklock";
-            before_sleep_cmd = "gtklock";
-          };
-          listener = [
-            {
-              timeout = 300;
-              on-timeout = "gtklock";
-            }
-          ];
+        systemd = {
+          enable = true;
+          variables = ["--all"];
         };
       };
       home.packages = with pkgs; [
-        gtklock
         rwpspread
         satty
         swaybg
-        wayland-pipewire-idle-inhibit
         wl-clipboard
       ];
     };
@@ -165,6 +156,5 @@
         default_session = initial_session;
       };
     };
-    security.pam.services.gtklock = {};
   };
 }

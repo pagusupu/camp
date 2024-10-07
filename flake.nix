@@ -24,9 +24,14 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    idle-inhibit = {
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix.url = "github:ryantm/agenix";
     flake-parts.url = "github:hercules-ci/flake-parts";
     hosts.url = "github:StevenBlack/hosts";
+    nixcord.url = "github:kaylorben/nixcord";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt.url = "github:numtide/treefmt-nix";

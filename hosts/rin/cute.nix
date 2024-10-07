@@ -6,6 +6,7 @@
       fonts = true;
       home-manager = true;
       hyprland = true;
+      idle = true;
       mako = true;
       tofi = true;
       waybar = true;
@@ -13,6 +14,7 @@
     programs = {
       aagl = true;
       alacritty = true;
+      discord = true;
       firefox = true;
       misc = true;
       nvim = true;
