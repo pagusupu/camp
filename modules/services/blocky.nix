@@ -25,6 +25,7 @@
           "8.8.8.8"
         ];
         connectIPVersion = "v4";
+        prometheus.enable = true;
       };
     };
     networking.firewall = {

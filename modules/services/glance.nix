@@ -20,8 +20,67 @@
               {
                 widgets = [
                   {
-                    type = "search";
-                    autofocus = true;
+                    type = "bookmarks";
+                    groups = [
+                      {
+                        links = [
+                          {
+                            title = "Linkding";
+                            url = "http://aoi:9090";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Memos";
+                            url = "http://aoi:5230";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Grafana";
+                            url = "http://aoi:8090";
+                            same-tab = true;
+                          }
+                        ];
+                      }
+                      {
+                        links = [
+                          {
+                            title = "Nix Search";
+                            url = "https://search.nixos.org/packages?channel=unstable";
+                            same-tab = true;
+                          }
+                          {
+                            title = "HM Search";
+                            url = "https://home-manager-options.extranix.com/?query=sefsef&release=master";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Tailscale";
+                            url = "https://login.tailscale.com/admin/machines";
+                            same-tab = true;
+                          }
+                        ];
+                      }
+                      {
+                        links = [
+                          {
+                            title = "GitHub";
+                            url = "https://github.com";
+                            same-tab = true;
+                          }
+
+                          {
+                            title = "Youtube";
+                            url = "https://youtube.com/feed/subscriptions";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Proton Mail";
+                            url = "https://mail.proton.me";
+                            same-tab = true;
+                          }
+                        ];
+                      }
+                    ];
                   }
                   {
                     type = "monitor";
@@ -46,7 +105,7 @@
                       }
                       {
                         title = "qBittorrent";
-                        url = "http://aoi:8077";
+                        url = "https://qbit.pagu.cafe";
                         icon = "si:qbittorrent";
                         same-tab = true;
                       }
@@ -66,87 +125,24 @@
                     cache = "1m";
                     title = "Services";
                   }
-                  {
-                    type = "bookmarks";
-                    groups = [
-                      {
-                        title = "Default";
-                        links = [
-                          {
-                            title = "Discord";
-                            url = "https://discord.com/channels/@me";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Element";
-                            url = "https://chat.pagu.cafe";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Feishin";
-                            url = "http://aoi:9180";
-                            same-tab = true;
-                          }
-                        ];
-                      }
-                      {
-                        title = "Frequent";
-                        links = [
-                          {
-                            title = "Linkding";
-                            url = "http://aoi:9090";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Memos";
-                            url = "http://aoi:5230";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Proton Mail";
-                            url = "https://mail.proton.me";
-                            same-tab = true;
-                          }
-                        ];
-                      }
-                      {
-                        title = "Misc";
-                        links = [
-                          {
-                            title = "Nix Search";
-                            url = "https://search.nixos.org/packages?channel=unstable";
-                            same-tab = true;
-                          }
-                          {
-                            title = "GitHub";
-                            url = "https://github.com";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Tailscale";
-                            url = "https://login.tailscale.com/admin/machines";
-                            same-tab = true;
-                          }
-                        ];
-                      }
-                    ];
-                  }
                 ];
                 size = "full";
               }
             ];
-            name = "Startpage";
+            name = "Home";
             width = "slim";
             hide-desktop-navigation = true;
             center-vertically = true;
           }
         ];
-        theme = {
-          light = lib.mkDefault true;
-          background-color = lib.mkDefault "32 57 95"; # base
-          primary-color = lib.mkDefault "343 35 55"; # love
-          positive-color = lib.mkDefault "189 30 48"; # foam
-          negative-color = lib.mkDefault "3 53 67"; # rose
+        theme = let
+          inherit (lib) mkDefault;
+        in {
+          light = mkDefault true;
+          background-color = mkDefault "32 57 95"; # base
+          primary-color = mkDefault "343 35 55"; # love
+          positive-color = mkDefault "189 30 48"; # foam
+          negative-color = mkDefault "3 53 67"; # rose
         };
         branding.hide-footer = true;
       };
