@@ -74,8 +74,21 @@
           NoDefaultBookmarks = true;
           PasswordManagerEnabled = false;
           Cookies = {
-            Behavior = "accept";
-            Locked = false;
+            Behavior = "reject-tracker-and-partition-foreign";
+            Locked = true;
+          };
+          ExtensionSettings."*" = {
+            default_area = "menupanel";
+            installation_mode = "force_installed";
+          };
+          SanitizeOnShutdown = {
+            Cache = true;
+            Cookies = false;
+            History = false;
+            Sessions = true;
+            SiteSettings = false;
+            OfflineApps = true;
+            Locked = true;
           };
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {
