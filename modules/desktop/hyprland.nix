@@ -23,7 +23,6 @@
             "mako"
             "steam -console -silent"
             "discord"
-            "feishin"
           ];
           exec = let
             inherit (config.cute.theme) type;

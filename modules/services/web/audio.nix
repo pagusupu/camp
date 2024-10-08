@@ -40,7 +40,7 @@ in {
           {
             assertions = cutelib.assertDocker "feishin";
             virtualisation.oci-containers.containers."feishin" = {
-              image = "ghcr.io/jeffvli/feishin:0.9.0";
+              image = "ghcr.io/jeffvli/feishin:0.10.1";
               ports = ["${builtins.toString port}:9180"];
             };
             cute.services.servers.nginx.hosts = ["feishin"];

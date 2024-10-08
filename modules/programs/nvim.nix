@@ -30,7 +30,7 @@
         lsp = {
           enable = true;
           servers = {
-            nil-ls = {
+            nil_ls = {
               enable = true;
               settings = {
                 formatting.command = ["${lib.getExe pkgs.alejandra}"];

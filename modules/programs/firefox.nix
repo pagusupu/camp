@@ -77,10 +77,6 @@
             Behavior = "reject-tracker-and-partition-foreign";
             Locked = true;
           };
-          ExtensionSettings."*" = {
-            default_area = "menupanel";
-            installation_mode = "force_installed";
-          };
           SanitizeOnShutdown = {
             Cache = true;
             Cookies = false;

@@ -30,7 +30,7 @@
           "custom/powermenu" = let
             menu = pkgs.writeShellScript "pm" ''
               op=$( echo -e "  Poweroff\n  Reboot\n  Lock\n  Logout" | ${lib.getExe pkgs.tofi} | awk '{print tolower($2)}' )
-              case $op in poweroff) poweroff ;& reboot) reboot ;& lock) hyprlock ;; logout) hyprctl exit ;; esac
+              case $op in poweroff) poweroff ;& reboot) reboot ;& lock) gtklock ;; logout) hyprctl exit ;; esac
             '';
           in {
             on-click = "${menu}";

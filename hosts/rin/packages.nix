@@ -8,9 +8,9 @@ lib.mkMerge [
     environment.systemPackages = with pkgs; [
       audacity
       easyeffects
-      feishin
       heroic
       radeontop
+      sublime-music
     ];
     programs.localsend = {
       enable = true;
