@@ -6,17 +6,17 @@
   ...
 }: let
   inherit (lib) mkOption types mkMerge mkIf mkDefault;
-  inherit (config.cute.theme) gtk;
 in {
-  options.cute.theme = {
-    type = mkOption {
+  options.cute.desktop = {
+    theme = mkOption {
       default = "light";
       type = types.enum ["dark" "light"];
     };
     gtk = cutelib.mkEnable;
+    wallpaper-colour = mkOption {type = types.str;};
   };
-  config = mkMerge [
-    (mkIf gtk {
+  config = mkIf config.cute.desktop.gtk (mkMerge [
+    {
       assertions = cutelib.assertHm "gtk";
       home-manager.users.pagu = {
         gtk = {
@@ -63,13 +63,15 @@ in {
         };
       };
       programs.dconf.enable = true;
-    })
+    }
     {
       specialisation.dark.configuration = {
-        boot.loader.grub.configurationName = "dark";
-        cute.theme.type = "dark";
-        environment.etc."specialisation".text = "dark";
+        cute.desktop = {
+          theme = "dark";
+          wallpaper-colour = "131021";
+        };
       };
+      cute.desktop.wallpaper-colour = mkDefault "FF929E";
     }
-  ];
+  ]);
 }

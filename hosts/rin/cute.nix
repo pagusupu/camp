@@ -1,10 +1,11 @@
 {
   cute = {
     desktop = {
-      ags = false;
+      ags = true;
       audio = true;
       boot = true;
       fonts = true;
+      gtk = true;
       home-manager = true;
       hyprland = true;
       idle = true;
@@ -32,7 +33,6 @@
       name = "enp10s0";
     };
     system.winDualBoot = true;
-    theme.gtk = true;
   };
   networking = {
     hostName = "rin";

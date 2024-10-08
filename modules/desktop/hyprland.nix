@@ -22,15 +22,15 @@
             "waybar"
             "mako"
             "steam -console -silent"
+            "sublime-music"
             "discord"
           ];
           exec = let
-            inherit (config.cute.theme) type;
-            inherit (config.colours) wallpaper;
+            inherit (config.cute.desktop) theme wallpaper-colour;
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
           in [
             "kill $(pidof swaybg)"
-            ''swaybg -o ${m1} -i ~/camp/modules/theme/${type}.png -m fill -o ${m2} -c ${wallpaper}''
+            ''swaybg -o ${m1} -i ~/pictures/active/${theme}.png -m fill -o ${m2} -c ${wallpaper-colour}''
             "hyprctl setcursor ${name} ${builtins.toString size}"
           ];
           env = [
@@ -38,7 +38,7 @@
             "_JAVA_AWT_WM_NONREPARENTING,1"
           ];
           windowrulev2 = [
-            "workspace 5, class:^(feishin)$"
+            "workspace 5, class:^(.sublime-music-wrapped)$"
             "workspace 5, class:^(discord)$"
             "float, class:^(localsend)$"
             "float, title:^(Steam - News)$"

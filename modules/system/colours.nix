@@ -76,11 +76,11 @@ in {
         };
       };
     }
-    (lib.mkIf config.cute.theme.gtk {
-      colours.wallpaper = mkDefault "FF929E";
+    {
       specialisation.dark.configuration = {
-        colours.wallpaper = "131021";
+        boot.loader.grub.configurationName = "dark";
+        environment.etc."specialisation".text = "dark";
       };
-    })
+    }
   ];
 }
