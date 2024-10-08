@@ -1,7 +1,7 @@
 {
   cute = {
     desktop = {
-      ags = true;
+      ags = false;
       audio = true;
       boot = true;
       fonts = true;

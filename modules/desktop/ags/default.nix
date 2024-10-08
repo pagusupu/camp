@@ -9,7 +9,6 @@
   options.cute.desktop.ags = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.ags {
     home-manager.users.pagu = {
-      imports = [inputs.ags.homeManagerModules.default];
       programs.ags = {
         enable = true;
         extraPackages = with inputs.ags.packages.${pkgs.system}; [
@@ -22,6 +21,7 @@
           wireplumber
         ];
       };
+      imports = [inputs.ags.homeManagerModules.default];
     };
     security.pam.services.astal-auth = {};
   };

@@ -26,7 +26,6 @@
               enable = true;
               enabledCollectors = ["systemd"];
             };
-            nginx.enable = true;
           };
           scrapeConfigs = [
             {

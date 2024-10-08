@@ -9,19 +9,20 @@
     services.home-assistant = {
       enable = true;
       openFirewall = true;
-      extraComponents = [
-        "fritz"
-        "light"
-        "wiz"
-      ];
       config = {
         homeassistant = {
           time_zone = "Pacific/Auckland";
           temperature_unit = "C";
           unit_system = "metric";
         };
+        # disable next two for onboarding
         default_config = {};
       };
+      extraComponents = [
+        "fritz"
+        "light"
+        "wiz"
+      ];
     };
   };
 }

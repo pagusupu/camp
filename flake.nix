@@ -50,10 +50,7 @@
         programs = {
           biome = {
             enable = true;
-            settings.formatter = {
-              enabled = true;
-              indentStyle = "space";
-            };
+            settings.formatter.indentStyle = "space";
           };
           alejandra.enable = true;
           deadnix.enable = true;

@@ -10,9 +10,7 @@
     {
       programs.steam = {
         enable = true;
-        package = pkgs.steam.override {
-          extraLibraries = pkgs: [pkgs.wqy_zenhei];
-        };
+        package = pkgs.steam.override {extraLibraries = pkgs: [pkgs.wqy_zenhei];};
         extest.enable = true;
         localNetworkGameTransfers.openFirewall = true;
         protontricks.enable = true;
