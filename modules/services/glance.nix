@@ -20,28 +20,73 @@
               {
                 widgets = [
                   {
+                    type = "clock";
+                    hour-format = "12h";
+                    timezones = [
+                      {
+                        timezone = "US/Central";
+                        label = "US Central";
+                      }
+                      {
+                        timezone = "Europe/London";
+                        label = "London";
+                      }
+                      {
+                        timezone = "Asia/Tokyo";
+                        label = "Tokyo";
+                      }
+                      {
+                        timezone = "Australia/Sydney";
+                        label = "Sydney";
+                      }
+                    ];
+                  }
+                  {type = "calendar";}
+                ];
+                size = "small";
+              }
+              {
+                widgets = [
+                  {
                     type = "bookmarks";
                     groups = [
                       {
+                        title = "Frequent";
                         links = [
                           {
                             title = "Linkding";
-                            url = "http://aoi:9090";
+                            url = "http://192.168.178.182:9090";
+                            same-tab = true;
+                          }
+                          {
+                            title = "GitHub";
+                            url = "https://github.com";
                             same-tab = true;
                           }
                           {
                             title = "Memos";
-                            url = "http://aoi:5230";
+                            url = "http://192.168.178.182:5230";
                             same-tab = true;
                           }
                           {
-                            title = "Grafana";
-                            url = "http://aoi:8090";
+                            title = "Tailscale";
+                            url = "https://login.tailscale.com/admin/machines";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Youtube";
+                            url = "https://youtube.com/feed/subscriptions";
+                            same-tab = true;
+                          }
+                          {
+                            title = "YT Music";
+                            url = "https://music.youtube.com";
                             same-tab = true;
                           }
                         ];
                       }
                       {
+                        title = "Misc";
                         links = [
                           {
                             title = "Nix Search";
@@ -54,28 +99,23 @@
                             same-tab = true;
                           }
                           {
-                            title = "Tailscale";
-                            url = "https://login.tailscale.com/admin/machines";
-                            same-tab = true;
-                          }
-                        ];
-                      }
-                      {
-                        links = [
-                          {
-                            title = "GitHub";
-                            url = "https://github.com";
-                            same-tab = true;
-                          }
-
-                          {
-                            title = "Youtube";
-                            url = "https://youtube.com/feed/subscriptions";
+                            title = "Gmail";
+                            url = "https://mail.google.com/mail/u/0/";
                             same-tab = true;
                           }
                           {
                             title = "Proton Mail";
-                            url = "https://mail.proton.me";
+                            url = "https://mail.proton.me/u/2/inbox";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Proton Calendar";
+                            url = "https://calendar.proton.me/u/2/";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Proton Drive";
+                            url = "https://https://drive.proton.me/u/2";
                             same-tab = true;
                           }
                         ];
@@ -87,13 +127,13 @@
                     sites = [
                       {
                         title = "Jellyfin";
-                        url = "http://aoi:8096";
+                        url = "http://192.168.178.182:8096";
                         icon = "si:jellyfin";
                         same-tab = true;
                       }
                       {
                         title = "Navidrome";
-                        url = "http://aoi:8098";
+                        url = "http://192.168.178.182:8098";
                         icon = "si:soundcloud";
                         same-tab = true;
                       }
@@ -105,13 +145,13 @@
                       }
                       {
                         title = "qBittorrent";
-                        url = "https://qbit.pagu.cafe";
+                        url = "http://192.168.178.182:8077";
                         icon = "si:qbittorrent";
                         same-tab = true;
                       }
                       {
                         title = "Immich";
-                        url = "http://aoi:3001";
+                        url = "http://192.168.178.182:3001";
                         icon = "si:immich";
                         same-tab = true;
                       }

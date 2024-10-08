@@ -20,10 +20,11 @@
             linkding-extension
             return-youtube-dislikes
             sponsorblock
+            stylus
             tree-style-tab
           ];
           settings = {
-            "browser.startup.homepage" = "http://192.168.178.82:8333";
+            "browser.startup.homepage" = "http://localhost:8333";
             "browser.aboutConfig.showWarning" = false;
             "browser.EULA.override" = true;
             "extensions.webextensions.restrictedDomains" = "";

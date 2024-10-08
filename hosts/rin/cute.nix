@@ -1,6 +1,7 @@
 {
   cute = {
     desktop = {
+      ags = true;
       audio = true;
       boot = true;
       fonts = true;
@@ -22,11 +23,14 @@
       steam = true;
       zsh = true;
     };
+    services = {
+      glance = true;
+      tailscale.enable = true;
+    };
     net = {
       ip = "192.168.178.126";
       name = "enp10s0";
     };
-    services.tailscale.enable = true;
     system.winDualBoot = true;
     theme.gtk = true;
   };

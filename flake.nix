@@ -4,6 +4,10 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ags = {
+      url = "github:Aylur/ags/v2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     comin = {
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +48,13 @@
       ];
       perSystem.treefmt.config = {
         programs = {
+          biome = {
+            enable = true;
+            settings.formatter = {
+              enabled = true;
+              indentStyle = "space";
+            };
+          };
           alejandra.enable = true;
           deadnix.enable = true;
           statix.enable = true;

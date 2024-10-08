@@ -38,6 +38,7 @@
               };
               cmd = ["nil"];
             };
+            biome.enable = true;
             cssls.enable = true;
             html.enable = true;
             jsonls.enable = true;
@@ -77,9 +78,12 @@
       };
       defaultEditor = true;
     };
-    environment.variables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+    environment = {
+      variables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+      };
+      systemPackages = [pkgs.biome];
     };
   };
 }

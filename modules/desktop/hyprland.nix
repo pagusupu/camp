@@ -8,13 +8,12 @@
   options.cute.desktop.hyprland = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.hyprland {
     assertions = cutelib.assertHm "hyprland";
+    programs.hyprland.enable = true;
     home-manager.users.pagu = {
       wayland.windowManager.hyprland = let
         m1 = "DP-3";
         m2 = "HDMI-A-1";
         m = "SUPER";
-        inherit (config.cute.theme) type;
-        inherit (config.colours) wallpaper;
       in {
         enable = true;
         settings = {
@@ -27,6 +26,8 @@
             "feishin"
           ];
           exec = let
+            inherit (config.cute.theme) type;
+            inherit (config.colours) wallpaper;
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
           in [
             "kill $(pidof swaybg)"
@@ -72,7 +73,7 @@
             hover_icon_on_border = false;
             resize_on_border = true;
             "col.active_border" = "0xFF" + config.colours.love;
-            "col.inactive_border" = "0xFF" + config.colours.base;
+            "col.inactive_border" = "0xFF" + config.colours.overlay;
           };
           input = {
             accel_profile = "flat";
@@ -134,10 +135,7 @@
           ${concatMapStringsSep "\n" (n: "bind=SUPER,${n},workspace,${n}") (map toString (range 1 8))}
           ${concatMapStringsSep "\n" (n: "bind=SUPER:SHIFT,${n},movetoworkspacesilent,${n}") (map toString (range 1 8))}
         '';
-        systemd = {
-          enable = true;
-          variables = ["--all"];
-        };
+        systemd.variables = ["--all"];
       };
       home.packages = with pkgs; [
         rwpspread
