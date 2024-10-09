@@ -11,6 +11,8 @@
     programs.hyprland.enable = true;
     home-manager.users.pagu = {
       wayland.windowManager.hyprland = let
+        inherit (config.cute.desktop) theme wallpaper-colour;
+        wallpaper = ''swaybg -o ${m1} -i ~/pictures/active/${theme}.png -m fill -o ${m2} -c ${wallpaper-colour}'';
         m1 = "DP-3";
         m2 = "HDMI-A-1";
         m = "SUPER";
@@ -19,6 +21,7 @@
         settings = {
           exec-once = [
             "gtklock -d"
+            "${wallpaper}"
             "waybar"
             "mako"
             "steam -console -silent"
@@ -26,11 +29,10 @@
             "discord"
           ];
           exec = let
-            inherit (config.cute.desktop) theme wallpaper-colour;
             inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
           in [
             "kill $(pidof swaybg)"
-            ''swaybg -o ${m1} -i ~/pictures/active/${theme}.png -m fill -o ${m2} -c ${wallpaper-colour}''
+            "${wallpaper}"
             "hyprctl setcursor ${name} ${builtins.toString size}"
           ];
           env = [
@@ -44,6 +46,8 @@
             "float, title:^(Steam - News)$"
             "float, class:^(steam)$,title:^(Special Offers)$"
             "float, title:^(Open Files)$"
+            "float, class:^(thunar)$"
+            "size 1300 800, title:^(Keyguard)$"
             "nomaxsize, title:^(Wine configuration)$"
           ];
           animations = {
@@ -141,6 +145,7 @@
         satty
         swaybg
         wl-clipboard
+        xfce.thunar
       ];
     };
     services.greetd = {

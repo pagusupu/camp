@@ -39,6 +39,15 @@
           };
           themeLinks = ["https://github.com/rose-pine/discord/raw/refs/heads/main/rose-pine-moon.theme.css"];
         };
+        extraConfig = {
+          openasar = {
+            setup = true;
+            quickstart = true;
+          };
+          MINIMIZE_TO_TRAY = false;
+          OPEN_ON_STARTUP = false;
+          SKIP_HOST_UPDATE = true;
+        };
       };
     };
   };
