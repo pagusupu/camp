@@ -12,6 +12,7 @@
       mako = true;
       tofi = true;
       waybar = true;
+      wlogout = true;
     };
     programs = {
       aagl = true;

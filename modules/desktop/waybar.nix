@@ -2,7 +2,6 @@
   config,
   lib,
   cutelib,
-  pkgs,
   ...
 }: {
   options.cute.desktop.waybar = cutelib.mkEnable;
@@ -15,7 +14,7 @@
           layer = "top";
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["custom/powermenu"];
+          modules-right = ["custom/wlogout"];
           reload_style_on_change = true;
           width = 36;
           "hyprland/workspaces" = {
@@ -27,13 +26,8 @@
             persistent-workspaces."*" = 4;
           };
           clock.format = "{:%I \n%M \n%p}";
-          "custom/powermenu" = let
-            menu = pkgs.writeShellScript "pm" ''
-              op=$( echo -e "  Poweroff\n  Reboot\n  Lock\n  Logout" | ${lib.getExe pkgs.tofi} | awk '{print tolower($2)}' )
-              case $op in poweroff) poweroff ;& reboot) reboot ;& lock) gtklock ;; logout) hyprctl exit ;; esac
-            '';
-          in {
-            on-click = "${menu}";
+          "custom/wlogout" = {
+            on-click = "wlogout -b 2";
             format = "";
             tooltip = false;
           };
@@ -77,7 +71,7 @@
             color: ${text};
             padding: 7px 0px 6px 9px;
           }
-          #custom-powermenu {
+          #custom-wlogout {
             color: ${text};
             font-size: 16px;
             margin-bottom: 4px;

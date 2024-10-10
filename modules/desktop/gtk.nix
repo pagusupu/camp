@@ -32,14 +32,7 @@ in {
         };
         qt = {
           enable = true;
-          platformTheme = {
-            name = mkDefault "adwaita";
-            package = pkgs.adwaita-qt;
-          };
-          style = {
-            name = mkDefault "adwaita";
-            package = pkgs.adwaita-qt;
-          };
+          platformTheme.name = "gtk3";
         };
         home.pointerCursor = {
           package = pkgs.rose-pine-cursor;
@@ -54,10 +47,6 @@ in {
           gtk = {
             theme.name = "rose-pine-moon";
             iconTheme.name = "rose-pine-moon";
-          };
-          qt = {
-            platformTheme.name = "adwaita-dark";
-            style.name = "adwaita-dark";
           };
           home.pointerCursor.name = "BreezeX-RosePine-Linux";
         };
