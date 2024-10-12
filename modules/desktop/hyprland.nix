@@ -24,7 +24,6 @@
             "${wallpaper}"
             "waybar"
             "mako"
-            "steam -console -silent"
             "sublime-music"
             "discord"
           ];
@@ -145,7 +144,6 @@
         satty
         swaybg
         wl-clipboard
-        xfce.thunar
       ];
     };
     services.greetd = {

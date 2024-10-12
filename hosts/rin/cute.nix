@@ -1,7 +1,6 @@
 {
   cute = {
     desktop = {
-      ags = true;
       audio = true;
       boot = true;
       fonts = true;
@@ -21,6 +20,7 @@
       firefox = true;
       misc = true;
       nvim = true;
+      prismlauncher = true;
       starship = true;
       steam = true;
       zsh = true;

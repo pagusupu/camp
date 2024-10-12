@@ -1,27 +1,12 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
-  environment = lib.mkMerge [
-    {
-      systemPackages = with pkgs; [
-        audacity
-        easyeffects
-        heroic
-        keyguard
-        radeontop
-        sublime-music
-      ];
-    }
-    {
-      etc = {
-        "jdks/21".source = lib.getBin pkgs.openjdk21;
-        "jdks/17".source = lib.getBin pkgs.openjdk17;
-        "jdks/8".source = lib.getBin pkgs.openjdk8;
-      };
-      systemPackages = [pkgs.prismlauncher];
-    }
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    audacity
+    easyeffects
+    heroic
+    keyguard
+    radeontop
+    sublime-music
+    xfce.thunar
   ];
   programs.localsend = {
     enable = true;

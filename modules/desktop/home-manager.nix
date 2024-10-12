@@ -10,12 +10,10 @@
   config = lib.mkIf config.cute.desktop.home-manager (lib.mkMerge [
     {
       home-manager = {
-        users.pagu = {
-          home = {
-            username = "pagu";
-            homeDirectory = "/home/pagu";
-            stateVersion = "23.05";
-          };
+        users.pagu.home = {
+          username = "pagu";
+          homeDirectory = "/home/pagu";
+          stateVersion = "23.05";
         };
         extraSpecialArgs = {inherit inputs;};
         useGlobalPkgs = true;
@@ -30,7 +28,6 @@
             enable = true;
             defaultApplications = let
               browser = ["firefox.desktop"];
-              file-manager = ["thunar.desktop"];
             in {
               "application/json" = browser;
               "application/pdf" = browser;
@@ -46,7 +43,7 @@
               "x-scheme-handler/http" = browser;
               "x-scheme-handler/https" = browser;
               "x-scheme-handler/unknown" = browser;
-              "inode/directory" = file-manager;
+              "inode/directory" = ["thunar.desktop"];
             };
           };
           userDirs = let

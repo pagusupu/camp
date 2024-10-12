@@ -95,7 +95,7 @@
                           }
                           {
                             title = "HM Search";
-                            url = "https://home-manager-options.extranix.com/?query=sefsef&release=master";
+                            url = "https://home-manager-options.extranix.com/?release=master";
                             same-tab = true;
                           }
                           {
