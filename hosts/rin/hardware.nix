@@ -30,7 +30,6 @@
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
-    graphics.enable = true;
   };
   fileSystems = {
     "/boot" = {

@@ -43,6 +43,7 @@
       ip = "192.168.178.182";
       name = "enp37s0";
     };
+    system.graphics = true;
   };
   networking = {
     domain = "pagu.cafe";

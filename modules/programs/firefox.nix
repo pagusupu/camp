@@ -141,10 +141,6 @@
         };
       };
     };
-    hardware.graphics.extraPackages = with pkgs; [
-      libvdpau-va-gl
-      vaapiVdpau
-    ];
     environment.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
   };
 }

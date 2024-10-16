@@ -32,7 +32,8 @@ in {
         };
         qt = {
           enable = true;
-          platformTheme.name = "gtk3";
+          platformTheme.name = "gtk";
+          style.name = "gtk2";
         };
         home.pointerCursor = {
           package = pkgs.rose-pine-cursor;

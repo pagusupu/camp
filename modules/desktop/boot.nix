@@ -7,10 +7,6 @@
 }: {
   options.cute.desktop.boot = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.boot {
-    systemd = {
-      services.systemd-udev-settle.enable = false;
-      network.wait-online.enable = false;
-    };
     boot = {
       plymouth = {
         enable = true;
@@ -20,6 +16,9 @@
       initrd.verbose = false;
       kernelParams = ["quiet" "splash"];
     };
-    security.sudo.wheelNeedsPassword = false;
+    systemd = {
+      services.systemd-udev-settle.enable = false;
+      network.wait-online.enable = false;
+    };
   };
 }

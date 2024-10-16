@@ -46,7 +46,7 @@
           };
           MINIMIZE_TO_TRAY = false;
           OPEN_ON_STARTUP = false;
-          SKIP_HOST_UPDATE = true;
+          SKIP_HOST_UPDATE = false;
         };
       };
     };

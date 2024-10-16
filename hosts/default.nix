@@ -13,9 +13,7 @@
   in {
     aoi = withSystem "x86_64-linux" (_:
       nixosSystem {
-        modules =
-          filternix [../lib ../modules ./aoi]
-          ++ [inputs.lix.nixosModules.default];
+        modules = filternix [../lib ../modules ./aoi] ++ [inputs.lix.nixosModules.default];
         inherit specialArgs;
       });
     ena = withSystem "x86_64-linux" (_:
@@ -25,9 +23,7 @@
       });
     rin = withSystem "x86_64-linux" (_:
       nixosSystem {
-        modules =
-          filternix [../lib ../modules ./rin]
-          ++ [inputs.lix.nixosModules.default];
+        modules = filternix [../lib ../modules ./rin] ++ [inputs.lix.nixosModules.default];
         inherit specialArgs;
       });
   };

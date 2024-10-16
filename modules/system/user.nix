@@ -26,7 +26,6 @@
         uid = 1000;
         hashedPasswordFile = config.age.secrets.user.path;
       };
-      security.sudo.execWheelOnly = true;
     }
   ]);
 }
