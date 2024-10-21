@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.steam = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.steam (lib.mkMerge [
+  options.cute.programs.gui.steam = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.gui.steam (lib.mkMerge [
     {
       programs.steam = {
         enable = true;

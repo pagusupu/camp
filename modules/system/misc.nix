@@ -11,12 +11,13 @@ in {
   options.cute.system = {
     cleanup = mkEnabledOption;
     graphics = mkEnable;
+    programs = mkEnabledOption;
     sudo = mkEnabledOption;
     TZ = mkEnabledOption;
     winDualBoot = mkEnable;
   };
   config = let
-    inherit (config.cute.system) cleanup graphics sudo TZ winDualBoot;
+    inherit (config.cute.system) cleanup graphics programs sudo TZ winDualBoot;
   in
     mkMerge [
       (mkIf cleanup {
@@ -43,6 +44,12 @@ in {
           ];
           enable32Bit = true;
         };
+      })
+      (mkIf programs {
+        environment.systemPackages = with pkgs; [
+          ouch
+          wget
+        ];
       })
       (mkIf sudo {
         security.sudo-rs = {

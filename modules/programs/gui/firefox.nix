@@ -6,8 +6,8 @@
   inputs,
   ...
 }: {
-  options.cute.programs.firefox = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.firefox {
+  options.cute.programs.gui.firefox = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.gui.firefox {
     assertions = cutelib.assertHm "firefox";
     home-manager.users.pagu = {
       programs.firefox = {
@@ -101,40 +101,33 @@
               previewNewDesign = true;
               syncSettings = false;
             };
-            "uBlock0@raymondhill.net".adminSettings.selectedFilterLists = [
-              "user-filters"
-              "ublock-filters"
-              "ublock-badware"
-              "ublock-privacy"
-              "ublock-quick-fixes"
-              "ublock-unbreak"
-              "easylist"
-              "adguard-generic"
-              "adguard-mobile"
-              "easyprivacy"
-              "adguard-spyware"
-              "adguard-spyware-url"
-              "block-lan"
-              "urlhaus-1"
-              "curben-phishing"
-              "plowe-0"
-              "dpollock-0"
-              "fanboy-cookiemonster"
-              "ublock-cookies-easylist"
-              "adguard-cookies"
-              "ublock-cookies-adguard"
-              "fanboy-social"
-              "adguard-social"
-              "fanboy-thirdparty_social"
-              "easylist-chat"
-              "easylist-newsletters"
-              "easylist-notifications"
-              "easylist-annoyances"
-              "adguard-mobile-app-banners"
-              "adguard-other-annoyances"
-              "adguard-popup-overlays"
-              "adguard-widgets"
-              "ublock-annoyances"
+            "uBlock0@raymondhill.net" = {
+              adminSettings.selectedFilterLists = [
+                "user-filters"
+                "ublock-filters"
+                "ublock-badware"
+                "ublock-privacy"
+                "ublock-quick-fixes"
+                "ublock-unbreak"
+                "easylist"
+                "easyprivacy"
+                "adguard-spyware-url"
+                "urlhaus-1"
+                "plowe-0"
+                "fanboy-cookiemonster"
+                "ublock-cookies-easylist"
+                "fanboy-social"
+                "easylist-chat"
+                "easylist-newsletters"
+                "easylist-notifications"
+                "easylist-annoyances"
+                "ublock-annoyances"
+                "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
+                "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+              ];
+            };
+            userSettings.importedLists = [
+              "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
               "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
             ];
           };

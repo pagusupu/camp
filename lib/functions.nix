@@ -46,7 +46,7 @@ in {
       }
     ];
     assertDocker = n: mkAssert config.cute.services.servers.docker "${n} requires docker service.";
-    assertHm = n: mkAssert config.cute.desktop.home-manager "${n} requires home-manager service.";
+    assertHm = n: mkAssert config.cute.services.home-manager "${n} requires home-manager service.";
     assertNginx = n: mkAssert config.cute.services.servers.nginx.enable "${n} requires nginx service.";
   };
 }

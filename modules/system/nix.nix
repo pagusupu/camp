@@ -39,5 +39,15 @@
       };
       environment.etc."nix/inputs/nixpkgs".source = inputs.nixpkgs.outPath;
     }
+    {
+      programs.nh = {
+        enable = true;
+        clean = {
+          enable = true;
+          extraArgs = "--keep 5 --keep-since 3d";
+        };
+        flake = "/home/pagu/camp/";
+      };
+    }
   ]);
 }

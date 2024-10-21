@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.zsh = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.zsh {
+  options.cute.programs.cli.zsh = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.cli.zsh {
     programs.zsh = {
       enable = true;
       autosuggestions.enable = true;

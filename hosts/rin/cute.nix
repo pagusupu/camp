@@ -5,28 +5,34 @@
       boot = true;
       fonts = true;
       gtk = true;
-      home-manager = true;
       hyprland = true;
       idle = true;
       mako = true;
       tofi = true;
       waybar = true;
       wlogout = true;
+      xdg = true;
     };
     programs = {
-      aagl = true;
-      alacritty = true;
-      discord = false;
-      firefox = true;
-      misc = true;
-      nvim = true;
-      prismlauncher = true;
-      starship = true;
-      steam = true;
-      zsh = true;
+      cli = {
+        btop = true;
+        nvim = true;
+        starship = true;
+        yazi = true;
+        zsh = true;
+      };
+      gui = {
+        aagl = true;
+        alacritty = true;
+        discord = true;
+        firefox = true;
+        prismlauncher = true;
+        steam = true;
+      };
     };
     services = {
       glance = true;
+      home-manager = true;
       tailscale.enable = true;
     };
     system = {

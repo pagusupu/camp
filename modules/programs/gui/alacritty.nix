@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.alacritty = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.alacritty {
+  options.cute.programs.gui.alacritty = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.gui.alacritty {
     assertions = cutelib.assertHm "alacritty";
     home-manager.users.pagu = {
       programs.alacritty = {

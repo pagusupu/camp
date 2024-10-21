@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.prismlauncher = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.prismlauncher {
+  options.cute.programs.gui.prismlauncher = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.gui.prismlauncher {
     environment = {
       etc = {
         "jdks/21".source = lib.getBin pkgs.openjdk21;
