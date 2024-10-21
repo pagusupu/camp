@@ -1,20 +1,15 @@
 {
   cute = {
-    programs = {
-      misc = true;
+    programs.cli = {
+      btop = true;
       nvim = true;
       starship = true;
+      yazi = true;
       zsh = true;
     };
-    services = {
-      tailscale = {
-        enable = true;
-        server = true;
-      };
-      blocky = true;
-      comin = true;
-      glance = true;
-      homeassistant = true;
+    services.tailscale = {
+      enable = true;
+      server = true;
     };
     net = {
       ip = "192.168.178.82";
