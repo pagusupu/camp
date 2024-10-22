@@ -37,7 +37,7 @@
     services = {
       backend.home-manager = true;
       local.glance = true;
-      tailscale = true;
+      tailscale.enable = true;
     };
     system = {
       graphics = true;

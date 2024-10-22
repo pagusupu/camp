@@ -13,7 +13,7 @@
     gtk = cutelib.mkEnable;
     wallpaper-colour = lib.mkOption {type = lib.types.str;};
   };
-  config = lib.mkIf config.cute.desktop.gtk (let
+  config = lib.mkIf config.cute.desktop.misc.gtk (let
     inherit (lib) mkDefault;
   in
     lib.mkMerge [

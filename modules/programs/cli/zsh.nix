@@ -47,7 +47,6 @@
             ZSH_HIGHLIGHT_STYLES[path_prefix]=none
           '';
           dotDir = ".config/zsh";
-          history.path = ".config/zsh/history";
         };
         bat = {
           enable = true;

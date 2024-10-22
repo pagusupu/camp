@@ -6,7 +6,7 @@
   ...
 }: {
   options.cute.desktop.misc.boot = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.boot {
+  config = lib.mkIf config.cute.desktop.misc.boot {
     boot = {
       plymouth = {
         enable = true;
