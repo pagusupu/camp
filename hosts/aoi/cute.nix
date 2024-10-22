@@ -1,12 +1,36 @@
 {
   cute = {
-    programs = {
-      misc = true;
+    programs.cli = {
+      btop = true;
       nvim = true;
       starship = true;
       zsh = true;
     };
     services = {
+      backend = {
+        docker = true;
+        home-manager = true;
+        nginx = true;
+      };
+      cloud = {
+        etebase = true;
+        immich = true;
+        linkding = true;
+        mealie = true;
+        memos = true;
+        vaultwarden = true;
+      };
+      local = {
+        blocky = true;
+        home-assistant = true;
+      };
+      media = {
+        freshrss = true;
+        jellyfin = true;
+        komga = true;
+        navidrome = true;
+        qbittorrent = true;
+      };
       minecraft = {
         enable = true;
         server = "modded";
@@ -15,29 +39,6 @@
         enable = true;
         server = true;
       };
-      servers = {
-        docker = true;
-        nginx.enable = true;
-      };
-      web = {
-        audiobookshelf.enable = true;
-        feishin.enable = true;
-        freshrss.enable = true;
-        grafana.enable = true;
-        immich.enable = true;
-        jellyfin.enable = true;
-        jellyseerr.enable = true;
-        komga.enable = true;
-        linkding.enable = true;
-        matrix-client.enable = true;
-        mealie.enable = true;
-        memos.enable = true;
-        navidrome.enable = true;
-        qbittorrent.enable = true;
-        vaultwarden.enable = true;
-      };
-      comin = true;
-      etebase = true;
     };
     net = {
       ip = "192.168.178.182";

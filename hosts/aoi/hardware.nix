@@ -10,7 +10,10 @@
       availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
       supportedFilesystems.btrfs = true;
     };
-    swraid.enable = true;
+    swraid = {
+      enable = true;
+      mdadmConf = "MAILADDR please@shut.up";
+    };
   };
   powerManagement.cpuFreqGovernor = "powersave";
   hardware = {

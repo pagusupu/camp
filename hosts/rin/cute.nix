@@ -1,24 +1,28 @@
 {pkgs, ...}: {
   cute = {
     desktop = {
-      audio = true;
-      boot = true;
-      fonts = true;
-      gtk = true;
-      hyprland = true;
-      idle = true;
-      mako = true;
-      tofi = true;
-      waybar = true;
-      wlogout = true;
-      xdg = true;
+      misc = {
+        audio = true;
+        boot = true;
+        fonts = true;
+        gtk = true;
+        xdg = true;
+      };
+      programs = {
+        ags = false;
+        hyprland = true;
+        idle = true;
+        mako = true;
+        tofi = true;
+        waybar = true;
+        wlogout = true;
+      };
     };
     programs = {
       cli = {
         btop = true;
         nvim = true;
         starship = true;
-        yazi = true;
         zsh = true;
       };
       gui = {
@@ -31,9 +35,9 @@
       };
     };
     services = {
-      glance = true;
-      home-manager = true;
-      tailscale.enable = true;
+      backend.home-manager = true;
+      local.glance = true;
+      tailscale = true;
     };
     system = {
       graphics = true;
@@ -51,7 +55,6 @@
   environment.systemPackages = with pkgs; [
     easyeffects
     heroic
-    keyguard
     radeontop
     sublime-music
     xfce.thunar

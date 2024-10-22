@@ -7,53 +7,75 @@
 }: {
   options.cute.programs.cli.zsh = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.cli.zsh {
-    programs.zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      shellAliases = {
-        ga = "git add -A";
-        gc = "git commit -m";
-        gp = "git push -u";
-        gpo = "git push -u origin main";
-        gs = "git status -s";
-        gsv = "git status -v";
-        cat = "bat --theme='base16'";
-        cd = "z";
-        grep = "grep --color=auto";
-        ls = "eza --group-directories-first";
+    home-manager.users.pagu = {
+      programs = {
+        zsh = {
+          enable = true;
+          autocd = true;
+          autosuggestion.enable = true;
+          syntaxHighlighting.enable = true;
+          shellAliases = lib.mkMerge [
+            {
+              cat = "bat";
+              cd = "z";
+              grep = "grep --color=auto";
+              ls = "eza";
+              yazi = "yy";
+            }
+            {
+              ga = "git add -A";
+              gc = "git commit -m";
+              gp = "git push -u";
+              gpo = "git push -u origin main";
+              gs = "git status -s";
+              gsv = "git status -v";
+            }
+          ];
+          initExtra = ''
+            nr() {
+              nix run nixpkgs#$1 -- "''${@:2}"
+            }
+            ns() {
+               nix shell nixpkgs#''${^@}
+            }
+            bindkey "^[[1;5C" forward-word
+            bindkey "^[[1;5D" backward-word
+            zsh-newuser-install() { :; }
+            # disable weird underline
+            (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+            ZSH_HIGHLIGHT_STYLES[path]=none
+            ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+          '';
+          dotDir = ".config/zsh";
+          history.path = ".config/zsh/history";
+        };
+        bat = {
+          enable = true;
+          config.theme = "base16";
+        };
+        eza = {
+          enable = true;
+          git = true;
+          icons = "auto";
+          extraOptions = ["--group-directories-first"];
+        };
+        yazi = {
+          enable = true;
+          settings.manager = {
+            sort_by = "natural";
+            sort_dir_first = true;
+          };
+          enableZshIntegration = true;
+        };
+        fzf.enable = true;
+        zoxide.enable = true;
       };
-      shellInit = ''
-        zsh-newuser-install() { :; }
-        eval "$(zoxide init zsh)"
-        nr() {
-          nix run nixpkgs#$1 -- "''${@:2}"
-        }
-        ns() {
-           nom shell nixpkgs#''${^@}
-        }
-        bindkey "^[[1;5C" forward-word
-        bindkey "^[[1;5D" backward-word
-        # disable weird underline
-        (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-        ZSH_HIGHLIGHT_STYLES[path]=none
-        ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-      '';
-      histFile = "$HOME/.cache/zsh_history";
-      histSize = 10000;
-      promptInit = "PROMPT='%F{blue}% %~ >%f '";
     };
     environment = {
       binsh = lib.getExe pkgs.dash;
-      systemPackages = with pkgs; [
-        bat
-        eza
-        fzf # for zoxide
-        nix-output-monitor
-        zoxide
-      ];
       shells = [pkgs.zsh];
     };
+    programs.zsh.enable = true;
     users.users.pagu.shell = pkgs.zsh;
   };
 }
