@@ -2,17 +2,15 @@
   config,
   lib,
   cutelib,
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
-  options.cute.programs.gui.firefox = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.gui.firefox {
-    assertions = cutelib.assertHm "firefox";
+  options.cute.programs.gui.floorp = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.gui.floorp {
     home-manager.users.pagu = {
-      programs.firefox = {
+      programs.floorp = {
         enable = true;
-        package = pkgs.firefox.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
           extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
             bitwarden
@@ -22,6 +20,7 @@
             sponsorblock
             stylus
             tree-style-tab
+            ublock-origin
           ];
           settings = {
             "browser.startup.homepage" = "http://localhost:8333";
@@ -40,41 +39,49 @@
               "Google"
             ];
             engines = {
-              "Amazon.com".metaData.hidden = true;
               "Bing".metaData.hidden = true;
-              "eBay".metaData.hidden = true;
-              "Wikipedia (en)".metaData.hidden = true;
+              "Startpage".metaData.hidden = true;
             };
           };
-          extraConfig = let
-            betterfox = pkgs.fetchFromGitHub {
-              owner = "yokoffing";
-              repo = "Betterfox";
-              rev = "129.0";
-              hash = "sha256-hpkEO5BhMVtINQG8HN4xqfas/R6q5pYPZiFK8bilIDs=";
-            };
-            inherit (builtins) readFile;
-          in ''
-            ${readFile "${betterfox}/Fastfox.js"}
-            ${readFile "${betterfox}/Peskyfox.js"}
-            ${readFile "${betterfox}/Securefox.js"}
-            ${readFile "${betterfox}/Smoothfox.js"}
-          '';
         };
         policies = {
+          CaptivePortal = false;
           DisableFeedbackCommands = true;
           DisableFirefoxAccounts = true;
           DisableFirefoxScreenshots = true;
+          DisableFirefoxStudies = true;
           DisablePocket = true;
           DisableProfileImport = true;
           DisableProfileRefresh = true;
           DisableSetDesktopBackground = true;
           DisplayBookmarksToolbar = "never";
+          DontCheckDefaultBrowser = true;
           HardwareAcceleration = true;
           NoDefaultBookmarks = true;
           PasswordManagerEnabled = false;
           Cookies = {
             Behavior = "reject-tracker-and-partition-foreign";
+            Locked = true;
+          };
+          FirefoxHome = {
+            Highlights = false;
+            Pocket = false;
+            Snippets = false;
+            TopSites = false;
+            Locked = true;
+          };
+          FirefoxSuggest = {
+            ImproveSuggest = false;
+            SponsoredSugRegexgestions = false;
+            WebSuggestions = true;
+            Locked = true;
+          };
+          UserMessaging = {
+            ExtensionRecommendations = false;
+            FeatureRecommendations = false;
+            MoreFromMozilla = false;
+            SkipOnboarding = true;
+            WhatsNew = false;
             Locked = true;
           };
           SanitizeOnShutdown = {
@@ -88,7 +95,6 @@
           };
           "3rdparty".Extensions = {
             "addon@darkreader.org" = {
-              enabled = true;
               automation = {
                 enabled = true;
                 behavior = "OnOff";
@@ -125,11 +131,14 @@
                 "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
                 "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
               ];
+              userSettings = {
+                importedLists = [
+                  "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
+                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+                ];
+                exteneralLists = "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt";
+              };
             };
-            userSettings.importedLists = [
-              "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
-              "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
-            ];
           };
         };
       };
