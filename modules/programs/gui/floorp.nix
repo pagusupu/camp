@@ -18,7 +18,6 @@
             linkding-extension
             return-youtube-dislikes
             sponsorblock
-            stylus
             tree-style-tab
             ublock-origin
           ];

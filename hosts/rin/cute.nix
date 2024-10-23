@@ -29,7 +29,6 @@
         aagl = true;
         alacritty = true;
         discord = true;
-        firefox = false;
         floorp = true;
         prismlauncher = true;
         steam = true;

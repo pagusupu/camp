@@ -18,6 +18,10 @@
         m = "SUPER";
       in {
         enable = true;
+        plugins = with pkgs.hyprlandPlugins; [
+          hypr-dynamic-cursors
+          hyprspace
+        ];
         settings = {
           exec-once = [
             "gtklock -d"
@@ -35,8 +39,8 @@
             "hyprctl setcursor ${name} ${builtins.toString size}"
           ];
           env = [
-            "NIXOS_OZONE_WL,1"
             "_JAVA_AWT_WM_NONREPARENTING,1"
+            "NIXOS_OZONE_WL,1"
           ];
           windowrulev2 = [
             "workspace 5, class:^(.sublime-music-wrapped)$"
@@ -46,8 +50,6 @@
             "float, class:^(steam)$,title:^(Special Offers)$"
             "float, title:^(Open Files)$"
             "float, class:^(thunar)$"
-            "size 1300 800, title:^(Keyguard)$"
-            "nomaxsize, title:^(Wine configuration)$"
           ];
           animations = {
             enabled = true;
@@ -58,6 +60,10 @@
               "workspaces, 1, 1, default, slidevert"
             ];
             first_launch_animation = false;
+          };
+          cursor = {
+            default_monitor = m1;
+            no_hardware_cursors = true;
           };
           decoration = {
             blur.enabled = false;
@@ -91,21 +97,38 @@
             vfr = true;
             vrr = 2;
           };
-          bind = let
-            inherit (lib) getExe;
-            inherit (pkgs) grimblast grim slurp;
-          in [
+          plugin = {
+            dynamic-cursors = {
+              stretch = {
+                limit = 6000;
+                function = "linear";
+              };
+              mode = "stretch";
+              shake.enabled = false;
+            };
+            overview = with config.colours; {
+              panelColor = "rgb(${overlay})";
+              panelBorderColor = "rgb(${love})";
+              workspaceActiveBorder = "rgb(${love})";
+              workspaceInactiveBorder = "rgb(${subtle})";
+            };
+          };
+          bind = [
             "${m}, RETURN, exec, alacritty"
             "${m}, TAB, exec, tofi-drun && rm ~/.cache/tofi-drun"
-            "${m}, BACKSPACE, exec, ${getExe grimblast} --notify --freeze copy area"
-            "${m}:SHIFT, BACKSPACE, exec, ${getExe grimblast} --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
-            ''${m}, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --copy-command wl-copy''
-            ''${m}:SHIFT, P, exec, ${getExe grim} -g "$(${getExe slurp})" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
+            "${m}:SHIFT, TAB, overview:toggle"
             "${m}, L, exec, gtklock"
+
+            "${m}, BACKSPACE, exec, grimblast --notify --freeze copy area"
+            "${m}:SHIFT, BACKSPACE, exec, grimblast --notify --freeze save area ~/pictures/screenshots/$(date +'%s.png')"
+            ''${m}, P, exec, grim -g "$(slurp)" -t ppm - | satty --filename - --copy-command wl-copy''
+            ''${m}:SHIFT, P, exec, grim -g "$(slurp)" -t ppm - | satty --filename - --output-filename ~/pictures/screenshots/satty-$(date '+%H:%M:%S').png''
+
             "${m}, Q, killactive"
             "${m}, F, fullscreen"
             "${m}, SPACE, togglefloating"
             "${m}:SHIFT, M, exit"
+
             "${m}, left, movefocus, l"
             "${m}, right, movefocus, r"
             "${m}, up, movefocus, u"
@@ -140,8 +163,11 @@
         systemd.variables = ["--all"];
       };
       home.packages = with pkgs; [
+        grim
+        grimblast
         rwpspread
         satty
+        slurp
         swaybg
         wl-clipboard
       ];
