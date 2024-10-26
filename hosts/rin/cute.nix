@@ -29,7 +29,7 @@
         aagl = true;
         alacritty = true;
         discord = true;
-        firefox = true;
+        floorp = true;
         prismlauncher = true;
         steam = true;
       };
@@ -53,6 +53,7 @@
     hostId = "6f257938";
   };
   environment.systemPackages = with pkgs; [
+    beets
     easyeffects
     heroic
     radeontop
