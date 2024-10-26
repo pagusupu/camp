@@ -28,15 +28,14 @@
             "${wallpaper}"
             "waybar"
             "mako"
-            "sublime-music"
             "discord"
+            "sublime-music"
           ];
-          exec = let
-            inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
-          in [
-            "kill $(pidof swaybg)"
-            "${wallpaper}"
-            "hyprctl setcursor ${name} ${builtins.toString size}"
+          exec = lib.mkMerge [
+            ["kill $(pidof swaybg)" "${wallpaper}"]
+            (let
+              inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
+            in ["hyprctl setcursor ${name} ${builtins.toString size}"])
           ];
           env = [
             "_JAVA_AWT_WM_NONREPARENTING,1"

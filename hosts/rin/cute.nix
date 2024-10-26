@@ -9,7 +9,6 @@
         xdg = true;
       };
       programs = {
-        ags = false;
         hyprland = true;
         idle = true;
         mako = true;
@@ -43,17 +42,13 @@
       graphics = true;
       winDualBoot = true;
     };
-    net = {
-      ip = "192.168.178.126";
-      name = "enp10s0";
-    };
+    net.connection = "wireless";
   };
   networking = {
     hostName = "rin";
     hostId = "6f257938";
   };
   environment.systemPackages = with pkgs; [
-    beets
     easyeffects
     heroic
     radeontop

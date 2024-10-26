@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.enabled.ssh = cutelib.mkEnabledOption;
-  config = lib.mkIf config.cute.enabled.ssh {
+  options.cute.system.ssh = cutelib.mkEnabledOption;
+  config = lib.mkIf config.cute.system.ssh {
     services.openssh = {
       enable = true;
       settings = {

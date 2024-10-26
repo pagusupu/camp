@@ -12,7 +12,7 @@
         mimeApps = {
           enable = true;
           defaultApplications = let
-            browser = ["firefox.desktop"];
+            browser = ["floorp.desktop"];
           in {
             "application/json" = browser;
             "application/pdf" = browser;

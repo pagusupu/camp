@@ -19,10 +19,6 @@
               enable = true;
               file = true;
             };
-            betterSettings = {
-              enable = true;
-              disableFade = false;
-            };
             newGuildSettings = {
               enable = true;
               messages = "only@Mentions";

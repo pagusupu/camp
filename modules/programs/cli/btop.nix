@@ -19,7 +19,6 @@
           show_swap = false;
           show_io_stat = false;
           show_battery = false;
-          net_iface = "${config.cute.net.name}";
         };
       };
     };

@@ -3,7 +3,7 @@
     loader = {
       grub = {
         enable = true;
-        configurationLimit = 10;
+        configurationLimit = 5;
         device = "nodev";
         efiSupport = true;
         splashImage = null;

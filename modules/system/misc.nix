@@ -55,7 +55,7 @@ in {
         security.sudo-rs = {
           enable = true;
           execWheelOnly = true;
-          wheelNeedsPassword = mkIf (config.networking.hostName == "rin") false;
+          wheelNeedsPassword = false;
         };
       })
       (mkIf TZ {
