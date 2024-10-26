@@ -18,14 +18,11 @@
           enable = true;
           openFirewall = true;
           authKeyFile = config.age.secrets.tailscale.path;
-          useRoutingFeatures = lib.mkDefault "client";
+          useRoutingFeatures = "both";
+          extraUpFlags = ["--accept-risk="];
         }
         (lib.mkIf server {
-          extraUpFlags = ["--ssh" "--accept-risk="];
-          useRoutingFeatures = "server";
-        })
-        (lib.mkIf (config.networking.hostName == "aoi") {
-          extraUpFlags = ["--advertise-exit-node"];
+          extraUpFlags = ["--ssh" "--advertise-exit-node"];
         })
       ];
     };

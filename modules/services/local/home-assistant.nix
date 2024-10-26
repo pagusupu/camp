@@ -16,15 +16,13 @@
           unit_system = "metric";
         };
         # disable next two for onboarding
-        # default_config = {};
+        default_config = {};
       };
-      /*
-         extraComponents = [
+      extraComponents = [
         "fritz"
         "light"
         "wiz"
       ];
-      */
     };
   };
 }

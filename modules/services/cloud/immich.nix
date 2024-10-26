@@ -9,6 +9,7 @@
     services = {
       immich = {
         enable = true;
+        port = 3001;
         openFirewall = true;
         host = "0.0.0.0";
         mediaLocation = "/storage/services/immich";
