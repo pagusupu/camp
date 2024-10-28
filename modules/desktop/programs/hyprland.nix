@@ -114,7 +114,7 @@
           };
           bind = [
             "${m}, RETURN, exec, alacritty"
-            "${m}, TAB, exec, tofi-drun && rm ~/.cache/tofi-drun"
+            "${m}, TAB, exec, wofi"
             "${m}:SHIFT, TAB, overview:toggle"
             "${m}, L, exec, gtklock"
 

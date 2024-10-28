@@ -115,7 +115,7 @@
                           }
                           {
                             title = "Proton Drive";
-                            url = "https://https://drive.proton.me/u/2";
+                            url = "https://drive.proton.me/u/2";
                             same-tab = true;
                           }
                         ];

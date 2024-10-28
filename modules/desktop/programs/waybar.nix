@@ -14,7 +14,7 @@
           layer = "top";
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["custom/wlogout"];
+          modules-right = ["custom/wofi" "custom/wlogout"];
           reload_style_on_change = true;
           width = 36;
           "hyprland/workspaces" = {
@@ -26,6 +26,11 @@
             persistent-workspaces."*" = 4;
           };
           clock.format = "{:%I \n%M \n%p}";
+          "custom/wofi" = {
+            on-click = "wofi";
+            format = "󱗼";
+            tooltip = false;
+          };
           "custom/wlogout" = {
             on-click = "wlogout -b 2";
             format = "";
@@ -70,6 +75,11 @@
           #clock {
             color: ${text};
             padding: 7px 0px 6px 9px;
+          }
+          #custom-wofi {
+            color: ${text};
+            font-size: 22px;
+            margin-right: 2px;
           }
           #custom-wlogout {
             color: ${text};

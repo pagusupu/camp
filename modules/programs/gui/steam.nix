@@ -10,33 +10,25 @@
     {
       programs.steam = {
         enable = true;
-        package = pkgs.steam.override {extraLibraries = pkgs: [pkgs.wqy_zenhei];};
         extest.enable = true;
         localNetworkGameTransfers.openFirewall = true;
         protontricks.enable = true;
         gamescopeSession = {
           enable = true;
           args = [
-            "-H 1080" # height, assumes 16:9
-            "-r 165" # refresh rate
-            "-e" # steam integration
+            "-H 1080"
+            "-r 165"
+            "-e"
             "--expose-wayland"
           ];
           env = {
-            SDL_VIDEODRIVER = "x11"; # games supposedly prefer this
+            SDL_VIDEODRIVER = "x11";
             WLR_RENDERER = "vulkan";
           };
         };
         extraCompatPackages = [pkgs.proton-ge-bin];
       };
       hardware.xone.enable = true;
-      # https://github.com/fufexan/nix-gaming/blob/master/modules/platformOptimizations.nix
-      boot.kernel.sysctl = {
-        "kernel.sched_cfs_bandwidth_slice_us" = 3000;
-        "net.ipv4.tcp_fin_timeout" = 5;
-        "vm.max_map_count" = 2147483642;
-      };
-      environment.sessionVariables.WINEDEBUG = "-all"; # also supposedly helps
     }
     {
       programs.gamemode = {
@@ -52,6 +44,15 @@
         };
       };
       users.users.pagu.extraGroups = ["gamemode"];
+    }
+    {
+      # https://github.com/fufexan/nix-gaming/blob/master/modules/platformOptimizations.nix
+      boot.kernel.sysctl = {
+        "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+        "net.ipv4.tcp_fin_timeout" = 5;
+        "vm.max_map_count" = 2147483642;
+      };
+      environment.sessionVariables.WINEDEBUG = "-all";
     }
   ]);
 }

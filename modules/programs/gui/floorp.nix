@@ -31,7 +31,6 @@
             "privacy.resistFingerprinting.block_mozAddonManager" = true;
           };
           search = {
-            force = true;
             default = "DuckDuckGo";
             order = [
               "DuckDuckGo"
@@ -40,7 +39,9 @@
             engines = {
               "Bing".metaData.hidden = true;
               "Startpage".metaData.hidden = true;
+              "You.com".metaData.hidden = true;
             };
+            force = true;
           };
         };
         policies = {
@@ -106,38 +107,29 @@
               previewNewDesign = true;
               syncSettings = false;
             };
-            "uBlock0@raymondhill.net" = {
-              adminSettings.selectedFilterLists = [
-                "user-filters"
-                "ublock-filters"
-                "ublock-badware"
-                "ublock-privacy"
-                "ublock-quick-fixes"
-                "ublock-unbreak"
-                "easylist"
-                "easyprivacy"
-                "adguard-spyware-url"
-                "urlhaus-1"
-                "plowe-0"
-                "fanboy-cookiemonster"
-                "ublock-cookies-easylist"
-                "fanboy-social"
-                "easylist-chat"
-                "easylist-newsletters"
-                "easylist-notifications"
-                "easylist-annoyances"
-                "ublock-annoyances"
-                "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
-                "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
-              ];
-              userSettings = {
-                importedLists = [
-                  "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
-                  "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
-                ];
-                exteneralLists = "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt";
-              };
-            };
+            "uBlock0@raymondhill.net".adminSettings.selectedFilterLists = [
+              "user-filters"
+              "ublock-filters"
+              "ublock-badware"
+              "ublock-privacy"
+              "ublock-quick-fixes"
+              "ublock-unbreak"
+              "easylist"
+              "easyprivacy"
+              "adguard-spyware-url"
+              "urlhaus-1"
+              "plowe-0"
+              "fanboy-cookiemonster"
+              "ublock-cookies-easylist"
+              "fanboy-social"
+              "easylist-chat"
+              "easylist-newsletters"
+              "easylist-notifications"
+              "easylist-annoyances"
+              "ublock-annoyances"
+              "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
+              "https://raw.githubusercontent.com/laylavish/uBlockOrigin-HUGE-AI-Blocklist/main/list.txt"
+            ];
           };
         };
       };

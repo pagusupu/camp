@@ -31,6 +31,16 @@
             "inode/directory" = ["thunar.desktop"];
           };
         };
+        desktopEntries =
+          lib.genAttrs [
+            "Alacritty"
+            "btop"
+            "yazi"
+          ]
+          (n: {
+            name = n;
+            noDisplay = true;
+          });
         userDirs = let
           p = "/home/pagu/";
         in {

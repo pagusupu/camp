@@ -27,7 +27,8 @@
     agenix.url = "github:ryantm/agenix";
     flake-parts.url = "github:hercules-ci/flake-parts";
     hosts.url = "github:StevenBlack/hosts";
-    nixcord.url = "github:kaylorben/nixcord";
+    nixcord.url = "github:AwesomeQubic/nixcord";
+    #nixcord.url = "github:kaylorben/nixcord"; https://github.com/KaylorBen/nixcord/pull/38
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt.url = "github:numtide/treefmt-nix";

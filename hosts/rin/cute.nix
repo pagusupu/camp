@@ -12,9 +12,9 @@
         hyprland = true;
         idle = true;
         mako = true;
-        tofi = true;
         waybar = true;
         wlogout = true;
+        wofi = true;
       };
     };
     programs = {
