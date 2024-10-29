@@ -1,4 +1,9 @@
 {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [./hosts ./treefmt.nix];
+      systems = ["x86_64-linux"];
+    };
   inputs = {
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
@@ -27,26 +32,9 @@
     agenix.url = "github:ryantm/agenix";
     flake-parts.url = "github:hercules-ci/flake-parts";
     hosts.url = "github:StevenBlack/hosts";
-    nixcord.url = "github:AwesomeQubic/nixcord";
-    #nixcord.url = "github:kaylorben/nixcord"; https://github.com/KaylorBen/nixcord/pull/38
+    nixcord.url = "github:kaylorben/nixcord";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt.url = "github:numtide/treefmt-nix";
   };
-  outputs = {systems, ...} @ inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [
-        ./hosts
-        inputs.treefmt.flakeModule
-      ];
-      perSystem.treefmt.config = {
-        programs = {
-          alejandra.enable = true;
-          deadnix.enable = true;
-          statix.enable = true;
-        };
-        projectRootFile = "flake.nix";
-      };
-      systems = ["x86_64-linux"];
-    };
 }

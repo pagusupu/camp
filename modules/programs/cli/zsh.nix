@@ -46,6 +46,12 @@
             ZSH_HIGHLIGHT_STYLES[path]=none
             ZSH_HIGHLIGHT_STYLES[path_prefix]=none
           '';
+          history = {
+            expireDuplicatesFirst = true;
+            ignoreDups = true;
+            ignoreSpace = true;
+            path = ".config/zsh/zsh_history";
+          };
           dotDir = ".config/zsh";
         };
         bat = {

@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   cute = {
     programs.cli = {
       btop = true;
@@ -51,4 +51,5 @@
     hostName = "aoi";
     hostId = "a3b49b22";
   };
+  imports = [inputs.lix.nixosModules.default];
 }

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   cute = {
     desktop = {
       misc = {
@@ -56,4 +60,5 @@
     xfce.thunar
   ];
   programs.localsend.enable = true;
+  imports = [inputs.lix.nixosModules.default];
 }
