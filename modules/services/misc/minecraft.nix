@@ -22,27 +22,29 @@ in {
         {
           image = "itzg/minecraft-server:stable";
           ports = ["25565:25565"];
-          volumes = ["/home/pagu/minecraft/${server}:/data"];
           environment = {
             EULA = "true";
             MOTD = ":3";
             DIFFICULTY = mkDefault "hard";
             ICON = "https://pagu.cafe/paguicon.jpg";
-            VIEW_DISTANCE = "12";
-            SIMULATION_DISTANCE = "6";
+            ENABLE_WHITELIST = "true";
+          };
+          volumes = ["/home/pagu/minecraft/${server}:/data"];
+        }
+        {
+          environment = {
             INIT_MEMORY = "8G";
             MAX_MEMORY = "12G";
-            SERVER_PORT = "25565";
-            ENABLE_WHITELIST = "true";
+            SIMULATION_DISTANCE = "6";
+            VIEW_DISTANCE = "12";
             ENABLE_AUTOPAUSE = "true";
             MAX_TICK_TIME = "-1";
           };
-          autoStart = false;
         }
         (mkIf (server == "vanilla") {
           environment = {
             VERSION = "1.21.1";
-            LEVEL = "world"; # list: world
+            LEVEL = "world";
           };
         })
         (mkIf (server == "modded") {

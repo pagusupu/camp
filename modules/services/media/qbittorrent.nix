@@ -17,43 +17,51 @@
         webuiPort = 8077;
         torrentingPort = 43862;
         package = inputs.qbit.legacyPackages.${pkgs.system}.qbittorrent-nox;
-        serverConfig = {
-          LegalNotice.Accepted = true;
-          BitTorrent.Session = let
+        serverConfig = lib.mkMerge [
+          {
+            LegalNotice.Accepted = true;
+            BitTorrent.Session = {
+              QueueingSystemEnabled = true;
+              IgnoreSlowTorrentsForQueueing = true;
+              SlowTorrentsDownloadRate = 40;
+              SlowTorrentsUploadRate = 40;
+              GlobalDLSpeedLimit = 4000;
+              GlobalUPSpeedLimit = 4000;
+              MaxActiveCheckingTorrents = 2;
+              MaxActiveDownloads = 3;
+              MaxActiveUploads = 300;
+              MaxActiveTorrents = 305;
+              MaxUploads = 300;
+              MaxConnections = 600;
+            };
+            Preferences = {
+              WebUI = {
+                Username = "pagu";
+                Password_PBKDF2 = ''"@ByteArray(kZipcTwDuigp5wDRkynNQA==:roLYJRl9n/jcGRTXzgont6GAsBm7Bu7LGfrUfB7QcQqgQRSOLNvBs9YrC6h8nMgN/4e4dDETmAQGF16S+zBD5Q==)"'';
+                ReverseProxySupportEnabled = true;
+                TrustedReverseProxiesList = "qbit.pagu.cafe";
+              };
+              General.Locale = "en";
+            };
+          }
+          (let
             p = "/storage/services/qbit/torrents/";
           in {
-            DefaultSavePath = p + "misc/";
-            TorrentExportDirectory = p + "sources/";
-            TempPath = p + "incomplete/";
-            TempPathEnabled = true;
-            QueueingSystemEnabled = true;
-            IgnoreSlowTorrentsForQueueing = true;
-            SlowTorrentsDownloadRate = 40;
-            SlowTorrentsUploadRate = 40;
-            GlobalDLSpeedLimit = 4000;
-            GlobalUPSpeedLimit = 4000;
-            MaxActiveCheckingTorrents = 2;
-            MaxActiveDownloads = 3;
-            MaxActiveUploads = 300;
-            MaxActiveTorrents = 305;
-            MaxUploads = 300;
-            MaxConnections = 600;
-          };
-          Preferences = {
-            WebUI = {
-              AlternativeUIEnabled = true;
-              RootFolder = "${pkgs.fetchzip {
-                url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.14.1/vuetorrent.zip";
-                hash = "sha256-pSXhRxhjB21Us/OgvbIXKhZtpXWZD+F1yb6/w/PQASs=";
-              }}";
-              Username = "pagu";
-              Password_PBKDF2 = ''"@ByteArray(kZipcTwDuigp5wDRkynNQA==:roLYJRl9n/jcGRTXzgont6GAsBm7Bu7LGfrUfB7QcQqgQRSOLNvBs9YrC6h8nMgN/4e4dDETmAQGF16S+zBD5Q==)"'';
-              ReverseProxySupportEnabled = true;
-              TrustedReverseProxiesList = "qbit.pagu.cafe";
+            BitTorrent.Session = {
+              DefaultSavePath = p + "misc/";
+              TorrentExportDirectory = p + "sources/";
+              TempPath = p + "incomplete/";
+              TempPathEnabled = true;
             };
-            General.Locale = "en";
-          };
-        };
+            Preferences.WebUI = {
+              RootFolder = "${pkgs.fetchzip {
+                url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.15.0/vuetorrent.zip";
+                hash = "sha256-AWXlhiNEJAhEShCzJ42wGMJpL5beYlcUrrEPuJFv1k8=";
+              }}";
+              AlternativeUIEnabled = true;
+            };
+          })
+        ];
       };
       nginx.virtualHosts."qbit.pagu.cafe" = {
         enableACME = true;
