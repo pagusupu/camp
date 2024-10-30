@@ -21,5 +21,6 @@ in {
     "aoi"
     "ena"
     "rin"
+    "ryo"
   ];
 }
