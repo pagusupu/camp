@@ -11,9 +11,7 @@
       programs = {
         zsh = {
           enable = true;
-          autocd = true;
-          autosuggestion.enable = true;
-          syntaxHighlighting.enable = true;
+
           shellAliases = lib.mkMerge [
             {
               cat = "bat";
@@ -46,12 +44,10 @@
             ZSH_HIGHLIGHT_STYLES[path]=none
             ZSH_HIGHLIGHT_STYLES[path_prefix]=none
           '';
-          history = {
-            expireDuplicatesFirst = true;
-            ignoreAllDups = true;
-            path = ".config/zsh/zsh_history";
-          };
-          dotDir = ".config/zsh";
+          autocd = true;
+          autosuggestion.enable = true;
+          history.expireDuplicatesFirst = true;
+          syntaxHighlighting.enable = true;
         };
         bat = {
           enable = true;
