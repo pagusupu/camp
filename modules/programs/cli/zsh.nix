@@ -48,8 +48,7 @@
           '';
           history = {
             expireDuplicatesFirst = true;
-            ignoreDups = true;
-            ignoreSpace = true;
+            ignoreAllDups = true;
             path = ".config/zsh/zsh_history";
           };
           dotDir = ".config/zsh";

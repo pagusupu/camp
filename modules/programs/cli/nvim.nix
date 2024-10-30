@@ -68,11 +68,11 @@
       colorschemes.rose-pine = {
         enable = true;
         settings = {
-          dark_variant = "moon";
           styles = {
             italic = false;
             transparency = false;
           };
+          dark_variant = "moon";
           variant = "auto";
         };
       };
