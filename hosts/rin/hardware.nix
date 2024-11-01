@@ -33,20 +33,20 @@
   };
   fileSystems = {
     "/boot" = {
-      device = "/dev/disk/by-label/NixBoot";
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = ["fmask=0022" "dmask=0022"];
     };
     "/" = {
-      device = "/dev/disk/by-label/Flake";
+      device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
     };
     "/mnt/games" = {
-      device = "/dev/disk/by-label/Games";
+      device = "/dev/disk/by-label/games";
       fsType = "btrfs";
     };
   };
-  swapDevices = [{device = "/dev/disk/by-label/SwapFile";}];
+  swapDevices = [{device = "/dev/disk/by-label/swap";}];
   # no touchy
   system.stateVersion = "23.11";
 }

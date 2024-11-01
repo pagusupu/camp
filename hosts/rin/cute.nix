@@ -12,14 +12,7 @@
         gtk = true;
         xdg = true;
       };
-      programs = {
-        hyprland = true;
-        idle = true;
-        mako = true;
-        waybar = true;
-        wlogout = true;
-        wofi = true;
-      };
+      de = "hyprland";
     };
     programs = {
       cli = {
@@ -59,6 +52,5 @@
     sublime-music
     xfce.thunar
   ];
-  programs.localsend.enable = true;
   imports = [inputs.lix.nixosModules.default];
 }

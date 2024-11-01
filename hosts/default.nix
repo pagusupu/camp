@@ -3,24 +3,22 @@
   withSystem,
   ...
 }: let
-  inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
+  inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem mkMerge;
   genHosts = hosts:
     genAttrs hosts (
       name:
-        withSystem "x86_64-linux" (_:
-          nixosSystem {
-            modules = builtins.concatMap (x:
-              builtins.filter (hasSuffix ".nix")
-              (map toString (filesystem.listFilesRecursive x)))
-            [../lib ../modules ./${name}];
-            specialArgs = {inherit inputs;};
-          })
+        nixosSystem {
+          modules = builtins.concatMap (x:
+            builtins.filter (hasSuffix ".nix")
+            (map toString (filesystem.listFilesRecursive x)))
+          [../lib ../modules ./${name}];
+          specialArgs = {inherit inputs;};
+        }
     );
 in {
-  flake.nixosConfigurations = genHosts [
-    "aoi"
-    "ena"
-    "rin"
-    "ryo"
+  flake.nixosConfigurations = mkMerge [
+    (withSystem "x86_64-linux" (
+      _: genHosts ["aoi" "ena" "rin" "ryo"]
+    ))
   ];
 }
