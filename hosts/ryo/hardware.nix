@@ -1,6 +1,7 @@
 {
   boot = {
     loader = {
+      timeout = 0;
       systemd-boot = {
         enable = true;
         configurationLimit = 5;
@@ -15,13 +16,13 @@
     kernelModules = ["kvm-amd"];
     kernelParams = ["iommu=soft"];
   };
-  powerManagement.cpuFreqGoverner = "powersave";
+  powerManagement.cpuFreqGovernor = "powersave";
   hardware = {
     cpu.amd.updateMicrocode = true;
     enableRedistributableFirmware = true;
   };
-  filesystems = {
-    "/efi" = {
+  fileSystems = {
+    "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = ["fmask=0077" "dmask=0077"];
@@ -32,5 +33,6 @@
     };
   };
   swapDevices = [{device = "/dev/disk/by-label/swap";}];
+  # no touchy
   system.stateVersion = "24.05";
 }

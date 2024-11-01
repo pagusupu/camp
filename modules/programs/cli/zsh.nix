@@ -11,7 +11,6 @@
       programs = {
         zsh = {
           enable = true;
-
           shellAliases = lib.mkMerge [
             {
               cat = "bat";

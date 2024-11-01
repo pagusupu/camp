@@ -1,8 +1,12 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   cute = {
     desktop = {
       misc = {
-        auto = true;
+        audio = true;
         bluetooth = true;
         boot = true;
         fonts = true;
@@ -34,6 +38,6 @@
     hostName = "ryo";
     hostId = "6f257938";
   };
-  programs.localsend.enable = true;
+  environment.systemPackages = [pkgs.libreoffice-qt6-fresh];
   imports = [inputs.lix.nixosModules.default];
 }

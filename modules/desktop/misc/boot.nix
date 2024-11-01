@@ -9,7 +9,7 @@
   config = lib.mkIf config.cute.desktop.misc.boot {
     boot = {
       plymouth = {
-        enable = true;
+        enable = config.cute.desktop.programs.hyprland;
         theme = "bgrt";
         themePackages = [pkgs.nixos-bgrt-plymouth];
       };
