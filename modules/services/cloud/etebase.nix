@@ -11,22 +11,21 @@
       file = ../../../secrets/etebase.age;
       owner = "etebase-server";
     };
-    services = rec {
+    services = let
+      domain = "sync.${config.networking.domain}";
+      unixSocket = "/var/lib/etebase-server/etebase-server.sock";
+    in {
       etebase-server = {
         enable = true;
         openFirewall = true;
         dataDir = "/storage/services/etebase";
         settings = {
           global.secret_file = config.age.secrets.etebase.path;
-          allowed_hosts.allowed_host2 = "sync.pagu.cafe"; # host1 = 0.0.0.0
+          allowed_hosts.allowed_host2 = domain; # host1 = 0.0.0.0
         };
-        unixSocket = "/var/lib/etebase-server/etebase-server.sock";
+        inherit unixSocket;
       };
-      nginx.virtualHosts."sync.pagu.cafe" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://unix:${etebase-server.unixSocket}";
-      };
+      nginx.virtualHosts.${domain} = {locations."/".proxyPass = "http://unix:${unixSocket}";} // cutelib.SSL;
     };
   };
 }

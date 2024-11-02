@@ -11,19 +11,18 @@
       file = ../../../secrets/freshrss.age;
       owner = "freshrss";
     };
-    services = {
+    services = let
+      domain = "frss.${config.networking.domain}";
+    in {
       freshrss = {
         enable = true;
-        baseUrl = "https://frss.pagu.cafe";
+        baseUrl = "https://${domain}";
         dataDir = "/storage/services/freshrss";
         defaultUser = "pagu";
         passwordFile = config.age.secrets.freshrss.path;
-        virtualHost = "frss.pagu.cafe";
+        virtualHost = domain;
       };
-      nginx.virtualHosts."frss.pagu.cafe" = {
-        enableACME = true;
-        forceSSL = true;
-      };
+      nginx.virtualHosts.${domain} = cutelib.SSL;
     };
   };
 }

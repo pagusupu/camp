@@ -7,20 +7,18 @@
   options.cute.services.cloud.mealie = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.cloud.mealie {
     assertions = cutelib.assertNginx "mealie";
-    services = {
+    services = let
+      port = 9000;
+    in {
       mealie = {
         enable = true;
-        port = 9000;
         settings = {
           BASE_URL = "meal.pagu.cafe";
           TZ = "NZ";
         };
+        inherit port;
       };
-      nginx.virtualHosts."meal.pagu.cafe" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://localhost:9000";
-      };
+      nginx = cutelib.host "meal" port "" "";
     };
     fileSystems."/var/lib/private/mealie" = {
       device = "/storage/services/mealie";

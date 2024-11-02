@@ -7,17 +7,15 @@
   options.cute.services.media.komga = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.media.komga {
     assertions = cutelib.assertNginx "komga";
-    services = {
+    services = let
+      port = 8097;
+    in {
       komga = {
         enable = true;
-        port = 8097;
+        inherit port;
         openFirewall = true;
       };
-      nginx.virtualHosts."kmga.pagu.cafe" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://localhost:8097";
-      };
+      nginx = cutelib.host "kmga" port "" "";
     };
   };
 }

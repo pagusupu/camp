@@ -5,35 +5,28 @@
   ...
 }: {
   options.cute.services.media.jellyfin = cutelib.mkEnable;
-  config = lib.mkIf config.cute.services.media.jellyfin {
-    assertions = cutelib.assertNginx "jellyfin";
-    services = {
-      jellyfin = {
-        enable = true;
-        openFirewall = true;
-      };
-      jellyseerr = {
-        enable = true;
-        port = 5096;
-        openFirewall = true;
-      };
-      nginx.virtualHosts = let
-        enableACME = true;
-        forceSSL = true;
-      in {
-        "jlly.pagu.cafe" = {
-          locations."/" = {
-            proxyPass = "http://localhost:8096";
-            proxyWebsockets = true;
-            extraConfig = "proxy_buffering off;";
-          };
-          inherit enableACME forceSSL;
+  config = lib.mkIf config.cute.services.media.jellyfin (lib.mkMerge [
+    {assertions = cutelib.assertNginx "jellyfin";}
+    {
+      services = {
+        jellyfin = {
+          enable = true;
+          openFirewall = true;
         };
-        "seer.pagu.cafe" = {
-          locations."/".proxyPass = "http://localhost:5096";
-          inherit enableACME forceSSL;
-        };
+        nginx = cutelib.host "jlly" 8096 "true" "proxy_buffering off;";
       };
-    };
-  };
+    }
+    (let
+      port = 5096;
+    in {
+      services = {
+        jellyseerr = {
+          enable = true;
+          inherit port;
+          openFirewall = true;
+        };
+        nginx = cutelib.host "seer" port "" "";
+      };
+    })
+  ]);
 }

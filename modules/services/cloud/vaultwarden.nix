@@ -7,24 +7,19 @@
   options.cute.services.cloud.vaultwarden = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.cloud.vaultwarden {
     assertions = cutelib.assertNginx "vaultwarden";
-    services = {
+    services = let
+      port = 8222;
+    in {
       vaultwarden = {
         enable = true;
         config = {
           DOMAIN = "https://wrdn.pagu.cafe";
-          ROCKET_PORT = 8222;
+          ROCKET_PORT = port;
           SIGNUPS_ALLOWED = false;
         };
         backupDir = "/storage/services/vaultwarden";
       };
-      nginx.virtualHosts."wrdn.pagu.cafe" = {
-        locations."/" = {
-          proxyPass = "http://localhost:8222";
-          extraConfig = "proxy_pass_header Authorization;";
-        };
-        enableACME = true;
-        forceSSL = true;
-      };
+      nginx = cutelib.host "wrdn" port "" "proxy_pass_header Authorization;";
     };
   };
 }

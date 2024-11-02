@@ -10,11 +10,13 @@
   options.cute.services.media.qbittorrent = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.media.qbittorrent {
     assertions = cutelib.assertNginx "qbittorrent";
-    services = {
+    services = let
+      port = 8077;
+    in {
       qbittorrent = {
         enable = true;
         openFirewall = true;
-        webuiPort = 8077;
+        webuiPort = port;
         torrentingPort = 43862;
         package = inputs.qbit.legacyPackages.${pkgs.system}.qbittorrent-nox;
         serverConfig = lib.mkMerge [
@@ -63,11 +65,7 @@
           })
         ];
       };
-      nginx.virtualHosts."qbit.pagu.cafe" = {
-        enableACME = true;
-        forceSSL = true;
-        locations."/".proxyPass = "http://localhost:8077";
-      };
+      nginx = cutelib.host "qbit" port "" "";
     };
   };
 }
