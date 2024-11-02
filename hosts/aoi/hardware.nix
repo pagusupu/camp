@@ -1,11 +1,11 @@
 {
+  cute.system.amd = true;
   boot = {
     loader = {
       timeout = 0;
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelModules = ["kvm-amd"];
     initrd = {
       availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
       supportedFilesystems.btrfs = true;
@@ -16,10 +16,6 @@
     };
   };
   powerManagement.cpuFreqGovernor = "powersave";
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-  };
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";

@@ -1,4 +1,5 @@
 {
+  cute.system.amd = true;
   boot = {
     loader = {
       timeout = 0;
@@ -13,19 +14,13 @@
       systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
-    kernelModules = ["kvm-amd"];
     kernelParams = ["iommu=soft"];
   };
   powerManagement.cpuFreqGovernor = "powersave";
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-  };
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = ["fmask=0077" "dmask=0077"];
     };
     "/" = {
       device = "/dev/disk/by-label/nixos";

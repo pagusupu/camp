@@ -1,6 +1,8 @@
 {pkgs, ...}: {
+  cute.system.amd = true;
   boot = {
     loader = {
+      timeout = 2;
       grub = {
         enable = true;
         configurationLimit = 5;
@@ -11,31 +13,19 @@
       efi.canTouchEfiVariables = true;
     };
     initrd = {
-      availableKernelModules = [
-        "ahci"
-        "nvme"
-        "sd_mod"
-        "usb_storage"
-        "usbhid"
-        "xhci_pci"
-      ];
+      availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
       systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = ["amd_pstate" "amdgpu" "kvm-amd"];
+    kernelModules = ["amd_pstate" "amdgpu"];
     kernelParams = ["amd_pstate=guided"];
   };
   powerManagement.cpuFreqGovernor = "schedutil";
-  hardware = {
-    cpu.amd.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-  };
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = ["fmask=0022" "dmask=0022"];
     };
     "/" = {
       device = "/dev/disk/by-label/nixos";

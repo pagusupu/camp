@@ -54,25 +54,27 @@
                         title = "Frequent";
                         links = [
                           {
+                            title = "Discord";
+                            url = "https://discord.com/channels/@me";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Feishin";
+                            url = "http://192.168.178.182:9180";
+                            same-tab = true;
+                          }
+                          {
                             title = "Linkding";
                             url = "http://192.168.178.182:9090";
                             same-tab = true;
                           }
-                          {
-                            title = "GitHub";
-                            url = "https://github.com";
-                            same-tab = true;
-                          }
+
                           {
                             title = "Memos";
                             url = "http://192.168.178.182:5230";
                             same-tab = true;
                           }
-                          {
-                            title = "Tailscale";
-                            url = "https://login.tailscale.com/admin/machines";
-                            same-tab = true;
-                          }
+
                           {
                             title = "Youtube";
                             url = "https://youtube.com/feed/subscriptions";
@@ -99,23 +101,23 @@
                             same-tab = true;
                           }
                           {
+                            title = "GitHub";
+                            url = "https://github.com";
+                            same-tab = true;
+                          }
+                          {
+                            title = "Tailscale";
+                            url = "https://login.tailscale.com/admin/machines";
+                            same-tab = true;
+                          }
+                          {
                             title = "Gmail";
                             url = "https://mail.google.com/mail/u/0/";
                             same-tab = true;
                           }
                           {
                             title = "Proton Mail";
-                            url = "https://mail.proton.me/u/2/inbox";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Proton Calendar";
-                            url = "https://calendar.proton.me/u/2/";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Proton Drive";
-                            url = "https://drive.proton.me/u/2";
+                            url = "https://mail.proton.me/u/0/inbox";
                             same-tab = true;
                           }
                         ];

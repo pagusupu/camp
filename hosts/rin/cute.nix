@@ -47,9 +47,9 @@
   };
   environment.systemPackages = with pkgs; [
     easyeffects
+    feishin
     heroic
     radeontop
-    sublime-music
     xfce.thunar
   ];
   imports = [inputs.lix.nixosModules.default];

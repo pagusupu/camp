@@ -67,7 +67,7 @@
             padding: 5px 4px 5px 0px;
           }
           #workspaces button {
-            color: ${love};
+            color: ${iris};
           }
           #workspaces button.empty {
             color: ${text};

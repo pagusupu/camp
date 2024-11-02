@@ -31,7 +31,7 @@
           package = pkgs.wayland-pipewire-idle-inhibit;
           settings = {
             media_minimum_duration = 180;
-            node_blacklist = [{name = "Sublime Music";}];
+            node_blacklist = [{name = "Feishin";}];
           };
         };
       };

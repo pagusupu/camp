@@ -27,8 +27,6 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           "${wallpaper}"
           "waybar"
           "mako"
-          "discord"
-          "sublime-music"
         ];
         exec = lib.mkMerge [
           ["kill $(pidof swaybg)" "${wallpaper}"]
@@ -78,7 +76,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           gaps_out = 6;
           hover_icon_on_border = false;
           resize_on_border = true;
-          "col.active_border" = "0xFF" + config.colours.love;
+          "col.active_border" = "0xFF" + config.colours.iris;
           "col.inactive_border" = "0xFF" + config.colours.overlay;
         };
         input = {
@@ -106,8 +104,8 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           };
           overview = with config.colours; {
             panelColor = "rgb(${overlay})";
-            panelBorderColor = "rgb(${love})";
-            workspaceActiveBorder = "rgb(${love})";
+            panelBorderColor = "rgb(${iris})";
+            workspaceActiveBorder = "rgb(${iris})";
             workspaceInactiveBorder = "rgb(${subtle})";
           };
         };

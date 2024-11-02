@@ -17,7 +17,7 @@
         borderRadius = 6;
         margin = "6";
         backgroundColor = overlay;
-        borderColor = love;
+        borderColor = iris;
         textColor = text;
       };
     };

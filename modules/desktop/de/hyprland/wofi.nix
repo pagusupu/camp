@@ -28,7 +28,7 @@
                 margin: 0px;
                 background-color: ${base};
                 border-radius: 6px;
-                border: 2px solid ${love};
+                border: 2px solid ${iris};
                 color: ${text};
                 font-family: monospace;
                 font-size: 16px;
@@ -37,7 +37,7 @@
                 margin: 5px;
                 border: none;
                 border-radius: 6px;
-                color: ${love};
+                color: ${iris};
                 background-color: ${overlay};
             }
             #inner-box {
@@ -62,7 +62,7 @@
                 color: ${text};
             }
             #entry:selected, #entry:selected * {
-                background-color: ${love};
+                background-color: ${iris};
                 color: ${base};
                 border-radius: 6px;
                 outline: none;
