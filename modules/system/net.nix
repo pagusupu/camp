@@ -43,6 +43,7 @@ in {
           };
           inherit enable;
         };
+        networking.useDHCP = false;
       })
       (mkIf (connection == "wireless")
         {
