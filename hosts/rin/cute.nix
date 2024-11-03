@@ -28,6 +28,7 @@
         floorp = true;
         prismlauncher = true;
         steam = true;
+        vscode = true;
       };
     };
     services = {

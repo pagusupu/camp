@@ -38,7 +38,6 @@
               };
               cmd = ["nil"];
             };
-            biome.enable = true;
             cssls.enable = true;
             html.enable = true;
             jsonls.enable = true;
@@ -83,7 +82,6 @@
         EDITOR = "nvim";
         VISUAL = "nvim";
       };
-      systemPackages = [pkgs.biome];
     };
   };
 }

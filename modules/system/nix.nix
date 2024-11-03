@@ -10,6 +10,7 @@
     {
       nix = {
         settings = {
+          auto-allocate-uids = true;
           auto-optimise-store = true;
           builders-use-substitutes = true;
           use-xdg-base-directories = true;

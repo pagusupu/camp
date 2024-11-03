@@ -5,6 +5,10 @@
       systems = ["x86_64-linux"];
     };
   inputs = {
+    nixpkgs.follows = "unstable";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +37,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hosts.url = "github:StevenBlack/hosts";
     nixcord.url = "github:kaylorben/nixcord";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt.url = "github:numtide/treefmt-nix";
   };
