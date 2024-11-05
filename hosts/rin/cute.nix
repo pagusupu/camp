@@ -37,6 +37,7 @@
       tailscale.enable = true;
     };
     system = {
+      amd = true;
       graphics = true;
       winDualBoot = true;
     };
@@ -46,6 +47,7 @@
     hostName = "rin";
     hostId = "6f257938";
   };
+  security.sudo-rs.wheelNeedsPassword = false;
   environment.systemPackages = with pkgs; [
     easyeffects
     feishin

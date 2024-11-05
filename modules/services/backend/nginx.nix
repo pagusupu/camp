@@ -19,12 +19,12 @@
         '';
         virtualHosts."pagu.cafe" = {
           root = "/storage/cafe";
-          locations = {
-            "/paguicon".tryFiles = "/paguicon.jpg $uri";
-            "/pagupack".tryFiles = "/pagupack.mrpack $uri";
-          };
-          enableACME = true;
-          forceSSL = true;
+          locations =
+            {
+              "/paguicon".tryFiles = "/paguicon.jpg $uri";
+              "/pagupack".tryFiles = "/pagupack.mrpack $uri";
+            }
+            // cutelib.SSL;
         };
       };
       networking.firewall.allowedTCPPorts = [80 443];

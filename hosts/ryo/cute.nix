@@ -29,6 +29,7 @@
       tailscale.enable = true;
     };
     system = {
+      amd = true;
       graphics = true;
       winDualBoot = true;
     };

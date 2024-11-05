@@ -8,59 +8,48 @@
   config = lib.mkIf config.cute.programs.cli.starship {
     programs.starship = {
       enable = true;
-      settings = {
-        palettes.rose-pine = {
-          inherit
-            (config.wh.colours)
-            overlay
-            love
-            gold
-            rose
-            pine
-            foam
-            iris
-            ;
-        };
-        palette = "rose-pine";
+      settings = let
+        inherit (config.wh.colours) overlay;
+      in {
         format = ''
-          [$username[@](bg:overlay fg:rose)$hostname $directory $git_branch$fill $time]($style)
+          [$username[@](bg:${overlay} cyan)$hostname $directory $git_branch$fill $time]($style)
           $character
         '';
         character = {
-          error_symbol = "[󰴈 ~>](fg:love)";
-          success_symbol = "[󰴈 ~>](fg:iris)";
+          error_symbol = "[󰴈 ~>](red)";
+          success_symbol = "[󰴈 ~>](purple)";
         };
         directory = {
-          format = "[](fg:overlay)[ $path ]($style)[](fg:overlay)";
+          format = "[](dimmed black)[ $path ]($style)[](dimmed black)";
           read_only = " ";
-          style = "bg:overlay fg:pine";
+          style = "bg:${overlay} green";
           truncation_length = 3;
           truncation_symbol = "../";
         };
         fill = {
-          style = "fg:overlay";
+          style = "dimmed black";
           symbol = " ";
         };
         git_branch = {
-          format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay)";
-          style = "bg:overlay fg:iris";
+          format = "[](dimmed black)[ $symbol $branch ]($style)[](dimmed black)";
+          style = "bg:${overlay} purple";
           symbol = "";
         };
         hostname = {
-          format = "[$hostname ](bg:overlay fg:gold)[](fg:overlay)[$ssh_symbol]($style)";
-          ssh_symbol = " [](fg:overlay)[  ](bg:overlay fg:love)[](fg:overlay)";
+          format = "[$hostname ](bg:${overlay} yellow)[](dimmed black)[$ssh_symbol]($style)";
+          ssh_symbol = " [](dimmed black)[  ](bg:${overlay} red)[](dimmed black)";
           style = "";
           ssh_only = false;
         };
         time = {
           disabled = false;
-          format = "[](fg:overlay)[ $time ]($style)[](fg:overlay)";
-          style = "bg:overlay fg:rose";
+          format = "[](dimmed black)[ $time ]($style)[](dimmed black)";
+          style = "bg:${overlay} cyan";
           time_format = "%I:%M%P";
           use_12hr = true;
         };
         username = {
-          format = "[](fg:overlay)[ $user](bg:overlay fg:gold)";
+          format = "[](dimmed black)[ $user](bg:${overlay} yellow)";
           show_always = true;
         };
         add_newline = false;

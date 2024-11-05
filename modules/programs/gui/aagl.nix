@@ -25,7 +25,7 @@
     environment.systemPackages = let
       wt = pkgs.writeShellScriptBin "warp" ''
         rm ~/downloads/data_2
-        cp ~/.local/share/honkers-railway-launcher/HSR/StarRail_Data/webCaches/2.28.0.0/Cache/Cache_Data/data_2 ~/downloads
+        cp ~/.local/share/honkers-railway-launcher/HSR/StarRail_Data/webCaches/2.30.1.0/Cache/Cache_Data/data_2 ~/downloads
       '';
     in [wt];
     nix.settings = {

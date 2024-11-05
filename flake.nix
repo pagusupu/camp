@@ -1,14 +1,8 @@
 {
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./hosts ./treefmt.nix];
-      systems = ["x86_64-linux"];
-    };
   inputs = {
     nixpkgs.follows = "unstable";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # stable.url = "github:NixOS/nixpkgs/nixos-24.11";
-
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,4 +34,9 @@
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
     treefmt.url = "github:numtide/treefmt-nix";
   };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [./hosts ./treefmt.nix];
+      systems = ["x86_64-linux"];
+    };
 }

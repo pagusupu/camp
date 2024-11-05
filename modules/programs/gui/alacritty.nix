@@ -47,7 +47,7 @@
             };
             normal = c // {black = base;};
             bright = c // {black = muted;};
-            dim = c // {black = muted;};
+            dim = c // {black = overlay;};
           };
         };
       };

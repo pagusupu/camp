@@ -62,7 +62,7 @@
             wallpaper-colour = "131021";
           };
         };
-        cute.desktop.misc.wallpaper-colour = mkDefault "FF929E";
+        cute.desktop.misc.wallpaper-colour = mkDefault "F4EAEB";
       }
     ]);
 }

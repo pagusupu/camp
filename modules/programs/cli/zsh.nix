@@ -59,7 +59,7 @@
           extraOptions = ["--group-directories-first"];
         };
         yazi = {
-          enable = true;
+          #enable = true; https://github.com/NixOS/nixpkgs/pull/353272
           settings.manager = {
             sort_by = "natural";
             sort_dir_first = true;

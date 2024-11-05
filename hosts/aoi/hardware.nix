@@ -1,5 +1,4 @@
 {
-  cute.system.amd = true;
   boot = {
     loader = {
       timeout = 0;
