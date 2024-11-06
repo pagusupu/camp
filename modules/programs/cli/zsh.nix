@@ -3,7 +3,6 @@
   lib,
   cutelib,
   pkgs,
-  inputs,
   ...
 }: {
   options.cute.programs.cli.zsh = cutelib.mkEnable;
@@ -18,7 +17,7 @@
               cd = "z";
               grep = "grep --color=auto";
               ls = "eza";
-              #yazi = "yy";
+              yazi = "yy";
             }
             {
               ga = "git add -A";
@@ -61,8 +60,6 @@
         };
         yazi = {
           enable = true;
-          # https://github.com/NixOS/nixpkgs/pull/353272
-          package = inputs.unstable-small.legacyPackages.${pkgs.system}.yazi;
           settings.manager = {
             sort_by = "natural";
             sort_dir_first = true;
