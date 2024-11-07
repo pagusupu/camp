@@ -50,6 +50,7 @@ in {
           networking = {
             networkmanager = {
               enable = true;
+              plugins = lib.mkForce [];
               wifi.backend = "iwd";
             };
             wireless.iwd.enable = true;

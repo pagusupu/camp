@@ -77,11 +77,9 @@
       };
       defaultEditor = true;
     };
-    environment = {
-      variables = {
-        EDITOR = "nvim";
-        VISUAL = "nvim";
-      };
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
   };
 }
