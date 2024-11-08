@@ -5,14 +5,13 @@
 }: {
   cute = {
     desktop = {
-      misc = {
-        audio = true;
-        boot = true;
-        fonts = true;
-        gtk = true;
-        xdg = true;
-      };
+      audio = true;
+      boot = true;
       de = "hyprland";
+      fonts = true;
+      gtk = true;
+      misc.printing = true;
+      xdg = true;
     };
     programs = {
       cli = {
@@ -26,6 +25,7 @@
         alacritty = true;
         discord = true;
         floorp = true;
+        nautilus = true;
         prismlauncher = true;
         steam = true;
         vscode = true;
@@ -48,12 +48,12 @@
     hostId = "6f257938";
   };
   security.sudo-rs.wheelNeedsPassword = false;
-  environment.systemPackages = with pkgs; [
+  home-manager.users.pagu.home.packages = with pkgs; [
     easyeffects
     feishin
     heroic
+    kdePackages.okular
     radeontop
-    xfce.thunar
   ];
   imports = [inputs.lix.nixosModules.default];
 }

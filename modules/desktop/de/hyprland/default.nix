@@ -10,7 +10,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
   programs.hyprland.enable = true;
   home-manager.users.pagu = {
     wayland.windowManager.hyprland = let
-      inherit (config.cute.desktop.misc) theme wallpaper-colour;
+      inherit (config.cute.desktop) theme wallpaper-colour;
       wallpaper = ''swaybg -o ${m1} -i ~/pictures/active/${theme}.png -m fill -o ${m2} -c ${wallpaper-colour}'';
       m1 = "DP-3";
       m2 = "HDMI-A-1";

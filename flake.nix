@@ -29,9 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
-    devshell.url = "github:numtide/devshell";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
     hosts.url = "github:StevenBlack/hosts";
     nixcord.url = "github:kaylorben/nixcord";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
@@ -39,7 +37,7 @@
   };
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./hosts ./parts];
+      imports = [./hosts ./pkgs];
       systems = ["x86_64-linux"];
     };
 }

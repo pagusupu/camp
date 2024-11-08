@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.misc = {
+  options.cute.desktop = {
     theme = lib.mkOption {
       default = "light";
       type = lib.types.enum ["dark" "light"];
@@ -13,7 +13,7 @@
     gtk = cutelib.mkEnable;
     wallpaper-colour = lib.mkOption {type = lib.types.str;};
   };
-  config = lib.mkIf config.cute.desktop.misc.gtk (let
+  config = lib.mkIf config.cute.desktop.gtk (let
     inherit (lib) mkDefault;
   in
     lib.mkMerge [
@@ -57,12 +57,12 @@
       }
       {
         specialisation.dark.configuration = {
-          cute.desktop.misc = {
+          cute.desktop = {
             theme = "dark";
             wallpaper-colour = "131021";
           };
         };
-        cute.desktop.misc.wallpaper-colour = mkDefault "F4EAEB";
+        cute.desktop.wallpaper-colour = mkDefault "F4EAEB";
       }
     ]);
 }

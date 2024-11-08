@@ -12,7 +12,7 @@
             builtins.filter (hasSuffix ".nix")
             (map toString (filesystem.listFilesRecursive x)))
           [../lib ../modules ./${name}];
-          specialArgs = {inherit inputs;};
+          specialArgs.inputs = inputs;
         }
     );
 in {

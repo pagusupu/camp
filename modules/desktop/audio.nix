@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.desktop.misc.audio = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.misc.audio {
+  options.cute.desktop.audio = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.audio {
     services.pipewire = {
       enable = true;
       alsa = {

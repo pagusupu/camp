@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.desktop.misc.xdg = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.misc.xdg {
+  options.cute.desktop.xdg = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.xdg {
     home-manager.users.pagu = {
       xdg = {
         enable = true;
@@ -15,7 +15,7 @@
             browser = ["floorp.desktop"];
           in {
             "application/json" = browser;
-            "application/pdf" = browser;
+            "application/pdf" = ["okularApplication_pdf.desktop"];
             "application/x-extension-htm" = browser;
             "application/x-extension-html" = browser;
             "application/x-extension-shtml" = browser;
@@ -28,7 +28,6 @@
             "x-scheme-handler/http" = browser;
             "x-scheme-handler/https" = browser;
             "x-scheme-handler/unknown" = browser;
-            "inode/directory" = ["thunar.desktop"];
           };
         };
         desktopEntries =

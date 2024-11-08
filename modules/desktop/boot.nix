@@ -5,14 +5,14 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop.misc.boot = cutelib.mkEnable;
+  options.cute.desktop.boot = cutelib.mkEnable;
   config = let
     systemd = {
       services.systemd-udev-settle.enable = false;
       network.wait-online.enable = false;
     };
   in
-    lib.mkIf config.cute.desktop.misc.boot {
+    lib.mkIf config.cute.desktop.boot {
       boot = {
         plymouth = {
           enable = true;
