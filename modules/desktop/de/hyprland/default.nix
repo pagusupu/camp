@@ -45,7 +45,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           "float, title:^(Steam - News)$"
           "float, class:^(steam)$,title:^(Special Offers)$"
           "float, title:^(Open Files)$"
-          "float, class:^(thunar)$"
+          "float, class:^(org.gnome.Nautilus)$"
         ];
         animations = {
           enabled = true;

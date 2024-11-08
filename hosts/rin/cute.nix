@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   cute = {
     desktop = {
       audio = true;
@@ -47,13 +43,11 @@
     hostName = "rin";
     hostId = "6f257938";
   };
-  security.sudo-rs.wheelNeedsPassword = false;
   home-manager.users.pagu.home.packages = with pkgs; [
     easyeffects
-    feishin
     heroic
     kdePackages.okular
     radeontop
   ];
-  imports = [inputs.lix.nixosModules.default];
+  security.sudo-rs.wheelNeedsPassword = false;
 }
