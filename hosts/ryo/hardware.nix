@@ -13,6 +13,7 @@
       systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
+    kernelModules = ["kvm-amd"];
     kernelParams = ["iommu=soft"];
   };
   powerManagement.cpuFreqGovernor = "powersave";

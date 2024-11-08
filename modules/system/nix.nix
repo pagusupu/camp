@@ -31,6 +31,14 @@
         hostPlatform = "x86_64-linux";
         overlays = [inputs.self.overlays.default];
       };
+      programs.nh = {
+        enable = true;
+        clean = {
+          enable = true;
+          extraArgs = "--keep 5 --keep-since 3d";
+        };
+        flake = "/home/pagu/camp/";
+      };
     }
     {
       nix = {
@@ -40,16 +48,6 @@
         registry.nixpkgs.flake = inputs.nixpkgs;
       };
       environment.etc."nix/inputs/nixpkgs".source = inputs.nixpkgs.outPath;
-    }
-    {
-      programs.nh = {
-        enable = true;
-        clean = {
-          enable = true;
-          extraArgs = "--keep 5 --keep-since 3d";
-        };
-        flake = "/home/pagu/camp/";
-      };
     }
   ]);
 }

@@ -17,7 +17,7 @@
       supportedFilesystems.btrfs = true;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = ["amd_pstate" "amdgpu"];
+    kernelModules = ["amd_pstate" "amdgpu" "kvm-amd"];
     kernelParams = ["amd_pstate=guided"];
   };
   powerManagement.cpuFreqGovernor = "schedutil";

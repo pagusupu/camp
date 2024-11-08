@@ -9,8 +9,8 @@
   inherit (lib) mkMerge mkIf;
 in {
   options.cute.system = {
-    amd = mkEnable;
     cleanup = mkEnabledOption;
+    cpu = mkEnabledOption;
     graphics = mkEnable;
     programs = mkEnabledOption;
     sudo = mkEnabledOption;
@@ -18,16 +18,9 @@ in {
     winDualBoot = mkEnable;
   };
   config = let
-    inherit (config.cute.system) amd cleanup graphics programs sudo TZ winDualBoot;
+    inherit (config.cute.system) cpu cleanup graphics programs sudo TZ winDualBoot;
   in
     mkMerge [
-      (mkIf amd {
-        hardware = {
-          cpu.amd.updateMicrocode = true;
-          enableRedistributableFirmware = true;
-        };
-        boot.kernelModules = ["kvm-amd"];
-      })
       (mkIf cleanup {
         documentation = {
           enable = false;
@@ -42,6 +35,15 @@ in {
         };
         boot.enableContainers = false;
         xdg.sounds.enable = false;
+      })
+      (mkIf cpu {
+        hardware = {
+          cpu = {
+            amd.updateMicrocode = true;
+            intel.updateMicrocode = true;
+          };
+          enableRedistributableFirmware = true;
+        };
       })
       (mkIf graphics {
         hardware.graphics = {

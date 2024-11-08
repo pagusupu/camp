@@ -21,7 +21,6 @@
         alacritty = true;
         discord = true;
         floorp = true;
-        nautilus = true;
         prismlauncher = true;
         steam = true;
         vscode = true;
@@ -33,7 +32,6 @@
       tailscale.enable = true;
     };
     system = {
-      amd = true;
       graphics = true;
       winDualBoot = true;
     };
@@ -48,6 +46,7 @@
     heroic
     kdePackages.okular
     radeontop
+    xfce.thunar
   ];
   security.sudo-rs.wheelNeedsPassword = false;
 }

@@ -14,8 +14,6 @@
           defaultApplications = let
             browser = ["floorp.desktop"];
           in {
-            "application/json" = browser;
-            "application/pdf" = ["okularApplication_pdf.desktop"];
             "application/x-extension-htm" = browser;
             "application/x-extension-html" = browser;
             "application/x-extension-shtml" = browser;
@@ -28,6 +26,8 @@
             "x-scheme-handler/http" = browser;
             "x-scheme-handler/https" = browser;
             "x-scheme-handler/unknown" = browser;
+            "application/pdf" = ["okularApplication_pdf.desktop"];
+            "inode/directory" = ["thunar.desktop"];
           };
         };
         desktopEntries =

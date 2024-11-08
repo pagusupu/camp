@@ -39,13 +39,11 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           "NIXOS_OZONE_WL,1"
         ];
         windowrulev2 = [
-          "workspace 5, class:^(feishin)$"
           "workspace 5, class:^(discord)$"
-          "float, class:^(localsend)$"
           "float, title:^(Steam - News)$"
           "float, class:^(steam)$,title:^(Special Offers)$"
           "float, title:^(Open Files)$"
-          "float, class:^(org.gnome.Nautilus)$"
+          "float, class:^(thunar)$"
         ];
         animations = {
           enabled = true;
