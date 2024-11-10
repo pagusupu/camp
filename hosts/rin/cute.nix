@@ -41,16 +41,16 @@
     hostName = "rin";
     hostId = "6f257938";
   };
-  home-manager.users.pagu.home.packages = with pkgs; [
-    easyeffects
-    heroic
-    kdePackages.okular
-    radeontop
-    xfce.thunar
-
-    steamtinkerlaunch
-    steam-tui
-    adwsteamgtk
-  ];
+  home-manager.users.pagu.home = {
+    packages = with pkgs; [
+      adwsteamgtk
+      easyeffects
+      heroic
+      kdePackages.okular
+      radeontop
+      xfce.thunar
+    ];
+    stateVersion = "23.05";
+  };
   security.sudo-rs.wheelNeedsPassword = false;
 }

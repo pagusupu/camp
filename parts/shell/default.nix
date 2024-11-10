@@ -10,10 +10,7 @@
     ...
   }: {
     devShells.default = pkgs.mkShell {
-      packages = [
-        inputs'.agenix.packages.default
-        pkgs.leaf
-      ];
+      packages = [inputs'.agenix.packages.default];
       shellHook = config.pre-commit.installationScript;
     };
     pre-commit.settings = {
