@@ -6,25 +6,22 @@
   ...
 }: {
   options.cute.desktop.boot = cutelib.mkEnable;
-  config = let
-    systemd = {
-      services.systemd-udev-settle.enable = false;
-      network.wait-online.enable = false;
-    };
-  in
-    lib.mkIf config.cute.desktop.boot {
-      boot = {
-        plymouth = {
-          enable = true;
-          theme = "bgrt";
-          themePackages = [pkgs.nixos-bgrt-plymouth];
-        };
-        initrd = {
-          verbose = false;
-          inherit systemd;
-        };
-        kernelParams = ["quiet" "splash"];
+  config = lib.mkIf config.cute.desktop.boot {
+    boot = {
+      plymouth = {
+        enable = true;
+        theme = "bgrt";
+        themePackages = [pkgs.nixos-bgrt-plymouth];
       };
-      inherit systemd;
+      initrd = {
+        systemd = {
+          enable = true;
+          services.systemd-udev-settle.enable = false;
+          network.wait-online.enable = false;
+        };
+        verbose = false;
+      };
+      kernelParams = ["quiet" "splash"];
     };
+  };
 }

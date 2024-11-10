@@ -47,6 +47,10 @@
     kdePackages.okular
     radeontop
     xfce.thunar
+
+    steamtinkerlaunch
+    steam-tui
+    adwsteamgtk
   ];
   security.sudo-rs.wheelNeedsPassword = false;
 }

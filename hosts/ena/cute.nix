@@ -4,12 +4,14 @@
       btop = true;
       nvim = true;
       starship = true;
-      yazi = true;
       zsh = true;
     };
-    services.tailscale = {
-      enable = true;
-      server = true;
+    services = {
+      tailscale = {
+        enable = true;
+        server = true;
+      };
+      backend.home-manager = true;
     };
     net = {
       ip = "192.168.178.82";

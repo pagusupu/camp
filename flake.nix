@@ -1,9 +1,9 @@
 {
   inputs = {
     nixpkgs.follows = "unstable";
+    # stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +26,7 @@
     };
     agenix.url = "github:ryantm/agenix";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
     hosts.url = "github:StevenBlack/hosts";
     nixcord.url = "github:kaylorben/nixcord";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
@@ -33,7 +34,7 @@
   };
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./hosts ./pkgs];
+      imports = [./hosts ./parts];
       systems = ["x86_64-linux"];
     };
 }

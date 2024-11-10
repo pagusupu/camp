@@ -14,7 +14,8 @@
 <br>
 
 ### Epic configs
-[fsnkty](https://github.com/fsnkty) - [crystal](https://github.com/fsnkty/crystal) 
+
+[fsnkty](https://github.com/fsnkty) - [crystal](https://github.com/fsnkty/crystal)
 <br>
 [jh-devv](https://github.com/jh-devv) - [luminarie](https://github.com/jh-devv/luminarie)
 <br>

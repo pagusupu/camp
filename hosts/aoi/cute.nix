@@ -1,4 +1,4 @@
-{inputs, ...}: {
+_: {
   cute = {
     programs.cli = {
       btop = true;
@@ -40,19 +40,15 @@
         server = true;
       };
     };
-    system = {
-      amd = true;
-      graphics = true;
-    };
     net = {
       ip = "192.168.178.182";
       name = "enp37s0";
     };
+    system.graphics = true;
   };
   networking = {
     domain = "pagu.cafe";
     hostName = "aoi";
     hostId = "a3b49b22";
   };
-  imports = [inputs.lix.nixosModules.default];
 }

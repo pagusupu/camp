@@ -13,7 +13,6 @@
     };
     initrd = {
       availableKernelModules = ["ahci" "nvme" "sd_mod" "usb_storage" "usbhid" "xhci_pci"];
-      systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;

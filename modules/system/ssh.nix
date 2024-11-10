@@ -14,7 +14,6 @@
       };
       hostKeys = [
         {
-          comment = "${config.networking.hostName} host";
           path = "/etc/ssh/${config.networking.hostName}_ed25519_key";
           type = "ed25519";
         }

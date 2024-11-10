@@ -11,23 +11,20 @@
       programs = {
         zsh = {
           enable = true;
-          shellAliases = lib.mkMerge [
-            {
-              cat = "bat";
-              cd = "z";
-              grep = "grep --color=auto";
-              ls = "eza";
-              yazi = "yy";
-            }
-            {
-              ga = "git add -A";
-              gc = "git commit -m";
-              gp = "git push -u";
-              gpo = "git push -u origin main";
-              gs = "git status -s";
-              gsv = "git status -v";
-            }
-          ];
+          shellAliases = {
+            cat = "bat";
+            cd = "z";
+            grep = "grep --color=auto";
+            ls = "eza";
+            yazi = "yy";
+
+            ga = "git add -A";
+            gc = "git commit -m";
+            gp = "git push -u";
+            gpo = "git push -u origin main";
+            gs = "git status -s";
+            gsv = "git status -v";
+          };
           initExtra = ''
             nr() {
               nix run nixpkgs#$1 -- "''${@:2}"
@@ -51,6 +48,10 @@
         bat = {
           enable = true;
           config.theme = "base16";
+        };
+        direnv = {
+          enable = true;
+          nix-direnv.enable = true;
         };
         eza = {
           enable = true;

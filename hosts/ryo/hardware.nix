@@ -10,7 +10,6 @@
     };
     initrd = {
       availableKernelModules = ["nvme" "sdhci_pci" "usbhid" "xhci_pci"];
-      systemd.enable = true;
       supportedFilesystems.btrfs = true;
     };
     kernelModules = ["kvm-amd"];
