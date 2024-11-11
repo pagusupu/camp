@@ -27,6 +27,4 @@
     };
   };
   swapDevices = [{device = "/dev/disk/by-label/swap";}];
-  # no touchy
-  system.stateVersion = "24.05";
 }

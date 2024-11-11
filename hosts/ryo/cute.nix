@@ -1,18 +1,15 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   cute = {
     desktop = {
+      audio = true;
+      boot = true;
+      fonts = true;
+      xdg = true;
       misc = {
-        audio = true;
         bluetooth = true;
-        boot = true;
-        fonts = true;
-        xdg = true;
+        printing = true;
       };
-      programs.plasma = true;
+      de = "plasma";
     };
     programs = {
       cli = {
@@ -29,7 +26,6 @@
       tailscale.enable = true;
     };
     system = {
-      amd = true;
       graphics = true;
       winDualBoot = true;
     };
@@ -39,6 +35,10 @@
     hostName = "ryo";
     hostId = "6f257938";
   };
-  environment.systemPackages = [pkgs.libreoffice-qt6-fresh];
-  imports = [inputs.lix.nixosModules.default];
+  home-manager.users.pagu.home = {
+    packages = [pkgs.libreoffice-fresh];
+    stateVersion = "24.05";
+  };
+  # no touchy
+  system.stateVersion = "24.05";
 }
