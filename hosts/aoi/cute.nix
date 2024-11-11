@@ -58,4 +58,6 @@
     ];
     stateVersion = "23.05";
   };
+  # no touchy
+  system.stateVersion = "23.11";
 }
