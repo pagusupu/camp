@@ -49,6 +49,7 @@
       heroic
       kdePackages.okular
       radeontop
+      rclone
       xfce.thunar
     ];
     stateVersion = "23.05";

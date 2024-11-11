@@ -4,8 +4,8 @@
 
 ### Current systems
 
-| name  | type |
-|---|---|
+| name | type |
+| --- |  ---  |
 | aoi | server |
 | ena | server |
 | rin | desktop |
