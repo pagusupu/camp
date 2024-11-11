@@ -22,4 +22,10 @@
     hostName = "ena";
     hostId = "c184b450";
   };
+  home-manager.users.pagu.home = {
+    #packages = [];
+    stateVersion = "23.05";
+  };
+  # no touchy
+  system.stateVersion = "23.11";
 }
