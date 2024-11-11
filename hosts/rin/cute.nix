@@ -41,6 +41,7 @@
     hostName = "rin";
     hostId = "6f257938";
   };
+  security.sudo-rs.wheelNeedsPassword = false;
   home-manager.users.pagu.home = {
     packages = with pkgs; [
       adwsteamgtk
@@ -52,5 +53,6 @@
     ];
     stateVersion = "23.05";
   };
-  security.sudo-rs.wheelNeedsPassword = false;
+  # no touchy
+  system.stateVersion = "23.11";
 }
