@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   cute = {
     programs.cli = {
       btop = true;
@@ -50,5 +50,12 @@ _: {
     domain = "pagu.cafe";
     hostName = "aoi";
     hostId = "a3b49b22";
+  };
+  home-manager.users.pagu.home = {
+    packages = with pkgs; [
+      dust
+      nix-tree
+    ];
+    stateVersion = "23.05";
   };
 }

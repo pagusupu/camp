@@ -13,6 +13,7 @@
       enable = true;
       mdadmConf = "MAILADDR please@shut.up";
     };
+    kernelModules = ["kvm-amd"];
   };
   powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
