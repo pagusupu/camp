@@ -14,6 +14,12 @@
       enableMan = false;
       vimAlias = true;
       luaLoader.enable = true;
+      clipboard.register =
+        if (config.cute.desktop.de == "hyprland")
+        then "wl-copy"
+        else if (config.cute.desktop.de == "plasma")
+        then "unnamedplus"
+        else "lemonade";
       opts = {
         foldmethod = "manual";
         number = true;
