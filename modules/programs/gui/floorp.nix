@@ -8,6 +8,7 @@
 }: {
   options.cute.programs.gui.floorp = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.floorp {
+    assertions = cutelib.assertHm "floorp";
     home-manager.users.pagu = {
       programs.floorp = {
         enable = true;

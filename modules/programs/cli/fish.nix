@@ -5,18 +5,18 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.cli.zsh = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.cli.zsh {
+  options.cute.programs.cli.fish = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.cli.fish {
+    assertions = cutelib.assertHm "fish";
     home-manager.users.pagu = {
       programs = {
-        zsh = {
+        fish = {
           enable = true;
           shellAliases = {
             cat = "bat";
             cd = "z";
             grep = "grep --color=auto";
             ls = "eza";
-            yazi = "yy";
 
             ga = "git add -A";
             gc = "git commit -m";
@@ -25,25 +25,17 @@
             gs = "git status -s";
             gsv = "git status -v";
           };
-          initExtra = ''
-            nr() {
-              nix run nixpkgs#$1 -- "''${@:2}"
-            }
-            ns() {
-               nix shell nixpkgs#''${^@}
-            }
-            bindkey "^[[1;5C" forward-word
-            bindkey "^[[1;5D" backward-word
-            zsh-newuser-install() { :; }
-            # disable weird underline
-            (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-            ZSH_HIGHLIGHT_STYLES[path]=none
-            ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+          shellInit = ''
+            function nr
+              nix run nixpkgs#$argv[1] -- $argv[2]
+            end
+
+            function ns
+              nix shell nixpkgs#$argv
+            end
+
+            set -u fish_greeting
           '';
-          autocd = true;
-          autosuggestion.enable = true;
-          history.expireDuplicatesFirst = true;
-          syntaxHighlighting.enable = true;
         };
         bat = {
           enable = true;
@@ -55,9 +47,12 @@
         };
         eza = {
           enable = true;
-          git = true;
           icons = "auto";
           extraOptions = ["--group-directories-first"];
+        };
+        thefuck = {
+          enable = true;
+          enableInstantMode = true;
         };
         yazi = {
           enable = true;
@@ -65,17 +60,15 @@
             sort_by = "natural";
             sort_dir_first = true;
           };
-          enableZshIntegration = true;
         };
-        fzf.enable = true;
         zoxide.enable = true;
       };
     };
     environment = {
       binsh = lib.getExe pkgs.dash;
-      shells = [pkgs.zsh];
+      shells = [pkgs.fish];
     };
-    programs.zsh.enable = true;
-    users.users.pagu.shell = pkgs.zsh;
+    programs.fish.enable = true;
+    users.users.pagu.shell = pkgs.fish;
   };
 }

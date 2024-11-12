@@ -1,6 +1,9 @@
-{lib, ...}: {
-  options.cute.desktop.de = lib.mkOption {
-    type = lib.types.nullOr (lib.types.enum ["hyprland" "plasma"]);
+{lib, ...}: let
+  inherit (lib) mkOption types;
+  inherit (types) nullOr enum;
+in {
+  options.cute.desktop.de = mkOption {
+    type = nullOr (enum ["hyprland" "plasma"]);
     default = null;
   };
 }

@@ -1,9 +1,10 @@
 {
   config,
   lib,
+  cutelib,
   ...
 }: let
-  inherit (lib) mkOption types mkMerge mkDefault;
+  inherit (lib) mkOption types mkMerge mkDefault mkIf;
 in {
   options = let
     str = mkOption {type = types.str;};
@@ -25,6 +26,7 @@ in {
       wallpaper = str;
     };
     wh.colours = colours;
+    cute.dark = cutelib.mkEnable;
   };
   config = mkMerge [
     {
@@ -76,11 +78,11 @@ in {
         iris = "#" + iris;
       };
     }
-    {
+    (mkIf config.cute.dark {
       specialisation.dark.configuration = {
         boot.loader.grub.configurationName = "dark";
         environment.etc."specialisation".text = "dark";
       };
-    }
+    })
   ];
 }

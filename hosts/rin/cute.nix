@@ -12,9 +12,9 @@
     programs = {
       cli = {
         btop = true;
+        fish = true;
         nvim = true;
         starship = true;
-        zsh = true;
       };
       gui = {
         aagl = true;
@@ -35,6 +35,7 @@
       graphics = true;
       winDualBoot = true;
     };
+    dark = true;
     net.connection = "wireless";
   };
   networking = {

@@ -14,9 +14,9 @@
     programs = {
       cli = {
         btop = true;
+        fish = true;
         nvim = true;
         starship = true;
-        zsh = true;
       };
       gui.floorp = true;
     };

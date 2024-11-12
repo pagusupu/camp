@@ -2,9 +2,9 @@
   cute = {
     programs.cli = {
       btop = true;
+      fish = true;
       nvim = true;
       starship = true;
-      zsh = true;
     };
     services = {
       tailscale = {

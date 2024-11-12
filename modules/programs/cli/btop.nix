@@ -6,6 +6,7 @@
 }: {
   options.cute.programs.cli.btop = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.cli.btop {
+    assertions = cutelib.assertHm "btop";
     home-manager.users.pagu = {
       programs.btop = {
         enable = true;

@@ -12,10 +12,6 @@
     kernelModules = ["kvm-intel"];
   };
   powerManagement.cpuFreqGovernor = "powersave";
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-  };
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";

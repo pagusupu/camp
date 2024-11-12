@@ -8,6 +8,7 @@
 }: {
   options.cute.desktop.programs.idle = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.programs.idle {
+    assertions = cutelib.assertHm "idle";
     home-manager.users.pagu = {
       imports = [inputs.idle-inhibit.homeModules.default];
       services = {

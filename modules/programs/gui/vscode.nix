@@ -7,6 +7,7 @@
 }: {
   options.cute.programs.gui.vscode = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.vscode {
+    assertions = cutelib.assertHm "vscode";
     home-manager.users.pagu = {
       programs.vscode = {
         enable = true;
@@ -36,10 +37,13 @@
         enableExtensionUpdateCheck = false;
         enableUpdateCheck = false;
       };
-      home.packages = with pkgs; [
-        gcc
-        rustlings
-      ];
+    };
+    specialisation.dark.configuration = lib.mkIf config.cute.dark {
+      home-manager.users.pagu = {
+        programs.vscode = {
+          userSettings."workbench.colorTheme" = "Rosé Pine Moon (no italics)";
+        };
+      };
     };
   };
 }

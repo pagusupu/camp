@@ -6,6 +6,7 @@
 }: {
   options.cute.desktop.xdg = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.xdg {
+    assertions = cutelib.assertHm "xdg";
     home-manager.users.pagu = {
       xdg = {
         enable = true;

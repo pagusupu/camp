@@ -6,6 +6,7 @@
 }: {
   options.cute.desktop.programs.wofi = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.programs.wofi {
+    assertions = cutelib.assertHm "wofi";
     home-manager.users.pagu = {
       programs.wofi = {
         enable = true;

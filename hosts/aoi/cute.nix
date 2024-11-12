@@ -1,10 +1,10 @@
-{pkgs, ...}: {
+{
   cute = {
     programs.cli = {
       btop = true;
+      fish = true;
       nvim = true;
       starship = true;
-      zsh = true;
     };
     services = {
       backend = {
@@ -52,10 +52,7 @@
     hostId = "a3b49b22";
   };
   home-manager.users.pagu.home = {
-    packages = with pkgs; [
-      dust
-      nix-tree
-    ];
+    # packages = [];
     stateVersion = "23.05";
   };
   # no touchy

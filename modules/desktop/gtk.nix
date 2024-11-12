@@ -14,9 +14,9 @@
     wallpaper-colour = lib.mkOption {type = lib.types.str;};
   };
   config = lib.mkIf config.cute.desktop.gtk (let
-    inherit (lib) mkDefault;
+    inherit (lib) mkMerge mkDefault mkIf;
   in
-    lib.mkMerge [
+    mkMerge [
       {
         assertions = cutelib.assertHm "gtk";
         home-manager.users.pagu = {
@@ -44,7 +44,7 @@
             x11.enable = true;
           };
         };
-        specialisation.dark.configuration = {
+        specialisation.dark.configuration = mkIf config.cute.dark {
           home-manager.users.pagu = {
             gtk = {
               theme.name = "rose-pine-moon";
@@ -56,7 +56,7 @@
         programs.dconf.enable = true;
       }
       {
-        specialisation.dark.configuration = {
+        specialisation.dark.configuration = mkIf config.cute.dark {
           cute.desktop = {
             theme = "dark";
             wallpaper-colour = "131021";

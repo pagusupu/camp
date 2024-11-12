@@ -8,6 +8,7 @@
 }: {
   options.cute.programs.gui.discord = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.discord {
+    assertions = cutelib.assertHm "nixcord";
     home-manager.users.pagu = {
       programs.nixcord = {
         enable = true;

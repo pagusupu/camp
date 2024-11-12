@@ -52,7 +52,6 @@ in {
             libvdpau-va-gl
             vaapiVdpau
           ];
-          enable32Bit = true;
         };
       })
       (mkIf programs {
