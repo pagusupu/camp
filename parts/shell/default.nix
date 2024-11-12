@@ -1,7 +1,7 @@
 {inputs, ...}: {
   imports = with inputs; [
     git-hooks-nix.flakeModule
-    treefmt.flakeModule
+    treefmt-nix.flakeModule
   ];
   perSystem = {
     pkgs,

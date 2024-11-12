@@ -44,6 +44,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           "float, class:^(steam)$,title:^(Special Offers)$"
           "float, title:^(Open Files)$"
           "float, class:^(thunar)$"
+          "float, class:^(localsend_app)$"
         ];
         animations = {
           enabled = true;

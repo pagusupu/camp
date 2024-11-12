@@ -28,7 +28,7 @@
       };
       nixpkgs = {
         config.allowUnfree = true;
-        hostPlatform = "x86_64-linux";
+        hostPlatform = lib.mkDefault "x86_64-linux";
         overlays = [inputs.self.overlays.default];
       };
       programs.nh = {

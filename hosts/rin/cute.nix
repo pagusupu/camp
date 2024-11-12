@@ -42,6 +42,7 @@
     hostId = "6f257938";
   };
   security.sudo-rs.wheelNeedsPassword = false;
+  programs.localsend.enable = true;
   home-manager.users.pagu.home = {
     packages = with pkgs; [
       adwsteamgtk

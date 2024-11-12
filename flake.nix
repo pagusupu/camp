@@ -30,7 +30,7 @@
     hosts.url = "github:StevenBlack/hosts";
     nixcord.url = "github:kaylorben/nixcord";
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
-    treefmt.url = "github:numtide/treefmt-nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
