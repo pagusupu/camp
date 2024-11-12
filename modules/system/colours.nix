@@ -45,6 +45,23 @@ in {
         foam = mkDefault "56949f";
         iris = mkDefault "907aa9";
       };
+      wh.colours = with config.colours; {
+        base = "#" + base;
+        surface = "#" + surface;
+        overlay = "#" + overlay;
+        muted = "#" + muted;
+        subtle = "#" + subtle;
+        text = "#" + text;
+        highlight = "#" + highlight;
+        love = "#" + love;
+        gold = "#" + gold;
+        rose = "#" + rose;
+        pine = "#" + pine;
+        foam = "#" + foam;
+        iris = "#" + iris;
+      };
+    }
+    (mkIf config.cute.dark {
       specialisation.dark.configuration = {
         colours = {
           base = "232136";
@@ -62,22 +79,7 @@ in {
           iris = "c4a7e7";
         };
       };
-      wh.colours = with config.colours; {
-        base = "#" + base;
-        surface = "#" + surface;
-        overlay = "#" + overlay;
-        muted = "#" + muted;
-        subtle = "#" + subtle;
-        text = "#" + text;
-        highlight = "#" + highlight;
-        love = "#" + love;
-        gold = "#" + gold;
-        rose = "#" + rose;
-        pine = "#" + pine;
-        foam = "#" + foam;
-        iris = "#" + iris;
-      };
-    }
+    })
     (mkIf config.cute.dark {
       specialisation.dark.configuration = {
         boot.loader.grub.configurationName = "dark";

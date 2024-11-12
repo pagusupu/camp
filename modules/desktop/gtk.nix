@@ -44,6 +44,9 @@
             x11.enable = true;
           };
         };
+        programs.dconf.enable = true;
+      }
+      (mkIf config.cute.dark {
         specialisation.dark.configuration = mkIf config.cute.dark {
           home-manager.users.pagu = {
             gtk = {
@@ -53,16 +56,15 @@
             home.pointerCursor.name = "BreezeX-RosePine-Linux";
           };
         };
-        programs.dconf.enable = true;
-      }
-      {
-        specialisation.dark.configuration = mkIf config.cute.dark {
+      })
+      (mkIf config.cute.dark {
+        specialisation.dark.configuration = mkIf {
           cute.desktop = {
             theme = "dark";
             wallpaper-colour = "131021";
           };
         };
         cute.desktop.wallpaper-colour = mkDefault "F4EAEB";
-      }
+      })
     ]);
 }
