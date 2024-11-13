@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (lib) mkOption types mkMerge mkDefault mkIf;
+  inherit (config.cute) dark;
 in {
   options = let
     str = mkOption {type = types.str;};
@@ -61,7 +62,7 @@ in {
         iris = "#" + iris;
       };
     }
-    (mkIf config.cute.dark {
+    (mkIf dark {
       specialisation.dark.configuration = {
         colours = {
           base = "232136";
@@ -80,7 +81,7 @@ in {
         };
       };
     })
-    (mkIf config.cute.dark {
+    (mkIf dark {
       specialisation.dark.configuration = {
         boot.loader.grub.configurationName = "dark";
         environment.etc."specialisation".text = "dark";

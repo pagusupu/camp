@@ -40,7 +40,8 @@
         };
       };
     }
-    (lib.mkIf config.cute.dark {
+    /*
+       (lib.mkIf config.cute.dark {
       specialisation.dark.configuration = lib.mkIf config.cute.dark {
         home-manager.users.pagu = {
           programs.vscode = {
@@ -49,5 +50,6 @@
         };
       };
     })
+    */
   ]);
 }
