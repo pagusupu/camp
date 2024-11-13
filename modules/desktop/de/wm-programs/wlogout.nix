@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.desktop.programs.wlogout = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.programs.wlogout {
+  options.cute.desktop.wm.wlogout = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.wm.wlogout {
     assertions = cutelib.assertHm "wlogout";
     home-manager.users.pagu = {
       programs.wlogout = {

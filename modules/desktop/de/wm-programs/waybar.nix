@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.desktop.programs.waybar = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.programs.waybar {
+  options.cute.desktop.wm.waybar = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.wm.waybar {
     assertions = cutelib.assertHm "waybar";
     home-manager.users.pagu.programs.waybar = {
       enable = true;

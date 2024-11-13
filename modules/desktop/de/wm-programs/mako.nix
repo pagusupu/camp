@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.desktop.programs.mako = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.programs.mako {
+  options.cute.desktop.wm.mako = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.wm.mako {
     assertions = cutelib.assertHm "mako";
     home-manager.users.pagu = {
       services.mako = with config.wh.colours; {

@@ -1,14 +1,10 @@
 {inputs, ...}: {
-  perSystem = {
-    config,
-    pkgs,
-    ...
-  }: {
+  perSystem = {pkgs, ...}: rec {
     packages = {
       nix = pkgs.lix;
       rose-pine-gtk-theme = pkgs.callPackage ./rose-pine-gtk-theme.nix {};
     };
-    overlayAttrs = {inherit (config.packages) nix rose-pine-gtk-theme;};
+    overlayAttrs = packages;
   };
   imports = [inputs.flake-parts.flakeModules.easyOverlay];
 }

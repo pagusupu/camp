@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.desktop.programs.wofi = cutelib.mkEnable;
-  config = lib.mkIf config.cute.desktop.programs.wofi {
+  options.cute.desktop.wm.wofi = cutelib.mkEnable;
+  config = lib.mkIf config.cute.desktop.wm.wofi {
     assertions = cutelib.assertHm "wofi";
     home-manager.users.pagu = {
       programs.wofi = {

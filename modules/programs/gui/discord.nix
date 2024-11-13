@@ -12,6 +12,14 @@
     home-manager.users.pagu = {
       programs.nixcord = {
         enable = true;
+        discord = {
+          enable = false;
+          package = pkgs.discord.override {withTTS = false;};
+        };
+        vesktop = {
+          enable = true;
+          package = pkgs.vesktop.override {withTTS = false;};
+        };
         config = {
           plugins = {
             alwaysTrust = {
@@ -50,7 +58,7 @@
           };
           themeLinks = ["https://raw.githubusercontent.com/rose-pine/discord/refs/heads/main/rose-pine-moon.theme.css"];
         };
-        discord.package = pkgs.discord.override {withTTS = false;};
+        extraConfig.SKIP_HOST_UPDATE = true;
       };
       imports = [inputs.nixcord.homeManagerModules.nixcord];
     };

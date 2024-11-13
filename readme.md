@@ -29,4 +29,5 @@
 <br>
 [zedseven](https://github.com/zedseven) - [nixos-configuration](https://github.com/zedseven/nixos-configuration)
 <br>
+
 ###### Thanks [TilCreator](https://github.com/TilCreator/NixOwO) for the logo
