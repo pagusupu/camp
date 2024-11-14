@@ -5,14 +5,7 @@
   pkgs,
   ...
 }: {
-  options.cute.desktop = {
-    theme = lib.mkOption {
-      default = "light";
-      type = lib.types.enum ["dark" "light"];
-    };
-    gtk = cutelib.mkEnable;
-    wallpaper-colour = lib.mkOption {type = lib.types.str;};
-  };
+  options.cute.desktop.gtk = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.gtk (let
     inherit (lib) mkMerge mkDefault mkIf;
     inherit (config.cute) dark;
@@ -45,7 +38,6 @@
             x11.enable = true;
           };
         };
-        cute.desktop.wallpaper-colour = mkDefault "F4EAEB";
         programs.dconf.enable = true;
       }
       (mkIf dark {
@@ -56,14 +48,6 @@
               iconTheme.name = "rose-pine-moon";
             };
             home.pointerCursor.name = "BreezeX-RosePine-Linux";
-          };
-        };
-      })
-      (mkIf dark {
-        specialisation.dark.configuration = {
-          cute.desktop = {
-            theme = "dark";
-            wallpaper-colour = "131021";
           };
         };
       })
