@@ -15,12 +15,16 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
       ];
       settings.plugin = {
         dynamic-cursors = {
+          shake = {
+            base = 1;
+            speed = 1;
+            timeout = 300;
+          };
           stretch = {
             limit = 6000;
             function = "linear";
           };
           mode = "stretch";
-          shake.enabled = false;
         };
         overview = with config.colours; {
           panelColor = "rgb(${overlay})";

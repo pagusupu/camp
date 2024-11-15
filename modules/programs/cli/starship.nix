@@ -37,8 +37,8 @@
         };
         hostname = {
           format = "[$hostname ](bg:${overlay} yellow)[](dimmed black)[$ssh_symbol]($style)";
-          ssh_symbol = " [](dimmed black)[  ](bg:${overlay} red)[](dimmed black)";
-          style = "";
+          ssh_symbol = " [](dimmed black)[  ]($style)[](dimmed black)";
+          style = "bg:${overlay} red";
           ssh_only = false;
         };
         time = {
@@ -49,7 +49,9 @@
           use_12hr = true;
         };
         username = {
-          format = "[](dimmed black)[ $user](bg:${overlay} yellow)";
+          format = "[](dimmed black)[ $user]($style)";
+          style_root = "bg:${overlay} red";
+          style_user = "bg:${overlay} yellow";
           show_always = true;
         };
         add_newline = false;

@@ -11,12 +11,15 @@
       enable = true;
       settings = let
         common = {
+          reload_style_on_change = true;
           layer = "top";
+          height = 320;
+          width = 36;
+
           modules-left = ["hyprland/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["custom/wofi" "custom/wlogout"];
-          reload_style_on_change = true;
-          width = 36;
+          modules-right = ["custom/term" "custom/launch" "custom/power"];
+
           "hyprland/workspaces" = {
             format = "{icon}";
             format-icons = {
@@ -25,29 +28,36 @@
             };
             persistent-workspaces."*" = 4;
           };
-          clock.format = "{:%I \n%M \n%p}";
-          "custom/wofi" = {
-            on-click = "wofi";
-            format = "󱗼";
+          "custom/term" = {
+            on-click = "alacritty";
+            format = "";
             tooltip = false;
           };
-          "custom/wlogout" = {
+          "custom/launch" = {
+            on-click = "wofi";
+            format = "";
+            tooltip = false;
+          };
+          "custom/power" = {
             on-click = "wlogout -b 2";
             format = "";
             tooltip = false;
           };
+          clock.format = "{:%I \n%M \n%p}";
         };
       in {
         left =
           {
             position = "left";
             output = ["DP-3"];
+            margin-left = 6;
           }
           // common;
         right =
           {
             position = "right";
             output = ["HDMI-A-1"];
+            margin-right = 6;
           }
           // common;
       };
@@ -61,6 +71,7 @@
           }
           window#waybar {
             background: ${base};
+            border-radius: 6px;
           }
           #workspaces {
             margin-top: 2px;
@@ -76,12 +87,17 @@
             color: ${text};
             padding: 7px 0px 6px 9px;
           }
-          #custom-wofi {
+          #custom-term {
             color: ${text};
-            font-size: 22px;
-            margin-right: 2px;
+            font-size: 18px;
+            margin-right: 6px;
           }
-          #custom-wlogout {
+          #custom-launch {
+            color: ${text};
+            font-size: 17px;
+            margin-right: 6px;
+          }
+          #custom-power {
             color: ${text};
             font-size: 16px;
             margin-bottom: 4px;

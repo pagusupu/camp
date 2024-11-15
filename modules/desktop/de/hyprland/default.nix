@@ -26,10 +26,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           "${m1}, 1920x1080@165, 0x0, 1"
           "${m2}, 1920x1080@75, 1920x0, 1"
         ];
-        misc = {
-          #disable_splash_rendering = true;
-          vrr = 1;
-        };
+        misc.vrr = 1;
       };
       systemd.variables = ["--all"];
     };
