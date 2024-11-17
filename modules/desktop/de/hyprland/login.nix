@@ -18,9 +18,9 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
     };
   };
   home-manager.users.pagu = {
-    home.packages = [pkgs.hyprpolkitagent];
     wayland.windowManager.hyprland.settings.exec-once = [
       "systemctl --user start hyprpolkitagent"
     ];
+    home.packages = [pkgs.hyprpolkitagent];
   };
 }

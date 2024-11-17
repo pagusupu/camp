@@ -7,7 +7,7 @@
   ...
 }:
 lib.mkIf (config.cute.desktop.de == "hyprland") {
-  assertions = cutelib.assertHm "idle";
+  assertions = cutelib.assertHm "hyprland-idle";
   home-manager.users.pagu = {
     services = {
       hypridle = {

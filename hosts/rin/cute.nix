@@ -48,6 +48,7 @@
     packages = with pkgs; [
       adwsteamgtk
       easyeffects
+      gnome-calculator
       heroic
       kdePackages.okular
       radeontop

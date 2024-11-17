@@ -9,7 +9,7 @@
     config,
     ...
   }: {
-    devShells.default = pkgs.mkShell {
+    devShells.default = pkgs.mkShellNoCC {
       packages = [inputs'.agenix.packages.default];
       shellHook = config.pre-commit.installationScript;
     };

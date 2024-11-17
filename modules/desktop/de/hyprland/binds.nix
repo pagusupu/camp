@@ -28,6 +28,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
               "${m} Q, killactive"
               "${m} F, fullscreen"
               "${m} SPACE, togglefloating"
+              "${m} o, pin"
               "${s} M, exit"
 
               "${m} left, movefocus, l"

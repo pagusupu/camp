@@ -37,12 +37,15 @@
       programs.gamemode = {
         enable = true;
         settings = {
+          general = {
+            desiredgov = "performance";
+            renice = 10;
+          };
           gpu = {
             amd_performance_level = "high";
             apply_gpu_optimisations = "accept-responsibility";
             gpu_device = 0;
           };
-          general.renice = 10;
         };
       };
       users.users.pagu.extraGroups = ["gamemode"];

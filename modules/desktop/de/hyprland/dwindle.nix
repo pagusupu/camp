@@ -17,12 +17,13 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           force_split = 2;
         };
         windowrulev2 = [
-          "workspace 5, class:^(discord)$"
+          "workspace 5, class:^(vesktop)$"
           "float, title:^(Steam - News)$"
           "float, class:^(steam)$,title:^(Special Offers)$"
           "float, title:^(Open Files)$"
           "float, class:^(thunar)$"
           "float, class:^(localsend_app)$"
+          "float, class:^(org.gnome.Calculator)$"
         ];
         workspace = [
           "1, monitor:${m1}, default:true"

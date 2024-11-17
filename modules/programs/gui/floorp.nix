@@ -12,6 +12,7 @@
     home-manager.users.pagu = {
       programs.floorp = {
         enable = true;
+        package = pkgs.floorp.override {cfg.speechSynthesisSupport = false;};
         profiles.pagu = {
           extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
             bitwarden

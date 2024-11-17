@@ -40,9 +40,8 @@
         };
       };
     }
-    /*
-       (lib.mkIf config.cute.dark {
-      specialisation.dark.configuration = lib.mkIf config.cute.dark {
+    (lib.mkIf config.cute.dark {
+      specialisation.dark.configuration = {
         home-manager.users.pagu = {
           programs.vscode = {
             userSettings."workbench.colorTheme" = "Rosé Pine Moon (no italics)";
@@ -50,6 +49,5 @@
         };
       };
     })
-    */
   ]);
 }
