@@ -20,7 +20,7 @@
         torrentingPort = 43862;
         package = inputs.qbit.legacyPackages.${pkgs.system}.qbittorrent-nox;
         serverConfig = let
-          p = "/storage/services/qbit/torrents/";
+          p = "/storage/qbit/torrents/";
         in {
           LegalNotice.Accepted = true;
           BitTorrent.Session = {
@@ -42,6 +42,10 @@
             MaxConnections = 600;
           };
           Preferences = {
+            General = {
+              DeleteTorrentsFilesAsDefault = true;
+              Locale = "en";
+            };
             WebUI = {
               RootFolder = "${pkgs.fetchzip {
                 url = "https://github.com/VueTorrent/VueTorrent/releases/download/v2.16.0/vuetorrent.zip";
@@ -53,7 +57,6 @@
               ReverseProxySupportEnabled = true;
               TrustedReverseProxiesList = "qbit.pagu.cafe";
             };
-            General.Locale = "en";
           };
         };
       };

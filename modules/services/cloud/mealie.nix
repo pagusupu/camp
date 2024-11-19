@@ -21,7 +21,7 @@
       nginx = cutelib.host "meal" port "" "";
     };
     fileSystems."/var/lib/private/mealie" = {
-      device = "/storage/services/mealie";
+      device = "/storage/mealie";
       options = ["bind"];
     };
   };

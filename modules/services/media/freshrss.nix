@@ -17,7 +17,7 @@
       freshrss = {
         enable = true;
         baseUrl = "https://${domain}";
-        dataDir = "/storage/services/freshrss";
+        dataDir = "/storage/freshrss";
         defaultUser = "pagu";
         passwordFile = config.age.secrets.freshrss.path;
         virtualHost = domain;

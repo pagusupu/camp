@@ -13,11 +13,11 @@
       vaultwarden = {
         enable = true;
         config = {
-          DOMAIN = "https://wrdn.pagu.cafe";
+          DOMAIN = "https://wrdn.${config.networking.domain}";
           ROCKET_PORT = port;
           SIGNUPS_ALLOWED = false;
         };
-        backupDir = "/storage/services/vaultwarden";
+        backupDir = "/storage/vaultwarden";
       };
       nginx = cutelib.host "wrdn" port "" "proxy_pass_header Authorization;";
     };

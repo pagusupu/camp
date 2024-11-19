@@ -37,8 +37,8 @@
         };
         hostname = {
           format = "[$hostname ](bg:${overlay} yellow)[](dimmed black)[$ssh_symbol]($style)";
-          ssh_symbol = " [](dimmed black)[  ]($style)[](dimmed black)";
-          style = "bg:${overlay} red";
+          ssh_symbol = " [](dimmed black)[  ](bg:${overlay} red)[](dimmed black)";
+          style = "";
           ssh_only = false;
         };
         time = {

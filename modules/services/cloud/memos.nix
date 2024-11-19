@@ -14,7 +14,7 @@
       virtualisation.oci-containers.containers."memos" = {
         image = "neosmemo/memos:stable";
         ports = ["${builtins.toString port}:5230"];
-        volumes = ["/storage/services/memos/:/var/opt/memos"];
+        volumes = ["/storage/memos/:/var/opt/memos"];
       };
       services.nginx = cutelib.host "memo" port "" "";
     })

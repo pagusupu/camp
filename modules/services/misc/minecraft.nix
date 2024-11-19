@@ -26,7 +26,7 @@ in {
             EULA = "true";
             MOTD = ":3";
             DIFFICULTY = mkDefault "hard";
-            ICON = "https://pagu.cafe/paguicon.jpg";
+            #ICON = "https://pagu.cafe/paguicon.jpg";
             ENABLE_WHITELIST = "true";
           };
           volumes = ["/home/pagu/minecraft/${server}:/data"];
@@ -51,7 +51,7 @@ in {
           environment = {
             VERSION = "1.21.1";
             TYPE = "MODRINTH";
-            MODRINTH_MODPACK = "https://pagu.cafe/pagupack.mrpack";
+            #MODRINTH_MODPACK = "https://pagu.cafe/pagupack.mrpack";
             RCON_COMMANDS_STARTUP = "/gamerule playersSleepingPercentage 20";
           };
           ports = ["24454:24454/udp"]; # vc mod

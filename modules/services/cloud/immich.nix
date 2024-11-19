@@ -14,7 +14,7 @@
         inherit port;
         openFirewall = true;
         host = "0.0.0.0";
-        mediaLocation = "/storage/services/immich";
+        mediaLocation = "/storage/immich";
         environment.TZ = "NZ";
         machine-learning.enable = false;
       };

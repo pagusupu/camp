@@ -18,7 +18,7 @@
       etebase-server = {
         enable = true;
         openFirewall = true;
-        dataDir = "/storage/services/etebase";
+        dataDir = "/storage/etebase";
         settings = {
           global.secret_file = config.age.secrets.etebase.path;
           allowed_hosts.allowed_host2 = domain; # host1 = 0.0.0.0

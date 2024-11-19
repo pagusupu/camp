@@ -2,8 +2,8 @@
   cute = {
     programs.cli = {
       btop = true;
-      fish = true;
       nvim = true;
+      shell = true;
       starship = true;
     };
     services = {

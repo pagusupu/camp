@@ -9,23 +9,15 @@
     {
       services.nginx = {
         enable = true;
-        recommendedGzipSettings = true;
-        recommendedOptimisation = true;
-        recommendedProxySettings = true;
-        recommendedTlsSettings = true;
         commonHttpConfig = ''
           real_ip_header CF-Connecting-IP;
           add_header 'Referrer-Policy' 'origin-when-cross-origin';
         '';
-        virtualHosts."pagu.cafe" =
-          {
-            root = "/storage/cafe";
-            locations = {
-              "/paguicon".tryFiles = "/paguicon.jpg $uri";
-              "/pagupack".tryFiles = "/pagupack.mrpack $uri";
-            };
-          }
-          // cutelib.SSL;
+        recommendedGzipSettings = true;
+        recommendedOptimisation = true;
+        recommendedProxySettings = true;
+        recommendedTlsSettings = true;
+        virtualHosts."pagu.cafe" = {root = "/storage/cafe";} // cutelib.SSL;
       };
       networking.firewall.allowedTCPPorts = [80 443];
     }
