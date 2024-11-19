@@ -5,9 +5,9 @@
   pkgs,
   ...
 }: {
-  options.cute.programs.cli.fish = cutelib.mkEnable;
-  config = lib.mkIf config.cute.programs.cli.fish {
-    assertions = cutelib.assertHm "fish";
+  options.cute.programs.cli.shell = cutelib.mkEnable;
+  config = lib.mkIf config.cute.programs.cli.shell {
+    assertions = cutelib.assertHm "shell";
     home-manager.users.pagu = {
       programs = {
         fish = {

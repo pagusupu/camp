@@ -17,7 +17,6 @@
           inherit (config.cute.desktop.monitors) m1 m2;
         in
           lib.mkMerge [
-            # cursor
             {
               settings = {
                 exec = let
@@ -34,7 +33,6 @@
                 };
               };
             }
-            # misc
             {
               settings = {
                 animations = {
@@ -63,7 +61,6 @@
                 misc.animate_manual_resizes = true;
               };
             }
-            # wallpaper
             (let
               circle = "https://raw.githubusercontent.com/rose-pine/wallpapers/refs/heads/main/rose_pine_circle";
               dawn = pkgs.fetchurl {

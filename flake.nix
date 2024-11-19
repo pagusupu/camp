@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.follows = "unstable";
-    # stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     unstable-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     aagl = {

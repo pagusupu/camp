@@ -10,6 +10,19 @@
     home-manager.users.pagu = {
       xdg = {
         enable = true;
+        desktopEntries =
+          lib.genAttrs [
+            "Alacritty"
+            "btop"
+            "fish"
+            "thunar-bulk-rename"
+            "thunar-settings"
+            "yazi"
+          ]
+          (n: {
+            name = n;
+            noDisplay = true;
+          });
         mimeApps = {
           enable = true;
           defaultApplications = let
@@ -31,16 +44,6 @@
             "inode/directory" = ["thunar.desktop"];
           };
         };
-        desktopEntries =
-          lib.genAttrs [
-            "Alacritty"
-            "btop"
-            "yazi"
-          ]
-          (n: {
-            name = n;
-            noDisplay = true;
-          });
         userDirs = let
           p = "/home/pagu/";
         in {

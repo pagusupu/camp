@@ -17,5 +17,10 @@ in {
       m1 = "DP-3";
       m2 = "HDMI-A-1";
     };
+    environment.sessionVariables = {
+      QT_QPA_PLATFORM = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_SESSION_TYPE = "wayland";
+    };
   };
 }

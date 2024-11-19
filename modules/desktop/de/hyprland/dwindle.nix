@@ -11,7 +11,6 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
       inherit (config.cute.desktop.monitors) m1 m2;
     in {
       settings = {
-        general.layout = "dwindle";
         dwindle = {
           smart_resizing = false;
           force_split = 2;
@@ -29,6 +28,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           "1, monitor:${m1}, default:true"
           "5, monitor:${m2}, default:true"
         ];
+        general.layout = "dwindle";
       };
       extraConfig = let
         inherit (lib) concatMapStringsSep range;
