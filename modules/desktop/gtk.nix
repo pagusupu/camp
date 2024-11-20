@@ -44,8 +44,8 @@
         specialisation.dark.configuration = {
           home-manager.users.pagu = {
             gtk = {
-              theme.name = "rose-pine-moon";
-              iconTheme.name = "rose-pine-moon";
+              theme.name = "rose-pine";
+              iconTheme.name = "rose-pine";
             };
             home.pointerCursor.name = "BreezeX-RosePine-Linux";
           };

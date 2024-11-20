@@ -52,7 +52,7 @@
             voiceChatDoubleClick.enable = true;
             youtubeAdblock.enable = true;
           };
-          themeLinks = ["https://raw.githubusercontent.com/rose-pine/discord/refs/heads/main/rose-pine-moon.theme.css"];
+          themeLinks = ["https://raw.githubusercontent.com/rose-pine/discord/refs/heads/main/rose-pine.theme.css"];
         };
         discord.enable = false;
         extraConfig.SKIP_HOST_UPDATE = true;

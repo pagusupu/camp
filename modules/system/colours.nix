@@ -65,13 +65,13 @@ in {
     (mkIf dark {
       specialisation.dark.configuration = {
         colours = {
-          base = "232136";
-          surface = "2a273f";
-          overlay = "393552";
+          base = "191724";
+          surface = "1f1d2e";
+          overlay = "26233a";
           muted = "6e6a86";
           subtle = "908caa";
           text = "e0def4";
-          highlight = "56526e";
+          highlight = "524f67";
           love = "eb6f92";
           gold = "f6c177";
           rose = "ea9a97";

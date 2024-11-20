@@ -44,7 +44,7 @@
       specialisation.dark.configuration = {
         home-manager.users.pagu = {
           programs.vscode = {
-            userSettings."workbench.colorTheme" = "Rosé Pine Moon (no italics)";
+            userSettings."workbench.colorTheme" = "Rosé Pine (no italics)";
           };
         };
       };

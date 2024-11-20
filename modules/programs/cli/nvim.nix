@@ -11,16 +11,27 @@
   config = lib.mkIf config.cute.programs.cli.nvim {
     programs.nixvim = {
       enable = true;
-      enableMan = false;
-      vimAlias = true;
-      luaLoader.enable = true;
+      colorschemes.rose-pine = {
+        enable = true;
+        settings = {
+          styles = {
+            italic = false;
+            transparency = false;
+          };
+          variant = "auto";
+        };
+      };
       opts = {
-        foldmethod = "manual";
         number = true;
         showmode = false;
         shiftwidth = 2;
         smartindent = true;
+        termguicolors = true;
         undofile = true;
+      };
+      performance.byteCompileLua = {
+        enable = true;
+        nvimRuntime = true;
       };
       plugins = {
         indent-blankline = {
@@ -36,23 +47,17 @@
                 formatting.command = ["${lib.getExe pkgs.alejandra}"];
                 nix.flake.autoArchive = false;
               };
-              cmd = ["nil"];
             };
             cssls.enable = true;
             html.enable = true;
             jsonls.enable = true;
           };
         };
-        none-ls = {
+        notify = {
           enable = true;
-          sources = {
-            diagnostics = {
-              deadnix.enable = true;
-              statix.enable = true;
-            };
-            code_actions.statix.enable = true;
-          };
-          enableLspFormat = false;
+          render = "minimal";
+          stages = "fade";
+          timeout = 2000;
         };
         treesitter = {
           enable = true;
@@ -62,20 +67,19 @@
         lualine.enable = true;
         lsp-format.enable = true;
         lsp-lines.enable = true;
+        noice.enable = true;
         rainbow-delimiters.enable = true;
       };
-      colorschemes.rose-pine = {
-        enable = true;
-        settings = {
-          styles = {
-            italic = false;
-            transparency = false;
-          };
-          dark_variant = "moon";
-          variant = "auto";
-        };
-      };
+      enableMan = false;
       defaultEditor = true;
+      luaLoader.enable = true;
+      vimAlias = true;
+      withPython3 = false;
+      withRuby = false;
+      extraConfigVim = ''
+        aun PopUp.How-to\ disable\ mouse
+        aun PopUp.-1-
+      '';
     };
     environment.variables = {
       EDITOR = "nvim";
