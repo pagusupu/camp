@@ -28,11 +28,7 @@ in {
             DIFFICULTY = mkDefault "hard";
             #ICON = "https://pagu.cafe/paguicon.jpg";
             ENABLE_WHITELIST = "true";
-          };
-          volumes = ["/home/pagu/minecraft/${server}:/data"];
-        }
-        {
-          environment = {
+
             INIT_MEMORY = "8G";
             MAX_MEMORY = "12G";
             SIMULATION_DISTANCE = "6";
@@ -40,6 +36,7 @@ in {
             ENABLE_AUTOPAUSE = "true";
             MAX_TICK_TIME = "-1";
           };
+          volumes = ["/home/pagu/minecraft/${server}:/data"];
         }
         (mkIf (server == "vanilla") {
           environment = {

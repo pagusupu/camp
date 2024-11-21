@@ -44,37 +44,30 @@
           navidrome = {
             enable = true;
             openFirewall = true;
-            settings = mkMerge [
-              (let
-                p = "/storage/navidrome/";
-              in {
-                Address = "0.0.0.0";
-                Port = port;
-                CacheFolder = "/var/lib/navidrome";
-                DataFolder = p + "data";
-                MusicFolder = p + "music";
-              })
-              {
-                AutoImportPlaylists = false;
-                DefaultTheme = "Auto";
-                EnableExternalServices = false;
-                EnableMediaFileCoverArt = false;
-                EnableSharing = true;
-                EnableStarRating = false;
-                IgnoredArticles = "";
-                SessionTimeout = "96h";
-                ShareURL = "https://navi.${config.networking.domain}";
-                UIWelcomeMessage = "";
-              }
-            ];
+            settings = let
+              p = "/storage/navidrome/";
+            in {
+              Address = "0.0.0.0";
+              Port = port;
+              CacheFolder = "/var/lib/navidrome";
+              DataFolder = p + "data";
+              MusicFolder = p + "music";
+
+              AutoImportPlaylists = false;
+              DefaultTheme = "Auto";
+              EnableExternalServices = false;
+              EnableMediaFileCoverArt = false;
+              EnableSharing = true;
+              EnableStarRating = false;
+              IgnoredArticles = "";
+              SessionTimeout = "96h";
+              ShareURL = "https://navi.${config.networking.domain}";
+              UIWelcomeMessage = "";
+            };
           };
           nginx = host "navi" port "true" "";
         };
-        environment.systemPackages = with pkgs; [
-          flac
-          streamrip
-          sox
-        ];
+        environment.systemPackages = with pkgs; [flac streamrip sox];
       })
     ]);
 }

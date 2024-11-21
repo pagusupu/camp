@@ -32,7 +32,7 @@
         qbittorrent = true;
       };
       minecraft = {
-        enable = true;
+        enable = false;
         server = "modded";
       };
       tailscale = {
