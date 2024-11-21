@@ -18,7 +18,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
     idle-inhibit = {
       url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";

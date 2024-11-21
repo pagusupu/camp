@@ -50,10 +50,6 @@
           icons = "auto";
           extraOptions = ["--group-directories-first"];
         };
-        thefuck = {
-          enable = true;
-          enableInstantMode = true;
-        };
         yazi = {
           enable = true;
           settings.manager = {

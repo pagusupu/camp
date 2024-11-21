@@ -1,0 +1,38 @@
+diff --git a/lua/rose-pine.lua b/lua/rose-pine.lua
+index 65020f9..ae6fb92 100644
+--- a/lua/rose-pine.lua
++++ b/lua/rose-pine.lua
+@@ -682,22 +682,27 @@ local function set_highlights()
+ 		FzfLuaTitle = { link = "FloatTitle" },
+ 
+ 		-- rcarriga/nvim-notify
+-		NotifyDEBUGBorder = make_border(),
++		NotifyDEBUGBody = { link = "NotifyDEBUGBorder" },
++		NotifyDEBUGBorder = { fg = palette.muted, bg = palette.base },
+ 		NotifyDEBUGIcon = { link = "NotifyDEBUGTitle" },
+ 		NotifyDEBUGTitle = { fg = palette.muted },
+-		NotifyERRORBorder = make_border(groups.error),
++		NotifyERRORBody = { link = "NotifyERRORBorder" },
++		NotifyERRORBorder = { fg = groups.error, bg = palette.base },
+ 		NotifyERRORIcon = { link = "NotifyERRORTitle" },
+ 		NotifyERRORTitle = { fg = groups.error },
+-		NotifyINFOBorder = make_border(groups.info),
++		NotifyINFOBody = { link = "NotifyINFOBorder" },
++		NotifyINFOBorder = { fg = groups.info, bg = palette.base },
+ 		NotifyINFOIcon = { link = "NotifyINFOTitle" },
+ 		NotifyINFOTitle = { fg = groups.info },
+-		NotifyTRACEBorder = make_border(palette.iris),
++		NotifyTRACEBody = { link = "NotifyTRACEBorder" },
++		NotifyTRACEBorder = { fg = palette.iris, bg = palette.base },
+ 		NotifyTRACEIcon = { link = "NotifyTRACETitle" },
+ 		NotifyTRACETitle = { fg = palette.iris },
+-		NotifyWARNBorder = make_border(groups.warn),
++		NotifyWARNBody = { link = "NotifyWARNBorder" },
++		NotifyWARNBorder = { fg = groups.warn, bg = groups.base },
+ 		NotifyWARNIcon = { link = "NotifyWARNTitle" },
+ 		NotifyWARNTitle = { fg = groups.warn },
+-		NotifyBackground = { bg = palette.surface },
++		NotifyBackground = { bg = palette.base },
+ 		-- rcarriga/nvim-dap-ui
+ 		DapUIBreakpointsCurrentLine = { fg = palette.gold, bold = styles.bold },
+ 		DapUIBreakpointsDisabledLine = { fg = palette.muted },

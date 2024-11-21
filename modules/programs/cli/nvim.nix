@@ -13,6 +13,7 @@
       enable = true;
       colorschemes.rose-pine = {
         enable = true;
+        package = pkgs.rose-pine-nvim;
         settings = {
           styles = {
             italic = false;
@@ -70,16 +71,16 @@
         noice.enable = true;
         rainbow-delimiters.enable = true;
       };
+      extraConfigVim = ''
+        aun PopUp.How-to\ disable\ mouse
+        aun PopUp.-1-
+      '';
       enableMan = false;
       defaultEditor = true;
       luaLoader.enable = true;
       vimAlias = true;
       withPython3 = false;
       withRuby = false;
-      extraConfigVim = ''
-        aun PopUp.How-to\ disable\ mouse
-        aun PopUp.-1-
-      '';
     };
     environment.variables = {
       EDITOR = "nvim";
