@@ -40,7 +40,6 @@
             "x-scheme-handler/http" = browser;
             "x-scheme-handler/https" = browser;
             "x-scheme-handler/unknown" = browser;
-            "application/pdf" = ["okularApplication_pdf.desktop"];
             "inode/directory" = ["thunar.desktop"];
           };
         };

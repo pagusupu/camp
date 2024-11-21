@@ -68,6 +68,7 @@
         lualine.enable = true;
         lsp-format.enable = true;
         lsp-lines.enable = true;
+        markview.enable = true;
         noice.enable = true;
         rainbow-delimiters.enable = true;
       };

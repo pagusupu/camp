@@ -56,6 +56,7 @@ in {
       })
       (mkIf programs {
         environment.systemPackages = with pkgs; [
+          nurl
           ouch
           wget
         ];
