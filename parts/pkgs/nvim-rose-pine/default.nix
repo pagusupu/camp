@@ -1,6 +1,6 @@
 {pkgs}:
 pkgs.vimUtils.buildVimPlugin {
-  pname = "rose-pine-nvim";
+  pname = "nvim-rose-pine";
   version = "2024-10-23";
   src = pkgs.fetchFromGitHub {
     owner = "rose-pine";

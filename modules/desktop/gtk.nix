@@ -17,7 +17,7 @@
           gtk = {
             enable = true;
             theme = {
-              package = pkgs.rose-pine-gtk;
+              package = pkgs.gtk-rose-pine;
               name = mkDefault "rose-pine-dawn";
             };
             iconTheme = {

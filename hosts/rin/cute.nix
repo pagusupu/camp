@@ -46,13 +46,11 @@
   programs.localsend.enable = true;
   home-manager.users.pagu.home = {
     packages = with pkgs; [
-      adwsteamgtk
       easyeffects
       gnome-calculator
       heroic
       kdePackages.okular
       radeontop
-      rclone
       xfce.thunar
     ];
     stateVersion = "23.05";

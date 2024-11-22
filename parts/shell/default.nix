@@ -25,6 +25,7 @@
       settings.global.excludes = [
         ".direnv/**"
         ".envrc"
+        "flake.lock"
         "secrets/*.age"
       ];
       programs = {

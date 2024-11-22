@@ -2,8 +2,8 @@
   perSystem = {pkgs, ...}: rec {
     packages = {
       nix = pkgs.lix;
-      rose-pine-gtk = pkgs.callPackage ./rose-pine-gtk {};
-      rose-pine-nvim = pkgs.callPackage ./rose-pine-nvim {};
+      gtk-rose-pine = pkgs.callPackage ./gtk-rose-pine {};
+      nvim-rose-pine = pkgs.callPackage ./nvim-rose-pine {};
     };
     overlayAttrs = packages;
   };

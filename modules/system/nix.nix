@@ -8,6 +8,7 @@
   options.cute.system.nix = cutelib.mkEnabledOption;
   config = lib.mkIf config.cute.system.nix (lib.mkMerge [
     {
+      system.tools.nixos-option.enable = false; # lix
       nix = {
         settings = {
           auto-allocate-uids = true;

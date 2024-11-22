@@ -11,9 +11,13 @@
   config = lib.mkIf config.cute.programs.cli.nvim {
     programs.nixvim = {
       enable = true;
+      clipboard = {
+        register = "unnamedplus";
+        providers.wl-copy.enable = true;
+      };
       colorschemes.rose-pine = {
         enable = true;
-        package = pkgs.rose-pine-nvim;
+        package = pkgs.nvim-rose-pine;
         settings = {
           styles = {
             italic = false;
@@ -23,6 +27,7 @@
         };
       };
       opts = {
+        autoindent = true;
         number = true;
         showmode = false;
         shiftwidth = 2;
@@ -45,8 +50,11 @@
             nil_ls = {
               enable = true;
               settings = {
+                nix.flake = {
+                  autoArchive = false;
+                  nixpkgsInputsName = "unstable";
+                };
                 formatting.command = ["${lib.getExe pkgs.alejandra}"];
-                nix.flake.autoArchive = false;
               };
             };
             cssls.enable = true;
@@ -58,11 +66,14 @@
           enable = true;
           render = "minimal";
           stages = "fade";
-          timeout = 2000;
+          timeout = 1000;
         };
         treesitter = {
           enable = true;
-          settings.highlight.enable = true;
+          settings = {
+            highlight.enable = true;
+            indent.enable = true;
+          };
         };
         autoclose.enable = true;
         lualine.enable = true;

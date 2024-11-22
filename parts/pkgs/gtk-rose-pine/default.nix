@@ -1,6 +1,6 @@
 {pkgs}:
 pkgs.stdenvNoCC.mkDerivation {
-  pname = "rose-pine-gtk";
+  pname = "gtk-rose-pine";
   version = "unstable-2024-10-08";
   src = pkgs.fetchFromGitHub {
     owner = "rose-pine";

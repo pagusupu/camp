@@ -31,6 +31,7 @@
         };
         gamescope.capSysNice = true;
       };
+      environment.systemPackages = [pkgs.adwsteamgtk];
       hardware.xone.enable = true;
     }
     {
