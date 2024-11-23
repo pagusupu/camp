@@ -3,13 +3,16 @@
   lib,
   cutelib,
   inputs,
-  pkgs,
+  #pkgs,
   ...
 }: {
-  imports = [inputs.nixvim.nixosModules.nixvim];
+  imports = [ inputs.nixvim.nixosModules.nixvim ];
   options.cute.programs.cli.nvim = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.cli.nvim {
-    programs.nixvim = {
+    programs.nixvim = {pkgs, ...}: {
+
+      extraConfigLua = builtins.trace "pkgs version is ${pkgs.lib.trivial.release}" "";
+
       enable = true;
       clipboard = {
         register = "unnamedplus";
@@ -17,7 +20,6 @@
       };
       colorschemes.rose-pine = {
         enable = true;
-        package = pkgs.nvim-rose-pine;
         settings = {
           styles = {
             italic = false;
@@ -25,6 +27,7 @@
           };
           variant = "auto";
         };
+        package = pkgs.nvim-rose-pine;
       };
       opts = {
         autoindent = true;
@@ -50,11 +53,8 @@
             nil_ls = {
               enable = true;
               settings = {
-                nix.flake = {
-                  autoArchive = false;
-                  nixpkgsInputsName = "unstable";
-                };
-                formatting.command = ["${lib.getExe pkgs.alejandra}"];
+                formatting.command = [ "${lib.getExe pkgs.alejandra-custom}" ];
+                nix.flake.autoArchive = false;
               };
             };
             cssls.enable = true;

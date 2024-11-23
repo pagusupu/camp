@@ -48,7 +48,7 @@
         eza = {
           enable = true;
           icons = "auto";
-          extraOptions = ["--group-directories-first"];
+          extraOptions = [ "--group-directories-first" ];
         };
         yazi = {
           enable = true;
@@ -62,7 +62,7 @@
     };
     environment = {
       binsh = lib.getExe pkgs.dash;
-      shells = [pkgs.fish];
+      shells = [ pkgs.fish ];
     };
     programs.fish.enable = true;
     users.users.pagu.shell = pkgs.fish;

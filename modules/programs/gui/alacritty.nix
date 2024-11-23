@@ -45,13 +45,13 @@
               background = base;
               foreground = text;
             };
-            normal = c // {black = base;};
-            bright = c // {black = muted;};
-            dim = c // {black = overlay;};
+            normal = c // { black = base; };
+            bright = c // { black = muted; };
+            dim = c // { black = overlay; };
           };
         };
       };
-      home.packages = [pkgs.ueberzugpp];
+      home.packages = [ pkgs.ueberzugpp ];
     };
   };
 }

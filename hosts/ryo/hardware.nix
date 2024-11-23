@@ -9,11 +9,11 @@
       efi.canTouchEfiVariables = true;
     };
     initrd = {
-      availableKernelModules = ["nvme" "sdhci_pci" "usbhid" "xhci_pci"];
+      availableKernelModules = [ "nvme" "sdhci_pci" "usbhid" "xhci_pci" ];
       supportedFilesystems.btrfs = true;
     };
-    kernelModules = ["kvm-amd"];
-    kernelParams = ["iommu=soft"];
+    kernelModules = [ "kvm-amd" ];
+    kernelParams = [ "iommu=soft" ];
   };
   powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
@@ -26,5 +26,5 @@
       fsType = "btrfs";
     };
   };
-  swapDevices = [{device = "/dev/disk/by-label/swap";}];
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
 }

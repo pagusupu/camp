@@ -1,1 +1,1 @@
-{imports = [./pkgs ./shell];}
+{ imports = [ ./pkgs ./shell ]; }

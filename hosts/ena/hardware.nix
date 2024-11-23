@@ -7,21 +7,21 @@
     };
     initrd = {
       supportedFilesystems.btrfs = true;
-      availableKernelModules = ["ahci" "ehci_pci" "sd_mod" "usbhid" "xhci_pci"];
+      availableKernelModules = [ "ahci" "ehci_pci" "sd_mod" "usbhid" "xhci_pci" ];
     };
-    kernelModules = ["kvm-intel"];
+    kernelModules = [ "kvm-intel" ];
   };
   powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = ["fmask=0022" "dmask=0022"];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
     "/" = {
       device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
     };
   };
-  swapDevices = [{device = "/dev/disk/by-label/swap";}];
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
 }

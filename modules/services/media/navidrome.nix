@@ -18,7 +18,7 @@
         assertions = assertDocker "feishin";
         virtualisation.oci-containers.containers."feishin" = {
           image = "ghcr.io/jeffvli/feishin:0.11.1";
-          ports = ["${toString port}:9180"];
+          ports = [ "${toString port}:9180" ];
         };
         services.nginx = host "fish" port "" "";
       })
@@ -28,12 +28,12 @@
         assertions = assertDocker "multi-scrobbler";
         virtualisation.oci-containers.containers."multi-scrobbler" = {
           image = "foxxmd/multi-scrobbler";
-          ports = ["${toString port}:9078"];
+          ports = [ "${toString port}:9078" ];
           environment = {
             BASE_URL = "http://${config.cute.net.ip}:${toString port}";
             TZ = "NZ";
           };
-          volumes = ["/storage/multi-scrobbler:/config"];
+          volumes = [ "/storage/multi-scrobbler:/config" ];
         };
       })
       (let
@@ -67,7 +67,7 @@
           };
           nginx = host "navi" port "true" "";
         };
-        environment.systemPackages = with pkgs; [flac streamrip sox];
+        environment.systemPackages = with pkgs; [ flac streamrip sox ];
       })
     ]);
 }

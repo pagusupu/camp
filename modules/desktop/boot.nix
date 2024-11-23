@@ -11,7 +11,7 @@
       plymouth = {
         enable = true;
         theme = "bgrt";
-        themePackages = [pkgs.nixos-bgrt-plymouth];
+        themePackages = [ pkgs.nixos-bgrt-plymouth ];
       };
       initrd = {
         systemd = {
@@ -21,7 +21,7 @@
         };
         verbose = false;
       };
-      kernelParams = ["quiet" "splash"];
+      kernelParams = [ "quiet" "splash" ];
     };
   };
 }

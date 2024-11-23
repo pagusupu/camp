@@ -28,9 +28,9 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
         settings.media_minimum_duration = 180;
       };
     };
-    imports = [inputs.idle-inhibit.homeModules.default];
-    home.packages = [pkgs.gtklock];
-    wayland.windowManager.hyprland.settings.exec-once = ["gtklock -d"];
+    imports = [ inputs.idle-inhibit.homeModules.default ];
+    home.packages = [ pkgs.gtklock ];
+    wayland.windowManager.hyprland.settings.exec-once = [ "gtklock -d" ];
   };
   security.pam.services.gtklock = {};
 }

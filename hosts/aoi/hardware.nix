@@ -6,21 +6,21 @@
       efi.canTouchEfiVariables = true;
     };
     initrd = {
-      availableKernelModules = ["ahci" "nvme" "sd_mod" "xhci_pci"];
+      availableKernelModules = [ "ahci" "nvme" "sd_mod" "xhci_pci" ];
       supportedFilesystems.btrfs = true;
     };
     swraid = {
       enable = true;
       mdadmConf = "MAILADDR please@shut.up";
     };
-    kernelModules = ["kvm-amd"];
+    kernelModules = [ "kvm-amd" ];
   };
   powerManagement.cpuFreqGovernor = "powersave";
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = ["fmask=0022" "dmask=0022"];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
     "/" = {
       device = "/dev/disk/by-label/main";
@@ -31,5 +31,5 @@
       fsType = "btrfs";
     };
   };
-  swapDevices = [{device = "/dev/disk/by-label/swap";}];
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
 }

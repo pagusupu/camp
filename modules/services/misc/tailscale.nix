@@ -19,10 +19,10 @@
           openFirewall = true;
           authKeyFile = config.age.secrets.tailscale.path;
           useRoutingFeatures = "both";
-          extraUpFlags = ["--accept-risk="];
+          extraUpFlags = [ "--accept-risk=" ];
         }
         (lib.mkIf server {
-          extraUpFlags = ["--accept-risk=" "--ssh" "--advertise-exit-node"];
+          extraUpFlags = [ "--accept-risk=" "--ssh" "--advertise-exit-node" ];
         })
       ];
     };

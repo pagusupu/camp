@@ -16,14 +16,14 @@
       recommendedOptimisation = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-      virtualHosts."pagu.cafe" = {root = "/storage/cafe";} // cutelib.SSL;
+      virtualHosts."pagu.cafe" = { root = "/storage/cafe"; } // cutelib.SSL;
     };
-    networking.firewall.allowedTCPPorts = [80 443];
+    networking.firewall.allowedTCPPorts = [ 80 443 ];
 
     security.acme = {
       acceptTerms = true;
       defaults.email = "amce@pagu.cafe";
     };
-    users.users.nginx.extraGroups = ["acme"];
+    users.users.nginx.extraGroups = [ "acme" ];
   };
 }

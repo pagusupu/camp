@@ -5,7 +5,7 @@
   inputs,
   ...
 }: {
-  imports = [inputs.home-manager.nixosModules.home-manager];
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
   options.cute.services.backend.home-manager = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.backend.home-manager {
     home-manager = {

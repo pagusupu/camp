@@ -11,8 +11,8 @@
       enable = true;
       settings = {
         blocking = {
-          clientGroupsBlock.default = ["ads"];
-          denylists.ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts"];
+          clientGroupsBlock.default = [ "ads" ];
+          denylists.ads = [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts" ];
         };
         upstreams.groups.default = [
           "1.0.0.1"
@@ -23,9 +23,9 @@
       };
     };
     networking.firewall = {
-      allowedTCPPorts = [56];
-      allowedUDPPorts = [56];
+      allowedTCPPorts = [ 56 ];
+      allowedUDPPorts = [ 56 ];
     };
-    environment.systemPackages = [pkgs.blocky]; # cli
+    environment.systemPackages = [ pkgs.blocky ]; # cli
   };
 }

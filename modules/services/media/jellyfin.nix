@@ -6,7 +6,7 @@
 }: {
   options.cute.services.media.jellyfin = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.media.jellyfin (lib.mkMerge [
-    {assertions = cutelib.assertNginx "jellyfin";}
+    { assertions = cutelib.assertNginx "jellyfin"; }
     {
       services = {
         jellyfin = {

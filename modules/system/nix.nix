@@ -22,15 +22,15 @@
             "nix-command"
             "no-url-literals"
           ];
-          allowed-users = ["@wheel"];
-          trusted-users = ["pagu"];
+          allowed-users = [ "@wheel" ];
+          trusted-users = [ "pagu" ];
         };
         optimise.automatic = true;
       };
       nixpkgs = {
         config.allowUnfree = true;
         hostPlatform = lib.mkDefault "x86_64-linux";
-        overlays = [inputs.self.overlays.default];
+        overlays = [ inputs.self.overlays.default ];
       };
       programs.nh = {
         enable = true;
@@ -44,8 +44,8 @@
     {
       nix = {
         channel.enable = false;
-        nixPath = ["nixpkgs=/etc/nix/inputs/nixpkgs"];
-        settings.nix-path = ["nixpkgs=flake:nixpkgs"];
+        nixPath = [ "nixpkgs=/etc/nix/inputs/nixpkgs" ];
+        settings.nix-path = [ "nixpkgs=flake:nixpkgs" ];
         registry.nixpkgs.flake = inputs.nixpkgs;
       };
       environment.etc."nix/inputs/nixpkgs".source = inputs.nixpkgs.outPath;

@@ -10,7 +10,7 @@
     ...
   }: {
     devShells.default = pkgs.mkShellNoCC {
-      packages = [inputs'.agenix.packages.default];
+      packages = [ inputs'.agenix.packages.default ];
       shellHook = config.pre-commit.installationScript;
     };
     pre-commit.settings = {
@@ -19,7 +19,7 @@
         statix.enable = true;
         nil.enable = true;
       };
-      excludes = ["flake.lock"];
+      excludes = [ "flake.lock" ];
     };
     treefmt = {
       settings.global.excludes = [
@@ -29,7 +29,10 @@
         "secrets/*.age"
       ];
       programs = {
-        alejandra.enable = true;
+        alejandra = {
+          enable = true;
+          package = config.packages.alejandra-custom;
+        };
         deadnix.enable = true;
         mdformat.enable = true;
         statix.enable = true;

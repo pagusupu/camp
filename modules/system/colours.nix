@@ -8,7 +8,7 @@
   inherit (config.cute) dark;
 in {
   options = let
-    str = mkOption {type = types.str;};
+    str = mkOption { type = types.str; };
   in rec {
     colours = {
       base = str;

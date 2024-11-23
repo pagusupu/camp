@@ -11,10 +11,10 @@
     assertions = cutelib.assertHm "nixcord";
     home-manager.users.pagu = {
       programs.nixcord = {
-        enable = true;
+        enable = false;
         vesktop = {
           enable = true;
-          package = pkgs.vesktop.override {withTTS = false;};
+          package = pkgs.vesktop.override { withTTS = false; };
         };
         config = {
           plugins = {
@@ -52,12 +52,12 @@
             voiceChatDoubleClick.enable = true;
             youtubeAdblock.enable = true;
           };
-          themeLinks = ["https://raw.githubusercontent.com/rose-pine/discord/refs/heads/main/rose-pine.theme.css"];
+          themeLinks = [ "https://raw.githubusercontent.com/rose-pine/discord/refs/heads/main/rose-pine.theme.css" ];
         };
         discord.enable = false;
         extraConfig.SKIP_HOST_UPDATE = true;
       };
-      imports = [inputs.nixcord.homeManagerModules.nixcord];
+      imports = [ inputs.nixcord.homeManagerModules.nixcord ];
     };
   };
 }

@@ -26,7 +26,7 @@
         mimeApps = {
           enable = true;
           defaultApplications = let
-            browser = ["floorp.desktop"];
+            browser = [ "floorp.desktop" ];
           in {
             "application/x-extension-htm" = browser;
             "application/x-extension-html" = browser;
@@ -40,7 +40,7 @@
             "x-scheme-handler/http" = browser;
             "x-scheme-handler/https" = browser;
             "x-scheme-handler/unknown" = browser;
-            "inode/directory" = ["thunar.desktop"];
+            "inode/directory" = [ "thunar.desktop" ];
           };
         };
         userDirs = let

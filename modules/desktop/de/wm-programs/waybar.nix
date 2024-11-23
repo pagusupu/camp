@@ -16,9 +16,9 @@
           height = 320;
           width = 36;
 
-          modules-left = ["hyprland/workspaces"];
-          modules-center = ["clock"];
-          modules-right = ["custom/term" "custom/launch" "custom/power"];
+          modules-left = [ "hyprland/workspaces" ];
+          modules-center = [ "clock" ];
+          modules-right = [ "custom/term" "custom/launch" "custom/power" ];
 
           "hyprland/workspaces" = {
             format = "{icon}";
@@ -49,14 +49,14 @@
         left =
           {
             position = "left";
-            output = ["DP-3"];
+            output = [ "DP-3" ];
             margin-left = 6;
           }
           // common;
         right =
           {
             position = "right";
-            output = ["HDMI-A-1"];
+            output = [ "HDMI-A-1" ];
             margin-right = 6;
           }
           // common;

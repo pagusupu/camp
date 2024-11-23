@@ -6,7 +6,7 @@
   inputs,
   ...
 }: {
-  imports = ["${inputs.qbit}/nixos/modules/services/torrent/qbittorrent.nix"];
+  imports = [ "${inputs.qbit}/nixos/modules/services/torrent/qbittorrent.nix" ];
   options.cute.services.media.qbittorrent = cutelib.mkEnable;
   config = lib.mkIf config.cute.services.media.qbittorrent {
     assertions = cutelib.assertNginx "qbittorrent";

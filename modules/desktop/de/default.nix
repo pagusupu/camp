@@ -4,12 +4,12 @@
 in {
   options.cute.desktop = {
     de = mkOption {
-      type = nullOr (enum ["hyprland" "plasma"]);
+      type = nullOr (enum [ "hyprland" "plasma" ]);
       default = null;
     };
     monitors = {
-      m1 = mkOption {type = str;};
-      m2 = mkOption {type = str;};
+      m1 = mkOption { type = str; };
+      m2 = mkOption { type = str; };
     };
   };
   config = {

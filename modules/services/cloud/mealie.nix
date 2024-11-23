@@ -22,7 +22,7 @@
     };
     fileSystems."/var/lib/private/mealie" = {
       device = "/storage/mealie";
-      options = ["bind"];
+      options = [ "bind" ];
     };
   };
 }

@@ -25,7 +25,7 @@
         };
         inherit unixSocket;
       };
-      nginx.virtualHosts.${domain} = {locations."/".proxyPass = "http://unix:${unixSocket}";} // cutelib.SSL;
+      nginx.virtualHosts.${domain} = { locations."/".proxyPass = "http://unix:${unixSocket}"; } // cutelib.SSL;
     };
   };
 }

@@ -20,8 +20,8 @@
           ...
         }: {
           options = {
-            source = mkOption {type = path;};
-            target = mkOption {type = str;};
+            source = mkOption { type = path; };
+            target = mkOption { type = str; };
             text = mkOption {
               default = null;
               type = nullOr lines;
@@ -29,7 +29,7 @@
           };
           config = {
             source = mkIf (config.text != null) (
-              mkDerivedConfig options.text (pkgs.writeText "xdg-${prefix}-${replaceStrings ["/"] ["-"] name}")
+              mkDerivedConfig options.text (pkgs.writeText "xdg-${prefix}-${replaceStrings [ "/" ] [ "-" ] name}")
             );
             target = mkDefault name;
           };
@@ -46,5 +46,5 @@ in {
   config.systemd.user.tmpfiles.users.pagu.rules = let
     _tmpStr = prefix: _: file: "L+ '${prefix}/${file.target}' - - - - ${file.source}";
   in
-    flatten [(mapAttrsToList (_tmpStr "%h") config.homefile)];
+    flatten [ (mapAttrsToList (_tmpStr "%h") config.homefile) ];
 }

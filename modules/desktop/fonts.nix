@@ -30,10 +30,10 @@
       fontconfig = {
         enable = true;
         defaultFonts = {
-          emoji = ["Noto Color Emoji"];
-          monospace = ["JetBrainsMono Nerd Font"];
-          sansSerif = ["Nunito"];
-          serif = ["Lato"];
+          emoji = [ "Noto Color Emoji" ];
+          monospace = [ "JetBrainsMono Nerd Font" ];
+          sansSerif = [ "Nunito" ];
+          serif = [ "Lato" ];
         };
         subpixel.rgba = "rgb";
       };

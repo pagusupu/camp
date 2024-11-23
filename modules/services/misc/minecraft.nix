@@ -10,7 +10,7 @@ in {
     enable = cutelib.mkEnable;
     server = mkOption {
       default = null;
-      type = types.enum ["vanilla" "modded"];
+      type = types.enum [ "vanilla" "modded" ];
     };
   };
   config = let
@@ -21,7 +21,7 @@ in {
       virtualisation.oci-containers.containers."minecraft" = mkMerge [
         {
           image = "itzg/minecraft-server:stable";
-          ports = ["25565:25565"];
+          ports = [ "25565:25565" ];
           environment = {
             EULA = "true";
             MOTD = ":3";
@@ -36,7 +36,7 @@ in {
             ENABLE_AUTOPAUSE = "true";
             MAX_TICK_TIME = "-1";
           };
-          volumes = ["/home/pagu/minecraft/${server}:/data"];
+          volumes = [ "/home/pagu/minecraft/${server}:/data" ];
         }
         (mkIf (server == "vanilla") {
           environment = {
@@ -51,7 +51,7 @@ in {
             #MODRINTH_MODPACK = "https://pagu.cafe/pagupack.mrpack";
             RCON_COMMANDS_STARTUP = "/gamerule playersSleepingPercentage 20";
           };
-          ports = ["24454:24454/udp"]; # vc mod
+          ports = [ "24454:24454/udp" ]; # vc mod
         })
       ];
     };

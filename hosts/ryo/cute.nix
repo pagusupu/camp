@@ -36,7 +36,7 @@
     hostId = "6f257938";
   };
   home-manager.users.pagu.home = {
-    packages = [pkgs.libreoffice-fresh];
+    packages = [ pkgs.libreoffice-fresh ];
     stateVersion = "24.05";
   };
   # no touchy

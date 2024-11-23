@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.aagl.nixosModules.default];
+  imports = [ inputs.aagl.nixosModules.default ];
   options.cute.programs.gui.aagl = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.aagl {
     homefile."honkers" = {
@@ -27,10 +27,10 @@
         rm ~/downloads/data_2
         cp ~/.local/share/honkers-railway-launcher/HSR/StarRail_Data/webCaches/2.30.1.0/Cache/Cache_Data/data_2 ~/downloads
       '';
-    in [wt];
+    in [ wt ];
     nix.settings = {
-      substituters = ["https://ezkea.cachix.org"];
-      trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
+      substituters = [ "https://ezkea.cachix.org" ];
+      trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
     };
     programs.honkers-railway-launcher.enable = true;
   };

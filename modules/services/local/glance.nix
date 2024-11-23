@@ -41,7 +41,7 @@
                       }
                     ];
                   }
-                  {type = "calendar";}
+                  { type = "calendar"; }
                 ];
                 size = "small";
               }

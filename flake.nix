@@ -1,24 +1,24 @@
 {
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./hosts ./parts];
-      systems = ["x86_64-linux"];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ./hosts ./parts ];
+      systems = [ "x86_64-linux" ];
     };
   inputs = {
-    nixpkgs.follows = "stable";
+    nixpkgs.follows = "unstable";
     stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     aagl = {
       inputs = {
-        nixpkgs.follows = "stable";
+        nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
       };
-      url = "github:ezKEa/aagl-gtk-on-nix/release-24.11";
+      url = "github:ezKEa/aagl-gtk-on-nix";
     };
     agenix = {
       inputs = {
-        nixpkgs.follows = "unstable";
+        nixpkgs.follows = "nixpkgs";
         darwin.follows = "";
         home-manager.follows = "";
         systems.follows = "systems";
@@ -27,15 +27,15 @@
     };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "unstable";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     git-hooks-nix = {
       inputs = {
-        nixpkgs.follows = "unstable";
+        nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "stable";
         flake-compat.follows = "flake-compat";
         gitignore.follows = "";
@@ -43,8 +43,8 @@
       url = "github:cachix/git-hooks.nix";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "stable";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hosts = {
       url = "github:StevenBlack/hosts";
@@ -60,16 +60,23 @@
     };
     nixcord = {
       inputs = {
-        nixpkgs.follows = "stable";
+        nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         systems.follows = "systems";
         treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:kaylorben/nixcord";
     };
+    nix-gaming = {
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+      url = "github:fufexan/nix-gaming";
+    };
     nixvim = {
       inputs = {
-        nixpkgs.follows = "unstable";
+        nixpkgs.follows = "nixpkgs";
         devshell.follows = "";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
@@ -79,14 +86,24 @@
         nuschtosSearch.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/main";
+    };
+    nyxexprs = {
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
+      url = "github:notashelf/nyxexprs";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
 
+    # unused by config
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;

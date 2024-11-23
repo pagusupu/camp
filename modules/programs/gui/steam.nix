@@ -2,9 +2,11 @@
   config,
   lib,
   cutelib,
+  inputs,
   pkgs,
   ...
 }: {
+  imports = [ inputs.nix-gaming.nixosModules.platformOptimizations ];
   options.cute.programs.gui.steam = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.gui.steam (lib.mkMerge [
     {
@@ -25,13 +27,17 @@
               WLR_RENDERER = "vulkan";
             };
           };
-          extraCompatPackages = [pkgs.proton-ge-bin];
+          extraCompatPackages = [ pkgs.proton-ge-bin ];
           localNetworkGameTransfers.openFirewall = true;
+          platformOptimizations.enable = true;
           protontricks.enable = true;
         };
         gamescope.capSysNice = true;
       };
-      environment.systemPackages = [pkgs.adwsteamgtk];
+      environment = {
+        sessionVariables.WINEDEBUG = "-all";
+        systemPackages = [ pkgs.adwsteamgtk ];
+      };
       hardware.xone.enable = true;
     }
     {
@@ -49,15 +55,7 @@
           };
         };
       };
-      users.users.pagu.extraGroups = ["gamemode"];
-    }
-    {
-      boot.kernel.sysctl = {
-        "kernel.sched_cfs_bandwidth_slice_us" = 3000;
-        "net.ipv4.tcp_fin_timeout" = 5;
-        "vm.max_map_count" = 2147483642;
-      };
-      environment.sessionVariables.WINEDEBUG = "-all";
+      users.users.pagu.extraGroups = [ "gamemode" ];
     }
   ]);
 }

@@ -7,7 +7,7 @@
 }: {
   options.cute.desktop.theme = lib.mkOption {
     default = "dawn";
-    type = lib.types.enum ["dawn" "moon"];
+    type = lib.types.enum [ "dawn" "moon" ];
   };
   config = lib.mkIf (config.cute.desktop.de == "hyprland") (lib.mkMerge [
     {
@@ -21,7 +21,7 @@
               settings = {
                 exec = let
                   inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
-                in ["hyprctl setcursor ${name} ${builtins.toString size}"];
+                in [ "hyprctl setcursor ${name} ${builtins.toString size}" ];
                 cursor = {
                   default_monitor = m1;
                   no_hardware_cursors = true;
@@ -83,12 +83,12 @@
                   "kill $(pidof swaybg)"
                   "${wallpaper}"
                 ];
-                exec-once = ["${wallpaper}"];
+                exec-once = [ "${wallpaper}" ];
                 misc.disable_hyprland_logo = true;
               };
             })
           ];
-        home.packages = [pkgs.swaybg];
+        home.packages = [ pkgs.swaybg ];
       };
     }
     (lib.mkIf config.cute.dark {
