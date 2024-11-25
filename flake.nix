@@ -86,16 +86,7 @@
         nuschtosSearch.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
-      url = "github:nix-community/nixvim/main";
-    };
-    nyxexprs = {
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
-        flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
-      };
-      url = "github:notashelf/nyxexprs";
+      url = "github:nix-community/nixvim";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";

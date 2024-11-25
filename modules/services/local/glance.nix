@@ -182,9 +182,9 @@
         in {
           light = mkDefault true;
           background-color = mkDefault "32 57 95"; # base
-          primary-color = mkDefault "343 35 55"; # love
+          primary-color = mkDefault "268 21 57"; # iris
           positive-color = mkDefault "189 30 48"; # foam
-          negative-color = mkDefault "3 53 67"; # rose
+          negative-color = mkDefault "343 35 55"; # love
         };
         branding.hide-footer = true;
       };
@@ -192,10 +192,10 @@
     specialisation.dark.configuration = {
       services.glance.settings.theme = {
         light = false;
-        background-color = "246 24 17";
-        primary-color = "343 76 68";
+        background-color = "249 22 12";
+        primary-color = "267 57 78";
         positive-color = "189 43 73";
-        negative-color = "2 66 75";
+        negative-color = "343 76 68";
       };
     };
   };

@@ -3,16 +3,13 @@
   lib,
   cutelib,
   inputs,
-  #pkgs,
+  pkgs,
   ...
 }: {
   imports = [ inputs.nixvim.nixosModules.nixvim ];
   options.cute.programs.cli.nvim = cutelib.mkEnable;
   config = lib.mkIf config.cute.programs.cli.nvim {
-    programs.nixvim = {pkgs, ...}: {
-
-      extraConfigLua = builtins.trace "pkgs version is ${pkgs.lib.trivial.release}" "";
-
+    programs.nixvim = {
       enable = true;
       clipboard = {
         register = "unnamedplus";

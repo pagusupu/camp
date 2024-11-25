@@ -17,6 +17,7 @@
           extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
             bitwarden
             darkreader
+            facebook-container
             linkding-extension
             return-youtube-dislikes
             sponsorblock

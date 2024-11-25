@@ -11,7 +11,7 @@
     assertions = cutelib.assertHm "nixcord";
     home-manager.users.pagu = {
       programs.nixcord = {
-        enable = false;
+        enable = true;
         vesktop = {
           enable = true;
           package = pkgs.vesktop.override { withTTS = false; };

@@ -3,7 +3,7 @@
   withSystem,
   ...
 }: let
-  inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem mkMerge;
+  inherit (inputs.nixpkgs.lib) genAttrs nixosSystem hasSuffix filesystem;
   genHosts = hosts:
     genAttrs hosts (
       name:
@@ -16,9 +16,7 @@
         }
     );
 in {
-  flake.nixosConfigurations = mkMerge [
-    (withSystem "x86_64-linux" (
-      _: genHosts [ "aoi" "ena" "rin" "ryo" ]
-    ))
-  ];
+  flake.nixosConfigurations = withSystem "x86_64-linux" (
+    _: genHosts [ "aoi" "ena" "rin" "ryo" ]
+  );
 }
