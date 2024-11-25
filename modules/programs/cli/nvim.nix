@@ -40,6 +40,10 @@
         nvimRuntime = true;
       };
       plugins = {
+        barbar = {
+          enable = true;
+          settings.auto_hide = 1;
+        };
         indent-blankline = {
           enable = true;
           settings.scope.enabled = false;
@@ -72,6 +76,13 @@
             indent.enable = true;
           };
         };
+        yazi = {
+          enable = true;
+          settings = {
+            enable_mouse_support = true;
+            highlight_hovered_buffers_in_same_directory = false;
+          };
+        };
         autoclose.enable = true;
         lualine.enable = true;
         lsp-format.enable = true;
@@ -79,6 +90,7 @@
         markview.enable = true;
         noice.enable = true;
         rainbow-delimiters.enable = true;
+        web-devicons.enable = true;
       };
       extraConfigVim = ''
         aun PopUp.How-to\ disable\ mouse

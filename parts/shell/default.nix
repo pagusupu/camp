@@ -15,6 +15,10 @@
     };
     pre-commit.settings = {
       hooks = {
+        alejandra = {
+          enable = true;
+          package = config.packages.alejandra-custom;
+        };
         deadnix.enable = true;
         statix.enable = true;
         nil.enable = true;

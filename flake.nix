@@ -18,7 +18,7 @@
     };
     agenix = {
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "unstable";
         darwin.follows = "";
         home-manager.follows = "";
         systems.follows = "systems";
@@ -27,15 +27,15 @@
     };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
+      inputs.nixpkgs-lib.follows = "unstable";
     };
     git-hooks-nix = {
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "unstable";
         nixpkgs-stable.follows = "stable";
         flake-compat.follows = "flake-compat";
         gitignore.follows = "";
@@ -69,7 +69,7 @@
     };
     nix-gaming = {
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "unstable";
         flake-parts.follows = "flake-parts";
       };
       url = "github:fufexan/nix-gaming";
@@ -86,11 +86,12 @@
         nuschtosSearch.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
-      url = "github:nix-community/nixvim";
+      # https://github.com/nix-community/nixvim/issues/2562
+      url = "github:nix-community/nixvim/c7b7b6481b129d31b5357b4529c28e2cc341b96e";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
     qbit.url = "github:fsnkty/nixpkgs?ref=init-nixos-qbittorrent";
 
