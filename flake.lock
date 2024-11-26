@@ -6,7 +6,7 @@
           "flake-compat"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "unstable"
         ]
       },
       "locked": {
@@ -245,7 +245,7 @@
           "flake-compat"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "unstable"
         ],
         "systems": [
           "systems"

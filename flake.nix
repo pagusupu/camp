@@ -11,7 +11,7 @@
 
     aagl = {
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "unstable";
         flake-compat.follows = "flake-compat";
       };
       url = "github:ezKEa/aagl-gtk-on-nix";
@@ -60,7 +60,7 @@
     };
     nixcord = {
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "unstable";
         flake-compat.follows = "flake-compat";
         systems.follows = "systems";
         treefmt-nix.follows = "treefmt-nix";

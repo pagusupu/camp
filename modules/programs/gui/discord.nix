@@ -32,6 +32,10 @@
               everyone = false;
               role = false;
             };
+            pinDMs = {
+              enable = true;
+              pinOrder = "custom";
+            };
             alwaysAnimate.enable = true;
             betterSettings.enable = true;
             betterUploadButton.enable = true;
@@ -45,7 +49,6 @@
             noMosaic.enable = true;
             noOnboardingDelay.enable = true;
             noProfileThemes.enable = true;
-            noRPC.enable = true;
             onePingPerDM.enable = true;
             plainFolderIcon.enable = true;
             stickerPaste.enable = true;
