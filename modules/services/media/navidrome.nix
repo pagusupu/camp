@@ -17,7 +17,7 @@
       in {
         assertions = assertDocker "feishin";
         virtualisation.oci-containers.containers."feishin" = {
-          image = "ghcr.io/jeffvli/feishin:0.11.1";
+          image = "ghcr.io/jeffvli/feishin:0.12.1";
           ports = [ "${toString port}:9180" ];
         };
         services.nginx = host "fish" port "" "";

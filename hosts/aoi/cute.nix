@@ -18,6 +18,7 @@
         linkding = true;
         mealie = true;
         memos = true;
+        syncthing = true;
         vaultwarden = true;
       };
       local = {
