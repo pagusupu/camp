@@ -86,8 +86,7 @@
         nuschtosSearch.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
-      # https://github.com/nix-community/nixvim/issues/2562
-      url = "github:nix-community/nixvim/c7b7b6481b129d31b5357b4529c28e2cc341b96e";
+      url = "github:nix-community/nixvim/main";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
