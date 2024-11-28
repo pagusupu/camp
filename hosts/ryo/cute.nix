@@ -14,11 +14,14 @@
     programs = {
       cli = {
         btop = true;
-        fish = true;
         nvim = true;
+        shell = true;
         starship = true;
       };
-      gui.floorp = true;
+      gui = {
+        floorp = true;
+        vscode = true;
+      };
     };
     services = {
       backend.home-manager = true;
@@ -36,7 +39,7 @@
     hostId = "6f257938";
   };
   home-manager.users.pagu.home = {
-    packages = [ pkgs.libreoffice-fresh ];
+    packages = [ pkgs.obsidian ];
     stateVersion = "24.05";
   };
   # no touchy

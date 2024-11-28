@@ -16,6 +16,7 @@
     kernelParams = [ "iommu=soft" ];
   };
   powerManagement.cpuFreqGovernor = "powersave";
+  services.fprintd.enable = true;
   fileSystems = {
     "/boot" = {
       device = "/dev/disk/by-label/boot";
