@@ -2,25 +2,50 @@
   config,
   lib,
   cutelib,
+  inputs,
   pkgs,
   ...
 }:
-lib.mkIf (config.cute.desktop.de == "hyprland") {
-  assertions = cutelib.assertHm "hyprland-login";
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${lib.getExe pkgs.hyprland}";
-        user = "pagu";
+lib.mkIf (config.cute.desktop.de == "hyprland")
+(lib.mkMerge [
+  { assertions = cutelib.assertHm "hyprland-login"; }
+  {
+    home-manager.users.pagu = {
+      services = {
+        hypridle = {
+          enable = true;
+          settings = {
+            listener = [
+              {
+                timeout = 300;
+                on-timeout = "gtklock";
+              }
+            ];
+            general.lock_cmd = "gtklock";
+          };
+        };
+        wayland-pipewire-idle-inhibit = {
+          enable = true;
+          package = pkgs.wayland-pipewire-idle-inhibit;
+          settings.media_minimum_duration = 180;
+        };
       };
-      default_session = initial_session;
+      imports = [ inputs.idle-inhibit.homeModules.default ];
+      home.packages = [ pkgs.gtklock ];
+      wayland.windowManager.hyprland.settings.exec-once = [ "gtklock -d" ];
     };
-  };
-  home-manager.users.pagu = {
-    wayland.windowManager.hyprland.settings.exec-once = [
-      "systemctl --user start hyprpolkitagent"
-    ];
-    home.packages = [ pkgs.hyprpolkitagent ];
-  };
-}
+    security.pam.services.gtklock = {};
+  }
+  {
+    services.greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "${lib.getExe pkgs.hyprland}";
+          user = "pagu";
+        };
+        default_session = initial_session;
+      };
+    };
+  }
+])

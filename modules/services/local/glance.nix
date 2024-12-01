@@ -92,12 +92,12 @@
                         links = [
                           {
                             title = "Nix Search";
-                            url = "https://search.nixos.org/packages?channel=unstable";
+                            url = "https://search.nixos.org/packages?channel=24.11";
                             same-tab = true;
                           }
                           {
                             title = "HM Search";
-                            url = "https://home-manager-options.extranix.com/?release=master";
+                            url = "https://home-manager-options.extranix.com/?release=24.11";
                             same-tab = true;
                           }
                           {

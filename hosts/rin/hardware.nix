@@ -30,7 +30,7 @@
       fsType = "btrfs";
     };
     "/mnt/games" = {
-      device = "/dev/disk/by-label/games";
+      device = "/dev/nvme0n1p3";
       fsType = "btrfs";
     };
   };

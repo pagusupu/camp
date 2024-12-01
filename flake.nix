@@ -5,16 +5,16 @@
       systems = [ "x86_64-linux" ];
     };
   inputs = {
-    nixpkgs.follows = "unstable";
+    nixpkgs.follows = "stable";
     stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     aagl = {
       inputs = {
-        nixpkgs.follows = "unstable";
+        nixpkgs.follows = "stable";
         flake-compat.follows = "flake-compat";
       };
-      url = "github:ezKEa/aagl-gtk-on-nix";
+      url = "github:ezKEa/aagl-gtk-on-nix/release-24.11";
     };
     agenix = {
       inputs = {
@@ -43,7 +43,7 @@
       url = "github:cachix/git-hooks.nix";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hosts = {
@@ -76,7 +76,7 @@
     };
     nixvim = {
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "stable";
         devshell.follows = "";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
@@ -86,7 +86,7 @@
         nuschtosSearch.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
-      url = "github:nix-community/nixvim/main";
+      url = "github:nix-community/nixvim/nixos-24.11";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";

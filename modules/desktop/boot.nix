@@ -9,7 +9,7 @@
   config = lib.mkIf config.cute.desktop.boot {
     boot = {
       plymouth = {
-        enable = true;
+        #enable = true;
         theme = "bgrt";
         themePackages = [ pkgs.nixos-bgrt-plymouth ];
       };

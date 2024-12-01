@@ -17,7 +17,14 @@
           gtk = {
             enable = true;
             theme = {
-              package = pkgs.gtk-rose-pine;
+              package = pkgs.rose-pine-gtk-theme.overrideAttrs (
+                oldAttrs: {
+                  src = oldAttrs.src.override {
+                    rev = "d0d7815f0af2facd3157e005cd7c606d4f28d881";
+                    sha256 = "vCWs+TOVURl18EdbJr5QAHfB+JX9lYJ3TPO6IklKeFE=";
+                  };
+                }
+              );
               name = mkDefault "rose-pine-dawn";
             };
             iconTheme = {
