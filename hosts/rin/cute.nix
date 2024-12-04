@@ -50,6 +50,7 @@
       gnome-calculator
       heroic
       kdePackages.okular
+      obsidian
       radeontop
       xfce.thunar
     ];

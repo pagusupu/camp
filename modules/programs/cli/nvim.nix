@@ -76,13 +76,6 @@
             indent.enable = true;
           };
         };
-        yazi = {
-          enable = true;
-          settings = {
-            enable_mouse_support = true;
-            highlight_hovered_buffers_in_same_directory = false;
-          };
-        };
         autoclose.enable = true;
         lualine.enable = true;
         lsp-format.enable = true;
