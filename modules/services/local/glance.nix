@@ -22,23 +22,13 @@
                   {
                     type = "clock";
                     hour-format = "12h";
-                    timezones = [
-                      {
-                        timezone = "US/Central";
-                        label = "US Central";
-                      }
-                      {
-                        timezone = "Europe/London";
-                        label = "London";
-                      }
-                      {
-                        timezone = "Asia/Tokyo";
-                        label = "Tokyo";
-                      }
-                      {
-                        timezone = "Australia/Sydney";
-                        label = "Sydney";
-                      }
+                    timezones = let
+                      zone = timezone: label: { inherit timezone label; };
+                    in [
+                      (zone "US/Central" "US/Central")
+                      (zone "Europe/London" "London")
+                      (zone "Asia/Tokyo" "Tokyo")
+                      (zone "Australia/Sydney" "Sydney")
                     ];
                   }
                   { type = "calendar"; }
@@ -49,120 +39,50 @@
                 widgets = [
                   {
                     type = "bookmarks";
-                    groups = [
+                    groups = let
+                      bookmark = title: url: {
+                        inherit title url;
+                        same-tab = true;
+                      };
+                    in [
                       {
                         title = "Frequent";
                         links = [
-                          {
-                            title = "Discord";
-                            url = "https://discord.com/channels/@me";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Feishin";
-                            url = "http://192.168.178.182:9180";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Linkding";
-                            url = "http://192.168.178.182:9090";
-                            same-tab = true;
-                          }
-
-                          {
-                            title = "Memos";
-                            url = "http://192.168.178.182:5230";
-                            same-tab = true;
-                          }
-
-                          {
-                            title = "Youtube";
-                            url = "https://youtube.com/feed/subscriptions";
-                            same-tab = true;
-                          }
-                          {
-                            title = "YT Music";
-                            url = "https://music.youtube.com";
-                            same-tab = true;
-                          }
+                          (bookmark "Discord" "https://discord.com/channels/@me")
+                          (bookmark "Feishin" "http://192.168.178.182:9180")
+                          (bookmark "Linkding" "http://192.168.178.182:9090")
+                          (bookmark "Memos" "http://192.168.178.182:5230")
+                          (bookmark "Youtube" "https://youtube.com/feed/subscriptions")
+                          (bookmark "YT Music" "https://music.youtube.com")
                         ];
                       }
                       {
                         title = "Misc";
                         links = [
-                          {
-                            title = "Nix Search";
-                            url = "https://search.nixos.org/packages?channel=24.11";
-                            same-tab = true;
-                          }
-                          {
-                            title = "HM Search";
-                            url = "https://home-manager-options.extranix.com/?release=24.11";
-                            same-tab = true;
-                          }
-                          {
-                            title = "GitHub";
-                            url = "https://github.com";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Tailscale";
-                            url = "https://login.tailscale.com/admin/machines";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Gmail";
-                            url = "https://mail.google.com/mail/u/0/";
-                            same-tab = true;
-                          }
-                          {
-                            title = "Proton Mail";
-                            url = "https://mail.proton.me/u/0/inbox";
-                            same-tab = true;
-                          }
+                          (bookmark "Nix Search" "https://search.nixos.org/packages?channel=24.11")
+                          (bookmark "HM Search" "https://home-manager-options.extranix.com/?query=&release=release-24.11")
+                          (bookmark "GitHub" "https://github.com")
+                          (bookmark "Tailscale" "https://login.tailscale.com/admin/machines")
+                          (bookmark "Gmail" "https://mail.google.com/mail/u/0/")
+                          (bookmark "Proton Mail" "https://mail.proton.me/u/0/inbox")
                         ];
                       }
                     ];
                   }
                   {
                     type = "monitor";
-                    sites = [
-                      {
-                        title = "Jellyfin";
-                        url = "http://192.168.178.182:8096";
-                        icon = "si:jellyfin";
+                    sites = let
+                      service = title: url: icon: {
+                        inherit title url icon;
                         same-tab = true;
-                      }
-                      {
-                        title = "Navidrome";
-                        url = "http://192.168.178.182:8098";
-                        icon = "si:soundcloud";
-                        same-tab = true;
-                      }
-                      {
-                        title = "FreshRSS";
-                        url = "https://frss.pagu.cafe";
-                        icon = "si:rss";
-                        same-tab = true;
-                      }
-                      {
-                        title = "qBittorrent";
-                        url = "http://192.168.178.182:8077";
-                        icon = "si:qbittorrent";
-                        same-tab = true;
-                      }
-                      {
-                        title = "Immich";
-                        url = "http://192.168.178.182:3001";
-                        icon = "si:immich";
-                        same-tab = true;
-                      }
-                      {
-                        title = "Vaultwarden";
-                        url = "https://wrdn.pagu.cafe";
-                        icon = "si:vaultwarden";
-                        same-tab = true;
-                      }
+                      };
+                    in [
+                      (service "Jellyfin" "http://192.168.178.182:8096" "si:jellyfin")
+                      (service "Navidrome" "http://192.168.178.182:8098" "si:soundcloud")
+                      (service "FreshRSS" "https://frss.pagu.cafe" "si:rss")
+                      (service "qBittorrent" "http://192.168.178.182:8077" "si:qbittorrent")
+                      (service "Immich" "http://192.168.178.182:3001" "si:immich")
+                      (service "Vaultwarden" "https://wrdn.pagu.cafe" "si:vaultwarden")
                     ];
                     cache = "1m";
                     title = "Services";

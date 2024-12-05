@@ -24,7 +24,7 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
           inherit (config.cute.desktop.monitors) m1 m2;
         in [
           "${m1}, 1920x1080@165, 0x0, 1"
-          "${m2}, 1920x1080@75, 1920x0, 1"
+          "${m2}, 1920x1080@144, 1920x0, 1"
         ];
         misc.vrr = 1;
       };
@@ -32,9 +32,9 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
     };
     home.packages = with pkgs; [
       kooha
-      mpv
       wl-clipboard
     ];
+    programs.mpv.enable = true;
   };
   cute.desktop.wm = {
     mako = true;
