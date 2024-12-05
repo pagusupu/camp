@@ -34,6 +34,7 @@
               nix shell nixpkgs#$argv
             end
 
+            set fish_color_valid_path cyan
             set -u fish_greeting
           '';
         };

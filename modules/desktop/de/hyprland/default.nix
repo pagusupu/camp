@@ -30,7 +30,11 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
       };
       systemd.variables = [ "--all" ];
     };
-    home.packages = [ pkgs.wl-clipboard ];
+    home.packages = with pkgs; [
+      kooha
+      mpv
+      wl-clipboard
+    ];
   };
   cute.desktop.wm = {
     mako = true;
