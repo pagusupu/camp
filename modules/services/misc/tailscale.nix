@@ -12,7 +12,7 @@
     inherit (config.cute.services.tailscale) enable server;
   in
     lib.mkIf enable {
-      age.secrets.tailscale.file = ../../../secrets/tailscale.age;
+      age.secrets.tailscale.file = ../../../parts/secrets/tailscale.age;
       services.tailscale = lib.mkMerge [
         {
           enable = true;

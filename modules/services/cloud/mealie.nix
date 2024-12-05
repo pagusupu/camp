@@ -13,7 +13,9 @@
       mealie = {
         enable = true;
         settings = {
-          BASE_URL = "meal.pagu.cafe";
+          ALLOW_SIGNUP = true;
+          API_DOCS = false;
+          BASE_URL = "meal.${config.networking.domain}";
           TZ = "NZ";
         };
         inherit port;

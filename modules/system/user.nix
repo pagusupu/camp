@@ -10,7 +10,7 @@
   config = lib.mkIf config.cute.system.user {
     age = {
       secrets.user = {
-        file = ../../secrets/user.age;
+        file = ../../parts/secrets/user.age;
         owner = "pagu";
       };
       identityPaths = [ "/etc/ssh/${config.networking.hostName}_ed25519_key" ];

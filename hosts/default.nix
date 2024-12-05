@@ -11,7 +11,7 @@
           modules = builtins.concatMap (x:
             builtins.filter (hasSuffix ".nix")
             (map toString (filesystem.listFilesRecursive x)))
-          [ ../lib ../modules ./${name} ];
+          [ ./${name} ../modules ../parts/lib ];
           specialArgs.inputs = inputs;
         }
     );

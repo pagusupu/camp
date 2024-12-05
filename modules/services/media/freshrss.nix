@@ -8,7 +8,7 @@
   config = lib.mkIf config.cute.services.media.freshrss {
     assertions = cutelib.assertNginx "freshrss";
     age.secrets.freshrss = {
-      file = ../../../secrets/freshrss.age;
+      file = ../../../parts/secrets/freshrss.age;
       owner = "freshrss";
     };
     services = let

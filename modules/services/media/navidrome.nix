@@ -23,20 +23,6 @@
         services.nginx = host "fish" port "" "";
       })
       (let
-        port = 9078;
-      in {
-        assertions = assertDocker "multi-scrobbler";
-        virtualisation.oci-containers.containers."multi-scrobbler" = {
-          image = "foxxmd/multi-scrobbler";
-          ports = [ "${toString port}:9078" ];
-          environment = {
-            BASE_URL = "http://${config.cute.net.ip}:${toString port}";
-            TZ = "NZ";
-          };
-          volumes = [ "/storage/multi-scrobbler:/config" ];
-        };
-      })
-      (let
         port = 8098;
       in {
         assertions = assertNginx "navidrome";
