@@ -28,7 +28,7 @@
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "${lib.getExe pkgs.nil}";
             "nix.serverSettings.nil" = {
-              formatting.command = [ "${lib.getExe pkgs.alejandra}" ];
+              formatting.command = [ "${lib.getExe pkgs.alejandra-custom}" ];
               nix.flake.autoArchive = false;
             };
             "vsicons.dontShowNewVersionMessage" = true;

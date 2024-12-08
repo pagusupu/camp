@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkOption types;
   inherit (types) nullOr enum str;
 in {
@@ -11,11 +15,22 @@ in {
       m1 = mkOption { type = str; };
       m2 = mkOption { type = str; };
     };
-  };
-  config = {
-    cute.desktop.monitors = {
-      m1 = "DP-3";
-      m2 = "HDMI-A-1";
+    theme = mkOption {
+      default = "light";
+      type = enum [ "dark" "light" ];
     };
   };
+  config = lib.mkMerge [
+    {
+      cute.desktop.monitors = {
+        m1 = "DP-3";
+        m2 = "HDMI-A-1";
+      };
+    }
+    (lib.mkIf config.cute.dark {
+      specialisation.dark.configuration = {
+        cute.desktop.theme = "dark";
+      };
+    })
+  ];
 }

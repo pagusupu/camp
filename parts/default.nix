@@ -31,7 +31,7 @@
       settings.global.excludes = [
         ".direnv/**"
         ".envrc"
-        "secrets/*.age"
+        "parts/secrets/*.age"
       ];
       programs = {
         alejandra = {

@@ -33,7 +33,7 @@
           dawn = "rgba(250, 244, 237, 0.8)";
           moon = "rgba(25, 23, 36, 0.8)";
           bg =
-            if config.cute.desktop.theme == "dawn"
+            if config.cute.desktop.theme == "light"
             then dawn
             else moon;
           image = name: ''
