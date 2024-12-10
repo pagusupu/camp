@@ -6,19 +6,19 @@
   ...
 }: let
   inherit (cutelib) mkEnabledOption mkEnable;
-  inherit (lib) mkMerge mkIf;
+  inherit (lib) mkOption types mkMerge mkIf;
+  inherit (types) nullOr enum;
 in {
   options.cute.system = {
     cleanup = mkEnabledOption;
-    cpu = mkEnabledOption;
-    graphics = mkEnable;
+    hardware = mkOption { type = nullOr (enum [ "amd" "intel" ]); };
     programs = mkEnabledOption;
     sudo = mkEnabledOption;
     TZ = mkEnabledOption;
     winDualBoot = mkEnable;
   };
   config = let
-    inherit (config.cute.system) cpu cleanup graphics programs sudo TZ winDualBoot;
+    inherit (config.cute.system) cleanup hardware programs sudo TZ winDualBoot;
   in
     mkMerge [
       (mkIf cleanup {
@@ -36,24 +36,22 @@ in {
         boot.enableContainers = false;
         xdg.sounds.enable = false;
       })
-      (mkIf cpu {
-        hardware = {
-          cpu = {
-            amd.updateMicrocode = true;
-            intel.updateMicrocode = true;
-          };
-          enableRedistributableFirmware = true;
-        };
-      })
-      (mkIf graphics {
-        hardware.graphics = {
-          enable = true;
-          extraPackages = with pkgs; [
-            libvdpau-va-gl
-            vaapiVdpau
-          ];
-        };
-      })
+      {
+        hardware = mkMerge [
+          (mkIf (hardware == "amd") {
+            cpu.amd.updateMicrocode = true;
+            graphics.extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+          })
+          (mkIf (hardware == "intel") {
+            cpu.intel.updateMicrocode = true;
+            #graphics.extraPackages = with pkgs; [];
+          })
+          {
+            graphics.enable = true;
+            enableRedistributableFirmware = true;
+          }
+        ];
+      }
       (mkIf programs {
         environment.systemPackages = with pkgs; [
           dust

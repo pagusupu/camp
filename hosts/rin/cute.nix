@@ -32,7 +32,7 @@
       tailscale.enable = true;
     };
     system = {
-      graphics = true;
+      hardware = "amd";
       winDualBoot = true;
     };
     dark = true;
@@ -47,6 +47,8 @@
   home-manager.users.pagu.home = {
     packages = with pkgs; [
       easyeffects
+      exactaudiocopy
+      glirc
       gnome-calculator
       heroic
       kdePackages.okular

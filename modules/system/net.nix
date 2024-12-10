@@ -45,17 +45,16 @@ in {
         };
         networking.useDHCP = false;
       })
-      (mkIf (connection == "wireless")
-        {
-          networking = {
-            networkmanager = {
-              enable = true;
-              plugins = lib.mkForce [];
-              wifi.backend = "iwd";
-            };
-            wireless.iwd.enable = true;
+      (mkIf (connection == "wireless") {
+        networking = {
+          networkmanager = {
+            enable = true;
+            plugins = lib.mkForce [];
+            wifi.backend = "iwd";
           };
-          users.users.pagu.extraGroups = [ "networkmanager" ];
-        })
+          wireless.iwd.enable = true;
+        };
+        users.users.pagu.extraGroups = [ "networkmanager" ];
+      })
     ]);
 }

@@ -12,6 +12,11 @@ lib.mkIf (config.cute.desktop.de == "hyprland")
     home-manager.users.pagu = {
       wayland.windowManager.hyprland = lib.mkMerge [
         {
+          settings.exec = let
+            inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
+          in [ "hyprctl setcursor ${name} ${builtins.toString size}" ];
+        }
+        {
           settings = {
             animations = {
               enabled = true;
@@ -36,34 +41,13 @@ lib.mkIf (config.cute.desktop.de == "hyprland")
               "col.active_border" = "0xFF" + config.colours.iris;
               "col.inactive_border" = "0xFF" + config.colours.overlay;
             };
-            misc.animate_manual_resizes = true;
+            misc = {
+              animate_manual_resizes = true;
+              disable_hyprland_logo = true;
+            };
+            exec-once = [ "rwpspread -b swaybg -i ~/pictures/active/bg.png" ];
           };
         }
-        {
-          settings = {
-            exec = let
-              inherit (config.home-manager.users.pagu.home.pointerCursor) name size;
-            in [ "hyprctl setcursor ${name} ${builtins.toString size}" ];
-            cursor = {
-              default_monitor = config.cute.desktop.monitors.m1;
-              no_hardware_cursors = true;
-            };
-            input = {
-              accel_profile = "flat";
-              follow_mouse = 2;
-              sensitivity = "-0.1";
-            };
-          };
-        }
-        (let
-          wallpaper = "rwpspread -b swaybg -i ~/pictures/active/bg.png";
-        in {
-          settings = {
-            exec = [ "${wallpaper}" ];
-            exec-once = [ "${wallpaper}" ];
-            misc.disable_hyprland_logo = true;
-          };
-        })
       ];
       home.packages = with pkgs; [ rwpspread swaybg ];
     };
