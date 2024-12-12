@@ -49,9 +49,9 @@
                         title = "Frequent";
                         links = [
                           (bookmark "Discord" "https://discord.com/channels/@me")
-                          (bookmark "Feishin" "http://192.168.178.182:9180")
-                          (bookmark "Linkding" "http://192.168.178.182:9090")
-                          (bookmark "Memos" "http://192.168.178.182:5230")
+                          (bookmark "Feishin" "http://aoi:9180")
+                          (bookmark "Linkding" "http://aoi:9090")
+                          (bookmark "Memos" "http://aoi:5230")
                           (bookmark "Youtube" "https://youtube.com/feed/subscriptions")
                           (bookmark "YT Music" "https://music.youtube.com")
                         ];
@@ -77,11 +77,11 @@
                         same-tab = true;
                       };
                     in [
-                      (service "Jellyfin" "http://192.168.178.182:8096" "si:jellyfin")
-                      (service "Navidrome" "http://192.168.178.182:8098" "si:soundcloud")
+                      (service "Jellyfin" "http://aoi:8096" "si:jellyfin")
+                      (service "Navidrome" "http://aoi:8098" "si:soundcloud")
                       (service "FreshRSS" "https://frss.pagu.cafe" "si:rss")
-                      (service "qBittorrent" "http://192.168.178.182:8077" "si:qbittorrent")
-                      (service "Immich" "http://192.168.178.182:3001" "si:immich")
+                      (service "qBittorrent" "http://aoi:8077" "si:qbittorrent")
+                      (service "Immich" "http://aoi:3001" "si:immich")
                       (service "Vaultwarden" "https://wrdn.pagu.cafe" "si:vaultwarden")
                     ];
                     cache = "1m";

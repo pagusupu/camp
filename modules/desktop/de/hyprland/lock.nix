@@ -8,7 +8,7 @@
 }:
 lib.mkIf (config.cute.desktop.de == "hyprland")
 (lib.mkMerge [
-  { assertions = cutelib.assertHm "hyprland-login"; }
+  { assertions = cutelib.assertHm "hyprland-lock"; }
   {
     home-manager.users.pagu = {
       services = {
