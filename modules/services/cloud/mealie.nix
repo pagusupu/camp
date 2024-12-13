@@ -14,7 +14,6 @@
         enable = true;
         settings = {
           ALLOW_SIGNUP = true;
-          API_DOCS = false;
           BASE_URL = "meal.${config.networking.domain}";
           TZ = "NZ";
         };

@@ -22,7 +22,11 @@
           extraUpFlags = [ "--accept-risk=" ];
         }
         (lib.mkIf server {
-          extraUpFlags = [ "--accept-risk=" "--ssh" "--advertise-exit-node" ];
+          extraUpFlags = [
+            "--advertise-exit-node"
+            "--exit-node-allow-lan-access"
+            "--ssh"
+          ];
         })
       ];
     };

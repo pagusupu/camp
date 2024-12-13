@@ -33,11 +33,12 @@
             settings = let
               p = "/storage/navidrome/";
             in {
-              Address = "0.0.0.0";
-              Port = port;
-              CacheFolder = "/var/lib/navidrome";
+              CacheFolder = p + "cache";
               DataFolder = p + "data";
               MusicFolder = p + "music";
+
+              Address = "0.0.0.0";
+              Port = port;
 
               AutoImportPlaylists = false;
               DefaultTheme = "Auto";

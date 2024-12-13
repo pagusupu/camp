@@ -15,7 +15,7 @@
       cloud = {
         immich = true;
         linkding = true;
-        #mealie = true;
+        mealie = true;
         memos = true;
         vaultwarden = true;
       };
@@ -43,7 +43,7 @@
       ip = "192.168.178.182";
       name = "enp37s0";
     };
-    system.graphics = true;
+    system.hardware = "amd";
   };
   networking = {
     domain = "pagu.cafe";
