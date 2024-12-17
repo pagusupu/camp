@@ -8,7 +8,6 @@
   options.cute.desktop.gtk = cutelib.mkEnable;
   config = lib.mkIf config.cute.desktop.gtk (let
     inherit (lib) mkMerge mkDefault mkIf;
-    inherit (config.cute) dark;
   in
     mkMerge [
       {
@@ -47,7 +46,7 @@
         };
         programs.dconf.enable = true;
       }
-      (mkIf dark {
+      (mkIf config.cute.dark {
         specialisation.dark.configuration = {
           home-manager.users.pagu = {
             gtk = {

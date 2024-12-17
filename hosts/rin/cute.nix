@@ -47,7 +47,6 @@
   home-manager.users.pagu.home = {
     packages = with pkgs; [
       easyeffects
-      exactaudiocopy
       glirc
       gnome-calculator
       heroic

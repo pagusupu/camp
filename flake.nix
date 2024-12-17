@@ -71,6 +71,7 @@
       inputs = {
         nixpkgs.follows = "unstable";
         flake-parts.follows = "flake-parts";
+        umu.follows = "";
       };
       url = "github:fufexan/nix-gaming";
     };

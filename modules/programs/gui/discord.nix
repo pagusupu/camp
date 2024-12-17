@@ -33,7 +33,7 @@
               role = false;
             };
             pinDMs = {
-              enable = true;
+              enable = false;
               pinOrder = "custom";
             };
             alwaysAnimate.enable = true;

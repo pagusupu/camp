@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   boot = {
     loader = {
-      timeout = 2;
       grub = {
         enable = true;
         configurationLimit = 5;
