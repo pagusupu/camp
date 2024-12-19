@@ -78,5 +78,6 @@ in {
         time.hardwareClockInLocalTime = true;
         security.tpm2.enable = true;
       })
+      { boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest; }
     ];
 }

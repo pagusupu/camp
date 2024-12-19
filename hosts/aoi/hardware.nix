@@ -13,6 +13,7 @@
       enable = true;
       mdadmConf = "MAILADDR please@shut.up";
     };
+    kernelParams = [ "irqpoll" "fsck.mode=force" ];
     kernelModules = [ "kvm-amd" ];
   };
   powerManagement.cpuFreqGovernor = "powersave";
