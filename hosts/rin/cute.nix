@@ -45,16 +45,16 @@
   security.sudo-rs.wheelNeedsPassword = false;
   programs.localsend.enable = true;
   home-manager.users.pagu.home = {
-    packages = with pkgs; [
-      easyeffects
-      glirc
-      gnome-calculator
-      heroic
-      kdePackages.okular
-      obsidian
-      radeontop
-      xfce.thunar
-    ];
+    packages = with pkgs;
+      [
+        easyeffects
+        gnome-calculator
+        kdePackages.okular
+        obsidian
+        radeontop
+        xfce.thunar
+      ]
+      ++ (with pkgs.unstable; [ feishin heroic ]);
     stateVersion = "23.05";
   };
   # no touchy

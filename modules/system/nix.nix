@@ -29,8 +29,12 @@
       };
       nixpkgs = {
         config.allowUnfree = true;
+        overlays = let
+          unstable = prev: {
+            unstable = inputs.unstable.legacyPackages.${prev.system};
+          };
+        in [ unstable inputs.self.overlays.default ];
         hostPlatform = lib.mkDefault "x86_64-linux";
-        overlays = [ inputs.self.overlays.default ];
       };
       programs.nh = {
         enable = true;
