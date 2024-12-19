@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  cutelib,
+  ...
+}: {
   cute = {
     desktop = {
       audio = true;
@@ -54,7 +58,10 @@
         radeontop
         xfce.thunar
       ]
-      ++ (with pkgs.unstable; [ feishin heroic ]);
+      ++ (with cutelib.unstable; [
+        feishin
+        heroic
+      ]);
     stateVersion = "23.05";
   };
   # no touchy

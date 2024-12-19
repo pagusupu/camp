@@ -2,11 +2,15 @@
   config,
   lib,
   cutelib,
+  inputs,
+  pkgs,
   ...
 }: let
   inherit (lib) mkOption types;
   inherit (types) bool;
   inherit (cutelib) mkAssert SSL;
+  inherit (inputs) stable unstable;
+  inherit (pkgs) system;
   inherit (config.cute.services.backend) docker home-manager nginx;
 in {
   _module.args.cutelib = {
@@ -18,6 +22,9 @@ in {
       default = true;
       type = bool;
     };
+
+    stable = stable.legacyPackages.${system};
+    unstable = unstable.legacyPackages.${system};
 
     mkAssert = a: b: [
       {
