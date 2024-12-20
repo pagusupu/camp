@@ -10,17 +10,19 @@
     config,
     lib,
     ...
-  }: {
+  }: let
+    alejandra = {
+      enable = true;
+      package = config.packages.alejandra-custom;
+    };
+  in {
     devShells.default = pkgs.mkShell {
       packages = [ inputs'.agenix.packages.default ];
       shellHook = config.pre-commit.installationScript;
     };
     pre-commit.settings = {
       hooks = {
-        alejandra = {
-          enable = true;
-          package = config.packages.alejandra-custom;
-        };
+        inherit alejandra;
         deadnix.enable = true;
         statix.enable = true;
         nil.enable = true;
@@ -34,10 +36,7 @@
         "parts/secrets/*.age"
       ];
       programs = {
-        alejandra = {
-          enable = true;
-          package = config.packages.alejandra-custom;
-        };
+        inherit alejandra;
         deadnix.enable = true;
         mdformat.enable = true;
         statix.enable = true;

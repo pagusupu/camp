@@ -26,11 +26,11 @@ lib.mkIf (config.cute.desktop.de == "hyprland")
         };
         wayland-pipewire-idle-inhibit = {
           enable = true;
-          package = pkgs.wayland-pipewire-idle-inhibit;
           settings = {
             media_minimum_duration = 180;
             node_blacklist = [ { name = "[Ff]eishin"; } ];
           };
+          package = pkgs.wayland-pipewire-idle-inhibit;
         };
       };
       imports = [ inputs.idle-inhibit.homeModules.default ];

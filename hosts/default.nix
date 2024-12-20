@@ -17,6 +17,6 @@
     );
 in {
   flake.nixosConfigurations = withSystem "x86_64-linux" (
-    _: genHosts [ "aoi" "ena" "rin" "ryo" ]
+    _: genHosts [ "aoi" "rin" "ryo" ]
   );
 }

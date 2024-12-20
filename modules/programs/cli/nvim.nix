@@ -28,16 +28,23 @@
       };
       opts = {
         autoindent = true;
+        breakindent = true;
+        smartindent = true;
+        shiftwidth = 2;
+
+        autoread = true;
+        backup = false;
+        swapfile = false;
+        undofile = true;
+
         number = true;
         showmode = false;
-        shiftwidth = 2;
-        smartindent = true;
         termguicolors = true;
-        undofile = true;
       };
       performance.byteCompileLua = {
         enable = true;
         nvimRuntime = true;
+        plugins = true;
       };
       plugins = {
         barbar = {

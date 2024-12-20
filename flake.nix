@@ -6,6 +6,7 @@
     };
   inputs = {
     nixpkgs.follows = "stable";
+
     stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
