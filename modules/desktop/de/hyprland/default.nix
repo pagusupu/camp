@@ -17,6 +17,8 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
         exec-once = [
           "waybar"
           "mako"
+          "discord"
+          "feishin"
         ];
         env = [
           "_JAVA_AWT_WM_NONREPARENTING,1"

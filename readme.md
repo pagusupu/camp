@@ -9,7 +9,6 @@
 | name | type |
 | --- |  ---  |
 | aoi | server |
-| ena | server |
 | rin | desktop |
 | ryo | laptop |
 

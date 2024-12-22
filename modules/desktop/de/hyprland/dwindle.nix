@@ -17,9 +17,12 @@ lib.mkIf (config.cute.desktop.de == "hyprland") {
         };
         windowrulev2 = [
           "workspace 5, class:^(vesktop)$"
+          "workspace 5, class:^(discord)$"
+          "workspace 5, class:^(feishin)$"
           "float, title:^(Steam - News)$"
           "float, class:^(steam)$,title:^(Special Offers)$"
           "float, title:^(Open Files)$"
+          "float, class:^(com.saivert.pwvucontrol)$"
           "float, class:^(thunar)$"
           "float, class:^(localsend_app)$"
           "float, class:^(org.gnome.Calculator)$"

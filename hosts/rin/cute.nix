@@ -51,10 +51,10 @@
   home-manager.users.pagu.home = {
     packages = with pkgs;
       [
-        easyeffects
         gnome-calculator
         kdePackages.okular
         obsidian
+        pwvucontrol
         radeontop
         xfce.thunar
       ]
