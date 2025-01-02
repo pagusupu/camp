@@ -4,9 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.services.cloud.mealie = cutelib.mkEnable;
-  config = lib.mkIf config.cute.services.cloud.mealie {
-    assertions = cutelib.assertNginx "mealie";
+  options.cute.services.web.mealie = cutelib.mkEnable;
+  config = lib.mkIf config.cute.services.web.mealie {
     services = let
       port = 9000;
     in {

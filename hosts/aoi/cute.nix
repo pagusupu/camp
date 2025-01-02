@@ -21,6 +21,7 @@
       };
       local = {
         blocky = true;
+        glance = true;
         home-assistant = true;
       };
       media = {

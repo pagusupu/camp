@@ -8,11 +8,9 @@
   config = lib.mkIf config.cute.programs.cli.starship {
     programs.starship = {
       enable = true;
-      settings = let
-        inherit (config.wh.colours) overlay;
-      in {
+      settings = {
         format = ''
-          [$username[@](bg:${overlay} cyan)$hostname $directory $git_branch$fill $time]($style)
+          [$username[@](bg:bright-black cyan)$hostname $directory $git_branch$fill $time]($style)
           $character
         '';
         character = {
@@ -20,38 +18,38 @@
           success_symbol = "[󰴈 ~>](purple)";
         };
         directory = {
-          format = "[](dimmed black)[ $path ]($style)[](dimmed black)";
+          format = "[](bright-black)[ $path ]($style)[](bright-black)";
           read_only = " ";
-          style = "bg:${overlay} green";
+          style = "bg:bright-black green";
           truncation_length = 3;
           truncation_symbol = "../";
         };
         fill = {
-          style = "dimmed black";
+          style = "bright-black";
           symbol = " ";
         };
         git_branch = {
-          format = "[](dimmed black)[ $symbol $branch ]($style)[](dimmed black)";
-          style = "bg:${overlay} purple";
+          format = "[](bright-black)[ $symbol $branch ]($style)[](bright-black)";
+          style = "bg:bright-black purple";
           symbol = "";
         };
         hostname = {
-          format = "[$hostname ](bg:${overlay} yellow)[](dimmed black)[$ssh_symbol]($style)";
-          ssh_symbol = " [](dimmed black)[  ](bg:${overlay} red)[](dimmed black)";
+          format = "[$hostname ](bg:bright-black yellow)[](bright-black)[$ssh_symbol]($style)";
+          ssh_symbol = " [](bright-black)[  ](bg:bright-black red)[](bright-black)";
           style = "";
           ssh_only = false;
         };
         time = {
           disabled = false;
-          format = "[](dimmed black)[ $time ]($style)[](dimmed black)";
-          style = "bg:${overlay} cyan";
+          format = "[](bright-black)[ $time ]($style)[ ](bright-black)";
+          style = "bg:bright-black cyan";
           time_format = "%I:%M%P";
           use_12hr = true;
         };
         username = {
-          format = "[](dimmed black)[ $user]($style)";
-          style_root = "bg:${overlay} red";
-          style_user = "bg:${overlay} yellow";
+          format = "[](bright-black)[ $user]($style)";
+          style_root = "bg:bright-black red";
+          style_user = "bg:bright-black yellow";
           show_always = true;
         };
         add_newline = false;

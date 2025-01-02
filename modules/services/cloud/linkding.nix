@@ -4,13 +4,11 @@
   cutelib,
   ...
 }: {
-  options.cute.services.cloud.linkding = cutelib.mkEnable;
-  config = lib.mkIf config.cute.services.cloud.linkding (lib.mkMerge [
-    { assertions = cutelib.assertNginx "linkding"; }
-    (let
-      port = 9090;
-    in {
-      assertions = cutelib.assertDocker "linkding";
+  options.cute.services.web.linkding = cutelib.mkEnable;
+  config = let
+    port = 9090;
+  in
+    lib.mkIf config.cute.services.web.linkding {
       virtualisation.oci-containers.containers."linkding" = {
         image = "sissbruecker/linkding:latest";
         ports = [ "${builtins.toString port}:9090" ];
@@ -21,6 +19,5 @@
         };
       };
       services.nginx = cutelib.host "link" port "" "";
-    })
-  ]);
+    };
 }

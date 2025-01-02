@@ -4,9 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.services.cloud.vaultwarden = cutelib.mkEnable;
-  config = lib.mkIf config.cute.services.cloud.vaultwarden {
-    assertions = cutelib.assertNginx "vaultwarden";
+  options.cute.services.web.vaultwarden = cutelib.mkEnable;
+  config = lib.mkIf config.cute.services.web.vaultwarden {
     services = let
       port = 8222;
     in {

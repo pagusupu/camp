@@ -15,16 +15,17 @@
         register = "unnamedplus";
         providers.wl-copy.enable = true;
       };
-      colorschemes.rose-pine = {
+      colorschemes.catppuccin = {
         enable = true;
         settings = {
-          styles = {
-            italic = false;
-            transparency = false;
+          integrations = {
+            barbar = true;
+            noice = true;
+            notify = true;
           };
-          variant = "auto";
+          background.dark = "frappe";
+          flavour = "frappe";
         };
-        package = pkgs.nvim-rose-pine;
       };
       opts = {
         autoindent = true;
@@ -37,6 +38,7 @@
         swapfile = false;
         undofile = true;
 
+        background = "dark";
         number = true;
         showmode = false;
         termguicolors = true;
@@ -70,6 +72,10 @@
             jsonls.enable = true;
           };
         };
+        lualine = {
+          enable = true;
+          settings.options.theme = "catppuccin";
+        };
         notify = {
           enable = true;
           render = "minimal";
@@ -84,7 +90,6 @@
           };
         };
         autoclose.enable = true;
-        lualine.enable = true;
         lsp-format.enable = true;
         lsp-lines.enable = true;
         markview.enable = true;

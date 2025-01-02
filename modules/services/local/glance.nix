@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.services.local.glance = cutelib.mkEnable;
-  config = lib.mkIf config.cute.services.local.glance {
+  options.cute.services.web.glance = cutelib.mkEnable;
+  config = lib.mkIf config.cute.services.web.glance {
     services.glance = {
       enable = true;
       openFirewall = true;
@@ -59,9 +59,9 @@
                       {
                         title = "Misc";
                         links = [
+                          (bookmark "Flathub" "https://flathub.org/")
                           (bookmark "Nix Search" "https://search.nixos.org/packages?channel=24.11")
                           (bookmark "HM Search" "https://home-manager-options.extranix.com/?query=&release=release-24.11")
-                          (bookmark "GitHub" "https://github.com")
                           (bookmark "Tailscale" "https://login.tailscale.com/admin/machines")
                           (bookmark "Gmail" "https://mail.google.com/mail/u/0/")
                           (bookmark "Proton Mail" "https://mail.proton.me/u/0/inbox")
@@ -97,25 +97,14 @@
             center-vertically = true;
           }
         ];
-        theme = let
-          inherit (lib) mkDefault;
-        in {
-          light = mkDefault true;
-          background-color = mkDefault "32 57 95"; # base
-          primary-color = mkDefault "268 21 57"; # iris
-          positive-color = mkDefault "189 30 48"; # foam
-          negative-color = mkDefault "343 35 55"; # love
+        theme = {
+          light = false;
+          background-color = "229 19 23";
+          primary-color = "277 59 76";
+          positive-color = "96 44 68";
+          negative-color = "359 68 71";
         };
         branding.hide-footer = true;
-      };
-    };
-    specialisation.dark.configuration = {
-      services.glance.settings.theme = {
-        light = false;
-        background-color = "249 22 12";
-        primary-color = "267 57 78";
-        positive-color = "189 43 73";
-        negative-color = "343 76 68";
       };
     };
   };

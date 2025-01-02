@@ -62,13 +62,27 @@
           icons = "auto";
           extraOptions = [ "--group-directories-first" ];
         };
-        yazi = {
+        yazi = let
+          mocha = "catppuccin-mocha";
+        in {
           enable = true;
           settings.manager = {
             show_hidden = true;
             sort_by = "natural";
             sort_dir_first = true;
           };
+          theme.flavor = {
+            dark = mocha;
+            light = mocha;
+          };
+          flavors.${mocha} = let
+            flavors = pkgs.fetchFromGitHub {
+              owner = "yazi-rs";
+              repo = "flavors";
+              rev = "fc8eeaab9da882d0e77ecb4e603b67903a94ee6e";
+              hash = "sha256-wvxwK4QQ3gUOuIXpZvrzmllJLDNK6zqG5V2JAqTxjiY=";
+            };
+          in "${flavors}/${mocha}.yazi";
           plugins = let
             yazi-plugins = pkgs.fetchFromGitHub {
               owner = "yazi-rs";

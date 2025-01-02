@@ -4,8 +4,8 @@
   cutelib,
   ...
 }: {
-  options.cute.services.cloud.immich = cutelib.mkEnable;
-  config = lib.mkIf config.cute.services.cloud.immich {
+  options.cute.services.web.immich = cutelib.mkEnable;
+  config = lib.mkIf config.cute.services.web.immich {
     services = let
       port = 3001;
     in {
